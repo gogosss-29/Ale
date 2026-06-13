@@ -1,0 +1,3 @@
+# Dependencias extra para correr el pipeline como servicio web en la nube.
+fastapi>=0.110
+uvicorn[standard]>=0.29
