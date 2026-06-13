@@ -46,8 +46,12 @@ def vtt_to_text(vtt: str) -> str:
     return text
 
 
-def fetch_subs(url: str, workdir: Path) -> str | None:
-    """Devuelve el texto del subtítulo (es preferente) o None."""
+def fetch_subs(url: str, workdir: Path, cookies_browser: str | None = None) -> str | None:
+    """Devuelve el texto del subtítulo (es preferente) o None.
+
+    cookies_browser: p.ej. "chrome"/"firefox" → pasa --cookies-from-browser a
+    yt-dlp. Útil en local para YouTube (esquiva el "confirm you're not a bot").
+    """
     out = workdir / "s"
     cmd = [
         "yt-dlp", "--no-check-certificates", "--skip-download",
@@ -55,6 +59,8 @@ def fetch_subs(url: str, workdir: Path) -> str | None:
         "--sub-langs", SUB_LANGS, "--sub-format", "vtt",
         "-o", f"{out}.%(ext)s", url,
     ]
+    if cookies_browser:
+        cmd[1:1] = ["--cookies-from-browser", cookies_browser]
     subprocess.run(cmd, capture_output=True, text=True, timeout=180)
     vtts = sorted(workdir.glob("*.vtt"))
     if not vtts:
@@ -72,11 +78,19 @@ def append_transcript(md_path: Path, text: str) -> None:
     md_path.write_text(content + f"\n{MARK}\n\n{text}\n", encoding="utf-8")
 
 
-def run(community: str, out_dir: str, limit: int | None = None) -> None:
+def run(
+    community: str,
+    out_dir: str,
+    limit: int | None = None,
+    hosts: list[str] | None = None,
+    cookies_browser: str | None = None,
+) -> None:
     base = Path(out_dir) / community
     videos = [
         json.loads(l) for l in (base / "videos.jsonl").read_text().splitlines() if l.strip()
     ]
+    if hosts:
+        videos = [v for v in videos if any(h in v["video"] for h in hosts)]
     if limit:
         videos = videos[:limit]
     done = ok = 0
@@ -89,7 +103,7 @@ def run(community: str, out_dir: str, limit: int | None = None) -> None:
             continue  # ya transcrita (resumible)
         with tempfile.TemporaryDirectory() as td:
             try:
-                text = fetch_subs(v["video"], Path(td))
+                text = fetch_subs(v["video"], Path(td), cookies_browser)
             except Exception as e:  # noqa: BLE001
                 print(f"  !! {v['lesson'][:40]}: {e}")
                 text = None
@@ -108,8 +122,20 @@ def main() -> None:
     ap.add_argument("community")
     ap.add_argument("--out", default="docs-skool")
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument(
+        "--hosts",
+        default=None,
+        help="filtra por host de vídeo, coma-separado. p.ej. 'loom.com' o 'youtube,youtu.be'",
+    )
+    ap.add_argument(
+        "--cookies-from-browser",
+        dest="cookies_browser",
+        default=None,
+        help="navegador para sacar cookies (chrome/firefox/edge). Útil en local para YouTube.",
+    )
     args = ap.parse_args()
-    run(args.community, args.out, args.limit)
+    hosts = [h.strip() for h in args.hosts.split(",")] if args.hosts else None
+    run(args.community, args.out, args.limit, hosts, args.cookies_browser)
 
 
 if __name__ == "__main__":

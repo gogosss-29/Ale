@@ -55,12 +55,27 @@ viaja en el JSON del servidor**, no hay que "ver" la web ni reproducir vídeos.
    - `videoLenMs`, `videoThumbnail`, `resources`, `hasAccess`.
 
 6. **Transcripciones de los vídeos (sin descargar el vídeo).** Con `yt-dlp` se bajan
-   **solo las pistas de subtítulos** (`--skip-download --write-subs --write-auto-subs`)
-   tanto de YouTube como de Loom, en español preferente. Se limpia el `.vtt` a texto
-   plano (`skool/transcripts.py`) y se anexa a cada lección. *(Igual que en Whop con
-   los `.vtt` de Mux: subtítulos oficiales en vez de transcribir audio con Whisper.)*
+   **solo las pistas de subtítulos** (`--skip-download --write-subs --write-auto-subs`),
+   en español preferente. Se limpia el `.vtt` a texto plano (`skool/transcripts.py`) y
+   se anexa a cada lección bajo "🎙️ Transcripción". *(Igual que en Whop con los `.vtt`
+   de Mux: subtítulos oficiales en vez de transcribir audio con Whisper.)*
    - Nota de entorno: la red usa un **CA propio (proxy)**, así que yt-dlp necesita
      `--no-check-certificates`.
+   - **Loom (≈145 vídeos):** ✅ se transcriben sin problema desde el servidor.
+   - **YouTube (≈261 vídeos):** ❌ **no** desde este servidor — YouTube responde
+     `HTTP 429 / "Sign in to confirm you're not a bot"` porque bloquea las IPs de
+     datacenter (no es un problema de login; ni con cookies se evita). Probé `yt-dlp`
+     y `youtube-transcript-api`: ambos dan `IpBlocked`.
+   - **Solución para YouTube:** correr el mismo script **en tu máquina** (IP
+     residencial, no bloqueada). Es resumible: salta lo ya transcrito (los Loom) y
+     solo baja los YouTube:
+     ```bash
+     # en tu ordenador, con el repo clonado y yt-dlp instalado:
+     python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be
+     # si aún te pide "confirm you're not a bot", añade tus cookies del navegador:
+     python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be \
+         --cookies-from-browser chrome
+     ```
 
 ## Resumen en una frase
 **Scraping autenticado vía los endpoints `_next/data` de Skool:** con tu sesión, se

@@ -54,6 +54,16 @@ docs-skool/<community>/
 | `extract.py` | Fase 1: recorre cursos y vuelca todo a Markdown |
 | `transcripts.py` | Fase 2: baja subtítulos de YouTube/Loom y los anexa |
 
+## YouTube vs Loom (importante)
+- **Loom** se transcribe sin problema desde cualquier sitio.
+- **YouTube** bloquea las IPs de datacenter (`429 / "confirm you're not a bot"`), así
+  que las transcripciones de YouTube **hay que sacarlas desde tu máquina** (IP
+  residencial). Filtra por host y, si hace falta, pasa cookies del navegador:
+  ```bash
+  python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be \
+      --cookies-from-browser chrome
+  ```
+
 ## Notas
 - **Resumible:** Fase 2 salta las lecciones que ya tienen transcripción.
 - **Reutilizable:** sirve para cualquier comunidad de Skool, cambiando el slug y la
