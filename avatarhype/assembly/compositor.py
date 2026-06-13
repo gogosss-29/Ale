@@ -10,7 +10,7 @@ import shutil
 import subprocess
 import tempfile
 
-from .realism_grade import build_full_vf
+from .realism_grade import build_cine_vf, build_full_vf
 
 
 def _run(cmd: list[str]) -> None:
@@ -28,16 +28,19 @@ def aplicar_realismo(
     salida: str,
     grade: dict | None = None,
     grano: bool = True,
+    estilo: str = "ugc",
 ) -> str:
-    """Aplica SOLO la capa de realismo del curso a un clip (sin concatenar ni música).
+    """Aplica SOLO la capa de realismo a un clip (sin concatenar ni música).
 
+    `estilo`: "ugc" (look selfie crudo del curso) o "cine" (estética de anuncio).
     Para clips generados a mano (Omni Flash) que solo necesitan el grade final.
     Devuelve `salida`."""
     if not ffmpeg_disponible():
         raise RuntimeError("ffmpeg no está instalado")
     if not os.path.exists(clip):
         raise FileNotFoundError(clip)
-    vf = build_full_vf(grade, add_grain=grano)
+    builder = build_cine_vf if estilo == "cine" else build_full_vf
+    vf = builder(grade, add_grain=grano)
     _run([
         "ffmpeg", "-y", "-i", clip, "-vf", vf,
         "-c:v", "libx264", "-preset", "medium", "-crf", "20",

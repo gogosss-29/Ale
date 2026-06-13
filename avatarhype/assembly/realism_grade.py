@@ -9,7 +9,7 @@ Los mapeos son aproximaciones razonables y están centralizados para poder afina
 """
 from __future__ import annotations
 
-from ..brain.realism import CAPCUT_REALISM
+from ..brain.realism import CAPCUT_REALISM, CINE_GRADE
 
 
 def _lin(v: float, in_lo: float, in_hi: float, out_lo: float, out_hi: float) -> float:
@@ -60,5 +60,18 @@ def build_full_vf(grade: dict | None = None, add_grain: bool = True) -> str:
     if add_grain:
         g = {**CAPCUT_REALISM, **(grade or {})}
         strength = round(_lin(g["particulas"], 0, 100, 0, 20), 1)            # 10% -> ~2
+        vf += f",noise=alls={strength}:allf=t"
+    return vf
+
+
+def build_cine_vf(grade: dict | None = None, add_grain: bool = True) -> str:
+    """Filtro CINEMATOGRÁFICO: grade CINE_GRADE + leve nitidez + viñeta + grano fino.
+    Para estética de anuncio 'con cuerpo' (no selfie crudo)."""
+    g = {**CINE_GRADE, **(grade or {})}
+    vf = build_eq_filter(g)
+    vf += ",unsharp=5:5:0.35:5:5:0.0"        # micro-nitidez (sensación filmica)
+    vf += ",vignette=PI/5"                     # viñeta sutil que lleva la mirada al centro
+    if add_grain:
+        strength = round(_lin(g["particulas"], 0, 100, 0, 20), 1)
         vf += f",noise=alls={strength}:allf=t"
     return vf

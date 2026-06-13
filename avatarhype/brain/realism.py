@@ -114,3 +114,20 @@ CAPCUT_REALISM = {
     "motion_blur": 20,   # %
     "particulas": 10,    # %
 }
+
+# --- Grade CINEMATOGRÁFICO (alternativa al UGC del curso) ------------------------
+# Para vídeo con estética de anuncio "con cuerpo" (no selfie crudo): contraste con
+# peso, highlights controlados (cielos), piel cálida, negros ricos sin lechosear,
+# grano fino. Se complementa con viñeta + leve nitidez en realism_grade.build_cine_vf.
+CINE_GRADE = {
+    "temperatura": 5,    # cálido (piel dorada, look anuncio)
+    "tinte": 3,          # un toque magenta en piel
+    "saturacion": -8,    # desatura global; la piel se mantiene
+    "exposicion": 0,     # neutro: la exposición se ajusta CLIP A CLIP
+    "contraste": 18,     # punch filmico
+    "highlights": -42,   # recuperar cielos quemados
+    "sombras": -8,       # ligeramente abiertas, sin crush
+    "fade": 0,           # nada de lechoso
+    "motion_blur": 20,   # %
+    "particulas": 6,     # % grano fino, más sutil que en UGC
+}

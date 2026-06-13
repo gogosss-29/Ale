@@ -74,6 +74,8 @@ def main(argv=None):
         "realismo", help="Aplica la capa de realismo del curso a un clip (solo ffmpeg)")
     p_real.add_argument("--clip", required=True, help="Vídeo de entrada")
     p_real.add_argument("--salida", default=None, help="Vídeo de salida (por defecto *_real.mp4)")
+    p_real.add_argument("--estilo", default="ugc", choices=["ugc", "cine"],
+                        help="ugc = selfie crudo del curso · cine = estética de anuncio")
     p_real.add_argument("--sin-grano", action="store_true", help="No añadir grano/partículas")
 
     a = parser.parse_args(argv)
@@ -82,7 +84,7 @@ def main(argv=None):
         from .assembly.compositor import aplicar_realismo
         salida = a.salida or os.path.splitext(a.clip)[0] + "_real.mp4"
         try:
-            out = aplicar_realismo(a.clip, salida, grano=not a.sin_grano)
+            out = aplicar_realismo(a.clip, salida, grano=not a.sin_grano, estilo=a.estilo)
         except (RuntimeError, FileNotFoundError) as e:
             print(f"No se pudo aplicar el realismo: {e}", file=sys.stderr)
             return 2
