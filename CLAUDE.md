@@ -5,6 +5,11 @@
 > "digital twin" en Higgsfield: un Soul entrenado con su cara + su voz, para
 > generar imágenes y un vídeo hablado. Todos los IDs de abajo viven en su cuenta
 > de Higgsfield y siguen válidos entre sesiones.
+>
+> **🧠 CEREBRO COMPLETO:** la documentación detallada y reproducible está en la
+> carpeta [`cerebro/`](cerebro/): `00-vision-y-conexion`, `01-el-curso` (paso a
+> paso), `02-playbook` (cómo técnico), `03-activos` (IDs), `04-estado`. Empezar
+> leyendo `cerebro/00`, `cerebro/03` y `cerebro/04`.
 
 ## Objetivo actual
 Generar un **vídeo hablado** (avatar de Alexander moviendo los labios sincronizado
