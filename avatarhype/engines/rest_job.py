@@ -24,12 +24,14 @@ class RestJobClient:
 
     def post(self, path: str, payload: dict) -> dict:
         r = self.session.post(f"{self.base_url}{path}", json=payload, timeout=self.timeout)
-        r.raise_for_status()
+        if not r.ok:
+            raise RuntimeError(f"{r.status_code} en {path} → {r.text[:600]}")
         return r.json()
 
     def get(self, path: str) -> dict:
         r = self.session.get(f"{self.base_url}{path}", timeout=self.timeout)
-        r.raise_for_status()
+        if not r.ok:
+            raise RuntimeError(f"{r.status_code} en {path} → {r.text[:600]}")
         return r.json()
 
     def poll(
