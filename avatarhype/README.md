@@ -49,6 +49,7 @@ python -m avatarhype.cli avatar \
 | `brain/strategy.py` | Análisis estratégico + generación de guiones |
 | `engines/base.py` | Interfaces ImageEngine / VideoEngine / AudioEngine |
 | `engines/google.py` | Conector Google: Veo (vídeo) + Gemini Image (Nano Banana) |
+| `engines/elevenlabs.py` | TU voz clonada (TTS) para doblar los anuncios con tu voz real |
 | `engines/apimart.py`, `kie.py`, `higgsfield.py` | Conectores de los motores |
 | `engines/costs.py` | Tabla de costes por ruta (para comparar) |
 | `assembly/realism_grade.py` | Traduce la capa de realismo de CapCut a ffmpeg — **testeado** |
@@ -75,6 +76,17 @@ python -m avatarhype.cli producir \
   --ruta google --avatar-frame avatar.png --musica pista.mp3
 ```
 
+# TU voz (ElevenLabs) y doblaje sobre el vídeo:
+python -m avatarhype.cli voz --texto "tu guion" --voice-id <tu_voz> --salida voz.mp3
+python -m avatarhype.cli doblar --video clip.mp4 --audio voz.mp3 --salida clip_voz.mp4
+```
+
+> **Lip-sync:** `doblar` monta tu voz pero NO re-sincroniza los labios. Para que la boca
+> cuadre con tu voz nueva hace falta un modelo de lip-sync dedicado (Higgsfield audio→vídeo,
+> sync.so, etc.) — pendiente de enchufar como motor. Alternativa: generar el vídeo
+> directamente audio→vídeo con un modelo talking-avatar a partir de tu voz.
+
+```bash
 Comparar rutas: cambia `--ruta google|apimart|kie|higgsfield`. Cada `Asset` reporta su
 coste estimado y el anuncio suma el total, para comparar coste/calidad entre motores.
 La ruta `google` es la de Alexander (Veo/Omni Flash oficial); `apimart` es la económica

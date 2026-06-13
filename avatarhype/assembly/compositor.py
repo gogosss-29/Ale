@@ -19,6 +19,26 @@ def _run(cmd: list[str]) -> None:
         raise RuntimeError(f"ffmpeg falló:\n{' '.join(cmd)}\n{proc.stderr[-2000:]}")
 
 
+def poner_voz(video: str, audio: str, salida: str) -> str:
+    """Reemplaza el audio del vídeo por `audio` (tu voz de ElevenLabs). Doblaje simple:
+    monta tu voz sobre el clip y descarta la voz del modelo. Devuelve `salida`.
+
+    OJO: esto NO re-sincroniza los labios. Si la voz nueva no cuadra con el movimiento
+    de boca generado por el modelo, hace falta un paso de LIP-SYNC aparte (modelo
+    dedicado: Higgsfield audio→vídeo, sync.so, etc.). Ver pipeline/README."""
+    if not ffmpeg_disponible():
+        raise RuntimeError("ffmpeg no está instalado")
+    for f in (video, audio):
+        if not os.path.exists(f):
+            raise FileNotFoundError(f)
+    _run([
+        "ffmpeg", "-y", "-i", video, "-i", audio,
+        "-map", "0:v", "-map", "1:a",
+        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", salida,
+    ])
+    return salida
+
+
 def ffmpeg_disponible() -> bool:
     return shutil.which("ffmpeg") is not None
 

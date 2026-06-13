@@ -83,6 +83,16 @@ def main(argv=None):
     p_render.add_argument("--aspect", default="9:16")
     p_render.add_argument("--salida", default="output/clip.mp4")
 
+    p_voz = sub.add_parser("voz", help="Genera audio con tu voz clonada (ElevenLabs)")
+    p_voz.add_argument("--texto", required=True, help="Texto a locutar")
+    p_voz.add_argument("--voice-id", default=None, help="ID de tu voz clonada (o ELEVENLABS_VOICE_ID)")
+    p_voz.add_argument("--salida", default="output/voz.mp3")
+
+    p_dob = sub.add_parser("doblar", help="Pone tu voz sobre un vídeo (reemplaza el audio)")
+    p_dob.add_argument("--video", required=True)
+    p_dob.add_argument("--audio", required=True, help="Tu voz (mp3/wav)")
+    p_dob.add_argument("--salida", default=None, help="por defecto *_voz.mp4")
+
     p_real = sub.add_parser(
         "realismo", help="Aplica la capa de realismo del curso a un clip (solo ffmpeg)")
     p_real.add_argument("--clip", required=True, help="Vídeo de entrada")
@@ -92,6 +102,28 @@ def main(argv=None):
     p_real.add_argument("--sin-grano", action="store_true", help="No añadir grano/partículas")
 
     a = parser.parse_args(argv)
+    if a.cmd == "voz":
+        import os
+        from .engines.elevenlabs import ElevenLabsVoice
+        os.makedirs(os.path.dirname(a.salida) or ".", exist_ok=True)
+        try:
+            asset = ElevenLabsVoice().generar_voz(a.texto, a.salida, a.voice_id)
+        except RuntimeError as e:
+            print(f"No se pudo generar la voz: {e}", file=sys.stderr)
+            return 2
+        print(f"Voz generada: {asset.path}")
+        return 0
+    if a.cmd == "doblar":
+        import os
+        from .assembly.compositor import poner_voz
+        salida = a.salida or os.path.splitext(a.video)[0] + "_voz.mp4"
+        try:
+            out = poner_voz(a.video, a.audio, salida)
+        except (RuntimeError, FileNotFoundError) as e:
+            print(f"No se pudo doblar: {e}", file=sys.stderr)
+            return 2
+        print(f"Vídeo con tu voz: {out}")
+        return 0
     if a.cmd == "realismo":
         import os
         from .assembly.compositor import aplicar_realismo

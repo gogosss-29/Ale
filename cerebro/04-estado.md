@@ -2,6 +2,14 @@
 
 _Última actualización: 2026-06-13 por Claude (Claude Code)._
 
+## Capa de voz propia — ElevenLabs (2026-06-13)
+La ruta API genera voz sintética (no la suya). Para poner SU voz real:
+`engines/elevenlabs.py` (TTS con voz clonada) + `compositor.poner_voz` (doblaje sobre
+el vídeo). CLI: `voz` (genera audio) y `doblar` (lo monta). Key `ELEVENLABS_API_KEY`
++ `ELEVENLABS_VOICE_ID` (clonar 1 vez con sus clips de 12 s / 3:27 ya subidos).
+- **LIP-SYNC pendiente:** `doblar` NO re-sincroniza labios. Falta enchufar un modelo de
+  lip-sync (Higgsfield audio→vídeo, sync.so) o pasar a flujo talking-avatar (audio→vídeo).
+
 ## Render para VOLUMEN — ruta APImart + acento argentino (2026-06-13)
 Alexander es **argentino** (no español) → el avatar se fuerza a **acento Rioplatense**
 (voseo, sheísmo, entonación porteña, muletilla "che" antepuesta y cortada en edición).
