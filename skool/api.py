@@ -87,6 +87,35 @@ class SkoolClient:
         p = self.course_view(short_id, lesson_id)
         return _find_node_meta(p, lesson_id)
 
+    def resource_download_url(self, file_id: str, expire: int = 28800) -> str:
+        """URL firmada de descarga de un recurso/adjunto, por su file_id.
+
+        Descubierto en el bundle de Skool: el front llama
+        `POST /files/<file_id>/download-url?expire=<segs>` y usa el body (la URL
+        firmada de files.skool.com) como `window.location`. GET sobre el recurso
+        está bloqueado (las URLs van firmadas), por eso hay que pedir esta.
+        """
+        r = self.s.s.post(
+            f"https://api.skool.com/files/{file_id}/download-url",
+            params={"expire": expire},
+            timeout=30,
+        )
+        r.raise_for_status()
+        return r.text.strip()
+
+    def download_resource(self, file_id: str, dest: str) -> str:
+        """Descarga un recurso por file_id a `dest`. Devuelve la ruta."""
+        import os
+
+        url = self.resource_download_url(file_id)
+        os.makedirs(os.path.dirname(dest) or ".", exist_ok=True)
+        with self.s.s.get(url, timeout=180, stream=True) as r:
+            r.raise_for_status()
+            with open(dest, "wb") as fh:
+                for chunk in r.iter_content(65536):
+                    fh.write(chunk)
+        return dest
+
 
 def iter_tree(course_view: dict) -> Iterator[tuple[int, dict]]:
     """Recorre el árbol de un curso. Yields (profundidad, nodo_metadata+id+tipo)."""

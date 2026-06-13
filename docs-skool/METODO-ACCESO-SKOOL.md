@@ -77,6 +77,14 @@ viaja en el JSON del servidor**, no hay que "ver" la web ni reproducir vídeos.
          --cookies-from-browser chrome
      ```
 
+7. **Recursos descargables (adjuntos: skills .zip/.tar.gz, plantillas n8n/Make .json,
+   bases Airtable…).** No viajan en el contenido: el classroom solo guarda
+   `{file_id, file_name}`. Skool los sirve **firmados**. El front llama
+   `POST https://api.skool.com/files/<file_id>/download-url?expire=<segs>` y el body
+   es la URL firmada (`files.skool.com/f/<groupId>/<hash>?Signature=…`). `GET` directo
+   sobre el archivo da 403. Implementado en `skool/api.py:download_resource()`.
+   *(Endpoint descubierto leyendo el método `getResourceUrl` del bundle JS de Skool.)*
+
 ## Resumen en una frase
 **Scraping autenticado vía los endpoints `_next/data` de Skool:** con tu sesión, se
 pide a Skool el árbol del classroom y el contenido de cada lección (notas Prosemirror +
