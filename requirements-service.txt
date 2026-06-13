@@ -1,3 +1,5 @@
 # Dependencias extra para correr el pipeline como servicio web en la nube.
 fastapi>=0.110
 uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+aiofiles>=23.0
