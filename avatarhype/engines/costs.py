@@ -23,6 +23,13 @@ COSTES = {
         "video_default_clip": None,
         "image_default": None,
     },
+    "google": {
+        # API oficial de Google (Gemini). MUCHO más cara que APImart por clip.
+        # Aproximaciones a confirmar con el pricing vigente de Google (~€/segundo).
+        "video_veo31_8s": 3.20,       # Veo 3.1 con audio, 8 s
+        "video_veo31fast_8s": 1.20,   # Veo 3.1 Fast, 8 s
+        "image_nano_banana": 0.03,    # Gemini 2.5 Flash Image
+    },
 }
 
 

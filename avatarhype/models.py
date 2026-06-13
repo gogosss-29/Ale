@@ -40,7 +40,8 @@ class ProductBrief:
     acento: Acento = Acento.ESPANA
     formatos: list[Formato] = field(default_factory=lambda: [Formato.UGC])
     imagen_producto_path: Optional[str] = None  # foto del producto (referencia)
-    avatar_referencia_path: Optional[str] = None  # foto de la CARA del usuario (para que el avatar sea él)
+    avatar_referencia_path: Optional[str] = None  # foto de la CARA del usuario (se GENERA el avatar desde ella)
+    avatar_frame_path: Optional[str] = None      # fotograma de un avatar YA hecho (se usa TAL CUAL como frame inicial)
     paleta_colores: Optional[str] = None         # para image ads
     notas: Optional[str] = None
 

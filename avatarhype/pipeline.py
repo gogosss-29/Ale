@@ -92,9 +92,13 @@ def producir(brief: ProductBrief, cfg: EngineConfig | None = None,
     plan = planificar(brief)
     img_engine, video_engine = build_engines(cfg)
 
-    # Paso de IDENTIDAD: si hay foto de la cara del usuario, generar su avatar-ancla y
-    # usarlo como primer frame de cada clip para que el avatar sea ÉL.
-    avatar_path = generar_avatar_identidad(brief, img_engine, cfg.out_dir)
+    # Paso de IDENTIDAD: o bien usamos un fotograma de avatar YA hecho tal cual
+    # (avatar_frame_path), o lo GENERAMOS desde una foto de la cara (avatar_referencia_path).
+    # Ese frame se usa como primer frame de cada clip (imagen->vídeo) para fijar la identidad.
+    if brief.avatar_frame_path:
+        avatar_path = brief.avatar_frame_path
+    else:
+        avatar_path = generar_avatar_identidad(brief, img_engine, cfg.out_dir)
     plan.avatar_path = avatar_path
     if avatar_path:
         for s in plan.shots:

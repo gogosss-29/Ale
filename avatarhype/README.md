@@ -29,8 +29,12 @@ python -m avatarhype.cli avatar \
 
 - **Pasos 1-3 (cerebro):** `brain/` — réplica de los agentes GPT del curso (estrategia +
   guiones) + el constructor determinista de prompts de 14 bloques. Necesita una API de LLM.
-- **Pasos 4-5 (motores):** `engines/` — proveedores intercambiables APImart / Kie / Higgsfield
-  (patrón submit→poll→download). Necesitan las API keys de cada servicio.
+- **Pasos 4-5 (motores):** `engines/` — proveedores intercambiables Google (Veo/Gemini) /
+  APImart / Kie / Higgsfield. Necesitan las API keys de cada servicio.
+  - **`google`** (ruta de Alexander): Veo por la API oficial de Google (`google-genai`).
+    Omni Flash de AI Studio == `veo-3.1-...` por API. Imagen→vídeo con tu avatar como frame
+    inicial; genera audio/voz nativo. Más caro por clip que APImart, pero usa tu mismo modelo.
+    Key: `GEMINI_API_KEY`.
 - **Paso 6 (ensamblado):** `assembly/` — une clips con ffmpeg y aplica la **capa de realismo
   exacta del curso** (valores de CapCut traducidos a filtros ffmpeg). No necesita keys.
 
@@ -44,6 +48,7 @@ python -m avatarhype.cli avatar \
 | `brain/llm.py` | Cliente LLM agnóstico (Anthropic / OpenAI) |
 | `brain/strategy.py` | Análisis estratégico + generación de guiones |
 | `engines/base.py` | Interfaces ImageEngine / VideoEngine / AudioEngine |
+| `engines/google.py` | Conector Google: Veo (vídeo) + Gemini Image (Nano Banana) |
 | `engines/apimart.py`, `kie.py`, `higgsfield.py` | Conectores de los motores |
 | `engines/costs.py` | Tabla de costes por ruta (para comparar) |
 | `assembly/realism_grade.py` | Traduce la capa de realismo de CapCut a ffmpeg — **testeado** |
@@ -63,14 +68,17 @@ python -m avatarhype.cli plan \
   --descripcion "Sérum para el acné y las manchas" \
   --mercado España --formatos ugc,podcast
 
-# Pipeline completo (requiere keys de motor):
+# Pipeline completo por la ruta GOOGLE (Veo), usando un fotograma de tu avatar
+# como frame inicial (imagen->vídeo). Requiere GEMINI_API_KEY:
 python -m avatarhype.cli producir \
   --nombre "Sérum niacinamida" --descripcion "..." \
-  --ruta apimart --modelo-video omni-flash --musica pista.mp3
+  --ruta google --avatar-frame avatar.png --musica pista.mp3
 ```
 
-Comparar rutas: cambia `--ruta apimart|kie|higgsfield`. Cada `Asset` reporta su coste
-estimado y el anuncio suma el total, para comparar coste/calidad entre motores.
+Comparar rutas: cambia `--ruta google|apimart|kie|higgsfield`. Cada `Asset` reporta su
+coste estimado y el anuncio suma el total, para comparar coste/calidad entre motores.
+La ruta `google` es la de Alexander (Veo/Omni Flash oficial); `apimart` es la económica
+para volumen.
 
 ## Estado
 

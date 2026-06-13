@@ -31,6 +31,7 @@ def _brief_from_args(a) -> ProductBrief:
         formatos=_parse_formatos(a.formatos),
         imagen_producto_path=a.imagen_producto,
         avatar_referencia_path=getattr(a, "avatar_referencia", None),
+        avatar_frame_path=getattr(a, "avatar_frame", None),
         paleta_colores=a.paleta,
         notas=a.notas,
     )
@@ -44,7 +45,9 @@ def _add_common(p):
     p.add_argument("--formatos", default="ugc")
     p.add_argument("--imagen-producto", default=None)
     p.add_argument("--avatar-referencia", default=None,
-                   help="Foto de tu cara: el avatar se generará a partir de ella")
+                   help="Foto de tu cara: el avatar se GENERARÁ a partir de ella")
+    p.add_argument("--avatar-frame", default=None,
+                   help="Fotograma de un avatar YA hecho: se usa TAL CUAL como frame inicial")
     p.add_argument("--paleta", default=None)
     p.add_argument("--notas", default=None)
 
@@ -60,12 +63,12 @@ def main(argv=None):
         "avatar",
         help="Solo el paso de identidad: genera tu avatar-ancla desde tu foto (1 imagen)")
     _add_common(p_avatar)
-    p_avatar.add_argument("--ruta", default="apimart", choices=["apimart", "kie", "higgsfield"])
+    p_avatar.add_argument("--ruta", default="apimart", choices=["apimart", "kie", "higgsfield", "google"])
     p_avatar.add_argument("--out", default="output")
 
     p_prod = sub.add_parser("producir", help="Pipeline completo (requiere API keys)")
     _add_common(p_prod)
-    p_prod.add_argument("--ruta", default="apimart", choices=["apimart", "kie", "higgsfield"])
+    p_prod.add_argument("--ruta", default="apimart", choices=["apimart", "kie", "higgsfield", "google"])
     p_prod.add_argument("--modelo-video", default="omni-flash")
     p_prod.add_argument("--musica", default=None)
     p_prod.add_argument("--out", default="output")

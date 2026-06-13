@@ -2,6 +2,19 @@
 
 _Última actualización: 2026-06-13 por Claude (Claude Code)._
 
+## Automatización Fase 2 — ruta GOOGLE/Veo (2026-06-13)
+Alexander genera con **Omni Flash en Google AI Studio** y ya tiene su avatar ahí. Decidido
+automatizar el render por la **API oficial de Google (Gemini/Veo)** — NO hace falta APImart.
+- `Omni Flash (AI Studio) == veo-3.1-...` por API. Motor nuevo `avatarhype/engines/google.py`
+  (`GoogleVeoVideo` + `GoogleGeminiImage`), ruta `--ruta google`, SDK `google-genai`,
+  key `GEMINI_API_KEY`. Imagen→vídeo: pasa un fotograma de su avatar con `--avatar-frame`
+  y Veo lo anima (audio/voz nativo). Luego grade cine con ffmpeg.
+- **Coste:** la API de Google es MUCHO más cara por clip que APImart (Veo 3.1 ~3 €/8 s,
+  Fast ~1.2 €/8 s vs 0.08 € en APImart). Para volumen, dejar APImart como ruta económica.
+- **Para ejecutar falta:** (a) `GEMINI_API_KEY` de Google AI Studio (Veo es de pago),
+  (b) un fotograma PNG de su avatar exportado de AI Studio.
+- Pendiente Fase 3: orquestar con n8n (sus tools MCP aún no aparecen en sesión).
+
 ## Decisión de ruta (2026-06-13)
 **Se desarrolla primero la RUTA DEL CURSO (AvatarHype), no Higgsfield.** Alexander
 quiere crear su avatar **con el método del curso** y ver qué tal funciona, respetando

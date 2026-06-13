@@ -1,1 +1,3 @@
 requests>=2.31
+# Ruta Google (Veo / Gemini): SDK oficial. Solo si usas --ruta google.
+google-genai>=1.0

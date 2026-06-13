@@ -36,4 +36,9 @@ def build_engines(cfg: EngineConfig):
     if cfg.ruta == "higgsfield":
         from .engines.higgsfield import HiggsfieldImage, HiggsfieldVideo
         return HiggsfieldImage(cfg.modelo_imagen), HiggsfieldVideo(cfg.modelo_video)
+    if cfg.ruta == "google":
+        from .engines.google import GoogleGeminiImage, GoogleVeoVideo
+        # modelo_video de Google: veo-3.1-fast-generate-preview (barato) o veo-3.1-generate-preview
+        modelo = cfg.modelo_video if cfg.modelo_video.startswith("veo") else "veo-3.1-fast-generate-preview"
+        return GoogleGeminiImage(), GoogleVeoVideo(modelo)
     raise ValueError(f"ruta desconocida: {cfg.ruta}")
