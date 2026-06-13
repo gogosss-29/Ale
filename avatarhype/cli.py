@@ -73,6 +73,16 @@ def main(argv=None):
     p_prod.add_argument("--musica", default=None)
     p_prod.add_argument("--out", default="output")
 
+    p_render = sub.add_parser(
+        "render", help="Genera UN clip desde un prompt + fotograma de avatar (solo motor, sin LLM)")
+    p_render.add_argument("--prompt", required=True, help="Prompt de vídeo")
+    p_render.add_argument("--avatar-frame", default=None, help="Fotograma inicial (imagen->vídeo)")
+    p_render.add_argument("--ruta", default="google", choices=["apimart", "kie", "higgsfield", "google"])
+    p_render.add_argument("--modelo-video", default="veo-3.1-fast-generate-preview")
+    p_render.add_argument("--duracion", type=int, default=8)
+    p_render.add_argument("--aspect", default="9:16")
+    p_render.add_argument("--salida", default="output/clip.mp4")
+
     p_real = sub.add_parser(
         "realismo", help="Aplica la capa de realismo del curso a un clip (solo ffmpeg)")
     p_real.add_argument("--clip", required=True, help="Vídeo de entrada")
@@ -92,6 +102,26 @@ def main(argv=None):
             print(f"No se pudo aplicar el realismo: {e}", file=sys.stderr)
             return 2
         print(f"Clip con capa de realismo: {out}")
+        return 0
+    if a.cmd == "render":
+        import os
+        from .config import build_engines
+        from .brain.realism import NEGATIVE_PROMPT
+        from .models import Acento, Formato, ShotPrompt
+        os.makedirs(os.path.dirname(a.salida) or ".", exist_ok=True)
+        shot = ShotPrompt(
+            formato=Formato.UGC, prompt=a.prompt, script_line="", acento=Acento.ESPANA,
+            duracion_s=a.duracion, aspect_ratio=a.aspect,
+            primer_frame=a.avatar_frame, negative_prompt=NEGATIVE_PROMPT,
+        )
+        cfg = EngineConfig(ruta=a.ruta, modelo_video=a.modelo_video)
+        try:
+            _img, video_engine = build_engines(cfg)
+            asset = video_engine.generar_video(shot, a.salida)
+        except (RuntimeError, FileNotFoundError) as e:
+            print(f"No se pudo renderizar: {e}", file=sys.stderr)
+            return 2
+        print(f"Clip generado: {asset.path}  (coste ~{asset.coste_estimado:.2f} €)")
         return 0
     brief = _brief_from_args(a)
 
