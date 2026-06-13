@@ -32,6 +32,24 @@ Objetivo de Alexander: **todo en la nube, apretar un botón**, sin terminal ni c
 5. Importar el flujo: Form Trigger → HTTP Request `/producir` → entrega.
 6. Apretar el botón → sale el anuncio.
 
+## Giro de estrategia (2026-06-13): usar créditos de Flow (Ultra) vía agente de navegador
+**Decisión de Alexander:** tiene Google AI **Ultra** (10.000 créditos/mes en **Flow**) y su
+clon ya le gusta en Flow. **Verificado:** los créditos de Flow son **solo-web, NO usables
+por API** (la API de Veo se factura aparte). ⇒ Para usar esos créditos automáticamente, la
+única vía es **automatizar el navegador** (un agente que abre Flow, pega el prompt, genera,
+descarga).
+- **Camino elegido:** **agente IA de navegador (browser-use)**, corriendo **local** en la
+  compu de Alexander, conectado a su Chrome con la sesión de Flow iniciada. Driven por los
+  prompts del cerebro. (Playwright determinista se descartó: UI de Flow no inspeccionable
+  desde acá.)
+- **Contras asumidas:** corre local (no nube), zona gris de ToS de Google (volumen moderado),
+  frágil ante cambios de UI. Necesita una key LLM para el agente.
+- **APImart (ruta nube por API): TERMINADA y PARKED como backup.** Worker en Render funciona
+  (`https://ale-9izu.onrender.com`), genera video con Veo 3.1 Fast pagando por clip. Se deja
+  como opción a futuro para volumen sin tocar la compu.
+- Se mantiene: cerebro (guiones+prompts 6C argentinos), grade cine, voz ElevenLabs. Solo
+  cambia el paso de render (API → navegador en Flow).
+
 ## Estado
 - ✅ **FUNCIONANDO EN LA NUBE (2026-06-13):** worker desplegado en Render (Docker, Free),
   URL `https://ale-9izu.onrender.com`. ffmpeg OK, key APImart cargada en Render.
