@@ -32,7 +32,7 @@ class ShotSpec:
     aspect_ratio: str = "9:16"
     primer_frame: Optional[str] = None
     ultimo_frame: Optional[str] = None
-    forzar_muletilla_espana: bool = False
+    forzar_muletilla: bool = False   # antepone una muletilla del acento (se corta en edición)
 
 
 def _bloque_camara(spec: ShotSpec) -> str:
@@ -53,9 +53,10 @@ def _bloque_microaccion(spec: ShotSpec) -> str:
 
 def _script_final(spec: ShotSpec) -> str:
     line = spec.script_line.strip()
-    if spec.forzar_muletilla_espana and spec.acento == Acento.ESPANA:
-        # truco del curso: anteponer una muletilla muy de España (se corta en edición)
-        line = f"{realism.MULETILLA_ESPANA.capitalize()}, {line[0].lower()}{line[1:]}"
+    muletilla = realism.MULETILLA_REFUERZO.get(spec.acento)
+    if spec.forzar_muletilla and muletilla and line:
+        # truco del curso: anteponer una muletilla muy marcada del acento (se corta en edición)
+        line = f"{muletilla.capitalize()}, {line[0].lower()}{line[1:]}"
     return line
 
 

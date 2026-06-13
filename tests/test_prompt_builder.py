@@ -28,15 +28,25 @@ def test_estructura_14_bloques():
 def test_muletilla_espana():
     shot = build_prompt(ShotSpec(
         formato=Formato.UGC, script_line="esto me cambió la piel.",
-        acento=Acento.ESPANA, forzar_muletilla_espana=True,
+        acento=Acento.ESPANA, forzar_muletilla=True,
     ))
     assert shot.script_line.lower().startswith("joder")
+
+
+def test_acento_argentino():
+    shot = build_prompt(ShotSpec(
+        formato=Formato.UGC, script_line="esto te cambia la piel.",
+        acento=Acento.ARGENTINA, forzar_muletilla=True,
+    ))
+    assert shot.script_line.lower().startswith("che")
+    assert "Rioplatense" in shot.prompt
+    assert "voseo" in shot.prompt.lower()
 
 
 def test_acento_latam_no_fuerza_muletilla():
     shot = build_prompt(ShotSpec(
         formato=Formato.UGC, script_line="esto funciona.",
-        acento=Acento.LATAM, forzar_muletilla_espana=True,
+        acento=Acento.LATAM, forzar_muletilla=True,
     ))
     assert not shot.script_line.lower().startswith("joder")
     assert "Latin American" in shot.prompt

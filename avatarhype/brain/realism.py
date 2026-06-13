@@ -26,15 +26,30 @@ ACENTO_BLOQUE: dict[Acento, str] = {
         "Accent: Peninsular Spanish (Madrid neutral). Not Latin American Spanish."
     ),
     Acento.LATAM: "Spanish, neutral Latin American accent.",
-    Acento.ARGENTINA: "Spanish with a natural Argentinian (Rioplatense) accent.",
+    Acento.ARGENTINA: (
+        "Speak in authentic Argentinian Rioplatense Spanish (Buenos Aires). "
+        "Use voseo: 'vos' instead of 'tú', and the matching verb forms ('tenés', "
+        "'querés', 'sabés', 'mirá', 'dale'). Pronounce 'll' and 'y' as a soft 'sh' "
+        "(sheísmo: 'sho', 'cashe', 'posho'). Use the typical porteño intonation, "
+        "melodic and with Italian-like cadence. Include natural Argentinian fillers "
+        "such as 'che', 'mirá', 'viste', 'o sea', 'la verdad'. Not Spain Spanish, "
+        "not Mexican, not neutral Latin American."
+    ),
     Acento.COLOMBIA: "Spanish with a natural Colombian accent.",
     Acento.MEXICO: "Spanish with a natural Mexican accent.",
     Acento.INGLES: "Natural conversational English.",
 }
 
-# Truco del curso: para forzar España, anteponer una palabra muy de España al guion
-# y cortarla luego en edición. Con Omni Flash (Vol.4) casi no hace falta.
-MULETILLA_ESPANA = "joder"
+# Truco del curso: anteponer una muletilla muy marcada del acento al inicio del guion
+# (se corta luego en edición) para empujar al modelo hacia ese acento. Por acento:
+MULETILLA_REFUERZO: dict[Acento, str] = {
+    Acento.ESPANA: "joder",
+    Acento.ARGENTINA: "che",
+    Acento.MEXICO: "órale",
+    Acento.COLOMBIA: "parce",
+}
+# Compat: alias histórico (España).
+MULETILLA_ESPANA = MULETILLA_REFUERZO[Acento.ESPANA]
 
 
 # --- Física humana / comportamiento (bloque 5 y 9) ------------------------------

@@ -30,7 +30,7 @@ for i, linea in enumerate(guion_ugc):
         microaccion="senalar_arriba_izq" if i == 1 else None,
         microaccion_antes=False,
         movimiento_camara="zoom_lento" if i == 0 else None,
-        forzar_muletilla_espana=True,
+        forzar_muletilla=True,
     ))
     print(f"--- CLIP {i+1} ({shot.duracion_s}s) ---")
     print(shot.prompt)

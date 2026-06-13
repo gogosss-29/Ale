@@ -2,6 +2,23 @@
 
 _Última actualización: 2026-06-13 por Claude (Claude Code)._
 
+## Render para VOLUMEN — ruta APImart + acento argentino (2026-06-13)
+Alexander es **argentino** (no español) → el avatar se fuerza a **acento Rioplatense**
+(voseo, sheísmo, entonación porteña, muletilla "che" antepuesta y cortada en edición).
+Reforzado en `brain/realism.py` (ACENTO_BLOQUE[ARGENTINA] + MULETILLA_REFUERZO) y
+`prompt_builder` (`forzar_muletilla` genérico). Usar siempre `--acento es-AR`.
+
+Decisión: como el objetivo es **volumen**, el render va por **APImart** (no Google, que es
+~30× más caro). Motor `engines/apimart.py` reescrito con la API REAL confirmada
+(docs.apimart.ai): submit `POST /v1/videos/generations` {model, prompt, duration,
+resolution, aspect_ratio, image_urls}, estado `GET /v1/tasks/{task_id}`, modelos
+`omni-flash-ext` / `veo3.1-fast` / `veo3.1-quality`. Costes ~0,08 €/clip.
+- **OJO imagen→vídeo:** APImart recibe `image_urls` (URLs https públicas), NO archivos
+  locales. El fotograma del avatar debe estar hospedado en una URL.
+- **Para ejecutar falta:** `APIMART_API_KEY` + el fotograma del avatar accesible por URL.
+- La ruta Google/Veo queda montada también (engines/google.py) por si se quiere calidad
+  máxima puntual, pero por coste se estandariza APImart para volumen.
+
 ## Automatización Fase 2 — ruta GOOGLE/Veo (2026-06-13)
 Alexander genera con **Omni Flash en Google AI Studio** y ya tiene su avatar ahí. Decidido
 automatizar el render por la **API oficial de Google (Gemini/Veo)** — NO hace falta APImart.

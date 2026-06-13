@@ -66,7 +66,7 @@ def _shots_desde_guion(brief: ProductBrief, guion) -> list[ShotPrompt]:
             formato=guion.formato,
             script_line=ln,
             acento=brief.acento,
-            forzar_muletilla_espana=(brief.acento.value == "es-ES"),
+            forzar_muletilla=True,  # refuerza el acento (España, Argentina, México…) si lo tiene
         )
         shots.append(build_prompt(spec))
     return shots
