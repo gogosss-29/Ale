@@ -33,7 +33,11 @@ Objetivo de Alexander: **todo en la nube, apretar un botón**, sin terminal ni c
 6. Apretar el botón → sale el anuncio.
 
 ## Estado
-- ✅ Worker (`service.py`) + `Dockerfile` + `requirements-service.txt` listos.
-- 🔜 Elegir y desplegar host. Montar el flujo n8n (el conector MCP de n8n aún no expone
-  herramientas en sesión; cuando lo haga, se puede armar el workflow desde acá).
-- Pendiente del pipeline: lip-sync (para que la voz propia cuadre con los labios).
+- ✅ **FUNCIONANDO EN LA NUBE (2026-06-13):** worker desplegado en Render (Docker, Free),
+  URL `https://ale-9izu.onrender.com`. ffmpeg OK, key APImart cargada en Render.
+  Formulario web `/` genera clips desde el navegador (botón v1, sin n8n).
+  Primer vídeo generado OK con **Veo 3.1 Fast** (Omni Flash estaba saturado → se cambió de
+  modelo desde el selector). Pago/saldo de APImart resuelto.
+- 🔜 Siguiente: meter el avatar real (fotograma en URL pública), armar el anuncio de 3 clips
+  + grade cine, sumar voz (ElevenLabs) + key LLM para el cerebro, y el botón n8n.
+- Worker (`service.py`) + `Dockerfile` + `requirements-service.txt` listos.
