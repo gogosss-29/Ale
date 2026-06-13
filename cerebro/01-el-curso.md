@@ -1,50 +1,46 @@
-# 01 — El Curso (paso a paso, replicable de cero)
+# 01 — El Curso (AvatarHype) + nuestra ejecución
 
-Este es el recorrido completo para crear el avatar digital desde cero. Cada paso
-indica el **qué** y el **porqué**; los **cómo** exactos (comandos, parámetros) están
-en `02-playbook.md`.
+> ⚠️ Corrección (2026-06-13): este archivo antes era un resumen flojo del proceso e
+> **ignoraba el curso real ya extraído en `docs/`**. Corregido para apuntar al
+> material verdadero.
 
-## Fase 1 — Entrenar el Soul (identidad reutilizable)
-1. **Reunir material**: 15–20 imágenes de la persona, variadas en ángulo (frontal,
-   perfil, tres cuartos), expresión e iluminación. Más variedad = mejor parecido.
-2. **Si solo hay vídeos**: extraer fotogramas nítidos (ver playbook). Priorizar
-   **primeros planos** de la cara; descartar fotos de espaldas, borrosas o con ojos
-   cerrados. Evitar que todas tengan la misma luz de color (p. ej. LED morado),
-   porque el modelo hereda ese tinte en la piel.
-3. **Subir las imágenes** a Higgsfield (flujo `media_upload` → PUT → `media_confirm`).
-4. **Entrenar** con `show_characters action=train`, tipo `soul_2`, pasando las
-   **URLs https** de las imágenes (no los UUID; el validador rechaza UUID en bruto).
-5. **Esperar** ~10 min hasta `status: ready`.
+## A) El Curso real: AvatarHype™ Academy
+El curso que sustenta este proyecto está **completamente extraído y documentado** en
+el repo (lo hizo una sesión previa accediendo a Whop). NO está aquí abajo: está en
+`docs/`, que es la fuente. Aquí solo el mapa.
 
-> ⚠️ Lección aprendida: el primer Soul (v1) se entrenó con pocas fotos y poco
-> variadas y **no se parecía**. El v2, con 15 fotogramas de vídeos reales, sí. La
-> calidad y variedad del material de entrada es lo que más impacta el resultado.
+- **Documento maestro:** [`docs/SISTEMA-AVATARHYPE.md`](../docs/SISTEMA-AVATARHYPE.md)
+  — el sistema completo (4 volúmenes), tesis, stack de herramientas, flujo de 6 pasos,
+  Método 6C, plantilla de prompt de vídeo (14 bloques), capa de realismo de CapCut.
+- **Índice:** [`docs/INDICE-CURSO.md`](../docs/INDICE-CURSO.md).
+- **Transcripciones completas (ES):** `docs/transcripciones/` (4 lecciones, ~113 min).
+- **Bibliotecas de prompts reales** (¡aquí están los prompts!): `docs/recursos-prompts/`
+  - `plantilla_prompts_veo_3_1.md` — plantilla maestra de vídeo, 14 bloques, copiable.
+  - `prompts_referencia_visual.md` — cambiar avatar, reemplazar fondo, plano cercano, podcast (flip).
+  - `ads_imagen.md` — image-ads (testimonial, before/after, etc.).
+  - `trends_virales_ads.md` — recrear un trend viral.
+  - `mini_biblioteca_prompts_sora.md` — Sora (Vol.1, obsoleto, valor histórico).
+- **Notas con links del curso:** `docs/notas-lecciones/` (Kie.ai, APImart, agentes GPT, recursos del alumno).
+- **Pipeline en código (automatización):** carpeta `avatarhype/` (paquete Python).
 
-## Fase 2 — Subir la voz
-1. Conseguir 1–3 min de audio limpio de la persona hablando.
-2. Si viene como `.mp4` de WhatsApp, **convertir a `.mp3`** (Higgsfield rechazaba el
-   contenedor mp4 de audio). Ver playbook.
-3. Subir (`media_upload` → PUT → `media_confirm` type=audio).
-4. **Recortar un clip de ~12 s** para usarlo como audio del vídeo.
+### Resumen en una línea
+AvatarHype enseña a producir **anuncios de e-commerce con avatares IA hiperrealistas**
+(UGC, podcast, voz en off, dualcast, imagen) por la ruta más barata (revendiendo modelos
+punteros vía Kie.ai / APImart). La clave no es la herramienta sino **el ángulo + el guion**.
+Modelo más actual: **Omni Flash** (Vol. 4); formato nuevo: **Dualcast**.
 
-## Fase 3 — Generar imágenes (validar el parecido)
-1. `generate_image` con `model: soul_2` + el `soul_id`.
-2. Prompt enfocado en retrato realista, luz neutra, expresión natural.
-3. Revisar el parecido. Si no convence, volver a Fase 1 con mejor material.
+## B) Nuestra ejecución práctica con Higgsfield (track complementario)
+En paralelo al curso, en este proyecto se hizo la parte de **clon de identidad** con
+Higgsfield (que el curso no cubre con tanta profundidad de "digital twin"):
+1. Entrenar un **Soul** (identidad reutilizable) con fotogramas de vídeos reales.
+2. Subir la **voz** y recortar un clip.
+3. Generar **imágenes** del Soul (validar parecido).
+4. Generar el **vídeo hablado** con lipsync.
 
-## Fase 4 — Generar el vídeo hablado
-1. `generate_video` con modelo `seedance_2_0` (o `veo3_1` calidad máxima).
-2. `start_image` = un retrato generado del Soul; `audio` = el clip de voz de 12 s.
-3. Formato 9:16, 12 s, 720p, prompt de lipsync (ver playbook/activos).
+El paso a paso técnico de esto está en [`02-playbook.md`](02-playbook.md) y los IDs en
+[`03-activos.md`](03-activos.md). Encaja como el "paso 3–4" (imágenes/vídeo) del flujo
+de 6 pasos del curso, pero usando Higgsfield en vez de APImart.
 
-> ⚠️ Lección aprendida: `generate_video` se bloquea con `requires approval` en
-> entornos automáticos. Ejecutar en sesión interactiva (ver `00`).
-
-## Fase 5 — Persistir el conocimiento (este cerebro)
-1. Escribir IDs, proceso y estado en el repo (`cerebro/` + `CLAUDE.md`).
-2. Reflejar en Notion para lectura humana.
-3. Actualizar `04-estado.md` tras cada avance.
-
-## Resumen del flujo
-Material → Soul entrenado → (validar con imágenes) → + Voz → Vídeo hablado →
-todo registrado en el cerebro.
+> Cómo se relacionan: **el curso = la metodología y los prompts**; **Higgsfield = una de
+> las rutas de ejecución** para generar el avatar y el vídeo. El sistema grande (ver
+> `docs/SISTEMA-AVATARHYPE.md §5`) automatiza todo el pipeline con n8n + APIs.

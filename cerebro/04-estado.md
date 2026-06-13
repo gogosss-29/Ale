@@ -25,7 +25,16 @@ _Última actualización: 2026-06-13 por Claude (Claude Code)._
 - Explorar `virality_predictor` para evaluar los vídeos antes de publicar.
 
 ## Bitácora
+- 2026-06-12 ~21:10: una sesión previa accedió al curso AvatarHype (vía Whop) y
+  documentó TODO en `docs/` + creó el pipeline `avatarhype/`.
 - 2026-06-12: subidas iniciales, Soul v1 (no se parecía), voz cargada.
 - 2026-06-12/13: extracción de fotogramas de 8 vídeos, Soul v2 entrenado, retratos OK.
 - 2026-06-13: confirmado que `generate_video` y escritura en Notion fallan por
   aprobación en entorno automático; cerebro persistido en el repo.
+- 2026-06-13: **corregido un error**: el `cerebro/` se había construido ignorando el
+  curso real de `docs/`. Reescrito `01-el-curso.md` y `00` para apuntar a `docs/` y
+  `avatarhype/`. La metodología y prompts viven en `docs/`, no se duplican aquí.
+
+## Nota de seguridad pendiente
+- El 2026-06-13 se pegó en chat una cookie de sesión de Whop con tokens vivos.
+  **Acción del usuario:** cerrar sesión en Whop y reentrar para invalidarla.

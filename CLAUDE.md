@@ -6,10 +6,15 @@
 > generar imágenes y un vídeo hablado. Todos los IDs de abajo viven en su cuenta
 > de Higgsfield y siguen válidos entre sesiones.
 >
-> **🧠 CEREBRO COMPLETO:** la documentación detallada y reproducible está en la
-> carpeta [`cerebro/`](cerebro/): `00-vision-y-conexion`, `01-el-curso` (paso a
-> paso), `02-playbook` (cómo técnico), `03-activos` (IDs), `04-estado`. Empezar
-> leyendo `cerebro/00`, `cerebro/03` y `cerebro/04`.
+> **🧠 CEREBRO COMPLETO:** la documentación está repartida así (explorar TODO el repo,
+> no solo una carpeta):
+> - [`cerebro/`](cerebro/) — índice/brain: visión, curso (puntero), playbook, activos, estado.
+> - [`docs/`](docs/) — **EL CURSO REAL** (AvatarHype): `SISTEMA-AVATARHYPE.md` (maestro),
+>   `transcripciones/`, `recursos-prompts/` (los prompts reales), `notas-lecciones/`.
+> - [`avatarhype/`](avatarhype/) — pipeline en Python para automatizar el sistema.
+>
+> Empezar leyendo `cerebro/00`, `docs/SISTEMA-AVATARHYPE.md`, `cerebro/03` y `cerebro/04`.
+> ⚠️ El curso ya está extraído en `docs/`: no reescribirlo ni ignorarlo.
 
 ## Objetivo actual
 Generar un **vídeo hablado** (avatar de Alexander moviendo los labios sincronizado

@@ -21,12 +21,22 @@ aquí. Cualquier agente nuevo: 1) lee el cerebro, 2) abre la sección que necesi
    opcionalmente Google Drive (origen de material) y Notion (cerebro espejo).
 
 ## Dónde vive el cerebro
-- **Repositorio git** (esta carpeta `cerebro/` + `CLAUDE.md` en la raíz) — fuente de
-  verdad, persistente y versionada. `CLAUDE.md` se autocarga en cada sesión.
-- **Notion** (espejo legible para humanos) — proyecto "🧠 Cerebro — Sistema Avatar
-  IA". Se sincroniza desde una sesión con permisos de escritura aprobados.
-- **Cuenta de Higgsfield** — guarda los activos reales (Soul, medios, voz). Los IDs
-  están en `03-activos.md`.
+- **Repositorio git** — fuente de verdad, persistente y versionada. `CLAUDE.md` se
+  autocarga en cada sesión. Contiene:
+  - `cerebro/` — este índice/brain (visión, curso, playbook, activos, estado).
+  - `docs/` — **EL CURSO REAL extraído** (AvatarHype): documento maestro,
+    transcripciones, y las bibliotecas de prompts. ⚠️ No reescribir el curso en
+    `cerebro/`; siempre apuntar a `docs/`.
+  - `avatarhype/` — pipeline en Python para automatizar el sistema.
+- **Notion** (espejo legible para humanos) — proyecto "Sistema Avatar IA" (proyecto
+  del clon, independiente del "Cerebro · Consultora IA"). Se sincroniza desde una
+  sesión con permisos de escritura aprobados.
+- **Cuenta de Higgsfield** — guarda los activos reales (Soul, medios, voz). IDs en `03`.
+
+## Regla anti-error (importante)
+Antes de documentar o "construir el brain", **explorar TODO el repo primero**
+(`docs/`, `avatarhype/`), no solo `cerebro/`. El curso completo ya está en `docs/`;
+no duplicarlo ni ignorarlo.
 
 ## Aprendizaje clave sobre el entorno (leer antes de frustrarse)
 Las operaciones MCP que **escriben/crean** (generar vídeo, crear páginas en Notion)
