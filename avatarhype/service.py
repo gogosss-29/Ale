@@ -70,7 +70,7 @@ def home():
 <style>
  body{{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#1a1a1a}}
  h1{{font-size:22px}} label{{font-weight:600;display:block;margin:16px 0 6px}}
- textarea,input{{width:100%;padding:10px;font-size:14px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}}
+ textarea,input,select{{width:100%;padding:10px;font-size:14px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}}
  textarea{{height:170px}} button{{margin-top:18px;padding:12px 22px;font-size:16px;border:0;border-radius:8px;background:#111;color:#fff;cursor:pointer}}
  small{{color:#666}}
 </style></head><body>
@@ -81,6 +81,13 @@ def home():
   <textarea name="prompt">{PROMPT_EJEMPLO}</textarea>
   <label>URL pública de tu fotograma de avatar <small>(opcional; sin ella es persona genérica)</small></label>
   <input name="avatar_frame_url" placeholder="https://...tu_avatar.png">
+  <label>Modelo <small>(si uno está saturado, probá otro)</small></label>
+  <select name="modelo_video">
+    <option value="veo-3.1-fast">Veo 3.1 Fast (recomendado, estable)</option>
+    <option value="omni-flash">Omni Flash</option>
+    <option value="veo-3.1">Veo 3.1 Quality</option>
+    <option value="sora-2">Sora 2</option>
+  </select>
   <button type="submit">Generar clip</button>
 </form>
 <p><small>Free se "duerme": la primera vez puede tardar. La generación toma ~1-2 min.</small></p>
