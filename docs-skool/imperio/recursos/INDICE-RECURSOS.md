@@ -3,6 +3,11 @@
 Total: 146 ficheros. Descargados con tu sesión vía `POST /files/<id>/download-url`.
 Los binarios pesados (zip, pdf, mp4) no se versionan si superan límites; aquí van los del curso.
 
+> ⚠️ **Claves redactadas:** algunas plantillas de Make/n8n traían **credenciales reales
+> del creador** embebidas (tokens de Replicate, una URL de webhook de Make). Se
+> reemplazaron por placeholders (`r8_REDACTED_API_TOKEN`, `REDACTED_MAKE_WEBHOOK`) por
+> seguridad. Al importar una plantilla, pon **tus propias** API keys/credenciales.
+
 
 ## 02-claude-code
 - `ads-cinematicos-con-higgsfield-claude-co__v3_imperio-ads_claudecode.zip` (1990 KB)
