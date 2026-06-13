@@ -1,0 +1,377 @@
+{
+  "name": "7. If - Clasificador de Leads",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Cotización Imperio Digital",
+        "formDescription": "Cotiza tus servicios aquí",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre"
+            },
+            {
+              "fieldLabel": "Presupuesto",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1d93f63e-ea5d-4205-b277-9f8cb6dbb8f1",
+      "name": "On form submission",
+      "webhookId": "f00bb718-a118-43c1-898c-183f394f6ac7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebcd7d84-3976-48e9-ac7b-bdae29aa0511",
+              "leftValue": "={{ $json.Presupuesto }}",
+              "rightValue": 1000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "9f416be2-5e47-4b72-9078-b2e8810e4bf9",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=¡Alerta Benja! Entró {{ $json.Nombre }} con presupuesto de ${{ $json.Presupuesto }}. ¡Atender YA!\".",
+        "message": "=¡Alerta Benja! Entró {{ $json.Nombre }} con presupuesto de ${{ $json.Presupuesto }}. ¡Atender YA!\".",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -96
+      ],
+      "id": "d114306e-af3f-4662-9f27-01a3211f95eb",
+      "name": "Send a message",
+      "webhookId": "65f9ad95-d1b5-47f1-93fd-f7d13835a97b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g",
+          "mode": "list",
+          "cachedResultName": "Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Productos": "={{ $('On form submission').item.json.Nombre }}",
+            "Precio": "={{ $('On form submission').item.json.Presupuesto }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Productos",
+              "displayName": "Productos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        96
+      ],
+      "id": "167b386f-8e11-47be-adec-6ef755f31c4b",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Cotizaciones Imperiales",
+        "formDescription": "Cotiza tus servicios con nosotros",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Cuál es tu correo",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Cual es tu presupuesto",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        32,
+        432
+      ],
+      "id": "b3ecc5eb-93f4-4636-b54d-c7e62d778f6d",
+      "name": "On form submission1",
+      "webhookId": "4c44d813-10ce-4f96-9c3c-51c3510a2546"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "657230f8-c841-4260-8e15-0479dfd059f1",
+              "leftValue": "={{ $json['Cual es tu presupuesto'] }}",
+              "rightValue": 10000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        240,
+        432
+      ],
+      "id": "91671867-1282-43ae-a5dd-5699df7ad433",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json['Cuál es tu correo'] }}",
+        "subject": "Clasificaste!",
+        "message": " Escríbeme al whatsapp <br> +569 998878231",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        336
+      ],
+      "id": "9a204b85-7a52-40a3-9e8f-3a95f1e047f8",
+      "name": "Send a message1",
+      "webhookId": "da1139b5-3951-4ee3-9867-7ff34d7d7bff",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g",
+          "mode": "list",
+          "cachedResultName": "Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Productos": "={{ $('On form submission1').item.json['Cuál es tu correo'] }}",
+            "Precio": "={{ $('On form submission1').item.json['Cual es tu presupuesto'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Productos",
+              "displayName": "Productos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        560
+      ],
+      "id": "07a1d598-9f1b-4f55-84b8-c834a4a9b813",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3d6408b5-e109-4092-9810-f53c7e66a640",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "iB5GXF6glHcexH4M",
+  "tags": []
+}

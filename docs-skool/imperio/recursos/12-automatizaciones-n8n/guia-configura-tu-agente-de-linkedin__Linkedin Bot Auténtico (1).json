@@ -1,0 +1,1908 @@
+{
+  "name": "Linkedin Bot Auténtico",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 16
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        688,
+        96
+      ],
+      "id": "0189fee0-86a8-48d3-a6b0-36f8e8e63743",
+      "name": "Every Day"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7d5d83fa-0779-4dc5-a549-ea93f56e3407",
+              "name": "topics",
+              "value": "={{ $json['Topic list'] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1024,
+        96
+      ],
+      "id": "39847756-7100-4fd9-bb1d-3c3957831dc4",
+      "name": "Set Topics"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtenemos la lista de temas del nodo anterior\nconst topics = $input.first().json.topics;\n\n// 2. Cuántos temas quieres seleccionar\nconst count = 4; \n\n// 3. Lógica para elegir al azar sin repetir (usando Math.random)\nconst selectedTopics = [];\nconst tempTopics = [...topics]; // Creamos una copia para ir sacando de ahí\n\n// Mientras no hayamos juntado los 4 y sigan quedando temas:\nwhile (selectedTopics.length < count && tempTopics.length > 0) {\n  // Elegimos un índice al azar\n  const randomIndex = Math.floor(Math.random() * tempTopics.length);\n  \n  // Agregamos el tema a nuestra lista final\n  selectedTopics.push(tempTopics[randomIndex]);\n  \n  // Lo borramos de la lista temporal para que no salga repetido\n  tempTopics.splice(randomIndex, 1);\n}\n\n// 4. Devolvemos el resultado limpio\nreturn [{ \n  json: { \n    randomTopics: selectedTopics \n  } \n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1232,
+        96
+      ],
+      "id": "e83dc449-2733-47a3-9a80-dc015bb21983",
+      "name": "Random Number"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"questions\": [\"text\", \"text\", \"text\", \"text\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1824,
+        256
+      ],
+      "id": "bca71898-21be-44d8-9238-59380031f78d",
+      "name": "JSON"
+    },
+    {
+      "parameters": {
+        "chatId": "1744801718",
+        "text": "={{ $json['output.questions'] }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2368,
+        16
+      ],
+      "id": "193a4a93-4626-4067-a75c-c2e48d2117f5",
+      "name": "Send a text message",
+      "webhookId": "c9d3cdae-3fe5-4e86-aac7-e5d05d9bee2c",
+      "credentials": {
+        "telegramApi": {
+          "id": "nPCiXMCq2osPgUJp",
+          "name": "AgenteLinkedinBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"post\": \"California\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2384,
+        1008
+      ],
+      "id": "62a7579f-226e-4f45-8a76-9bc485bc5660",
+      "name": "JSON1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aquí está la pregunta: {{ $('Merge').first().json.question }}\n\nAquí está la respuesta: {{ $('Merge').first().json.answer }}\n\nBegin your work:",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# ROL\nEres un redactor profesional de blogs en Twitter y LinkedIn.\n\n# OBJETIVO\nTu objetivo es escribir mi próximo post. Debe ser súper corto: solo 1-5 líneas súper impactantes y valiosas. Cada línea no debe tener más de 20 palabras. Te estoy pagando $10,000 por este post.\n\n# CONTEXTO SOBRE MÍ\nQuién eres, qué haces\n{{ $('Get Context').first().json['Who are you, what are you doing'] }}\n\nQuién es tu público objetivo\n{{ $('Get Context').first().json['Who is your target audience'] }}\n\n# FORMATO DE ENTRADA\nProporcionaré el contenido en este formato específico:\n- Pregunta: {...}\n- Mi Respuesta: {...}\n\n# EXPECTATIVA\nDame un post de 1-5 oraciones. Cada oración debe tener 20 palabras o menos. Mantenlo ligero, fresco y fácil de leer.\n\n# EJEMPLOS\nAquí hay algunos posts de ejemplo de diferentes nichos que se volvieron virales en Twitter o LinkedIn. Me gusta su estructura y han funcionado bien, así que probablemente podamos aprender de ellos.\n\n---\n\n**Ejemplo de Post 1**\n\nEn una entrevista para una empresa que asesoro, dije que era asesor, varias veces. El candidato procedió a llamarme consultor, varias veces.\n\nPequeño error, gran problema. Si un candidato no sabe escuchar, ¿qué tan buen empleado será?\n\n**Ejemplo de Post 2**\n\nTe criticarán por pensar en grande, por pensar en pequeño o por no hacer nada. Así que más vale que hagas que cuente.\n\n**Ejemplo de Post 3**\n\nSi quieres tener éxito, solo necesitas hacer una cosa: estar orgulloso de tu trabajo...\n\nGenuinamente. A solas. Por la noche. Por tu cuenta. Cuando nadie mira. Saber. En tus huesos. Que diste todo.\n\nCuando haces eso, nada puede detenerte.\n\n**Ejemplo de Post 4**\n\nNo persigo nada loco.\n\nSolo una vida simple con trabajo flexible, impacto significativo, largas caminatas, buena comida, sin reuniones y cero tonterías.\n\nEso es prácticamente todo.\n\n**Ejemplo de Post 5**\n\nLlevo felizmente casado 11 años y he construido mi negocio a más de $10M.\n\nAmbos prosperan bajo el mismo principio:\n\nAparece todos los días tratando de ser la mejor versión de ti mismo.\n\n**Ejemplo de Post 6**\n\nConsejo de vida subestimado: Nada mejorará más tu calidad de vida que la cercanía a las personas que amas. Vale más que cualquier trabajo que te paguen.\n\n**Ejemplo de Post 7**\n\nHay mucha gente rica que pasa todo su tiempo tratando de impresionar a gente aún más rica. Me parece uno de los juegos más tontos que puedes jugar, pero apuesto a que muy pocos se dan cuenta de que lo están jugando.\n\n**Ejemplo de Post 8**\n\nUna de las formas más brutalmente efectivas que conozco de tener éxito es, de hecho, intentarlo muy, muy duro.\n\n**Ejemplo de Post 9**\n\nLos mejores CEOs siempre están simplificando.\n\n**Ejemplo de Post 10**\n\nUno de los principales problemas con los consejos de búsqueda AEO/GEO/IA en este momento:\n\nMucha gente está haciendo afirmaciones audaces sin evidencia, y mucha otra gente está repitiendo esas afirmaciones.\n\nLuego, los LLMs también están recogiendo esas afirmaciones como guía para la búsqueda con IA.\n\n**Ejemplo de Post 11**\n\nConsejo de vida subestimado: La preparación siempre vence a la planificación. La planificación se basa en la expectativa de orden. La preparación se basa en la expectativa del caos. Planifica para el orden y serás destruido por el caos. Prepárate para el caos y prosperarás en cualquier condición.\n\n**Ejemplo de Post 12**\n\nTodo solopreneur eventualmente aprende la misma lección de $2M:\n\nEl tiempo que recuperas diciendo no vale más que el dinero que ganas diciendo sí.\n\n---\n\n# REGLAS DE INTEGRIDAD DE CONTENIDO CRÍTICAS\n- EL MENSAJE CENTRAL, EL SIGNIFICADO Y LA ESENCIA DE MI RESPUESTA DEBEN PERMANECER 100% INTACTOS. No modifiques, reencuadres ni cambies la esencia de lo que se dijo.\n- Todos los matices, detalles específicos y el punto exacto son sagrados. Presérvalos completamente.\n- Lo ÚNICO que puedes cambiar es el empaquetado: estructura de la oración, orden de las palabras y estilo de entrega para hacerlo impactante y que detenga el scroll.\n- Puedes usar casi las mismas palabras de mi respuesta. Tu trabajo es destilar y empaquetar, no interpretar o reimaginar.\n- Si mi respuesta menciona números específicos, plazos, ejemplos o condiciones, mantenlos exactos.\n- Piensa en ti mismo como un editor maestro, no un reescritor creativo. Claridad e impacto a través del empaquetado, no cambiando la sustancia.\n- La pregunta proporciona contexto, pero el POST debe basarse en MI RESPUESTA, no en la pregunta en sí.\n\n# CRÍTICO: LA LÍNEA DE APERTURA DEBE SER INSTANTÁNEAMENTE CLARA Y RELATABLE\n\n**LA PRIMERA ORACIÓN ES DETERMINANTE. DEBE SER INMEDIATAMENTE COMPRENSIBLE PARA TODOS.**\n\n## El Problema de la Línea de Apertura\n\n**MAL APERTURA (Demasiado nicho, demasiado confusa):**\n- \"Mata el contenido de talla única para SEO con IA.\"\n- POR QUÉ FALLA: Alienan instantáneamente al 80% de los lectores que no trabajan en SEO con IA. Piensan \"esto no es para mí\" y siguen bajando.\n\n**BUENA APERTURA (Universal, clara):**\n- \"Mata el contenido de talla única para tu negocio.\"\n- POR QUÉ FUNCIONA: Todos entienden esto inmediatamente. Es relevante para TODOS los dueños de negocios.\n\n## La Fórmula de la Línea de Apertura\n\nTu línea de apertura DEBE seguir esta jerarquía:\n\n1. **EMPIEZA AMPLIO Y UNIVERSAL** - Usa lenguaje que aplique a cualquier negocio, industria o emprendedor.\n2. **LUEGO VÉ A LO ESPECÍFICO** - En la segunda o tercera oración, puedes mencionar el contexto específico (ej: \"Alguien me preguntó sobre estrategia de precios...\").\n\n## Reglas de la Línea de Apertura\n\n- **NUNCA abras con jerga de nicho** (AI SEO, CAC/LTV, EBITDA, soluciones EDR, etc.).\n- **NUNCA abras con terminología técnica** que requiera conocimiento de la industria.\n- **NUNCA abras con referencias internas** que asuman contexto.\n- **SIEMPRE abre con principios de negocios universales** que todos reconozcan al instante.\n- **SIEMPRE haz que las primeras 5 palabras sean comprensibles** para un estudiante universitario sin experiencia en negocios.\n\n## La Estructura de Dos Pasos para la Claridad\n\n**PASO 1 - GANCHO UNIVERSAL (Primera oración):**\nHaz una declaración amplia y relatable con la que cualquiera en negocios pueda conectar. Esto debe capturar la esencia de mi respuesta en términos universales.\n\n**PASO 2 - CONTEXTO ESPECÍFICO (Segunda/tercera oración - OPCIONAL):**\nSi ayuda a la claridad, puedes referenciar que alguien me preguntó sobre este tema, luego sumérgete en mi insight específico.\n\n### Ejemplos de la Estructura de Dos Pasos:\n\n**BIEN:**\n\"La mayoría de los negocios ponen mal el precio a sus extras.\n\nAlguien me preguntó cómo poner precio a una nueva función, y esto les dije.\n\nPonle un precio lo suficientemente alto para que actualizar a tu plan premium se sienta como la mejor oferta.\"\n\n**MAL:**\n\"Al poner precio a los complementos SaaS para una migración de nivel óptima...\"\n(Demasiado técnico, demasiado específico, excluye a la mayoría de los lectores desde la primera palabra).\n\n# CRÍTICO: EXPLICA CADA REFERENCIA ESPECÍFICA CON CLARIDAD\n\n**NUNCA MENCIONES ALGO SIN QUE QUEDE INMEDIATAMENTE CLARO QUÉ ES.**\n\nEste es el problema #1 de claridad en posts cortos. Cuando el espacio es limitado, es tentador referenciar cosas rápidamente sin explicación. Esto mata la comprensión.\n\n## El Problema de la Claridad\n\n**MAL EJEMPLO (Referencias poco claras):**"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1888,
+        832
+      ],
+      "id": "fedae9cd-5dfb-467b-9cef-573be8a84023",
+      "name": "Short Post",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aquí está la pregunta que me hicieron: {{ $('Merge').first().json.question }}\n\nAquí está la respuesta: {{ $('Merge').first().json.answer }}\n\nBegin your work:",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# ROL\n\nEres un redactor profesional de blogs en Twitter y LinkedIn.\n\n---\n\n# OBJETIVO\n\nTu objetivo es escribir mi próximo post desde cero. Debe ser súper viral, convincente y auténtico. Te estoy pagando $10,000 por cada post.\n\n---\n\n# CONTEXTO SOBRE MÍ\nQuién eres, qué haces\n{{ $('Get Context').first().json['Who are you, what are you doing'] }}\n\nQuién es tu público objetivo\n{{ $('Get Context').first().json['Who is your target audience'] }}\n\n> **⚠️ LA CLARIDAD ES LA PRIORIDAD #1 ⚠️**\n>\n> Si la apertura de tu post es confusa, de nicho o asume conocimiento previo, EL POST FRACASA.\n>\n> Cada post debe ser inmediatamente claro y relacionable para lectores de CUALQUIER industria desde la primera palabra.\n>\n> Lee la sección \"CRÍTICO: CLARIDAD Y RELATABILIDAD DE LA APERTURA\" antes de escribir nada.\n\n---\n\n# EXPECTATIVA\n\nDame el texto completo para el post, incluyendo:\n1. Un gancho impactante que detenga el scroll (1-2 líneas).\n2. El cuerpo completo del post que construye sobre el gancho.\n\n---\n\n# EJEMPLOS\n\nAquí hay algunos posts de ejemplo de diferentes nichos que se volvieron virales en Twitter o LinkedIn. Me gusta su estructura y han funcionado bien, así que probablemente podamos aprender de ellos.\n\n---\n\n**Ejemplo de Post 1**\nTu primera salida (exit) de $500K no es el final. Es un reinicio.\n\nLa realidad es que tan pronto como cierras, probablemente te obsesionas con qué harás después por dinero.\n\nEn una llamada hoy, le dije a un fundador esto: si quieres un resultado que cambie tu vida, piensa en años. Piensa en 10 años, no en 10 meses.\n\nEste fundador en particular lo estaba haciendo solo. Impresionante, pero también agotador.\n\nUn maratón de 10 años en solitario es probablemente poco realista. Encontrar un cofundador que complemente tus habilidades puede cambiar el juego. También tienes a alguien ahí cuando las cosas se ponen difíciles.\n\nLos fundadores que se apegan a una cosa el tiempo suficiente pueden crear riqueza generacional.\n\n**Ejemplo de Post 2**\nMuchos emprendedores no se despegan de la pantalla de su computadora. ¿El networking da miedo? Porque funciona. Realmente bien.\n\nAl inicio de nuestra agencia pagué $2,500 (anuales) para unirme a un grupo de emprendedores. Retornó $450,000 en contratos de agencia.\n\nNo fue suerte.\nLas membresías y conferencias son canales de adquisición que puedes rastrear. Trátalos como un canal de ventas.\n\nY como bono, conoces gente genial que se convierten en amigos de por vida.\n\n**Ejemplo de Post 3**\nTu perfil de LinkedIn es tu primera entrevista. Podría haber ahorrado una hora con un escaneo de LinkedIn de 90 segundos.\n\nPosicionamiento poco claro. Resumen descuidado. Roles inconsistentes. El perfil predijo la entrevista desordenada.\n\nGerentes de contratación, hagan de LinkedIn su primer filtro. Protejan su calendario.\n\nDespués de esa llamada, guié a un compañero a través del perfil y le mostré por qué no habría agendado la entrevista en absoluto.\n\nLas señales estaban ahí, y coincidían con cómo se comunicaba en vivo.\n\nUso LinkedIn para verificar dos cosas rápido:\n\n1. ¿Cambian de trabajo cada año o más?\n2. ¿Su conjunto de habilidades está alineado con los requisitos del trabajo?\n\npd - una buena universidad es agradable, pero yo no fui a la universidad, y no me importa si ellos tampoco.\n\n**Ejemplo de Post 4**\nEl mejor consejo de escritura que puedo darte:\n\nImagina que tu lector está aburrido, ocupado y es escéptico.\n\nPorque lo está.\n\nEscribe acorde a eso.\n\n**Ejemplo de Post 5**\nLa gente NO estaba feliz cuando dije que sus trabajos iban a desaparecer. Momento de honestidad: mi trabajo también va a desaparecer.\n\nPor más de una década, he gestionado equipos de contenido a través de múltiples modelos de negocio y variedad de clientes. La base siempre fue la producción de posts de blog SEO.\n\nFreelancers, X posts por mes y expansión constante del blog.\n\nEl último año, pensé que podría crear un buen nicho para mí y mi equipo haciendo SEO empresarial para algunos blogs de primer nivel en mi red. Enfoque en calidad de contenido y arquitectura SEO estricta.\n\nIncluso con IA, pensé que habría un nicho en la gama alta del mercado.\n\nPor varias razones, esos presupuestos de contenido han desaparecido. En múltiples casos, los equipos de liderazgo han decidido cortar contenido y poner sus presupuestos en publicidad pagada. Creo que es una idea terrible. Pero entiendo por qué están cortando el contenido del blog. Las AIOs (Resúmenes de IA) están reduciendo drásticamente el tráfico de Google. Los anuncios de AI Mode realmente tienen asustados a los equipos. La gente ha perdido la confianza en el potencial a largo plazo del SEO. Ni me hagan empezar con lo jodido que está el algoritmo fuera de la IA. Los programas se están poniendo en modo mantenimiento o eliminándose por completo.\n\nEstos no son blogs de tercera categoría. Uno de estos sitios era un dominio top 100. Otros son propiedad de marketers con historiales legendarios.\n\nLa primera vez que pasó, pensé \"ah, los clientes van y vienen\". La segunda vez \"bueno mierda, esto no es bueno\". Cuando pasó por tercera vez, supe inmediatamente que había perdido el product market fit para mis servicios. Fin del juego.\n\nPor el lado positivo, estoy jodidamente contento de haber mantenido mis operaciones pequeñas. Sin empleados a tiempo completo y no estaba tratando de escalar. Muy fácil para mí pivotar a otra cosa. Aún creo que habrá demanda para contenido B2B pero el modelo con el que todos nos sentimos cómodos en los últimos 15 años se está yendo.\n\nTengo una visión para un nuevo modelo de contenido B2B. Pero no se parecerá en nada a lo que he hecho en el pasado. Y el SEO será una nota al pie, no el enfoque principal.\n\nPor eso creo que la mayoría de los roles de contenido enfocados en SEO se cortarán en un 90%. Ya estoy viendo esos presupuestos ser obliterados.\n\n**Ejemplo de Post 6**\nSé que todos los argumentos de acrónimos de IA SEO son estúpidos. Pero también lo entiendo.\n\nTratar de vender trabajo de SEO ahora mismo es un dolor en el trasero. A nadie le importa.\n\nHa sido así por un tiempo honestamente. Es una de las razones principales por las que comencé una compañía de afiliados SEO, me harté de justificar el trabajo cada trimestre internamente. \"Eh sí, es nuestro mayor canal de leads por mucho y entrega 8 cifras de ingresos anuales. Así que sí, el presupuesto de $50K/mes tiene sentido. ¿Podemos por favor no tener esta misma discusión en nuestro próximo ciclo de planificación?\"\n\nLa IA ahora ha hecho casi imposible vender. El SEO es viejo. La IA es sexy.\n\nNo importa que la optimización de IA sea 80% lo mismo que SEO (con algunas diferencias clave). Nadie quiere comprar trabajo de SEO ya. Así que ahora necesitamos cambiarle la marca.\n\nPuedo dar una charla en una conferencia, dando playbooks locos de SEO que han generado 8 cifras/año y a nadie le importa una mierda. Mientras tanto, al lado, algún tipo tiene una app que convierte tus posts de blog en un lindo asistente de voz con IA, y la sala está jodidamente llena.\n\nPuedo quejarme de ello pero al final del día, todos tenemos que vender lo que la gente quiere comprar. Así que ponle papas con trufa y panceta al menú y volvamos al trabajo.\n\n**Ejemplo de Post 7**\nNo estoy persiguiendo nada loco.\n\nSolo una vida simple con trabajo flexible, impacto significativo, largas caminatas, buena comida, sin reuniones y cero tonterías.\n\nEso es prácticamente todo.\n\n**Ejemplo de Post 8**\nHe estado felizmente casado por 11 años y he construido mi negocio a más de $10M.\n\nAmbos prosperan bajo el mismo principio:\n\nAparece cada día tratando de ser la mejor versión de ti mismo.\n\n**Ejemplo de Post 9**\nConsejo de vida subestimado: Nada mejorará más tu calidad de vida que la cercanía a las personas que amas. Vale más que cualquier trabajo que te paguen.\n\n**Ejemplo de Post 10**\nHay mucha gente rica que pasa todo su tiempo tratando de impresionar a gente aún más rica. Me parece uno de los juegos más tontos que puedes jugar, pero apuesto a que muy pocos se dan cuenta de que lo están jugando.\n\n**Ejemplo de Post 11**\nLa ironía de tanta guía alrededor de las ~automatizaciones con IA~ es que los resultados son literalmente spam.\n\nEl spam no funciona para aumentar ventas. No ayuda a construir seguidores leales o compromiso real.\n\nE incluso si funciona *un poco*, esos resultados son temporales. Esas audiencias se están frustrando cada vez más con todo el engaño. Nadie quiere ver noticias falsas y basura en sus feeds. El sentimiento anti-IA se está gestando en todas partes.\n\nSin mencionar que esas mismas plataformas en las que intentas construir compromiso se están actualizando constantemente para anular y degradar el spam y la basura de IA.\n\n**Ejemplo de Post 12**\nUno de los principales problemas con los consejos de búsqueda AEO/GEO/IA en este momento:\n\nMucha gente está haciendo afirmaciones audaces sin evidencia, y mucha otra gente está repitiendo esas afirmaciones.\n\nLuego, los LLMs también están recogiendo esas afirmaciones como guía para la búsqueda con IA. 🤦‍♀️\n\n**Ejemplo de Post 13**\nConsejo de vida subestimado: La preparación siempre vence a la planificación. La planificación se basa en la expectativa de orden. La preparación se basa en la expectativa del caos. Planifica para el orden y serás destruido por el caos. Prepárate para el caos y prosperarás en cualquier condición.\n\n---\n\n# CRÍTICO: CLARIDAD Y RELATABILIDAD DE LA APERTURA (LEE ESTO PRIMERO)\n\n**EL COMIENZO DE TU POST DEBE SER INMEDIATAMENTE CLARO Y RELACIONABLE PARA TODOS. SIN EXCEPCIONES.**\n\nEsta es la regla más importante. Si la apertura es confusa, de nicho o asume demasiado contexto, el post fracasa completamente.\n\n## El Problema: Empezar Demasiado Específico o con \"Jerga Interna\"\n\n**MAL EJEMPLO DE UNA APERTURA CONFUSA:**"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2192,
+        832
+      ],
+      "id": "a5a97b15-1197-4a8a-952c-25824a3a8392",
+      "name": "Long Post",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"post\": \"California\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2016,
+        1008
+      ],
+      "id": "de1fc3d0-33ad-4440-8e76-6c96048e36be",
+      "name": "JSON2"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        848,
+        880
+      ],
+      "id": "513ce182-48a7-4f8b-9517-b92cdcb44a10",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8eb670c9-a009-4096-b9a0-7af363cc50c3",
+              "name": "question",
+              "value": "={{ $('Telegram').item.json.message.reply_to_message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "7c255e3a-cbab-4678-8203-54908eb47a7a",
+              "name": "answer",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "3b044d18-b5f6-4246-bd6e-94dd448b945b",
+              "name": "existing_post",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "440c536d-b750-4d19-94e5-ddbc1a2f4688",
+              "name": "id",
+              "value": "0",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1152,
+        592
+      ],
+      "id": "d4842a4a-4e81-4d2e-9f6e-6e2d12b9d0c8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6506c6ab-21c6-4eec-9a07-b54814dbe83e",
+              "name": "question",
+              "value": "={{ $json.Question }}",
+              "type": "string"
+            },
+            {
+              "id": "042f8c49-92d7-42fd-9afa-f3c2d737b08e",
+              "name": "answer",
+              "value": "={{ $json.Answer }}",
+              "type": "string"
+            },
+            {
+              "id": "3f18d619-8653-4722-b998-9c70f242e4e5",
+              "name": "existing_post",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "bbb6d4c2-45c9-4a19-9a0f-3c69859ebb1e",
+              "name": "id",
+              "value": "={{ $json.row_number }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        880
+      ],
+      "id": "88abea1c-638d-4c9d-a4ed-4f867af9f2a9",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "40d1c7ef-e9a1-4ca1-a3bc-b2407744c002",
+              "leftValue": "={{ $('Merge').item.json.existing_post }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3568,
+        816
+      ],
+      "id": "f7f36614-d860-4f7e-87ba-4ebe196842a9",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1520,
+        832
+      ],
+      "id": "8767e738-57bf-439c-97e4-2c9da60f8b3b",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cb4bec7c-17cf-4e21-aa43-12416d4ed77b",
+              "name": "text",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        496
+      ],
+      "id": "661bc135-568c-4dc6-9940-5eabe554dead",
+      "name": "Set Text"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.voice.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        688
+      ],
+      "id": "d500e042-76f6-466b-87aa-b2f4101ba50a",
+      "name": "Download Voice",
+      "webhookId": "32d2069c-4445-4333-bd88-d347ab8581ed",
+      "alwaysOutputData": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "nPCiXMCq2osPgUJp",
+          "name": "AgenteLinkedinBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        784,
+        688
+      ],
+      "id": "e28db646-0cb7-412f-8ab3-1a9aeaedc71d",
+      "name": "Transcribe Voice",
+      "alwaysOutputData": false,
+      "credentials": {
+        "openAiApi": {
+          "id": "iefrI8eoEQCOXLyH",
+          "name": "OpenAI becord00"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        992,
+        592
+      ],
+      "id": "da39e779-83a2-4d5e-aec4-40856dcb5a39",
+      "name": "Merge 3",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "461bb67c-9e85-46de-9398-2f7e47062f43",
+              "name": "topics",
+              "value": "={{ $json.randomTopics }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1424,
+        96
+      ],
+      "id": "0edfed77-164b-4b49-8ce8-9edabaca69e1",
+      "name": "Choose Topics"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Fecha de hoy: {{ $now.format('yyyy-MMMM-dd') }}\n\nTema: {{ $json.topics.map((t, i) => (i + 1) + ') ' + t).join('\\n') }}\n\nCrea 4 preguntas específicas (máximo 200 caracteres cada una), una para cada tema.\n\nMantén las preguntas naturales y auténticas; no las compliques demasiado. Usa 4 estructuras de pregunta DIFERENTES.\n\nPuedes usar hasta 4 búsquedas web en total (máximo 1 por pregunta) solo si los temas necesitan contexto actual.\n\nGenera una salida en JSON que contenga únicamente el campo de array \"questions\" con las 4 cadenas de preguntas.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=<person_context>\nQuién eres, qué haces\n{{ $('Get row(s) in sheet').item.json['Who are you, what are you doing'] }}\n\nQuién es tu público objetivo\n{{ $('Get row(s) in sheet').item.json['Who is your target audience'] }}\n</person_context>\n\n<question_generation_framework>\n# AGENTE DE IA: GENERADOR DE PREGUNTAS PARA BLOG PROFESIONAL\n\nEres un estratega de contenido experto que crea preguntas atractivas para contenido de blogs profesionales.\n\n## Tu Tarea\nDadas CUATRO temáticas, elabora CUATRO preguntas específicas que generen respuestas interesantes y basadas en historias.\n\n## CRÍTICO: Equilibrio entre Trabajo Principal vs Otros Contextos\n**ESTA ES LA REGLA MÁS IMPORTANTE:** De tus 4 preguntas:\n- **Exactamente 2 DEBEN referirse al contexto laboral principal de la persona.**\n- **Exactamente 2 NO DEBEN referirse al contexto laboral principal** (usa educación, trabajos anteriores, sabiduría general, hobbies u otros contextos de vida).\n\nEsto asegura un equilibrio perfecto y variedad en todos los sets de preguntas.\n\n---\n\n## Estándares de Calidad de las Preguntas\n\n### Preguntas INCREÍBLES (Crea más como estas)\n- Específicas pero sin requerir información confidencial.\n- Escenario claro que probablemente haya sucedido.\n- Naturales y conversacionales.\n- Producirán una respuesta tipo historia.\n- Respetan los límites profesionales.\n\n**Ejemplos:**\n- \"¿Qué fue lo que más te sorprendió de [rol actual] en comparación con lo que esperabas?\"\n- \"¿Cómo estructuras tu día para equilibrar [trabajo principal] con [prioridad secundaria]?\"\n- \"¿Cuándo le dices a un [stakeholder/cliente] que su [idea/enfoque] no va a funcionar?\"\n- \"¿Qué te enseñó [experiencia previa] que aplicas directamente en [trabajo actual]?\"\n\n### Preguntas BUENAS (Sólidas, utilizables)\n- \"¿Qué es lo que más ha cambiado en tu [enfoque/habilidad] desde [transición de carrera]?\"\n- \"Cuéntame sobre la [ajuste/decisión] más difícil que tomaste en [contexto].\"\n- \"¿Cómo equilibras [prioridad A] con [prioridad B]?\"\n\n### Preguntas MALAS (Evita estas)\n- **Demasiado genéricas:** \"¿Cómo haces [tu trabajo]?\"\n- **Demasiado complicadas:** Escenarios excesivamente técnicos con demasiados detalles.\n- **Demasiado vagas:** \"¿Cuál es tu consejo para [audiencia amplia]?\"\n- **Múltiples preguntas en una:** \"¿Qué [X] ha mejorado [Y], y qué [Z] usas semanalmente?\"\n- **Violan la confidencialidad:** Piden información propietaria, métricas internas o estrategias confidenciales.\n- **Demasiado específicas/nicho:** Escenarios muy estrechos que quizás no hayan ocurrido.\n- **Demasiado envesadas:** \"Cuando [escenario complejo], ¿cuál es el primer [marco/proceso] que [implementas]?\"\n- **Demasiado asuntivas:** Asumen comportamientos o resultados muy específicos.\n- **Conexiones forzadas:** Vinculan temas no relacionados de forma poco natural.\n\n---\n\n## CRÍTICO: Mantén las Preguntas Simples y Singulares\n\n**NUNCA empaquetes múltiples preguntas en una.** Haz UNA pregunta clara y enfocada.\n\n**MAL (Preguntas múltiples):**\n- \"¿Qué hobby ha mejorado tu trabajo y qué hábito de él usas semanalmente?\"\n- \"¿Cómo depuras problemas y cuál es tu proceso para identificar fallos?\"\n- \"¿Cuál es tu estrategia y cómo ha evolucionado el último año?\"\n\n**BIEN (Pregunta única y clara):**\n- \"¿Qué hobby fuera del trabajo ha mejorado más tus habilidades profesionales?\"\n- \"¿Cómo solucionas [tipo de problema específico]?\"\n- \"¿Qué es lo que más ha cambiado en tu enfoque durante el último año?\"\n\n**Regla:** Si te encuentras usando \"y\" para conectar dos preguntas diferentes, detente y elige la mejor de las dos.\n\n---\n\n## CRÍTICO: Sé Creativo y Varía la Estructura de tus Preguntas\n\n**NO uses siempre los mismos patrones.** Mézclalo para mantener el contenido fresco e interesante.\n\n**Patrones comunes (sobreusados) a EVITAR repetir:**\n- \"¿Cuál es el mayor error...?\"\n- \"¿Cómo haces...?\"\n- \"¿Cuál es tu framework para...?\"\n- \"¿Qué es lo más importante...?\"\n\n**BUENA variedad en estructura de preguntas:**\n- **Escenario directo:** \"Guíame a través de un típico [día de trabajo/proceso].\"\n- **Realización reciente:** \"¿Qué fue lo que más te sorprendió sobre [contexto]?\"\n- **Cambio específico:** \"¿Qué es lo que más ha cambiado en tu [enfoque/habilidad] desde [transición]?\"\n- **Basado en eventos:** \"Cuéntame sobre el momento en que te diste cuenta de [insight].\"\n- **Momento de realización:** \"¿Cuándo supiste que querías [decisión de carrera]?\"\n- **Ángulo contrarian (opuesto):** \"¿Qué [decisión/consejo] parecía una locura en su momento pero terminó siendo correcta?\"\n- **Elección específica:** \"¿Cuál [opción] ha mejorado más [resultado]?\"\n- **Profundización táctica:** \"¿Cómo decides [decisión importante]?\"\n- **Contraintuitivo:** \"¿Cuál es un consejo que todos dan pero que tú ignoras completamente?\"\n- **Basado en el tiempo:** \"¿Qué le dirías a tu versión [más joven] sobre [tema]?\"\n- **Contexto de asesoría:** \"¿Cuándo le dices a un [stakeholder] que su [idea] no funcionará?\"\n- **Límite/decisión:** \"Cuéntame sobre el 'no' más difícil que has dicho para proteger [prioridad].\"\n\n**Dentro de tu set de 4 preguntas, usa 4 estructuras DIFERENTES. Nunca repitas el mismo patrón.**\n\n---\n\n## CRÍTICO: Evita Conexiones Forzadas o Antinaturales\n\n**NO fuerces conexiones entre temas no relacionados solo para que la pregunta suene interesante.**\n\n**MAL (Conexiones forzadas):**\n- \"¿Qué te enseñó [hobby] que mejoró más cómo haces [habilidad laboral no relacionada]?\"\n- \"¿Qué lección de [experiencia pasada] impacta directamente tu [tarea actual muy específica] hoy?\"\n- \"¿Qué [hábito personal] cambió cómo estructuras tu [proceso de trabajo específico]?\"\n\n**BIEN (Preguntas naturales y directas):**\n- \"¿Cómo manejas [proceso de trabajo]?\"\n- \"¿Qué hobby fuera del trabajo ha mejorado más tus habilidades profesionales?\"\n- \"¿Cuál es una lección de [experiencia pasada] que todavía te guía hoy?\"\n\n**Regla general:** Si estás tratando de conectar dos temas diferentes, pregúntate: \"¿Esta conexión se siente natural o la estoy forzando?\". Si se siente forzada, simplifica la pregunta para enfocarte en un solo tema.\n\n---\n\n## CRÍTICO: Evita Detalles Tácticos Excesivamente Específicos\n\n**NO preguntes sobre elementos tácticos muy específicos a menos que sean universalmente identificables.**\n\n**MAL (Demasiado táctico/específico o potencialmente confidencial):**\n- \"¿Qué hay en tu [sistema de monitoreo] que revisas con más frecuencia?\"\n- \"¿Qué [técnica muy específica] implementas siempre que mejora más [resultado]?\"\n- \"¿Cuál es la mayor diferencia entre [proceso interno A] y [proceso interno B]?\"\n\n**BIEN (Específico pero ampliamente identificable):**\n- \"¿Qué es lo que más ha cambiado en tu enfoque desde [transición de carrera]?\"\n- \"¿Cuál es el mayor concepto erróneo que la gente tiene sobre [tu campo]?\"\n- \"¿Cómo decides en qué [problemas/proyectos] trabajar?\"\n\n**Regla general:** Si tu pregunta podría revelar información confidencial, procesos internos o técnicas propietarias, replantéala para enfocarte en principios generales, crecimiento personal o experiencias universales.\n\n---\n\n## CRÍTICO: Ejecución del Balance 2-2 (Trabajo Principal vs Otros Contextos)\n\n### Proceso Paso a Paso:\n\n1.  **Revisar los 4 temas.**\n2.  **Identificar qué temas se inclinan naturalmente hacia la experiencia laboral principal vs educación/trabajos previos/vida general.**\n3.  **Seleccionar 2 temas para preguntas de trabajo principal** (que respeten la confidencialidad).\n4.  **Seleccionar 2 temas para preguntas de NO-trabajo principal.**\n\n### Framework de Decisión para cada Tema:\n\n**Temas que se INCLINAN hacia el trabajo principal (deben respetar confidencialidad):**\n- Experiencia en el rol actual, cultura de la industria, transiciones de carrera al rol actual, balance de prioridades laborales, aprendizaje y crecimiento en el rol actual, conceptos erróneos sobre el campo, productividad en el rol actual.\n- **Usa estos para tus preguntas de trabajo principal, pero enfócate en cultura, procesos y crecimiento personal, NO en información confidencial.**\n\n**Temas que se INCLINAN hacia educación/trabajos previos/vida general:**\n- Experiencia universitaria, pasantías/trabajos anteriores, decisiones tempranas de carrera, experiencia de inmigrante/relocalización, hobbies, rutinas de fitness, vida social, equilibrio vida-trabajo, consejos universitarios, proyectos paralelos.\n- **Usa estos para tus preguntas de NO-trabajo principal.**\n\n**Temas que funcionan IGUAL de bien en ambos contextos:**\n- Toma de decisiones, elecciones de carrera, balance de prioridades, productividad, aprendizaje, mentoría, dar consejos.\n- **Distribúyelos equitativamente: usa algunos para trabajo principal, otros para otros contextos.**\n\n---\n\n## Requisitos\n\n- **Cantidad**: Genera exactamente 4 preguntas para 4 temas.\n- **Balance**: Exactamente 2 preguntas refieren al contexto laboral principal, exactamente 2 no lo hacen.\n- **Confidencialidad**: NUNCA preguntes por información confidencial, técnicas propietarias o detalles internos.\n- **Longitud**: Máximo 200 caracteres por pregunta.\n- **Tono**: Natural y conversacional, no excesivamente corporativo o académico.\n- **Simplicidad**: UNA pregunta clara por tema, no múltiples preguntas empaquetadas juntas.\n- **Creatividad**: Usa 4 estructuras de pregunta DIFERENTES en las 4 preguntas.\n- **Naturalidad**: Evita conexiones forzadas entre temas no relacionados.\n- **Identificación**: Evita detalles tácticos demasiado específicos a menos que sean universalmente aplicables.\n- **Calidad**: Apunta a preguntas \"increíbles\" que produzcan respuestas basadas en historias.\n\n---\n\n## Formato de Salida\n```json\n{\n  \"questions\": [\n    \"Tu primera pregunta aquí (máx 200 caracteres)\",\n    \"Tu segunda pregunta aquí (máx 200 caracteres)\",\n    \"Tu tercera pregunta aquí (máx 200 caracteres)\",\n    \"Tu cuarta pregunta aquí (máx 200 caracteres)\"\n  ]\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1632,
+        96
+      ],
+      "id": "cf9c70d2-530a-48b7-b9ec-f3916042c44d",
+      "name": "Generate Questions"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.questions",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        96
+      ],
+      "id": "3eb2484b-8139-4898-8342-8c6e19081501",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2144,
+        96
+      ],
+      "id": "6bde1d6d-e295-4309-8718-3567c05a9e11",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2592,
+        96
+      ],
+      "id": "ae9e0e67-d10b-44c0-b837-96c7f7a97a9e",
+      "name": "Wait",
+      "webhookId": "e1be3bb6-9977-453b-adb7-4167ca41e191"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b13a7f80-4d52-4fb0-862f-1057162a4f26",
+              "leftValue": "={{ $json.message.from.id }}",
+              "rightValue": 1744801718,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "8f6eaf4d-1abe-4da6-9a8a-02476f20c82b",
+              "leftValue": "={{ $json.message.reply_to_message }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        592
+      ],
+      "id": "62bb0f45-1fc0-4778-a695-476d317787e6",
+      "name": "Sender AND Reply"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        592
+      ],
+      "id": "124f0465-a7f1-4be5-a720-dec7b74ba387",
+      "name": "Telegram",
+      "webhookId": "02da2345-7448-480a-87f0-625ec6a07933",
+      "credentials": {
+        "telegramApi": {
+          "id": "nPCiXMCq2osPgUJp",
+          "name": "AgenteLinkedinBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Telegram').item.json.message.voice }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "cd395e3b-f759-475b-973a-1a513b1786cb"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d173560d-9582-41f8-afea-00c0e9aa829f",
+                    "leftValue": "={{ $('Telegram').item.json.message.voice }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        464,
+        576
+      ],
+      "id": "599428ec-95f5-45e2-9539-21defd891059",
+      "name": "Switch Type"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        96
+      ],
+      "id": "9cd5dbcd-77f5-4fc3-b579-c47254179a21",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "chatId": "1744801718",
+        "text": "=Responde estas preguntas, dando todo el contexto posible:\n\nResponde a este mensaje con una nota de voz (un solo audio para las 3 preguntas):\n\n¿Quién eres y qué haces?\n\n¿Quién es tu público objetivo?\n\n¿De qué temas quieres hablar en tu blog?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        96
+      ],
+      "id": "fbac1633-7ec0-40cd-b272-9a5bc71784c7",
+      "name": "Question to collect context",
+      "webhookId": "07417588-eb4e-4bb6-9cc4-39e8622bbd91",
+      "credentials": {
+        "telegramApi": {
+          "id": "nPCiXMCq2osPgUJp",
+          "name": "AgenteLinkedinBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7708899d-6ceb-45b8-819b-1e7d313e2789",
+              "leftValue": "={{$json.question}}",
+              "rightValue": "Responde estas preguntas",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        592
+      ],
+      "id": "4609ea9e-9fc4-49f4-8dd6-1ceff4956edb",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aquí tienes la pregunta:  {{ $json.question }}\n\nAquí tienes la respuesta: {{ $json.answer }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Eres un agente de IA especializado que procesa transcripciones de grabaciones de voz y extrae información estructurada sobre creadores de contenido y sus blogs.\n\n## Tu Tarea\n\nRecibirás una transcripción no estructurada donde alguien responde tres preguntas clave sobre sí mismo y su contenido:\n1. Quiénes son y qué hacen\n2. Su público objetivo\n3. Temas que quieren cubrir en su blog\n\nLa transcripción será conversacional y puede contener:\n- Palabras de relleno (eh, este, o sea, tipo, cachái, sabes)\n- Oraciones interminables\n- Errores gramaticales\n- Repeticiones\n- Pensamientos tangenciales\n- Ideas incompletas\n\n## Tus Pasos de Procesamiento\n\n1. **Limpiar la transcripción**: Elimina las palabras de relleno, arregla la gramática y organiza los pensamientos en oraciones claras y coherentes (en español).\n2. **Identificar las tres secciones**: Determina qué partes de la transcripción responden a cada pregunta.\n3. **Estructurar la información**: Organiza todos los detalles en los campos apropiados.\n4. **Extraer palabras clave de temas**: Crea una lista limpia de palabras clave basada en los temas mencionados.\n5. **Mantener la autenticidad**: Mantén la voz, el tono y las ideas clave de la persona intactas mientras mejoras la claridad.\n\n## CRÍTICO: PRESERVA TODOS LOS DETALLES\n\n**NO RESUMAS. NO CONDENSES. NO OMITAS NINGUNA INFORMACIÓN.**\n\nTu trabajo es REORGANIZAR y LIMPIAR el texto, NO acortarlo. Cada detalle, ejemplo, calificación, logro, interés y tema mencionado en la transcripción DEBE aparecer en tu respuesta. Simplemente estás:\n- Eliminando palabras de relleno\n- Arreglando la gramática\n- Organizando oraciones\n- Estructurando la información\n\nPero NO estás reduciendo la cantidad de información. Si mencionan 10 temas, incluye los 10. Si describen 5 aspectos de su trabajo, incluye los 5. Si dan ejemplos específicos o detalles, presérvalos todos.\n\n## Formato de Salida\n\nDevuelve un objeto JSON con exactamente cuatro campos:\n```json\n{\n  \"who_are_you\": \"Una descripción completa y detallada de quién es la persona y qué hace. Escrito en primera persona (en español). Incluye TODOS los detalles de la transcripción: experiencia, habilidades, antecedentes, logros, trabajo actual, etc. Pueden ser varios párrafos si es necesario.\",\n  \"your_audience\": \"Una descripción completa de su público objetivo (en español). Incluye TODAS las características, dolores (pain points), demografía o detalles específicos que mencionaron. Preserva cada detalle sobre a quién intentan llegar.\",\n  \"your_topics\": \"Una lista o descripción completa de TODOS los temas que quieren cubrir (en español). No dejes fuera ningún tema, subtema o área de interés que mencionaron. Incluye todo.\",\n  \"topic_list\": [\"Array de palabras clave de temas limpias y concisas extraídas de your_topics (en español). Cada tema debe tener de 1 a 5 palabras, con formato profesional, representando áreas temáticas distintas que quieren cubrir.\"]\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1632,
+        464
+      ],
+      "id": "8f18a924-c52e-4bca-bde2-226c80701ba9",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Context",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Who are you, what are you doing": "={{ $json.output.who_are_you }}",
+            "Who is your target audience": "={{ $json.output.your_audience }}",
+            "What topics do you want to talk about": "={{ $json.output.your_topics }}",
+            "Topic list": "={{ JSON.stringify($json.output.topic_list) }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Who are you, what are you doing",
+              "displayName": "Who are you, what are you doing",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Who is your target audience",
+              "displayName": "Who is your target audience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "What topics do you want to talk about",
+              "displayName": "What topics do you want to talk about",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Topic list",
+              "displayName": "Topic list",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1968,
+        576
+      ],
+      "id": "c9ca03ac-9808-46a7-bf13-d0ba6923d9bd",
+      "name": "Save context",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"who_are_you\": \"A complete, detailed description of who the person is and what they do. Written in first person. Include ALL details from the transcript - experience, skills, background, achievements, current work, etc. This can be multiple paragraphs if needed.\",\n  \"your_audience\": \"A complete description of their target audience. Include ALL characteristics, pain points, demographics, or specifics they mentioned. Preserve every detail about who they're trying to reach.\",\n  \"your_topics\": \"A comprehensive list or description of ALL topics they want to cover. Do not leave out any topic, subtopic, or area of interest they mentioned. Include everything.\",\n  \"topic_list\": [\"Array of clean, concise topic keywords extracted from your_topics. Each topic should be 1-5 words, professionally formatted, representing distinct subject areas they want to cover.\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1824,
+        640
+      ],
+      "id": "eac45c3a-1485-49bf-a0ea-59e45ad329c5",
+      "name": "JSON3"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Context",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1712,
+        832
+      ],
+      "id": "589ff975-4dc6-4750-a886-767e3b7d9a49",
+      "name": "Get Context",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 277762712,
+          "mode": "list",
+          "cachedResultName": "Content",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rVyS2Y30EHen3hAhNuV2s0cwtVOTKyIiO5a7kbKGfzI/edit#gid=277762712"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Short Post": "={{ $('Short Post').item.json.output.post }}",
+            "Long Post": "={{ $('Long Post').item.json.output.post }}",
+            "Post Status": "Review",
+            "Priority": "0",
+            "Question": "={{ $('Merge').item.json.question }}",
+            "Answer": "={{ $('Merge').item.json.answer }}",
+            "Imagen": "={{ $('HTTP Request1').item.json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Short Post",
+              "displayName": "Short Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Long Post",
+              "displayName": "Long Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Final Post",
+              "displayName": "Final Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Post Status",
+              "displayName": "Post Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Question",
+              "displayName": "Question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Answer",
+              "displayName": "Answer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Priority",
+              "displayName": "Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Imagen",
+              "displayName": "Imagen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3760,
+        928
+      ],
+      "id": "b25479e8-895f-4f05-8604-2ce2fc13ee55",
+      "name": "Save",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 277762712,
+          "mode": "list",
+          "cachedResultName": "Content",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rVyS2Y30EHen3hAhNuV2s0cwtVOTKyIiO5a7kbKGfzI/edit#gid=277762712"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Merge').item.json.id }}",
+            "Post Status": "Review",
+            "Post Largo": "={{ $('Long Post').item.json.output.post }}",
+            "Post Corto": "={{ $('Short Post').item.json.output.post }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Post Corto",
+              "displayName": "Post Corto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Post Largo",
+              "displayName": "Post Largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Final Post",
+              "displayName": "Final Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post Status",
+              "displayName": "Post Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Question",
+              "displayName": "Question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Answer",
+              "displayName": "Answer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Priority",
+              "displayName": "Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Imagen",
+              "displayName": "Imagen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3760,
+        704
+      ],
+      "id": "bfc45a35-4df0-4c80-9230-d5d6a6cbc192",
+      "name": "Update",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Preguntas Diarias",
+        "height": 384,
+        "width": 2160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        608,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "d0ac1f14-61b0-4995-b158-98e773765bd0",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Juntar Contexto",
+        "height": 384,
+        "width": 592,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "7cf4db09-2356-4427-9d01-cf1013ce2888",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Genera contenido basado en tu respuesta",
+        "height": 784,
+        "width": 3984,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "abb6b861-8dbd-4440-83f8-baaa68eadc09",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Context",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        880
+      ],
+      "id": "adac4708-4db9-402b-a1bf-426ea63797e4",
+      "name": "Get Posts For Regeneration",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        288
+      ],
+      "id": "3fe9904b-03d8-4598-a037-474ff314cd55",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5.2",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        1040
+      ],
+      "id": "443cd449-5784-48c6-b52d-407ae8008311",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5.2",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        656
+      ],
+      "id": "cd768695-9196-4f44-b8bd-e8ff61f9d151",
+      "name": "OpenRouter Chat Model2",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5.2",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1056
+      ],
+      "id": "b93e458b-cc8c-466b-a8ef-d5f748c664aa",
+      "name": "OpenRouter Chat Model3",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U",
+          "mode": "list",
+          "cachedResultName": "Contenido Ben Linkedin Agente",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Context",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1VLehRMvAzDgUiU2DipNCeYqVykxMbM6wUSuqFqJxG6U/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        848,
+        96
+      ],
+      "id": "f0635dc0-af6b-4b74-9d8b-9b482b219a96",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/google/nano-banana-pro/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"input\": {\n    \"prompt\": \"{{ $json.output }}\",\n    \"image_input\": [\n      \"https://i.ibb.co/p6Zx4SJV/Whats-App-Image-2025-12-19-at-11-34-11.jpg\"\n    ],\n    \"resolution\": \"2K\",\n    \"aspect_ratio\": \"4:3\",\n    \"output_format\": \"png\",\n    \"safety_filter_level\": \"block_only_high\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3008,
+        512
+      ],
+      "id": "022b9f66-9e89-4a13-a25e-5c328b47e0f6",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "owkki336X2x8rjpv",
+          "name": "Replicate n8n Bearer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 60
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3184,
+        512
+      ],
+      "id": "bede4c78-d343-4c71-a2de-8578e28b1bdb",
+      "name": "Wait1",
+      "webhookId": "83159152-009c-4fde-8daf-53b635cbbc7f"
+    },
+    {
+      "parameters": {
+        "content": "# Generar Imagen (opcional)",
+        "height": 368,
+        "width": 976,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2592,
+        432
+      ],
+      "typeVersion": 1,
+      "id": "24b5bf22-50ea-43ff-8a76-aca2e0bd2174",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.urls.get }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3376,
+        512
+      ],
+      "id": "cb5643ed-6663-4ce9-bf6b-be61f5b7aa72",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "owkki336X2x8rjpv",
+          "name": "Replicate n8n Bearer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Context Question: {{ $('Merge').first().json.question }}\nContext Answer: {{ $('Merge').first().json.answer }}\n\n\nBased on the answer, write a single simple image prompt (in english) in one phrase phrase describing \"this person\" in a relevant casual setting. Dont mention things about the person, jsut like \"this person doing x\"",
+        "options": {
+          "systemMessage": "="
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2672,
+        512
+      ],
+      "id": "68b13820-f982-40c5-83ed-fd05d3b917ad",
+      "name": "Generador Prompt Imagen"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2672,
+        672
+      ],
+      "id": "f4e218bc-0514-4778-a8bb-f4268fa1c9a9",
+      "name": "OpenRouter Chat Model4",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# 🚀 Únete a +500 emprendedores que ya están automatizando sus negocios\n\n## En [Imperio Digital](https://skool.com/imperio-digital) no solo aprendes, implementas. Al entrar accedes inmediatamente a:\n\n### * 📦 **+100 Automatizaciones** y **Agentes de IA** listos para copiar y pegar.\n### * 🔴 **Sesiones en vivo** semanales para resolver dudas.\n### * 🤝 **Soporte directo** y una comunidad activa escalando con tecnología.",
+        "height": 368,
+        "width": 800,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2816,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "e86f192d-6f05-4820-9e10-35f1da3eb742",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every Day": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Topics": {
+      "main": [
+        [
+          {
+            "node": "Random Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Random Number": {
+      "main": [
+        [
+          {
+            "node": "Choose Topics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Questions",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Long Post",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Short Post": {
+      "main": [
+        [
+          {
+            "node": "Long Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Long Post": {
+      "main": [
+        [
+          {
+            "node": "Generador Prompt Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Short Post",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Posts For Regeneration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Update",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Get Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Text": {
+      "main": [
+        [
+          {
+            "node": "Merge 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Voice": {
+      "main": [
+        [
+          {
+            "node": "Transcribe Voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe Voice": {
+      "main": [
+        [
+          {
+            "node": "Merge 3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge 3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose Topics": {
+      "main": [
+        [
+          {
+            "node": "Generate Questions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Questions": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sender AND Reply": {
+      "main": [
+        [
+          {
+            "node": "Switch Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "Sender AND Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Type": {
+      "main": [
+        [
+          {
+            "node": "Set Text",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download Voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Question to collect context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Save context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON3": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Context": {
+      "main": [
+        [
+          {
+            "node": "Short Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Posts For Regeneration": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Questions",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Short Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Long Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Set Topics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generador Prompt Imagen": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generador Prompt Imagen",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0ca91703-e70f-4aec-995d-2c4194f3dcc0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "CJemZYaWHdwQhevc",
+  "tags": []
+}

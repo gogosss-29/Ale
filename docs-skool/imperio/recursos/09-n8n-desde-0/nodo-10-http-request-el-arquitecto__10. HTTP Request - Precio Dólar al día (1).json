@@ -1,0 +1,177 @@
+{
+  "name": "10. HTTP Request - Precio Dólar al día",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://mindicador.cl/api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        -160
+      ],
+      "id": "d97378d0-a02e-4ff1-8c22-e43f210dcf97",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=precio dolar hoy {{ $json.dolar.valor }}",
+        "message": "hola",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        -160
+      ],
+      "id": "086ee6af-b587-44c9-89e3-57d57d70d74a",
+      "name": "Send a message",
+      "webhookId": "96fa0c01-3817-4603-af85-c33b5a8bf7a8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/google/imagen-4-fast/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n    \"input\": {\n      \"prompt\": \"{{ $json.chatInput }}\",\n      \"aspect_ratio\": \"4:3\",\n      \"output_format\": \"jpg\",\n      \"safety_filter_level\": \"block_only_high\"\n    }\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        80
+      ],
+      "id": "4031126f-5766-4881-8ac5-81858ef5d40d",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "owkki336X2x8rjpv",
+          "name": "Replicate n8n Bearer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.urls.get }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        80
+      ],
+      "id": "8246de9b-eb48-4cec-9c38-ef4d0fe8969b",
+      "name": "HTTP Request4",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "owkki336X2x8rjpv",
+          "name": "Replicate n8n Bearer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -16,
+        80
+      ],
+      "id": "e4f54006-7d47-4f24-872b-b74d3bd2740a",
+      "name": "When chat message received",
+      "webhookId": "221f2a20-a394-4729-8d64-fca6d091cc1d"
+    },
+    {
+      "parameters": {
+        "amount": 8
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        416,
+        80
+      ],
+      "id": "5813adc1-26ee-4d55-9ead-c8426c1aebf3",
+      "name": "Wait",
+      "webhookId": "eb27d568-de1f-411f-ba65-1b80941cfcbf"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "03867993-340e-4d5c-bf6f-f5c11616db44",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "Xx3NmudIoFmgovrQ",
+  "tags": []
+}

@@ -1,0 +1,297 @@
+{
+  "name": "8. Switch - Redirección a Departamento",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Con quien quieres hablar",
+        "formDescription": "Con quien quieres hablar",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Que departamento quieres hablare a?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Marketing"
+                  },
+                  {
+                    "option": "Ventas"
+                  },
+                  {
+                    "option": "Soportes"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Nombre"
+            },
+            {
+              "fieldLabel": "Teléfono (con código)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        48,
+        496
+      ],
+      "id": "09c2f8cd-41ea-4dbf-8734-c90b1bfbe7cc",
+      "name": "On form submission1",
+      "webhookId": "b6077b86-eb71-4983-98dc-cd211aecd101"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Que departamento quieres hablare a?'] }}",
+                    "rightValue": "Marketing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "704058da-d1f6-4003-bcf7-59a5dc79d2f3"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Marketing"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d4f8fd34-f7f6-4fce-ac62-52604496d3e1",
+                    "leftValue": "={{ $json['Que departamento quieres hablare a?'] }}",
+                    "rightValue": "Ventas",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ventas"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "75e9a4ff-d64c-4c25-b835-476fe393f937",
+                    "leftValue": "={{ $json['Que departamento quieres hablare a?'] }}",
+                    "rightValue": "Soporte",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Soporte"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        256,
+        480
+      ],
+      "id": "a043f0e0-f608-4181-a509-13f666056805",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "= {{ $('On form submission1').item.json.Nombre }}  persona quiere hablarte",
+        "message": "=Su contacto es  {{ $('On form submission1').item.json['Teléfono (con código)'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        464,
+        368
+      ],
+      "id": "f02ddab3-5151-4ad5-a955-947ec1e367e7",
+      "name": "Send a message1",
+      "webhookId": "222e874d-4406-4e9c-8625-051577b16fd8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g",
+          "mode": "list",
+          "cachedResultName": "Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Productos": "={{ $('On form submission1').item.json.Nombre }}",
+            "Precio": "={{ $('On form submission1').item.json['Teléfono (con código)'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Productos",
+              "displayName": "Productos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        496
+      ],
+      "id": "5aefefc0-e154-4dd1-ab0f-eec845818619",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "= {{ $('On form submission1').item.json.Nombre }}  persona quiere hablarte",
+        "message": "=Su contacto es  {{ $('On form submission1').item.json['Teléfono (con código)'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        464,
+        624
+      ],
+      "id": "ed401297-a228-4f02-b4a8-0a03fc78f36e",
+      "name": "Send a message2",
+      "webhookId": "222e874d-4406-4e9c-8625-051577b16fd8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8799a94e-c8f5-42c7-a765-c5824ae1e539",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "o30FdoVW87xvp0DN",
+  "tags": []
+}

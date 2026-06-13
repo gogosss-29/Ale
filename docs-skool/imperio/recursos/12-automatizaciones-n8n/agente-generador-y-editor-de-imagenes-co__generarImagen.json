@@ -1,0 +1,238 @@
+{
+  "name": "generarImagen",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "prompt"
+            },
+            {
+              "name": "chat_id"
+            },
+            {
+              "name": "caption"
+            },
+            {
+              "name": "aspect_ratio"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a714ec99-d6bd-4308-a1ef-4ed7ad4bbcca",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $('When Executed by Another Workflow').item.json.chat_id }}",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "0900a243-f6e8-4040-82ee-5f8e4501649e",
+      "name": "Send a photo message",
+      "webhookId": "dc1c5352-e5ed-4e4f-8058-993c36cdad81",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"nano-banana-pro\",\n  \"callBackUrl\": \"{{$execution.resumeUrl}}\",\n  \"input\": {\n    \"prompt\": \"{{ $json.prompt }}\",\n    \"aspect_ratio\": \"{{ $json.aspect_ratio }}\",\n    \"resolution\": \"1K\",\n    \"output_format\": \"png\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "00e3ebc4-6613-4ffa-b07a-e49cd18b59ff",
+      "name": "POST Generar Imagen Nano Banana Pro",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jBa24cbL0Dk86aQl",
+          "name": "Header Auth Kie AI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "2a51ec87-5678-48f5-bca4-54ce52fcb0c0",
+      "name": "Wait CallBackUrl",
+      "webhookId": "80266075-d2aa-422d-9150-f2e63cdec71b"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9e4c9aca-1d85-4f90-91fa-274bdd7ed927",
+              "name": "url_imagen",
+              "value": "={{JSON.parse($json.body.data.resultJson).resultUrls[0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        0
+      ],
+      "id": "2e5b7b04-48cc-4fd7-9bab-bc7997208436",
+      "name": "Obtener URL de la Imagen"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url_imagen }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        864,
+        0
+      ],
+      "id": "7b3b82a7-053d-49e3-ae78-a54ad6f85148",
+      "name": "GET a File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ac12d6f7-84a4-485d-aa4c-cb5ff4c080f4",
+              "name": "Id de la imagen resultante:",
+              "value": "={{ $json.result.photo.last().file_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1248,
+        0
+      ],
+      "id": "bcb3840d-6ded-4be5-b83a-9dcca6f79434",
+      "name": "Response File ID"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "POST Generar Imagen Nano Banana Pro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a photo message": {
+      "main": [
+        [
+          {
+            "node": "Response File ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST Generar Imagen Nano Banana Pro": {
+      "main": [
+        [
+          {
+            "node": "Wait CallBackUrl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait CallBackUrl": {
+      "main": [
+        [
+          {
+            "node": "Obtener URL de la Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener URL de la Imagen": {
+      "main": [
+        [
+          {
+            "node": "GET a File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET a File": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "990a5917-33f7-48cb-9865-5b5a7140d6ee",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "59b64d42ce348b9038d915a2b4f798c075af07fa43401ea092e466d11f315d92"
+  },
+  "id": "G1E5f4VmozntoNz5",
+  "tags": []
+}

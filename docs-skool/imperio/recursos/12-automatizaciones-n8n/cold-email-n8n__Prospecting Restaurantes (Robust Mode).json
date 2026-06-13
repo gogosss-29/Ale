@@ -1,0 +1,872 @@
+{
+  "name": "Prospecting Restaurantes (Robust Mode)",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        0
+      ],
+      "id": "a41b9fe0-9ed5-49c2-be93-f693909540ec",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aquí están los datos del cliente:\n\nNombre: {{ $json['First Name'] }}\nRestaurante: {{ $json['Company Name'] }}\nWeb: {{ $json.Website }}\nUbicación: {{ $json['Company Address'] }}\n\nUsa la herramienta para ver su menú y escribe el correo!",
+        "options": {
+          "systemMessage": "=Eres un experto \"Foodie\" y copywriter chileno. Tu tarea es generar el CUERPO de un email de prospección comercial que parezca escrito manualmente por un humano.\n\nTIENES DISPONIBLE UNA HERRAMIENTA PARA LEER WEBS. ÚSALA SIEMPRE.\n\n### REGLAS ABSOLUTAS DE SILENCIO (CRÍTICO):\n1. PROHIBIDO dar explicaciones previas.\n2. PROHIBIDO mencionar que eres una IA.\n3. PROHIBIDO usar etiquetas estructurales como <!DOCTYPE html>, <html>, <head>, <title> o <body>.\n4. TU ÚNICA SALIDA DEBE SER EL CONTENIDO DEL CORREO (PÁRRAFOS).\n\n### LÓGICA DE GENERACIÓN:\n1. Analiza la web del cliente.\n2. SI ENCUENTRAS UN PLATO: Menciónalo específicamente (ej: \"vi el Lomo a lo Pobre y se ve mortal\").\n3. SI ES UN GRUPO GRANDE O NO HAY MENÚ: Elogia su trayectoria o la onda del local.\n4. SI tienes su nombre usalo, si no evítalo. NUNCA uses placeholders\n\n### TONO Y REDACCIÓN (CHILENO NATURAL):\n- Usa modismos suaves: \"te tinca\", \"se pasó\", \"un pelín\".\n- Estructura: Saludo -> Elogio (Icebreaker) -> Problema (fotos oscuras en Google/Web) -> Solución (Mejorar fotos con IA barato/gratis) -> Cierre.\n\n### FORMATO DE OUTPUT ESPERADO (SOLO ESTO):\n<p>Hola [Nombre], qué tal? Pasé por la web y vi que tienen [Plato/Marca]... se ve mortal. 🤤</p><p>Oye, me fijé que las fotos que tienen online están un pelín oscuras y no le hacen justicia a la calidad real, sobre todo las de Google (que es por donde llega harta gente).</p><p>Estoy armando mi portafolio de mejora de fotos con IA (sin perder la esencia y sin cobrar las locuras de un fotógrafo tradicional). Te tinca si te edito <b>una foto gratis</b> y sin compromiso para que veas el cambio?</p><p>Me mandas una cualquiera para probar?</p><p>Saludos!</p>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        624,
+        0
+      ],
+      "id": "d09b2427-3529-4ef2-8aa0-dd2eb42ee82a",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        624,
+        208
+      ],
+      "id": "5c6980a6-e960-431a-8b57-22b2bafde5b2",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "g6OQkrb1PP9eGUNm",
+          "name": "Openrouter License becord"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0",
+          "mode": "list",
+          "cachedResultName": "v2. Apollo Clientes Restaurant",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1970871504,
+          "mode": "list",
+          "cachedResultName": "apollo-contacts-export",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0/edit#gid=1970871504"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        112,
+        0
+      ],
+      "id": "3446cd38-3386-4333-ba17-f2ff409a2084",
+      "name": "Extrae Contactos",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "rjiwltHsOgAioStQ",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3f872a5f-3b86-4ade-98f0-8080d523e76c",
+              "leftValue": "={{ $json.MENSAJE }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        320,
+        0
+      ],
+      "id": "9d85ca6f-9960-4c69-bb80-263f4600830b",
+      "name": "Filtra Ya Creados"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0",
+          "mode": "list",
+          "cachedResultName": "v2. Apollo Clientes Restaurant",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1970871504,
+          "mode": "list",
+          "cachedResultName": "apollo-contacts-export",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GVeTa2oowZCU1j5uagbxqkToq8qoqvQhxkNvcLYXj-0/edit#gid=1970871504"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "MENSAJE": "={{ $json.output }}",
+            "row_number": "={{ $('Extrae Contactos').item.json.row_number }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name for Emails",
+              "displayName": "Company Name for Emails",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Status",
+              "displayName": "Email Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Email Source",
+              "displayName": "Primary Email Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Email Verification Source",
+              "displayName": "Primary Email Verification Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Confidence",
+              "displayName": "Email Confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Email Catch-all Status",
+              "displayName": "Primary Email Catch-all Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Email Last Verified At",
+              "displayName": "Primary Email Last Verified At",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Seniority",
+              "displayName": "Seniority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Departments",
+              "displayName": "Departments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Owner",
+              "displayName": "Contact Owner",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Work Direct Phone",
+              "displayName": "Work Direct Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Home Phone",
+              "displayName": "Home Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mobile Phone",
+              "displayName": "Mobile Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Corporate Phone",
+              "displayName": "Corporate Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Other Phone",
+              "displayName": "Other Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lists",
+              "displayName": "Lists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Contacted",
+              "displayName": "Last Contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Account Owner",
+              "displayName": "Account Owner",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "# Employees",
+              "displayName": "# Employees",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Industry",
+              "displayName": "Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Person Linkedin Url",
+              "displayName": "Person Linkedin Url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Linkedin Url",
+              "displayName": "Company Linkedin Url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Facebook Url",
+              "displayName": "Facebook Url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Twitter Url",
+              "displayName": "Twitter Url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "State",
+              "displayName": "State",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company City",
+              "displayName": "Company City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company State",
+              "displayName": "Company State",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Country",
+              "displayName": "Company Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Phone",
+              "displayName": "Company Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Technologies",
+              "displayName": "Technologies",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Annual Revenue",
+              "displayName": "Annual Revenue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Total Funding",
+              "displayName": "Total Funding",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest Funding",
+              "displayName": "Latest Funding",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest Funding Amount",
+              "displayName": "Latest Funding Amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Raised At",
+              "displayName": "Last Raised At",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Subsidiary of",
+              "displayName": "Subsidiary of",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Sent",
+              "displayName": "Email Sent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Open",
+              "displayName": "Email Open",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Bounced",
+              "displayName": "Email Bounced",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Replied",
+              "displayName": "Replied",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Demoed",
+              "displayName": "Demoed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Number of Retail Locations",
+              "displayName": "Number of Retail Locations",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Apollo Contact Id",
+              "displayName": "Apollo Contact Id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Apollo Account Id",
+              "displayName": "Apollo Account Id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Email",
+              "displayName": "Secondary Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Email Source",
+              "displayName": "Secondary Email Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Email Status",
+              "displayName": "Secondary Email Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Email Verification Source",
+              "displayName": "Secondary Email Verification Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tertiary Email",
+              "displayName": "Tertiary Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tertiary Email Source",
+              "displayName": "Tertiary Email Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tertiary Email Status",
+              "displayName": "Tertiary Email Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tertiary Email Verification Source",
+              "displayName": "Tertiary Email Verification Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Intent Topic",
+              "displayName": "Primary Intent Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primary Intent Score",
+              "displayName": "Primary Intent Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Intent Topic",
+              "displayName": "Secondary Intent Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Secondary Intent Score",
+              "displayName": "Secondary Intent Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qualify Contact",
+              "displayName": "Qualify Contact",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "MENSAJE",
+              "displayName": "MENSAJE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        992,
+        0
+      ],
+      "id": "a72ae72a-0758-41a0-b472-9cf8c9da8518",
+      "name": "Actualiza el mensaje",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "rjiwltHsOgAioStQ",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Extrae Contactos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Actualiza el mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrae Contactos": {
+      "main": [
+        [
+          {
+            "node": "Filtra Ya Creados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra Ya Creados": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "08c1b1f3-7c9e-4163-96ce-aec57ce756ad",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "bKewaLVg32Ij-okdzrGdF",
+  "tags": []
+}

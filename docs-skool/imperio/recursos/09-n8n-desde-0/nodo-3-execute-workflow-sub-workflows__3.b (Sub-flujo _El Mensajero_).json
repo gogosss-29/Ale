@@ -1,0 +1,75 @@
+{
+  "name": "3.b (Sub-flujo \"El Mensajero\")",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "cuerpo_mensaje"
+            },
+            {
+              "name": "asunto_mensaje"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e1049725-d683-4d44-9f59-dcbcfcc75cb9",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "ASUNTO",
+        "message": "={{ $json.cuerpo_mensaje }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0ae9f153-b557-4815-8040-c9d02de023a4",
+      "name": "Send a message",
+      "webhookId": "6edbb35b-c81f-45cd-a014-a415679b7c8f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ab387f96-8d00-4072-8233-501f43414bfc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "pZdBu0ii0LIQo9s9",
+  "tags": []
+}

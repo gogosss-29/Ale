@@ -1,0 +1,674 @@
+{
+  "name": "18. Information Extractor - Boleta",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        464
+      ],
+      "id": "a2134e4c-a16b-49cb-88d0-ebbd9d3cdc50",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "004e7df8-f0a5-4718-b23f-0670ab5b63b7",
+              "name": "texto_correo",
+              "value": "Hola equipo, adjunto detalle del pago de la empresa Constructora Los Andes. El monto total es de $500.000 por los servicios de consultoría de agosto. El contacto es pagos@losandes.cl. Quedo atento",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "b9a91ccb-7957-41a1-9a77-7c0a81df8d77",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.texto_correo }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "cliente",
+              "description": "nombre del cliente"
+            },
+            {
+              "name": "total",
+              "type": "number",
+              "description": "monto total"
+            },
+            {
+              "name": "email",
+              "description": "email del contacto"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "5bd72d96-addd-433a-8d13-89ed2e25fcba",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "de55ca44-a686-4f91-98e2-c65af1409d45",
+              "leftValue": "={{ $json.output.total }}",
+              "rightValue": 1000000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        768,
+        0
+      ],
+      "id": "13480c85-72ee-4018-b2f5-119de4cf2aff",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=Boom! 🚀 Venta grande de {{ $json.output.total }} por $ {{ $json.output.total }}",
+        "message": "CELEBREMOS",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        976,
+        -96
+      ],
+      "id": "a7de46a9-1cca-411b-b116-c8b99406e4a1",
+      "name": "Send a message",
+      "webhookId": "c0cba9b8-2e3a-46dc-b686-4d9897b619c9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14 & 15. Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Cliente": "={{ $('Information Extractor').item.json.output.cliente }}",
+            "Monto Total": "={{ $('Information Extractor').item.json.output.total }}",
+            "CORREO": "={{ $('Information Extractor').item.json.output.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Cliente",
+              "displayName": "Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pedido #",
+              "displayName": "Pedido #",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha de Pedido",
+              "displayName": "Fecha de Pedido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Monto Total",
+              "displayName": "Monto Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Método de Pago",
+              "displayName": "Método de Pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Seguimiento Disponible",
+              "displayName": "Seguimiento Disponible",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CORREO",
+              "displayName": "CORREO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        976,
+        96
+      ],
+      "id": "ada9333f-ae6e-4406-9a03-b7a19e99d0a9",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        416,
+        128
+      ],
+      "id": "a6f82c65-ce26-4368-835f-7fe6135f8e6d",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eab2370a-0fde-43ec-aef6-455025fadd5d",
+              "name": "correo_cuerpo",
+              "value": "hola equipo, adjunto detalle del pago de la empresa Constructora Los Andes. El monto total es de $50.000 por los servicios de consultoría de agosto. El contacto es pagos@losandes.cl. Quedo atento",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        464
+      ],
+      "id": "853d43f0-8b2d-4813-bac5-e7cc18741c3a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.correo_cuerpo }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "monto_total",
+              "type": "number",
+              "description": "cual es el monto total de la factura sin comas ni puntos"
+            },
+            {
+              "name": "nombre_cliente",
+              "description": "cual es el nombre del cliente"
+            },
+            {
+              "name": "correo",
+              "description": "cual es el correo electronico"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        464
+      ],
+      "id": "177a84e6-f3df-4a87-9834-aca37655ffe9",
+      "name": "Information Extractor1"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        400,
+        640
+      ],
+      "id": "3c53b9f3-c29c-4f86-8eca-69116beeb62f",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "13e64159-549d-43f1-91e6-093eddca30fd",
+              "leftValue": "={{ $json.output.monto_total }}",
+              "rightValue": 100000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        752,
+        464
+      ],
+      "id": "200fe3b2-d97a-42c0-9db9-d6398f9f0545",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=JEFECITO! ENTRO UNA VENTA DE  {{ $('Information Extractor1').item.json.output.monto_total }}",
+        "message": "={{ $('Information Extractor1').item.json.output.nombre_cliente }} nos compro, respondele a {{ $('Information Extractor1').item.json.output.correo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        400
+      ],
+      "id": "5894e1e5-fbfc-4d48-afdd-a63393ee8a6a",
+      "name": "Send a message1",
+      "webhookId": "71acdc97-9900-4dea-80a1-8d537716aea3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14 & 15. Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Cliente": "={{ $('Information Extractor1').item.json.output.nombre_cliente }}",
+            "Monto Total": "={{ $('Information Extractor1').item.json.output.monto_total }}",
+            "CORREO": "={{ $('Information Extractor1').item.json.output.correo }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Cliente",
+              "displayName": "Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pedido #",
+              "displayName": "Pedido #",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha de Pedido",
+              "displayName": "Fecha de Pedido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Monto Total",
+              "displayName": "Monto Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Método de Pago",
+              "displayName": "Método de Pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Seguimiento Disponible",
+              "displayName": "Seguimiento Disponible",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CORREO",
+              "displayName": "CORREO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        960,
+        560
+      ],
+      "id": "bba6f2e4-184b-4450-a31b-c48dec37f7ee",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Information Extractor1').item.json.output.correo }}",
+        "subject": "Gracias por la compra",
+        "message": "=Se registro tu compra de  {{ $('Information Extractor1').item.json.output.monto_total }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1168,
+        560
+      ],
+      "id": "cd248cf7-e5ef-49e7-a84c-8c677423a2f4",
+      "name": "Send a message2",
+      "webhookId": "d9578b7d-b25f-4ee2-85eb-ce554d0966ad",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5b56e4c1-3d09-4fb3-907b-34cf36c06e5c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "qP8nmFd5FEdkypzS",
+  "tags": []
+}

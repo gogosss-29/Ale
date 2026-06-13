@@ -1,0 +1,154 @@
+{
+  "name": "4. Split Out - Productos Ecommerce",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        288
+      ],
+      "id": "55519e83-9da2-4175-a68c-7d6b19e4c2a2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    \"id_orden\": 101,\n    \"cliente\": \"Benja\",\n    \"carrito\": [\n      { \"producto\": \"Laptop\", \"precio\": 1000 },\n      { \"producto\": \"Mouse\", \"precio\": 50 },\n      { \"producto\": \"Teclado\", \"precio\": 100 }\n    ]\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        288
+      ],
+      "id": "7017d527-d85b-4bd9-8016-9b942ad00932",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "carrito",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        352,
+        288
+      ],
+      "id": "748767e3-0aa8-4edb-a676-0318d71258a4",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g",
+          "mode": "list",
+          "cachedResultName": "Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PGrvBGi-on7VuY8otVY4QEkA0dGHJFKp4a8PyRDf01g/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Productos": "={{ $json.producto }}",
+            "Precio": "={{ $json.precio }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Productos",
+              "displayName": "Productos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        560,
+        288
+      ],
+      "id": "605e5371-6a5c-4237-ad79-643c3c3ad402",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1f559c32-d424-495f-9e65-673629063dc0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "NRSMO5iIOVUkJaj7",
+  "tags": []
+}
