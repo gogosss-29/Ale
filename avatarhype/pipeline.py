@@ -25,6 +25,36 @@ class PipelineResult:
     guiones: list
     shots: list[ShotPrompt]
     anuncios: list[Anuncio]
+    avatar_path: str | None = None  # imagen-ancla de identidad del avatar
+
+
+# Prompt del paso de IDENTIDAD: convierte la foto de referencia del usuario en la
+# imagen-ancla del avatar. Es el equivalente del curso (generar el avatar con GPT
+# Image 2 / Nano Banana Pro) pero usando SU cara como referencia, no una de Pinterest.
+_AVATAR_IDENTIDAD_PROMPT = (
+    "A hyper-realistic vertical portrait of the exact same person from the reference "
+    "image. Keep the same face, skin texture, hair and overall look. Natural casual "
+    "appearance, relaxed neutral expression, looking straight at the camera, soft "
+    "natural indoor lighting, plain uncluttered background. Photorealistic, candid, "
+    "not retouched, not AI-generated, no beauty filter."
+)
+
+
+def generar_avatar_identidad(brief: ProductBrief, image_engine, out_dir: str,
+                             aspect_ratio: str = "9:16") -> str | None:
+    """Paso de IDENTIDAD: genera la imagen-ancla del avatar a partir de la foto de la
+    cara del usuario. Esta imagen se usa luego como primer frame de los clips para que
+    el avatar mantenga SU identidad. Devuelve el path de la imagen, o None si no hay
+    foto de referencia. Cuesta 1 imagen (~0,012 € en GPT Image 2)."""
+    if not brief.avatar_referencia_path:
+        return None
+    out = os.path.join(out_dir, "avatar_identidad.png")
+    asset = image_engine.generar_imagen(
+        _AVATAR_IDENTIDAD_PROMPT, out,
+        referencias=[brief.avatar_referencia_path],
+        aspect_ratio=aspect_ratio,
+    )
+    return asset.path
 
 
 def _shots_desde_guion(brief: ProductBrief, guion) -> list[ShotPrompt]:
@@ -60,7 +90,16 @@ def producir(brief: ProductBrief, cfg: EngineConfig | None = None,
     cfg = cfg or EngineConfig.from_env()
     os.makedirs(cfg.out_dir, exist_ok=True)
     plan = planificar(brief)
-    _img, video_engine = build_engines(cfg)
+    img_engine, video_engine = build_engines(cfg)
+
+    # Paso de IDENTIDAD: si hay foto de la cara del usuario, generar su avatar-ancla y
+    # usarlo como primer frame de cada clip para que el avatar sea ÉL.
+    avatar_path = generar_avatar_identidad(brief, img_engine, cfg.out_dir)
+    plan.avatar_path = avatar_path
+    if avatar_path:
+        for s in plan.shots:
+            if not s.primer_frame:
+                s.primer_frame = avatar_path
 
     # agrupar shots por formato para montar un anuncio por formato
     por_formato: dict[Formato, list[ShotPrompt]] = {}

@@ -11,6 +11,22 @@ ProductBrief ─▶ [1] estrategia ─▶ [2] guiones ─▶ [3] prompts (métod
             ─▶ [4] imágenes ─▶ [5] clips de vídeo ─▶ [6] ensamblado (realismo) ─▶ Anuncio
 ```
 
+### Avatar = TÚ (paso de identidad)
+
+El curso genera avatares genéricos. Para que el avatar seas **tú**, pasa una foto de
+tu cara como `avatar_referencia_path` (CLI: `--avatar-referencia`). El paso [4] genera
+entonces una **imagen-ancla** tuya (GPT Image 2 con tu cara de referencia) que se usa
+como primer frame de cada clip, manteniendo tu identidad. Esto sustituye la captura de
+Pinterest del curso por tu propia cara; el resto del método (ángulo, guion, capa de
+realismo) es idéntico.
+
+```bash
+# Solo el paso de identidad (1 imagen, ~0,012 €) — para ver qué tal funciona:
+python -m avatarhype.cli avatar \
+  --nombre "Alexander" --descripcion "avatar personal" \
+  --avatar-referencia /ruta/a/tu_foto.jpg
+```
+
 - **Pasos 1-3 (cerebro):** `brain/` — réplica de los agentes GPT del curso (estrategia +
   guiones) + el constructor determinista de prompts de 14 bloques. Necesita una API de LLM.
 - **Pasos 4-5 (motores):** `engines/` — proveedores intercambiables APImart / Kie / Higgsfield
