@@ -70,7 +70,24 @@ def main(argv=None):
     p_prod.add_argument("--musica", default=None)
     p_prod.add_argument("--out", default="output")
 
+    p_real = sub.add_parser(
+        "realismo", help="Aplica la capa de realismo del curso a un clip (solo ffmpeg)")
+    p_real.add_argument("--clip", required=True, help="Vídeo de entrada")
+    p_real.add_argument("--salida", default=None, help="Vídeo de salida (por defecto *_real.mp4)")
+    p_real.add_argument("--sin-grano", action="store_true", help="No añadir grano/partículas")
+
     a = parser.parse_args(argv)
+    if a.cmd == "realismo":
+        import os
+        from .assembly.compositor import aplicar_realismo
+        salida = a.salida or os.path.splitext(a.clip)[0] + "_real.mp4"
+        try:
+            out = aplicar_realismo(a.clip, salida, grano=not a.sin_grano)
+        except (RuntimeError, FileNotFoundError) as e:
+            print(f"No se pudo aplicar el realismo: {e}", file=sys.stderr)
+            return 2
+        print(f"Clip con capa de realismo: {out}")
+        return 0
     brief = _brief_from_args(a)
 
     if a.cmd == "plan":

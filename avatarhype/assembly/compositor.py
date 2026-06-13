@@ -23,6 +23,29 @@ def ffmpeg_disponible() -> bool:
     return shutil.which("ffmpeg") is not None
 
 
+def aplicar_realismo(
+    clip: str,
+    salida: str,
+    grade: dict | None = None,
+    grano: bool = True,
+) -> str:
+    """Aplica SOLO la capa de realismo del curso a un clip (sin concatenar ni música).
+
+    Para clips generados a mano (Omni Flash) que solo necesitan el grade final.
+    Devuelve `salida`."""
+    if not ffmpeg_disponible():
+        raise RuntimeError("ffmpeg no está instalado")
+    if not os.path.exists(clip):
+        raise FileNotFoundError(clip)
+    vf = build_full_vf(grade, add_grain=grano)
+    _run([
+        "ffmpeg", "-y", "-i", clip, "-vf", vf,
+        "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+        "-c:a", "copy", salida,
+    ])
+    return salida
+
+
 def ensamblar(
     clips: list[str],
     salida: str,
