@@ -15,11 +15,12 @@ Endpoints:
 from __future__ import annotations
 
 import os
+import shutil
 import uuid
 from typing import Optional
 
 try:
-    from fastapi import FastAPI, Form, HTTPException
+    from fastapi import FastAPI, File, Form, HTTPException, UploadFile
     from fastapi.responses import HTMLResponse
     from fastapi.staticfiles import StaticFiles
     from pydantic import BaseModel
@@ -75,6 +76,7 @@ def home():
  small{{color:#666}}
 </style></head><body>
 <h1>🎬 Generar clip con tu avatar</h1>
+<p><a href="/post">🎞️ Ir a Post-producción (subir tu video de Flow → grade cine)</a></p>
 <p><small>Pegá el prompt y la URL pública de tu fotograma de avatar. Genera 1 clip por APImart.</small></p>
 <form method="post" action="/render">
   <label>Prompt del vídeo</label>
@@ -121,6 +123,71 @@ video{{width:100%;border-radius:10px}}</style></head><body>
 <video controls src="/files/{name}"></video>
 <p>Coste estimado: ~{asset.coste_estimado:.3f} €</p>
 <p><a href="/files/{name}" download>⬇ Descargar</a> &nbsp;·&nbsp; <a href="/">← Generar otro</a></p>
+</body></html>"""
+
+
+@app.get("/post", response_class=HTMLResponse)
+def post_form():
+    return """
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AvatarHype · Post-producción</title>
+<style>
+ body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#1a1a1a}
+ h1{font-size:22px} label{font-weight:600;display:block;margin:16px 0 6px}
+ input,select{width:100%;padding:10px;font-size:14px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+ button{margin-top:18px;padding:12px 22px;font-size:16px;border:0;border-radius:8px;background:#111;color:#fff;cursor:pointer}
+ small{color:#666}
+</style></head><body>
+<h1>🎞️ Post-producción</h1>
+<p><a href="/">← Volver a generar</a></p>
+<p><small>Subí tu(s) video(s) de Flow. Si subís varios, los une en orden. Aplica el grade y te lo deja listo para descargar.</small></p>
+<form method="post" action="/post" enctype="multipart/form-data">
+  <label>Video(s) de Flow <small>(podés elegir varios; se unen en orden)</small></label>
+  <input type="file" name="clips" accept="video/*" multiple required>
+  <label>Estilo de grade</label>
+  <select name="estilo">
+    <option value="cine">Cine (anuncio premium)</option>
+    <option value="ugc">UGC (selfie crudo del curso)</option>
+  </select>
+  <label>Grano / partículas</label>
+  <select name="grano"><option value="si">Sí (recomendado)</option><option value="no">No</option></select>
+  <button type="submit">Procesar</button>
+</form>
+<p><small>Free se "duerme": la primera vez puede tardar. El proceso toma según el tamaño del video.</small></p>
+</body></html>"""
+
+
+@app.post("/post", response_class=HTMLResponse)
+def post_process(clips: list[UploadFile] = File(...), estilo: str = Form("cine"),
+                 grano: str = Form("si")):
+    from .assembly.compositor import aplicar_realismo, ensamblar
+
+    con_grano = (grano == "si")
+    entradas: list[str] = []
+    for c in clips:
+        in_name = f"in_{uuid.uuid4().hex[:8]}.mp4"
+        in_path = os.path.join(OUT_DIR, in_name)
+        with open(in_path, "wb") as f:
+            shutil.copyfileobj(c.file, f)
+        entradas.append(in_path)
+
+    out_name = f"post_{uuid.uuid4().hex[:8]}.mp4"
+    out_path = os.path.join(OUT_DIR, out_name)
+    try:
+        if len(entradas) == 1:
+            aplicar_realismo(entradas[0], out_path, grano=con_grano, estilo=estilo)
+        else:
+            ensamblar(entradas, out_path, estilo=estilo, grano=con_grano)
+    except Exception as e:  # noqa: BLE001
+        return HTMLResponse(
+            f"<p>❌ Error: {e}</p><p><a href='/post'>← Volver</a></p>", status_code=400)
+    return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
+<style>body{{font-family:system-ui;max-width:760px;margin:40px auto;padding:0 16px}}
+video{{width:100%;border-radius:10px}}</style></head><body>
+<h1>✅ Listo</h1>
+<video controls src="/files/{out_name}"></video>
+<p><a href="/files/{out_name}" download>⬇ Descargar</a> &nbsp;·&nbsp; <a href="/post">← Procesar otro</a></p>
 </body></html>"""
 
 

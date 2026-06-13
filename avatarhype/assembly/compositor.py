@@ -75,6 +75,7 @@ def ensamblar(
     musica: str | None = None,
     grade: dict | None = None,
     grano: bool = True,
+    estilo: str = "ugc",
     volumen_musica_db: float = -30.0,
     fps: int = 30,
     width: int = 1080,
@@ -82,6 +83,7 @@ def ensamblar(
 ) -> str:
     """Concatena clips -> aplica realismo -> (opcional) música. Devuelve `salida`.
 
+    - `estilo`: "ugc" (selfie crudo) o "cine" (estética de anuncio).
     - `volumen_musica_db`: el curso pone la música a ~-30 dB.
     - `grade`: overrides de los valores de realismo (ver brain/realism.CAPCUT_REALISM).
     """
@@ -90,7 +92,8 @@ def ensamblar(
     if not clips:
         raise ValueError("no hay clips para ensamblar")
 
-    vf_realism = build_full_vf(grade, add_grain=grano)
+    builder = build_cine_vf if estilo == "cine" else build_full_vf
+    vf_realism = builder(grade, add_grain=grano)
     tmp = tempfile.mkdtemp(prefix="avhype_")
     try:
         # 1) normalizar cada clip a 9:16/fps y aplicar la capa de realismo
