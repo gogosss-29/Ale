@@ -61,21 +61,21 @@ viaja en el JSON del servidor**, no hay que "ver" la web ni reproducir vídeos.
    de Mux: subtítulos oficiales en vez de transcribir audio con Whisper.)*
    - Nota de entorno: la red usa un **CA propio (proxy)**, así que yt-dlp necesita
      `--no-check-certificates`.
-   - **Loom (≈145 vídeos):** ✅ se transcriben sin problema desde el servidor.
-   - **YouTube (≈261 vídeos):** ❌ **no** desde este servidor — YouTube responde
-     `HTTP 429 / "Sign in to confirm you're not a bot"` porque bloquea las IPs de
-     datacenter (no es un problema de login; ni con cookies se evita). Probé `yt-dlp`
-     y `youtube-transcript-api`: ambos dan `IpBlocked`.
-   - **Solución para YouTube:** correr el mismo script **en tu máquina** (IP
-     residencial, no bloqueada). Es resumible: salta lo ya transcrito (los Loom) y
-     solo baja los YouTube:
-     ```bash
-     # en tu ordenador, con el repo clonado y yt-dlp instalado:
-     python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be
-     # si aún te pide "confirm you're not a bot", añade tus cookies del navegador:
-     python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be \
-         --cookies-from-browser chrome
+   - **Loom (≈145 vídeos):** ✅ subtítulos `.vtt` directos.
+   - **YouTube (≈261 vídeos):** ✅ **sí funciona desde el servidor** con el truco
+     correcto. El endpoint `timedtext` (formato `.vtt`) **sí** bloquea las IPs de
+     datacenter (`HTTP 429 / "confirm you're not a bot"`), pero el **cliente
+     `android` + formato `json3`** sirve los subtítulos desde otro endpoint **sin
+     límite**. Por eso para YouTube se usa:
      ```
+     yt-dlp --extractor-args "youtube:player_client=android" --sub-format json3 ...
+     ```
+     y se parsea el json3 (`events[].segs[].utf8`). Implementado en
+     `skool/transcripts.py`. Cobertura final: **403/406 vídeos**. Los 3 restantes
+     son 2 grabaciones en vivo **sin captions** y 1 webinar cuyo caption solo va por
+     `timedtext` (429). (`youtube-transcript-api` sigue dando `IpBlocked` — usa el
+     endpoint malo; por eso se usa yt-dlp android+json3.)
+   - Si algún día vuelve a fallar en local, `--cookies-from-browser chrome` ayuda.
 
 7. **Recursos descargables (adjuntos: skills .zip/.tar.gz, plantillas n8n/Make .json,
    bases Airtable…).** No viajan en el contenido: el classroom solo guarda

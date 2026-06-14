@@ -19,7 +19,7 @@ import tempfile
 from pathlib import Path
 
 MARK = "## 🎙️ Transcripción"
-SUB_LANGS = "es,es-419,es-ES,en,en-US"
+SUB_LANGS = "es,es-419,es-ES,es-orig,en,en-US"
 
 
 def vtt_to_text(vtt: str) -> str:
@@ -46,29 +46,62 @@ def vtt_to_text(vtt: str) -> str:
     return text
 
 
+def json3_to_text(raw: str) -> str:
+    """Subtítulo YouTube formato json3 (eventos/segs) -> texto plano."""
+    try:
+        d = json.loads(raw)
+    except json.JSONDecodeError:
+        return ""
+    parts = [
+        s.get("utf8", "")
+        for e in d.get("events", [])
+        for s in (e.get("segs") or [])
+    ]
+    return re.sub(r"\s+", " ", "".join(parts)).strip()
+
+
+def _pick(paths: list[Path]) -> Path:
+    """Elige el subtítulo en español preferente."""
+    return sorted(
+        paths, key=lambda p: (0 if (".es." in p.name or ".es-" in p.name) else 1, len(p.name))
+    )[0]
+
+
 def fetch_subs(url: str, workdir: Path, cookies_browser: str | None = None) -> str | None:
     """Devuelve el texto del subtítulo (es preferente) o None.
 
-    cookies_browser: p.ej. "chrome"/"firefox" → pasa --cookies-from-browser a
-    yt-dlp. Útil en local para YouTube (esquiva el "confirm you're not a bot").
+    - Loom: subtítulos .vtt directos.
+    - YouTube: bloquea las IPs de datacenter en el endpoint `timedtext` (vtt da 429),
+      pero el cliente `android` + formato `json3` viene de otro endpoint sin límite.
+      Por eso para YouTube pedimos json3 con player_client=android.
+    cookies_browser: pasa --cookies-from-browser (útil en local si aún pide login).
     """
     out = workdir / "s"
+    is_yt = "youtube.com" in url or "youtu.be" in url
+    fmt = "json3/vtt/best" if is_yt else "vtt"
     cmd = [
         "yt-dlp", "--no-check-certificates", "--skip-download",
         "--write-subs", "--write-auto-subs",
-        "--sub-langs", SUB_LANGS, "--sub-format", "vtt",
+        "--sub-langs", SUB_LANGS, "--sub-format", fmt,
         "-o", f"{out}.%(ext)s", url,
     ]
+    if is_yt:
+        cmd[1:1] = ["--extractor-args", "youtube:player_client=android"]
     if cookies_browser:
         cmd[1:1] = ["--cookies-from-browser", cookies_browser]
     subprocess.run(cmd, capture_output=True, text=True, timeout=180)
-    vtts = sorted(workdir.glob("*.vtt"))
-    if not vtts:
-        return None
-    # prioriza español
-    vtts.sort(key=lambda p: (0 if ".es" in p.name else 1, len(p.name)))
-    text = vtt_to_text(vtts[0].read_text(encoding="utf-8", errors="ignore"))
-    return text or None
+
+    j3 = list(workdir.glob("*.json3"))
+    if j3:
+        text = json3_to_text(_pick(j3).read_text(encoding="utf-8", errors="ignore"))
+        if text:
+            return text
+    vtts = list(workdir.glob("*.vtt"))
+    if vtts:
+        text = vtt_to_text(_pick(vtts).read_text(encoding="utf-8", errors="ignore"))
+        if text:
+            return text
+    return None
 
 
 def append_transcript(md_path: Path, text: str) -> None:

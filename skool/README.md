@@ -54,15 +54,12 @@ docs-skool/<community>/
 | `extract.py` | Fase 1: recorre cursos y vuelca todo a Markdown |
 | `transcripts.py` | Fase 2: baja subtítulos de YouTube/Loom y los anexa |
 
-## YouTube vs Loom (importante)
-- **Loom** se transcribe sin problema desde cualquier sitio.
-- **YouTube** bloquea las IPs de datacenter (`429 / "confirm you're not a bot"`), así
-  que las transcripciones de YouTube **hay que sacarlas desde tu máquina** (IP
-  residencial). Filtra por host y, si hace falta, pasa cookies del navegador:
-  ```bash
-  python -m skool.transcripts imperio --out docs-skool --hosts youtube,youtu.be \
-      --cookies-from-browser chrome
-  ```
+## YouTube vs Loom
+- **Loom**: subtítulos `.vtt` directos.
+- **YouTube**: el endpoint `timedtext` (vtt) bloquea IPs de datacenter (429), pero el
+  cliente **`android` + formato `json3`** los sirve desde otro endpoint sin límite.
+  `transcripts.py` ya lo hace automáticamente para URLs de YouTube. Si en local pidiera
+  login, añade `--cookies-from-browser chrome`.
 
 ## Notas
 - **Resumible:** Fase 2 salta las lecciones que ya tienen transcripción.
