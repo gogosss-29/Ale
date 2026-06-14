@@ -1,5 +1,8 @@
 # Índice — comunidad «imperio»
 
+> 📂 ¿Buscas por tema? Mira [`INDICE-POR-CATEGORIA.md`](INDICE-POR-CATEGORIA.md)
+> (qué te enseña → resultado al aplicarlo). Abajo, el listado lección a lección.
+
 
 ## 01. ➡️ Empieza Aquí
 - [👋 Bienvenid@](01-empieza-aqui/001-bienvenid.md)
