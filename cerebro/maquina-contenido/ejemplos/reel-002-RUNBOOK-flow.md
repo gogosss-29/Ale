@@ -4,13 +4,14 @@
 > Los **prompts verbatim** están en `reel-002-dependencia-persona.md` (secciones 3 y 4).
 > Modelo: **Veo 3.1** (o Omni Flash si está disponible). Formato 9:16.
 
-## Paso 0 — Prerrequisito: imagen de referencia del avatar
-Necesitás **una imagen tuya (avatar) sentado en el escenario** (la del sillón que venís usando).
-- Si ya la tenés → usala como *start image*.
-- Si no → generala antes con GPT Image 2 / Nano Banana (avatar + escenario), o avisame y la armamos.
+## Paso 0 — Identidad: tu avatar ya está cargado en Flow
+El avatar de Ale ya está cargado como **ingredient en Flow** → esa es la identidad.
+No hace falta ninguna imagen extra. (El "frame del clip 1" del Paso 2 es solo para
+mantener consistencia de escena/ropa entre secuencias; si con el ingredient ya te
+queda consistente, se puede omitir.)
 
 ## Paso 1 — AVATAR · Secuencia 1 (hook)
-1. En Flow: modo **Ingredients-to-Video**, cargá la **imagen de referencia** (escenario).
+1. En Flow: seleccioná tu **avatar (ingredient)** ya cargado.
 2. Pegá el **prompt SECUENCIA 1** (archivo reel-002, sección 3).
 3. **Audio ON** (Veo genera la voz del avatar con la locución).
 4. Generá. Elegí la mejor toma.
