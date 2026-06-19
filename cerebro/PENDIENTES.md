@@ -4,6 +4,20 @@ Backlog vivo de la sesión. Orden = prioridad sugerida.
 
 ---
 
+## ⭐ 0. Avatar Omni se DEFORMA por el bloque de identidad (IMPORTANTE)
+**Problema:** los prompts del avatar con el bloque de identidad textual (dentadura
+"no blanquear/no emparejar…" + físico "no me hagas más chico…") **deforman** la
+cara/cuerpo en vez de fijarlos. Demasiadas aclaraciones → el modelo sobre-corrige.
+**Hipótesis/soluciones a probar:**
+- Confiar en la **imagen de referencia** (Modo B con un frame/foto real) y
+  **reducir o quitar** las aclaraciones de texto sobre dientes/cuerpo.
+- O simplificar el bloque de identidad a 1–2 frases positivas (no negativas).
+- Pedirle a Ale un clip donde Omni le haya salido BIEN, para copiar ese vocabulario.
+**Acción:** recalibrar `cerebro-guiones/references/director-avatar-omni.md` con lo
+que realmente funcione en Omni. Afecta toda la producción de avatar.
+
+---
+
 ## ⭐ 1. Auto-conexión al sistema de guardado de YouTube (IMPORTANTE)
 **Objetivo:** que la lectura de **contenido nuevo** de los canales se haga
 **automática**, sin que Ale exporte el `analisis_videos.xlsx` a mano cada vez.
