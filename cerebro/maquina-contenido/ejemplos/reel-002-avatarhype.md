@@ -8,16 +8,20 @@ Estilo del curso: **selfie handheld de iPhone, UGC casual, NO cinematográfico, 
 > referencia** + [NEGATIVE] anti-embellecido. Boca mayormente cerrada al hablar.
 
 ## Imagen de referencia
-La misma que ya definimos: vos sentado en el sillón amarillo, campo verde (tu
-ingredient / la imagen del escenario). Se carga en los 8 clips. Para transiciones,
-el curso permite **START/END FRAME** (frame del clip previo como inicial del siguiente).
+Una imagen tuya en tu **escritorio / oficina real** (lived-in, no estudio),
+sosteniendo el teléfono en selfie. Generala con Nano Banana / GPT Image 2 a partir
+de una foto tuya, o usá tu ingredient + este entorno. Se carga en los 8 clips. Para
+transiciones, el curso permite **START/END FRAME** (frame del clip previo como
+inicial del siguiente).
+> (Antes usábamos el sillón amarillo en el campo — eso era de la campaña
+> cerebro-guiones, no del curso. El curso pide ambientes cotidianos y creíbles.)
 
 ## Plantilla maestra (curso · 14 bloques) — FIJA en todos los clips
 ```
 A hyper-realistic 9:16 handheld iPhone front-camera selfie video. Casual UGC, not cinematic, not an ad.
 
 [CHARACTER] The exact same man from the provided reference image. Identity, face, teeth, skin texture, hair, body build and outfit must match the reference perfectly at all times. Keep him consistent across all clips. Do not beautify, slim or alter him.
-[ENVIRONMENT] He is sitting on a yellow armchair in an open green grass field under open sky, holding the phone himself in selfie mode. Natural daylight, slightly imperfect lighting.
+[ENVIRONMENT] He is at his real home-office desk, holding the phone himself in selfie mode. Lived-in everyday workspace: a laptop, some papers and a mug, slightly messy and believable. Natural window daylight, slightly imperfect uneven lighting. Not a studio, not cinematic.
 [HUMAN MOTION] Natural human motion of someone holding their own phone: slight vertical bounce and sway, natural shoulder movement, breathing that subtly affects the image, inconsistent non-repetitive micro-movements.
 [LANGUAGE] Authentic Argentine Spanish (Río de la Plata accent), natural rhythm, calm confident cadence. Not Spain Spanish, not neutral Latin.
 [TONE] Calm, confident, casual, like talking to a friend. Not selling, not performing.
