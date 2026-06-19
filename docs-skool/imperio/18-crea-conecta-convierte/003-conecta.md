@@ -8,7 +8,7 @@
 
 ### **Recurso**: [Manychat](https://bencorde.com/manychat).
 
-![CCC b2.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/daa88cd151ca4f3ab7e0918854b3320a292e69ed339c4397b4f6939989343104)
+![CCC b2.png](../imagenes/daa88cd151ca4f3ab7e0918854b3320a292e69ed339c4397b4f6939989343104.png)
 
 En este módulo (CONECTA) vimos cómo captar y retener la atención para llevar a la gente a una acción específica. Conectamos directamente en sus DM’s, ofreciendo un lead magnet, un contenido gratuito de alto valor que establece autoridad y fideliza al cliente. Este proceso, que antes requería responder manualmente los mensajes, ahora se puede automatizar completamente.
 

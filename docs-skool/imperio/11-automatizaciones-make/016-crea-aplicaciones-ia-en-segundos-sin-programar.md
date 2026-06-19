@@ -101,23 +101,23 @@ Lo emocionante de esta integración no es solo lo que puedes construir, sino có
 
 Para crear la app Entraremos a [Bolt.new](http://Bolt.new) y le diremos a la IA lo que queremos construir.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1012ada9a56a4a7ca8b6abbf6d0ab126c7e754a75b344cd1bc8b14549cbe9775-md.png)
+![image.png](../imagenes/1012ada9a56a4a7ca8b6abbf6d0ab126c7e754a75b344cd1bc8b14549cbe9775-md.png)
 
 Si queremos inspiracion adicional, podemos buscar plantillas en [https://codepen.io/](https://codepen.io/)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/80e18073448d47ad94401bd0349ca41829d9344fb197467c8557bff29436c206-md.png)
+![image.png](../imagenes/80e18073448d47ad94401bd0349ca41829d9344fb197467c8557bff29436c206-md.png)
 
 Luego Bolt nos comenzará a crear la app.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2cdc2c39cea9441abbd9c3c4a441b0fcc521670dcac544a2b0126c584caff8f4-md.png)
+![image.png](../imagenes/2cdc2c39cea9441abbd9c3c4a441b0fcc521670dcac544a2b0126c584caff8f4-md.png)
 
 Este es el preview que nos armó después de un prompt.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/db332e486cf0490db56bbdd658434ee16b509f82d1aa4858b8b745b3bd0d4638-md.png)
+![image.png](../imagenes/db332e486cf0490db56bbdd658434ee16b509f82d1aa4858b8b745b3bd0d4638-md.png)
 
 Luego, tenemos que mandarle la información a Make de alguna manera, así que crearemos un webhook donde le enviaremos la info del input desde bolt hacia Make.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cd3194f8829a47e78947fd324243b6e94c94acdeab40472e950d133e5bf74840-md.png)
+![image.png](../imagenes/cd3194f8829a47e78947fd324243b6e94c94acdeab40472e950d133e5bf74840-md.png)
 
 El prompt que le puse a Bolt fue el siguiente:
 
@@ -129,15 +129,15 @@ El prompt que le puse a Bolt fue el siguiente:
 
 Y me confirmó que ahora cada vez que le mandemos un input, enviara la data como data estructurada a Make.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d1c0e3acdbcf478ab7301a3fb2bf780e0c90ddec2de34ef8b9b8e20c6b0cd046)
+![image.png](../imagenes/d1c0e3acdbcf478ab7301a3fb2bf780e0c90ddec2de34ef8b9b8e20c6b0cd046.png)
 
 Despues me hizo los cambios y le pedi a ChatGPT que me haga un "polish" o refinamiento de lo que le pedi
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9f43d4f4bba04afc827faba53347570c31373948ac9b4b2a8ee6d432373b9472)
+![image.png](../imagenes/9f43d4f4bba04afc827faba53347570c31373948ac9b4b2a8ee6d432373b9472.png)
 
 Quería hacerle un par de cambios más así que se los pedí directamente.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/95a779f05baa4b4dbc12972019db9673ce90ecd25fb74bf7923626d2a94ec0e4-md.png)
+![image.png](../imagenes/95a779f05baa4b4dbc12972019db9673ce90ecd25fb74bf7923626d2a94ec0e4-md.png)
 
 Luego mandamos la información al webhook y desde ahí, las opciones son ilimitadas.
 
@@ -147,7 +147,7 @@ Y...
 
 Una vez que tenemos la data en Make podemos hacer cualquier automatizacion y devolver una respuesta empleando el "webhook response".
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/00922435e439495f95bcac009443be274c3afd980752464cbc424ffcf96169f7-md.png)
+![image.png](../imagenes/00922435e439495f95bcac009443be274c3afd980752464cbc424ffcf96169f7-md.png)
 
 Así que la automatización se vería algo así. El primer webhook es donde recibiremos la información, luego crea el texot, la imagen y luego elige en que plataforma se publicaría. Además tiene unos filtros entre cada plataforma para decidir en cual se publicaría dependiendo del requisito del usuario.  
   

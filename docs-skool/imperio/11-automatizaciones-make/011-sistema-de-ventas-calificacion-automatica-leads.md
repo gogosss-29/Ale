@@ -13,7 +13,7 @@ Sí... es cansador hablar con leads que no califican.
   
 Este sistema te ahorra tiempo, automatiza el proceso de calificación y te ayuda a cerrar más ventas… incluso mientras duermes (+ blueprint descargable)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e4e374d8edf447fa81a64a137bc4513276c59854f9094802a3cf8e49b6dffa69-md.png)
+![image.png](../imagenes/e4e374d8edf447fa81a64a137bc4513276c59854f9094802a3cf8e49b6dffa69-md.png)
 
 ### 🚀 ¿Qué hace este sistema?
 

@@ -31,7 +31,7 @@ La convención es usar `lc.` (de Lead Connector) como prefijo:
 Subdominio: lc.clinicasonrisaperfecta.site
 ```
 
-![CleanShot 2026-04-24 at 10.00.37.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ab948dc9fb474754b6512842c59be36a785e38b5d2e94773a2341b6ba51adf78.png)
+![CleanShot 2026-04-24 at 10.00.37.png](../imagenes/ab948dc9fb474754b6512842c59be36a785e38b5d2e94773a2341b6ba51adf78.png)
 
 GHL te va a pedir agregar varios registros DNS en tu proveedor. Te muestra uno por uno:
 
@@ -44,7 +44,7 @@ GHL te va a pedir agregar varios registros DNS en tu proveedor. Te muestra uno p
 
 Ir a **Hostinger → DNS / Nameservers → Manage DNS Records** y agregar los registros uno por uno tal como aparecen en GHL.
 
-![CleanShot 2026-04-24 at 10.01.57.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/aa4f5242ef5c4121902b1f44f2795c8ed0d7a007fee1444b8b089fd1ceb09305.png)
+![CleanShot 2026-04-24 at 10.01.57.png](../imagenes/aa4f5242ef5c4121902b1f44f2795c8ed0d7a007fee1444b8b089fd1ceb09305.png)
 
 ### **📋 Plantilla — Registros DNS de Email (ejemplo)**
 
@@ -94,7 +94,7 @@ Ir a **Settings → WhatsApp**. Por defecto cuesta ~$29.99/mes, pero si eres age
 - Ir a tu cuenta de agencia → **Rebilling → WhatsApp**
 - Cambiar el precio de reventa (ej: 10 USD)
 
-![CleanShot 2026-04-24 at 10.03.45.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/440183e0b10949f1aaf57a2640c1209f5379153c9096419894947d1d45287b68.png)
+![CleanShot 2026-04-24 at 10.03.45.png](../imagenes/440183e0b10949f1aaf57a2640c1209f5379153c9096419894947d1d45287b68.png)
 
 De vuelta a la subcuenta: **Settings → WhatsApp → Subscribe**.
 

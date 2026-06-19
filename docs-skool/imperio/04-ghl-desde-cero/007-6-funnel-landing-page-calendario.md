@@ -29,7 +29,7 @@ WebsiteFunnelInformativo ("quiénes somos, qué hacemos")Orientado a **una sola 
 
 **Ejemplo del "antes" del curso:** esa página HTML de los 2000s que mostramos en la Sección 1 es un website arcaico. No tiene formulario, no agenda, no convierte.
 
-![CleanShot 2026-04-24 at 13.49.21.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2b8f009adaea4075b3d6607545c8aafacf9396fbcd7647a7a50949081e8a16da.png)
+![CleanShot 2026-04-24 at 13.49.21.png](../imagenes/2b8f009adaea4075b3d6607545c8aafacf9396fbcd7647a7a50949081e8a16da.png)
 
 ### **2. Estructura típica de un funnel (3 páginas)**
 
@@ -169,7 +169,7 @@ Desde el AI Studio, pedirle:
 - **Publish** en el appointment → ya conecta el calendario
 - **Publish** en el thank you
 
-![CleanShot 2026-04-24 at 13.50.37.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/24cd6f09851d4d8c850280b087fa17bc8207510f62b741138625f9808f2fd0ca-md.png)
+![CleanShot 2026-04-24 at 13.50.37.png](../imagenes/24cd6f09851d4d8c850280b087fa17bc8207510f62b741138625f9808f2fd0ca-md.png)
 
 ### **9. Test completo — simular paciente**
 

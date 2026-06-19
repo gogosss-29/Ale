@@ -13,7 +13,7 @@
 
 Imagina tener un sistema que haga el trabajo pesado por ti. Busca a tus clientes ideales, les envía correos personalizados y organiza todo automáticamente en un solo lugar. Con las herramientas correctas como Apify, Make, Google Sheets y OpenAI, puedes automatizar todo este proceso en minutos.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/312f5fab0a5c42f18c2aa782953abc9b493354380bb142a28e4c0612f709e55d-md.png)
+![image.png](../imagenes/312f5fab0a5c42f18c2aa782953abc9b493354380bb142a28e4c0612f709e55d-md.png)
 
 Te voy a explicar cómo funciona y cómo configurarlo paso a paso.
 
@@ -39,15 +39,15 @@ El primer módulo usa Apify para hacer una búsqueda en Google Maps. Este paso r
 
 y bajo "actors" buscaremos el "google maps extractor"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/08ab534b0d264924bcc137a99d2c44fa3909e50b663741419ed9d55927edd746)
+![image.png](../imagenes/08ab534b0d264924bcc137a99d2c44fa3909e50b663741419ed9d55927edd746.png)
 
 Le daremos a "create task" para que se quede guardado en nuestra bibliotecta de actores
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4b57c0fc5b2b40ae890e831e6754e83a69b038317c7e4c1f9b60bc6a5e80dfda)
+![image.png](../imagenes/4b57c0fc5b2b40ae890e831e6754e83a69b038317c7e4c1f9b60bc6a5e80dfda.png)
 
 Luego, usaremos el módulo de "**Run an Actor**, Apify" en Make y le copiaremos el siguiente json
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/29454967dcbe49d18f30634cb9e8d753e21ee267c42a4cb9b066ca5f217ad314)
+![image.png](../imagenes/29454967dcbe49d18f30634cb9e8d753e21ee267c42a4cb9b066ca5f217ad314.png)
 
 > {
 > 
@@ -69,33 +69,33 @@ Luego, usaremos el módulo de "**Run an Actor**, Apify" en Make y le copiaremos 
 
 También lo puedes encontrar si apretas "json" justo al lado de la opcion de correr al actor de manera manual.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8661cb1c48154858b58575b159eff978f74ac90c01a6450bb09bf555c12829fe)
+![image.png](../imagenes/8661cb1c48154858b58575b159eff978f74ac90c01a6450bb09bf555c12829fe.png)
 
 **Paso 2. Agrega un tiempo de espera en Make o "sleep" (Sleep)**  
 Introduce un retardo de 45 segundos para asegurarte de que Apify tenga tiempo suficiente para terminar la búsqueda. Esto asegura que los datos estén listos antes de pasar al siguiente paso.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/72b1afd978614448adf1f049f63848223e1ebae4892b40dca34561de79cd3f9c)
+![image.png](../imagenes/72b1afd978614448adf1f049f63848223e1ebae4892b40dca34561de79cd3f9c.png)
 
 **Paso 3. Extrae la información con Apify (Get Dataset Items)**  
 Recoge toda la información en formato JSON. Esto incluye los datos básicos del negocio, que se usarán en los pasos posteriores.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7165f9f32de04252ac8a7191240beb66de807ccfca4e48c8af9dc39b0042cc1f)
+![image.png](../imagenes/7165f9f32de04252ac8a7191240beb66de807ccfca4e48c8af9dc39b0042cc1f.png)
 
 Bajo Dataset ID le pondremos "defaultDataSetId" para que nos tome el ID en específico de la accion que le acabamos de pedir al actor que ejecute.
 
 **Paso 4. Encuentra correos con Anymail Finder**  
 Este módulo filtra los datos y detecta los correos electrónicos válidos asociados con los negocios. Asegúrate de que sean correos activos y relacionados directamente con las empresas.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ba1f327d24094149a21caeb7eb398ccefa4e1656a4f6424ca0c82889dc982618)
+![image.png](../imagenes/ba1f327d24094149a21caeb7eb398ccefa4e1656a4f6424ca0c82889dc982618.png)
 
 > ProTip: Puedes crearte una cuanta de free trial por 3 días y de 600 créditos anuales, y te darán los 600. Pero el Free Trial te dejará hacer 250 llamados a la API. Por eso, puedes ejecutarla por 3 días, por ejemplo y mandas todos los correos que querías mandar. Luego te creas otra cuenta y pones la respectiva API key nuevamente. La API la encuentras bajo al sección "API" de Anymail Finder
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/eb4f3c1f9d404c4193a4a7247f3c2037415301841f73410a8600ac320064bcba-md.png)
+![image.png](../imagenes/eb4f3c1f9d404c4193a4a7247f3c2037415301841f73410a8600ac320064bcba-md.png)
 
 **Paso 5. Busca la información de su página con Perplexity (Create a Chat Completion, Perplexity)**  
 Utiliza Perplexity para extraer más información del sitio web del negocio. Esto incluye servicios ofrecidos, ubicación exacta o cualquier detalle que pueda ayudar a personalizar mejor los correos luego con OpenAI. Asegúrate de usar un modelo que sea "online"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8c480f3dda6e4ece9cf1f461e609a6f07f6290a3c1524bae87e2936bad101c31)
+![image.png](../imagenes/8c480f3dda6e4ece9cf1f461e609a6f07f6290a3c1524bae87e2936bad101c31.png)
 
 > Analiza la información del negocio, considerando su pagina web {{[2.website](http://2.website)}}, su ubicación {{2.state}} y su nombre {{2.title}} y consigue su mail de contacto si existe
 > 
@@ -105,7 +105,7 @@ Utiliza Perplexity para extraer más información del sitio web del negocio. Est
 Con la ayuda de GPT, este módulo genera correos electrónicos personalizados basados en la información recopilada. Por ejemplo:  
 “Hola [Nombre del Propietario], notamos que [Nombre del Negocio] está creciendo en [Ubicación]. Nos encantaría hablar sobre cómo [Propuesta] puede ayudar a tu negocio a [Beneficio].”
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/eba83b19bd8c4139907fec2964feff8aef8b05df6e934f69b8db59e69d1b6f2a)
+![image.png](../imagenes/eba83b19bd8c4139907fec2964feff8aef8b05df6e934f69b8db59e69d1b6f2a.png)
 
 Te dejo el prompt que utilicé...   
   
@@ -166,12 +166,12 @@ Te dejo el prompt que utilicé...
 **Paso 7. Organiza todo en Google Sheets (add new row, Google Sheets)**  
 Toda la información se guarda automáticamente en una hoja de Google Sheets. Esto te permite llevar un control claro de los negocios contactados, los correos enviados y el seguimiento pendiente.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c80467a738114c519fd4828ae6bffe22d06c8d3da29a4bdaa67ab32090d05d1d)
+![image.png](../imagenes/c80467a738114c519fd4828ae6bffe22d06c8d3da29a4bdaa67ab32090d05d1d.png)
 
 **Paso 8. Envía los correos con Microsoft 365 Email o Gmail o tu correo de preferencia**  
 Finalmente, el módulo de Microsoft 365 Email envía los correos directamente a los prospectos. Todo ocurre en automático, lo que elimina la necesidad de enviar correos manualmente.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f8975f87aa4646de9d95c228d224fecadc6575f3f7e4429db47b8b1d0580587e)
+![image.png](../imagenes/f8975f87aa4646de9d95c228d224fecadc6575f3f7e4429db47b8b1d0580587e.png)
 
 ---
 

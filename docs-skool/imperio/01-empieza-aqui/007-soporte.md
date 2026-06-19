@@ -18,7 +18,7 @@ En Imperio Digital queremos que logres tus objetivos, no que te quedes pegado en
 
 También puedes subir videos directamente a Skool:
 
-![CleanShot 2026-04-23 at 12.34.32.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/576ff98e57184ee6924a96b5ceae2570f8b4279e691d4ec3908445324287e1af.png)
+![CleanShot 2026-04-23 at 12.34.32.png](../imagenes/576ff98e57184ee6924a96b5ceae2570f8b4279e691d4ec3908445324287e1af.png)
 
 *Regla de oro:* Mientras mejor expliques tu problema, más rápido te damos la solución.
 

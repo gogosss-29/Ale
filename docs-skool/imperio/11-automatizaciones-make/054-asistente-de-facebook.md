@@ -9,7 +9,7 @@
 
 Crea publicaciones atractivas en Facebook siguiendo las mejores prácticas actuales con este Asistente de Facebook.
 
-![out-3.webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/76d920235d374f9cad062a57d995b68eb23ea679ce154a94a011a478b122c59c)
+![out-3.webp](../imagenes/76d920235d374f9cad062a57d995b68eb23ea679ce154a94a011a478b122c59c.webp)
 
 *Prompt usado en Flux para la imagen: "bencordero man looking at the camera holding a big neon sign with the Facebook logo in a technology space" Puedes aprender a crear este tipo de imágenes *[*aquí*](https://www.skool.com/imperio-digital/classroom/7efa4739?md=f9cd03c1b1ef4d02b273547b82d83a94)
 

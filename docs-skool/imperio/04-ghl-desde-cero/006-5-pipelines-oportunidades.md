@@ -41,7 +41,7 @@ Ir a **Opportunities → Pipelines → Create Pipeline**.
 - **Nombre:** `Nuevos Pacientes`
 - **Visualización del color:** elegir "nombre con fondo de color" (es más fácil de leer en vista Kanban)
 
-![CleanShot 2026-04-24 at 13.46.41.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/55ac3a4c85694978be7b1fa7dfb4725506d85349a556486e91169e27b9f9372f-md.png)
+![CleanShot 2026-04-24 at 13.46.41.png](../imagenes/55ac3a4c85694978be7b1fa7dfb4725506d85349a556486e91169e27b9f9372f-md.png)
 
 ### **3. Definir las 7 etapas**
 
@@ -86,7 +86,7 @@ Como Roberto ya tiene la tag `paciente-activo` y ya viene antes, moverlo directa
 
 ### **6. Crear oportunidades para los otros contactos**
 
-![CleanShot 2026-04-24 at 13.48.11.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/248ee7e0e5af4f67a938aea30558de80caf128efadb942f7bf8bcec12c540403.png)
+![CleanShot 2026-04-24 at 13.48.11.png](../imagenes/248ee7e0e5af4f67a938aea30558de80caf128efadb942f7bf8bcec12c540403.png)
 
 ### **7. Vista Kanban vs. Vista Lista**
 

@@ -36,7 +36,7 @@ Para Roberto Martínez:
 - **Fecha de nacimiento:** 13/02/2005 (se usa después para el workflow de cumpleaños)
 - **Fuente:** Google
 
-![CleanShot 2026-04-24 at 10.06.27.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/06b896ca4c264b87821f0d1e63dd93d1d0a6d57aa42345d7ad5720e38b443d4e.png)
+![CleanShot 2026-04-24 at 10.06.27.png](../imagenes/06b896ca4c264b87821f0d1e63dd93d1d0a6d57aa42345d7ad5720e38b443d4e.png)
 
 ### **💡 DND — Do Not Disturb**
 
@@ -112,7 +112,7 @@ Ir a **Settings → Tags → Add Tag** y crear estas:
 - `servicio-completo`
 - `lead`
 
-![CleanShot 2026-04-24 at 10.07.17.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/98ccf5bfb3f0408d8887138b0b87c29d97a59312207c4bb294d15ae955af6488-md.png)
+![CleanShot 2026-04-24 at 10.07.17.png](../imagenes/98ccf5bfb3f0408d8887138b0b87c29d97a59312207c4bb294d15ae955af6488-md.png)
 
 Asignar `paciente-activo` a Roberto.
 

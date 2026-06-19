@@ -11,7 +11,7 @@
 
 Hoy les traigo una automatización que quedó **realmente brutal**.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cf06738f38c14e27a717112c3d3a4e4e15f459dcf4154e6594b25d88d6d584eb-md.png)
+![image.png](../imagenes/cf06738f38c14e27a717112c3d3a4e4e15f459dcf4154e6594b25d88d6d584eb-md.png)
 
 Con esta automatización puedes generar **videos UGC completos** (persona hablando del producto, tono natural, estilo “review honesta”) usando **solo una foto**.  
   

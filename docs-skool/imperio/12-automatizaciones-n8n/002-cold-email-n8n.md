@@ -9,7 +9,7 @@
 
 ---
 
-![CleanShot 2026-01-12 at 18.03.35@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/232e9d07735f4349a58b4f62ed80c67236aae65045764a949ea56f713f82f58e-md.png)
+![CleanShot 2026-01-12 at 18.03.35@2x.png](../imagenes/232e9d07735f4349a58b4f62ed80c67236aae65045764a949ea56f713f82f58e-md.png)
 
 PROMPT:  
   

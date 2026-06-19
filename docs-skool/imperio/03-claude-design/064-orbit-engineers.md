@@ -7,7 +7,7 @@
 
 ---
 
-![hero-orbit-engineers-poster-BT1ffUzn.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/dc72708fcaf847a7bc423fdcf201d79ff0c76d0c5d0e446c936a984380dda6c4-md.png)
+![hero-orbit-engineers-poster-BT1ffUzn.png](../imagenes/dc72708fcaf847a7bc423fdcf201d79ff0c76d0c5d0e446c936a984380dda6c4-md.png)
 
 > Create a single-page landing page for a fictional space engineering consultancy called "WE ARE ORBIT ENGINEERS". The page has 3 full-screen hero sections that the user navigates between using buttons (not scroll). Use React + Tailwind CSS + framer-motion + lucide-react icons (ChevronDown, ArrowRight).
 > 

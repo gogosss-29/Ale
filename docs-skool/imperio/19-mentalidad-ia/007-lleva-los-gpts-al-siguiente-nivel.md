@@ -14,7 +14,7 @@ Sigue esta guía para configurar cada paso de forma detallada, y ve el video de 
 
 ---
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c56f3cba993e4f72851cf6e0342f555199e2324cd24b4ebdb602f3dc370cbda2-md.png)
+![image.png](../imagenes/c56f3cba993e4f72851cf6e0342f555199e2324cd24b4ebdb602f3dc370cbda2-md.png)
 
 ### Introducción
 
@@ -62,31 +62,31 @@ Un *webhook* permite que [Make.com ](https://bencorde.com/make)reciba informaci�
 - Inicia sesión en tu cuenta de [Make.com.](https://bencorde.com/make)
 - En el menú principal, haz clic en la pestaña **Escenarios**.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5f5af8f15a9b4601846ad3daa301417922a30c15964847908c15f2479a860b44)
+![image.png](../imagenes/5f5af8f15a9b4601846ad3daa301417922a30c15964847908c15f2479a860b44.png)
 
-- Selecciona **Nuevo Escenario**. Un escenario en [Make.com ](https://bencorde.com/make)es el flujo de trabajo que define qué acciones se realizarán una vez que el webhook reciba la información. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d8776ed4894a400aa31eea6137ad62643a6383452a06411992449cd17fe5e859)
+- Selecciona **Nuevo Escenario**. Un escenario en [Make.com ](https://bencorde.com/make)es el flujo de trabajo que define qué acciones se realizarán una vez que el webhook reciba la información. ![image.png](../imagenes/d8776ed4894a400aa31eea6137ad62643a6383452a06411992449cd17fe5e859.png)
 
 ### 2. Seleccionar Webhooks como Disparador del Escenario
 
 - Dentro del nuevo escenario, haz clic en el gran ícono de **+** en el centro de la pantalla.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1027b4d856e2486badacce5cc26313b0ab9003d1278d41058a3cf9857d5ae30c)
+![image.png](../imagenes/1027b4d856e2486badacce5cc26313b0ab9003d1278d41058a3cf9857d5ae30c.png)
 
 - Aparecerá un menú de opciones. Busca y selecciona **Webhooks** como el disparador (trigger) de este escenario.
 - Luego, selecciona **Custom Webhook** (Webhook Personalizado) para configurar uno que se ajuste a tus necesidades específicas.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/150a71f34001499cb69fd939371fb21cf502c2c2494c4f8eb6b991675f23c805-md.png)
+![image.png](../imagenes/150a71f34001499cb69fd939371fb21cf502c2c2494c4f8eb6b991675f23c805-md.png)
 
 ### 3. Crear un Nuevo Webhook y Nombrarlo
 
 - Haz clic en **Agregar un Webhook** o **Crear nuevo Webhook**.
 - Aparecerá un cuadro donde podrás introducir un nombre descriptivo. **Dale un nombre único y claro** al webhook, como "webhook-extraccion-datos-boleta". Esto es importante para identificar los distintos flujos de trabajo en el futuro.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4a838128106542b4a55994483ee07189c1bffe9d55204e90ace72aa7bfe8e822)
+![image.png](../imagenes/4a838128106542b4a55994483ee07189c1bffe9d55204e90ace72aa7bfe8e822.png)
 
 - Una vez nombrado, [Make.com](http://Make.com) generará automáticamente una URL única para el webhook.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5badcd5779004c4b99d60b400507935bf413cc325c1440b0a390274e53fe21b4)
+![image.png](../imagenes/5badcd5779004c4b99d60b400507935bf413cc325c1440b0a390274e53fe21b4.png)
 
 ### 4. Copiar la URL del Webhook para su Uso en ChatGPT
 
@@ -109,20 +109,20 @@ Link: [https://chatgpt.com/g/g-qaZZZqxzt-create-make-com-webhook-integration](ht
 - Abre el GPT personalizado y ve a la configuración o al esquema donde estás creando tu asistente personalizado.
 - Haz clic en el botón predeterminado
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/fb082af72eaa4deaace8c16f6c300d12f8567a93b5964c128c836caf3783200a)
+![image.png](../imagenes/fb082af72eaa4deaace8c16f6c300d12f8567a93b5964c128c836caf3783200a.png)
 
 - En el área correspondiente, **pega la URL del webhook**. Esto permite que cuando le pidas a ChatGPT realizar una tarea (como extraer datos de un PDF o crear una tarea), enviará la información necesaria directamente a la URL del webhook en [Make.com](http://Make.com).
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a39c68762e0f4973921a8320ed0591cd2d9b0b381b974d7493b57ea45da43416-md.png)
+![image.png](../imagenes/a39c68762e0f4973921a8320ed0591cd2d9b0b381b974d7493b57ea45da43416-md.png)
 
 Luego nos pedirá que digamos cual es la acción que queremos que ejecute y cuales son las variables que queremos enviar a Make.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0f6840331e7c4ebb9e6e8ede781015afa5e24abaffa643e7b7758e0bb077f9b5-md.png)
+![image.png](../imagenes/0f6840331e7c4ebb9e6e8ede781015afa5e24abaffa643e7b7758e0bb077f9b5-md.png)
 
 Si queremos que extraiga datos de una boleta y que los pase a un excel, lo que haremos es decirle eso exactamente, y cuales son las variables que queremos extraer. Para fines prácticos usaremos: Fecha | Order ID | Producto Nombre | Total Gastado | Mail de contacto  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ccb9cd06bb054432a00ac474bcc95f1e3436f06c351d44ef9f16cafa13055414)
+![image.png](../imagenes/ccb9cd06bb054432a00ac474bcc95f1e3436f06c351d44ef9f16cafa13055414.png)
 
 > Prompt utilizado: 
 > 
@@ -140,11 +140,11 @@ Si queremos que extraiga datos de una boleta y que los pase a un excel, lo que h
 
 Luego nos responderá con el siguiente mensaje:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/083b333f26c84974b62b5c699ea9b9d378e00707f3274be5b72a3116726d1a58-md.png)
+![image.png](../imagenes/083b333f26c84974b62b5c699ea9b9d378e00707f3274be5b72a3116726d1a58-md.png)
 
 Y esta es la parte importante... porque nos dará el codigo del OpenAI Schema:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7eb9837bdd2d476b94227d36e33691b09fcecb50541645de85460d94a04938bb)
+![image.png](../imagenes/7eb9837bdd2d476b94227d36e33691b09fcecb50541645de85460d94a04938bb.png)
 
 Código que copiaremos y pegaremos en el siguiente paso.
 
@@ -164,15 +164,15 @@ Para este paso, necesitaremos al cuenta de ChatGPT Plus. Crearemos un GPT person
   
 Entraremos a ChatGPT y nos iremos a la sección de arriba a la izquierda que aparece "Explore GPT's"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/787d67cdca394752879f5c7b58037330d27ab4ae7f974e5d9729b408aefcffd7)
+![image.png](../imagenes/787d67cdca394752879f5c7b58037330d27ab4ae7f974e5d9729b408aefcffd7.png)
 
 Iremos arriba donde sale "Create"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/6efd645540724ac2a05b11ae1d7bbac67110f9537f6e4baaac6c4ba76b27adf8-md.png)
+![image.png](../imagenes/6efd645540724ac2a05b11ae1d7bbac67110f9537f6e4baaac6c4ba76b27adf8-md.png)
 
 Rellenaremos el GPT con la informacion que necesitamos. Nota, esto lo peudes adaptar dependiendo de la funciones que quieres que realice, pero esta es la base.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/3c23d57b94a94b2c9e2092f05e45002c5fa732a5bb4d40d3b73e66bd0075e507-md.png)
+![image.png](../imagenes/3c23d57b94a94b2c9e2092f05e45002c5fa732a5bb4d40d3b73e66bd0075e507-md.png)
 
 > Instruccion: Eres un asistente personal y ejecutivo muy útil, automatizando tareas para tu cliente, Benja. El objetivo es procesar sus tareas, enviando los resultados a varios webhooks que se recibirán en Make.com, los cuales luego se procesarán para realizar otras tareas y devolver un resultado que necesitas escribirle al usuario. Aquí están las reglas:
 > 
@@ -194,11 +194,11 @@ Rellenaremos el GPT con la informacion que necesitamos. Nota, esto lo peudes ada
 
 Luego le daremos a donde sale "Create a new action"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/08e7f0f6a7e04fa1a9378ca4120352406aa7b4a6721b4f5391ab015762d5f8ea)
+![image.png](../imagenes/08e7f0f6a7e04fa1a9378ca4120352406aa7b4a6721b4f5391ab015762d5f8ea.png)
 
 Y aquí le pegaremos el código json que nos dio el GPT en el paso anterior
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/40b24ff9b24f4a5ea45b567e256e73708739859e1a05430f84878d74b9eca977-md.png)
+![image.png](../imagenes/40b24ff9b24f4a5ea45b567e256e73708739859e1a05430f84878d74b9eca977-md.png)
 
 Nota: Abajo tienes que poner el "privacy policy" que es 
 
@@ -208,33 +208,33 @@ https://www.make.com/en/privacy-notice
 
 Le daremos a "Create"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a1838824c7e4404aa7458eb6aae636b0ea5254378895447bbff725a0ac18da92)
+![image.png](../imagenes/a1838824c7e4404aa7458eb6aae636b0ea5254378895447bbff725a0ac18da92.png)
 
 y eligiremos la opción de "Only Me" para no comaprtir el GPT con nadie más y que nadie más tenga acceso a nuestro webhook (si quieres compartirlo con el equipo, puedes poner comaprtir con el link)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0daad5f3fed048b3a674e94730e7984c12fbcd8a02ac4165bfb99020218cae86)
+![image.png](../imagenes/0daad5f3fed048b3a674e94730e7984c12fbcd8a02ac4165bfb99020218cae86.png)
 
 Ya tendremos nuestro Jarvis "operativo"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cd981cd621ae4b86b22af42ba15e2af51c9c53c5714b4fb99d48e0c15949c962-md.png)
+![image.png](../imagenes/cd981cd621ae4b86b22af42ba15e2af51c9c53c5714b4fb99d48e0c15949c962-md.png)
 
 ## Verificar que funciona
 
 Para verificar que funciona, habilitaremos el "run once" del escenario de Make e intentaremos enviarle informacion.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/981dc7ff3d0f4ea9a5d6a86e6d8eb819da9c5a048fea4136a0f00a239b5bdbe9-md.png)
+![image.png](../imagenes/981dc7ff3d0f4ea9a5d6a86e6d8eb819da9c5a048fea4136a0f00a239b5bdbe9-md.png)
 
 Para enviarle info le pediremos a chatgpt que nos mande informacion por ejemplo, de una boleta (puedes probar con esta misma imagen)
 
-![sales-services-invoice-07.jpg](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d06b06294c3b47afad02093ff76eede8677a58034cc645d29698dfaaffcfe0a3-md.jpg)
+![sales-services-invoice-07.jpg](../imagenes/d06b06294c3b47afad02093ff76eede8677a58034cc645d29698dfaaffcfe0a3-md.jpg)
 
 Entraremos al GPT personalizado "Jarvis", y le subiremos la data y le pediremos que nos mande la info a Make para verificar que funciona.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4edfad96061945648eed394ddab0699c759ca4a559de4b58a714f89cc9faa09c-md.png)
+![image.png](../imagenes/4edfad96061945648eed394ddab0699c759ca4a559de4b58a714f89cc9faa09c-md.png)
 
 Cuando apretemos "Confirm" debería aparecernos algo así en Make, donde tendremos la data que nos es relevante.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ee83593526994252b540bfd73a7de2bff71566e2d8a0463f9910d9f54e779043-md.png)
+![image.png](../imagenes/ee83593526994252b540bfd73a7de2bff71566e2d8a0463f9910d9f54e779043-md.png)
 
 ## Integración con Google Sheets:
 
@@ -242,19 +242,19 @@ De aquí en adelante, ya las opciones son infintias. Pasaremos los datos automat
 
 - Crea un google sheets donde pasaremos la informacion.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1c3a1de6d5e44f78acf01a438329dfa49c9bf250a52f4154a652d639eabf6eaa)
+![image.png](../imagenes/1c3a1de6d5e44f78acf01a438329dfa49c9bf250a52f4154a652d639eabf6eaa.png)
 
 **Configura Google Sheets en **[**Make.com**](http://Make.com): Añade Google Sheets a [Make.com](http://Make.com) y selecciona el "add a row"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b7634eaed5a64e35b4bfbebc87f4aea0ceee9ceab41840c99c3b8b6be709ca0e)
+![image.png](../imagenes/b7634eaed5a64e35b4bfbebc87f4aea0ceee9ceab41840c99c3b8b6be709ca0e.png)
 
 Mapea los datos recibidos del webhook a las columnas de tu hoja de cálculo.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/246356cd874a4ff28f25e06f97ca455bc8e100b42e5c4b7e96538cbaa96bb865-md.png)
+![image.png](../imagenes/246356cd874a4ff28f25e06f97ca455bc8e100b42e5c4b7e96538cbaa96bb865-md.png)
 
 **Prueba el Flujo**: Dale a "Run Once" abajo a la izquierda y envía datos de prueba desde ChatGPT y verifica que se guarden en la hoja de Google Sheets.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2cf447dd553f492b8c12e3f9bade9220db7385b43507453eb791939e4fa7f0c9)
+![image.png](../imagenes/2cf447dd553f492b8c12e3f9bade9220db7385b43507453eb791939e4fa7f0c9.png)
 
 ---
 
@@ -272,7 +272,7 @@ Aquí puedes conectar literalmente con más de 10,000 aplicaciones en [Make.com]
 
 Si quieres que ChatGPT realice múltiples tareas, añade nuevas rutas:
 
-- Crearemos un nuevo webhook en un **nuevo escenario**, que será llamado en el caso que se detecte la intención de "crear una nueva reunion y enviarle un mail de confirmacion" ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/19de7ab058314e54ba259414cac491d9f45b4dc77c964667b9fb36a39b98de42) **Editar el ChatGPT Personalizado**: Necesitaremos modificar el codigo nuevamente con el [GPT que nos ayudo a armar el "OpenAI Schema"](https://chatgpt.com/g/g-qaZZZqxzt-create-make-com-webhook-integration) inicial y decirle **en la misma conversacion** (prompt): > Oye, ya tenemos esta funcion, necesito agregarle un nuevo webhook que ahora se desencadene y se envie a make cuando necesite crear una nueva reunion con alguien, y que se la mandemos al mail  
+- Crearemos un nuevo webhook en un **nuevo escenario**, que será llamado en el caso que se detecte la intención de "crear una nueva reunion y enviarle un mail de confirmacion" ![image.png](../imagenes/19de7ab058314e54ba259414cac491d9f45b4dc77c964667b9fb36a39b98de42.png) **Editar el ChatGPT Personalizado**: Necesitaremos modificar el codigo nuevamente con el [GPT que nos ayudo a armar el "OpenAI Schema"](https://chatgpt.com/g/g-qaZZZqxzt-create-make-com-webhook-integration) inicial y decirle **en la misma conversacion** (prompt): > Oye, ya tenemos esta funcion, necesito agregarle un nuevo webhook que ahora se desencadene y se envie a make cuando necesite crear una nueva reunion con alguien, y que se la mandemos al mail  
 >   
 > El link del webhook es: [https://hook.us1.make.com](https://hook.us1.make.com/f37g8gvrkj7v7r6mohmxcrn97dkdivzw)  
 > Y el ID es: [/f37g8gvrkj7v7r6mohmxcrn97dkdivzw](https://hook.us1.make.com/f37g8gvrkj7v7r6mohmxcrn97dkdivzw)  
@@ -291,23 +291,23 @@ Si quieres que ChatGPT realice múltiples tareas, añade nuevas rutas:
 
 A lo que procederá a modificarte nuevamente el código, código que reemplazaremos en el OpenAI Schema de nuestro Jarvis.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d3e6eb7c763b46bcac12e4311643bc03d5c01ba0927d450ab5bf1ed1a51ae186)
+![image.png](../imagenes/d3e6eb7c763b46bcac12e4311643bc03d5c01ba0927d450ab5bf1ed1a51ae186.png)
 
 Nos iremos nuevamente a "My GPT's" a reemplazar el código, por ende iremos a "Edit GPT"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/916cbb193dbb447d90887ac58f693c39ad168a8a314b486197ab2989702e2c52-md.png)
+![image.png](../imagenes/916cbb193dbb447d90887ac58f693c39ad168a8a314b486197ab2989702e2c52-md.png)
 
 Abriremos la acción que creamos previamente
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/50f462e6a58a4eca9d73dc2e10d113e51fd4f1114ad44d8caef21d4a31751f02)
+![image.png](../imagenes/50f462e6a58a4eca9d73dc2e10d113e51fd4f1114ad44d8caef21d4a31751f02.png)
 
 Copiaremos y reemplazaremos el código COMPLETO, ya que este nuevo codigo incluye las dos funciones, tanto la del sheets como la de la reunion.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ac77dc86cec948749d6932dacaed8406253b41fd16da4ba890a628a3da4fb768)
+![image.png](../imagenes/ac77dc86cec948749d6932dacaed8406253b41fd16da4ba890a628a3da4fb768.png)
 
 Podemos confirmar que hay dos webhooks y dos acciones que se ejectuaran en cada situacion deseada si nos vamos abajo y vemos las "available actions"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/394b4fb3deee488493153aa132d8aee4eb83b3fba6ed47788f8b38501507ac69)
+![image.png](../imagenes/394b4fb3deee488493153aa132d8aee4eb83b3fba6ed47788f8b38501507ac69.png)
 
 Cada una de estas se desencadenará en caso de que se vea la intención de llamar alguna de estas.
 
@@ -315,46 +315,46 @@ Cada una de estas se desencadenará en caso de que se vea la intención de llama
 
 Volveremos a abrir el escenario donde tenemos el webhook y continuaremos la automatizacion en Make. Agregaré un modulo de "crear una nueva reunion"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f1973d0293cf4df8a5db8506bab5d1f6678b8be7a09041cbaf3728d2cb7a521d-md.png)
+![image.png](../imagenes/f1973d0293cf4df8a5db8506bab5d1f6678b8be7a09041cbaf3728d2cb7a521d-md.png)
 
 Le dare a correr una vez para que el webhook me tome las variables que quiero trabajar con, así que habilitaré el "run once"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5b194a28fead48e7afbc89fb375f95a6b6ead72bd0fa4eb2ae2d0997b1cddc65)
+![image.png](../imagenes/5b194a28fead48e7afbc89fb375f95a6b6ead72bd0fa4eb2ae2d0997b1cddc65.png)
 
 y luego le mandare la data desde ChatGPT
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/216d7d2a0f8046d4ba001af2dbd303486f5d656fd0094728a7cb328cf141b551)
+![image.png](../imagenes/216d7d2a0f8046d4ba001af2dbd303486f5d656fd0094728a7cb328cf141b551.png)
 
 Y podemos verificar que ya está funcionando:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d6eb84ebbb934451a9fa09f4307a1e4f32469185b6884db2ad4be66b354453f3-md.png)
+![image.png](../imagenes/d6eb84ebbb934451a9fa09f4307a1e4f32469185b6884db2ad4be66b354453f3-md.png)
 
 Ahora solo tenemos que crear el flujo y reemplazar las variables.  
 Le agregaré el "enviar un mail desde outlook"
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/32e05a3cbd8e44d987177f359a6e97cb3a98d86b92bf4bd6b36de03f5b2ad023-md.png)
+![image.png](../imagenes/32e05a3cbd8e44d987177f359a6e97cb3a98d86b92bf4bd6b36de03f5b2ad023-md.png)
 
 Reemplazamos las variables en cada uno de estos, por ejemplo en el google meet sería algo así:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/80789888b27a49b68c1bed3f18e5214f94267523387f444881f6eb94105f5775-md.png)
+![image.png](../imagenes/80789888b27a49b68c1bed3f18e5214f94267523387f444881f6eb94105f5775-md.png)
 
 Y en el outlook algo así:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e18ec63081c548d6bf70f1dce18d3cece6fe9707c2e947adab47ac18254d2f88-md.png)
+![image.png](../imagenes/e18ec63081c548d6bf70f1dce18d3cece6fe9707c2e947adab47ac18254d2f88-md.png)
 
 Ahora si guardamos y activamos la automatizacion:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c36dc21a387b44279dfc079897cc6f693af794bea6784d28b8915a067dca5d7a-md.png)
+![image.png](../imagenes/c36dc21a387b44279dfc079897cc6f693af794bea6784d28b8915a067dca5d7a-md.png)
 
 y le volvemos a escribir lo mismo a ChatGPT"Necesito que me crees una reunion con Benja para mañana a las 16:00 hrs, debe durar 45 minutos y quiero mandarsela al mail [becord00@gmail.com](mailto:becord00@gmail.com)"  
   
 ChatGPT nos dirá:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4ef77450ce5c4284ad3b50cc40d59ffa7818516d6aca4171860dca7742d62b84)
+![image.png](../imagenes/4ef77450ce5c4284ad3b50cc40d59ffa7818516d6aca4171860dca7742d62b84.png)
 
 Y recibiremos un mail así:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/51f9db9b23a342c69a65ba3e38f3a7881f8f1d32446e43bd96f627188287abdf-md.png)
+![image.png](../imagenes/51f9db9b23a342c69a65ba3e38f3a7881f8f1d32446e43bd96f627188287abdf-md.png)
 
 ---
 

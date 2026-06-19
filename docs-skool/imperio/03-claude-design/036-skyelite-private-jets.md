@@ -7,7 +7,7 @@
 
 ---
 
-![  Jets privados SkyElite.gif](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f0e989ab29de40ad86ce34066b1a9348f09adb1b375242a2a39dfc25ea664986-md.png)
+![  Jets privados SkyElite.gif](../imagenes/f0e989ab29de40ad86ce34066b1a9348f09adb1b375242a2a39dfc25ea664986-md.png)
 
 > Create a premium private jet landing page hero section with the following specifications:
 > 

@@ -12,7 +12,7 @@ En la pestaña [**Calendar**](https://www.skool.com/imperio-digital/calendar) en
 
 ### Entre 4 y 5 sesiones semanales (incluso a veces 6)
 
-![CleanShot 2026-04-23 at 12.19.17.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/457d049725704ddc81d0f3952b86c589d9dda50e33d5489ba1e8b1a9d1014af6.png)
+![CleanShot 2026-04-23 at 12.19.17.png](../imagenes/457d049725704ddc81d0f3952b86c589d9dda50e33d5489ba1e8b1a9d1014af6.png)
 
 ### Tu prioridad AHORA: Sesión Hola
 

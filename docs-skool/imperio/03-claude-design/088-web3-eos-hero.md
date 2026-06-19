@@ -7,7 +7,7 @@
 
 ---
 
-![hero-web3-eos-poster-DF0_WdVS.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/74e3632afd154a848566a763eed3c1cc611b6038727e444ebc2d4f53e98777b3.png)
+![hero-web3-eos-poster-DF0_WdVS.png](../imagenes/74e3632afd154a848566a763eed3c1cc611b6038727e444ebc2d4f53e98777b3.png)
 
 > Build a full-screen hero section for a Web3 landing page. Use the font "General Sans" (from Fontshare) throughout. The entire section has a pure black (#000000) background with a fullscreen looping background video (muted, autoplay, playsInline) using this URL: [https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4](https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4). The video is covered by a 50% black overlay (bg-black/50) for readability. All content sits on top of the video.
 > 

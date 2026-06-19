@@ -39,7 +39,7 @@ Todo 100% automático.
 - Configuras webhooks de producción en n8n.
 - Bloqueas llamadas, grupos y activas sincronización de historial.
 
-![CleanShot 2025-12-04 at 18.57.41.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a615fa586c17463fb5dbd6ba15f1a9802f241c967a7f4719a72eebcc87e221f3-md.png)
+![CleanShot 2025-12-04 at 18.57.41.png](../imagenes/a615fa586c17463fb5dbd6ba15f1a9802f241c967a7f4719a72eebcc87e221f3-md.png)
 
 ---
 
@@ -49,7 +49,7 @@ Todo 100% automático.
 - Filtro `fromMe` evita que el bot se responda a sí mismo.
 - Se crea clave en Redis para bloquear auto-respuestas humanas.
 
-![CleanShot 2025-12-04 at 18.58.17.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7672e67967484d2bb19b5c54cacac21cdc285452888542ff963006c2ac128c3d.png)
+![CleanShot 2025-12-04 at 18.58.17.png](../imagenes/7672e67967484d2bb19b5c54cacac21cdc285452888542ff963006c2ac128c3d.png)
 
 ---
 
@@ -60,7 +60,7 @@ Todo 100% automático.
 - Se consolidan todos los mensajes en uno solo.  
 Resultado: el agente recibe *una sola intención limpia*, no 5 mensajes sueltos.
 
-![CleanShot 2025-12-04 at 18.58.41.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/125e831ef151479f981460c4f30bd091972111d87a1e4cc0bfcf9285fe4ab9b2.png)
+![CleanShot 2025-12-04 at 18.58.41.png](../imagenes/125e831ef151479f981460c4f30bd091972111d87a1e4cc0bfcf9285fe4ab9b2.png)
 
 ---
 
@@ -69,7 +69,7 @@ Resultado: el agente recibe *una sola intención limpia*, no 5 mensajes sueltos.
 - Texto directo.
 - Audio → transcripción automática con OpenAI/Gemini.
 - Imagen → análisis visual con IA.
-- Video → rechazo automático con mensaje humano. ![CleanShot 2025-12-04 at 18.59.08.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9789d95de880447295b7dafdae271090d53cb3d85fc3456f8f7f56d77d25a41d.png)
+- Video → rechazo automático con mensaje humano. ![CleanShot 2025-12-04 at 18.59.08.png](../imagenes/9789d95de880447295b7dafdae271090d53cb3d85fc3456f8f7f56d77d25a41d.png)
 
 ### 5. Guardrails de Seguridad
 
@@ -82,7 +82,7 @@ Antes de que el mensaje llegue al agente:
 
 Esto **reduce baneos y riesgos legales** de forma brutal.
 
-![CleanShot 2025-12-04 at 18.59.36.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/00dc275de857448db03471ecf6ceb9c735a1313dc67a42078f7cf8765028c51c.png)
+![CleanShot 2025-12-04 at 18.59.36.png](../imagenes/00dc275de857448db03471ecf6ceb9c735a1313dc67a42078f7cf8765028c51c.png)
 
 ### 6. Memoria en PostgreSQL
 
@@ -105,7 +105,7 @@ Campos usados:
 
 El agente crea o actualiza registros automáticamente.
 
-![CleanShot 2025-12-04 at 19.00.14.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/3dfe4034210c4640aa461dc0e4f94afed7776d1bfb8f496abd37006b01bce282.png)
+![CleanShot 2025-12-04 at 19.00.14.png](../imagenes/3dfe4034210c4640aa461dc0e4f94afed7776d1bfb8f496abd37006b01bce282.png)
 
 ---
 
@@ -122,7 +122,7 @@ Todo vía API.
 Eventos usados: 30 min y 120 min.  
 Confirmación automática por WhatsApp.
 
-![CleanShot 2025-12-04 at 19.01.04.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/18631476b1fa4a87bbca42a85100d3643a716506ad9340a0a5be19a34e8295ee.png)
+![CleanShot 2025-12-04 at 19.01.04.png](../imagenes/18631476b1fa4a87bbca42a85100d3643a716506ad9340a0a5be19a34e8295ee.png)
 
 ---
 
@@ -133,7 +133,7 @@ Confirmación automática por WhatsApp.
 - Respuestas humanas ante errores.
 - Reglas de uso seguro exactamente como en la infografía que les dejé.
 
-![CleanShot 2025-12-04 at 19.01.25.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/eee33dc3458646b2a661355028cb74122866be70cdd14277af9b7f7b7889bd8f.png)
+![CleanShot 2025-12-04 at 19.01.25.png](../imagenes/eee33dc3458646b2a661355028cb74122866be70cdd14277af9b7f7b7889bd8f.png)
 
 ---
 
@@ -164,7 +164,7 @@ Todo listo para **copiar, pegar y adaptar**.
 Esto no es un bot simple.  
 Esto es **un agente comercial completo en producción**.
 
-![Recomendaciones Whatsapp.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/fe6e23b97fdf4cb3bb0923d820d198fa0ff1ec54b24944cc8c67e74c0c778100-md.png)
+![Recomendaciones Whatsapp.png](../imagenes/fe6e23b97fdf4cb3bb0923d820d198fa0ff1ec54b24944cc8c67e74c0c778100-md.png)
 
 ## 🎙️ Transcripción
 

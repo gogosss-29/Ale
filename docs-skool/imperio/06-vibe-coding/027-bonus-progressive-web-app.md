@@ -26,7 +26,7 @@ Una **Progressive Web App** es una aplicación web que:
 
 No reemplaza una app nativa, pero para MVPs, dashboards internos y herramientas B2B es **más que suficiente**.
 
-![PWA.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0a567f72d6994d6aaf274dbb87be71fd195d58140c5240799520ed853870d174.png)
+![PWA.png](../imagenes/0a567f72d6994d6aaf274dbb87be71fd195d58140c5240799520ed853870d174.png)
 
 ## 2. Análisis del stack actual
 

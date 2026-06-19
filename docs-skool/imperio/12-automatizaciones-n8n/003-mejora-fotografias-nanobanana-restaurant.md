@@ -12,7 +12,7 @@
 
 Tomamos la idea de [Claudio Fuentes](https://www.skool.com/imperio-digital/mejora-de-platos-de-comida-enviando-fotos-por-telegram) y la escalamos: cómo automatizar el "antes y después" para prospectar masivamente restaurantes con valor por adelantado sin perder horas con Nanobanana Pro.
 
-![CleanShot 2026-01-09 at 22.33.45@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d4a5f20c55404826ab236aed57704946dadb142c0e8744d980b371ab8011384b-md.png)
+![CleanShot 2026-01-09 at 22.33.45@2x.png](../imagenes/d4a5f20c55404826ab236aed57704946dadb142c0e8744d980b371ab8011384b-md.png)
 
 Seamos honestos: nadie se levanta con ganas de recibir otro correo frío vendiendo humo.
 
@@ -26,7 +26,7 @@ El problema es que hacer esto manual toma horas. Buscar el restaurante, bajar la
 
 Hace un tiempo, [**Claudio Fuentes**](https://www.skool.com/imperio-digital/mejora-de-platos-de-comida-enviando-fotos-por-telegram) compartió una automatización genial en la comunidad con esta lógica. 
 
-![CleanShot 2026-01-12 at 14.27.24.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/23df33c9a7fe46b28cb681f6ee15cd77982c016ecb314512b932cee15dcc3d89.png)
+![CleanShot 2026-01-12 at 14.27.24.png](../imagenes/23df33c9a7fe46b28cb681f6ee15cd77982c016ecb314512b932cee15dcc3d89.png)
 
 Me pareció brillante, pero como saben que me obsesiona la escalabilidad, decidí hacerle un **upgrade** para convertir esa idea en una línea de producción industrial.
 

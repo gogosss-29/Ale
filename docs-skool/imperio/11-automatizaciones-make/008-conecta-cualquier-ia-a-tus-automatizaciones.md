@@ -13,7 +13,7 @@
 
 ### 1. ¿Qué hace exactamente esta automatización?
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cd1e581d989d4f7da49be42de5fd262ff8b244469b054c49aa6f86245bbc3c34-md.png)
+![image.png](../imagenes/cd1e581d989d4f7da49be42de5fd262ff8b244469b054c49aa6f86245bbc3c34-md.png)
 
 1. **Recibe tu idea** (una frase dentro de `{ }`) mediante un Webhook.
 2. **Genera cuatro prompts** (texto, video, audio y caption) con OpenAI.

@@ -25,7 +25,7 @@ Un prompt es una instrucción que le das a la IA para que realice una tarea espe
 
 #### **Cómo Crear un Prompt Efectivo**
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/812caa4dff33479391e85a033edfc887bd4efad1646641f1b0ba7c61ad200f4a)
+![image.png](../imagenes/812caa4dff33479391e85a033edfc887bd4efad1646641f1b0ba7c61ad200f4a.png)
 
 En este caso, queremos que ChatGPT escriba guiones para shorts de YouTube enfocados en el nicho de inteligencia artificial. Aquí tienes un ejemplo de cómo estructurar tu prompt:
 
@@ -77,7 +77,7 @@ No repitas prompts. Dame 10 guiones cortos para los shorts.
 
 Y estos fueron los resultados.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cbf83c93bb97439c93a4e695ea7459ad3eff94ee1e8b4ea08e1e958320c14348)
+![image.png](../imagenes/cbf83c93bb97439c93a4e695ea7459ad3eff94ee1e8b4ea08e1e958320c14348.png)
 
 ### **Paso 2: Creación en Masa de Videos con Canva**
 
@@ -86,14 +86,14 @@ Una vez que tengas tus guiones listos, el siguiente paso es crear los videos en 
 #### **Crear un Nuevo Diseño en Canva**
 
 1. Inicia sesión en Canva y selecciona "Crear un diseño nuevo". 1. Nota: es una función de Canva Premium, pero si te registras con un nuevo mail, tienes acceso a un mes gratis… así que ya sabes. Yo he utilizado ya casi 4 cuentas, nunca lo he pagado! Además solo lo usaremos una vez.
-2. Busca "YouTube Shorts" o “Reels” y selecciona el formato adecuado. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e6ebaa2638334808bf030c093e97d56d6d1b246fb3094a8db5efccc927f04746)
+2. Busca "YouTube Shorts" o “Reels” y selecciona el formato adecuado. ![image.png](../imagenes/e6ebaa2638334808bf030c093e97d56d6d1b246fb3094a8db5efccc927f04746.png)
 3. Puedes optar por usar plantillas pre-diseñadas o personalizar tus propios diseños desde cero.
 
 #### **Personalización de Videos**
 
-- **Sube tus Videos:** Si tienes videos pregrabados, súbelos a Canva. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c63210bcdc7b497e941c1b2ea4bfd000f6e5724acaee4947aecc97dbf77584e4)
-- **Añade Texto:** Agrega los textos correspondientes a cada parte de tu guion. Puedes modificar la fuente, el color y la ubicación según tus preferencias. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b73b11b159464542a0e340b49622926b913591a259df43e7acd4ac314834e581)
-- **Sincroniza con el Video:** Asegúrate de que el texto aparezca en el momento adecuado del video para que coincida con lo que está ocurriendo visualmente (click derecho a cada texto) ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b7689681d11b447290a486d49d9e5ad209d9669f16f043ac8ba7e30e30e1fff1)
+- **Sube tus Videos:** Si tienes videos pregrabados, súbelos a Canva. ![image.png](../imagenes/c63210bcdc7b497e941c1b2ea4bfd000f6e5724acaee4947aecc97dbf77584e4.png)
+- **Añade Texto:** Agrega los textos correspondientes a cada parte de tu guion. Puedes modificar la fuente, el color y la ubicación según tus preferencias. ![image.png](../imagenes/b73b11b159464542a0e340b49622926b913591a259df43e7acd4ac314834e581.png)
+- **Sincroniza con el Video:** Asegúrate de que el texto aparezca en el momento adecuado del video para que coincida con lo que está ocurriendo visualmente (click derecho a cada texto) ![image.png](../imagenes/b7689681d11b447290a486d49d9e5ad209d9669f16f043ac8ba7e30e30e1fff1.png)
 
 #### **Crear Videos en Masa**
 
@@ -101,11 +101,11 @@ Canva ofrece una función de "crear en masa" que te permite generar múltiples v
   
 **Accede a la Función de Creación en Masa:**
 
-- Canva ofrece una función llamada "Bulk Create" o "Crear en Masa", que es ideal para generar múltiples versiones de un video de forma automática. Para acceder a esta función, desplázate hacia abajo en el menú de la izquierda y haz clic en "Bulk Create". ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7e4981bdd053470ba8f35fb0c203d75fac01a5281b0748139da78cc1786605ba)
+- Canva ofrece una función llamada "Bulk Create" o "Crear en Masa", que es ideal para generar múltiples versiones de un video de forma automática. Para acceder a esta función, desplázate hacia abajo en el menú de la izquierda y haz clic en "Bulk Create". ![image.png](../imagenes/7e4981bdd053470ba8f35fb0c203d75fac01a5281b0748139da78cc1786605ba.png)
 
 **Carga los Datos de Tu Hoja de Cálculo:**
 
-- **Ingresar Datos Manualmente:** Si tienes tus guiones en una hoja de cálculo (por ejemplo, en Google Sheets), puedes copiarlos y pegarlos directamente en Canva. Selecciona la opción "Ingresar datos manualmente" y pega el contenido. Seleccionarás toda la tabla que te creó ChatGPT, copiarás y pegarás. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/383536291b694738884c3130ee121edc1031008d8d2240a2964400ada20df52d)
+- **Ingresar Datos Manualmente:** Si tienes tus guiones en una hoja de cálculo (por ejemplo, en Google Sheets), puedes copiarlos y pegarlos directamente en Canva. Selecciona la opción "Ingresar datos manualmente" y pega el contenido. Seleccionarás toda la tabla que te creó ChatGPT, copiarás y pegarás. ![image.png](../imagenes/383536291b694738884c3130ee121edc1031008d8d2240a2964400ada20df52d.png)
 - **Subir un Archivo CSV:** Alternativamente, si tienes los datos en un archivo CSV, puedes subirlo directamente a Canva. Esto es útil si ya tienes una estructura de guion en formato de tabla.
 
 **Asignar Datos al Diseño:**
@@ -117,7 +117,7 @@ Canva ofrece una función de "crear en masa" que te permite generar múltiples v
 
 - Después de conectar los datos, Canva generará automáticamente todos los videos en masa. Puedes hacer clic en "Generar" o "Create" y Canva creará una versión de video para cada fila de datos que hayas ingresado.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4f238970c2e54d20b9e37d13246e77b0817f1cca1e9246b9a245e20f80ca4997-md.png)
+![image.png](../imagenes/4f238970c2e54d20b9e37d13246e77b0817f1cca1e9246b9a245e20f80ca4997-md.png)
 
 Como puedes ver acá, el título está aplicado a la primera columna, la parte 1 a la segunda, la 2 a la tercera y la 4 a la cuarta.
 
@@ -129,7 +129,7 @@ Para hacer tus videos aún más atractivos, puedes agregar música. Selecciona u
 
 Una vez que hayas terminado de personalizar tus videos, apreta el botón "Generar" que se encuentra en Bulk Create. Asegúrate de marcar la opción de descargar cada video como un archivo separado.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7553b5656ea44cf5a553794582bb9ec833b2646991094efcb630e58e1a19adde-md.png)
+![image.png](../imagenes/7553b5656ea44cf5a553794582bb9ec833b2646991094efcb630e58e1a19adde-md.png)
 
 *Aquí hay 10 videos, cada uno con el texto que le creamos, y como previamente le ajustamos el tiempo, irá apareciendo cada uno en distintos tiempos.*
 
@@ -137,27 +137,27 @@ Una vez que hayas terminado de personalizar tus videos, apreta el botón "Genera
 
 El último paso es la automatización de la publicación de tus shorts en YouTube utilizando [Make.com](https://bencorde.com/make)[. ](http://Make.com)Nota, si quieres saltarte la automatización y solamente importarla, puedes descargar la automatización de make en el pie de página de este post.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0dd875d3d84e4314bb65c580826bf432a6ebf8dab3ea4e27a165b9b950d1262c)
+![image.png](../imagenes/0dd875d3d84e4314bb65c580826bf432a6ebf8dab3ea4e27a165b9b950d1262c.png)
 
 #### **Subir Videos a Dropbox**
 
 Para comenzar, sube todos los videos que descargaste de Canva a una carpeta en Dropbox. Esto facilitará la automatización del proceso de publicación. Dropbox te pedirá una suscripción para comenzar a almacenar los videos, pero no te preoucpes porque nuevamente, te dan un mes de prueba y tendremos que usarlo solo una vez.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4d21f59b2a1145949f385190c23ade62b5fd4ee6f51d40f58bf77a7680dd314f-md.png)
+![image.png](../imagenes/4d21f59b2a1145949f385190c23ade62b5fd4ee6f51d40f58bf77a7680dd314f-md.png)
 
 #### **Configurar la Automatización en **[**Make.com**](https://bencorde.com/make)
 
-1. **Crear un Nuevo Escenario:** Inicia sesión en [Make.com](https://bencorde.com/make) y crea un nuevo escenario. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/00dfd87cacb6482b90c1fa2b430495d6565628b3515e451db7903bdf55caea9d)
-2. **Añadir un Repetidor o "repeater":** Configura un módulo de repetidor que suba los videos uno por uno en secuencia. Le pondremos que se repita desde el 1 al número de videos que creaste. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/906f2b75f9434d5f90280fed64e7904fc797e7fa707d48f6a3bbae6238b3d3cf)
-3. **Conectar y añadir módulo de Dropbox:** Conecta[ Make.com](https://bencorde.com/make) con tu cuenta de Dropbox para que pueda acceder a los videos, esto lo harás bajo el módulo "Dropbox: Download File". ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0150d90a395f4f2d90c1896a484ee1ac28fba72681754175b65e43174aad285b) Aquí en el nombre del archivo, podemos ver que make los nombro tipo "1.mp4", "2.mp4"... y así hasta el "10.mp4". Para esto, agregaremos en el nombre del archivo luego de elegir el módulo un "i.mp4". Es importante que habilitemos el tick que sale "Map"  
+1. **Crear un Nuevo Escenario:** Inicia sesión en [Make.com](https://bencorde.com/make) y crea un nuevo escenario. ![image.png](../imagenes/00dfd87cacb6482b90c1fa2b430495d6565628b3515e451db7903bdf55caea9d.png)
+2. **Añadir un Repetidor o "repeater":** Configura un módulo de repetidor que suba los videos uno por uno en secuencia. Le pondremos que se repita desde el 1 al número de videos que creaste. ![image.png](../imagenes/906f2b75f9434d5f90280fed64e7904fc797e7fa707d48f6a3bbae6238b3d3cf.png)
+3. **Conectar y añadir módulo de Dropbox:** Conecta[ Make.com](https://bencorde.com/make) con tu cuenta de Dropbox para que pueda acceder a los videos, esto lo harás bajo el módulo "Dropbox: Download File". ![image.png](../imagenes/0150d90a395f4f2d90c1896a484ee1ac28fba72681754175b65e43174aad285b.png) Aquí en el nombre del archivo, podemos ver que make los nombro tipo "1.mp4", "2.mp4"... y así hasta el "10.mp4". Para esto, agregaremos en el nombre del archivo luego de elegir el módulo un "i.mp4". Es importante que habilitemos el tick que sale "Map"  
   
- ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5bca85be5ea04d3ea21e52df828377913e86ce57e95242fab5f9c14cd0e99fa1)   
+ ![image.png](../imagenes/5bca85be5ea04d3ea21e52df828377913e86ce57e95242fab5f9c14cd0e99fa1.png)   
 Este "i", hará que cuando se ejecute la automatización pase del video "1.mp4", al "2.mp4", al "3.mp4" y así hasta el 10 (o el número que le pusimos anteriormente).
-4. **Crear título con ChatGPT (opcional): **Agregaremos el módulo de OpenAI. Si no lo has configurado anteriormente, deberás ir a [https://platform.openai.com/api-keys. ](https://platform.openai.com/api-keys)hEsto está más detallado en las guias anteriores, específicamente en la de  ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4c0468cbfcbe47b5a428b35af4657eabebade373828c4759b30da5152246f030-md.png) Crear un "API" y agregarla en make en el módulo "OpenAI: Create a Completion". ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/207e67c7178f4c768a6bb6546521ccf04ae6016eacc84d17ba2f08fc44154119)
+4. **Crear título con ChatGPT (opcional): **Agregaremos el módulo de OpenAI. Si no lo has configurado anteriormente, deberás ir a [https://platform.openai.com/api-keys. ](https://platform.openai.com/api-keys)hEsto está más detallado en las guias anteriores, específicamente en la de  ![image.png](../imagenes/4c0468cbfcbe47b5a428b35af4657eabebade373828c4759b30da5152246f030-md.png) Crear un "API" y agregarla en make en el módulo "OpenAI: Create a Completion". ![image.png](../imagenes/207e67c7178f4c768a6bb6546521ccf04ae6016eacc84d17ba2f08fc44154119.png)
 
 Aquí seleccionaras el modelo que queremos usar, para este caso usaré el GPT 3.5 al ser el más económico. Expandiremos en mensajes, y bajo "Rol" o "Role" Eligiremos "Usuario" o "User".
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/bfa58472d5c941a8b118eaa3f6f11d8037543ed32eee413fa8adb8b51762c765)
+![image.png](../imagenes/bfa58472d5c941a8b118eaa3f6f11d8037543ed32eee413fa8adb8b51762c765.png)
 
  Luego en el message content le crearemos el prompt que usaremos para generar títulos para cada uno de los videos. Para este caso, este es el prompt que utilicé.  
 
@@ -176,12 +176,12 @@ Luego en Max Tokens, puedes poner "100".
 
 1. **Programar Publicación en YouTube:** Configura un módulo para subir videos a YouTube.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e44636024e564766b51133f16b1b5f02efd72011e3fb4a28b3e4b7379049bc03)
+![image.png](../imagenes/e44636024e564766b51133f16b1b5f02efd72011e3fb4a28b3e4b7379049bc03.png)
 
 Aquí seleccionaremos el "Youtube: Upload a Video"  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ef0cff4edf3442f086866d5ce84c5bab200043a0a06941dfa9e5689df855af3b)
+![image.png](../imagenes/ef0cff4edf3442f086866d5ce84c5bab200043a0a06941dfa9e5689df855af3b.png)
 
 Conectaremos nuestro canal de Youtube.
 
@@ -191,28 +191,28 @@ Bajo "File" o "Archivo", dejaremos el que está preseleccionado, "Dropbox - Down
 
 Bajo "Video Category" o "Categoría", eligiremos la categoría de video que creemos que más se adapta a nuestro estilo. Esto es la clasificación de Youtube.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1f67c118d71f4ad289c90fef58b2a2b6b88031d284ec4d4ba786d44cf03f4fa5)
+![image.png](../imagenes/1f67c118d71f4ad289c90fef58b2a2b6b88031d284ec4d4ba786d44cf03f4fa5.png)
 
 Bajo "Privacy Status", pondremos PRIVATE. Esto es porque no queremos uqe los publique aun, pero que si los deje calendarizados.
 
 Bajo "Publish At, encontraremos la frecuencia de publicación. Por ejemplo: 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ca0a9daa044e4496997a878bc2a38446a487fd3f75ea4c71a12a168c43cd4bf7)
+![image.png](../imagenes/ca0a9daa044e4496997a878bc2a38446a487fd3f75ea4c71a12a168c43cd4bf7.png)
 
 Lo estaría publicando desde hoy, cada dos días.
 
 El "addDays" y el "now", los encontrarás bajo el calendario que aparece aquí:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/12a8dc0d3bdf4dbbbb05b4d109ebd02cd8baa7a62fba4fb88bd5d57453fddac9)
+![image.png](../imagenes/12a8dc0d3bdf4dbbbb05b4d109ebd02cd8baa7a62fba4fb88bd5d57453fddac9.png)
 
 El "i", lo encontrarás bajo al estrellita que aparece aquí:  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/39b577c2625c40368cd16055806365e93e5cda7a964b46d6a35fc575a5a051ca)
+![image.png](../imagenes/39b577c2625c40368cd16055806365e93e5cda7a964b46d6a35fc575a5a051ca.png)
 
 El signo de multiplicación (*) lo encontrarás bajo las operaciones matemáticas en el X que aparece aquí:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/47df3d7fee6a410eb6bfc68656bab30b6575e671780b47ad88ff7114d7000c55)
+![image.png](../imagenes/47df3d7fee6a410eb6bfc68656bab30b6575e671780b47ad88ff7114d7000c55.png)
 
 Y finalmente el 2, es la cantidad con que frecuencia quieres que lo publiquemos. Es importante anotar esto, porque si no, si simplemente ponemos un 2, publicará en masa todos los videos en 2 días, pero al agregarle el i*2, estamos diciéndole que el primero se publique en 2 días, luego 4, luego 6, y así.
 
@@ -220,24 +220,24 @@ Y finalmente el 2, es la cantidad con que frecuencia quieres que lo publiquemos.
 
 Guarda tu escenario y ejecútalo. [Make.com](https://bencorde.com/make) subirá automáticamente todos tus shorts de YouTube y los programará según las fechas que hayas configurado.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2cbdf00949154917b8786eb2b5db717fd9693f50bc0c4ff187fe5ef8f9fb5008)
+![image.png](../imagenes/2cbdf00949154917b8786eb2b5db717fd9693f50bc0c4ff187fe5ef8f9fb5008.png)
 
 Y luego se verá algo así...  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e7f4472b26ac48ac9a6946129e9c712186c8f629f5774f11bf51735069b68771-md.png)
+![image.png](../imagenes/e7f4472b26ac48ac9a6946129e9c712186c8f629f5774f11bf51735069b68771-md.png)
 
 Y como podemos ver en las fechas, cada 2 días se publicará un nuevo short.  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e08a96c78dfc4b3a949f48fa6005270f1e59086b79b94066800bacb0d4db8d9a)
+![image.png](../imagenes/e08a96c78dfc4b3a949f48fa6005270f1e59086b79b94066800bacb0d4db8d9a.png)
 
 Y eso es todo! Siguiendo estos pasos, puedes automatizar completamente la creación y publicación de tus shorts de YouTube, ahorrando tiempo y asegurándote de que tu contenido esté siempre actualizado. 
 
   
 **NOTA: Si quieres importar la automatización directamente, puedes descargarla aquí abajito y te vas a los 3 puntitos, y apretas "Import Blueprint"**
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7bfe1a4ed0b04dd8b9336864810ef0c0a9762e1e9df8484cb25b9be54de890b6)
+![image.png](../imagenes/7bfe1a4ed0b04dd8b9336864810ef0c0a9762e1e9df8484cb25b9be54de890b6.png)
 
 ## 🎙️ Transcripción
 

@@ -18,7 +18,7 @@ Automatización de [Flor](https://www.skool.com/@flor-vallejo-6359?g=imperio-dig
 🎯 **Objetivo:**  
 Extraer automáticamente horarios y precios de páginas web mediante una extensión de Chrome conectada a Make y ChatGPT, para integrarlos en un blog de viajes sin necesidad de copiar manualmente toda la información.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7120754b6893451e8f19f1b08abf44bd7f73b72c707a4c30847b93042ed05815)
+![image.png](../imagenes/7120754b6893451e8f19f1b08abf44bd7f73b72c707a4c30847b93042ed05815.png)
 
 ---
 

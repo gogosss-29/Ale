@@ -49,7 +49,7 @@ claude && /forge-check
 
 La Herrería abre con un **MODE SELECTOR** — 5 build modes según lo que construyes:
 
-![CleanShot 2026-05-05 at 13.25.10.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/39099af3860d4911ad8d7d1d486e508c26e272ab271946f39a7d143183b02bfb.png)
+![CleanShot 2026-05-05 at 13.25.10.png](../imagenes/39099af3860d4911ad8d7d1d486e508c26e272ab271946f39a7d143183b02bfb.png)
 
 Antes de cualquier skill corre el **Viability Check** — 7 preguntas que detectan si la idea vale el tiempo. Si reprobas, Forge te dice que no construyas todavía.
 
@@ -80,11 +80,11 @@ BLUEPRINT-[nombre].md    ← El contrato final
 
 Lee tu Blueprint y corre 7 análisis en una sola sesión:
 
-![CleanShot 2026-05-05 at 13.25.50.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/fa71c60030e742b3b69c3d04829dddbddb671276c25944dbbba7fa89cb686f06.png)
+![CleanShot 2026-05-05 at 13.25.50.png](../imagenes/fa71c60030e742b3b69c3d04829dddbddb671276c25944dbbba7fa89cb686f06.png)
 
 Output: un **Puntaje de Confianza** del 1 al 10 y un dashboard HTML interactivo (Bento Grid + Chart.js) que puedes compartir con inversores o clientes.
 
-![CleanShot 2026-05-05 at 13.34.04.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a825f450c59645048a4859108447ddc199668f6bd35a40b0af1df82b7b1e966f.png)
+![CleanShot 2026-05-05 at 13.34.04.png](../imagenes/a825f450c59645048a4859108447ddc199668f6bd35a40b0af1df82b7b1e966f.png)
 
 ## **🛠️ **`/build` — Yunque y Forja
 
@@ -134,7 +134,7 @@ npm install && claude
 
 ### **⌨️ Atajos Claude Code imprescindibles**
 
-![CleanShot 2026-05-05 at 13.34.43.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f5f40122015245638066211169cef933f94fe142517348aeb2a9e7568f643663.png)
+![CleanShot 2026-05-05 at 13.34.43.png](../imagenes/f5f40122015245638066211169cef933f94fe142517348aeb2a9e7568f643663.png)
 
 ## **🎁 Descuento para miembros**
 

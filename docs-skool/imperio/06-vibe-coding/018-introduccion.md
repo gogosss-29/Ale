@@ -15,7 +15,7 @@ Este es uno de los cursos más estratégicos y accionables que hemos lanzado en 
 
 La app que vamos a crear está pensada para adaptarse al **99% de los casos de uso** de freelancers, agencias y profesionales que venden automatizaciones o soluciones con n8n e IA.
 
-![Antigravity Info.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f1d2c5f4e78e4bd6b6ee976cf1b15d0527a61922a6d6439c816f6093552df2ec-md.png)
+![Antigravity Info.png](../imagenes/f1d2c5f4e78e4bd6b6ee976cf1b15d0527a61922a6d6439c816f6093552df2ec-md.png)
 
 ### ¿Para quién es este curso?
 

@@ -7,7 +7,7 @@
 
 ---
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1b34c26e9f1e440f885f8897516cf97d9e5f7bffb3604254ab13964d76820d26)
+![image.png](../imagenes/1b34c26e9f1e440f885f8897516cf97d9e5f7bffb3604254ab13964d76820d26.png)
 
 [Melina Blanco](https://www.skool.com/@melina-blanco-9165) lo hizo posible: una automatización que transforma ideas en contenido listo para publicar, ¡y las imágenes se suben directamente a la carpeta de medios de WordPress!
 

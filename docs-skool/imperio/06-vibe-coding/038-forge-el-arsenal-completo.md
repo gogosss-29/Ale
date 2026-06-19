@@ -33,7 +33,7 @@ claude config set hookMode auto
 
 "Fail-open" = si el hook se rompe inesperadamente, aprueba la acción. Nunca bloquea al usuario por un bug del hook.
 
-![CleanShot 2026-05-05 at 13.36.50.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c60561e531194e018fd0451ca54df4969f0d7cb2935f4f92a247d98aead8d5fb.png)
+![CleanShot 2026-05-05 at 13.36.50.png](../imagenes/c60561e531194e018fd0451ca54df4969f0d7cb2935f4f92a247d98aead8d5fb.png)
 
 El hook crítico es `security-scan` — detecta antes del commit: AWS keys, JWT tokens, passwords en texto claro, `dangerouslySetInnerHTML`, CORS `*` en producción.
 
@@ -103,7 +103,7 @@ Output: `metas-dashboard.html` con progress bars por Key Result, timeline de mil
 
 ### **Stack base (no se negocia)**
 
-![CleanShot 2026-05-05 at 13.37.34.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2a2c21d982b54284a5e6a7f0dd4f77af607e7a548263441cafb475c2e9b0e39b.png)
+![CleanShot 2026-05-05 at 13.37.34.png](../imagenes/2a2c21d982b54284a5e6a7f0dd4f77af607e7a548263441cafb475c2e9b0e39b.png)
 
 **Supabase vs InsForge** en una línea: Supabase si trabajas con humanos + agentes. InsForge si el proyecto es agent-first y quieres 30% menos tokens en el MCP.
 
@@ -139,7 +139,7 @@ Corre en orden: typecheck → lint → build → review loop → commit → push
 
 ## **🎯 Qué Puedes Construir (y Cobrar)**
 
-![CleanShot 2026-05-05 at 13.38.01.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f373ddf1df5c4c9d81e88c4c6211f562ddc2916902814901aabdf8089dc2d2e9.png)
+![CleanShot 2026-05-05 at 13.38.01.png](../imagenes/f373ddf1df5c4c9d81e88c4c6211f562ddc2916902814901aabdf8089dc2d2e9.png)
 
 > 💡 El primer video que generas con `/plan` ya es un entregable de $500. El Blueprint vale lo que cobras por el proyecto entero — úsalo como argumento de cierre.
 

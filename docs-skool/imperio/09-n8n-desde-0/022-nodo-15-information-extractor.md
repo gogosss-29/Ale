@@ -17,7 +17,7 @@ El Concepto: "El Traductor de Burocracia".
 
 Te llega un correo largo, desordenado y aburrido con una factura pegada en el texto.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8ac21d9883f943dea12ba4c51b92f71a859bb74c549244ffbbb02773af1533f7-md.png)
+![image.png](../imagenes/8ac21d9883f943dea12ba4c51b92f71a859bb74c549244ffbbb02773af1533f7-md.png)
 
 Tú no quieres leerlo. Quieres que el robot lo lea, entienda qué dice, saque solo lo importante (Precio, Cliente, Correo) y decida por ti si es una venta grande o chica.
 
@@ -40,8 +40,8 @@ Te llega este texto por correo (simularemos que el cliente escribe como quiere):
 
 Como no tenemos un correo real entrando ahora mismo, usaremos un nodo para simular el texto.
 
-1. Agrega un nodo **Edit Fields**. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/845eae346390400daba0a0a51bd5e0eebaa763802bd1444c80415965bffda79a.png)
-2. Crea un campo llamado texto_correo. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/bc35b73b0f1c4ae6a37c556413db8cf79471db76f827499faebc72dc2e333b17-md.png)
+1. Agrega un nodo **Edit Fields**. ![image.png](../imagenes/845eae346390400daba0a0a51bd5e0eebaa763802bd1444c80415965bffda79a.png)
+2. Crea un campo llamado texto_correo. ![image.png](../imagenes/bc35b73b0f1c4ae6a37c556413db8cf79471db76f827499faebc72dc2e333b17-md.png)
 3. **Valor:** Pega el texto del ejemplo de arriba (el de la Constructora).
 
 #### Paso B: El Extractor (Information Extractor)
@@ -49,7 +49,7 @@ Como no tenemos un correo real entrando ahora mismo, usaremos un nodo para simul
 #### En lugar de escribir un prompt largo rogándole a la IA que te dé JSON, usaremos este nodo que te obliga a ser ordenado.
 
 1. Agrega el nodo Information Extractor conectado al Edit Fields.
-2. **Text: Haz clic en el engranaje (Expression) y arrastra tu campo de texto sucio: {{ $json.texto_correo }}** ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1aff85e5cdc6416e990f761471c13ac285719b189c65458294d639af045bed75-md.png)
+2. **Text: Haz clic en el engranaje (Expression) y arrastra tu campo de texto sucio: {{ $json.texto_correo }}** ![image.png](../imagenes/1aff85e5cdc6416e990f761471c13ac285719b189c65458294d639af045bed75-md.png)
 3. **Schema Type: Selecciona From Attribute Descriptions (Esto es clave, aquí defines qué quieres extraer sin código).**
 4. Attributes (Define tus variables): Aquí le dices al nodo qué buscar. Agrega 3 atributos: - Atributo 1 (Cliente): - **Name: cliente**
 - **Type: String**
@@ -87,12 +87,12 @@ Ahora que tenemos el dato total: 1500000 limpio, podemos aplicar reglas de negoc
 1. Agrega el nodo **If** conectado al Agente.
 2. **Condition:** - **Value 1:** Arrastra el campo total que generó la IA.
 - **Operation:** Number -> > (Mayor que).
-- **Value 2:** 1000000. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b5e24ad6add74fb9937deb1df058c69cc3c8e38d8e184a1896ce14274d19ef81-md.png)
+- **Value 2:** 1000000. ![image.png](../imagenes/b5e24ad6add74fb9937deb1df058c69cc3c8e38d8e184a1896ce14274d19ef81-md.png)
 
 #### **Paso E: Los Caminos**
 
-1. **True (Venta Grande):** Conecta un nodo gmail y mandale un correo al gerente. - Mensaje: *Boom! 🚀 Venta grande de {{ $*[*json.output.total*](http://json.output.total)* }} por $ {{ $*[*json.output.total*](http://json.output.total)* }}* ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ec41df4bb97046e28dca9c019cef0be34728ac3404674a9d9f6c4d0b09820103-md.png)
-2. **False (Venta Normal):** Conecta un nodo **Google Sheets**. - Acción: Guardar el registro silenciosamente en la contabilidad. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/6556fa0cf6464875bf4c7693a4cb6be3674daeb72eb942ad938fcdbfb7b81e51-md.png)
+1. **True (Venta Grande):** Conecta un nodo gmail y mandale un correo al gerente. - Mensaje: *Boom! 🚀 Venta grande de {{ $*[*json.output.total*](http://json.output.total)* }} por $ {{ $*[*json.output.total*](http://json.output.total)* }}* ![image.png](../imagenes/ec41df4bb97046e28dca9c019cef0be34728ac3404674a9d9f6c4d0b09820103-md.png)
+2. **False (Venta Normal):** Conecta un nodo **Google Sheets**. - Acción: Guardar el registro silenciosamente en la contabilidad. ![image.png](../imagenes/6556fa0cf6464875bf4c7693a4cb6be3674daeb72eb942ad938fcdbfb7b81e51-md.png)
 
 ---
 

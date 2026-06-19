@@ -7,7 +7,7 @@
 
 ---
 
-![Captura de pantalla 2026-05-26 a las 18.58.43.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a8dfa14b21bb404882e3f8407203b5c6232f51de5f174286bb9cb3ee1fec95aa-md.png)
+![Captura de pantalla 2026-05-26 a las 18.58.43.png](../imagenes/a8dfa14b21bb404882e3f8407203b5c6232f51de5f174286bb9cb3ee1fec95aa-md.png)
 
 > **Create a React + Vite + Tailwind CSS v4 landing page for "WISA" -- a premium football/soccer organization website. The page has a scroll-driven video background, 3 content sections, and a glassmorphism footer. Use ONLY these dependencies: react 19, motion (framer-motion v12+), gsap, lucide-react, tailwindcss v4 with @tailwindcss/vite plugin. The design is dark, cinematic, minimal, with Manrope (sans) and JetBrains Mono (mono) fonts.**
 > 

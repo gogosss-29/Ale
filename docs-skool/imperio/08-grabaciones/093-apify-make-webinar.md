@@ -13,4 +13,4 @@ En este webinar conjunto entre **Apify **y [**Make.com**](http://Make.com), se p
 📌 **Prefieres seguirlo en castellano?**  
 Activa los **subtítulos** y selecciona la opción **Traducción Automática **para ver la sesión en tu idioma.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/102e049aaec14c70b8f9bc2f2c929a1df0508d8fac1e4c619c653fcea0db8ed0)
+![image.png](../imagenes/102e049aaec14c70b8f9bc2f2c929a1df0508d8fac1e4c619c653fcea0db8ed0.png)

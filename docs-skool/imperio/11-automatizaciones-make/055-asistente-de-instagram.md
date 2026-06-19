@@ -9,7 +9,7 @@
 
 Este asistente ha sido entrenado con las mejores prácticas actuales de Instagram, incluyendo el marco de **Gancho**, **Contexto**, **Historia**, **Lección/Insight**, **CTA**, y **Hashtags**.
 
-![out-1 (20).webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a35190eb56ca47adb456afc15e00e2df8e928664cfbd4301b34704540755dc91)
+![out-1 (20).webp](../imagenes/a35190eb56ca47adb456afc15e00e2df8e928664cfbd4301b34704540755dc91.webp)
 
 *Prompt usado en Flux para la imagen: "bencordero man looking at the camara holding a big neon sign with the facebook logo in a technology space" Puedes aprender a crear este tipo de imágenes *[*aquí*](https://www.skool.com/imperio-digital/classroom/7efa4739?md=f9cd03c1b1ef4d02b273547b82d83a94)
 

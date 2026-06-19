@@ -27,7 +27,7 @@ Lo unico que necesitas hacer es **descargar el skill** que esta al final de este
 
 ---
 
-![image (1).webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/79536fdcbca04377858869a0f1594e60763f51cae9d44f27b356316fa5f9bbd8-md.jpg)
+![image (1).webp](../imagenes/79536fdcbca04377858869a0f1594e60763f51cae9d44f27b356316fa5f9bbd8-md.jpg)
 
 ## 1. EL SKILL `landing-builder.md`
 

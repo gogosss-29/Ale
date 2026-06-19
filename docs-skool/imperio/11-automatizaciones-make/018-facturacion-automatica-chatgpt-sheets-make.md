@@ -28,7 +28,7 @@ El objetivo es simple: eliminar las tareas repetitivas para que puedas concentra
 ------------------------------------------  
 Prompt para OpenAI (GPT Personalizado):
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ebf9a47ffb6d4965a7c5a2a34bb22442e15ca65484744a5bbb767543ce05e65c-md.png)
+![image.png](../imagenes/ebf9a47ffb6d4965a7c5a2a34bb22442e15ca65484744a5bbb767543ce05e65c-md.png)
 
 Description:   
   
@@ -176,7 +176,7 @@ Asistente: ¿Deseas confirmar y enviar esta información al webhook? (Responde c
 
 OpenAI Schema:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b94bf311d5d3481c93044b50f5ffd84c084036cb88944e47806787b8519cb5e7-md.png)
+![image.png](../imagenes/b94bf311d5d3481c93044b50f5ffd84c084036cb88944e47806787b8519cb5e7-md.png)
 
 Schema:
 

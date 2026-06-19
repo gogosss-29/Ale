@@ -12,7 +12,7 @@ Si alguno de los enlaces llega a expirar, avísame por DM y lo repongo.
   
 [https://docs.google.com/spreadsheets/d/1rLkJ-4fujMXMok5RjuYjFJPhZ0esZ825s6ad2V4dIQ0/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1rLkJ-4fujMXMok5RjuYjFJPhZ0esZ825s6ad2V4dIQ0/edit?usp=sharing)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/433dc23c923246fd8c555667511741ce62aeba439f6c4d70bde28480c4c0ccc1-md.png)
+![image.png](../imagenes/433dc23c923246fd8c555667511741ce62aeba439f6c4d70bde28480c4c0ccc1-md.png)
 
 ## 🎙️ Transcripción
 

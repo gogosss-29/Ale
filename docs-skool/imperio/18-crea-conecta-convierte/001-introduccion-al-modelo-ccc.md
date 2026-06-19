@@ -6,7 +6,7 @@
 
 ---
 
-![CCC b0.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c7ab7ce34540463783554d040eaf20ee19a46ae8fac6497abb91720f84392d15)
+![CCC b0.png](../imagenes/c7ab7ce34540463783554d040eaf20ee19a46ae8fac6497abb91720f84392d15.png)
 
 #### La atención es el oro del siglo 21. 
 

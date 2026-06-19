@@ -27,7 +27,7 @@
 
 Vamos a simular que entraron datos feos.
 
-1. Agrega un nodo **Code** (sí, el primero, solo para generar datos). ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/57a9b9db509f44948fb6792fcf449a435587813992904c468c5d48f04ccd714a.png)
+1. Agrega un nodo **Code** (sí, el primero, solo para generar datos). ![image.png](../imagenes/57a9b9db509f44948fb6792fcf449a435587813992904c468c5d48f04ccd714a.png)
 2. Pega esto y dale a ejecutar:  
 JavaScript
 
@@ -42,7 +42,7 @@ return [
 
 ];
 
-1. *(Ves que salen 3 ítems desordenados).* ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/4d236aa395454ca49bed9820199433268b6ccbf509684315973a19e0ac1a3a8a-md.png)
+1. *(Ves que salen 3 ítems desordenados).* ![image.png](../imagenes/4d236aa395454ca49bed9820199433268b6ccbf509684315973a19e0ac1a3a8a-md.png)
 
 #### **Paso B: La Solución (La Magia)**
 
@@ -50,9 +50,9 @@ Aquí es donde entra el truco. No vas a escribir el código.
 
 1. Agrega otro nodo **Code** a continuación.
 2. **El Truco:** Vas a ChatGPT (o Claude) y le escribes este prompt:  
-*"Tengo un JSON en n8n con un campo 'nombre'. Escríbeme un código Javascript para el nodo Code de n8n que limpie ese campo: quita los espacios extra y ponlo en formato Título (primera letra mayúscula, resto minúscula)."* ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/706bf0fb4cc943c081f73d27a81c1427baa5dbcf46374eb8826d52e6fde28e89.png)
+*"Tengo un JSON en n8n con un campo 'nombre'. Escríbeme un código Javascript para el nodo Code de n8n que limpie ese campo: quita los espacios extra y ponlo en formato Título (primera letra mayúscula, resto minúscula)."* ![image.png](../imagenes/706bf0fb4cc943c081f73d27a81c1427baa5dbcf46374eb8826d52e6fde28e89.png)
 3. La IA te dará algo como esto (puedes copiar y pegarlo ahora):  
-JavaScript ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/53179e45799e47bf8e2661a71a76c410169d5428e31242fab798296c6b398b39.png)   
+JavaScript ![image.png](../imagenes/53179e45799e47bf8e2661a71a76c410169d5428e31242fab798296c6b398b39.png)   
   
 for (const item of $input.all()) {
 
@@ -84,11 +84,11 @@ Mira el Output.
 - **Entró:** "BENJA CORDERO"
 - **Salió:** "Benja Cordero"
 - **Entró:** " JAVIERA "
-- **Salió:** "Javiera" ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ea7de587a8e6474eafc97489145d0693de9f08184b7c413ab90412580481ae88-md.png)
+- **Salió:** "Javiera" ![image.png](../imagenes/ea7de587a8e6474eafc97489145d0693de9f08184b7c413ab90412580481ae88-md.png)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9a62fb27b1e846ec93b2f0341de8c7c9134e026f37274427afdbbf454b6afb3d.png)
+![image.png](../imagenes/9a62fb27b1e846ec93b2f0341de8c7c9134e026f37274427afdbbf454b6afb3d.png)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9174e287a7114209bfd19ed8f4800b1606648e1f1516492e8025511b36d647f2.png)
+![image.png](../imagenes/9174e287a7114209bfd19ed8f4800b1606648e1f1516492e8025511b36d647f2.png)
 
 ### **4. Criterio (Por qué usarlo)**
 

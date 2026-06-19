@@ -8,11 +8,11 @@
 
 Si ya estuviste vitrineando, habrás notado dos cosas: Módulos con candado en el [Classroom](https://www.skool.com/imperio-digital/classroom) 
 
-![CleanShot 2026-01-07 at 17.14.59.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5a4329df8ca246b188ea60d0da528b2748bd14fa3dc04c38937e261334559494.png)
+![CleanShot 2026-01-07 at 17.14.59.png](../imagenes/5a4329df8ca246b188ea60d0da528b2748bd14fa3dc04c38937e261334559494.png)
 
 y miembros con un nivel numérico junto a su foto.
 
-![CleanShot 2026-01-07 at 17.16.33.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7a0d324595c8483f9dfda7cf44289647ce0f03f09cf74ac0b4320bbb5a5c2ff0.png)
+![CleanShot 2026-01-07 at 17.16.33.png](../imagenes/7a0d324595c8483f9dfda7cf44289647ce0f03f09cf74ac0b4320bbb5a5c2ff0.png)
 
 No es casualidad. En Imperio Digital no premiamos la asistencia, **premiamos la acción y la colaboración.**
 

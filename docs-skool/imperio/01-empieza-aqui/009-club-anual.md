@@ -23,11 +23,11 @@ Al entrar desbloqueas dos cosas al mismo tiempo:
   
 **Q**uizás notaste algunos anillos de laureles en las fotos de perfil de algunos imperiales... 
 
-![CleanShot 2026-01-07 at 17.20.32.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5c5c8c7015344c3bb3f8d4798e1d9e3bfb1c01e171394a4da802e345bbfd9efb.png)
+![CleanShot 2026-01-07 at 17.20.32.png](../imagenes/5c5c8c7015344c3bb3f8d4798e1d9e3bfb1c01e171394a4da802e345bbfd9efb.png)
 
 Esto no es casualidad. Esto significa que son parte de algo más grande: **el Club Anual Imperial**.
 
-![Max Ring 2.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/39664b4c1d6f4133931bb8f00f1e9860d170f9b627df42d3b1969926600afd24)
+![Max Ring 2.png](../imagenes/39664b4c1d6f4133931bb8f00f1e9860d170f9b627df42d3b1969926600afd24.png)
 
 El Club Anual es un módulo privado exclusivo para quienes tienen el **plan anual activo**.
 
@@ -60,14 +60,14 @@ Con **una o dos herramientas bien aprovechadas** puedes recuperar lo que inviert
 ## **Cómo aplico al club**
 
 1. Entra al [**Classroom**](https://www.skool.com/imperio-digital/classroom).
-2. Entra al módulo **Club Anual Imperial** ![CleanShot 2026-01-07 at 18.12.58@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ccb6eb1bd6024afab497ebe3d473259e4f79cd5d68a940e2a859c37073524b80-md.png)
+2. Entra al módulo **Club Anual Imperial** ![CleanShot 2026-01-07 at 18.12.58@2x.png](../imagenes/ccb6eb1bd6024afab497ebe3d473259e4f79cd5d68a940e2a859c37073524b80-md.png)
 3. Haz clic en "UNLOCK WITH PREMIUM
 
-![CleanShot 2026-01-07 at 18.14.08@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ad4623b415a841ed83b4c44dacb87185b55588f7f5b74b63b6092f0c2cad0828-md.png)
+![CleanShot 2026-01-07 at 18.14.08@2x.png](../imagenes/ad4623b415a841ed83b4c44dacb87185b55588f7f5b74b63b6092f0c2cad0828-md.png)
 
 1. Haz clic en **“JOIN PREMIUM”**.
 
-![CleanShot 2026-05-19 at 11.25.34@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c5285b6b6b254b8ab73fd0cb057f3948fc120e6fb384421da0220464fe627ccc-md.png)
+![CleanShot 2026-05-19 at 11.25.34@2x.png](../imagenes/c5285b6b6b254b8ab73fd0cb057f3948fc120e6fb384421da0220464fe627ccc-md.png)
 
 Skool **descuenta automáticamente lo que ya pagaste este mes**, así que no pierdes nada por haber entrado antes.
 

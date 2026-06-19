@@ -13,7 +13,7 @@ El otro día vi una publicidad de una app que se conectaba a **WhatsApp** y actu
 
 Así que me puse a construirlo. En **dos horas**, ya tenía listo un sistema que hacía lo mismo. En este post te voy a explicar **cómo funciona** y cómo tú también puedes construirlo desde cero.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9209247781e146398f46e7413f3a273fc2ed76b46a5c4b43bbb014b142bff562-md.png)
+![image.png](../imagenes/9209247781e146398f46e7413f3a273fc2ed76b46a5c4b43bbb014b142bff562-md.png)
 
 ---
 

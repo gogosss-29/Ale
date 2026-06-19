@@ -16,7 +16,7 @@ La buena noticia es que Claude Code tiene **5 métodos nativos** para que nunca 
 
 Antes de profundizar, acá tienes la tabla comparativa para que veas cuál te conviene según tu situación:
 
-![02-tabla-comparativa.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d27bb18b578e41bc9a7b1ed2231e50bbb63a7750094f4ded8905d687ea78a015.png)
+![02-tabla-comparativa.png](../imagenes/d27bb18b578e41bc9a7b1ed2231e50bbb63a7750094f4ded8905d687ea78a015.png)
 
 **Pro tip importante:** Siempre usa `/rename mi-proyecto` al inicio de cada sesión. Tu yo del futuro te lo va a agradecer cuando tengas 50+ sesiones guardadas.
 
@@ -24,7 +24,7 @@ Antes de profundizar, acá tienes la tabla comparativa para que veas cuál te co
 
 Si no sabes cuál elegir, sigue este flujo:
 
-![03-arbol-decision.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/191c0fb99ed446ec96b237b161a00cec9eac546bbda244bb9147bd7e9a715fd2.png)
+![03-arbol-decision.png](../imagenes/191c0fb99ed446ec96b237b161a00cec9eac546bbda244bb9147bd7e9a715fd2.png)
 
 La lógica es simple:
 
@@ -137,7 +137,7 @@ claude -r "cliente-mario-scraper"
 
 Esta es la feature más poderosa y la que menos gente conoce. **Te permite continuar tu sesión de Claude Code desde cualquier dispositivo — celular, tablet, otro browser — en tiempo real.**
 
-![05-remote-control.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0201265a7ab845609bc6e46cba99189945cae6c2b86d4b869914cdd50678135c.png)
+![05-remote-control.png](../imagenes/0201265a7ab845609bc6e46cba99189945cae6c2b86d4b869914cdd50678135c.png)
 
 **Comandos:**
 
@@ -268,7 +268,7 @@ const forkB = await claude.query({
 
 Guarda esta imagen para referencia rápida:
 
-![04-cheatsheet-comandos.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c73e5396597e4a70aa07ace4e5af3ecdae8dcb022f66450ba2e2ba55ee5f375d.png)
+![04-cheatsheet-comandos.png](../imagenes/c73e5396597e4a70aa07ace4e5af3ecdae8dcb022f66450ba2e2ba55ee5f375d.png)
 
 **Comandos complementarios de gestión:**
 

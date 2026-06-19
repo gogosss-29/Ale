@@ -95,7 +95,7 @@ Resultado esperado:
 
 - VPS conectado a la red privada Tailscale
 
-![Google Chrome 2026-02-06 15.46.33.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2a689bae787741de9455a559bfd925d7524e85ddeea54080bdc94a4573702823)
+![Google Chrome 2026-02-06 15.46.33.png](../imagenes/2a689bae787741de9455a559bfd925d7524e85ddeea54080bdc94a4573702823.png)
 
 ## 💻 Paso 5. Instalar Tailscale en tu computadora
 

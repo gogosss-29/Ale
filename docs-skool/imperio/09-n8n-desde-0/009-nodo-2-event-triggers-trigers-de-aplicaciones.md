@@ -23,24 +23,24 @@ En n8n no hay un nodo llamado "Event Trigger", sino que hay un nodo trigger por 
 Vamos a usar el **Gmail Trigger** (el más común):
 
 1. Busca y agrega el nodo **Gmail Trigger** (Ojo: tiene que decir "Trigger", no el nodo normal de Gmail).  
- ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/fdbf287ce2aa4d9596ba5131b427811bb25ee6dcf3ea4457bbbeb0c24ef26f79-md.png)
+ ![image.png](../imagenes/fdbf287ce2aa4d9596ba5131b427811bb25ee6dcf3ea4457bbbeb0c24ef26f79-md.png)
 
 1. **Event:** Selecciona Message Received.
 2. **Filters (La clave):** - Aquí es donde filtras para no disparar el flujo con *spam*.
 - Agrega una opción de filtro, por ejemplo: from:[becord00@gmail.com](mailto:becord00@gmail.com)  
   
- ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/d6cb37e022db4ddda867243de98ce957dec25601651d4ca49e652ab5a7223e5f-md.png)
+ ![image.png](../imagenes/d6cb37e022db4ddda867243de98ce957dec25601651d4ca49e652ab5a7223e5f-md.png)
 3. **Poll Times:** (Esto a veces aparece dependiendo de la versión/conexión). Define cada cuánto revisa, o si usa "Push" (instantáneo).
 
 Luego agrega el resto de la automatización… para este caso haré que me envíe un Whatsapp cada vez que me llegue un correo electrónico.”
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0496fc428e5147fb8b337776a61a4bafadc2996d74b9473fa22b954bb9f46f10.png)
+![image.png](../imagenes/0496fc428e5147fb8b337776a61a4bafadc2996d74b9473fa22b954bb9f46f10.png)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/af46596e0e9b4aabb8e2a0e1181589da1d290ce772a549dab7464e91eda3f9da-md.png)
+![image.png](../imagenes/af46596e0e9b4aabb8e2a0e1181589da1d290ce772a549dab7464e91eda3f9da-md.png)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/efe69f78401e4bf1bb82eb320a0c228c31a3cfc1fa2d427ebe10f550a652f9c2-md.png)
+![image.png](../imagenes/efe69f78401e4bf1bb82eb320a0c228c31a3cfc1fa2d427ebe10f550a652f9c2-md.png)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e17f9a6a16334de8a2cb7ae95f1494ae48afa60d9b564ecea2f6a09dda6a0deb.png)
+![image.png](../imagenes/e17f9a6a16334de8a2cb7ae95f1494ae48afa60d9b564ecea2f6a09dda6a0deb.png)
 
 **Resultado:** Tu flujo estará en silencio absoluto. Pero en el segundo que te llegue un correo que en el asunto diga "Urgente", el flujo se dispara y procesa ese correo.
 

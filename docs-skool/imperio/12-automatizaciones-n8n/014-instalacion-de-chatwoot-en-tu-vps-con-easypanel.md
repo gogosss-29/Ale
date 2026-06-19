@@ -39,7 +39,7 @@ chatwoot
 
 1. Guardas el proyecto
 
-![CleanShot 2025-12-03 at 13.20.11.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7dcf335e301e4b4bbea6441137124b344c739b62506e494eb0d158e80885666d.png)
+![CleanShot 2025-12-03 at 13.20.11.png](../imagenes/7dcf335e301e4b4bbea6441137124b344c739b62506e494eb0d158e80885666d.png)
 
 ## 🧱 Paso 2. Instalar Chatwoot desde Templates
 
@@ -67,7 +67,7 @@ En el video la versión estable es.
 1. Regresa a EasyPanel y cambia la versión
 2. Presiona **Create**
 
-![CleanShot 2025-12-03 at 13.21.08.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8b7a3efc08b94de2b7d8cac3aa37e4900246ca3f345d4c40b1910461b2e0d697.png)
+![CleanShot 2025-12-03 at 13.21.08.png](../imagenes/8b7a3efc08b94de2b7d8cac3aa37e4900246ca3f345d4c40b1910461b2e0d697.png)
 
 ## ⏳ Paso 3. Despliegue e ingreso inicial
 
@@ -147,7 +147,7 @@ ssh root@<TU IP>
 
 Ingresa la contraseña del VPS.
 
-![CleanShot 2025-12-03 at 13.26.42.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9bd5bf3f798340c6b00f8e7c876d4d76e28bad649ea0460491bd595e57cbb2c6.png)
+![CleanShot 2025-12-03 at 13.26.42.png](../imagenes/9bd5bf3f798340c6b00f8e7c876d4d76e28bad649ea0460491bd595e57cbb2c6.png)
 
 ## 🗄️ Paso 7. Verifica tu base de datos de Chatwoot
 
@@ -224,7 +224,7 @@ Y verás todo habilitado.
 - SSO
 - Bots completos
 
-![CleanShot 2025-12-03 at 13.31.11.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f892fc8c4666437a9327fb20629b7e882d87a6f17cd740a185428fd8a4faebd7.png)
+![CleanShot 2025-12-03 at 13.31.11.png](../imagenes/f892fc8c4666437a9327fb20629b7e882d87a6f17cd740a185428fd8a4faebd7.png)
 
 ## ✅ Resultado final
 

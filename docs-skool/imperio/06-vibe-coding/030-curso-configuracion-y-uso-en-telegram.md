@@ -74,7 +74,7 @@ ANTHROPIC_API_KEY=PEGAR_AQUI_TU_API_KEY
 - Crea una key **solo para OpenClaw**
 - Presupuesto bajo ($5–$10 para pruebas)
 
-![CleanShot 2026-02-06 at 15.38.28.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9a27e849e9eb41e48b9df50e7882852dc22b75945af84d9b8d3c0aaf8893f1ee.png)
+![CleanShot 2026-02-06 at 15.38.28.png](../imagenes/9a27e849e9eb41e48b9df50e7882852dc22b75945af84d9b8d3c0aaf8893f1ee.png)
 
 ## 🗨️ Paso 4. Seleccionar canal de comunicación
 
@@ -209,7 +209,7 @@ ssh openclaw@IP_DE_TU_VPS
 - Envía un mensaje de prueba
 - Verifica respuesta
 
-![CleanShot 2026-02-06 at 15.41.47.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a1c184104e5447e69f45d0191395fc39343281a691af4197800fcd5e2e6175a3-md.png)
+![CleanShot 2026-02-06 at 15.41.47.png](../imagenes/a1c184104e5447e69f45d0191395fc39343281a691af4197800fcd5e2e6175a3-md.png)
 
 ## 📲 Paso 13. Conectar Telegram desde el chat
 

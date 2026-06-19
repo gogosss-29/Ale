@@ -17,7 +17,7 @@ Seamos honestos: lo último que quieres hacer después de cerrar una venta, nego
 
 Por eso, en la clase de hoy vamos a armar un **sistema de facturación automática**. El objetivo es simple: que le mandes un audio (o texto) a tu bot de Telegram y que la automatización se encargue del resto.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7409cdfae8fb4cda861562ca9e7e9f3b00083c9b3c864b69b3482ae9e426727b-md.png)
+![image.png](../imagenes/7409cdfae8fb4cda861562ca9e7e9f3b00083c9b3c864b69b3482ae9e426727b-md.png)
 
 ### ¿Cómo funciona el sistema?
 

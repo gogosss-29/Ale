@@ -23,7 +23,7 @@ Lo primero es tener los materiales a mano. Al final de esta guía, van a encontr
 - La **Plantilla de Airtable** (la base de datos)
 - *Opcional:* Acceso a la gema personalizada si la requieren.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/151f1abd71bc452fac0eb380bac29386a6325ae402f54e6185643ca0ff479331.png)
+![image.png](../imagenes/151f1abd71bc452fac0eb380bac29386a6325ae402f54e6185643ca0ff479331.png)
 
 ### **2. Configuración de Airtable**
 

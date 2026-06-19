@@ -4,7 +4,7 @@
 
 ---
 
-![Grabaciones2.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0fff227ccc384e1cb2ffdddd21696df3b72ca80ca6454c0b8373ea5802347b27-md.png)
+![Grabaciones2.png](../imagenes/0fff227ccc384e1cb2ffdddd21696df3b72ca80ca6454c0b8373ea5802347b27-md.png)
 
 En esta sección encontrarás las **grabaciones completas de las sesiones en vivo** que se realizan semanal y mensualmente dentro de la comunidad. Estas sesiones están diseñadas para que puedas aprender a tu ritmo, repasar estrategias clave o ponerte al día si no pudiste asistir en tiempo real.
 

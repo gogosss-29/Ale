@@ -9,7 +9,7 @@
 
 ## **Asistente de Blogpost SEO para Automatización en WordPress**
 
-![out-1 (35).webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/db9b25698eef42d5ba4879d6fc8e0c539e067b2cc3ff463f90b0a20eb3d168ff)
+![out-1 (35).webp](../imagenes/db9b25698eef42d5ba4879d6fc8e0c539e067b2cc3ff463f90b0a20eb3d168ff.webp)
 
 El **Asistente de Blogpost SEO para Automatización en WordPress** es una herramienta avanzada diseñada para ayudarte a crear artículos de blog optimizados para SEO, enfocados en la automatización de sitios web en WordPress. Este assistant garantiza que cada publicación mantenga un alto estándar de calidad, relevancia y efectividad en términos de posicionamiento en motores de búsqueda, facilitando la generación de contenido atractivo y alineado con las mejores prácticas de SEO.
 

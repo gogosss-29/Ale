@@ -37,7 +37,7 @@ Ir a **Payments → Coupons → + Create Coupon**.
 - **Aplica a:** producto `Limpieza Dental`
 - **Uso por cliente:** ilimitado
 
-![CleanShot 2026-04-27 at 10.03.37.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/6090bd3879504880877b8fdeea82bcec103dca7a4cee4733be81a421544334e8.png)
+![CleanShot 2026-04-27 at 10.03.37.png](../imagenes/6090bd3879504880877b8fdeea82bcec103dca7a4cee4733be81a421544334e8.png)
 
 ### **2. Utility vs. Marketing templates en WhatsApp**
 
@@ -135,7 +135,7 @@ Llenar variables:
 - **Si sí:** add tag `review-solicitada`
 - **Si no:** wait 1 día, intentar 1 vez más, luego terminar
 
-![CleanShot 2026-04-27 at 10.05.05.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8a0d00a327604e5194700cb0d2a8f685613fbfadd79a4773a7e5549a647c9628.png)
+![CleanShot 2026-04-27 at 10.05.05.png](../imagenes/8a0d00a327604e5194700cb0d2a8f685613fbfadd79a4773a7e5549a647c9628.png)
 
 **Publish.**
 

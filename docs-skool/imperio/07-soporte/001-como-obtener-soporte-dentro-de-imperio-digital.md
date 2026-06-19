@@ -12,7 +12,7 @@ Tenemos un sistema robusto para asegurar que sigas avanzando. Aquí tienes tus v
 
 Esta es la vía más rápida. Publicas tu duda en la comunidad y el equipo (o otros miembros cracks) te responden.
 
-- **Problema TÉCNICO duro?** (errores de código, n8n, servidores): Etiqueta directo a [**Carlos Dominguez**](https://www.skool.com/@carlos-dominguez-6330?g=imperio-digital)** **en la pestaña de Community. Él es la "máquina" técnica de la comunidad para resolver esos temas avanzados de infraestructura. Usa el tag "? Preguntas" ![CleanShot 2025-12-19 at 11.38.07.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0e5ea48d8a8e41ee9f417236826cca35c972dd4ecf924f2eae3cf196d351518e.png)
+- **Problema TÉCNICO duro?** (errores de código, n8n, servidores): Etiqueta directo a [**Carlos Dominguez**](https://www.skool.com/@carlos-dominguez-6330?g=imperio-digital)** **en la pestaña de Community. Él es la "máquina" técnica de la comunidad para resolver esos temas avanzados de infraestructura. Usa el tag "? Preguntas" ![CleanShot 2025-12-19 at 11.38.07.png](../imagenes/0e5ea48d8a8e41ee9f417236826cca35c972dd4ecf924f2eae3cf196d351518e.png)
 - **Estás perdido al arrancar o quieres saber cómo usar la plataforma de Imperio o de Skool?**: Si no sabes por dónde ir, etiqueta a [**Joaco Malig**](https://www.skool.com/@joaco-malig?g=imperio-digital). Él se encarga de que nadie entre perdido y tengas tu ruta clara.
 
 ### **2. Sesiones EN VIVO (Martes)**

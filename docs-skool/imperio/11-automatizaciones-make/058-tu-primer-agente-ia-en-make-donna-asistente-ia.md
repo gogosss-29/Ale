@@ -21,7 +21,7 @@ Vamos a crear a "Dona", una asistente que puede agendar, mandar correos, publica
   
 Te enseño todo desde cero, para que salgas de aquí con tu primer sistema andando.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/95333ecf973245d6ab27b1934e7a436cf37abed35dc043b08d3c003b7b571b0e-md.png)
+![image.png](../imagenes/95333ecf973245d6ab27b1934e7a436cf37abed35dc043b08d3c003b7b571b0e-md.png)
 
 > Prompt Donna:  
 >   

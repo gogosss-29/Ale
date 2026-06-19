@@ -62,7 +62,7 @@ site:instagram.com "Restaurant Chile" "@gmail.com" OR "@outlook.com" OR "@yahoo.
 
 1. **Configurar el Envío**: - Configura Make para enviar un correo cada x minutos para evitar ser marcado como spam. (En este caso, es recomendable elegir una mayor cantidad de tiempo para que no te detecten como Spam).
 
-![15.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/22816f1d3edc4ba0bfc52a7073665536b9aaa4d1f47242848d24684a1a1c13f1-md.png)
+![15.png](../imagenes/22816f1d3edc4ba0bfc52a7073665536b9aaa4d1f47242848d24684a1a1c13f1-md.png)
 
 Siguiendo estos pasos, puedes crear un sistema automatizado y eficiente para generar y contactar leads de cualquier industria o nicho. Este método no solo ahorra tiempo, sino que también incrementa la eficacia de tus campañas de marketing.
 

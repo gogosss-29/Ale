@@ -47,7 +47,7 @@ Muy similar a N8N o Make, pero integrado nativamente con el CRM, calendario, pag
 
 Apagar todas las notificaciones de email, SMS, in-app (los checkboxes deben estar en gris, no verde).
 
-![CleanShot 2026-04-27 at 09.54.53.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/24dbf789c40e4f58b4bdc9b16a68c1891bf595406ecc46038467ba2d7cf19c1d.png)
+![CleanShot 2026-04-27 at 09.54.53.png](../imagenes/24dbf789c40e4f58b4bdc9b16a68c1891bf595406ecc46038467ba2d7cf19c1d.png)
 
 > 💡 **¿Por qué apagarlas?** Para que las notificaciones vengan únicamente del workflow que vamos a construir. Si las dejas activas, el paciente recibe notificaciones duplicadas.
 
@@ -67,7 +67,7 @@ Configuración:
 - **Filters:** Calendar = `Limpieza Dental`
 - **Invitee:** Contact only (no invitados)
 
-![CleanShot 2026-04-27 at 09.55.27.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/46254e0ffa7744618d9449111d56df70a2a2fa888c404e6d80a3d57f839bb875.png)
+![CleanShot 2026-04-27 at 09.55.27.png](../imagenes/46254e0ffa7744618d9449111d56df70a2a2fa888c404e6d80a3d57f839bb875.png)
 
 > 💡 **Best practice:** siempre agrega el filtro de calendario. Si más adelante creas más calendarios, el workflow no se disparará accidentalmente para todos.
 
@@ -80,7 +80,7 @@ Arriba del canvas tienes un toggle **Standard** / **Advanced**.
 
 Recomiendo Advanced si vienes de N8N — es más cómodo para workflows complejos.
 
-![CleanShot 2026-04-27 at 09.55.48.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/66c606d8075b43bd86bd1206ed0c72a9072eeabe7f70419ab37ce11649f72c96.png)
+![CleanShot 2026-04-27 at 09.55.48.png](../imagenes/66c606d8075b43bd86bd1206ed0c72a9072eeabe7f70419ab37ce11649f72c96.png)
 
 ### **6. Acción 1 — Email de confirmación**
 

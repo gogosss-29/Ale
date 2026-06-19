@@ -15,7 +15,7 @@ Hoy les voy a mostrar una automatización sencilla para poder contactar a leads 
 
 ## Vista General
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/66c2bd594b4849a3be1f299c856d8a46c1b97ba41a9a4aeaa5a1b16fa68b17cb)
+![image.png](../imagenes/66c2bd594b4849a3be1f299c856d8a46c1b97ba41a9a4aeaa5a1b16fa68b17cb.png)
 
 Antes de mostrarles cómo crear todo paso a paso, les voy a presentar una imagen general de lo que vamos a hacer. Utilizaremos Google Sheets para juntar la lista de leads, redactar un mensaje personalizado a cada uno y luego enviarles un email. Si ya tienes una lista de clientes potenciales o un formulario que las personas van rellenando, puedes usar este método para enviarles un mail personalizado cada vez que lo rellenen.
 
@@ -64,7 +64,7 @@ Vamos a OpenAI Playground bajo la sección "Assistants" para crear el asistente.
 3. Selecciona la versión de GPT que prefieras (por ejemplo, GPT-4).
 4. Puedes probarlo en la parte de la derecha hasta que te comience a dar las opciones y resultados que deseas.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9e7e523267ac4455b82c670471202bac9da509248b9e495aa2d03faf893d8bbb-md.png)
+![image.png](../imagenes/9e7e523267ac4455b82c670471202bac9da509248b9e495aa2d03faf893d8bbb-md.png)
 
 ### 4. Conectar el Asistente con Herramientas de Automatización
 

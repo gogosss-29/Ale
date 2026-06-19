@@ -13,7 +13,7 @@
 
 Automatización del crack [Carlos Dominguez](https://www.skool.com/@carlos-dominguez-6330?g=imperio-digital)
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a6277db9aa5e4c9682cd9d2e7a1f6477ac0ddf0a72e84ccfba3cfb6a46f8fb64)
+![image.png](../imagenes/a6277db9aa5e4c9682cd9d2e7a1f6477ac0ddf0a72e84ccfba3cfb6a46f8fb64.png)
 
 ### 🎯 Objetivo:
 

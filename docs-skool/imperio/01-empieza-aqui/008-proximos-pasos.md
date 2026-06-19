@@ -16,7 +16,7 @@ El valor ya no está en saber CÓMO implementar, sino en saber QUÉ implementar,
 2. **  👋 Preséntate en la comunidad.** Rompe el hielo en la categoría [Presentación](https://www.skool.com/imperio-digital). Es la vía rápida al Nivel 2.
 3. ** Elige tu primer camino:**
 
-![CleanShot 2026-04-23 at 12.38.21.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/3f85e854e3d14a4486e85a4db5ce73e9e5018c1f25884a1798d5f3d566615f2a.png)
+![CleanShot 2026-04-23 at 12.38.21.png](../imagenes/3f85e854e3d14a4486e85a4db5ce73e9e5018c1f25884a1798d5f3d566615f2a.png)
 
 Si lo que quieres es automatizar, tu camino [empieza por ](https://www.skool.com/imperio-digital/classroom/72fac302?md=dacd8b23519d472d9ac8569c5b681011&utm_campaign=skool_link_classroom&utm_content=4e1ca14852434c0abdefff35382cdf66)[**n8n**](https://www.skool.com/imperio-digital/classroom/72fac302?md=dacd8b23519d472d9ac8569c5b681011&utm_campaign=skool_link_classroom&utm_content=4e1ca14852434c0abdefff35382cdf66).
 

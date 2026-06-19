@@ -40,4 +40,4 @@ Ejemplo
 
 Entender y aplicar estas fórmulas te permitirá interactuar con ChatGPT de una manera más efectiva, obteniendo respuestas que realmente te ayuden a alcanzar tus objetivos.
 
-![icon2.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8481da7d64f34b1cb602fe67740ffafbeb56ef0b05274c99874014a9e45f78cf)
+![icon2.png](../imagenes/8481da7d64f34b1cb602fe67740ffafbeb56ef0b05274c99874014a9e45f78cf.png)

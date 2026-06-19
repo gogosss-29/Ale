@@ -34,7 +34,7 @@ Este es el “backend”. En una segunda parte se conecta a un front con Lovable
 - Airtable como base de datos para guardar transcripts y resúmenes
 - Google Cloud Console para generar la API key de YouTube
 
-![CleanShot 2025-11-25 at 18.05.32.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/29bd4178ad2d4cf3ad0a296a29e049d03175578d057b44dfbd148ab3a90fb059-md.png)
+![CleanShot 2025-11-25 at 18.05.32.png](../imagenes/29bd4178ad2d4cf3ad0a296a29e049d03175578d057b44dfbd148ab3a90fb059-md.png)
 
 ## 🔄 Paso 1. Mantener n8n actualizado
 
@@ -48,7 +48,7 @@ Antes de construir el flujo, en el video se actualiza n8n dentro de EasyPanel.
 
 Resultado. n8n corre en la última versión estable sin tocar nada de código.
 
-![CleanShot 2025-11-25 at 18.08.44.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8083645bf94941c3a9b791f5098ad950b98e3389b5d5427da3f881d40eee4937.png)
+![CleanShot 2025-11-25 at 18.08.44.png](../imagenes/8083645bf94941c3a9b791f5098ad950b98e3389b5d5427da3f881d40eee4937.png)
 
 ## 🔑 Paso 2. Preparar las APIs de YouTube
 
@@ -63,7 +63,7 @@ Se necesitan dos cosas.
 - Ir a `Credenciales` y crear una “clave de API”.
 - Opcional pero recomendable. restringir la API key para que solo pueda usar YouTube y solo desde tus servidores o dominios.
 
-![CleanShot 2025-11-25 at 18.09.40.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/0587300d30544305844560ea506d4283c9930f14520b40b786b4f8a385dc8cce.png)
+![CleanShot 2025-11-25 at 18.09.40.png](../imagenes/0587300d30544305844560ea506d4283c9930f14520b40b786b4f8a385dc8cce.png)
 
 ## 🧩 Paso 3. Flujo en n8n para sacar videos de una playlist
 
@@ -84,7 +84,7 @@ Conclusión. es más limpio mandarlos como parámetros en el nodo, porque es má
 1. Validación importante - Si usas el `channelId` (el que empieza con `UC...`), falla.
 - Lo correcto para playlistItems es usar el `playlistId` (el que empieza con `UU...` o similar).
 
-![CleanShot 2025-11-25 at 18.10.49.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/dbe08e9ea43e483ea19b36310ccd8593382d3ed202c044e5bea50e088038820a.png)
+![CleanShot 2025-11-25 at 18.10.49.png](../imagenes/dbe08e9ea43e483ea19b36310ccd8593382d3ed202c044e5bea50e088038820a.png)
 
 Este es un ejemplo del output en JSON:  
 

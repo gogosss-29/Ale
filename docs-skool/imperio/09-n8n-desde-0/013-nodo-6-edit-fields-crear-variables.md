@@ -25,11 +25,11 @@
 
 Inserta este nodo justo **después** del *Aggregate* y **antes** del *Gmail*.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cd296f756598409faf1f33813cb950329368191baade407b8528b6d4ac048e0c.png)
+![image.png](../imagenes/cd296f756598409faf1f33813cb950329368191baade407b8528b6d4ac048e0c.png)
 
 #### **Paso A: Crear las Variables**
 
-1. Agrega el nodo **Edit Fields**. ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/af7fda98e8b440b2adefe4155edb6d157578b3a4a1ee4fe49df75d33d870f2c5.png)
+1. Agrega el nodo **Edit Fields**. ![image.png](../imagenes/af7fda98e8b440b2adefe4155edb6d157578b3a4a1ee4fe49df75d33d870f2c5.png)
 2. **Mode:** Elige Define Below (Mapping Manual).
 3. **Campo 1 (El Contador):** - Queremos saber cuántas reuniones hay para ponerlo en el asunto.
 - **Name:** cantidad_reuniones
@@ -39,7 +39,7 @@ JavaScript
   
 {{ $json.summary.length }}
 
-- *(El .length es comando básico de JS que cuenta cuántos ítems hay en la lista. Si tienes 3 reuniones, guardará un 3).* ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c2659f683ef24420a36c5a794f82ae10ef391c28d7434f55b135a68eebad726c-md.png)
+- *(El .length es comando básico de JS que cuenta cuántos ítems hay en la lista. Si tienes 3 reuniones, guardará un 3).* ![image.png](../imagenes/c2659f683ef24420a36c5a794f82ae10ef391c28d7434f55b135a68eebad726c-md.png)
 
 1. **Campo 2 (El Formato Visual):** - Queremos que en el correo se vean una debajo de otra, no todas pegadas.
 - **Name:** lista_formateada
@@ -49,7 +49,7 @@ JavaScript
   
 {{ $json.summary.join('<br> - ') }}
 
-- *(El .join une los elementos. Aquí le decimos: "Une las reuniones y pon un salto de línea <br> y un guión - entre cada una").* ![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/40c3a7d6547d4eaea86d56a8aa6c1439430107cd253d4f91b867f666632b2d21-md.png)
+- *(El .join une los elementos. Aquí le decimos: "Une las reuniones y pon un salto de línea <br> y un guión - entre cada una").* ![image.png](../imagenes/40c3a7d6547d4eaea86d56a8aa6c1439430107cd253d4f91b867f666632b2d21-md.png)
 
 Dale a **"Test Step"**.
 
@@ -57,7 +57,7 @@ Dale a **"Test Step"**.
 
 Ahora el nodo te entregará esto limpio para que lo uses:
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9cf6edee2ae5415299cea2bf3c59c949f6212f883b124bcd935e5f439fed2718.png)
+![image.png](../imagenes/9cf6edee2ae5415299cea2bf3c59c949f6212f883b124bcd935e5f439fed2718.png)
 
 JSON
 
@@ -77,7 +77,7 @@ Ahora abres tu nodo **Gmail** (el que ya tenías al final) y cambias lo que hab�
 
 **Subject:** Agenda de hoy: Tienes {{ $json.cantidad_reuniones }} eventos importantes
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e0741d1d3364408a9a471fb2ecd42ed0c756991981cc4c48a80e638d57a15440.png)
+![image.png](../imagenes/e0741d1d3364408a9a471fb2ecd42ed0c756991981cc4c48a80e638d57a15440.png)
 
 **Body (HTML):**  
 HTML
@@ -94,11 +94,11 @@ Aquí está tu resumen del día:<br>
 ¡A darle con todo!  
 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/57b1d5d37d224db8a0ff4d3b5fa88c587969c24a09d54850bc6fcb321db80ee5.png)
+![image.png](../imagenes/57b1d5d37d224db8a0ff4d3b5fa88c587969c24a09d54850bc6fcb321db80ee5.png)
 
 ### 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/035eee6fa03a4f17b00d51af0daacc5021b72740a7904369a23935b82f5e26f6.png)
+![image.png](../imagenes/035eee6fa03a4f17b00d51af0daacc5021b72740a7904369a23935b82f5e26f6.png)
 
 ### **4. Criterio (Por qué hacerlo así)**
 

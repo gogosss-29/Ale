@@ -34,7 +34,7 @@ Ir a **Settings → Integrations → Payments → Stripe → Connect**.
 - Inicias sesión con la cuenta de Stripe existente (debes tener una creada).
 - Autorizar la conexión → listo.
 
-![CleanShot 2026-04-27 at 09.52.52.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/244d33147afe4b89b6d4080ed69bc3be3186971c72994939862ee7821b1e3096.png)
+![CleanShot 2026-04-27 at 09.52.52.png](../imagenes/244d33147afe4b89b6d4080ed69bc3be3186971c72994939862ee7821b1e3096.png)
 
 Opcional:
 
@@ -63,7 +63,7 @@ Ir a **Payments → Products → + Create Product**.
 - **Categoría de impuestos:** `Dental Hygiene Products` (o la que aplique en tu país)
 - **Imagen:** ver siguiente paso
 
-![CleanShot 2026-04-27 at 09.53.17.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8e47903e9be840b5bce893a098cd8c3f6190ed564ae3492080024a0a96e0f231.png)
+![CleanShot 2026-04-27 at 09.53.17.png](../imagenes/8e47903e9be840b5bce893a098cd8c3f6190ed564ae3492080024a0a96e0f231.png)
 
 #### **Generar imagen del producto con IA**
 

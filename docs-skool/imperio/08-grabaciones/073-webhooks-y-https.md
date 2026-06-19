@@ -17,7 +17,7 @@ Una sesión intensa, técnica (pero no imposible!) y 100% práctica para quienes
 
 Recomendación: Vean los módulos de [HTTP](https://www.skool.com/imperio-digital/classroom/798d337a?md=d95aeda000aa4c42a0c611a5a9a37928) y [Webhooks](https://www.skool.com/imperio-digital/classroom/798d337a?md=fbaa496b7f27437da7c446863395f16e) del curso [Make Desde 0](https://www.skool.com/imperio-digital/classroom/798d337a?md=32341ea834ff484b8d39d69f96199f2c) para mayor detalle de cada una de estas funciones. 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/73c26063fc33444ab7b2bf5d728da4e054fc4041e6f34b32af65de6587689c1f)
+![image.png](../imagenes/73c26063fc33444ab7b2bf5d728da4e054fc4041e6f34b32af65de6587689c1f.png)
 
 ## 🎙️ Transcripción
 

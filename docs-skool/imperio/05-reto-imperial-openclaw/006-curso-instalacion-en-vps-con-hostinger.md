@@ -42,7 +42,7 @@ En este curso **usaremos OpenClaw**, instalado manualmente en un VPS con **Hosti
 
 - Elige el país **más cercano a ti**
 
-![CleanShot 2026-02-06 at 15.30.05.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/eb6183e423da42c5a0c0f7cbc116c71f8f81755b20284d1996c5e41068c95942-md.png)
+![CleanShot 2026-02-06 at 15.30.05.png](../imagenes/eb6183e423da42c5a0c0f7cbc116c71f8f81755b20284d1996c5e41068c95942-md.png)
 
 ### Sistema operativo
 
@@ -154,7 +154,7 @@ openclaw@tu-servidor:~$
 
 ✔️ Ahora sí estamos en un entorno seguro.
 
-![CleanShot 2026-02-06 at 15.33.39.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/383459cac5fc430ba657b7ab81493eb7a2b57df983144264a471583fcf018ed1)
+![CleanShot 2026-02-06 at 15.33.39.png](../imagenes/383459cac5fc430ba657b7ab81493eb7a2b57df983144264a471583fcf018ed1.png)
 
 ## 📦 Paso 7. Instalar OpenClaw (forma correcta)
 

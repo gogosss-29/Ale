@@ -9,7 +9,7 @@
 
 Este asistente ha sido entrenado con las mejores prácticas actuales de LinkedIN y porporcionado ejemplos de posts que han sido virales
 
-![out-2 (3).webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/df6cb29b79bc4bf5864eb22994883e8e326dcf4041224d678567e4810b223b00)
+![out-2 (3).webp](../imagenes/df6cb29b79bc4bf5864eb22994883e8e326dcf4041224d678567e4810b223b00.webp)
 
 *Prompt usado en Flux para la imagen: "bencordero man looking at the camara holding a big neon sign with the linkedin logo in a technology space" Puedes aprender a crear este tipo de imágenes *[*aquí*](https://www.skool.com/imperio-digital/classroom/7efa4739?md=f9cd03c1b1ef4d02b273547b82d83a94)
 

@@ -12,13 +12,13 @@
 
 [**Carlos Dominguez**](https://www.skool.com/@carlos-dominguez-6330?g=imperio-digital)
 
-![CleanShot 2025-04-01 at 17.32.32.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/e9a21f6bcbaa4f7dbcc3eb8749f33c08aa8ac44036e146039d39aa55d90fd8cc)
+![CleanShot 2025-04-01 at 17.32.32.png](../imagenes/e9a21f6bcbaa4f7dbcc3eb8749f33c08aa8ac44036e146039d39aa55d90fd8cc.png)
 
 [**Carlos Dominguez**](https://www.skool.com/@carlos-dominguez-6330?g=imperio-digital)
 
 "Hoy les comparto una automa tización que me ha funcionado de maravilla para transcribir llamadas automáticamente 🎧➡️📄 sin consumir miles de operaciones en Make ⚙️. El problema era detectar nuevos archivos en Drive sin depender de un trigger por intervalo ⏱️. La solución: un Apps Script que monitorea carpetas específicas y lanza un webhook apenas detecta un nuevo archivo 🚀. Así evito que Make esté revisando constantemente y ahorro un montón 💰.
 
-![CleanShot 2025-04-01 at 17.32.44.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1d33ee73d3b44fd49f3e8c8bc9ef8bb6a2e1f783a018479a9dce4aee7c224f65)
+![CleanShot 2025-04-01 at 17.32.44.png](../imagenes/1d33ee73d3b44fd49f3e8c8bc9ef8bb6a2e1f783a018479a9dce4aee7c224f65.png)
 
 Una vez que se sube la llamada (.wav), identifico al usuario y la carpeta correspondiente, la paso por Whisper para obtener la transcripción sin modificar nada , y luego uso un asistente tipo Firefly AI para generar un resumen en HTML . Al final, mando el resultado por correo . Esta lógica evolucionó hacia una integración directa con el API del software de llamadas, pero si quieren automatizar sin gastar de más, el combo de webhook + Apps Script 💡 es lo más útil. ¡Espero que les sirva! 🙌Y si pueden, échenme la mano con un like ❤️ para llegar al nivel 6 antes de que se acabe el tiempo ⏳😄
 

@@ -17,7 +17,7 @@ Sirve para:
 
 No es proveedor oficial de Meta. Si lo usas para spam o blasts masivos te van a banear el número.
 
-![CleanShot 2025-12-01 at 11.09.38.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c581fc080d0945ee852e5d3f270bb0338ff98eb902eb49eba7da2c795fe1b8fb.png)
+![CleanShot 2025-12-01 at 11.09.38.png](../imagenes/c581fc080d0945ee852e5d3f270bb0338ff98eb902eb49eba7da2c795fe1b8fb.png)
 
 ### 🧱 Prerrequisitos antes de tocar nada
 
@@ -53,7 +53,7 @@ No es proveedor oficial de Meta. Si lo usas para spam o blasts masivos te van a 
 - Entramos al Manager y mostramos dónde está la API Key en las variables de entorno
 - Usamos esa API Key para loguearnos en el Evolution Manager
 
-![CleanShot 2025-12-01 at 11.11.53.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/44bb78ec22334d42beea415c3e6f0ae5ba85b9acb7d0450c92f5c5e915905a68-md.png)
+![CleanShot 2025-12-01 at 11.11.53.png](../imagenes/44bb78ec22334d42beea415c3e6f0ae5ba85b9acb7d0450c92f5c5e915905a68-md.png)
 
 1. Creamos la instancia Baileys y escaneamos el QR
 
@@ -82,7 +82,7 @@ Recomendado en el video.
 - Buscamos `n8n-nodes-evolution-api`
 - Lo instalamos y revisamos que aparezca en el buscador de nodos
 
-![CleanShot 2025-12-01 at 11.13.07.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/c1d677bb1c8c40d58949b288cfe92df542ad00f00f93429e978bb6627efb712c.png)
+![CleanShot 2025-12-01 at 11.13.07.png](../imagenes/c1d677bb1c8c40d58949b288cfe92df542ad00f00f93429e978bb6627efb712c.png)
 
 1. Creamos credenciales de EvolutionAPI en n8n
 

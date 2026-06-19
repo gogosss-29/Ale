@@ -7,7 +7,7 @@
 
 ---
 
-![f86a7cf2b98d45f983ea6683b70db3d98a97a31ae19a4fffb8832ff98eff0902.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/2db921253520484baa05ebb20e868e9d63ce83ae34f841c7a33728d8ef4d8c85-md.png)
+![f86a7cf2b98d45f983ea6683b70db3d98a97a31ae19a4fffb8832ff98eff0902.png](../imagenes/2db921253520484baa05ebb20e868e9d63ce83ae34f841c7a33728d8ef4d8c85-md.png)
 
 Automatización de [Alejandro Álvarez](https://www.skool.com/@alejandro-alvarez-4462?g=imperio-digital)
 

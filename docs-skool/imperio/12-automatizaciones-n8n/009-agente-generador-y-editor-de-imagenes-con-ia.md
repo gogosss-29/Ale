@@ -46,13 +46,13 @@ Ejemplo del flujo real:
 
 1. Le pido al bot: > “Genera una imagen de un perro surfeando una ola gigante de noche con galaxias en el cielo”
 2. El bot genera la imagen.  
- ![photo_2025-12-23 12.15.01.jpeg](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/1c281b5aa09d4260b52ef7e7f67deacb021b38c1f45d480180473983b4d8754e.jpg)
+ ![photo_2025-12-23 12.15.01.jpeg](../imagenes/1c281b5aa09d4260b52ef7e7f67deacb021b38c1f45d480180473983b4d8754e.jpg)
 3. Luego le digo: > “Usa la misma imagen, no cambies nada excepto el cielo. Quiero que ahora sea un día muy soleado”
 4. El agente: - Recuerda la imagen anterior
 - Mantiene **el mismo perro, la misma ola y la misma tabla**
 - Cambia únicamente la iluminación y el cielo
 
-![photo_2025-12-23 12.15.05.jpeg](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7fee478ab5b642be835aacb925690940a3501a221d2a4442b20d43a61ee3aa30.jpg)
+![photo_2025-12-23 12.15.05.jpeg](../imagenes/7fee478ab5b642be835aacb925690940a3501a221d2a4442b20d43a61ee3aa30.jpg)
 
 📌 Esto solo es posible porque **guardamos el ID de la imagen en memoria** y lo reutilizamos en la edición.
 
@@ -61,11 +61,11 @@ Ejemplo del flujo real:
 El sistema está dividido en **tres flujos principales**:
 
 1. **Workflow principal (orquestador)**  
- ![CleanShot 2025-12-23 at 12.15.58.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/a6bdebc073a64c34ad28c5c456450d21a58f6f3035894f1e8f72244e15890397-md.png)
+ ![CleanShot 2025-12-23 at 12.15.58.png](../imagenes/a6bdebc073a64c34ad28c5c456450d21a58f6f3035894f1e8f72244e15890397-md.png)
 2. **Sub-workflow: Generar imagen**  
- ![CleanShot 2025-12-23 at 12.16.27.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/604f8f7d71544e9893b1770c26ec1b6ae1379993ad494e6bbb296950e35eca15-md.png)
+ ![CleanShot 2025-12-23 at 12.16.27.png](../imagenes/604f8f7d71544e9893b1770c26ec1b6ae1379993ad494e6bbb296950e35eca15-md.png)
 3. **Sub-workflow: Editar / combinar imágenes**  
- ![CleanShot 2025-12-23 at 12.17.00.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/671c1b590c584e03bfb59bd858df65fe02d87051f9ed446b82ca08546fbfe7ac-md.png)
+ ![CleanShot 2025-12-23 at 12.17.00.png](../imagenes/671c1b590c584e03bfb59bd858df65fe02d87051f9ed446b82ca08546fbfe7ac-md.png)
 
 ## 🧩 Workflow principal. Orquestador
 
@@ -340,7 +340,7 @@ Esto es lo que más me gusta.
 
 📌 Es **25–50% más barato** que usar la API oficial directamente.
 
-![CleanShot 2025-12-23 at 12.19.08.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/00b0d7c7e954424085f1623d5d174dc36a9435f971bf4fef83e359b63a772e45-md.png)
+![CleanShot 2025-12-23 at 12.19.08.png](../imagenes/00b0d7c7e954424085f1623d5d174dc36a9435f971bf4fef83e359b63a772e45-md.png)
 
 ## 🧪 Pruebas en vivo con Telegram
 

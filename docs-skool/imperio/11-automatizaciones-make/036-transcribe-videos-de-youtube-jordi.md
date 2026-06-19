@@ -9,7 +9,7 @@
 
 Publicación hecha por [Jordi Torras ](https://www.skool.com/@jordi-torras-4912?g=imperio-digital)
 
-![image (6).png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/984db9895f394bbd837c4d6a28068b55368dd69f521c400383639f610b0f2168-md.png)
+![image (6).png](../imagenes/984db9895f394bbd837c4d6a28068b55368dd69f521c400383639f610b0f2168-md.png)
 
 (Texto escrito por Jordi Torras)  
   

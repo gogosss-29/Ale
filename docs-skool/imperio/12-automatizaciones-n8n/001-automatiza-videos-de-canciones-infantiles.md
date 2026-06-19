@@ -15,7 +15,7 @@
 
 Puedes entrar al [Gem aquí](https://gemini.google.com/gem/1FviOyQWAX9vSS-KqWHboJYwO2f6AWf4-?usp=sharing) 
 
-![CleanShot 2026-01-15 at 14.34.13.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5b2f75dc45f540e49d08eec6f737f958087cd1d7323e42deb9d9df7dadd5c9b9.png)
+![CleanShot 2026-01-15 at 14.34.13.png](../imagenes/5b2f75dc45f540e49d08eec6f737f958087cd1d7323e42deb9d9df7dadd5c9b9.png)
 
 > Prompt System Prompt Gem:
 > 
@@ -115,37 +115,37 @@ Puedes entrar al [Gem aquí](https://gemini.google.com/gem/1FviOyQWAX9vSS-KqWHbo
 
 Rellenas las 3)
 
-![CleanShot 2026-01-15 at 14.30.02@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/15b5c12d87dc4053946361c9ace37f636b6957b5f6a549b2b04e2cbebce399ae-md.png)
+![CleanShot 2026-01-15 at 14.30.02@2x.png](../imagenes/15b5c12d87dc4053946361c9ace37f636b6957b5f6a549b2b04e2cbebce399ae-md.png)
 
 Ejecutas el primer workflow, el de "prompts"
 
-![CleanShot 2026-01-15 at 14.30.34@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/75e1f8e9ac0d4b628d5fb3c279dd6301ae7c84222773469597e1eedaa3466426-md.png)
+![CleanShot 2026-01-15 at 14.30.34@2x.png](../imagenes/75e1f8e9ac0d4b628d5fb3c279dd6301ae7c84222773469597e1eedaa3466426-md.png)
 
 Esto va a rellenar las siguientes celdas:
 
-![CleanShot 2026-01-15 at 14.31.56@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/cbab07aa4bbb4bfaadcdd2e162445c76742c7af969aa4190a004d20641acdfdd-md.png)
+![CleanShot 2026-01-15 at 14.31.56@2x.png](../imagenes/cbab07aa4bbb4bfaadcdd2e162445c76742c7af969aa4190a004d20641acdfdd-md.png)
 
 Dale a generar música
 
 Y nos creará el audio de música
 
-![CleanShot 2026-01-15 at 14.35.27@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/3368212244ad4f9599741de86c2a7320ca9b1029410a4d518f3726481cc62a50-md.png)
+![CleanShot 2026-01-15 at 14.35.27@2x.png](../imagenes/3368212244ad4f9599741de86c2a7320ca9b1029410a4d518f3726481cc62a50-md.png)
 
 Luego a generar imágenes
 
-![CleanShot 2026-01-15 at 15.44.22@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/bfc7dca50cb5438aa57acaa45048de348c1997b84d1f4f6aa26c32f6864dba07-md.png)
+![CleanShot 2026-01-15 at 15.44.22@2x.png](../imagenes/bfc7dca50cb5438aa57acaa45048de348c1997b84d1f4f6aa26c32f6864dba07-md.png)
 
 Y nos generará las imágenes
 
-![CleanShot 2026-01-15 at 15.45.48@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ed84dfa39a814b33b01a2e255cb3ad7baac693e5ff0a4d1db68bb08df1279fbc-md.png)
+![CleanShot 2026-01-15 at 15.45.48@2x.png](../imagenes/ed84dfa39a814b33b01a2e255cb3ad7baac693e5ff0a4d1db68bb08df1279fbc-md.png)
 
 Finalmente generamos los videos
 
-![CleanShot 2026-01-15 at 15.46.17@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/df0e1437809440e195ecb8e1876b4e144f406de717be412dbff36d5c733b1544-md.png)
+![CleanShot 2026-01-15 at 15.46.17@2x.png](../imagenes/df0e1437809440e195ecb8e1876b4e144f406de717be412dbff36d5c733b1544-md.png)
 
 Y nos agregará los videos
 
-![CleanShot 2026-01-16 at 11.58.41@2x.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/5f1278dccdc04f22a107dfba6e036c2f13b669952d3a4f2881613238fa7338a9-md.png)
+![CleanShot 2026-01-16 at 11.58.41@2x.png](../imagenes/5f1278dccdc04f22a107dfba6e036c2f13b669952d3a4f2881613238fa7338a9-md.png)
 
 ## 🎙️ Transcripción
 

@@ -30,13 +30,13 @@ En GHL existen **dos niveles**:
 
 > Analogía: la agencia es un edificio, cada subcuenta es un departamento independiente. Un cliente nunca ve los datos de otro.
 
-![CleanShot 2026-04-24 at 09.41.43.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/106802df2ed3436faff692cb595b9c36d14e7a450d424ce9ae123ceb92648635.png)
+![CleanShot 2026-04-24 at 09.41.43.png](../imagenes/106802df2ed3436faff692cb595b9c36d14e7a450d424ce9ae123ceb92648635.png)
 
 ### **2. Crear la subcuenta**
 
 Desde la agencia, ir a **Sub-Accounts → Create Sub-Account**.
 
-![CleanShot 2026-04-24 at 09.42.59.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7b26c552e9e44da8a2725b065c10d6f33f93d2bd703645ab8da15b2bceef9492-md.png)
+![CleanShot 2026-04-24 at 09.42.59.png](../imagenes/7b26c552e9e44da8a2725b065c10d6f33f93d2bd703645ab8da15b2bceef9492-md.png)
 
 > Importante: aunque existe un *snapshot* predefinido para clínicas dentales, la recomendación es **empezar de cero**. Quitar lo que no te sirve toma más tiempo que crear desde limpio.
 
@@ -48,7 +48,7 @@ Llenar los datos básicos del negocio:
 - Correo del responsable
 - Zona horaria: la de tu clínica
 
-![CleanShot 2026-04-24 at 09.45.39.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/57848bdff3554d759f2d0dfbbb902b9bdea8d80dd5a64ffd9baa35ddb1efb635.png)
+![CleanShot 2026-04-24 at 09.45.39.png](../imagenes/57848bdff3554d759f2d0dfbbb902b9bdea8d80dd5a64ffd9baa35ddb1efb635.png)
 
 **Desactivar** la opción de "añadir datos de muestra" — queremos el sistema limpio.
 
@@ -59,7 +59,7 @@ Ir a un proveedor (en el video usamos **Hostinger**, pero sirve Namecheap, Cloud
 1. Buscar el dominio — en el caso: `clinicasonrisaperfecta.site` (99 MXN el primer año).
 2. Completar la compra.
 
-![CleanShot 2026-04-24 at 09.52.34.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/7a56dc0c586e4486b1ee57a2c7b23d5c343b4c41e3da40a5915367d444bb99b2.png)
+![CleanShot 2026-04-24 at 09.52.34.png](../imagenes/7a56dc0c586e4486b1ee57a2c7b23d5c343b4c41e3da40a5915367d444bb99b2.png)
 
 Ya en GHL, dentro de la subcuenta:
 
@@ -67,7 +67,7 @@ Ya en GHL, dentro de la subcuenta:
 - Pegar el dominio y elegir **subdominio** tipo: `app.clinicasonrisaperfecta.site`
 - GHL te muestra los registros DNS que tienes que crear
 
-![CleanShot 2026-04-24 at 09.53.23.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b4898a996cca4a028192f7010c32df13078f412801464e5ea016f4a41a03db55.png)
+![CleanShot 2026-04-24 at 09.53.23.png](../imagenes/b4898a996cca4a028192f7010c32df13078f412801464e5ea016f4a41a03db55.png)
 
 ### **4. Configurar DNS en tu proveedor**
 
@@ -85,7 +85,7 @@ TTL:    Automático
 
 > ⚠️ El DNS puede tardar hasta 24 horas en propagarse. Normalmente son minutos. Si te marca error al verificar, no entres en pánico — refresca y prueba de nuevo.
 
-![CleanShot 2026-04-24 at 09.53.59.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/00775d854d12485da0924c271e83b15a24726414033f4fabb2ad10832b682ddc.png)
+![CleanShot 2026-04-24 at 09.53.59.png](../imagenes/00775d854d12485da0924c271e83b15a24726414033f4fabb2ad10832b682ddc.png)
 
 Volver a GHL y darle **Verify Records**. Cuando aparezca en verde, ya tienes el dominio conectado.
 

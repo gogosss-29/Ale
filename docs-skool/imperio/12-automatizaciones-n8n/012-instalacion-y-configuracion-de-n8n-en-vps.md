@@ -25,7 +25,7 @@ Con este flujo terminas con:
 - Volumen de disco configurado para guardar binarios
 - Conexión completa con Google (Gmail, Drive, Sheets, Calendar, etc.)
 
-![CleanShot 2025-11-25 at 10.17.41.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/ba2a9674a0eb4dedbe4d1e08ff94a15cf4d725de28f6412d87e6a570a3a4672d-md.png)
+![CleanShot 2025-11-25 at 10.17.41.png](../imagenes/ba2a9674a0eb4dedbe4d1e08ff94a15cf4d725de28f6412d87e6a570a3a4672d-md.png)
 
 🔧 Paso 1. Elegir el VPS correcto sin quemar dinero
 
@@ -42,7 +42,7 @@ Conclusión directa.
 - Para algo realista, barato y suficiente para agencia o negocio. Ionos VPS Linux gana en relación precio vs recursos.
 - Un XS o M sirve para empezar a jugar. Con 4 cores y 8 GB de RAM ya tienes algo serio para producción.
 
-![CleanShot 2025-11-25 at 10.19.05.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b1d4281a551a4268b474ad8e0200f54787b5ca399fa147a383e71c159482c6ea.png)
+![CleanShot 2025-11-25 at 10.19.05.png](../imagenes/b1d4281a551a4268b474ad8e0200f54787b5ca399fa147a383e71c159482c6ea.png)
 
 🖥️ Paso 2. Crear el VPS en Ionos y preparar acceso
 
@@ -56,7 +56,7 @@ Flujo básico que se siguió.
 - Usuario root
 - Contraseña inicial
 
-![CleanShot 2025-11-25 at 10.23.44.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/dd9b10543b1340fda08b39a0f0d9073e0efc0b0c256e474ea339fedb2daf05e6.png)
+![CleanShot 2025-11-25 at 10.23.44.png](../imagenes/dd9b10543b1340fda08b39a0f0d9073e0efc0b0c256e474ea339fedb2daf05e6.png)
 
 🔐 Paso 3. Conectarte por SSH y montar EasyPanel
 
@@ -87,7 +87,7 @@ EasyPanel levanta el contenedor y te da una URL temporal tipo.
 
 Con eso ya puedes entrar al setup inicial de n8n y crear tu usuario admin.
 
-![CleanShot 2025-11-25 at 10.24.55.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/b0eede292c2c43b6bbc7ff024da19eb1218331bf527d48cfba34ca61ab638007.png)
+![CleanShot 2025-11-25 at 10.24.55.png](../imagenes/b0eede292c2c43b6bbc7ff024da19eb1218331bf527d48cfba34ca61ab638007.png)
 
 🌐 Paso 5. Conectar dominio propio y DNS
 
@@ -147,7 +147,7 @@ En el video se conectaron.
 - Google Drive. para crear carpetas y subir archivos
 - Sheets y Calendar se dejan listos para configurarlos igual
 
-![CleanShot 2025-11-25 at 10.26.56.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/dd1c0bd2ed8047f88d0e701dd86ed7c7d1207b29df974447855afb05bfb002f3-md.png)
+![CleanShot 2025-11-25 at 10.26.56.png](../imagenes/dd1c0bd2ed8047f88d0e701dd86ed7c7d1207b29df974447855afb05bfb002f3-md.png)
 
 🧪 Paso 8. Test rápido dentro de n8n
 

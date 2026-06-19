@@ -6,7 +6,7 @@
 
 ---
 
-![CCC b1.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/39176d15048746a6b309f8e7323738099cc2e11ce64b47d4bd758e35ec74ce24)
+![CCC b1.png](../imagenes/39176d15048746a6b309f8e7323738099cc2e11ce64b47d4bd758e35ec74ce24.png)
 
 En este módulo vimos que la atención es el primer paso crucial para todo. 
 

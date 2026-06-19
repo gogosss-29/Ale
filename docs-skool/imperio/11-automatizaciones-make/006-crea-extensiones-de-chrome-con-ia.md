@@ -11,7 +11,7 @@
 
 En este video vamos a ver cómo crear, paso a paso, una extensión de Google Chrome conectada a Inteligencia Artificial y automatizaciones externas… sin saber programar.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/fad77ce74212472f93255f60140a7434ef26e39522dc484cb904ca5cb4483596-md.png)
+![image.png](../imagenes/fad77ce74212472f93255f60140a7434ef26e39522dc484cb904ca5cb4483596-md.png)
 
 Usaremos ChatGPT para generar todo el código y Make para procesar la información en tiempo real, permitiéndote:
 
@@ -22,7 +22,7 @@ Usaremos ChatGPT para generar todo el código y Make para procesar la informaci�
 
 Para este caso vamos a armar un sistema que, al seleccionar un texto en cualquier página web, lo envía a una automatización en Make, lo analiza con IA y devuelve si es real o falso, junto con una breve explicación y un porcentaje de certeza.
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/3054a8af2fbf46b4bfd02058f50503fe74c73da4dc5d44a48296ee5b94fdcefd-md.png)
+![image.png](../imagenes/3054a8af2fbf46b4bfd02058f50503fe74c73da4dc5d44a48296ee5b94fdcefd-md.png)
 
 Este es solo un ejemplo, y es bastante simple: desde aquí puedes adaptarlo para tareas repetitivas, sistemas internos o incluso productos listos para vender y publicar en la Chrome Web Store. 
 

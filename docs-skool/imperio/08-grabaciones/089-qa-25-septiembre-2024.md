@@ -12,7 +12,7 @@ En la reunión, discutimos la creación y uso de asistentes o agentes personaliz
 
 Actualizacion al 28/09/24: Ya encontré donde actualizarle los parametros de los tokens en los asistentes: 
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/178015bcfa724998aa1da6b17a3cab44671c2447b1c441959ed33fbac657df9e)
+![image.png](../imagenes/178015bcfa724998aa1da6b17a3cab44671c2447b1c441959ed33fbac657df9e.png)
 
 Lo puedes encontrar bajo "additional settings" en los modulos de make.
 

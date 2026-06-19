@@ -10,7 +10,7 @@
 
 Pagas suscripciones de IA todos los meses. ¿Sabes cuánto valor estás sacando de ellas? **Probablemente no**, nadie lo sabe, porque ese dato no existe en ninguna pantalla.
 
-![CleanShot 2026-06-11 at 13.39.05.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/03e3152e115e469683c69cac7705e9eb3e69722a83414cfdb7445275d387521e.png)
+![CleanShot 2026-06-11 at 13.39.05.png](../imagenes/03e3152e115e469683c69cac7705e9eb3e69722a83414cfdb7445275d387521e.png)
 
 **Motor Agéntico** es el panel de control de tu operación con IA: un dashboard que corre 100% en tu computadora, lee tu actividad real de Claude Code y tus herramientas de IA, y te muestra lo que hoy es invisible: cuánto gastas vs. cuánto trabajo extraes (*tu ROI real*), cuánto tiempo te ahorran tus skills, qué recuerda tu memoria y qué están haciendo tus asistentes.
 

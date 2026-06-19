@@ -14,15 +14,15 @@ Spoiler: puedes empezar fácil y luego complicarte si hace falta.
   
 Nota: Si instalas en railway, podrás registrarte haciendo clic en primary
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/77295594da3a400f8d9b8a4371fd1fca61462f7c9570446cb9270f6a8fa2927e.png)
+![image.png](../imagenes/77295594da3a400f8d9b8a4371fd1fca61462f7c9570446cb9270f6a8fa2927e.png)
 
 luego settings
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/f6178974b3754ac28d8a6a1436a97dd6132b7b1c04d145c589c075ea1c640a71.png)
+![image.png](../imagenes/f6178974b3754ac28d8a6a1436a97dd6132b7b1c04d145c589c075ea1c640a71.png)
 
 y haciendo clic en el dominio
 
-![image.png](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/8cd3942c90374cdd9a1b6a890829d3bc8315c30ddeb94e2f9fed5b60eec919ce.png)
+![image.png](../imagenes/8cd3942c90374cdd9a1b6a890829d3bc8315c30ddeb94e2f9fed5b60eec919ce.png)
 
 ## 🎙️ Transcripción
 

@@ -9,7 +9,7 @@
 
 Crea publicaciones en X con un asistente entrenado en las mejores prácticas actuales. Incluye hashtags relevantes, llamados a la acción (CTA) y narrativas atractivas.
 
-![out-1 (23).webp](https://assets.skool.com/f/4e1ca14852434c0abdefff35382cdf66/9212d77a991e4c8d9b85d8d00b35fc55dd7e47a343324e42b2f550198dd5c528)
+![out-1 (23).webp](../imagenes/9212d77a991e4c8d9b85d8d00b35fc55dd7e47a343324e42b2f550198dd5c528.webp)
 
 *Prompt usado en Flux para la imagen: "bencordero man looking at the camara holding a big neon sign with the twitter logo in a technology space" Puedes aprender a crear este tipo de imágenes *[*aquí*](https://www.skool.com/imperio-digital/classroom/7efa4739?md=f9cd03c1b1ef4d02b273547b82d83a94)
 
