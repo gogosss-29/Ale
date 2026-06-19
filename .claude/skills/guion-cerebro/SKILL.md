@@ -56,6 +56,11 @@ Cada paso tiene un gate: no se avanza sin confirmar.
 **Estación 1 — TEMA.** Fuente: banco "Ideas y Ángulos de Contenido" /
 "Biblioteca de Contenido" en Notion, o lo trae Ale. Salida: tema + ángulo crudo.
 → Si Ale no da ángulo, ofrecer 3 del banco y que elija. No avanzar sin ángulo.
+→ Fuente extra de ángulos/casos/datos: la **base de conocimiento**
+  ([`cerebro/base-conocimiento/videos-analizados.md`](../../../cerebro/base-conocimiento/videos-analizados.md),
+  destilado de videos de negocio/finanzas). Usarla como inspiración de ángulos y
+  casos, **siempre reescritos en la voz de Ale** y con citas/casos de terceros
+  **atribuidos** (nunca como propios ni como estadística inventada).
 
 **Estación 2 — OBJETIVO.** Elegir TOFU, MOFU o BOFU (ver framework abajo).
 Cargar su receta: arco, densidad, duración, CTA y ratio avatar/b-roll.
