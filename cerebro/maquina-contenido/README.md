@@ -30,7 +30,15 @@ Guiones / B-Rolls / Director de Avatar). No inventan método.
   (conector). 🟡 (la generación de video sigue manual: Flow no tiene API)
 - **A — Artifacts:** el paquete del reel (ver `ejemplos/`). ✅
 - **R — Refine:** los gates + el ajuste de voz se vuelcan a las skills. ✅
-- **T — Test:** publicar, medir, realimentar el banco y las skills. ⬜
+- **T — Test:** cada guion aprobado se guarda en Notion "Guiones" (base de datos
+  de voz real) y los mejores realimentan el few-shot. ✅ (bucle de mejora)
+
+## 🔁 Bucle de mejora (importante)
+Cada guion **aprobado/corregido** por Ale se guarda en la página **"Guiones"** de
+Notion → así crece la base de datos de guiones reales. Los más representativos se
+suman al few-shot (`guion-cerebro/referencias/ejemplos-reales.md`) y los giros
+nuevos al perfil de voz (`voz-ale.md`). Resultado: la máquina suena cada vez más
+a Ale. Solo entran guiones aprobados (voz real, no borradores de la máquina).
 
 ## Lo que es manual hoy (honesto)
 1. Pegar los prompts en **Google Flow** y generar los clips (Flow no tiene API).

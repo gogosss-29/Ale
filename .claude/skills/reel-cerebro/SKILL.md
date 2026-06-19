@@ -56,9 +56,17 @@ Flow (8 bloques).
 `## 1 Guion (10s) · ## 2 Avatar (prompts) · ## 3 B-rolls (prompts Flow) · ## 4 Textos en pantalla`
 Guardar copia local en `cerebro/maquina-contenido/ejemplos/`.
 
-**6 — GUARDAR (opcional).** Si Ale quiere, crear la página del reel en Notion con
-Notion MCP (`notion-create-pages`) bajo la sección de contenido de Cerebro, con
-estado "Listo para generar en Flow".
+**6 — GUARDAR + REALIMENTAR (regla fija, no opcional).** Cuando Ale **aprueba o
+corrige** un guion, SIEMPRE:
+1. Guardarlo en Notion como sub-página de **"Guiones"**
+   (`notion-create-pages`, parent page_id `37b5f7242166804795f2f1d1bba84c76`),
+   con el guion en bloques de 10s y metadata al inicio:
+   `Marca · Objetivo (TOFU/MOFU/BOFU) · Duración · Estado: Aprobado · Fecha`.
+   Esto construye la **base de datos de guiones reales** de Ale.
+2. Si el guion es notablemente bueno/representativo, **sumarlo al few-shot**
+   `guion-cerebro/referencias/ejemplos-reales.md` (curado, ver Bucle de mejora).
+> Solo se guardan guiones **aprobados/corregidos por Ale** (no borradores de la
+> máquina): la base de datos es voz real, no aproximaciones.
 
 ## Qué automatiza y qué no (honesto)
 - **Automatiza (acá mismo):** la idea→guion→todos los prompts (el "cerebro").
@@ -66,6 +74,19 @@ estado "Listo para generar en Flow".
   clips; y la edición final (Mayra) que monta avatar + b-rolls + textos.
 - **Futuro (Fase 3):** correr este orquestador en horario fijo desde Hermes (ej.
   dejar 1 reel listo a las 6am) y/o auto-generar el avatar con Higgsfield.
+
+## 🔁 Bucle de mejora (Refine/Test) — la máquina aprende sola
+Cada guion aprobado alimenta a la siguiente generación:
+- **Notion "Guiones" = base de datos completa** (todos los aprobados, con metadata).
+- **`ejemplos-reales.md` = few-shot curado** (selección representativa por objetivo
+  TOFU/MOFU/BOFU y formato; ~3-6 ejemplos). No meter todo acá: se elige lo mejor
+  para que el modelo imite calidad, no cantidad.
+- **`voz-ale.md`** se refresca cuando aparezcan giros/metáforas/muletillas nuevas
+  recurrentes en los guiones aprobados.
+- Periódicamente (o cuando la base crezca), revisar la base de Notion y actualizar
+  el few-shot y el perfil de voz con lo mejor.
+> Nota de entorno: si guardar en Notion devuelve "requires approval", pedir a Ale
+> que apruebe el conector, o dejar el guion listo para que lo pegue él.
 
 ## Reglas
 - Respetar las reglas inmutables de cada skill hija (no duplicarlas acá).
