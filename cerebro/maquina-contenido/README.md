@@ -10,23 +10,27 @@ En una sesión de Claude Code (acá en la web o en tu compu con las skills
 copiadas), decí algo como:
 > "Armemos un reel para Cerebro, objetivo TOFU, con este ángulo: …"
 
-El orquestador `reel-cerebro` corre el pipeline con gates (te pide aprobar en
-cada paso). Si no traés ángulo, lee 3 del banco de Notion y elegís.
+La skill `cerebro-guiones` corre el pipeline con gates (te pide aprobar en cada
+paso). Si no traés ángulo, lee del banco de Notion / la base de conocimiento.
 
-## Las skills (viven en `.claude/skills/`)
-| Skill | Qué hace | Estación |
-|---|---|---|
-| `reel-cerebro` | Orquesta todo (idea → paquete) y conecta Notion | — |
-| `guion-cerebro` | Ángulo → guion en bloques de 10s (TOFU/MOFU/BOFU) | 1-4 |
-| `director-avatar` | Locución → prompts del avatar (Veo 3.1) | 5 |
-| `brolls-cerebro` | Momentos → prompts de Flow (8 bloques, 8 estilos) | 6-7 |
+## La skill (vive en `.claude/skills/`)
+**`cerebro-guiones`** — skill unificada (desarrollada por Ale, enriquecida en esta
+sesión). De un ángulo produce: guion en bloques de 10s (TOFU/MOFU/BOFU) → prompts
+de avatar (Omni, dos modos) → B-rolls (Flow) → música. Con references:
 
-Cada skill es un porte fiel de tu documentación de Notion (Sistema Creador de
-Guiones / B-Rolls / Director de Avatar). No inventan método.
+| Reference | Qué aporta |
+|---|---|
+| `sistema-guiones.md` | Pipeline 7 estaciones, TOFU/MOFU/BOFU, plantilla, reglas |
+| `director-avatar-omni.md` | Avatar en Omni — Modo A (continua) / Modo B (standalone) |
+| `voz-ale.md` | Perfil de voz real de Ale (muletillas, metáforas, CTAs) |
+| `ejemplos-reales.md` | 3 guiones reales de Ale (few-shot) |
+| `brolls-biblioteca.md` | 8 estilos validados + banco de metáforas + plantilla 8 bloques |
+
+> (`avatarhype` es otra skill, aparte: anuncios UGC de producto del curso AvatarHype.)
 
 ## Dónde está aplicado el curso (framework SMART)
-- **S — Skills:** las 4 skills de arriba. ✅
-- **M — MCP:** el orquestador lee el banco de ideas y guarda el reel en **Notion**
+- **S — Skills:** `cerebro-guiones` + sus references. ✅
+- **M — MCP:** la skill lee el banco de ideas y guarda el reel en **Notion**
   (conector). 🟡 (la generación de video sigue manual: Flow no tiene API)
 - **A — Artifacts:** el paquete del reel (ver `ejemplos/`). ✅
 - **R — Refine:** los gates + el ajuste de voz se vuelcan a las skills. ✅
@@ -36,8 +40,8 @@ Guiones / B-Rolls / Director de Avatar). No inventan método.
 ## 🔁 Bucle de mejora (importante)
 Cada guion **aprobado/corregido** por Ale se guarda en la página **"Guiones"** de
 Notion → así crece la base de datos de guiones reales. Los más representativos se
-suman al few-shot (`guion-cerebro/referencias/ejemplos-reales.md`) y los giros
-nuevos al perfil de voz (`voz-ale.md`). Resultado: la máquina suena cada vez más
+suman al few-shot (`cerebro-guiones/references/ejemplos-reales.md`) y los giros
+nuevos al perfil de voz (`cerebro-guiones/references/voz-ale.md`). Resultado: la máquina suena cada vez más
 a Ale. Solo entran guiones aprobados (voz real, no borradores de la máquina).
 
 ## Lo que es manual hoy (honesto)

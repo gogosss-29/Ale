@@ -1,14 +1,3 @@
----
-name: brolls-cerebro
-description: >-
-  Convierte las entradas de B-roll de un guion (de guion-cerebro) en prompts
-  listos para pegar en Google Flow (Veo 3.1), respetando la firma visual de la
-  consultora Cerebro. Aplica la Plantilla Maestra de 8 bloques, los 8 estilos
-  validados de la Biblioteca y el Banco de Metáforas Visuales. Úsala cuando hay
-  que cubrir momentos de un guion con motion graphics / ilustración editorial
-  (Estaciones 6-7 del Sistema Creador de Guiones).
----
-
 # 🎬 B-Rolls Cerebro — Estaciones 6-7
 
 > Porta el método documentado por Alexander ("Sistema Creador de B-Rolls"). El
