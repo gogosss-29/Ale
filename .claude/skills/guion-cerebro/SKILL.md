@@ -36,6 +36,20 @@ Educativo, no vendedor ("observación educada" antes que hot take). Anclado en l
 realidad pyme, sin jerga corporativa. **Sin estadísticas inventadas:** si no hay
 fuente real (ej. CACE), claim suave basado en experiencia.
 
+## ⭐ Voz real de Ale (PASO OBLIGATORIO antes de escribir)
+Las reglas de arriba describen el tono; para que el guion **suene a Ale y no a
+IA**, antes de redactar leé y aplicá:
+- [`referencias/voz-ale.md`](referencias/voz-ale.md) — perfil de voz extraído de
+  sus guiones reales: arranques de hook, vocabulario técnico (Estado de
+  Resultados, Margen de Contribución, CAC, LTV…), metáforas SUYAS ("a ciegas",
+  "ganar o solo factura", "la foto real", "respira el negocio", "es tu techo"),
+  muletillas ("Ojo:", "No te confundas"), y sus dos modos de CTA.
+- [`referencias/ejemplos-reales.md`](referencias/ejemplos-reales.md) — 3 guiones
+  reales de Ale (lista educativa, demo de proceso, caso con números). **Imitar
+  estos**, no un guion genérico.
+Regla: si un giro no aparecería en esos ejemplos, no es la voz de Ale. Reusar sus
+metáforas y vocabulario antes de inventar otros nuevos.
+
 ## Pipeline (estaciones que cubre esta skill)
 Cada paso tiene un gate: no se avanza sin confirmar.
 
