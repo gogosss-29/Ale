@@ -21,10 +21,10 @@ A hyper-realistic 9:16 vertical video, natural and realistic, not cinematic, not
 [HUMAN MOTION] Natural human motion: subtle breathing, small natural head movement, natural hand gestures, non-repetitive micro-movements. Grounded and calm, not stiff.
 [LANGUAGE] Authentic Argentine Spanish (Río de la Plata accent), natural rhythm, calm confident cadence. Not Spain Spanish, not neutral Latin.
 [TONE] Calm, authoritative, educational. Not selling, not performing. Talking to a peer.
-[BEHAVIOUR] Starts speaking mid-thought, blinks naturally, small real pauses, relaxed mouth, no wide forced smile.
+[BEHAVIOUR] Starts speaking mid-thought, blinks naturally, small real pauses. Speaks with a relaxed, mostly closed mouth — minimal teeth visible, subtle restrained lip movements, no wide mouth opening, no smile.
 [LIGHTING] Natural daylight only, soft uneven shadows, slight exposure changes.
 [AUDIO] Clean natural voice, light outdoor ambient (soft wind), subtle breathing, no music.
-[NEGATIVE] studio lighting, beauty filter, perfect white teeth, plastic skin, ad-like polish, exaggerated gestures, robotic delivery, over-sharpening, artificial background, unnatural motion, flicker, Spain accent, latino neutral accent.
+[NEGATIVE] studio lighting, beauty filter, perfect white teeth, plastic skin, ad-like polish, exaggerated gestures, robotic delivery, over-sharpening, artificial background, unnatural motion, flicker, Spain accent, neutral latino accent, wide open mouth, exaggerated jaw movement, teeth-baring, big toothy smile, mouth hanging open.
 ```
 > Lo único que cambia por clip: **[CAMERA]**, **[ACTION]** y **[SCRIPT]**. Todo lo demás se repite. Cargá siempre la misma imagen de referencia.
 
