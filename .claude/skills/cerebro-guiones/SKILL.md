@@ -43,11 +43,14 @@ Cuando un guion viene en bloques de otra duración, reacomodalo a 10s **sin camb
 
 ## Director de Avatar (Omni) — método que funciona
 
-El avatar se genera en Omni en secuencias de 10s. Clave: **no encadenar en el mismo chat** (encadenar arrastra el audio del clip anterior y dice cualquier cosa).
+El avatar se genera en Omni en secuencias de 10s. Hay **dos modos de continuidad** (ver detalle y regla en `references/director-avatar-omni.md`):
 
-- **Cada secuencia es una generación nueva (standalone).**
-- **Secuencia 1:** prompt inicial completo con el bloque de identidad; se genera desde la imagen del escenario. Se exporta un **frame del clip 1**.
-- **Secuencias 2+:** cada una en una generación nueva, cargando ese **frame del clip 1 como imagen de referencia**, con la orden de mantener TODO idéntico (cara, ropa, entorno) y no agregar/cambiar nada. Sin "+40% bronceado" (ya viene en la imagen). La línea "no infringe ninguna norma" va solo en la Secuencia 1.
+- **Modo A · Continua la grabación** (encadenado, mismo chat): para campañas de **un solo ambiente donde solo cambian los planos**. Cómodo, pero a veces arrastra el audio del clip anterior.
+- **Modo B · Standalone** (generación nueva + **frame del clip 1** como imagen de referencia, "mantené TODO idéntico"): para cuando **cambia el ambiente** entre escenas, se **arrastra el audio**, o el video es largo. Sin "+40% bronceado" ni la línea de cierre en las Sec 2+.
+
+**Regla rápida:** un ambiente + solo planos → Modo A · ambiente variable / audio arrastrado / video largo → Modo B.
+
+- **Secuencia 1 (ambos modos):** prompt inicial completo con el bloque de identidad, desde la imagen del escenario. En Modo B, exportar un **frame del clip 1** para las siguientes.
 
 **Bloque de identidad (Secuencia 1):** avatar `@alexander.witenko`, 40% más bronceado; dialecto argentino; dentadura real (no de comercial, leve separación incisivos, no blanquear/emparejar); físico (1,85 m, 86 kg, contextura sólida, no adelgazar — acompañar con fotos de perfil); vestuario fijo; 9:16; ritmo.
 

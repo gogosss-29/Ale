@@ -4,6 +4,20 @@ Convierte cada bloque de 10s del guion en un prompt para Omni, respetando tu for
 
 ---
 
+## ⭐ Dos modos de continuidad (elegir según el video)
+
+No son contradictorios: se usa uno u otro según el tipo de video.
+
+| Modo | Cómo | Cuándo usarlo | Riesgo |
+|---|---|---|---|
+| **A · Continua la grabación** (encadenado) | Sec 1 normal; las 2+ en el MISMO chat con "Continua la grabación…" | **Un solo ambiente, cambian solo los planos de cámara.** Video corto/simple. | A veces arrastra el audio del clip anterior y arranca mal. |
+| **B · Standalone** (generación nueva + frame de referencia) | Cada secuencia es una generación NUEVA; se carga un **frame exportado del clip 1** como imagen inicial + "mantené TODO idéntico". | **Cambia de ambiente** entre escenas, **audio que se arrastra** en modo A, o videos largos donde se pierde la consistencia. | Más trabajo: exportar el frame y subirlo en cada secuencia. |
+
+> Regla rápida: **un ambiente y solo cambian planos → Modo A.** Si se arrastra el audio, cambia el ambiente, o el video es largo → **Modo B.**
+> Los 8 prompts de ejemplo de abajo están escritos en **Modo A** ("Continua la grabación"). Para Modo B, reemplazar la apertura de cada Sec 2+ por: *"Vamos a crear un reel… usá la imagen que cargo como referencia exacta, mantené TODO idéntico (cara, boca, dientes, piel, ropa, sillón, fondo), no agregues ni cambies nada"* + (cámara · movimiento · acción · locución). Sin "+40% bronceado" ni la línea de cierre.
+
+---
+
 ## Tu formato (lo que ya funciona — se mantiene)
 
 **Solo en la PRIMERA secuencia** (queda en el contexto del chat, no se repite después):
