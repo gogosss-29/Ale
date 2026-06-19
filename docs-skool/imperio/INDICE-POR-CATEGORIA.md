@@ -45,6 +45,8 @@ landing pages y agentes** en minutos, sin saber programar. Pasas de consumidor a
 
 **📚 Dónde:** [02 · Claude Code](02-claude-code/) (36) · [06 · Vibe-Coding](06-vibe-coding/) (40) · [05 · 🦞 Reto OpenClaw](05-reto-imperial-openclaw/) (27) · [29 · (Obsoleto) Agentes Relevance](29-curso-obsoleto-agentes-ia-relevance-desde-0/) (17)
 
+> 🧬 **Ficha ampliada:** [Sistemas Agénticos](categorias/sistemas-agenticos.md) — qué son, cómo se construyen (OpenClaw/Hermes), el "Gran Consejo" multi-agente y el Motor Agéntico.
+
 ## C. Diseño y webs con IA
 **🎯 Qué te enseña:** a diseñar **landing pages y sitios web de nivel agencia** con Claude
 Design (método **F.R.A.M.E**), con decenas de clones/ejemplos reales (SaaS, lujo,
