@@ -21,3 +21,4 @@ directo en los clips).
 |---|---|---|
 | `Casa/casa-luz-prendida-s06.jpg` | https://ar.pinterest.com/pin/817121926197217852/ | Frame del segundo 6 (luz prendida). Video 33s. |
 | `Casa/casa-luz-01.jpg` … `casa-luz-07.jpg` | https://ar.pinterest.com/pin/101753272825329777/ | Frames cada ~1,5s (video 10,7s) — variantes de luz para elegir. |
+| `Casa/casa-08.jpg` | https://ar.pinterest.com/pin/689261918012098051/ | Frame del segundo 16 (video 1:07). |
