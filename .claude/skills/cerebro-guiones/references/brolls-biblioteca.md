@@ -51,6 +51,7 @@ Target: **1.800-3.000 caracteres** (límite duro de Flow 4.000; prompts comprimi
 | **#11** | **Premium Motion Graphics (Data-Viz)** | **grid claro + glass/3D + texto kinético + cámara** | **B-rolls INFORMATIVOS: KPIs, charts, comparativas, alertas, números** → ver `estilo-premium-dataviz.md` |
 | **#12** | **Dark Tech Reveal** | **void azul-noche + pantallas glass glow cian + texto fino futurista** | **mostrar plataforma/app/dashboard/herramienta** (fit Invertí Sin Vueltas) → ver `estilo-12-dark-tech-reveal.md` |
 | **#13** | **Kinetic Typography Punch** | **fondo sólido que flipea (negro/crema) + texto bold + keyword en rojo** | **hooks, frases citeables, punchlines, intros de lista** (puro texto) → ver `estilo-13-kinetic-typography.md` |
+| **#99** | **🧠✨ Cerebro Signature (INSIGNIA)** | **grafito + oro fundido + line-art que se dibuja · caos→orden · glifo Cerebro** | **estilo propio de marca:** hooks/cierres de alto impacto, firma. Original, premium → ver `estilo-99-cerebro-signature.md` |
 > #11 es la EXCEPCIÓN a "sin texto": acá el dato/número ES el contenido. Para datos/finanzas, **usar #11**; para metáfora/concepto, #05/#06.
 > #03 y #04 descartados (no alinean con marca); los IDs se conservan por trazabilidad, no reasignar.
 > Para datos/prueba priorizar B-roll **informativo** (#06, #09); para impacto/metáfora, **generativo**.
