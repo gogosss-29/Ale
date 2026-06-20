@@ -17,7 +17,7 @@
 - **Fondo:** grid claro tipo cutting-mat `#EDEDED` con sombras gobo en movimiento y viñeta leve. Props reales opcionales (chinche rojo, clip).
 - **Tipografía:** sans-serif **bold, negro tinta `#111111`**, kinética, español, palabras EXACTAS.
 - **Paleta:** grid `#EDEDED`/`#FFFFFF` · negro `#111111` · **verde `#1FB85B`** (positivo/ingreso) · **rojo `#E2352B`** (alerta/egreso/costo) · *opcional acento amarillo marca*.
-- **Animación:** multi-etapa, cámara (dolly-in / pan / whip-pan) + parallax, números/barras que crecen con easing + motion blur, ritmo punchy.
+- **Animación:** multi-etapa pero **punchy y front-loaded** — el elemento clave y el texto **aparecen rápido (en los primeros ~1,5-2s)**, reveals snappy, sin build lento. Cámara con movimiento + parallax + motion blur. Pensado para **cortar tight y acelerar** al ritmo de la locución.
 - **Audio:** sin voz; clicks UI, golpe de bajo, whooshes, beeps/ticks, synth cálido.
 - **NEGATIVE base:** `No dark neon-only scene, no vintage sepia, no messy clutter, no static single-pose animation, no slow boring motion, no low-res look, no voiceover, no narration, no human speech.`
 
@@ -36,6 +36,7 @@
 3. **Verde/rojo** solo para el significado financiero (no decorativo).
 4. Para **dato/número → este estilo**. Para **metáfora pura sin dato** → #05/#06 (secundarios).
 5. B-roll informativo: el dato tiene que ser **real** (de Ale) o un ejemplo claramente ilustrativo; sin números inventados como si fueran reales.
+6. **RITMO (clave):** el b-roll va al **ritmo de la locución**. Punchy y **front-loaded**: el visual clave + el texto resuelven en los primeros ~1,5-2s, sin build lento (queda raro y hay que acelerarlo a mano). Diseñarlo **cut-ready**: que se pueda recortar/acelerar y siga leyéndose. Preferir el bucket **corto** (4s) cuando el momento de la narración es breve.
 
 ---
 
