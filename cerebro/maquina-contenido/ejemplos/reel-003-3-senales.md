@@ -56,9 +56,9 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
 | 6 · CIERRE | medium-close | gesto abierto, más calmo | Antes de crecer hay que entender conocer de verdad tu propio negocio es el camino inicial para crecer |
 | 7 · CTA | medium | leve apertura de manos invitando | Seguime que te ayudo con tu negocio |
 
-## 4 · B-rolls (Flow · ~50% del timeline) + textos + música
+## 4 · B-rolls (Flow · estilo #11 Data Motion · punchy) + textos + música
 
-**Pista (cuándo entra cada uno):** BR1 ~0:11 (Señal 1) · BR2 ~0:23 (Señal 2) · BR3 ~0:41 (Señal 3) · BR4 ~0:51 (cierre). 6s c/u.
+**Pista:** BR1 ~0:11 (Señal 1) · BR2 ~0:23 (Señal 2) · BR3 ~0:41 (Señal 3) · BR4 ~0:51 (cierre). Generar a **4s** c/u (punchy, front-loaded; se recortan/aceleran al ritmo de la locución).
 
 **Textos en pantalla (en edición):**
 - [0:01 "3 señales de que tu negocio NO está estructurado"]
@@ -67,63 +67,59 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
 - [0:41 "3 · ¿Ganás o solo facturás?"]
 - [1:00 "Conocé tu negocio"]
 
-### BR1 — Conocimiento encerrado en una persona (#05) · 6s
+> Estilo #11 (ver `references/estilo-premium-dataviz.md`). Arco bookend: el panel "?" de BR1 se resuelve en verde en BR4.
+
+### BR1 — Todo depende de una persona (P1) · 4s
 ```
-[STYLE]: Vertical 9:16 surrealist anatomical collage animation, 24fps, 6 seconds. Intellectual art-magazine aesthetic mixing hyperrealistic monochrome classical sculpture with hand-drawn red doodles.
-[BACKGROUND]: Aged beige paper texture #E8DFCE with grain and heavy dark vignette in the corners. Old magazine page feel.
-[MAIN ELEMENT]: CENTER: a hyperrealistic monochrome classical marble bust; in place of the top of the head, a closed metal box sealed with a padlock (knowledge locked inside one person). AROUND IT: faint red hand-drawn gears and question marks trying to get out. DECORATIVE: small red dashed lines.
-[ANIMATION]: Paper appears first. The bust slides in with a hard shadow. The padlock clicks shut. Red gears and question marks draw themselves around the locked head, unable to escape. Camera completely static.
-[TEXT ON SCREEN]: NONE. No letters, no numbers, no words anywhere.
-[COLOR PALETTE]: Paper beige #E8DFCE, monochrome black-white-grey sculpture, blood-red #A8332A for hand-drawn elements only.
-[MOOD]: Knowledge trapped inside one person, fragile, intellectual.
-[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: paper rustle, a metallic padlock click, marker scribble. Warm analog only.
-[NEGATIVE]: No live-action, no full-color photos, no neon, no glow, no sci-fi, no digital particles, no flat vector design, no bright colors except blood-red accents, no shaky camera, no readable text, no logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges as real props.
+[MAIN ELEMENT]: A floating glass panel titled "TU NEGOCIO" with a central person-silhouette card connected by thin lines to four KPI chips: "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES". Front-loaded: almost immediately the person card is yanked out and all four chips instantly turn blank grey with a red "?". A bold red tag "TODO EN UNA SOLA PERSONA" snaps in.
+[ANIMATION]: Fast and punchy. Quick camera push-in with parallax. The person card and connections appear in the first second; the card yanks out and the chips collapse to "?" with a sharp glitch; tag snaps in with motion blur. Key visual + text land within ~1.5s. Cut-ready, no slow build.
+[TEXT ON SCREEN]: Bold sans-serif, ink-black #111111, Spanish: "TU NEGOCIO", "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES"; red tag "TODO EN UNA SOLA PERSONA".
+[COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, alert red #E2352B, dim grey for blanked chips.
+[MOOD]: Fragile, single point of failure, premium.
+[AUDIO]: NO voice, NO narration. Punchy synth, crisp UI clicks, a sharp glitch/zap as the person is pulled and chips blank, a snap on the tag.
+[NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### BR2 — Sin objetivos, a merced del contexto (#05) · 6s
+### BR2 — Sin objetivos, a la deriva (P2) · 4s
 ```
-[STYLE]: Vertical 9:16 surrealist collage animation, 24fps, 6 seconds. Intellectual art-magazine aesthetic, hyperrealistic monochrome cutouts + hand-drawn red doodles.
-[BACKGROUND]: Aged beige paper texture #E8DFCE with grain and dark vignette in the corners.
-[MAIN ELEMENT]: CENTER: a small monochrome paper-cutout boat with a classical figure in it, no rudder and no sail, tilting. AROUND IT: red hand-drawn wind arrows pushing it from different directions; a red compass whose needle spins pointing nowhere. DECORATIVE: red dashed wavy lines as water.
-[ANIMATION]: Paper appears. The boat slides in and rocks, pushed by red wind arrows that draw themselves from different sides. The compass needle spins without settling. Camera completely static.
-[TEXT ON SCREEN]: NONE. No letters, no numbers, no words anywhere.
-[COLOR PALETTE]: Paper beige #E8DFCE, monochrome black-white-grey, blood-red #A8332A for hand-drawn elements only.
-[MOOD]: No direction, drifting, at the mercy of the external context.
-[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: paper rustle, soft wind, marker scribble. Warm analog only.
-[NEGATIVE]: No live-action, no full-color photos, no neon, no glow, no sci-fi, no digital particles, no flat vector design, no bright colors except blood-red accents, no shaky camera, no readable text, no logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
-```
-
-### BR3 — ¿Ganás o solo facturás? · informativo (#06) · 6s
-```
-[STYLE]: Vertical 9:16 vintage educational illustration animation, 24fps, 6 seconds. Old textbook / 1970s economic documentary aesthetic, layered composition that builds progressively.
-[BACKGROUND]: Aged cream paper texture #EFE6D2 with grain and worn print marks, warm vignette.
-[MAIN ELEMENT]: A vintage textbook chart constructing in sequence: a group of ascending bars in ocean blue #2A6FAF (sales going up) and, next to them, a single flat line in terracotta #C0432E staying low (profit flat at the bottom). CONNECTOR: a magenta-pink #E63B85 hand-drawn arrow pointing to the gap between the rising bars and the flat line. WATERMARK BEHIND: a giant semi-transparent coin/scale symbol at 12% opacity in mustard yellow.
-[ANIMATION]: Cream paper appears, watermark fades in. The blue bars rise one by one with stamp-like settling; the terracotta line stays flat. The magenta arrow draws itself pointing to the gap. Subtle hand-tremor. Camera static.
-[TEXT ON SCREEN]: NONE. No letters, no numbers, no words. Pure visual storytelling.
-[COLOR PALETTE]: Cream paper #EFE6D2, ocean blue #2A6FAF, terracotta #C0432E, mustard yellow #E89A3B, magenta-pink #E63B85 for hand-drawn doodles only. Vintage offset-print quality.
-[MOOD]: Educational, the gap between billing and real profit, retro documentary.
-[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: vintage paper rustles, soft stamp thuds, marker scribble. Warm analog vintage only.
-[NEGATIVE]: No real photographs, no humans, no live-action, no neon, no glow, no sci-fi, no digital particles, no 3D modern rendering, no clean vector flat design, no shaky camera, no readable text, no real brand logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges.
+[MAIN ELEMENT]: A floating glass panel with a path line advancing left to right toward an EMPTY dashed target marked with a red "?" (no goal set). A large external arrow labeled "CONTEXTO" shoves the line up and then down erratically. A bold red tag "SIN OBJETIVOS = A LA DERIVA" snaps in.
+[ANIMATION]: Fast. The line advances immediately; the missing-target "?" flashes; the "CONTEXTO" arrow shoves the line up then down; the tag snaps in. Front-loaded, key visual + text within ~1.5s. Cut-ready.
+[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "SIN OBJETIVOS", "CONTEXTO", red "?", tag "A LA DERIVA".
+[COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, alert red #E2352B.
+[MOOD]: No direction, at the mercy of the external context.
+[AUDIO]: NO voice, NO narration. Punchy synth, UI ticks, a wobble/whoosh as the arrow shoves the line, snap on the tag.
+[NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### BR4 — Entender → estructura → crecer (cierre, #06) · 6s
+### BR3 — ¿Ganás o solo facturás? (P2) · 4s
 ```
-[STYLE]: Vertical 9:16 vintage educational illustration animation, 24fps, 6 seconds. Old textbook aesthetic, builds progressively.
-[BACKGROUND]: Aged cream paper texture #EFE6D2 with grain, warm vignette.
-[MAIN ELEMENT]: A vintage illustration of a small plant/tree growing upward out of an open book that rests on a solid base of neat stacked building blocks (understanding → structure → growth), in ocean blue #2A6FAF and terracotta #C0432E. CONNECTOR: a magenta-pink #E63B85 hand-drawn upward arrow following the growth. WATERMARK BEHIND: a giant semi-transparent upward arrow at 12% opacity in mustard yellow.
-[ANIMATION]: Cream paper appears, watermark fades. The blocks stack into a base, the open book settles, the plant grows upward, the magenta arrow draws itself rising. Subtle hand-tremor. Camera static.
-[TEXT ON SCREEN]: NONE. No letters, no numbers, no words.
-[COLOR PALETTE]: Cream paper #EFE6D2, ocean blue #2A6FAF, terracotta #C0432E, mustard yellow #E89A3B, magenta-pink #E63B85 for doodles only. Vintage offset-print quality.
-[MOOD]: Understanding becomes structure becomes growth, hopeful, educational.
-[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: vintage paper rustles, soft stamp thuds, marker scribble, soft uplifting whoosh. Warm analog vintage only.
-[NEGATIVE]: No real photographs, no humans, no live-action, no neon, no glow, no sci-fi, no digital particles, no 3D modern rendering, no clean vector flat design, no shaky camera, no readable text, no real brand logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, 3D bar chart, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette.
+[MAIN ELEMENT]: A 3D bar chart. Tall ink-grey bars labeled "FACTURACIÓN" rise quickly month by month, while a flat red line labeled "GANANCIA" stays pinned at the bottom near zero. A red arrow points to the big gap between them. A bold tag "¿GANÁS O SOLO FACTURÁS?" snaps in.
+[ANIMATION]: Fast and punchy. The "FACTURACIÓN" bars shoot up in the first ~1.5s; the red "GANANCIA" line stays flat; a red arrow draws to the gap; tag snaps in with motion blur. Cut-ready, no slow build.
+[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "FACTURACIÓN", "GANANCIA", tag "¿GANÁS O SOLO FACTURÁS?".
+[COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111 for the facturación bars, alert red #E2352B for the flat ganancia line and the tag.
+[MOOD]: The trap of revenue without profit.
+[AUDIO]: NO voice, NO narration. Rising UI ticks as the bars grow, a flatline tone for the ganancia line, a snap on the tag, punchy synth.
+[NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### Música (brief Suno / Udio)
-- **Tono:** cinematic minimal corporate, calmo y autoritario, con leve tensión.
-- **Estructura:** hook con tensión sutil → base calma y constante en las 3 señales → leve uplift en el cierre.
-- **Mezcla:** instrumental, sin voz/letra, **ducking** bajo la locución, graves controlados.
-- **Prompt:** `Minimal cinematic corporate underscore, calm and authoritative, soft piano and warm sustained strings, subtle steady pulse around 85 BPM, no vocals, no lyrics, intimate and confident, gentle uplift toward the end, clean mix for voiceover ducking, vertical short-form ad.`
+### BR4 — Conocé tu negocio (P1 · bookend verde) · 4s
+```
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges.
+[MAIN ELEMENT]: The glass panel "TU NEGOCIO" with KPI fields "MARGEN", "FLUJO DE CAJA", "RENTABILIDAD", "CLIENTES" flipping fast from a red "?" to filled GREEN check values one after another; the whole panel lights green. A bold green tag "CONOCÉ TU NEGOCIO" snaps in.
+[ANIMATION]: Fast. The red "?" fields flip to green values rapidly in the first ~1.5s; the panel glows green; the tag snaps in with motion blur. Punchy, hopeful, cut-ready.
+[TEXT ON SCREEN]: ink-black #111111 bold with green values, Spanish: "TU NEGOCIO", "MARGEN", "FLUJO DE CAJA", "RENTABILIDAD", "CLIENTES"; green tag "CONOCÉ TU NEGOCIO".
+[COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, positive green #1FB85B.
+[MOOD]: Clarity, resolution, hopeful.
+[AUDIO]: NO voice, NO narration. Rapid positive ticks/chimes as the values fill, a satisfying chord, a snap on the tag, warm synth.
+[NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
+```
 
 ## 5 · Edición (CapCut)
 Avatar (7 clips) en la línea de tiempo → B-rolls encima en sus tiempos (~50%) → textos en pantalla → **capa de realismo** (`Temp -3 · Tinte +2 · Sat -6 · Exp -3 · Contraste +12 · Highlights -35 · Sombras -18 · Fade +6`) → música con ducking. Exportar 9:16 1080×1920.
