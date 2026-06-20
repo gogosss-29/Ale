@@ -1,38 +1,47 @@
-# 📊 Estilo #11 — Premium Motion Graphics (Data-Viz / Grid)
+# 📊 Estilo Cerebro — Premium Data Motion (estándar nuevo de B-rolls)
 
-> Estilo **informativo premium** validado por Ale (prompts reales que funcionaron en
-> Flow/Veo). Es la EXCEPCIÓN a la regla "sin texto": acá **el texto/dato ES el
-> contenido** (KPIs, números, charts). Para piezas educativas/financieras donde el
-> valor está en el dato. Distinto de #05/#06 (editorial vintage, sin texto, estático).
+> **La dinámica nueva.** Reemplaza el enfoque editorial estático (#05/#06) como
+> **default**. Validado por Ale (prompts reales que funcionaron en Flow/Veo). Principio:
+> el **dato/concepto, con TEXTO, ES el contenido** — informa, aporta y engancha. Calidad
+> broadcast. Los estilos viejos quedan como secundarios (metáfora pura sin dato).
 
-## Cuándo usarlo
-- KPIs / tableros ("TU NEGOCIO" con métricas), charts 3D (ingresos/egresos/saldo),
-  comparativas (margen producto A vs B), rankings de clientes, alertas (liquidez).
-- En general: cuando el b-roll tiene que **mostrar un dato/número/concepto financiero**.
+## Filosofía
+- **El texto/número aporta valor** (no decora). Por eso, a diferencia del sistema viejo,
+  acá el texto SÍ va en el render. Cada b-roll enseña un dato.
+- **Producción de alto nivel:** motion graphics tipo After Effects, cámara con movimiento,
+  multi-etapa, ritmo punchy. Nada estático ni "plano".
+- **Claridad financiera:** verde = positivo, rojo = negativo/alerta. Lectura instantánea.
 
-## Diferencias vs #05/#06 (importante)
-- **Texto:** SÍ va en el render (el dato es el mensaje). En #05/#06 NO.
-- **Cámara:** con movimiento (dolly, pan, whip-pan, parallax). En #05/#06 estática.
-- **Audio:** UI clicks + bass + synth (broadcast). En #05/#06 analógico (papel, marker).
-- **Look:** moderno, grid claro, glass/3D. En #05/#06 vintage/editorial.
-
-## Firma visual (fija)
-- **Fondo:** grid claro tipo cutting-mat `#EDEDED` con sombras suaves en movimiento y viñeta leve. Props reales opcionales (chinche rojo, clip).
-- **Tipografía:** sans-serif bold, negro tinta `#111111`, kinética, en español, palabras EXACTAS.
-- **Paleta:** grid `#EDEDED`/`#FFFFFF` · negro `#111111` · verde positivo/ingreso `#1FB85B` · rojo alerta/egreso/costo `#E2352B` (opcional acento amarillo marca).
-- **Animación:** multi-etapa, cámara con parallax, números/barras que crecen con easing + motion blur, ritmo punchy.
-- **Audio:** sin voz; clicks UI, golpe de bajo, whooshes, beeps, synth cálido.
+## FIRMA FIJA (se repite en todos los b-rolls del estilo)
+- **[STYLE base]:** `Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, [DUR]s, broadcast quality. Editorial design-studio aesthetic, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.`
+- **Fondo:** grid claro tipo cutting-mat `#EDEDED` con sombras gobo en movimiento y viñeta leve. Props reales opcionales (chinche rojo, clip).
+- **Tipografía:** sans-serif **bold, negro tinta `#111111`**, kinética, español, palabras EXACTAS.
+- **Paleta:** grid `#EDEDED`/`#FFFFFF` · negro `#111111` · **verde `#1FB85B`** (positivo/ingreso) · **rojo `#E2352B`** (alerta/egreso/costo) · *opcional acento amarillo marca*.
+- **Animación:** multi-etapa, cámara (dolly-in / pan / whip-pan) + parallax, números/barras que crecen con easing + motion blur, ritmo punchy.
+- **Audio:** sin voz; clicks UI, golpe de bajo, whooshes, beeps/ticks, synth cálido.
 - **NEGATIVE base:** `No dark neon-only scene, no vintage sepia, no messy clutter, no static single-pose animation, no slow boring motion, no low-res look, no voiceover, no narration, no human speech.`
 
-> Ojo render de texto: NO meter códigos hex dentro del texto en pantalla (Veo a veces
-> los "imprime"). El color va solo en `[COLOR PALETTE]`; en `[TEXT ON SCREEN]` van solo
-> las palabras exactas. Mantener el texto corto y verificar.
+## VARIABLE (lo único que cambia por pieza)
+1. **Layout** (elegir patrón abajo) · 2. **Dato/concepto** · 3. **Texto exacto en pantalla** · 4. **Duración** (según el dato, ver buckets).
+
+## 4 patrones (layouts)
+- **P1 · Panel KPI / Card glass** — tablero "TU NEGOCIO" o card con un dato grande. (hooks, "no conocés tus números", una métrica). → ej. V1.
+- **P2 · Chart 3D + línea de tendencia** — barras ingreso/egreso, saldo descendente, alerta. (evolución temporal, liquidez, facturación vs ganancia). → ej. V2.
+- **P3 · Comparativa de cards** — A vs B con números y barra de margen, gana el mejor. (precio/costo/margen, opciones). → ej. V3.
+- **P4 · Ranking / lista** — lista ordenada con métricas por ítem (clientes, productos). (rankings, "el 20% que deja el 80%").
+
+## Reglas
+1. **Texto exacto y corto** en `[TEXT ON SCREEN]`. **NO** meter códigos hex en el texto (Veo los "imprime"): el color va solo en `[COLOR PALETTE]`.
+2. **Duración = el dato** (ver buckets 4/6/8/10s en `director-avatar-omni.md`). Una idea por b-roll.
+3. **Verde/rojo** solo para el significado financiero (no decorativo).
+4. Para **dato/número → este estilo**. Para **metáfora pura sin dato** → #05/#06 (secundarios).
+5. B-roll informativo: el dato tiene que ser **real** (de Ale) o un ejemplo claramente ilustrativo; sin números inventados como si fueran reales.
 
 ---
 
-## Prompts validados (referencia operativa · copiar/pegar)
+## Prompts validados (referencia / copiar-pegar)
 
-### V1 · KPI blindfold "TU NEGOCIO" (4s)
+### V1 · Panel KPI "TU NEGOCIO" (P1, 4s)
 ```
 [STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Editorial design-studio aesthetic: clean light grid surface, real props, floating glass UI panel, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving drop shadows and a faint vignette. A red pushpin and a paperclip rest at the edges as real props.
@@ -45,7 +54,7 @@
 [NEGATIVE]: No dark neon-only scene, no vintage sepia, no messy clutter, no static single-pose animation, no slow boring motion, no low-res look, no voiceover, no narration, no human speech.
 ```
 
-### V2 · Alerta de liquidez — chart 3D ingresos/egresos/saldo (6s)
+### V2 · Chart 3D + alerta de liquidez (P2, 6s)
 ```
 [STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 6 seconds, broadcast quality. Editorial design-studio aesthetic, light grid surface, 3D bar chart, kinetic typography, camera movement, parallax, soft shadows, subtle grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows, faint vignette.
@@ -58,7 +67,7 @@
 [NEGATIVE]: No dark neon-only scene, no vintage sepia, no messy clutter, no static single-pose animation, no slow boring motion, no low-res look, no voiceover, no narration, no human speech.
 ```
 
-### V3 · Comparativa de margen Producto A vs B (6s)
+### V3 · Comparativa de margen A vs B (P3, 6s)
 ```
 [STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 6 seconds, broadcast quality. Editorial design-studio aesthetic: clean light grid surface, floating glass UI cards, bold kinetic typography and numbers, camera movement, parallax, soft shadows, subtle grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and faint vignette.
@@ -71,4 +80,6 @@
 [NEGATIVE]: No dark neon-only scene, no vintage sepia, no messy clutter, no static single-pose animation, no slow boring motion, no low-res look, no voiceover, no narration, no human speech.
 ```
 
-> Plantilla para uno nuevo: copiar V1/V2/V3 y cambiar `[MAIN ELEMENT]` + `[TEXT ON SCREEN]` por el dato/concepto que toca, manteniendo fondo, paleta, animación y audio.
+> Para un b-roll nuevo: elegí patrón (P1-P4), copiá el V correspondiente y cambiá solo
+> `[MAIN ELEMENT]` + `[TEXT ON SCREEN]` con el dato/concepto. La firma (fondo, paleta,
+> animación, audio, negative) se mantiene.

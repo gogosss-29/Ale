@@ -63,7 +63,14 @@ El avatar se genera en Omni en secuencias de 10s. Hay **dos modos de continuidad
 
 **Toolkit cinematográfico (subir el nivel, no dejarlo plano):** variar plano/lente (35/50/85mm), movimiento (push-in, dolly, paneo, orbit), acción/gesto del avatar, transición y acto (hook/desarrollo/punch/CTA). Modelo: Veo 3.1 (Fast para motion graphics), audio ON.
 
-## B-rolls: dos tipos
+## B-rolls — estándar nuevo: Premium Data Motion (#11, DEFAULT)
+La dinámica por defecto es el **Estilo Premium Data Motion** (`references/estilo-premium-dataviz.md`):
+motion graphics broadcast, grid claro, **texto/dato kinético que aporta**, cámara con
+movimiento, verde/rojo financiero, audio synth. Elegí patrón P1 (KPI/card) · P2 (chart 3D) ·
+P3 (comparativa) · P4 (ranking). Los estilos editoriales viejos (#05/#06) quedan
+**secundarios**, solo para metáfora pura sin dato.
+
+## B-rolls: dos tipos (referencia)
 
 Un B-roll debe **sumar info, prueba o emoción**; si solo decora y repite la voz, no va.
 - **Generativo (Flow):** impacto/metáfora. Usá la Plantilla Maestra de 8 bloques + los 8 estilos validados + el banco de metáforas en **`references/brolls-biblioteca.md`** (incluye paletas hex de #05 y #06). Prompts en inglés, sin voz, 9:16, 1.800–3.000 caracteres, premium y dinámicos.
