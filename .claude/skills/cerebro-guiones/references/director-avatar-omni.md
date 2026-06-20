@@ -38,17 +38,32 @@ No son contradictorios: se usa uno u otro según el tipo de video.
 
 El ambiente = la imagen que cargás al inicio (Nano Banana o la que ya tenés).
 
-## Motor de segmentación a bloques de 10s
+## Motor de segmentación + DURACIÓN DEL CLIP (crítico)
 
 Regla determinística para partir cualquier guion en secuencias de Omni **sin cambiar palabras**. Esto NO se hace a ojo:
 
-1. **Ritmo de referencia:** español a ritmo energico ≈ **2,8 palabras/segundo** (~168 wpm).
+1. **Ritmo de referencia:** ≈ **2,8 palabras/segundo** (~168 wpm). Validado: 17 palabras fluyen en 6s.
 2. **Tope duro por secuencia:** **10s = 28 palabras**. Nunca se supera.
 3. **Ventana objetivo:** **6–10s (17–28 palabras)** por secuencia.
 4. **Dónde cortar:** primero en **límite de frase** (punto). Si una frase sola supera 28 palabras, cortar en el **conector** más cercano (y, pero, para, que, porque…). Nunca dejar una palabra colgada sin sentido.
-5. **Reparto parejo:** si un bloque necesita 2+ secuencias, repartir lo más equilibrado posible respetando los cortes naturales; evitar orphans menores a ~5s salvo que sean una frase completa indivisible.
-6. **Mostrar siempre la duración estimada** de cada secuencia = palabras ÷ 2,8. Prohibido asumir 10s por defecto.
-7. **Palabras intactas:** reestructurar a 10s es parte del trabajo; reescribir el guion (tocar palabras) no se hace nunca.
+5. **Reparto parejo:** si un bloque necesita 2+ secuencias, repartir equilibrado respetando cortes naturales.
+6. **Palabras intactas:** reestructurar es parte del trabajo; reescribir el guion (tocar palabras) no se hace nunca.
+
+### ⭐ La duración de generación = la duración del texto (no más)
+El error más común: poner 10s a una frase corta → al modelo le **sobra tiempo y repite/inventa palabras** (confirmado por Ale). El de 6s, en cambio, fluye.
+
+**Asignar a cada clip el bucket de Omni que matchea su nº de palabras:**
+
+| Generar a | Palabras (~2,8/seg) |
+|---|---|
+| **4s** | ~11 (9–13) |
+| **6s** | ~17 (14–19) |
+| **8s** | ~22 (20–25) |
+| **10s** | ~28 (26–28) |
+
+- **Mostrar siempre** por clip: nº de palabras + duración recomendada. **Prohibido 10s por defecto.**
+- **Nunca dar más duración que la que pide el texto.** Si un clip queda apurado (muchas palabras para el bucket), dividirlo; si queda "vacío" (pocas palabras), bajar el bucket o sumar palabras.
+- **Puntuación:** la locución a Omni va **sin comas** y con mínimos puntos (cada signo estira una pausa). En clips cortos (4s), sin puntuación interna.
 
 ## Identidad del avatar — rostro, dentadura y físico (va en la Secuencia 1)
 

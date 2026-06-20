@@ -43,6 +43,9 @@ A hyper-realistic 9:16 vertical video. Clean studio look, photorealistic, natura
 ```
 Cargá `ref-01.jpg` en cada clip. Como es un solo ambiente, también podés usar Modo A ("continua la grabación") para los clips 2-7.
 
+**⚠️ DURACIÓN POR CLIP (generá en esta duración, NO 10s por defecto):**
+C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal → **8s** · C4 SEÑAL 2 24pal → **8s** · C5 SEÑAL 3 21pal → **8s** · C6 CIERRE 18pal → **6s** · C7 CTA 7pal → **4s**. (Si un clip sale apurado o repite, ver la regla de buckets en `director-avatar-omni.md`.)
+
 | # · Función | [FRAMING] | [ACTION] | [SCRIPT] (sin comas) |
 |---|---|---|---|
 | 1 · HOOK | medium-close | mira fijo, gesto contenido con una mano | Hay tres señales claras de que un negocio no está estructurado te las muestro una por una |
