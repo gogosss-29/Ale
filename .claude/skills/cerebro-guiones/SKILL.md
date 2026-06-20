@@ -76,6 +76,21 @@ Un B-roll debe **sumar info, prueba o emoción**; si solo decora y repite la voz
 - **Generativo (Flow):** impacto/metáfora. Usá la Plantilla Maestra de 8 bloques + los 8 estilos validados + el banco de metáforas en **`references/brolls-biblioteca.md`** (incluye paletas hex de #05 y #06). Prompts en inglés, sin voz, 9:16, 1.800–3.000 caracteres, premium y dinámicos.
 - **Informativo (diseñado/captura):** datos, números, comparaciones, dashboards reales. Para contenido educativo, priorizar este tipo. Especificá qué dato muestra (con números de ejemplo) y la fuente (gráfico diseñado en Canva/editor o screenshot real).
 
+## Diseño de b-rolls por reel (tratamiento cohesivo)
+Una vez aprobado el guion, NO armar b-rolls sueltos: diseñar un **tratamiento a medida
+del reel** que fluya con el contenido, manteniendo la **firma Cerebro** (nivel premium +
+ritmo punchy + paleta + dinámica "texto que aporta").
+1. **Hilo visual único:** elegir un motivo/objeto que recorra todo el reel (ej. el mismo
+   dashboard "TU NEGOCIO" diagnosticado módulo por módulo; o una metáfora que evoluciona).
+   Que los b-rolls se sientan UNA pieza, no 4 sueltos.
+2. **Mapa por beat:** para cada bloque de la locución → patrón/estilo (#11 dato · #12
+   plataforma · #13 texto · editorial), qué muestra, entrada (mm:ss) y duración **al ritmo
+   de ese bloque** (punchy, front-loaded).
+3. **Coherencia:** misma paleta y tipografía entre b-rolls; transiciones que los enlacen
+   (ej. "zoom into module"); bookend (lo que se rompe al inicio se resuelve al final).
+4. Generar los prompts ya cohesivos. Intercalar estilos por función (hook #13 → dato #11
+   → plataforma #12) sin perder la firma.
+
 ## Música de fondo
 
 Cuando pidan la música, entregá un brief: género, BPM, tono, estructura sincronizada a los tramos del video (hook con tensión, groove en los datos, build-up en el cierre), notas de mezcla (instrumental, ducking bajo la voz) y un prompt listo para Suno/Udio.

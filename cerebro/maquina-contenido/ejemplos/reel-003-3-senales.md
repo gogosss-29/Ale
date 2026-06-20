@@ -67,7 +67,16 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
 - [0:41 "3 · ¿Ganás o solo facturás?"]
 - [1:00 "Conocé tu negocio"]
 
-> Estilo #11 (ver `references/estilo-premium-dataviz.md`). Arco bookend: el panel "?" de BR1 se resuelve en verde en BR4.
+### 🎬 Tratamiento cohesivo (no son 4 b-rolls sueltos)
+**Hilo visual único:** un mismo dashboard **"TU NEGOCIO"** (estilo #11) que se diagnostica
+**módulo por módulo**, una señal por vez, y al final **se resuelve en verde**.
+- **BR1 = módulo EQUIPO/CONOCIMIENTO** → colapsa (todo en una persona).
+- **BR2 = módulo OBJETIVOS** → vacío, sin rumbo, zarandeado por el CONTEXTO.
+- **BR3 = módulo FINANZAS** → facturación↑ / ganancia plana.
+- **BR4 = el dashboard completo** → los "?" pasan a verde (CONOCÉ TU NEGOCIO). **Bookend.**
+- **Transición que los enlaza:** "zoom into module" — la cámara entra a un módulo del
+  mismo panel en cada b-roll. Misma paleta/tipografía → se sienten UNA pieza.
+- **(Opcional) golpe #13** de texto en el hook ("3 SEÑALES") para arrancar con ritmo.
 
 ### BR1 — Todo depende de una persona (P1) · 4s
 ```
