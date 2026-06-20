@@ -4,6 +4,17 @@ Backlog vivo de la sesión. Orden = prioridad sugerida.
 
 ---
 
+## 🎨 Estilo propio #99 "Cerebro Signature" — VALIDAR/ITERAR
+**Qué es:** estilo insignia de marca (`cerebro-guiones/references/estilo-99-cerebro-signature.md`).
+Grafito + oro fundido + line-art que se dibuja solo (caos→orden) + glifo Cerebro.
+**Estado:** concepto v1 + 1 prompt de prueba aplicado al cierre del reel-003.
+**Pendiente:** generarlo en Flow, ver cómo interpreta el "signature move" y el glifo,
+e **iterar** (intensidad del oro, velocidad, glifo) hasta que sea inconfundible.
+Decidir uso: #99 para momentos de marca (hook/cierre) + #11 para datos, o todo #99.
+Relacionado: cerrar la idea de **"estilo propio por reel"** (mundo visual a medida del tema).
+
+---
+
 ## ⭐ 0. Avatar Omni se DEFORMA por el bloque de identidad (IMPORTANTE)
 **Problema:** los prompts del avatar con el bloque de identidad textual (dentadura
 "no blanquear/no emparejar…" + físico "no me hagas más chico…") **deforman** la
