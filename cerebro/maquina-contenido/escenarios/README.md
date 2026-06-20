@@ -29,3 +29,4 @@ directo en los clips).
 | `Podcast/podcast-01.jpg` | https://ar.pinterest.com/pin/561120434843953620/ | 1440×1799 |
 | `Podcast/podcast-02.jpg` | https://ar.pinterest.com/pin/561120434844291038/ | 1440×1800 |
 | `Podcast/podcast-03.jpg` | https://ar.pinterest.com/pin/689684130471818313/ | 1224×1632 |
+| `Podcast/podcast-04.png` | https://ar.pinterest.com/pin/440789882307112916/ | 731×782 |
