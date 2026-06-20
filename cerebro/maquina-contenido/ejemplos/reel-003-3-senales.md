@@ -78,52 +78,52 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
   mismo panel en cada b-roll. Misma paleta/tipografía → se sienten UNA pieza.
 - **(Opcional) golpe #13** de texto en el hook ("3 SEÑALES") para arrancar con ritmo.
 
-### BR1 — Todo depende de una persona (P1) · 4s
+### BR1 — Módulo EQUIPO (Señal 1) · 4s
 ```
-[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass dashboard, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges as real props.
-[MAIN ELEMENT]: A floating glass panel titled "TU NEGOCIO" with a central person-silhouette card connected by thin lines to four KPI chips: "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES". Front-loaded: almost immediately the person card is yanked out and all four chips instantly turn blank grey with a red "?". A bold red tag "TODO EN UNA SOLA PERSONA" snaps in.
-[ANIMATION]: Fast and punchy. Quick camera push-in with parallax. The person card and connections appear in the first second; the card yanks out and the chips collapse to "?" with a sharp glitch; tag snaps in with motion blur. Key visual + text land within ~1.5s. Cut-ready, no slow build.
-[TEXT ON SCREEN]: Bold sans-serif, ink-black #111111, Spanish: "TU NEGOCIO", "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES"; red tag "TODO EN UNA SOLA PERSONA".
+[MAIN ELEMENT]: A glass dashboard titled "TU NEGOCIO" with three module tabs visible: "EQUIPO", "OBJETIVOS", "FINANZAS". The camera pushes into the "EQUIPO" module: a central person-silhouette card is the hub connected by thin lines to chips "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES". Front-loaded: the person card is yanked out and all chips collapse to a red "?". Red tag "TODO EN UNA SOLA PERSONA".
+[ANIMATION]: Fast and punchy. Camera zoom-in from the full dashboard into the EQUIPO module within the first ~1s; the person card yanks out and the chips die to "?" with a sharp glitch; tag snaps in with motion blur. Cut-ready.
+[TEXT ON SCREEN]: Bold sans-serif, ink-black #111111, Spanish: "TU NEGOCIO", "EQUIPO", "OBJETIVOS", "FINANZAS", "PROCESOS", "CLIENTES", "PROVEEDORES", "CLAVES"; red tag "TODO EN UNA SOLA PERSONA".
 [COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, alert red #E2352B, dim grey for blanked chips.
 [MOOD]: Fragile, single point of failure, premium.
-[AUDIO]: NO voice, NO narration. Punchy synth, crisp UI clicks, a sharp glitch/zap as the person is pulled and chips blank, a snap on the tag.
+[AUDIO]: NO voice, NO narration. Punchy synth, UI clicks, a glitch/zap as the person is pulled, a snap on the tag.
 [NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### BR2 — Sin objetivos, a la deriva (P2) · 4s
+### BR2 — Módulo OBJETIVOS (Señal 2) · 4s
 ```
-[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass dashboard, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges.
-[MAIN ELEMENT]: A floating glass panel with a path line advancing left to right toward an EMPTY dashed target marked with a red "?" (no goal set). A large external arrow labeled "CONTEXTO" shoves the line up and then down erratically. A bold red tag "SIN OBJETIVOS = A LA DERIVA" snaps in.
-[ANIMATION]: Fast. The line advances immediately; the missing-target "?" flashes; the "CONTEXTO" arrow shoves the line up then down; the tag snaps in. Front-loaded, key visual + text within ~1.5s. Cut-ready.
-[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "SIN OBJETIVOS", "CONTEXTO", red "?", tag "A LA DERIVA".
+[MAIN ELEMENT]: The same glass dashboard "TU NEGOCIO" (tabs "EQUIPO", "OBJETIVOS", "FINANZAS"). The camera pushes into the "OBJETIVOS" module: a path line advances left to right toward an EMPTY dashed target marked with a red "?" (no goal set). A large external arrow labeled "CONTEXTO" shoves the line up then down erratically. Red tag "SIN OBJETIVOS = A LA DERIVA".
+[ANIMATION]: Fast. Camera zoom-in into the OBJETIVOS module within ~1s; the line drifts; the missing-target "?" flashes; the "CONTEXTO" arrow shoves the line; tag snaps in. Front-loaded, cut-ready.
+[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "TU NEGOCIO", "OBJETIVOS", "CONTEXTO", red "?", tag "A LA DERIVA".
 [COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, alert red #E2352B.
 [MOOD]: No direction, at the mercy of the external context.
 [AUDIO]: NO voice, NO narration. Punchy synth, UI ticks, a wobble/whoosh as the arrow shoves the line, snap on the tag.
 [NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### BR3 — ¿Ganás o solo facturás? (P2) · 4s
+### BR3 — Módulo FINANZAS (Señal 3) · 4s
 ```
-[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, 3D bar chart, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass dashboard with a 3D bar chart module, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette.
-[MAIN ELEMENT]: A 3D bar chart. Tall ink-grey bars labeled "FACTURACIÓN" rise quickly month by month, while a flat red line labeled "GANANCIA" stays pinned at the bottom near zero. A red arrow points to the big gap between them. A bold tag "¿GANÁS O SOLO FACTURÁS?" snaps in.
-[ANIMATION]: Fast and punchy. The "FACTURACIÓN" bars shoot up in the first ~1.5s; the red "GANANCIA" line stays flat; a red arrow draws to the gap; tag snaps in with motion blur. Cut-ready, no slow build.
-[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "FACTURACIÓN", "GANANCIA", tag "¿GANÁS O SOLO FACTURÁS?".
+[MAIN ELEMENT]: The same glass dashboard "TU NEGOCIO" (tabs "EQUIPO", "OBJETIVOS", "FINANZAS"). The camera pushes into the "FINANZAS" module: tall ink-grey bars labeled "FACTURACIÓN" rise quickly while a flat red line labeled "GANANCIA" stays pinned at the bottom near zero. A red arrow points to the big gap. Tag "¿GANÁS O SOLO FACTURÁS?".
+[ANIMATION]: Fast and punchy. Camera zoom-in into the FINANZAS module within ~1s; the "FACTURACIÓN" bars shoot up; the red "GANANCIA" line stays flat; a red arrow draws to the gap; tag snaps in with motion blur. Cut-ready.
+[TEXT ON SCREEN]: ink-black #111111 bold, Spanish: "TU NEGOCIO", "FINANZAS", "FACTURACIÓN", "GANANCIA", tag "¿GANÁS O SOLO FACTURÁS?".
 [COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111 for the facturación bars, alert red #E2352B for the flat ganancia line and the tag.
 [MOOD]: The trap of revenue without profit.
 [AUDIO]: NO voice, NO narration. Rising UI ticks as the bars grow, a flatline tone for the ganancia line, a snap on the tag, punchy synth.
 [NEGATIVE]: dark neon-only scene, vintage sepia, messy clutter, static single-pose animation, slow boring motion, low-res look, distorted misspelled text, voiceover, narration, human speech.
 ```
 
-### BR4 — Conocé tu negocio (P1 · bookend verde) · 4s
+### BR4 — Dashboard completo en verde (cierre · bookend) · 4s
 ```
-[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass UI, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
+[STYLE]: Vertical 9:16 premium After Effects mixed-media motion graphics, 24fps, 4 seconds, broadcast quality. Clean light grid surface, floating glass dashboard, bold kinetic typography, camera movement, parallax, soft shadows, subtle film grain, shallow depth of field.
 [BACKGROUND]: Soft grey-white cutting-mat grid #EDEDED with gentle moving shadows and a faint vignette. A red pushpin and a paperclip at the edges.
-[MAIN ELEMENT]: The glass panel "TU NEGOCIO" with KPI fields "MARGEN", "FLUJO DE CAJA", "RENTABILIDAD", "CLIENTES" flipping fast from a red "?" to filled GREEN check values one after another; the whole panel lights green. A bold green tag "CONOCÉ TU NEGOCIO" snaps in.
-[ANIMATION]: Fast. The red "?" fields flip to green values rapidly in the first ~1.5s; the panel glows green; the tag snaps in with motion blur. Punchy, hopeful, cut-ready.
-[TEXT ON SCREEN]: ink-black #111111 bold with green values, Spanish: "TU NEGOCIO", "MARGEN", "FLUJO DE CAJA", "RENTABILIDAD", "CLIENTES"; green tag "CONOCÉ TU NEGOCIO".
+[MAIN ELEMENT]: The camera pulls back from a module to reveal the whole "TU NEGOCIO" dashboard with its three modules "EQUIPO", "OBJETIVOS", "FINANZAS". All the red "?" across the modules flip to filled GREEN check values one after another; the whole panel glows green. Green tag "CONOCÉ TU NEGOCIO".
+[ANIMATION]: Fast. Camera pull-back from a module to the full dashboard; the red "?" fields flip to green values rapidly within ~1.5s; the panel glows green; tag snaps in with motion blur. Punchy, hopeful, cut-ready. Bookend of BR1.
+[TEXT ON SCREEN]: ink-black #111111 bold with green values, Spanish: "TU NEGOCIO", "EQUIPO", "OBJETIVOS", "FINANZAS"; green tag "CONOCÉ TU NEGOCIO".
 [COLOR PALETTE]: Grid grey-white #EDEDED / #FFFFFF, ink black #111111, positive green #1FB85B.
 [MOOD]: Clarity, resolution, hopeful.
 [AUDIO]: NO voice, NO narration. Rapid positive ticks/chimes as the values fill, a satisfying chord, a snap on the tag, warm synth.
