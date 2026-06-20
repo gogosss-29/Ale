@@ -15,3 +15,9 @@ directo en los clips).
 | Archivo | Fuente | Notas |
 |---|---|---|
 | `Naturaleza/naturaleza-01.jpg` | https://ar.pinterest.com/pin/1115203926497664126/ | 1080×1920 (9:16) |
+
+### Casa
+| Archivo | Fuente | Notas |
+|---|---|---|
+| `Casa/casa-luz-prendida-s06.jpg` | https://ar.pinterest.com/pin/817121926197217852/ | Frame del segundo 6 (luz prendida). Video 33s. |
+| `Casa/casa-luz-01.jpg` … `casa-luz-07.jpg` | https://ar.pinterest.com/pin/101753272825329777/ | Frames cada ~1,5s (video 10,7s) — variantes de luz para elegir. |
