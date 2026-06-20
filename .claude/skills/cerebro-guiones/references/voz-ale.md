@@ -1,5 +1,17 @@
 # 🗣️ Voz real de Ale — perfil extraído de sus guiones reales
 
+## ⭐ ESENCIA (regla nº1 — sobre todo lo demás)
+Ale da **INFORMACIÓN + EXPERIENCIA + RESOLUCIÓN**. Cada pieza tiene que:
+- **Enseñar algo concreto** que el que mira pueda usar HOY (un dato, un cómo, un criterio, un número). No teasear un dolor y mandar a seguir.
+- **Respaldarse en experiencia real** ("cuando entramos a una empresa…", casos, números reales). Autoridad, no opinión.
+- **Resolver ahí mismo**: dar el "cómo", no solo el "qué/por qué". El que mira se va **sabiendo o pudiendo hacer** algo.
+
+**NO es un anuncio de venta.** Prohibido: problema → reframe abstracto → "seguime". Generalidades motivacionales sin sustancia. Tono de pitch.
+
+**CTA = extiende valor, NUNCA filtra.** Mal: "seguime que te ayudo a estructurar tu negocio" (filtra: si no tenés el problema, no me sigas; es pitch). Bien: dar MÁS — "comentá ESTRUCTURA y te paso la plantilla", "seguime que esto es lo primero de varios que documentamos", "comentá DELIVERY y te comparto el desarrollo completo". El CTA regala algo, no pide por pedir.
+
+---
+
 > Calibración de la skill `guion-cerebro`. **No es teoría:** cada patrón sale de
 > los guiones reales de Ale (Notion → "Guiones": e-commerce/China, 3 Fundamentos
 > Financieros, Así auditamos, 5 datos, caso hamburguesería, 8 años con
