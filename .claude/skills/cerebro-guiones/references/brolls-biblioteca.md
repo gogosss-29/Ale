@@ -48,6 +48,8 @@ Target: **1.800-3.000 caracteres** (límite duro de Flow 4.000; prompts comprimi
 | #08 | Beast Motion Graphics Tutorial | tipografía gigante + foto B&N + cámara movida | reels virales, estilo dominante |
 | #09 | Vector Neón Minimalista | motion graphics 2D vectorial, neón sobre negro | datos/finanzas tech, pasos/objetivos |
 | #10 | Editorial Premium Mixed-Media | grilla + props reales + 3D + tipografía cinética | hooks de impacto, intros, transiciones |
+| **#11** | **Premium Motion Graphics (Data-Viz)** | **grid claro + glass/3D + texto kinético + cámara** | **B-rolls INFORMATIVOS: KPIs, charts, comparativas, alertas, números** → ver `estilo-premium-dataviz.md` |
+> #11 es la EXCEPCIÓN a "sin texto": acá el dato/número ES el contenido. Para datos/finanzas, **usar #11**; para metáfora/concepto, #05/#06.
 > #03 y #04 descartados (no alinean con marca); los IDs se conservan por trazabilidad, no reasignar.
 > Para datos/prueba priorizar B-roll **informativo** (#06, #09); para impacto/metáfora, **generativo**.
 
