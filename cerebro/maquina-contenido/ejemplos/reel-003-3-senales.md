@@ -56,7 +56,75 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
 | 6 · CIERRE | medium-close | gesto abierto, más calmo | Antes de crecer hay que entender conocer de verdad tu propio negocio es el camino inicial para crecer |
 | 7 · CTA | medium | leve apertura de manos invitando | Seguime que te ayudo con tu negocio |
 
-## 4 · B-rolls + música
-- B-rolls (~50%): Señal 1 → conocimiento encerrado (caja/llave, #05) · Señal 2 → brújula/horizonte sin rumbo (#05) · Señal 3 → **informativo** (Estado de Resultados / "ganar vs facturar", #06). Detalle de estilos: `../../.claude/skills/cerebro-guiones/references/brolls-biblioteca.md`.
-- Música: brief Suno/Udio (cinematic minimal, ducking bajo la voz).
+## 4 · B-rolls (Flow · ~50% del timeline) + textos + música
+
+**Pista (cuándo entra cada uno):** BR1 ~0:11 (Señal 1) · BR2 ~0:23 (Señal 2) · BR3 ~0:41 (Señal 3) · BR4 ~0:51 (cierre). 6s c/u.
+
+**Textos en pantalla (en edición):**
+- [0:01 "3 señales de que tu negocio NO está estructurado"]
+- [0:12 "1 · El conocimiento está en las cabezas"]
+- [0:22 "2 · No se trabaja sobre objetivos"]
+- [0:41 "3 · ¿Ganás o solo facturás?"]
+- [1:00 "Conocé tu negocio"]
+
+### BR1 — Conocimiento encerrado en una persona (#05) · 6s
+```
+[STYLE]: Vertical 9:16 surrealist anatomical collage animation, 24fps, 6 seconds. Intellectual art-magazine aesthetic mixing hyperrealistic monochrome classical sculpture with hand-drawn red doodles.
+[BACKGROUND]: Aged beige paper texture #E8DFCE with grain and heavy dark vignette in the corners. Old magazine page feel.
+[MAIN ELEMENT]: CENTER: a hyperrealistic monochrome classical marble bust; in place of the top of the head, a closed metal box sealed with a padlock (knowledge locked inside one person). AROUND IT: faint red hand-drawn gears and question marks trying to get out. DECORATIVE: small red dashed lines.
+[ANIMATION]: Paper appears first. The bust slides in with a hard shadow. The padlock clicks shut. Red gears and question marks draw themselves around the locked head, unable to escape. Camera completely static.
+[TEXT ON SCREEN]: NONE. No letters, no numbers, no words anywhere.
+[COLOR PALETTE]: Paper beige #E8DFCE, monochrome black-white-grey sculpture, blood-red #A8332A for hand-drawn elements only.
+[MOOD]: Knowledge trapped inside one person, fragile, intellectual.
+[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: paper rustle, a metallic padlock click, marker scribble. Warm analog only.
+[NEGATIVE]: No live-action, no full-color photos, no neon, no glow, no sci-fi, no digital particles, no flat vector design, no bright colors except blood-red accents, no shaky camera, no readable text, no logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+```
+
+### BR2 — Sin objetivos, a merced del contexto (#05) · 6s
+```
+[STYLE]: Vertical 9:16 surrealist collage animation, 24fps, 6 seconds. Intellectual art-magazine aesthetic, hyperrealistic monochrome cutouts + hand-drawn red doodles.
+[BACKGROUND]: Aged beige paper texture #E8DFCE with grain and dark vignette in the corners.
+[MAIN ELEMENT]: CENTER: a small monochrome paper-cutout boat with a classical figure in it, no rudder and no sail, tilting. AROUND IT: red hand-drawn wind arrows pushing it from different directions; a red compass whose needle spins pointing nowhere. DECORATIVE: red dashed wavy lines as water.
+[ANIMATION]: Paper appears. The boat slides in and rocks, pushed by red wind arrows that draw themselves from different sides. The compass needle spins without settling. Camera completely static.
+[TEXT ON SCREEN]: NONE. No letters, no numbers, no words anywhere.
+[COLOR PALETTE]: Paper beige #E8DFCE, monochrome black-white-grey, blood-red #A8332A for hand-drawn elements only.
+[MOOD]: No direction, drifting, at the mercy of the external context.
+[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: paper rustle, soft wind, marker scribble. Warm analog only.
+[NEGATIVE]: No live-action, no full-color photos, no neon, no glow, no sci-fi, no digital particles, no flat vector design, no bright colors except blood-red accents, no shaky camera, no readable text, no logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+```
+
+### BR3 — ¿Ganás o solo facturás? · informativo (#06) · 6s
+```
+[STYLE]: Vertical 9:16 vintage educational illustration animation, 24fps, 6 seconds. Old textbook / 1970s economic documentary aesthetic, layered composition that builds progressively.
+[BACKGROUND]: Aged cream paper texture #EFE6D2 with grain and worn print marks, warm vignette.
+[MAIN ELEMENT]: A vintage textbook chart constructing in sequence: a group of ascending bars in ocean blue #2A6FAF (sales going up) and, next to them, a single flat line in terracotta #C0432E staying low (profit flat at the bottom). CONNECTOR: a magenta-pink #E63B85 hand-drawn arrow pointing to the gap between the rising bars and the flat line. WATERMARK BEHIND: a giant semi-transparent coin/scale symbol at 12% opacity in mustard yellow.
+[ANIMATION]: Cream paper appears, watermark fades in. The blue bars rise one by one with stamp-like settling; the terracotta line stays flat. The magenta arrow draws itself pointing to the gap. Subtle hand-tremor. Camera static.
+[TEXT ON SCREEN]: NONE. No letters, no numbers, no words. Pure visual storytelling.
+[COLOR PALETTE]: Cream paper #EFE6D2, ocean blue #2A6FAF, terracotta #C0432E, mustard yellow #E89A3B, magenta-pink #E63B85 for hand-drawn doodles only. Vintage offset-print quality.
+[MOOD]: Educational, the gap between billing and real profit, retro documentary.
+[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: vintage paper rustles, soft stamp thuds, marker scribble. Warm analog vintage only.
+[NEGATIVE]: No real photographs, no humans, no live-action, no neon, no glow, no sci-fi, no digital particles, no 3D modern rendering, no clean vector flat design, no shaky camera, no readable text, no real brand logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+```
+
+### BR4 — Entender → estructura → crecer (cierre, #06) · 6s
+```
+[STYLE]: Vertical 9:16 vintage educational illustration animation, 24fps, 6 seconds. Old textbook aesthetic, builds progressively.
+[BACKGROUND]: Aged cream paper texture #EFE6D2 with grain, warm vignette.
+[MAIN ELEMENT]: A vintage illustration of a small plant/tree growing upward out of an open book that rests on a solid base of neat stacked building blocks (understanding → structure → growth), in ocean blue #2A6FAF and terracotta #C0432E. CONNECTOR: a magenta-pink #E63B85 hand-drawn upward arrow following the growth. WATERMARK BEHIND: a giant semi-transparent upward arrow at 12% opacity in mustard yellow.
+[ANIMATION]: Cream paper appears, watermark fades. The blocks stack into a base, the open book settles, the plant grows upward, the magenta arrow draws itself rising. Subtle hand-tremor. Camera static.
+[TEXT ON SCREEN]: NONE. No letters, no numbers, no words.
+[COLOR PALETTE]: Cream paper #EFE6D2, ocean blue #2A6FAF, terracotta #C0432E, mustard yellow #E89A3B, magenta-pink #E63B85 for doodles only. Vintage offset-print quality.
+[MOOD]: Understanding becomes structure becomes growth, hopeful, educational.
+[AUDIO]: NO voice, NO narration, NO speech. Only analog sound design: vintage paper rustles, soft stamp thuds, marker scribble, soft uplifting whoosh. Warm analog vintage only.
+[NEGATIVE]: No real photographs, no humans, no live-action, no neon, no glow, no sci-fi, no digital particles, no 3D modern rendering, no clean vector flat design, no shaky camera, no readable text, no real brand logos, no voiceover, no narration, no human speech, no vocals, no synthesizers.
+```
+
+### Música (brief Suno / Udio)
+- **Tono:** cinematic minimal corporate, calmo y autoritario, con leve tensión.
+- **Estructura:** hook con tensión sutil → base calma y constante en las 3 señales → leve uplift en el cierre.
+- **Mezcla:** instrumental, sin voz/letra, **ducking** bajo la locución, graves controlados.
+- **Prompt:** `Minimal cinematic corporate underscore, calm and authoritative, soft piano and warm sustained strings, subtle steady pulse around 85 BPM, no vocals, no lyrics, intimate and confident, gentle uplift toward the end, clean mix for voiceover ducking, vertical short-form ad.`
+
+## 5 · Edición (CapCut)
+Avatar (7 clips) en la línea de tiempo → B-rolls encima en sus tiempos (~50%) → textos en pantalla → **capa de realismo** (`Temp -3 · Tinte +2 · Sat -6 · Exp -3 · Contraste +12 · Highlights -35 · Sombras -18 · Fade +6`) → música con ducking. Exportar 9:16 1080×1920.
 
