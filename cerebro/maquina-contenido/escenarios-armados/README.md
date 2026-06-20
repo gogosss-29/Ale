@@ -16,4 +16,4 @@ referencia listos para usar en los clips del reel.
 | Archivo | Qué es | Fuente |
 |---|---|---|
 | `estudio-naranja/sesion-fotos-orange.mp4` | Video sesión de fotos, clon en fondo naranja + banqueta (6s) | Generado en Flow |
-| `estudio-naranja/ref-*.jpg` | (pendiente) frame de referencia elegido | — |
+| `estudio-naranja/ref-01.jpg` · `ref-02.jpg` | Frames de referencia elegidos (s1 y s2) | del video |

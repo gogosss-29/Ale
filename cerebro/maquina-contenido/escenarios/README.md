@@ -22,3 +22,10 @@ directo en los clips).
 | `Casa/casa-luz-prendida-s06.jpg` | https://ar.pinterest.com/pin/817121926197217852/ | Frame del segundo 6 (luz prendida). Video 33s. |
 | `Casa/casa-luz-01.jpg` … `casa-luz-07.jpg` | https://ar.pinterest.com/pin/101753272825329777/ | Frames cada ~1,5s (video 10,7s) — variantes de luz para elegir. |
 | `Casa/casa-08.jpg` | https://ar.pinterest.com/pin/689261918012098051/ | Frame del segundo 16 (video 1:07). |
+
+### Podcast
+| Archivo | Fuente | Notas |
+|---|---|---|
+| `Podcast/podcast-01.jpg` | https://ar.pinterest.com/pin/561120434843953620/ | 1440×1799 |
+| `Podcast/podcast-02.jpg` | https://ar.pinterest.com/pin/561120434844291038/ | 1440×1800 |
+| `Podcast/podcast-03.jpg` | https://ar.pinterest.com/pin/689684130471818313/ | 1224×1632 |
