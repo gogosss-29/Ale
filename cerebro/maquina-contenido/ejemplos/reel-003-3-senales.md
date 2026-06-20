@@ -131,11 +131,12 @@ C1 HOOK 17pal → **6s** · C2 SEÑAL 1 26pal → **8s** · C3 SEÑAL 2 23pal �
 ```
 
 ### 🎵 Música (brief Suno / Udio)
-- **Tono:** cinematic minimal corporate, calmo y autoritario, con leve tensión (educativo, no épico).
-- **BPM:** ~85.
-- **Estructura sincronizada:** hook con tensión sutil (0:00–0:10) → base calma y constante en las 3 señales (0:10–0:50) → leve build-up en el cierre/"conocé tu negocio" (0:50–1:10).
-- **Mezcla:** instrumental (sin voz ni letra), **ducking** bajo la locución (la música baja cuando habla el avatar), graves controlados.
-- **Prompt:** `Minimal cinematic corporate underscore, calm and authoritative, soft piano and warm sustained strings, subtle steady pulse around 85 BPM, no vocals, no lyrics, intimate and confident, gentle uplift toward the end, clean mix for voiceover ducking, vertical short-form.`
+- **Tono:** modern minimal tech / electrónico, sleek y premium, confiado y limpio (NO piano-cuerdas de documental).
+- **BPM:** ~95, con pulso/beat electrónico sutil.
+- **Elementos:** pads de synth cálidos + arpegio pulsante suave + bajo controlado + clicks/percusión liviana.
+- **Estructura sincronizada:** pulso con tensión en el hook (0:00–0:10) → beat constante pero understated bajo las 3 señales (0:10–0:50) → leve build-up/resolución tech en el cierre (0:50–1:10).
+- **Mezcla:** instrumental (sin voz ni letra), **ducking** bajo la locución, graves controlados.
+- **Prompt:** `Modern minimal tech underscore, sleek and premium, warm analog synth pads with a subtle pulsing arpeggio and a soft electronic beat, understated bass, light clicks, confident and clean, around 95 BPM, no vocals, no lyrics, building gently toward the end, mixed for voiceover ducking, vertical short-form.`
 
 ## 5 · Edición (CapCut)
 Avatar (7 clips) en la línea de tiempo → B-rolls encima en sus tiempos (~50%) → textos en pantalla → **capa de realismo** (`Temp -3 · Tinte +2 · Sat -6 · Exp -3 · Contraste +12 · Highlights -35 · Sombras -18 · Fade +6`) → música con ducking. Exportar 9:16 1080×1920.
