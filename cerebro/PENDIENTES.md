@@ -4,6 +4,16 @@ Backlog vivo de la sesión. Orden = prioridad sugerida.
 
 ---
 
+## ⚙️ Piloto Remotion (motor de producción dual)
+**Decisión tomada:** el sistema usa Flow Y Remotion según la pieza (router en
+`cerebro-guiones/references/motor-produccion.md`). Regla: persona → Omni ·
+exacto (texto/dato/marca) → Remotion · orgánico → Flow.
+**Pendiente:** instalar Remotion en el repo + piloto: renderizar el **BR3 del
+reel-003** ("¿Ganás o solo facturás?") y comparar contra la versión de Flow.
+Si pasa: portar #11, #13 y #99 a plantillas parametrizables (marca = código).
+
+---
+
 ## 🎨 Estilo propio #99 "Cerebro Signature" — VALIDAR/ITERAR
 **Qué es:** estilo insignia de marca (`cerebro-guiones/references/estilo-99-cerebro-signature.md`).
 Grafito + oro fundido + line-art que se dibuja solo (caos→orden) + glifo Cerebro.

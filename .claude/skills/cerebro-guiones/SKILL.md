@@ -76,6 +76,12 @@ Un B-roll debe **sumar info, prueba o emoción**; si solo decora y repite la voz
 - **Generativo (Flow):** impacto/metáfora. Usá la Plantilla Maestra de 8 bloques + los 8 estilos validados + el banco de metáforas en **`references/brolls-biblioteca.md`** (incluye paletas hex de #05 y #06). Prompts en inglés, sin voz, 9:16, 1.800–3.000 caracteres, premium y dinámicos.
 - **Informativo (diseñado/captura):** datos, números, comparaciones, dashboards reales. Para contenido educativo, priorizar este tipo. Especificá qué dato muestra (con números de ejemplo) y la fuente (gráfico diseñado en Canva/editor o screenshot real).
 
+## ⚙️ Motor de producción (qué herramienta usa cada pieza)
+El sistema NO se casa con una herramienta: consulta **`references/motor-produccion.md`**
+y elige por pieza. Regla de oro: **persona → Omni/Flow · exacto (texto/dato/marca) →
+Remotion · orgánico/real → Flow**. En el plan de cada reel se declara la herramienta
+por pieza. Explorar en Flow, industrializar en Remotion.
+
 ## Diseño de b-rolls por reel (tratamiento cohesivo)
 Una vez aprobado el guion, NO armar b-rolls sueltos: diseñar un **tratamiento a medida
 del reel** que fluya con el contenido, manteniendo la **firma Cerebro** (nivel premium +
