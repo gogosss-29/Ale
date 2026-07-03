@@ -60,7 +60,33 @@ def main(argv=None):
     p_prod.add_argument("--musica", default=None)
     p_prod.add_argument("--out", default="output")
 
+    p_cut = sub.add_parser(
+        "cortar",
+        help="Trocear un video grabado en clips cortados en silencios (reel_cutter)",
+    )
+    p_cut.add_argument("video", help="Ruta al video (mp4/mov)")
+    p_cut.add_argument("--max", type=float, default=10.0)
+    p_cut.add_argument("--min", type=float, default=4.0)
+    p_cut.add_argument("--noise", type=float, default=-32.0)
+    p_cut.add_argument("--min-silence", type=float, default=0.16, dest="min_silence")
+    p_cut.add_argument("--cortes", default=None)
+    p_cut.add_argument("--modelo", default="large-v3")
+    p_cut.add_argument("--out", default="salida")
+
     a = parser.parse_args(argv)
+
+    if a.cmd == "cortar":
+        from .assembly.reel_cutter_bridge import cortar_video
+        r = cortar_video(
+            a.video, out_dir=a.out, max_s=a.max, min_s=a.min,
+            noise_db=a.noise, min_silence=a.min_silence,
+            cortes=a.cortes, modelo=a.modelo,
+        )
+        for c in r.clips:
+            print(f"[{c.meta['duracion']:.2f}s] {c.path}\n    «{c.meta['texto']}»")
+        print(f"\nMapeo legible: {r.mapeo_md}")
+        return 0
+
     brief = _brief_from_args(a)
 
     if a.cmd == "plan":

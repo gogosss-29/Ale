@@ -1,0 +1,10 @@
+{
+  "name": "reel-cutter",
+  "displayName": "Reel Cutter",
+  "version": "0.1.0",
+  "description": "Corta videos en español en clips listos para editar: transcribe con timestamps de palabra, corta en silencios sin partir palabras y exporta clips + mapeo de texto + JSON para sincronizar animaciones.",
+  "author": { "name": "Alexander Witenko" },
+  "license": "MIT",
+  "keywords": ["video", "reels", "whisper", "ffmpeg", "transcripcion", "clips"],
+  "hooks": "./hooks/hooks.json"
+}

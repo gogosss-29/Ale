@@ -1,0 +1,14 @@
+{
+  "name": "ale-tools",
+  "owner": { "name": "Alexander Witenko" },
+  "description": "Herramientas del proyecto Ale (avatar digital + producción de reels)",
+  "plugins": [
+    {
+      "name": "reel-cutter",
+      "source": "./plugins/reel-cutter",
+      "description": "Corta videos en español en clips en silencios sin partir palabras: transcripción con timestamps de palabra, clips frame-accurate, mapeo de texto y JSON para sincronizar animaciones.",
+      "category": "productivity",
+      "keywords": ["video", "reels", "whisper", "ffmpeg"]
+    }
+  ]
+}

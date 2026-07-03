@@ -1,5 +1,12 @@
 # reel_cutter
 
+> ℹ️ **El código canónico vive ahora en el plugin**
+> [`plugins/reel-cutter/`](../plugins/reel-cutter/) (instalable en cualquier
+> proyecto con `/plugin install reel-cutter@ale-tools`). El `reel_cutter.py` de
+> esta carpeta es un shim que delega en el del plugin: los comandos de este
+> README siguen funcionando igual. También está integrado en AvatarHype:
+> `python -m avatarhype.cli cortar video.mp4`.
+
 Cortador inteligente de **reels en español**. Con un solo comando:
 
 1. Transcribe el video con **timestamps a nivel de palabra** (faster-whisper).

@@ -1,0 +1,8 @@
+# reel_cutter — dependencias Python
+# (ffmpeg/ffprobe deben instalarse aparte, son binarios del sistema)
+
+faster-whisper>=1.0.0
+
+# Opcional: solo se usa para autodetectar GPU (CUDA). Si no está instalado,
+# el script corre en CPU automáticamente.
+# torch>=2.0
