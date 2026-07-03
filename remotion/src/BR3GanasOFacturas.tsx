@@ -228,7 +228,7 @@ const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: nu
         viewBox="0 0 150 620"
         style={{
           position: 'absolute',
-          left: chartW - 132,
+          left: chartW - 275,
           top: baseY - ALTURAS[5] * chartH - 10,
           opacity: Math.min(1, arrowIn * 1.4),
           transform: `scale(${0.7 + arrowIn * 0.3})`,
