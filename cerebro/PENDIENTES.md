@@ -4,13 +4,22 @@ Backlog vivo de la sesión. Orden = prioridad sugerida.
 
 ---
 
-## ⚙️ Piloto Remotion (motor de producción dual)
-**Decisión tomada:** el sistema usa Flow Y Remotion según la pieza (router en
-`cerebro-guiones/references/motor-produccion.md`). Regla: persona → Omni ·
-exacto (texto/dato/marca) → Remotion · orgánico → Flow.
-**Pendiente:** instalar Remotion en el repo + piloto: renderizar el **BR3 del
-reel-003** ("¿Ganás o solo facturás?") y comparar contra la versión de Flow.
-Si pasa: portar #11, #13 y #99 a plantillas parametrizables (marca = código).
+## ⚙️ Remotion — MEJORAR SU USO (piloto hecho, en pausa)
+**Estado:** piloto COMPLETADO ✅ — proyecto en `remotion/`, renderiza en este
+entorno (chromium del contenedor + `--chrome-mode=chrome-for-testing`). Los 4
+estilos ya portados a código y renderizados: #11 (BR3 v2), #12, #13 y #99.
+Videos entregados a Ale para veredicto.
+**Pendiente (anotado por Ale): ver cómo MEJORAR el uso de Remotion.** Ideas a
+explorar cuando se retome:
+- Veredicto de Ale sobre los 4 renders (¿#99 lo representa como firma?).
+- **Parametrizar plantillas** (props: textos/datos/colores por reel, sin tocar diseño).
+- Calidad visual: tipografía propia (embeber fuente de marca), grain/texturas,
+  easings más finos, motion blur real (`@remotion/motion-blur`).
+- Audio: sound design programado (ticks/whooshes/bass) con `<Audio>` en la compo.
+- Flujo: comando único "render de todos los b-rolls de un reel" + naming por reel.
+- Integrarlo al pipeline de la skill (la máquina entrega .mp4, no prompts, cuando
+  la pieza es Remotion según el router).
+- Marcar Remotion como "operativo" en `motor-produccion.md` tras el veredicto.
 
 ---
 
