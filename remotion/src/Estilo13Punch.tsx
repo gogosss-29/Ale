@@ -1,18 +1,35 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {z} from 'zod';
+import {FONT_MARCA, PALETA} from './marca';
 
 // ─── Estilo #13 · Kinetic Typography Punch ─────────────────────────────────
-// Spec: fondo sólido que flipea (negro→crema) en el punch, texto bold,
-// keyword en rojo con glow, reveal palabra por palabra, muy punchy.
-const BLACK = '#000000';
-const CREAM = '#F5F1E6';
-const WHITE = '#FFFFFF';
-const RED = '#E2352B';
-const FONT = "Arial, 'Liberation Sans', 'Helvetica Neue', sans-serif";
+// Parametrizable: línea 1, línea 2 y keyword (el punch, en rojo con flip de fondo).
+export const estilo13Schema = z.object({
+  linea1: z.string(),
+  linea2: z.string(),
+  keyword: z.string(),
+});
+type Props = z.infer<typeof estilo13Schema>;
 
-const FLIP_FRAME = 26; // el fondo flipea cuando cae "GANAR"
+export const estilo13Defaults: Props = {
+  linea1: 'FACTURAR',
+  linea2: 'NO ES',
+  keyword: 'GANAR',
+};
 
-export const Estilo13Punch: React.FC = () => {
+const BLACK = PALETA.negro;
+const CREAM = PALETA.crema;
+const WHITE = PALETA.blanco;
+const RED = PALETA.rojo;
+
+const FLIP_FRAME = 26;
+
+// Auto-ajuste: que la palabra entre en 1080px de ancho
+const fit = (texto: string, base: number) =>
+  Math.min(base, Math.floor(1650 / Math.max(4, texto.length)));
+
+export const Estilo13Punch: React.FC<Props> = ({linea1, linea2, keyword}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
 
@@ -23,20 +40,17 @@ export const Estilo13Punch: React.FC = () => {
   const flipped = frame >= FLIP_FRAME;
   const bg = flipped ? CREAM : BLACK;
   const inkColor = flipped ? '#151310' : WHITE;
-
-  // Micro-respiración al final para que no quede muerto
   const breathe = 1 + Math.sin(frame / 9) * 0.004;
 
   return (
     <AbsoluteFill
       style={{
         backgroundColor: bg,
-        fontFamily: FONT,
+        fontFamily: FONT_MARCA,
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      {/* Glow suave detrás del texto */}
       <div
         style={{
           position: 'absolute',
@@ -52,7 +66,7 @@ export const Estilo13Punch: React.FC = () => {
       <div style={{textAlign: 'center', transform: `scale(${breathe})`, lineHeight: 1.06}}>
         <div
           style={{
-            fontSize: 150,
+            fontSize: fit(linea1, 150),
             fontWeight: 800,
             color: inkColor,
             letterSpacing: 2,
@@ -60,11 +74,11 @@ export const Estilo13Punch: React.FC = () => {
             opacity: Math.min(1, w1 * 1.5),
           }}
         >
-          FACTURAR
+          {linea1}
         </div>
         <div
           style={{
-            fontSize: 112,
+            fontSize: fit(linea2, 112),
             fontWeight: 700,
             color: inkColor,
             letterSpacing: 6,
@@ -73,11 +87,11 @@ export const Estilo13Punch: React.FC = () => {
             opacity: Math.min(1, w2 * 1.5),
           }}
         >
-          NO ES
+          {linea2}
         </div>
         <div
           style={{
-            fontSize: 230,
+            fontSize: fit(keyword, 230),
             fontWeight: 900,
             color: RED,
             letterSpacing: 2,
@@ -87,11 +101,10 @@ export const Estilo13Punch: React.FC = () => {
             opacity: Math.min(1, w3 * 1.6),
           }}
         >
-          GANAR
+          {keyword}
         </div>
       </div>
 
-      {/* Flash de 2 frames en el flip (golpe visual) */}
       <AbsoluteFill
         style={{
           backgroundColor: WHITE,

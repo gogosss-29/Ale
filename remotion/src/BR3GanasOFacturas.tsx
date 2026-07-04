@@ -1,44 +1,51 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {z} from 'zod';
+import {FONT_MARCA, PALETA} from './marca';
 
-// ─── Tokens Estilo #11 · Premium Data Motion ────────────────────────────────
-const GRID_BG = '#EDEDED';
-const INK = '#111111';
-const RED = '#E2352B';
-const WHITE = '#FFFFFF';
-const FONT = "Arial, 'Liberation Sans', 'Helvetica Neue', sans-serif";
+// ─── Estilo #11 · Premium Data Motion — chart "barras vs línea plana" ────────
+// Parametrizable: chip, meses, alturas, label de la línea y tag final.
+export const estilo11ChartSchema = z.object({
+  chipLabel: z.string(),
+  meses: z.array(z.string()).length(6),
+  alturas: z.array(z.number().min(0.05).max(1)).length(6),
+  lineaLabel: z.string(),
+  tag: z.string(),
+});
+type Props = z.infer<typeof estilo11ChartSchema>;
 
-const MESES = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN'];
-const ALTURAS = [0.42, 0.53, 0.64, 0.75, 0.87, 1]; // facturación creciendo
+export const estilo11ChartDefaults: Props = {
+  chipLabel: 'FACTURACIÓN',
+  meses: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN'],
+  alturas: [0.42, 0.53, 0.64, 0.75, 0.87, 1],
+  lineaLabel: 'GANANCIA',
+  tag: '¿GANÁS O SOLO FACTURÁS?',
+};
 
-export const BR3GanasOFacturas: React.FC = () => {
+const GRID_BG = PALETA.grid;
+const INK = PALETA.ink;
+const RED = PALETA.rojo;
+const WHITE = PALETA.blanco;
+
+export const BR3GanasOFacturas: React.FC<Props> = ({chipLabel, meses, alturas, lineaLabel, tag}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
 
-  // Cámara: push-in sutil durante todo el clip
   const camScale = interpolate(frame, [0, 96], [1, 1.055]);
-
-  // Panel de vidrio entra al toque (front-loaded)
   const panelIn = spring({frame, fps, config: {damping: 14, stiffness: 120}});
-
-  // Línea GANANCIA se dibuja (izq→der)
   const lineDraw = interpolate(frame, [16, 36], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
-
-  // Flecha del gap
   const arrowIn = spring({frame: frame - 38, fps, config: {damping: 11, stiffness: 150}});
-
-  // Tag final: snap con overshoot
   const tagIn = spring({frame: frame - 46, fps, config: {damping: 9, stiffness: 170}});
-
-  // Sombra gobo que se desplaza lento
   const goboX = interpolate(frame, [0, 96], [-80, 60]);
 
+  // Tag: achica la fuente si el texto es largo
+  const tagSize = Math.min(58, Math.floor(1750 / Math.max(10, tag.length)));
+
   return (
-    <AbsoluteFill style={{backgroundColor: GRID_BG, fontFamily: FONT, overflow: 'hidden'}}>
-      {/* Grilla tipo cutting-mat */}
+    <AbsoluteFill style={{backgroundColor: GRID_BG, fontFamily: FONT_MARCA, overflow: 'hidden'}}>
       <AbsoluteFill
         style={{
           backgroundImage: `
@@ -49,7 +56,6 @@ export const BR3GanasOFacturas: React.FC = () => {
           backgroundSize: '54px 54px, 54px 54px, 270px 270px, 270px 270px',
         }}
       />
-      {/* Sombra gobo en movimiento */}
       <div
         style={{
           position: 'absolute',
@@ -63,7 +69,6 @@ export const BR3GanasOFacturas: React.FC = () => {
           transform: 'rotate(-18deg)',
         }}
       />
-      {/* Viñeta */}
       <AbsoluteFill
         style={{
           background:
@@ -71,13 +76,10 @@ export const BR3GanasOFacturas: React.FC = () => {
         }}
       />
 
-      {/* Escena con cámara */}
       <AbsoluteFill style={{transform: `scale(${camScale})`, transformOrigin: '50% 46%'}}>
-        {/* Props reales: chinche + clip */}
         <Pushpin x={950} y={150} />
         <Paperclip x={70} y={1690} />
 
-        {/* Panel de vidrio con el chart */}
         <div
           style={{
             position: 'absolute',
@@ -95,15 +97,13 @@ export const BR3GanasOFacturas: React.FC = () => {
             padding: '54px 60px 40px',
           }}
         >
-          {/* Chip FACTURACIÓN */}
           <Chip bg={INK} color={WHITE} inAt={4} frame={frame} fps={fps} style={{position: 'absolute', left: 60, top: 48}}>
-            FACTURACIÓN
+            {chipLabel}
           </Chip>
 
-          <Chart frame={frame} fps={fps} lineDraw={lineDraw} arrowIn={arrowIn} />
+          <Chart frame={frame} fps={fps} lineDraw={lineDraw} arrowIn={arrowIn} meses={meses} alturas={alturas} lineaLabel={lineaLabel} />
         </div>
 
-        {/* TAG final */}
         <div
           style={{
             position: 'absolute',
@@ -121,7 +121,7 @@ export const BR3GanasOFacturas: React.FC = () => {
               background: RED,
               color: WHITE,
               fontWeight: 800,
-              fontSize: 58,
+              fontSize: tagSize,
               letterSpacing: 0.5,
               padding: '26px 52px',
               borderRadius: 20,
@@ -129,7 +129,7 @@ export const BR3GanasOFacturas: React.FC = () => {
               whiteSpace: 'nowrap',
             }}
           >
-            ¿GANÁS O SOLO FACTURÁS?
+            {tag}
           </div>
         </div>
       </AbsoluteFill>
@@ -137,24 +137,25 @@ export const BR3GanasOFacturas: React.FC = () => {
   );
 };
 
-// ─── Chart de barras + línea plana ──────────────────────────────────────────
-const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: number}> = ({
-  frame,
-  fps,
-  lineDraw,
-  arrowIn,
-}) => {
+const Chart: React.FC<{
+  frame: number;
+  fps: number;
+  lineDraw: number;
+  arrowIn: number;
+  meses: string[];
+  alturas: number[];
+  lineaLabel: string;
+}> = ({frame, fps, lineDraw, arrowIn, meses, alturas, lineaLabel}) => {
   const chartW = 820;
   const chartH = 760;
-  const baseY = 900; // dentro del panel
+  const baseY = 900;
   const barW = 92;
   const gap = (chartW - barW * 6) / 5;
-  const lineY = baseY - 64; // GANANCIA plana, cerca del piso
+  const lineY = baseY - 64;
 
   return (
     <div style={{position: 'absolute', left: 60, top: 150, width: chartW, height: baseY + 70}}>
-      {/* Barras */}
-      {ALTURAS.map((h, i) => {
+      {alturas.map((h, i) => {
         const grow = spring({frame: frame - (6 + i * 3), fps, config: {damping: 13, stiffness: 110}});
         const barH = h * chartH * grow;
         return (
@@ -184,13 +185,12 @@ const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: nu
                 letterSpacing: 1,
               }}
             >
-              {MESES[i]}
+              {meses[i]}
             </div>
           </div>
         );
       })}
 
-      {/* Línea GANANCIA plana (se dibuja) */}
       <div
         style={{
           position: 'absolute',
@@ -218,10 +218,9 @@ const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: nu
           letterSpacing: 1,
         }}
       >
-        GANANCIA
+        {lineaLabel}
       </div>
 
-      {/* Flecha roja señalando el GAP (última barra vs línea) */}
       <svg
         width={150}
         height={620}
@@ -229,7 +228,7 @@ const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: nu
         style={{
           position: 'absolute',
           left: chartW - 275,
-          top: baseY - ALTURAS[5] * chartH - 10,
+          top: baseY - alturas[5] * chartH - 10,
           opacity: Math.min(1, arrowIn * 1.4),
           transform: `scale(${0.7 + arrowIn * 0.3})`,
           transformOrigin: '50% 50%',
@@ -246,7 +245,6 @@ const Chart: React.FC<{frame: number; fps: number; lineDraw: number; arrowIn: nu
   );
 };
 
-// ─── Piezas auxiliares ──────────────────────────────────────────────────────
 const Chip: React.FC<{
   bg: string;
   color: string;

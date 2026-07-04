@@ -1,5 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {z} from 'zod';
+import {FONT_MARCA} from './marca';
 
 // ─── Estilo #99 · Cerebro Signature (insignia de marca) ─────────────────────
 // Spec: grafito + oro fundido. SIGNATURE MOVE: fragmentos caóticos del negocio
@@ -8,16 +10,29 @@ import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from
 const GRAPHITE = '#14161A';
 const BONE = '#F2EEE6';
 const GOLD = '#E8B04B';
-const FONT = "Arial, 'Liberation Sans', 'Helvetica Neue', sans-serif";
+const FONT = FONT_MARCA;
+
+export const estilo99Schema = z.object({
+  fragmentos: z.array(z.string()).length(6),
+  textoPrefijo: z.string(),
+  keyword: z.string(),
+});
+type Props = z.infer<typeof estilo99Schema>;
+
+export const estilo99Defaults: Props = {
+  fragmentos: ['$ 1.240', 'VENTAS', 'COSTOS', '37%', 'CLIENTES', 'MARGEN'],
+  textoPrefijo: 'DEL CAOS AL',
+  keyword: 'ORDEN',
+};
 
 // Fragmentos: posición caótica inicial → slot ordenado en el panel
 const FRAGS = [
-  {cx: -380, cy: -640, rot: -28, slot: 0, label: '$ 1.240'},
-  {cx: 420, cy: -580, rot: 22, slot: 1, label: 'VENTAS'},
-  {cx: -460, cy: 180, rot: 14, slot: 2, label: 'COSTOS'},
-  {cx: 470, cy: 260, rot: -18, slot: 3, label: '37%'},
-  {cx: -330, cy: 620, rot: 24, slot: 4, label: 'CLIENTES'},
-  {cx: 400, cy: 660, rot: -12, slot: 5, label: 'MARGEN'},
+  {cx: -380, cy: -640, rot: -28, slot: 0},
+  {cx: 420, cy: -580, rot: 22, slot: 1},
+  {cx: -460, cy: 180, rot: 14, slot: 2},
+  {cx: 470, cy: 260, rot: -18, slot: 3},
+  {cx: -330, cy: 620, rot: 24, slot: 4},
+  {cx: 400, cy: 660, rot: -12, slot: 5},
 ];
 // Slots ordenados (grilla 2×3 dentro del panel, coords relativas al centro)
 const SLOTS = [
@@ -29,7 +44,7 @@ const SLOTS = [
   {x: 150, y: 120},
 ];
 
-export const Estilo99Signature: React.FC = () => {
+export const Estilo99Signature: React.FC<Props> = ({fragmentos, textoPrefijo, keyword}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
 
@@ -153,7 +168,7 @@ export const Estilo99Signature: React.FC = () => {
                 letterSpacing: 2,
               }}
             >
-              {f.label}
+              {fragmentos[i]}
             </div>
           );
         })}
@@ -202,7 +217,7 @@ export const Estilo99Signature: React.FC = () => {
           }}
         >
           <span style={{color: BONE, fontWeight: 800, fontSize: 74, letterSpacing: 3}}>
-            DEL CAOS AL{' '}
+            {textoPrefijo}{' '}
           </span>
           <span
             style={{
@@ -213,7 +228,7 @@ export const Estilo99Signature: React.FC = () => {
               textShadow: '0 0 40px rgba(232,176,75,0.55)',
             }}
           >
-            ORDEN
+            {keyword}
           </span>
         </div>
       </AbsoluteFill>

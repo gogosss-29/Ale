@@ -1,0 +1,35 @@
+{
+  "reel": "reel-003",
+  "descripcion": "3 señales de que tu negocio no está estructurado — b-rolls Remotion",
+  "jobs": [
+    {
+      "out": "br0-hook-tipografico",
+      "composition": "Estilo13-Punch",
+      "props": {
+        "linea1": "3 SEÑALES",
+        "linea2": "DE QUE TU NEGOCIO",
+        "keyword": "NO ESTÁ ESTRUCTURADO"
+      }
+    },
+    {
+      "out": "br3-ganas-o-facturas",
+      "composition": "Estilo11-Chart",
+      "props": {
+        "chipLabel": "FACTURACIÓN",
+        "meses": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN"],
+        "alturas": [0.42, 0.53, 0.64, 0.75, 0.87, 1],
+        "lineaLabel": "GANANCIA",
+        "tag": "¿GANÁS O SOLO FACTURÁS?"
+      }
+    },
+    {
+      "out": "br4-cierre-signature",
+      "composition": "Estilo99-Signature",
+      "props": {
+        "fragmentos": ["PROCESOS", "OBJETIVOS", "NÚMEROS", "EQUIPO", "CLIENTES", "MARGEN"],
+        "textoPrefijo": "CONOCÉ TU",
+        "keyword": "NEGOCIO"
+      }
+    }
+  ]
+}

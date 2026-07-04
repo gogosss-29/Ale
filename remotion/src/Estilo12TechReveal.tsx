@@ -1,5 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {z} from 'zod';
+import {FONT_MARCA} from './marca';
 
 // ─── Estilo #12 · Dark Tech Reveal (variante UI exacta) ─────────────────────
 // Spec: void azul-noche, panel glass con bordes glow cian inclinado en 3D,
@@ -8,9 +10,28 @@ import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from
 const VOID = '#0B1A2C';
 const CYAN = '#2FD3E3';
 const WHITE = '#FFFFFF';
-const FONT = "Arial, 'Liberation Sans', 'Helvetica Neue', sans-serif";
+const FONT = FONT_MARCA;
 
-export const Estilo12TechReveal: React.FC = () => {
+export const estilo12Schema = z.object({
+  titulo: z.string(),
+  tiles: z.array(z.string()).length(4),
+  labelFlecha: z.string(),
+  linea1: z.string(),
+  linea2Prefijo: z.string(),
+  keyword: z.string(),
+});
+type Props = z.infer<typeof estilo12Schema>;
+
+export const estilo12Defaults: Props = {
+  titulo: 'TU NEGOCIO',
+  tiles: ['VENTAS', 'MARGEN', 'CAJA', 'CLIENTES'],
+  labelFlecha: 'todos tus datos en un solo lugar',
+  linea1: 'UNA SOLA FUENTE',
+  linea2Prefijo: 'DE',
+  keyword: 'VERDAD',
+};
+
+export const Estilo12TechReveal: React.FC<Props> = ({titulo, tiles, labelFlecha, linea1, linea2Prefijo, keyword}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
 
@@ -64,7 +85,7 @@ export const Estilo12TechReveal: React.FC = () => {
             {/* Header del dashboard */}
             <div style={{display: 'flex', alignItems: 'center', gap: 16, marginBottom: 34}}>
               <div style={{width: 18, height: 18, borderRadius: '50%', background: CYAN, boxShadow: `0 0 14px ${CYAN}`}} />
-              <div style={{color: WHITE, fontWeight: 300, fontSize: 34, letterSpacing: 6}}>TU NEGOCIO</div>
+              <div style={{color: WHITE, fontWeight: 300, fontSize: 34, letterSpacing: 6}}>{titulo}</div>
               <div style={{marginLeft: 'auto', display: 'flex', gap: 10}}>
                 {[0, 1, 2].map((d) => (
                   <div key={d} style={{width: 44, height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.18)'}} />
@@ -73,7 +94,7 @@ export const Estilo12TechReveal: React.FC = () => {
             </div>
             {/* Tiles de datos que se ensamblan */}
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22}}>
-              {['VENTAS', 'MARGEN', 'CAJA', 'CLIENTES'].map((label, i) => {
+              {tiles.map((label, i) => {
                 const tileIn = spring({frame: frame - (14 + i * 5), fps, config: {damping: 12, stiffness: 120}});
                 return (
                   <div
@@ -137,7 +158,7 @@ export const Estilo12TechReveal: React.FC = () => {
             }}
           />
           <span style={{color: 'rgba(255,255,255,0.75)', fontWeight: 300, fontSize: 30, letterSpacing: 5}}>
-            todos tus datos en un solo lugar
+            {labelFlecha}
           </span>
         </div>
 
@@ -157,11 +178,11 @@ export const Estilo12TechReveal: React.FC = () => {
             color: WHITE,
           }}
         >
-          UNA SOLA FUENTE
+          {linea1}
           <br />
-          DE{' '}
+          {linea2Prefijo}{' '}
           <span style={{color: CYAN, fontWeight: 600, textShadow: `0 0 34px rgba(47,211,227,0.65)`}}>
-            VERDAD
+            {keyword}
           </span>
         </div>
       </AbsoluteFill>
