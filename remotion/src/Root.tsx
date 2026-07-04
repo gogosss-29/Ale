@@ -120,11 +120,23 @@ export const Root: React.FC = () => {
         })}
       />
       {/* Fase 3 · Reel completo ensamblado (clips + b-rolls + textos + música) */}
+      {/* v1: hook #13 a pantalla completa al inicio */}
       <Composition
         id="ReelAssembly"
         component={ReelAssembly}
         schema={reelAssemblySchema}
         defaultProps={reelAssemblyDefaults}
+        durationInFrames={calcReelMetadata().durationInFrames}
+        fps={24}
+        width={1080}
+        height={1920}
+      />
+      {/* v2: te ves desde el 0, hook como texto encima (no tapa la cara) */}
+      <Composition
+        id="ReelAssembly-v2"
+        component={ReelAssembly}
+        schema={reelAssemblySchema}
+        defaultProps={{...reelAssemblyDefaults, variant: 'v2'}}
         durationInFrames={calcReelMetadata().durationInFrames}
         fps={24}
         width={1080}

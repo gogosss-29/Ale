@@ -68,43 +68,76 @@ export const MONTAJE = {
   musica: null as null | {src: string; volumen: number},
 };
 
-export type Montaje = typeof MONTAJE;
+type TextoItem = {text: string; from: number; frames: number; hook?: boolean};
+export type Montaje = {
+  clips: {src: string; frames: number}[];
+  brolls: {comp: string; from: number; frames: number; props: Record<string, unknown>}[];
+  textos: TextoItem[];
+  musica: null | {src: string; volumen: number};
+};
+
+// ─── Variante V2: te ves desde el segundo 0; el hook entra como TEXTO ─────────
+// (sin el b-roll #13 tapando la cara). Mismos clips, b-rolls de datos y timings.
+const MONTAJE_V2: Montaje = {
+  clips: MONTAJE.clips,
+  brolls: MONTAJE.brolls.filter((b) => b.comp !== 'estilo13'),
+  textos: [
+    {text: '3 señales de que tu negocio NO está estructurado', from: s(0.6), frames: s(4.6), hook: true},
+    ...MONTAJE.textos,
+  ],
+  musica: MONTAJE.musica,
+};
+
+const MONTAJES: Record<string, Montaje> = {v1: MONTAJE, v2: MONTAJE_V2};
 
 export const reelAssemblySchema = z.object({
   bg: z.string(),
+  variant: z.enum(['v1', 'v2']),
 });
 export const reelAssemblyDefaults: z.infer<typeof reelAssemblySchema> = {
   bg: '#000000',
+  variant: 'v1',
 };
 
 const totalFrames = (m: Montaje) => m.clips.reduce((a, c) => a + c.frames, 0);
 
-// Duración dinámica: la compo dura lo que sumen los clips
+// Duración dinámica: la compo dura lo que sumen los clips (igual en v1/v2)
 export const calcReelMetadata = () => ({durationInFrames: totalFrames(MONTAJE)});
 
-// ─── Lower-third de marca ────────────────────────────────────────────────────
-const LowerThird: React.FC<{text: string}> = ({text}) => {
+// ─── Texto de marca: lower-third (default) o hook (grande, arriba) ───────────
+const TextoMarca: React.FC<{text: string; hook?: boolean}> = ({text, hook}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = spring({frame, fps, config: {damping: 200}, durationInFrames: 12});
-  const y = interpolate(enter, [0, 1], [40, 0]);
+  const y = interpolate(enter, [0, 1], [hook ? 24 : 40, 0]);
   const op = interpolate(enter, [0, 1], [0, 1]);
   return (
-    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 220}}>
+    <AbsoluteFill
+      style={{
+        justifyContent: hook ? 'flex-start' : 'flex-end',
+        alignItems: 'center',
+        paddingTop: hook ? 180 : 0,
+        paddingBottom: hook ? 0 : 220,
+        paddingLeft: 40,
+        paddingRight: 40,
+      }}
+    >
       <div
         style={{
           transform: `translateY(${y}px)`,
           opacity: op,
-          background: PALETA.ink,
+          background: hook ? PALETA.rojo : PALETA.ink,
           color: PALETA.blanco,
           fontFamily: FONT_MARCA,
-          fontWeight: 800,
-          fontSize: 46,
-          lineHeight: 1.1,
-          padding: '18px 30px',
-          borderRadius: 14,
-          maxWidth: 900,
+          fontWeight: hook ? 900 : 800,
+          fontSize: hook ? 62 : 46,
+          lineHeight: 1.05,
+          padding: hook ? '22px 34px' : '18px 30px',
+          borderRadius: 16,
+          maxWidth: hook ? 940 : 900,
           textAlign: 'center',
+          textTransform: hook ? 'uppercase' : 'none',
+          letterSpacing: hook ? '-0.01em' : 0,
           boxShadow: '0 12px 40px rgba(0,0,0,0.35)',
         }}
       >
@@ -114,12 +147,13 @@ const LowerThird: React.FC<{text: string}> = ({text}) => {
   );
 };
 
-export const ReelAssembly: React.FC<z.infer<typeof reelAssemblySchema>> = ({bg}) => {
+export const ReelAssembly: React.FC<z.infer<typeof reelAssemblySchema>> = ({bg, variant}) => {
+  const M = MONTAJES[variant] ?? MONTAJE;
   return (
     <AbsoluteFill style={{backgroundColor: bg}}>
       {/* Espina: clips de avatar back-to-back (su audio es la voz del reel) */}
       <Series>
-        {MONTAJE.clips.map((c, i) => (
+        {M.clips.map((c, i) => (
           <Series.Sequence key={i} durationInFrames={c.frames}>
             <OffthreadVideo src={staticFile(c.src)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
           </Series.Sequence>
@@ -127,7 +161,7 @@ export const ReelAssembly: React.FC<z.infer<typeof reelAssemblySchema>> = ({bg})
       </Series>
 
       {/* B-rolls como cutaway a pantalla completa (mudos, con su propio texto) */}
-      {MONTAJE.brolls.map((b, i) => {
+      {M.brolls.map((b, i) => {
         const Comp = BROLLS[b.comp as keyof typeof BROLLS] as React.FC<any>;
         return (
           <Sequence key={`br${i}`} from={b.from} durationInFrames={b.frames} name={`broll:${b.comp}`}>
@@ -136,17 +170,15 @@ export const ReelAssembly: React.FC<z.infer<typeof reelAssemblySchema>> = ({bg})
         );
       })}
 
-      {/* Textos lower-third */}
-      {MONTAJE.textos.map((t, i) => (
-        <Sequence key={`tx${i}`} from={t.from} durationInFrames={t.frames} name="texto">
-          <LowerThird text={t.text} />
+      {/* Textos: lower-third (señales) o hook grande arriba (v2) */}
+      {M.textos.map((t, i) => (
+        <Sequence key={`tx${i}`} from={t.from} durationInFrames={t.frames} name={t.hook ? 'hook' : 'texto'}>
+          <TextoMarca text={t.text} hook={t.hook} />
         </Sequence>
       ))}
 
       {/* Música opcional con ducking simple (si se define en el montaje) */}
-      {MONTAJE.musica && (
-        <Audio src={staticFile(MONTAJE.musica.src)} volume={MONTAJE.musica.volumen} />
-      )}
+      {M.musica && <Audio src={staticFile(M.musica.src)} volume={M.musica.volumen} />}
     </AbsoluteFill>
   );
 };
