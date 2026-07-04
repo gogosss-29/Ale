@@ -1,0 +1,10 @@
+node_modules/
+whisper.cpp/
+out/
+tmp*.json
+.DS_Store
+
+# Activos pesados (regenerables) — no se versionan
+public/source.mp4
+public/voice.m4a
+audio/*.wav
