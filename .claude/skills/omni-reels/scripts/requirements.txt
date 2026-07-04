@@ -1,8 +1,10 @@
-# Dependencia Python del reel_cutter.py
-# (ctranslate2 viene como dependencia de faster-whisper; detecta GPU/CPU solo)
+# reel_cutter.py — dependencias de Python
+# (ffmpeg/ffprobe se instalan aparte, NO via pip: https://ffmpeg.org/download.html)
+
 faster-whisper>=1.0.0
 
-# Dependencia de SISTEMA (no pip): ffmpeg + ffprobe deben estar en el PATH.
-#   - macOS:   brew install ffmpeg
-#   - Windows: https://ffmpeg.org/download.html  (agregar al PATH)
-#   - Linux:   apt install ffmpeg
+# Notas:
+# - faster-whisper instala ctranslate2 (usado para autodetectar GPU) y descarga
+#   los modelos de Whisper en el primer uso.
+# - Para GPU NVIDIA necesitás CUDA 12 + cuDNN 9 instalados en el sistema.
+#   En CPU funciona sin nada extra (compute_type int8).
