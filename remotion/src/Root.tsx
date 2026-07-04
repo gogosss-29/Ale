@@ -6,6 +6,8 @@ import {Estilo99Signature, estilo99Schema, estilo99Defaults} from './Estilo99Sig
 import {Estilo12TechReveal, estilo12Schema, estilo12Defaults} from './Estilo12TechReveal';
 import {CaptionedClip, captionedClipSchema, captionedClipDefaults} from './CaptionedClip';
 import {EditorialCaptions, editorialSchema, editorialDefaults} from './EditorialCaptions';
+import {Estilo11Red, estilo11RedSchema, estilo11RedDefaults} from './Estilo11Red';
+import {Estilo11Deriva, estilo11DerivaSchema, estilo11DerivaDefaults} from './Estilo11Deriva';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -61,6 +63,28 @@ export const Root: React.FC = () => {
         component={Estilo12TechReveal}
         schema={estilo12Schema}
         defaultProps={estilo12Defaults}
+        durationInFrames={96}
+        fps={24}
+        width={1080}
+        height={1920}
+      />
+      {/* Estilo #11 · Red que colapsa (BR1) */}
+      <Composition
+        id="Estilo11-Red"
+        component={Estilo11Red}
+        schema={estilo11RedSchema}
+        defaultProps={estilo11RedDefaults}
+        durationInFrames={96}
+        fps={24}
+        width={1080}
+        height={1920}
+      />
+      {/* Estilo #11 · A la deriva (BR2) */}
+      <Composition
+        id="Estilo11-Deriva"
+        component={Estilo11Deriva}
+        schema={estilo11DerivaSchema}
+        defaultProps={estilo11DerivaDefaults}
         durationInFrames={96}
         fps={24}
         width={1080}
