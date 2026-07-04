@@ -5,6 +5,7 @@ import {Estilo13Punch, estilo13Schema, estilo13Defaults} from './Estilo13Punch';
 import {Estilo99Signature, estilo99Schema, estilo99Defaults} from './Estilo99Signature';
 import {Estilo12TechReveal, estilo12Schema, estilo12Defaults} from './Estilo12TechReveal';
 import {CaptionedClip, captionedClipSchema, captionedClipDefaults} from './CaptionedClip';
+import {EditorialCaptions, editorialSchema, editorialDefaults} from './EditorialCaptions';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -71,6 +72,20 @@ export const Root: React.FC = () => {
         component={CaptionedClip}
         schema={captionedClipSchema}
         defaultProps={captionedClipDefaults}
+        durationInFrames={196}
+        fps={30}
+        width={1080}
+        height={1920}
+        calculateMetadata={({props}) => ({
+          durationInFrames: Math.ceil((props.durationMs / 1000) * 30),
+        })}
+      />
+      {/* Captions EDITORIALES (frases compuestas + texto detrás de la persona) */}
+      <Composition
+        id="EditorialCaptions"
+        component={EditorialCaptions}
+        schema={editorialSchema}
+        defaultProps={editorialDefaults}
         durationInFrames={196}
         fps={30}
         width={1080}

@@ -1,0 +1,37 @@
+{
+  "videoSrc": "clips/piloto.mp4",
+  "personSeqDir": "clips/piloto-person",
+  "personSeqCount": 196,
+  "durationMs": 6550,
+  "frases": [
+    {
+      "fromMs": 0, "toMs": 1400,
+      "elems": [
+        {"text": "el fondo de", "tipo": "sans", "size": 54, "y": 330, "detras": false, "delayMs": 0},
+        {"text": "Beltrán Briones", "tipo": "serif", "size": 132, "y": 400, "detras": true, "delayMs": 140}
+      ]
+    },
+    {
+      "fromMs": 1400, "toMs": 3380,
+      "elems": [
+        {"text": "juntó", "tipo": "sans", "size": 54, "y": 300, "detras": false, "delayMs": 0},
+        {"text": "45 millones", "tipo": "serif", "size": 168, "y": 380, "detras": true, "delayMs": 120},
+        {"text": "DE DÓLARES", "tipo": "sans", "size": 62, "y": 620, "detras": false, "delayMs": 300, "peso": 800}
+      ]
+    },
+    {
+      "fromMs": 3380, "toMs": 5000,
+      "elems": [
+        {"text": "invirtiendo en", "tipo": "sans", "size": 54, "y": 1430, "detras": false, "delayMs": 0},
+        {"text": "bolsa", "tipo": "serif", "size": 170, "y": 1500, "detras": true, "delayMs": 130}
+      ]
+    },
+    {
+      "fromMs": 5000, "toMs": 6550,
+      "elems": [
+        {"text": "te voy a contar", "tipo": "sans", "size": 58, "y": 1400, "detras": false, "delayMs": 0},
+        {"text": "cómo funciona", "tipo": "serif", "size": 120, "y": 1480, "detras": false, "delayMs": 150}
+      ]
+    }
+  ]
+}
