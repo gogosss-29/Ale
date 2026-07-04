@@ -1,0 +1,101 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 6.016,
+    "duration": 6.016,
+    "text": "Antes de crecer hay que entender. Conocer de verdad tu propio negocio es el camino inicial para crecer.",
+    "words": [
+      {
+        "word": "Antes",
+        "start": 0.0,
+        "end": 0.46
+      },
+      {
+        "word": "de",
+        "start": 0.46,
+        "end": 0.66
+      },
+      {
+        "word": "crecer",
+        "start": 0.66,
+        "end": 0.96
+      },
+      {
+        "word": "hay",
+        "start": 0.96,
+        "end": 1.08
+      },
+      {
+        "word": "que",
+        "start": 1.08,
+        "end": 1.28
+      },
+      {
+        "word": "entender.",
+        "start": 1.28,
+        "end": 1.72
+      },
+      {
+        "word": "Conocer",
+        "start": 2.14,
+        "end": 2.54
+      },
+      {
+        "word": "de",
+        "start": 2.54,
+        "end": 2.66
+      },
+      {
+        "word": "verdad",
+        "start": 2.66,
+        "end": 2.88
+      },
+      {
+        "word": "tu",
+        "start": 2.88,
+        "end": 3.14
+      },
+      {
+        "word": "propio",
+        "start": 3.14,
+        "end": 3.4
+      },
+      {
+        "word": "negocio",
+        "start": 3.4,
+        "end": 3.76
+      },
+      {
+        "word": "es",
+        "start": 3.76,
+        "end": 3.96
+      },
+      {
+        "word": "el",
+        "start": 3.96,
+        "end": 4.1
+      },
+      {
+        "word": "camino",
+        "start": 4.1,
+        "end": 4.32
+      },
+      {
+        "word": "inicial",
+        "start": 4.32,
+        "end": 4.74
+      },
+      {
+        "word": "para",
+        "start": 4.74,
+        "end": 5.0
+      },
+      {
+        "word": "crecer.",
+        "start": 5.0,
+        "end": 5.44
+      }
+    ]
+  }
+]

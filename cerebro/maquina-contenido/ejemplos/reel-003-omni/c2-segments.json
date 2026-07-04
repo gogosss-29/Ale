@@ -1,0 +1,141 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 8.0,
+    "duration": 8.0,
+    "text": "La primera, el conocimiento vive en la cabeza de las personas, no en el negocio. Si mañana esa persona importante no está, nadie sabe cómo seguir.",
+    "words": [
+      {
+        "word": "La",
+        "start": 0.0,
+        "end": 0.48
+      },
+      {
+        "word": "primera,",
+        "start": 0.48,
+        "end": 0.76
+      },
+      {
+        "word": "el",
+        "start": 1.04,
+        "end": 1.18
+      },
+      {
+        "word": "conocimiento",
+        "start": 1.18,
+        "end": 1.76
+      },
+      {
+        "word": "vive",
+        "start": 1.76,
+        "end": 1.96
+      },
+      {
+        "word": "en",
+        "start": 1.96,
+        "end": 2.1
+      },
+      {
+        "word": "la",
+        "start": 2.1,
+        "end": 2.32
+      },
+      {
+        "word": "cabeza",
+        "start": 2.32,
+        "end": 2.56
+      },
+      {
+        "word": "de",
+        "start": 2.56,
+        "end": 2.74
+      },
+      {
+        "word": "las",
+        "start": 2.74,
+        "end": 2.82
+      },
+      {
+        "word": "personas,",
+        "start": 2.82,
+        "end": 3.3
+      },
+      {
+        "word": "no",
+        "start": 3.68,
+        "end": 3.82
+      },
+      {
+        "word": "en",
+        "start": 3.82,
+        "end": 3.98
+      },
+      {
+        "word": "el",
+        "start": 3.98,
+        "end": 4.16
+      },
+      {
+        "word": "negocio.",
+        "start": 4.16,
+        "end": 4.56
+      },
+      {
+        "word": "Si",
+        "start": 4.82,
+        "end": 4.96
+      },
+      {
+        "word": "mañana",
+        "start": 4.96,
+        "end": 5.22
+      },
+      {
+        "word": "esa",
+        "start": 5.22,
+        "end": 5.4
+      },
+      {
+        "word": "persona",
+        "start": 5.4,
+        "end": 5.66
+      },
+      {
+        "word": "importante",
+        "start": 5.66,
+        "end": 6.1
+      },
+      {
+        "word": "no",
+        "start": 6.1,
+        "end": 6.32
+      },
+      {
+        "word": "está,",
+        "start": 6.32,
+        "end": 6.54
+      },
+      {
+        "word": "nadie",
+        "start": 6.8,
+        "end": 6.88
+      },
+      {
+        "word": "sabe",
+        "start": 6.88,
+        "end": 7.14
+      },
+      {
+        "word": "cómo",
+        "start": 7.14,
+        "end": 7.4
+      },
+      {
+        "word": "seguir.",
+        "start": 7.4,
+        "end": 7.68
+      }
+    ]
+  }
+]

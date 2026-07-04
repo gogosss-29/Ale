@@ -1,0 +1,136 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 8.0,
+    "duration": 8.0,
+    "text": "Y sin objetivos prop Dep, depende solo del contexto externo, si a la economía del país le va bien, te va bien, si no, no.",
+    "words": [
+      {
+        "word": "Y",
+        "start": 0.0,
+        "end": 0.68
+      },
+      {
+        "word": "sin",
+        "start": 0.68,
+        "end": 0.92
+      },
+      {
+        "word": "objetivos",
+        "start": 0.92,
+        "end": 1.48
+      },
+      {
+        "word": "prop",
+        "start": 1.48,
+        "end": 1.76
+      },
+      {
+        "word": "Dep,",
+        "start": 2.2,
+        "end": 2.52
+      },
+      {
+        "word": "depende",
+        "start": 2.74,
+        "end": 2.76
+      },
+      {
+        "word": "solo",
+        "start": 2.76,
+        "end": 3.04
+      },
+      {
+        "word": "del",
+        "start": 3.04,
+        "end": 3.28
+      },
+      {
+        "word": "contexto",
+        "start": 3.28,
+        "end": 3.76
+      },
+      {
+        "word": "externo,",
+        "start": 3.76,
+        "end": 4.68
+      },
+      {
+        "word": "si",
+        "start": 5.0,
+        "end": 5.08
+      },
+      {
+        "word": "a",
+        "start": 5.08,
+        "end": 5.18
+      },
+      {
+        "word": "la",
+        "start": 5.18,
+        "end": 5.26
+      },
+      {
+        "word": "economía",
+        "start": 5.26,
+        "end": 5.66
+      },
+      {
+        "word": "del",
+        "start": 5.66,
+        "end": 5.78
+      },
+      {
+        "word": "país",
+        "start": 5.78,
+        "end": 6.0
+      },
+      {
+        "word": "le",
+        "start": 6.0,
+        "end": 6.16
+      },
+      {
+        "word": "va",
+        "start": 6.16,
+        "end": 6.3
+      },
+      {
+        "word": "bien,",
+        "start": 6.3,
+        "end": 6.52
+      },
+      {
+        "word": "te",
+        "start": 6.6,
+        "end": 6.7
+      },
+      {
+        "word": "va",
+        "start": 6.7,
+        "end": 6.86
+      },
+      {
+        "word": "bien,",
+        "start": 6.86,
+        "end": 7.08
+      },
+      {
+        "word": "si",
+        "start": 7.28,
+        "end": 7.32
+      },
+      {
+        "word": "no,",
+        "start": 7.32,
+        "end": 7.44
+      },
+      {
+        "word": "no.",
+        "start": 7.52,
+        "end": 7.62
+      }
+    ]
+  }
+]

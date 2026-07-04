@@ -1,0 +1,86 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 8.0,
+    "duration": 8.0,
+    "text": "La tercera no sabe si tú solo factura, dejas por intuición y la intuición miente.",
+    "words": [
+      {
+        "word": "La",
+        "start": 0.0,
+        "end": 0.9
+      },
+      {
+        "word": "tercera",
+        "start": 0.9,
+        "end": 1.28
+      },
+      {
+        "word": "no",
+        "start": 1.28,
+        "end": 1.5
+      },
+      {
+        "word": "sabe",
+        "start": 1.5,
+        "end": 1.7
+      },
+      {
+        "word": "si",
+        "start": 1.7,
+        "end": 2.88
+      },
+      {
+        "word": "tú",
+        "start": 2.88,
+        "end": 2.88
+      },
+      {
+        "word": "solo",
+        "start": 2.88,
+        "end": 3.14
+      },
+      {
+        "word": "factura,",
+        "start": 3.14,
+        "end": 4.28
+      },
+      {
+        "word": "dejas",
+        "start": 5.12,
+        "end": 5.38
+      },
+      {
+        "word": "por",
+        "start": 5.38,
+        "end": 5.58
+      },
+      {
+        "word": "intuición",
+        "start": 5.58,
+        "end": 6.4
+      },
+      {
+        "word": "y",
+        "start": 6.4,
+        "end": 6.48
+      },
+      {
+        "word": "la",
+        "start": 6.48,
+        "end": 6.68
+      },
+      {
+        "word": "intuición",
+        "start": 6.68,
+        "end": 7.12
+      },
+      {
+        "word": "miente.",
+        "start": 7.12,
+        "end": 7.56
+      }
+    ]
+  }
+]

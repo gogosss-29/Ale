@@ -4,11 +4,12 @@
 > motion graphics ENCIMA, sin que Omni toque la voz ni el personaje.
 > Reel: **"3 señales de que tu negocio no está estructurado"** · español argentino · 9:16.
 
-## ⚠️ Tiempos
-Los `~Xs` de cada prompt están **estimados del guion** (texto + duración real de
-cada clip). Para clavarlos, correr `reel_cutter.py` sobre cada clip y tomar los
-segundos de `segments.json` (necesita ffmpeg + faster-whisper; no disponible en el
-entorno remoto). Si un gráfico cae 0.3–0.5 s corrido, ajustar el segundo.
+## ✅ Tiempos
+Los `~Xs` de cada prompt salen de los **`segments.json` reales** (transcripción con
+`reel_cutter` + faster-whisper `medium`, timestamps por palabra por clip). Guardados en
+`reel-003-omni/cN/segments.json`. La transcripción `medium` tuvo ruido menor en algún
+texto, pero los **tiempos de palabra son sólidos**. Si un gráfico cae 0.3–0.5 s corrido,
+ajustar el segundo.
 
 ---
 
@@ -51,7 +52,7 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 ---
 
-## C1 · HOOK (6 s)
+## C1 · HOOK (6 s) · dice "tres señales" a los 0.7s, "no está estructurado" a los 2.9s
 Locución: *"Hay tres señales claras de que un negocio no está estructurado, te las muestro una por una."*
 
 ```
@@ -59,16 +60,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium opening beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. The only number allowed on screen is "3"; do not add any other numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.4s fade in a small gold brand bug "CEREBRO" in the lower-left corner. At ~0.8s pop in a large gold title upper area "3 SEÑALES" (heavy condensed uppercase, ease-out-back overshoot, soft glow, one light-sweep). At ~2.2s slide a slim off-white subtitle under it "TU NEGOCIO NO ESTÁ ESTRUCTURADO". Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.3s fade in a small gold brand bug "CEREBRO" in the lower-left corner. At ~0.8s pop in a large gold title upper area "3 SEÑALES" (heavy condensed uppercase, ease-out-back overshoot, soft glow, one light-sweep). At ~2.9s slide a slim off-white subtitle under it "TU NEGOCIO NO ESTÁ ESTRUCTURADO". Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft whoosh at ~0.8s; a light tick at ~2.2s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft whoosh at ~0.8s; a light tick at ~2.9s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "CEREBRO", "3 SEÑALES", "TU NEGOCIO NO ESTÁ ESTRUCTURADO".
 ```
 
 ---
 
-## C2 · SEÑAL 1 (8 s)
+## C2 · SEÑAL 1 (8 s) · "primera" 0.5s · "cabeza" 2.3s · "nadie sabe" 6.8s
 Locución: *"La primera: el conocimiento vive en la cabeza de las personas, no en el negocio. Si mañana esa persona importante no está, nadie sabe cómo seguir."*
 
 ```
@@ -76,16 +77,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s bring up a small gold pill upper-left "SEÑAL 1" (ease-out-back). At ~1.0s a gold title beside/under it "EL CONOCIMIENTO EN LAS CABEZAS" (heavy condensed uppercase, soft glow). At ~2.5s draw a clean off-white line-icon of a human head with small connected knowledge nodes inside it, upper-right, drawing itself on. At ~5.0s the head icon dims to charcoal and a single alert-red "?" appears over it (person gone, nobody knows). Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.5s bring up a small gold pill upper-left "SEÑAL 1" (ease-out-back). At ~1.2s a gold title beside/under it "EL CONOCIMIENTO EN LAS CABEZAS" (heavy condensed uppercase, soft glow). At ~2.3s draw a clean off-white line-icon of a human head with small connected knowledge nodes inside it, upper-right, drawing itself on. At ~6.8s the head icon dims to charcoal and a single alert-red "?" appears over it (person gone, nobody knows). Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.3s; a light draw-on sweep at ~2.5s; a subtle alert at ~5.0s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.5s; a light draw-on sweep at ~2.3s; a subtle alert at ~6.8s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "SEÑAL 1", "EL CONOCIMIENTO EN LAS CABEZAS".
 ```
 
 ---
 
-## C3 · SEÑAL 2 (8 s)
+## C3 · SEÑAL 2 (8 s) · "segunda" 0.7s · "sobre objetivos" 1.9s · "día a día" 3.5s
 Locución: *"La segunda: no se trabaja sobre objetivos, se lleva el día a día. No hay objetivos propios planificados en un plan de acción."*
 
 ```
@@ -93,16 +94,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s bring up a small gold pill upper-left "SEÑAL 2" (ease-out-back). At ~1.0s a gold title "SIN OBJETIVOS" (heavy condensed uppercase, soft glow). At ~2.5s draw an off-white dashed target/bullseye upper-right that is EMPTY, with a small alert-red "?" in its center (no goal set). At ~5.0s a thin off-white path line wanders left-to-right without direction, drifting up and down. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.7s bring up a small gold pill upper-left "SEÑAL 2" (ease-out-back). At ~1.9s a gold title "SIN OBJETIVOS" (heavy condensed uppercase, soft glow). At ~2.3s draw an off-white dashed target/bullseye upper-right that is EMPTY, with a small alert-red "?" in its center (no goal set). At ~3.5s a thin off-white path line wanders left-to-right without direction, drifting up and down. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.3s; a light draw-on at ~2.5s; a subtle wobble as the path drifts at ~5.0s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.7s; a light draw-on at ~2.3s; a subtle wobble as the path drifts at ~3.5s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "SEÑAL 2", "SIN OBJETIVOS".
 ```
 
 ---
 
-## C4 · SEÑAL 2b (8 s)
+## C4 · SEÑAL 2b (8 s) · "depende solo del contexto" 2.7–3.3s · "si a la economía..." 5.0s
 Locución: *"Y sin objetivos propios, dependés solo del contexto externo: si a la economía del país le va bien, te va bien. Si no, no."*
 
 ```
@@ -110,16 +111,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s keep a small gold pill upper-left "SEÑAL 2". At ~1.0s a bold gold line-arrow labeled "CONTEXTO" enters from the right edge and shoves a thin off-white path line upward, then downward, erratically (external force). At ~4.5s an alert-red tag snaps in lower area "A LA DERIVA" with motion blur. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.3s keep a small gold pill upper-left "SEÑAL 2". At ~2.8s a bold gold line-arrow labeled "CONTEXTO" enters from the right edge and shoves a thin off-white path line upward, then downward, erratically (external force). At ~5.0s an alert-red tag snaps in lower area "A LA DERIVA" with motion blur. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a whoosh as the CONTEXTO arrow shoves at ~1.0s; a snap on the tag at ~4.5s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a whoosh as the CONTEXTO arrow shoves at ~2.8s; a snap on the tag at ~5.0s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "SEÑAL 2", "CONTEXTO", "A LA DERIVA".
 ```
 
 ---
 
-## C5 · SEÑAL 3 (8 s)
+## C5 · SEÑAL 3 (8 s) · "tercera" 0.9s · "solo factura" 2.9–3.1s · "intuición miente" 6.7s
 Locución: *"La tercera: no sabés si tu negocio gana o solo factura, sin tus números manejás por intuición, y la intuición miente."*
 
 ```
@@ -127,16 +128,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s bring up a small gold pill upper-left "SEÑAL 3" (ease-out-back). At ~1.0s a gold title "¿GANÁS O SOLO FACTURÁS?" (heavy condensed uppercase, soft glow). At ~2.5s in the upper-right, tall off-white bars labeled "FACTURACIÓN" rise quickly while a flat alert-red line labeled "GANANCIA" stays pinned near the bottom; a red arrow points to the gap. At ~5.5s an alert-red tag snaps in lower area "LA INTUICIÓN MIENTE". Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.9s bring up a small gold pill upper-left "SEÑAL 3" (ease-out-back). At ~1.5s a gold title "¿GANÁS O SOLO FACTURÁS?" (heavy condensed uppercase, soft glow). At ~2.9s in the upper-right, tall off-white bars labeled "FACTURACIÓN" rise quickly while a flat alert-red line labeled "GANANCIA" stays pinned near the bottom; a red arrow points to the gap. At ~6.7s an alert-red tag snaps in lower area "LA INTUICIÓN MIENTE". Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.3s; rising ticks as the bars grow at ~2.5s; a snap on the tag at ~5.5s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.9s; rising ticks as the bars grow at ~2.9s; a snap on the tag at ~6.7s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "SEÑAL 3", "¿GANÁS O SOLO FACTURÁS?", "FACTURACIÓN", "GANANCIA", "LA INTUICIÓN MIENTE".
 ```
 
 ---
 
-## C6 · CIERRE (6 s)
+## C6 · CIERRE (6 s) · "antes de crecer hay que entender" 0.0–1.3s · "conocer... negocio" 2.1–3.4s
 Locución: *"Antes de crecer, hay que entender. Conocer de verdad tu propio negocio es el camino inicial para crecer."*
 
 ```
@@ -144,16 +145,16 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium resolution beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s show three small off-white module chips in the upper band "EQUIPO", "OBJETIVOS", "NÚMEROS", each starting outlined in alert-red. Between ~0.6s and ~2.2s each chip turns bright green one by one (problem resolved). At ~2.5s a gold title appears "CONOCÉ TU NEGOCIO" (heavy condensed uppercase, soft glow). At ~4.0s the small gold brand bug "CEREBRO" fades in lower-left. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.3s show three small off-white module chips in the upper band "EQUIPO", "OBJETIVOS", "NÚMEROS", each starting outlined in alert-red. Between ~0.6s and ~2.0s each chip turns bright green one by one (problem resolved). At ~2.1s a gold title appears "CONOCÉ TU NEGOCIO" (heavy condensed uppercase, soft glow). At ~4.0s the small gold brand bug "CEREBRO" fades in lower-left. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft positive chime as each chip turns green (~0.6s, ~1.4s, ~2.2s); a gentle rise under the title at ~2.5s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft positive chime as each chip turns green (~0.6s, ~1.3s, ~2.0s); a gentle rise under the title at ~2.1s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "EQUIPO", "OBJETIVOS", "NÚMEROS", "CONOCÉ TU NEGOCIO", "CEREBRO".
 ```
 
 ---
 
-## C7 · CTA (4 s)
+## C7 · CTA (4 s) · ⚠️ recién habla a los 1.5s ("Seguime") — el arranque es silencioso
 Locución: *"Seguime que te ayudo con tu negocio."*
 
 ```
@@ -161,9 +162,9 @@ This is my own video of myself that I want to enhance with motion-graphic overla
 
 Goal: a clean, premium call-to-action beat for a vertical business/finance reel (9:16, 1080p) in Argentine Spanish. I am seated and centered, so keep all graphics in the upper band and lower third, never over my face or the center of the frame. Do not add subtitles. Do not add any numbers. Never display any color code, hex value or technical text on screen.
 
-Style and timing: At ~0.3s bring up a gold pill in the lower third "SEGUIME" (ease-out-back overshoot, soft glow) next to a clean off-white "follow" plus-icon that pulses once at ~1.2s. At ~0.5s the small gold brand bug "CEREBRO" fades in lower-left. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
+Style and timing: At ~0.4s the small gold brand bug "CEREBRO" fades in lower-left (the clip opens quiet). At ~1.5s bring up a gold pill in the lower third "SEGUIME" (ease-out-back overshoot, soft glow) next to a clean off-white "follow" plus-icon. At ~2.3s the follow plus-icon pulses once. Camera: a slow continuous 3% push-in. Keep everything inside the safe zones.
 
-Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~0.3s; a light UI blip on the follow-icon pulse at ~1.2s. Do not add any music.
+Sound effects (added softly as separate quiet layers under my original voice, no music, without changing my voice): a soft pop at ~1.5s; a light UI blip on the follow-icon pulse at ~2.3s. Do not add any music.
 
 Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling errors; keep my original video, background and voice unchanged and keep me visible throughout; the only on-screen text is "SEGUIME", "CEREBRO".
 ```
@@ -172,7 +173,7 @@ Constraints: 9:16, 1080p, Argentine Spanish on-screen text with no spelling erro
 
 ## Checklist antes de mandar a Omni (por clip)
 - [ ] Preámbulo benigno arriba (sin "clone/lip-sync/bit-for-bit").
-- [ ] Todos los cues por tiempo (cero "when I say"). Afinar los ~s con `segments.json`.
+- [ ] Todos los cues por tiempo (cero "when I say"). Tiempos ya afinados con `segments.json`.
 - [ ] Ningún código hex (colores por nombre).
 - [ ] Lista blanca de texto + bloqueo de números no dichos (solo "3" en C1).
 - [ ] "No music" (la música se suma al final).

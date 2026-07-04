@@ -1,0 +1,96 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 6.016,
+    "duration": 6.016,
+    "text": "Hay tres señales claras de que un negocio no está estructurado, te las muestro una por una.",
+    "words": [
+      {
+        "word": "Hay",
+        "start": 0.0,
+        "end": 0.74
+      },
+      {
+        "word": "tres",
+        "start": 0.74,
+        "end": 0.98
+      },
+      {
+        "word": "señales",
+        "start": 0.98,
+        "end": 1.48
+      },
+      {
+        "word": "claras",
+        "start": 1.48,
+        "end": 1.96
+      },
+      {
+        "word": "de",
+        "start": 1.96,
+        "end": 2.12
+      },
+      {
+        "word": "que",
+        "start": 2.12,
+        "end": 2.22
+      },
+      {
+        "word": "un",
+        "start": 2.22,
+        "end": 2.42
+      },
+      {
+        "word": "negocio",
+        "start": 2.42,
+        "end": 2.72
+      },
+      {
+        "word": "no",
+        "start": 2.72,
+        "end": 2.92
+      },
+      {
+        "word": "está",
+        "start": 2.92,
+        "end": 3.06
+      },
+      {
+        "word": "estructurado,",
+        "start": 3.06,
+        "end": 4.06
+      },
+      {
+        "word": "te",
+        "start": 4.4,
+        "end": 4.46
+      },
+      {
+        "word": "las",
+        "start": 4.46,
+        "end": 4.62
+      },
+      {
+        "word": "muestro",
+        "start": 4.62,
+        "end": 4.92
+      },
+      {
+        "word": "una",
+        "start": 4.92,
+        "end": 5.16
+      },
+      {
+        "word": "por",
+        "start": 5.16,
+        "end": 5.38
+      },
+      {
+        "word": "una.",
+        "start": 5.38,
+        "end": 5.56
+      }
+    ]
+  }
+]

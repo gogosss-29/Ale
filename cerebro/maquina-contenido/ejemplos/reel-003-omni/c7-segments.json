@@ -1,0 +1,46 @@
+[
+  {
+    "index": 1,
+    "start": 0.0,
+    "end": 4.01,
+    "duration": 4.01,
+    "text": "¡Seguime, que te ayudo con tu negocio!",
+    "words": [
+      {
+        "word": "¡Seguime,",
+        "start": 1.54,
+        "end": 1.98
+      },
+      {
+        "word": "que",
+        "start": 2.16,
+        "end": 2.34
+      },
+      {
+        "word": "te",
+        "start": 2.34,
+        "end": 2.56
+      },
+      {
+        "word": "ayudo",
+        "start": 2.56,
+        "end": 2.76
+      },
+      {
+        "word": "con",
+        "start": 2.76,
+        "end": 2.98
+      },
+      {
+        "word": "tu",
+        "start": 2.98,
+        "end": 3.08
+      },
+      {
+        "word": "negocio!",
+        "start": 3.08,
+        "end": 3.52
+      }
+    ]
+  }
+]
