@@ -4,6 +4,25 @@ Backlog vivo de la sesión. Orden = prioridad sugerida.
 
 ---
 
+## 🎬 Fase 3 · ReelAssembly — reel-003 v1 PENDIENTE DE REVISAR (Ale)
+**Estado:** ✅ compo `ReelAssembly` construida y renderizada. Reel-003 completo
+montado por Remotion: 48s, 9:16, 1080p, con la voz real de Ale. Entregado a Ale
+para veredicto (rama `claude/funny-shannon-u9f2u9`).
+**Qué monta:** los 7 clips de avatar (espina de audio) + hook #13 "3 SEÑALES" +
+b-rolls #11 en cutaway (EQUIPO / OBJETIVOS / FINANZAS) + cierre #99 Signature +
+textos lower-third. Montaje **data-driven** (mapa `MONTAJE` en `ReelAssembly.tsx`).
+**Fix técnico incluido:** `loadFont` de `@remotion/fonts` colgaba el render en el
+Chromium del contenedor (delayRender no liberado). Migrado a `injectFont()` no
+bloqueante en `marca.ts` (afecta a todas las compos).
+**Decisiones abiertas para el veredicto de Ale:**
+1. ¿Hook #13 tapando la cara los primeros 3s, o verse desde el 0 con el texto solo
+   como lower-third?
+2. Timing de los cutaways de b-roll (correr antes/después).
+3. Sumar **música** (falta el `.mp3` de Suno → meter con ducking bajo la voz).
+**Assets:** clips en `remotion/public/clips/c1..c7.mp4` (fuera del repo, .gitignore).
+
+---
+
 ## ⚙️ Remotion — MEJORAR SU USO (piloto hecho, en pausa)
 **Estado:** piloto COMPLETADO ✅ — proyecto en `remotion/`, renderiza en este
 entorno (chromium del contenedor + `--chrome-mode=chrome-for-testing`). Los 4
