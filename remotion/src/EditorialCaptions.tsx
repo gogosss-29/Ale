@@ -10,19 +10,13 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {z} from 'zod';
-import {loadFont} from '@remotion/fonts';
-import {FONT_MARCA} from './marca';
+import {FONT_MARCA, injectFont} from './marca';
 
 // ─── Captions EDITORIALES (estilo agencia) ───────────────────────────────────
 // Frases compuestas tipográficamente (sans limpia + serif itálica gigante),
 // posiciones que cambian por frase y TEXTO DETRÁS DE LA PERSONA (oclusión con
 // secuencia de recortes generada por segmentación IA).
-loadFont({
-  family: 'PlayfairIt',
-  url: staticFile('fonts/PlayfairDisplay-Italic.ttf'),
-  weight: '400 900',
-  style: 'italic',
-}).catch(() => undefined);
+injectFont('PlayfairIt', 'fonts/PlayfairDisplay-Italic.ttf', '400 900', 'italic');
 
 const SERIF_IT = "'PlayfairIt', 'Times New Roman', serif";
 

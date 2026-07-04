@@ -8,6 +8,7 @@ import {CaptionedClip, captionedClipSchema, captionedClipDefaults} from './Capti
 import {EditorialCaptions, editorialSchema, editorialDefaults} from './EditorialCaptions';
 import {Estilo11Red, estilo11RedSchema, estilo11RedDefaults} from './Estilo11Red';
 import {Estilo11Deriva, estilo11DerivaSchema, estilo11DerivaDefaults} from './Estilo11Deriva';
+import {ReelAssembly, reelAssemblySchema, reelAssemblyDefaults, calcReelMetadata} from './ReelAssembly';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -117,6 +118,17 @@ export const Root: React.FC = () => {
         calculateMetadata={({props}) => ({
           durationInFrames: Math.ceil((props.durationMs / 1000) * 30),
         })}
+      />
+      {/* Fase 3 · Reel completo ensamblado (clips + b-rolls + textos + música) */}
+      <Composition
+        id="ReelAssembly"
+        component={ReelAssembly}
+        schema={reelAssemblySchema}
+        defaultProps={reelAssemblyDefaults}
+        durationInFrames={calcReelMetadata().durationInFrames}
+        fps={24}
+        width={1080}
+        height={1920}
       />
     </>
   );

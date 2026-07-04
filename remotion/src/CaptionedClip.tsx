@@ -8,8 +8,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {z} from 'zod';
-import {loadFont} from '@remotion/fonts';
-import {FONT_MARCA, PALETA} from './marca';
+import {FONT_MARCA, PALETA, injectFont} from './marca';
 
 // ─── Fase 2 · Captions del avatar ────────────────────────────────────────────
 // Quema subtítulos animados sobre un clip. Dos presets:
@@ -17,16 +16,8 @@ import {FONT_MARCA, PALETA} from './marca';
 //                   tinta, palabra activa en rojo, abajo. (estilo Cerebro)
 //  - "minimal-top": UNA palabra por vez, minúsculas, tipografía redondeada blanca
 //                   con sombra suave, arriba del encuadre. (estilo creator clean)
-loadFont({
-  family: 'Nunito',
-  url: staticFile('fonts/Nunito-Variable.ttf'),
-  weight: '200 1000',
-}).catch(() => undefined);
-loadFont({
-  family: 'Fraunces',
-  url: staticFile('fonts/Fraunces-Variable.ttf'),
-  weight: '100 900',
-}).catch(() => undefined);
+injectFont('Nunito', 'fonts/Nunito-Variable.ttf', '200 1000');
+injectFont('Fraunces', 'fonts/Fraunces-Variable.ttf', '100 900');
 
 const FONT_REDONDEADA = "'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif";
 const FONT_SOFT_SERIF = "'Fraunces', Georgia, serif";

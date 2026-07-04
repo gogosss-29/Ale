@@ -1,14 +1,30 @@
 // ─── Marca Cerebro: tipografía y tokens compartidos ─────────────────────────
-import {loadFont} from '@remotion/fonts';
-import {staticFile} from 'remotion';
+import {continueRender, delayRender, staticFile} from 'remotion';
 
 // Archivo (variable, OFL) self-hosteada en public/fonts — grotesca moderna con
 // pesos fuertes, la voz tipográfica de los b-rolls. Sin dependencia de red.
-loadFont({
-  family: 'Archivo',
-  url: staticFile('fonts/Archivo-Variable.ttf'),
-  weight: '100 900',
-}).catch(() => undefined); // si falla, cae al stack del sistema
+// Carga NO bloqueante: inyectamos @font-face y NO usamos delayRender (Remotion
+// controla el reloj en el render, así que un timer de seguridad no dispararía y
+// un fallo/lentitud de la fuente colgaría el render). El navegador precarga la
+// fuente al montar la página; si no llega a tiempo cae al stack del sistema.
+export const injectFont = (
+  family: string,
+  file: string,
+  weight = '100 900',
+  style: 'normal' | 'italic' = 'normal',
+) => {
+  if (typeof document === 'undefined') return;
+  const id = `font-${family}`;
+  if (document.getElementById(id)) return;
+  const el = document.createElement('style');
+  el.id = id;
+  el.textContent = `@font-face{font-family:'${family}';src:url('${staticFile(
+    file,
+  )}') format('truetype');font-weight:${weight};font-style:${style};font-display:swap;}`;
+  document.head.appendChild(el);
+};
+
+injectFont('Archivo', 'fonts/Archivo-Variable.ttf', '100 900');
 
 export const FONT_MARCA = "'Archivo', Arial, 'Liberation Sans', sans-serif";
 
