@@ -365,15 +365,18 @@ def auto_cuts(total: float, candidates: List[Tuple[float, float]],
                 return closeness + LONG_WEIGHT * long_pause
             chosen = max(in_window, key=score)
         else:
-            # Sin silencio en la ventana: el más cercano por debajo del máximo.
+            # Sin silencio en la ventana: el más cercano por debajo del máximo,
+            # pero nunca tan pegado al corte anterior que deje un clip enano
+            # (exigimos al menos la mitad de --min).
+            floor = start + min_s * 0.5
             below = [t for t in cut_times
-                     if start < t <= win_hi and t not in used]
+                     if floor <= t <= win_hi and t not in used]
             if below:
                 chosen = max(below)  # el más cercano al max
             else:
-                # Ningún silencio antes del max: tomamos el primero disponible
+                # Ningún silencio utilizable antes del max: tomamos el primero
                 # más allá del max (evita partir palabra aunque exceda max).
-                beyond = [t for t in cut_times if t > start and t not in used]
+                beyond = [t for t in cut_times if t > win_hi and t not in used]
                 if beyond:
                     chosen = min(beyond)
                     warn(f"No hay silencio dentro de --max tras {fmt_ts(start)}s; "
