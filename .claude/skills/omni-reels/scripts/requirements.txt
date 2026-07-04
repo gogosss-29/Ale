@@ -1,0 +1,8 @@
+# Dependencia Python del reel_cutter.py
+# (ctranslate2 viene como dependencia de faster-whisper; detecta GPU/CPU solo)
+faster-whisper>=1.0.0
+
+# Dependencia de SISTEMA (no pip): ffmpeg + ffprobe deben estar en el PATH.
+#   - macOS:   brew install ffmpeg
+#   - Windows: https://ffmpeg.org/download.html  (agregar al PATH)
+#   - Linux:   apt install ffmpeg
