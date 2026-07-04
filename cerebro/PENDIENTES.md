@@ -34,6 +34,20 @@ Relacionado: cerrar la idea de **"estilo propio por reel"** (mundo visual a medi
 
 ---
 
+## 🎬 Captions del avatar — PENDIENTE DE OPTIMIZAR
+**Estado:** motor funcionando con 3 enfoques renderizados sobre clip real:
+1. Preset `marca` (karaoke 3 palabras, Archivo, activa en rojo, abajo).
+2. Preset `minimal-top` v2 (1 palabra, Fraunces soft-serif, marfil, arriba). No convenció.
+3. **`EditorialCaptions`** (frases compuestas sans+serif itálica, posiciones por frase,
+   texto DETRÁS de la persona vía segmentación IA/rembg cuadro a cuadro). Es la dirección
+   de la referencia 2 de Ale — falta pulirla con su feedback.
+**Optimizar cuando se retome:** afinar tipografías/tamaños/posiciones con Ale,
+más momentos "detrás" (funciona mejor con planos abiertos), animaciones por letra,
+auto-propuesta de diseño de frases desde la transcripción, y velocidad del pipeline
+(segmentación 196 frames ≈ minutos). Assets: modelo u2net_human_seg en ~/.u2net.
+
+---
+
 ## ⭐ 0. Avatar Omni se DEFORMA por el bloque de identidad (IMPORTANTE)
 **Problema:** los prompts del avatar con el bloque de identidad textual (dentadura
 "no blanquear/no emparejar…" + físico "no me hagas más chico…") **deforman** la
