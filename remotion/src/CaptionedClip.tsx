@@ -22,8 +22,14 @@ loadFont({
   url: staticFile('fonts/Nunito-Variable.ttf'),
   weight: '200 1000',
 }).catch(() => undefined);
+loadFont({
+  family: 'Fraunces',
+  url: staticFile('fonts/Fraunces-Variable.ttf'),
+  weight: '100 900',
+}).catch(() => undefined);
 
 const FONT_REDONDEADA = "'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif";
+const FONT_SOFT_SERIF = "'Fraunces', Georgia, serif";
 
 const tokenSchema = z.object({
   text: z.string(),
@@ -83,8 +89,11 @@ const MinimalTopPage: React.FC<{
   fps: number;
 }> = ({page, frame, fps}) => {
   const pageStartFrame = Math.round((page.startMs / 1000) * fps);
-  const pop = spring({frame: frame - pageStartFrame, fps, config: {damping: 13, stiffness: 320}});
+  const pop = spring({frame: frame - pageStartFrame, fps, config: {damping: 10, stiffness: 380}});
   const word = page.tokens.map((t) => t.text).join(' ').toLowerCase();
+
+  // pop con leve overshoot (1.14 -> 1) como la referencia
+  const scale = 1.14 - pop * 0.14;
 
   return (
     <div
@@ -92,21 +101,22 @@ const MinimalTopPage: React.FC<{
         position: 'absolute',
         left: 0,
         right: 0,
-        top: 210,
+        top: 350,
         display: 'flex',
         justifyContent: 'center',
-        transform: `scale(${0.88 + pop * 0.12})`,
-        opacity: Math.min(1, pop * 1.8),
+        transform: `scale(${scale})`,
+        opacity: Math.min(1, pop * 2.2),
       }}
     >
       <span
         style={{
-          fontFamily: FONT_REDONDEADA,
-          fontWeight: 1000 as never,
-          fontSize: 88,
-          color: WHITE,
-          letterSpacing: 0.5,
-          textShadow: '0 6px 22px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.45)',
+          fontFamily: FONT_SOFT_SERIF,
+          fontWeight: 640 as never,
+          fontVariationSettings: "'SOFT' 90, 'WONK' 0, 'opsz' 40",
+          fontSize: 128,
+          color: '#FFF6E9',
+          letterSpacing: -1,
+          textShadow: '0 3px 10px rgba(0,0,0,0.5), 0 10px 34px rgba(0,0,0,0.38)',
           whiteSpace: 'pre',
         }}
       >
