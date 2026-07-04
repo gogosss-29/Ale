@@ -11,8 +11,23 @@
 |---|---|---|---|
 | **Omni / Flow (Veo)** | IA generativa de video | Personas hablando, fotorrealismo, escenas orgánicas, metáforas con materia (escultura, tinta, oro), explorar looks rápido | Deforma texto, números inexactos, timing impreciso, cada intento sale distinto y cuesta créditos |
 | **Remotion** | Video programado (React), lo renderiza Claude y entrega .mp4 | Texto/tipografía perfectos, datos y números reales, timing al frame (sync con locución), marca idéntica en cada reel, gratis, parametrizable | No genera personas ni fotorrealismo; texturas orgánicas complejas cuestan mucho código |
+| **Omni (compositing / edición)** | Omni animando motion graphics ENCIMA de un clip real ya grabado (skill `omni-reels`) | Animaciones/motion graphics ricos y orgánicos "estilo AE" DENTRO del propio video del avatar, con poco esfuerzo | Generativo: puede tocar voz/personaje si el prompt no es benigno + time-based; sale 720p → upscalar |
 | **CapCut** | Edición humana | Montaje final, ritmo fino, capa de realismo, música/ducking | Manual |
 | *(futuro)* APIs Kie/APImart | Generativa por API (curso AvatarHype) | Volumen barato de UGC ads | Por integrar |
+
+> ⚠️ **Omni tiene DOS usos distintos:** (1) **generar** footage nuevo (avatar hablando, escenas) — lo de siempre; (2) **editar/compositar** gráficos sobre footage que YA existe — la skill `omni-reels`. La fila de arriba es el uso de edición.
+
+## 🎬 Rutas de EDICIÓN / montaje del reel (cómo se arma la pieza final)
+
+Tres formas de montar el reel; se eligen por pieza y se pueden **combinar**:
+
+| Ruta | Los gráficos los pone… | Fuerte | Cuándo |
+|---|---|---|---|
+| **Remotion `ReelAssembly`** | el código (determinista) | control total, timing al frame, marca exacta, 0 riesgo de regenerar, gratis | b-rolls de datos, texto/marca, ensamblado reproducible |
+| **Omni compositing** (`omni-reels`) | Omni, generativo sobre el clip | motion graphics ricos/orgánicos DENTRO del clip del avatar, poco esfuerzo | animaciones vivas encima del talking-head cuando el "estilo AE" aporta más que el control exacto |
+| **CapCut** | edición humana | ritmo fino, capa de realismo, música | montaje/retoque final a mano |
+
+> No compiten: p. ej. **Omni** para animar gráficos orgánicos sobre un clip + **Remotion** para los b-rolls de datos (#11) y el cierre de marca (#99) + **CapCut** para el pulido final.
 
 ## 🧭 La regla de oro (decisión en 3 preguntas)
 1. **¿Aparece una persona / el avatar?** → **Omni/Flow. Siempre.**
@@ -33,6 +48,7 @@
 | Metáfora conceptual orgánica (escultura, collage, vintage) | **Flow** | #05/#06 elevados |
 | Escenarios y sesiones de fotos (imagen de referencia) | **Flow** | banco de escenarios |
 | Textos en pantalla sobre el avatar | **CapCut** (o Remotion overlay) | — |
+| Animaciones / motion graphics DENTRO del clip del avatar | **Omni compositing** | omni-reels |
 | UGC ads de producto | **Omni/Flow** (+ APIs a futuro) | avatarhype |
 | Exploración de un look/estilo nuevo | **Flow** primero (rápido); si se adopta como marca → portar a **Remotion** (exacto y repetible) | crear-estilo-broll |
 
@@ -44,7 +60,9 @@
 5. Si una pieza falla 2+ veces en una herramienta, el router evalúa la otra (o el híbrido) antes de insistir.
 
 ## Estado
-- Omni/Flow: ✅ operativo (manual, sin API).
-- Remotion: 🔜 **pendiente de piloto** — instalar en el repo y renderizar el BR3 del
-  reel-003 como validación. Si el piloto pasa, portar #11, #13 y #99 a plantillas.
+- Omni/Flow (generar): ✅ operativo (manual, sin API).
+- Omni compositing (editar, `omni-reels`): ✅ operativo (manual) — ruta de edición
+  documentada; faltan en el repo sus helpers (`scripts/reel_cutter.py`, `reference/`).
+- Remotion: ✅ operativo — piloto pasado; #11/#12/#13/#99 portados y compo
+  `ReelAssembly` renderizando el reel-003 completo (Fase 3).
 - CapCut: ✅ operativo (Ale/Mayra).
