@@ -1,0 +1,1255 @@
+{
+    "name": "2) Gastos-Envío Facturas a Gestoría 2025",
+    "flow": [
+        {
+            "id": 3,
+            "module": "dropbox:watchFiles2",
+            "version": 5,
+            "parameters": {
+                "path": "/CONTABILIDAD/Facturas/Facturas 2025/2 - Gastos",
+                "limit": 10,
+                "recursive": false,
+                "undefined": "list",
+                "__IMTCONN__": 4326099
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0,
+                    "name": "Detecta nuevos ficheros"
+                },
+                "restore": {
+                    "parameters": {
+                        "undefined": {
+                            "label": "Select from List"
+                        },
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "dropbox"
+                            },
+                            "label": "My Dropbox connection (flor.vd@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:dropbox",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "type": "select",
+                        "label": "Folder Search Method",
+                        "validate": {
+                            "enum": [
+                                "list",
+                                "keyword"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "recursive",
+                        "type": "boolean",
+                        "label": "Watch also subfolders",
+                        "required": true
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "path",
+                        "type": "folder",
+                        "label": "Folder Path"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "dropbox:getFile",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 4326099
+            },
+            "mapper": {
+                "path": "{{3.path_lower}}",
+                "select": "map"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0,
+                    "name": "Convierte el fichero en PDF"
+                },
+                "restore": {
+                    "expect": {
+                        "select": {
+                            "label": "Map a file path"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "dropbox"
+                            },
+                            "label": "My Dropbox connection (flor.vd@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:dropbox",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Way of selecting files",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "map",
+                                "file"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "path",
+                        "type": "text",
+                        "label": "File Path",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 28,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 6,
+                            "module": "google-email:ActionSendEmail",
+                            "version": 2,
+                            "parameters": {
+                                "account": 11237058
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "firenze_v@hotmail.com"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "Adjunto Facturas Gastos",
+                                "subject": "Factura Gestoría 2025 - {{9.fileName}}",
+                                "attachments": [
+                                    {
+                                        "cid": "",
+                                        "data": "{{9.data}}",
+                                        "fileName": "{{9.fileName}}"
+                                    }
+                                ]
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": -150,
+                                    "name": "Envía Mail a FIRENZE"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google-restricted"
+                                            },
+                                            "label": "Google MAIL RDM (contacto@rutadelmate.com)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:google-restricted",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 29,
+                            "module": "pdf-co:PdfToImages",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 12045146
+                            },
+                            "mapper": {
+                                "async": 15000,
+                                "export": {
+                                    "exportType": "downloadFile"
+                                },
+                                "import": {
+                                    "data": "{{9.data}}",
+                                    "name": "{{9.fileName}}",
+                                    "importType": "upload"
+                                },
+                                "inline": false,
+                                "convert": {
+                                    "convertType": "toJpg"
+                                },
+                                "expiration": "60"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": 150
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "async": {
+                                            "mode": "chose",
+                                            "label": "Async"
+                                        },
+                                        "export": {
+                                            "nested": {
+                                                "exportType": {
+                                                    "label": "Download a File"
+                                                }
+                                            }
+                                        },
+                                        "import": {
+                                            "nested": {
+                                                "importType": {
+                                                    "label": "Upload a File"
+                                                }
+                                            }
+                                        },
+                                        "inline": {
+                                            "mode": "chose"
+                                        },
+                                        "convert": {
+                                            "nested": {
+                                                "convertType": {
+                                                    "label": "PDF to JPG"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "pdf-co"
+                                            },
+                                            "label": "PDF.co Flor.vd"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:pdf-co",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "import",
+                                        "spec": [
+                                            {
+                                                "name": "importType",
+                                                "type": "select",
+                                                "label": "Input File",
+                                                "required": true,
+                                                "validate": {
+                                                    "enum": [
+                                                        "upload",
+                                                        "url"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Output File Name"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Import Options",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "convert",
+                                        "spec": [
+                                            {
+                                                "name": "convertType",
+                                                "type": "select",
+                                                "label": "Convert Type",
+                                                "required": true,
+                                                "validate": {
+                                                    "enum": [
+                                                        "toJpg",
+                                                        "toPng"
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Convert Options",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "pages",
+                                        "type": "text",
+                                        "label": "Pages"
+                                    },
+                                    {
+                                        "name": "password",
+                                        "type": "text",
+                                        "label": "Password"
+                                    },
+                                    {
+                                        "name": "async",
+                                        "type": "select",
+                                        "label": "Execution Mode",
+                                        "validate": {
+                                            "enum": [
+                                                false,
+                                                15000,
+                                                "asyncCheckLater"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "inline",
+                                        "type": "boolean",
+                                        "label": "Inline"
+                                    },
+                                    {
+                                        "name": "profiles",
+                                        "type": "text",
+                                        "label": "Profiles"
+                                    },
+                                    {
+                                        "name": "expiration",
+                                        "type": "number",
+                                        "label": "Output Links Expiration"
+                                    },
+                                    {
+                                        "name": "export",
+                                        "spec": [
+                                            {
+                                                "name": "exportType",
+                                                "type": "select",
+                                                "label": "Export Type",
+                                                "required": true,
+                                                "validate": {
+                                                    "enum": [
+                                                        "downloadFile",
+                                                        "inline"
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Export Options",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 31,
+                            "module": "openai-gpt-3:analyzeImages",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 4431938
+                            },
+                            "mapper": {
+                                "model": "gpt-4o-mini",
+                                "top_p": "1",
+                                "images": [
+                                    {
+                                        "imageUrl": "{{29.url}}",
+                                        "imageUploadType": "url"
+                                    }
+                                ],
+                                "prompt": "Eres un asistente experto en automatización y procesamiento de documentos. Tu tarea principal es interpretar facturas recibidas en formato PDF y extraer la información relevante para su posterior contabilización.\n\r\nSigue estas reglas para garantizar precisión y efectividad:\r\n\r\n1) Identificación de datos clave: Extrae los siguientes campos de cada factura:\r\n\r\nNombre del proveedor\r\nFecha de emisión\r\nImporte de la Base Imponible en moneda original (antes de impuestos)\n\n2) Identifica si la factura está en una moneda diferente al euro (como dólares).\r\n\r\nPodrás identificarla si en la factura dice: USD, US$, $US, dólares, dollars o similar.\r\n\r\n3) Validación:\r\n\r\nSi algún dato falta o no puede ser extraído, notifícalo claramente con un mensaje indicando qué información falta.\r\n\r\nTENER EN CUENTA:\r\n\r\n - La cuota de Autónomos es sin IVA.\n\nIMPORTANTE:\n\nPor favor, dame la respuesta en un formato JSON válido. Asegúrate de que el JSON sea completamente correcto y sin caracteres adicionales, especialmente sin incluir backticks.\n\nFormato JSON:\r\n{\r\n  \"Nombre del proveedor\": \"TEXTO EN MAYUSCULA\",\r\n  \"Fecha de emisión\": \"Texto en formato mm-yy\" (Analiza bien las fechas de la factura - si la fecha viene en formato Mmm Day, Year, tienes que poner mm-yy),\r\n  \"Importe de la Base Imponible (antes de impuestos)\": \"Numero (usar un . de decimal)\",\r\n}\n\nNo incluyas: ```json",
+                                "max_tokens": "700",
+                                "temperature": "1",
+                                "n_completions": "1"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 150
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "model": {
+                                            "mode": "chose",
+                                            "label": "gpt-4o-mini (system)"
+                                        },
+                                        "images": {
+                                            "mode": "chose",
+                                            "items": [
+                                                {
+                                                    "imageUploadType": {
+                                                        "mode": "chose",
+                                                        "label": "Image URL"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "openai-gpt-3"
+                                            },
+                                            "label": "OpenAI FlorV"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:openai-gpt-3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "prompt",
+                                        "type": "text",
+                                        "label": "Prompt",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "images",
+                                        "spec": {
+                                            "name": "value",
+                                            "spec": [
+                                                {
+                                                    "name": "imageUploadType",
+                                                    "type": "select",
+                                                    "label": "How would you like to specify an image?",
+                                                    "options": [
+                                                        {
+                                                            "label": "Image URL",
+                                                            "value": "url",
+                                                            "nested": [
+                                                                {
+                                                                    "help": "Public URL of the image. For example, `https://getmyimage.com/myimage.png`.",
+                                                                    "mode": "edit",
+                                                                    "name": "imageUrl",
+                                                                    "type": "url",
+                                                                    "label": "Image URL",
+                                                                    "mappable": {
+                                                                        "help": "Public URL of the image. For example, `https://getmyimage.com/myimage.png`."
+                                                                    },
+                                                                    "required": true
+                                                                }
+                                                            ],
+                                                            "default": true
+                                                        },
+                                                        {
+                                                            "label": "Image File",
+                                                            "value": "imageFile",
+                                                            "nested": [
+                                                                {
+                                                                    "help": "Binary data of the image. For example, you can retrieve the binary data of your image using the __HTTP: Get a file__ module.",
+                                                                    "name": "imageFileData",
+                                                                    "type": "buffer",
+                                                                    "label": "Image File",
+                                                                    "required": true,
+                                                                    "semantic": "file:data"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "required": true
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Image"
+                                        },
+                                        "type": "array",
+                                        "label": "Images",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "model",
+                                        "type": "select",
+                                        "label": "Model",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "max_tokens",
+                                        "type": "uinteger",
+                                        "label": "Max Completion Tokens"
+                                    },
+                                    {
+                                        "name": "temperature",
+                                        "type": "number",
+                                        "label": "Temperature",
+                                        "validate": {
+                                            "max": 2,
+                                            "min": 0
+                                        }
+                                    },
+                                    {
+                                        "name": "top_p",
+                                        "type": "number",
+                                        "label": "Top P",
+                                        "validate": {
+                                            "max": 1,
+                                            "min": 0
+                                        }
+                                    },
+                                    {
+                                        "name": "n_completions",
+                                        "type": "number",
+                                        "label": "Number"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 32,
+                            "module": "json:ParseJSON",
+                            "version": 1,
+                            "parameters": {
+                                "type": ""
+                            },
+                            "mapper": {
+                                "json": "{{31.choices[].message.content}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 150
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "type": {
+                                            "label": "Choose a data structure"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "type",
+                                        "type": "udt",
+                                        "label": "Data structure"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "json",
+                                        "type": "text",
+                                        "label": "JSON string",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 34,
+                            "module": "airtable:ActionCreateRecord",
+                            "version": 3,
+                            "parameters": {
+                                "__IMTCONN__": 10720125
+                            },
+                            "mapper": {
+                                "base": "app1p4dQlTJMFlMGi",
+                                "table": "tbl4B6hKnfFgKFXGs",
+                                "record": {
+                                    "fld9QaKJRWcP887TJ": "{{32.`Importe de la Base Imponible (antes de impuestos)`}}",
+                                    "fldLhxFOL4OcY05sv": "{{32.`Nombre del proveedor`}}",
+                                    "fldZ8gwN1XqMZqEVz": "{{32.`Fecha de emisión`}}"
+                                },
+                                "typecast": false,
+                                "useColumnId": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1800,
+                                    "y": 150
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "base": {
+                                            "label": "Sistema Contable"
+                                        },
+                                        "table": {
+                                            "label": "Gastos25",
+                                            "nested": [
+                                                {
+                                                    "name": "record",
+                                                    "spec": [
+                                                        {
+                                                            "mode": "edit",
+                                                            "name": "fldZ8gwN1XqMZqEVz",
+                                                            "type": "select",
+                                                            "label": "MES_AÑO",
+                                                            "dynamic": true,
+                                                            "options": [
+                                                                {
+                                                                    "label": "01-25",
+                                                                    "value": "01-25"
+                                                                },
+                                                                {
+                                                                    "label": "02-25",
+                                                                    "value": "02-25"
+                                                                },
+                                                                {
+                                                                    "label": "03-25",
+                                                                    "value": "03-25"
+                                                                },
+                                                                {
+                                                                    "label": "04-25",
+                                                                    "value": "04-25"
+                                                                },
+                                                                {
+                                                                    "label": "05-25",
+                                                                    "value": "05-25"
+                                                                },
+                                                                {
+                                                                    "label": "06-25",
+                                                                    "value": "06-25"
+                                                                },
+                                                                {
+                                                                    "label": "07-25",
+                                                                    "value": "07-25"
+                                                                },
+                                                                {
+                                                                    "label": "08-25",
+                                                                    "value": "08-25"
+                                                                },
+                                                                {
+                                                                    "label": "09-25",
+                                                                    "value": "09-25"
+                                                                },
+                                                                {
+                                                                    "label": "10-25",
+                                                                    "value": "10-25"
+                                                                },
+                                                                {
+                                                                    "label": "11-25",
+                                                                    "value": "11-25"
+                                                                },
+                                                                {
+                                                                    "label": "12-25",
+                                                                    "value": "12-25"
+                                                                }
+                                                            ],
+                                                            "validate": false
+                                                        },
+                                                        {
+                                                            "name": "fldxmmvouB8y5dXyl",
+                                                            "spec": {
+                                                                "label": "Record ID"
+                                                            },
+                                                            "type": "array",
+                                                            "label": "Trimestre_G"
+                                                        },
+                                                        {
+                                                            "name": "fldLhxFOL4OcY05sv",
+                                                            "type": "text",
+                                                            "label": "NombreProveedor"
+                                                        },
+                                                        {
+                                                            "name": "flduPuEjvVN5O8zZ5",
+                                                            "spec": {
+                                                                "label": "Record ID"
+                                                            },
+                                                            "type": "array",
+                                                            "label": "NombreProveedor (REL)"
+                                                        },
+                                                        {
+                                                            "name": "fld9QaKJRWcP887TJ",
+                                                            "type": "number",
+                                                            "label": "Monto_Mon_Origen"
+                                                        },
+                                                        {
+                                                            "name": "fldb6pyIRJm6v7dSF",
+                                                            "type": "number",
+                                                            "label": "Monto_€_Fiscaliti"
+                                                        },
+                                                        {
+                                                            "name": "fldYUGPSPq80ND8Ob",
+                                                            "type": "text",
+                                                            "label": "Modelo 330"
+                                                        }
+                                                    ],
+                                                    "type": "collection",
+                                                    "label": "Record"
+                                                }
+                                            ]
+                                        },
+                                        "record": {
+                                            "nested": {
+                                                "fldZ8gwN1XqMZqEVz": {
+                                                    "mode": "edit"
+                                                },
+                                                "flduPuEjvVN5O8zZ5": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldxmmvouB8y5dXyl": {
+                                                    "mode": "chose"
+                                                }
+                                            }
+                                        },
+                                        "typecast": {
+                                            "mode": "chose"
+                                        },
+                                        "useColumnId": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "airtable3"
+                                            },
+                                            "label": "Airtable FlorV (User ID: usrKzqwVj6l7Pe1sR)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:airtable3,airtable2",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "base",
+                                        "type": "select",
+                                        "label": "Base",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "typecast",
+                                        "type": "boolean",
+                                        "label": "Smart links",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useColumnId",
+                                        "type": "boolean",
+                                        "label": "Use Column ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "record",
+                                        "spec": [
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldZ8gwN1XqMZqEVz",
+                                                "type": "select",
+                                                "label": "MES_AÑO"
+                                            },
+                                            {
+                                                "name": "fldxmmvouB8y5dXyl",
+                                                "spec": {
+                                                    "name": "value",
+                                                    "label": "Record ID"
+                                                },
+                                                "type": "array",
+                                                "label": "Trimestre_G"
+                                            },
+                                            {
+                                                "name": "fldLhxFOL4OcY05sv",
+                                                "type": "text",
+                                                "label": "NombreProveedor"
+                                            },
+                                            {
+                                                "name": "flduPuEjvVN5O8zZ5",
+                                                "spec": {
+                                                    "name": "value",
+                                                    "label": "Record ID"
+                                                },
+                                                "type": "array",
+                                                "label": "NombreProveedor (REL)"
+                                            },
+                                            {
+                                                "name": "fld9QaKJRWcP887TJ",
+                                                "type": "number",
+                                                "label": "Monto_Mon_Origen"
+                                            },
+                                            {
+                                                "name": "fldb6pyIRJm6v7dSF",
+                                                "type": "number",
+                                                "label": "Monto_€_Fiscaliti"
+                                            },
+                                            {
+                                                "name": "fldYUGPSPq80ND8Ob",
+                                                "type": "text",
+                                                "label": "Modelo 330"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Record"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "createdTime",
+                                        "type": "date",
+                                        "label": "Created Time"
+                                    },
+                                    {
+                                        "name": "Proveedor",
+                                        "type": "text",
+                                        "label": "Proveedor"
+                                    },
+                                    {
+                                        "name": "MES_AÑO",
+                                        "type": "text",
+                                        "label": "MES_AÑO"
+                                    },
+                                    {
+                                        "name": "Trimestre_G",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Trimestre_G"
+                                    },
+                                    {
+                                        "name": "NombreProveedor",
+                                        "type": "text",
+                                        "label": "NombreProveedor"
+                                    },
+                                    {
+                                        "name": "NombreProveedor (REL)",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "NombreProveedor (REL)"
+                                    },
+                                    {
+                                        "name": "Monto_Mon_Origen",
+                                        "type": "number",
+                                        "label": "Monto_Mon_Origen"
+                                    },
+                                    {
+                                        "name": "Moneda_Fra (de NombreProveedor)",
+                                        "type": "array",
+                                        "label": "Moneda_Fra (de NombreProveedor)"
+                                    },
+                                    {
+                                        "name": "Monto_€_DEF",
+                                        "type": "text",
+                                        "label": "Monto_€_DEF"
+                                    },
+                                    {
+                                        "name": "IVA",
+                                        "type": "text",
+                                        "label": "IVA"
+                                    },
+                                    {
+                                        "name": "Total_Factura",
+                                        "type": "text",
+                                        "label": "Total_Factura"
+                                    },
+                                    {
+                                        "name": "Autonum",
+                                        "type": "number",
+                                        "label": "Autonum"
+                                    },
+                                    {
+                                        "name": "TC Aprox",
+                                        "type": "array",
+                                        "label": "TC Aprox"
+                                    },
+                                    {
+                                        "name": "Monto_€_Provisional",
+                                        "type": "text",
+                                        "label": "Monto_€_Provisional"
+                                    },
+                                    {
+                                        "name": "Monto_€_Fiscaliti",
+                                        "type": "number",
+                                        "label": "Monto_€_Fiscaliti"
+                                    },
+                                    {
+                                        "name": "IVA (de NombreProveedor)",
+                                        "type": "array",
+                                        "label": "IVA (de NombreProveedor)"
+                                    },
+                                    {
+                                        "name": "TipoProv",
+                                        "type": "array",
+                                        "label": "TipoProv"
+                                    },
+                                    {
+                                        "name": "Modelo 330",
+                                        "type": "text",
+                                        "label": "Modelo 330"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 35,
+                                    "module": "telegram:SendReplyMessage",
+                                    "version": 1,
+                                    "parameters": {
+                                        "__IMTCONN__": 12046268
+                                    },
+                                    "mapper": {
+                                        "text": "Chequear Error Carga Factura Proveedor {{32.`Nombre del proveedor`}}",
+                                        "chatId": "1500208657",
+                                        "parseMode": "",
+                                        "replyMarkup": "",
+                                        "messageThreadId": "",
+                                        "replyToMessageId": "",
+                                        "disableNotification": false,
+                                        "replyMarkupAssembleType": "reply_markup_enter"
+                                    },
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 2100,
+                                            "y": 150,
+                                            "name": "Si hay error de carga"
+                                        },
+                                        "restore": {
+                                            "expect": {
+                                                "parseMode": {
+                                                    "label": "Empty"
+                                                },
+                                                "disableNotification": {
+                                                    "mode": "chose"
+                                                },
+                                                "replyMarkupAssembleType": {
+                                                    "label": "Enter the Reply Markup"
+                                                }
+                                            },
+                                            "parameters": {
+                                                "__IMTCONN__": {
+                                                    "data": {
+                                                        "scoped": "true",
+                                                        "connection": "telegram"
+                                                    },
+                                                    "label": "Ernesto_Handle_Errors"
+                                                }
+                                            }
+                                        },
+                                        "parameters": [
+                                            {
+                                                "name": "__IMTCONN__",
+                                                "type": "account:telegram",
+                                                "label": "Connection",
+                                                "required": true
+                                            }
+                                        ],
+                                        "expect": [
+                                            {
+                                                "name": "chatId",
+                                                "type": "text",
+                                                "label": "Chat ID",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "text",
+                                                "type": "text",
+                                                "label": "Text",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "messageThreadId",
+                                                "type": "number",
+                                                "label": "Message Thread ID"
+                                            },
+                                            {
+                                                "name": "parseMode",
+                                                "type": "select",
+                                                "label": "Parse Mode",
+                                                "validate": {
+                                                    "enum": [
+                                                        "Markdown",
+                                                        "HTML"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "disableNotification",
+                                                "type": "boolean",
+                                                "label": "Disable Notifications"
+                                            },
+                                            {
+                                                "name": "disableWebPagePreview",
+                                                "type": "boolean",
+                                                "label": "Disable Link Previews"
+                                            },
+                                            {
+                                                "name": "replyToMessageId",
+                                                "type": "number",
+                                                "label": "Original Message ID"
+                                            },
+                                            {
+                                                "name": "replyMarkupAssembleType",
+                                                "type": "select",
+                                                "label": "Enter/Assemble the Reply Markup Field",
+                                                "validate": {
+                                                    "enum": [
+                                                        "reply_markup_enter",
+                                                        "reply_markup_assemble"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "replyMarkup",
+                                                "type": "text",
+                                                "label": "Reply Markup"
+                                            },
+                                            {
+                                                "name": "chatId",
+                                                "type": "text",
+                                                "label": "Chat ID",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "text",
+                                                "type": "text",
+                                                "label": "Text",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "messageThreadId",
+                                                "type": "number",
+                                                "label": "Message Thread ID"
+                                            },
+                                            {
+                                                "name": "parseMode",
+                                                "type": "select",
+                                                "label": "Parse Mode",
+                                                "validate": {
+                                                    "enum": [
+                                                        "Markdown",
+                                                        "HTML"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "disableNotification",
+                                                "type": "boolean",
+                                                "label": "Disable Notifications"
+                                            },
+                                            {
+                                                "name": "disableWebPagePreview",
+                                                "type": "boolean",
+                                                "label": "Disable Link Previews"
+                                            },
+                                            {
+                                                "name": "replyToMessageId",
+                                                "type": "number",
+                                                "label": "Original Message ID"
+                                            },
+                                            {
+                                                "name": "replyMarkupAssembleType",
+                                                "type": "select",
+                                                "label": "Enter/Assemble the Reply Markup Field",
+                                                "validate": {
+                                                    "enum": [
+                                                        "reply_markup_enter",
+                                                        "reply_markup_assemble"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "replyMarkup",
+                                                "type": "text",
+                                                "label": "Reply Markup"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com",
+        "notes": [
+            {
+                "moduleIds": [
+                    6
+                ],
+                "content": "<p>ENviar siempre a firenze_v@hotmail.com para que le llegue a la gestoría</p>",
+                "isFilterNote": false,
+                "metadata": {
+                    "color": "#9138FE"
+                }
+            }
+        ]
+    }
+}

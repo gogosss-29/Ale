@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Arnés — Claude Code, ACP, Hermes y Forge · Carlos Domínguez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#BFFF00;
+  --lime-dark:#9CCC0A;
+  --lime-soft:#E5FFAB;
+  --ink:#1A1A1A;
+  --paper:#FAFAF7;
+  --gray:#6B7280;
+  --gray-light:#D1D5DB;
+  --red:#E53935;
+  --purple:#8B5CF6;
+  --orange:#F97316;
+  --yellow:#FBCA04;
+  --blue:#3B82F6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  font-family:'Patrick Hand',cursive;
+  font-size:clamp(14px,1.35vw,22px);
+}
+body{
+  background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,0.04) 1px,transparent 0);
+  background-size:22px 22px;
+}
+#deck{width:100vw;height:100vh;position:relative}
+.slide{
+  position:absolute;inset:0;
+  padding:4rem 6vw 4.5rem;
+  display:none;flex-direction:column;
+  animation:fadeIn .35s ease both;
+  overflow:hidden;
+}
+.slide.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+h1,h2,h3,h4{font-family:'Caveat',cursive;font-weight:700;line-height:1.05}
+h1{font-size:clamp(3rem,7vw,6rem)}
+h2{font-size:clamp(2.2rem,4.8vw,4rem);margin-bottom:.6em}
+h3{font-size:clamp(1.6rem,3vw,2.6rem);margin-bottom:.4em}
+h4{font-size:clamp(1.3rem,2.2vw,2rem)}
+p,li{font-size:clamp(1rem,1.4vw,1.6rem);line-height:1.45}
+ul,ol{padding-left:1.5em}
+li{margin:.3em 0}
+small{font-size:.85em;color:var(--gray)}
+
+.marker{
+  background:linear-gradient(180deg,transparent 55%,var(--lime) 55%);
+  padding:0 .15em;
+}
+.tag{
+  display:inline-block;
+  background:var(--lime);color:var(--ink);
+  padding:.05em .6em;border-radius:6px;
+  font-family:'Caveat',cursive;font-weight:700;
+  transform:rotate(-1.5deg);
+  font-size:1em;
+}
+.tag.red{background:var(--red);color:white}
+.tag.orange{background:var(--orange);color:white}
+.tag.purple{background:var(--purple);color:white}
+.tag.yellow{background:var(--yellow);color:var(--ink)}
+.tag.gray{background:var(--gray);color:white}
+.tag.blue{background:var(--blue);color:white}
+.kbd{
+  display:inline-block;
+  background:white;border:2px solid var(--ink);
+  padding:.05em .5em;border-radius:6px;
+  font-family:'JetBrains Mono',monospace;font-size:.85em;
+  box-shadow:2px 2px 0 var(--ink);
+}
+code,pre{font-family:'JetBrains Mono',monospace}
+.inline-code{
+  background:var(--lime-soft);
+  padding:.1em .35em;border-radius:4px;
+  font-size:.9em;border:1px dashed var(--ink);
+}
+pre{
+  background:#0F0F0F;color:#E5FFAB;
+  padding:.8em 1.2em;border-radius:10px;
+  font-size:clamp(.72rem,.92vw,1.05rem);
+  line-height:1.4;
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--lime);
+  overflow:auto;
+  position:relative;
+}
+pre .cmt{color:#7CB342}
+pre .cmd{color:var(--lime)}
+pre .str{color:#FFD75F}
+pre .key{color:#FF7AA2}
+pre .br{color:#9FE9FF}
+
+.box{
+  border:3px solid var(--ink);
+  border-radius:14px;
+  padding:1.1em 1.4em;
+  background:white;
+  filter:url(#wobble);
+  position:relative;
+}
+.box.lime{background:var(--lime);}
+.box.soft{background:var(--lime-soft);}
+.box.dark{background:var(--ink);color:var(--paper);}
+.box.dark h3,.box.dark h4{color:var(--lime)}
+.shadowed{box-shadow:8px 8px 0 var(--ink)}
+.shadowed-lime{box-shadow:8px 8px 0 var(--lime)}
+
+.grid{display:grid;gap:1.5rem}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g4{grid-template-columns:repeat(4,1fr)}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1}
+.row{display:flex;align-items:center;gap:1.2rem}
+.row.center-row{justify-content:center}
+.col{display:flex;flex-direction:column;gap:.8rem}
+.fill{flex:1}
+.stretch{flex:1;display:flex;flex-direction:column;justify-content:center}
+.pad{padding:.5em 1em}
+
+.eyebrow{
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.1rem,1.6vw,1.7rem);
+  color:var(--gray);
+  letter-spacing:.05em;
+  margin-bottom:.2em;
+}
+.eyebrow .dot{color:var(--lime-dark)}
+
+.timechip{
+  position:absolute;top:1.5rem;left:6vw;
+  font-family:'Caveat',cursive;
+  background:var(--ink);color:var(--lime);
+  padding:.15em .7em;border-radius:6px;
+  font-size:clamp(.9rem,1.2vw,1.2rem);
+  transform:rotate(-2deg);
+  z-index:5;
+}
+
+.scribble{
+  font-family:'Caveat',cursive;
+  color:var(--ink);
+  position:absolute;
+  font-size:1.4rem;
+}
+.scribble.note{color:var(--lime-dark)}
+
+.arrow{
+  font-family:'Caveat',cursive;font-size:2.5rem;color:var(--ink);
+  display:inline-block;
+}
+.arrow-lime{color:var(--lime-dark)}
+
+.stat{
+  font-family:'Caveat',cursive;
+  font-size:clamp(3rem,5vw,4.5rem);
+  color:var(--lime-dark);
+  line-height:1;
+}
+.stat-label{
+  font-family:'Caveat',cursive;
+  font-size:clamp(1rem,1.4vw,1.4rem);
+  color:var(--ink);
+  margin-top:.2em;
+}
+
+.checklist{list-style:none;padding-left:0}
+.checklist li{position:relative;padding-left:1.8em;margin:.5em 0}
+.checklist li::before{
+  content:"✓";
+  position:absolute;left:0;top:-.1em;
+  color:var(--lime-dark);font-size:1.3em;font-weight:700;
+}
+.crosslist{list-style:none;padding-left:0}
+.crosslist li{position:relative;padding-left:1.8em;margin:.5em 0}
+.crosslist li::before{
+  content:"✗";
+  position:absolute;left:0;top:-.1em;
+  color:var(--red);font-size:1.3em;font-weight:700;
+}
+
+.steps{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.step{
+  flex:1 1 0;min-width:160px;
+  background:white;border:3px solid var(--ink);border-radius:12px;
+  padding:.8em 1em;
+  position:relative;
+  filter:url(#wobble);
+}
+.step .n{
+  position:absolute;top:-18px;left:-18px;
+  background:var(--lime);border:3px solid var(--ink);
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Caveat',cursive;font-weight:700;font-size:1.4rem;
+}
+.step h4{font-size:1.3rem;margin-bottom:.2em}
+.step p{font-size:.95rem;color:var(--ink)}
+
+#counter{
+  position:fixed;top:1rem;right:1.5rem;
+  font-family:'Caveat',cursive;font-size:1.3rem;
+  color:var(--gray);z-index:100;
+  background:rgba(250,250,247,.7);padding:.1em .6em;border-radius:6px;
+}
+#hint{
+  position:fixed;bottom:.6rem;left:1.5rem;
+  font-family:'Patrick Hand',cursive;font-size:.85rem;
+  color:var(--gray);opacity:.6;z-index:100;
+}
+#progress{
+  position:fixed;bottom:0;left:0;
+  height:6px;background:var(--lime);
+  width:0;transition:width .3s ease;z-index:100;
+  box-shadow:0 -1px 0 var(--ink);
+}
+
+aside.notes{display:none}
+
+#notes-panel{
+  position:fixed;left:0;right:0;bottom:0;
+  background:rgba(15,15,15,.96);color:var(--paper);
+  padding:1.2rem 2rem 1.6rem;
+  font-family:'Patrick Hand',cursive;font-size:1.05rem;
+  line-height:1.5;
+  transform:translateY(100%);transition:transform .3s ease;
+  z-index:300;max-height:45vh;overflow-y:auto;
+  border-top:4px solid var(--lime);
+}
+#notes-panel.visible{transform:translateY(0)}
+body.notes-open #hint{visibility:hidden}
+body.notes-open #deck{height:55vh;transition:height .3s ease}
+#deck{transition:height .3s ease}
+#notes-panel h4{
+  font-family:'Caveat',cursive;color:var(--lime);
+  font-size:1.4rem;margin-bottom:.4em;
+  display:flex;justify-content:space-between;align-items:center;
+}
+#notes-panel ul{padding-left:1.4em;margin-top:.4em}
+#notes-panel li{margin:.25em 0;font-size:1.05rem}
+#notes-panel .time-pill{
+  background:var(--lime);color:var(--ink);
+  padding:.05em .5em;border-radius:6px;font-size:1rem;
+}
+
+.cover{align-items:center;justify-content:center;text-align:center;position:relative}
+.cover h1{font-size:clamp(4rem,9vw,8rem);line-height:.95}
+.cover .by{font-family:'Caveat',cursive;font-size:clamp(1.4rem,2.5vw,2.4rem);color:var(--gray);margin-top:1rem}
+.cover .deco{position:absolute}
+.cover .deco.tl{top:8%;left:8%;transform:rotate(-12deg)}
+.cover .deco.tr{top:10%;right:6%;transform:rotate(8deg)}
+.cover .deco.bl{bottom:14%;left:9%;transform:rotate(-6deg)}
+.cover .deco.br{bottom:10%;right:8%;transform:rotate(14deg)}
+
+.callout{
+  background:var(--lime);
+  border:3px solid var(--ink);
+  border-radius:12px;
+  padding:.6em 1em;
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.2rem,1.9vw,1.8rem);
+  transform:rotate(-1deg);
+  display:inline-block;
+  box-shadow:5px 5px 0 var(--ink);
+  max-width:92%;
+  word-wrap:break-word;
+}
+
+.muted{color:var(--gray)}
+.center-text{text-align:center}
+
+.flow-pipeline{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.7rem;align-items:stretch;
+}
+.flow-pipeline .step{flex:1 1 0;min-width:140px}
+
+.corner-mark{
+  position:absolute;bottom:1.5rem;right:6vw;
+  font-family:'Caveat',cursive;color:var(--gray);
+  font-size:1rem;opacity:.6;
+}
+
+.numgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.numcell{
+  background:white;border:3px solid var(--ink);border-radius:12px;
+  padding:1em .8em;text-align:center;filter:url(#wobble);
+}
+.numcell.lime{background:var(--lime)}
+.numcell.dark{background:var(--ink);color:var(--paper)}
+.numcell.dark .stat{color:var(--lime)}
+
+.chain{
+  display:flex;align-items:stretch;justify-content:center;
+  gap:.4rem;flex-wrap:wrap;
+}
+.chain .node{
+  background:white;border:3px solid var(--ink);border-radius:12px;
+  padding:.4em .85em;text-align:center;filter:url(#wobble);
+  display:flex;flex-direction:column;justify-content:center;min-width:120px;
+  line-height:1.15;
+}
+.chain .node.lime{background:var(--lime)}
+.chain .node.dark{background:var(--ink);color:var(--paper)}
+.chain .conn{display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;color:var(--lime-dark)}
+.chain .node small{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;margin-top:.12em;color:var(--gray);line-height:1.1}
+.chain .node.dark small{color:var(--lime-soft)}
+</style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3" />
+      <feDisplacementMap in="SourceGraphic" scale="3" />
+    </filter>
+  </defs>
+</svg>
+
+<div id="counter">1 / 16</div>
+<div id="hint"><span class="kbd">←</span> <span class="kbd">→</span> navegar · <span class="kbd">N</span> notas · <span class="kbd">F</span> fullscreen</div>
+<div id="progress"></div>
+
+<main id="deck">
+
+<!-- ============ SLIDE 1: Portada ============ -->
+<section class="slide cover">
+  <div class="deco tl scribble">🧠</div>
+  <div class="deco tr scribble">⚙️</div>
+  <div class="deco bl scribble">🤖</div>
+  <div class="deco br scribble">✦</div>
+  <p class="eyebrow">Vibe Coding · clase en vivo</p>
+  <h1>El <span class="marker">Arnés</span></h1>
+  <h2 style="margin-top:.4em;color:var(--gray)">Cómo un LLM se convierte en un trabajador</h2>
+  <p style="font-family:'Caveat',cursive;font-size:clamp(1.2rem,2vw,1.9rem)">Claude Code · Agent SDK · ACP · Hermes · Forge</p>
+  <p class="by">Carlos Domínguez · Imperio Agéntico</p>
+  <div style="margin-top:1.5rem">
+    <span class="callout">2 demos en vivo: Hermes→ACP y una web app con el Agent SDK →</span>
+  </div>
+  <aside class="notes">
+    <h4>Slide 1 · Portada <span class="time-pill">0:00 – 0:01</span></h4>
+    <ul>
+      <li>Promesa de la clase: entender la palabra que está debajo de TODO el vibe coding — <strong>arnés (harness)</strong>. Es lo que separa un chatbot de un agente que trabaja solo.</li>
+      <li>Ruta: qué es un arnés → por qué Claude Code es uno → cómo se programa (Agent SDK) → cómo se conecta a otros agentes (ACP) → mi agente Hermes → y cómo Forge es un arnés que construí encima.</li>
+      <li>Dos demos reales sobre <strong>NÚCLEO</strong> (mi PKM open source). Nada de teoría hueca.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 2: El problema ============ -->
+<section class="slide">
+  <span class="timechip">0:01 – 0:04 · El problema</span>
+  <p class="eyebrow">EMPECEMOS POR LO OBVIO <span class="dot">●</span></p>
+  <h2>Un LLM solo es un <span class="marker">cerebro en un frasco</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Un modelo de lenguaje, por sí mismo, solo hace <strong>una cosa</strong>: recibe texto → predice texto.</p>
+      <ul class="crosslist">
+        <li>No puede leer tus archivos</li>
+        <li>No puede correr un comando</li>
+        <li>No puede instalar nada ni probar su propio código</li>
+        <li>No recuerda nada entre conversaciones</li>
+      </ul>
+      <p>Es brillante razonando… pero <strong>no tiene manos</strong>. Es un genio atrapado en una caja de chat.</p>
+    </div>
+    <div class="box dark center" style="gap:1rem;padding:2em">
+      <div style="font-size:5rem">🧠</div>
+      <h3 style="color:var(--lime)">Modelo puro</h3>
+      <p style="color:var(--paper)">texto entra → texto sale</p>
+      <p class="muted" style="color:var(--lime-soft)">cero acceso al mundo real</p>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.2rem"><span class="callout" style="font-size:1.3rem">La pregunta del millón:<br>¿cómo le damos manos al cerebro?</span></p>
+  <aside class="notes">
+    <h4>Slide 2 · El problema <span class="time-pill">0:01 – 0:04</span></h4>
+    <ul>
+      <li>Punto clave: la gente cree que la magia está en el modelo. La magia de verdad está en lo que <strong>envuelve</strong> al modelo.</li>
+      <li>Analogía: ChatGPT en la web = cerebro en un frasco. Te da texto y tú haces todo el trabajo manual (copiar, pegar, ejecutar, verificar).</li>
+      <li>Transición: lo que le da manos al cerebro tiene un nombre técnico → el arnés.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 3: Qué es un arnés ============ -->
+<section class="slide">
+  <span class="timechip">0:04 – 0:07 · Definición</span>
+  <p class="eyebrow">LA PALABRA CLAVE DE HOY <span class="dot">●</span></p>
+  <h2>Un <span class="marker">arnés</span> (harness)</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="box soft shadowed">
+      <h3 style="color:var(--lime-dark)">Definición</h3>
+      <p style="font-size:1.25rem">El <strong>entorno de infraestructura</strong> que los ingenieros envuelven alrededor de un LLM para que pueda hacer <strong>tareas del mundo real</strong> — más allá de ser un chatbot.</p>
+      <p style="margin-top:.6em">Es la <strong>capa de control</strong> entre el modelo y el mundo exterior.</p>
+    </div>
+    <div class="col" style="gap:1.2rem">
+      <div class="row">
+        <div style="font-size:3rem">🧠</div>
+        <div><h4>El modelo es el cerebro</h4><p class="muted">razona, decide</p></div>
+      </div>
+      <div class="center" style="font-size:2rem;color:var(--lime-dark);flex:0">+</div>
+      <div class="box lime">
+        <h4>El arnés le da…</h4>
+        <p><strong>🖐️ manos</strong> (herramientas) · <strong>🏗️ infraestructura</strong> (dónde corre) · <strong>🧵 memoria</strong> (qué recuerda)</p>
+      </div>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.2rem"><span class="callout" style="font-size:1.25rem">El arnés define: cómo recibe el prompt · qué tools puede ejecutar · cómo maneja contexto y persistencia</span></p>
+  <aside class="notes">
+    <h4>Slide 3 · Definición <span class="time-pill">0:04 – 0:07</span></h4>
+    <ul>
+      <li>Leer la definición tal cual. Es la frase que quiero que se lleven grabada de la clase.</li>
+      <li>Metáfora cerebro/manos: viene directo de las fuentes (workshop de Anthropic + "What is an Agent Harness"). El modelo es intercambiable; el arnés es lo que construyes tú.</li>
+      <li>Insistir: cuando alguien dice "el agente", casi siempre se refiere al <strong>arnés</strong>, no al modelo.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 4: Anatomía del arnés ============ -->
+<section class="slide">
+  <span class="timechip">0:07 – 0:11 · Anatomía</span>
+  <p class="eyebrow">QUÉ HAY DENTRO DE UN ARNÉS <span class="dot">●</span></p>
+  <h2>5 piezas <span class="muted">·</span> 1 <span class="marker">trabajador</span></h2>
+  <div class="grid g3" style="flex:1;align-items:stretch;gap:1rem;margin-top:.3rem">
+    <div class="box shadowed center" style="gap:.3rem">
+      <div style="font-size:2.4rem">💻</div>
+      <h4>Bash</h4>
+      <p class="center-text" style="font-size:.95rem">Correr comandos, instalar paquetes, tocar el sistema. <em>La herramienta más poderosa.</em></p>
+    </div>
+    <div class="box shadowed center" style="gap:.3rem">
+      <div style="font-size:2.4rem">📁</div>
+      <h4>Filesystem</h4>
+      <p class="center-text" style="font-size:.95rem">Leer, escribir y navegar el repositorio local.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.3rem">
+      <div style="font-size:2.4rem">🧪</div>
+      <h4>Sandbox</h4>
+      <p class="center-text" style="font-size:.95rem">Entorno seguro para correr código y tests sin romper tu máquina.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.3rem">
+      <div style="font-size:2.4rem">🔁</div>
+      <h4>Agent Loop</h4>
+      <p class="center-text" style="font-size:.95rem">Reunir contexto → actuar → <strong>verificar</strong>. El corazón del arnés.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.3rem">
+      <div style="font-size:2.4rem">🧩</div>
+      <h4>Skills + MCP</h4>
+      <p class="center-text" style="font-size:.95rem">Capacidades que se cargan dinámicamente: diseño, Notion, bases de datos…</p>
+    </div>
+    <div class="box lime center" style="gap:.3rem">
+      <div style="font-size:2.4rem">🧠</div>
+      <h4>+ El modelo</h4>
+      <p class="center-text" style="font-size:.95rem">Intercambiable. Hoy Opus, mañana otro. El arnés no cambia.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 4 · Anatomía <span class="time-pill">0:07 – 0:11</span></h4>
+    <ul>
+      <li>Bash es "la herramienta más poderosa" según el workshop de Anthropic: con un shell, el modelo puede hacer casi cualquier cosa que un dev haría (instalar eslint, correr scripts).</li>
+      <li>El <strong>Agent Loop</strong> es lo que separa un arnés de un simple "tool calling". Lo desgloso en la siguiente slide.</li>
+      <li>Skills + MCP = la parte extensible. Aquí es donde entra Forge más adelante (Forge añade skills y comandos).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 5: El Agent Loop ============ -->
+<section class="slide">
+  <span class="timechip">0:07 – 0:11 · Anatomía</span>
+  <p class="eyebrow">EL CORAZÓN DEL ARNÉS <span class="dot">●</span></p>
+  <h2>El <span class="marker">Agent Loop</span> · 3 fases</h2>
+  <div class="steps" style="flex:1;align-items:center;margin-top:1rem">
+    <div class="step" style="flex:1 1 0">
+      <div class="n">1</div>
+      <h4>Gather context</h4>
+      <p>Lee archivos, busca en el repo, consulta MCP. <em>Entiende antes de tocar.</em></p>
+    </div>
+    <div class="arrow arrow-lime">→</div>
+    <div class="step" style="flex:1 1 0">
+      <div class="n">2</div>
+      <h4>Take action</h4>
+      <p>Escribe código, corre comandos, edita archivos. <em>Usa las manos.</em></p>
+    </div>
+    <div class="arrow arrow-lime">→</div>
+    <div class="step" style="flex:1 1 0;background:var(--lime)">
+      <div class="n">3</div>
+      <h4>Verify</h4>
+      <p>Lint, compila, corre tests. ¿Funcionó? Si no → <strong>vuelve al paso 1.</strong></p>
+    </div>
+  </div>
+  <div class="box dark" style="margin-top:1.5rem">
+    <p style="color:var(--paper);font-size:1.2rem">El loop <strong style="color:var(--lime)">se repite solo</strong> hasta cumplir el objetivo o agotar el límite de turnos. Eso es la <strong style="color:var(--lime)">autonomía</strong>: no es que el modelo sea más listo — es que el arnés lo deja <em>intentar, fallar y corregir</em> sin ti.</p>
+  </div>
+  <aside class="notes">
+    <h4>Slide 5 · Agent Loop <span class="time-pill">0:07 – 0:11</span></h4>
+    <ul>
+      <li>El paso 3, <strong>verify</strong>, es el que casi nadie implementa bien y es el más importante. Un agente que no verifica su trabajo alucina con confianza.</li>
+      <li>Claude Code verifica con typecheck/build/tests. Conecta esto con el "Auto-Blindaje" de Forge más adelante (error → fix → documentar → nunca repetir).</li>
+      <li>Mensaje: la autonomía no es magia del modelo, es el LOOP del arnés. Mismo modelo sin loop = chatbot.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 6: Claude Code es un arnés ============ -->
+<section class="slide">
+  <span class="timechip">0:11 – 0:15 · Claude Code</span>
+  <p class="eyebrow">EL PRIMER ARNÉS REAL <span class="dot">●</span></p>
+  <h2>Claude Code <span class="muted">=</span> un <span class="marker">arnés</span> de fábrica</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Cuando abres <span class="inline-code">claude</span> en tu terminal, no estás hablando con un modelo. Estás manejando un <strong>arnés completo</strong> que Anthropic ya armó por ti:</p>
+      <ul class="checklist">
+        <li><strong>Bash tool</strong> → corre lo que sea</li>
+        <li><strong>Filesystem</strong> → lee/escribe tu repo</li>
+        <li><strong>Sandbox + permisos</strong> → te pide aprobar acciones</li>
+        <li><strong>Agent loop</strong> → gather → act → verify</li>
+        <li><strong>Skills + MCP</strong> → extensible sin tocar el core</li>
+      </ul>
+      <p class="callout" style="font-size:1.15rem">No genera código y ya.<br>Opera dentro de un arnés que le da <strong>autonomía</strong>.</p>
+    </div>
+    <pre style="align-self:center"><span class="cmt"># Esto NO es un chatbot.</span>
+<span class="cmt"># Es un arnés corriendo en tu repo.</span>
+<span class="cmd">$</span> claude
+
+<span class="br">&gt;</span> "Arregla el bug del login y
+   corre los tests"
+
+<span class="cmt"># El arnés solo:</span>
+<span class="str">  1.</span> lee src/features/auth/**
+<span class="str">  2.</span> edita el archivo roto
+<span class="str">  3.</span> corre <span class="cmd">npm test</span>
+<span class="str">  4.</span> ve que pasa → done ✓</pre>
+  </div>
+  <aside class="notes">
+    <h4>Slide 6 · Claude Code <span class="time-pill">0:11 – 0:15</span></h4>
+    <ul>
+      <li>Esta es la slide "aha": lo que usan a diario ES un arnés. Llevan semanas usando uno sin saber el nombre.</li>
+      <li>Mapear cada pieza de la slide anterior 1-a-1 con Claude Code refuerza que la teoría es real.</li>
+      <li>Por eso Claude Code se considera "el primer agente real de coding" — no por el modelo, por el arnés alrededor.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 7: Claude Agent SDK ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:19 · Agent SDK</span>
+  <p class="eyebrow">EL ARNÉS, AHORA PROGRAMABLE <span class="dot">●</span></p>
+  <h2>Claude <span class="marker">Agent SDK</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>El Agent SDK (antes "Claude Code SDK") convierte el arnés en un <strong>subproceso que llamas desde código</strong>. Claude Code deja de vivir solo en tu terminal.</p>
+      <div class="box soft">
+        <h4>Lo que te da</h4>
+        <ul style="font-size:1rem">
+          <li><span class="inline-code">query()</span> — le pasas el prompt al arnés</li>
+          <li><span class="inline-code">ClaudeCodeOptions</span> — config: <span class="inline-code">max_turns</span>, <span class="inline-code">cwd</span>, tools…</li>
+          <li><span class="inline-code">Message</span> — la respuesta son <strong>objetos estructurados</strong>, no texto plano</li>
+          <li><strong>MCP</strong> — engánchalo a Jira, Slack, una base de datos…</li>
+        </ul>
+      </div>
+      <p>Con esto construyes <strong>tus propias apps agénticas</strong>: backends, bots, interfaces de chat sobre tu código.</p>
+    </div>
+    <div class="col" style="gap:1rem">
+      <pre><span class="cmt"># TypeScript</span>
+<span class="cmd">npm i</span> @anthropic-ai/claude-agent-sdk
+
+<span class="key">import</span> { query } <span class="key">from</span>
+  <span class="str">"@anthropic-ai/claude-agent-sdk"</span>;
+
+<span class="key">for await</span> (<span class="key">const</span> msg <span class="key">of</span> query({
+  prompt: <span class="str">"explica este repo"</span>,
+  options: { cwd: <span class="str">"~/nucleo"</span>,
+             maxTurns: <span class="br">8</span> }
+})) {
+  render(msg); <span class="cmt">// stream a la UI</span>
+}</pre>
+      <pre><span class="cmt"># Python — mismo concepto</span>
+<span class="cmd">pip install</span> claude-agent-sdk</pre>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 7 · Agent SDK <span class="time-pill">0:15 – 0:19</span></h4>
+    <ul>
+      <li>Frase clave: "Claude Code como librería". El mismo arnés que usas en terminal, pero invocable desde cualquier app.</li>
+      <li><span class="inline-code">max_turns</span> = cuántas veces el agente puede iterar solo (el loop). Es el dial de autonomía.</li>
+      <li>La respuesta son <strong>Message objects</strong> (assistant, tool_use, result) — por eso puedes hacer una UI bonita que muestre "está leyendo X", "está corriendo Y".</li>
+      <li>Demo 2 (al final) usa exactamente esto: una web app de chat sobre NÚCLEO.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 8: ACP ============ -->
+<section class="slide">
+  <span class="timechip">0:19 – 0:24 · ACP</span>
+  <p class="eyebrow">EL PROTOCOLO QUE CONECTA TODO <span class="dot">●</span></p>
+  <h2><span class="marker">ACP</span> · Agent Client Protocol</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Estándar abierto creado por <strong>Zed</strong>. Resuelve un problema simple pero enorme:</p>
+      <p class="muted">Sin estándar, cada editor necesita integración custom con cada agente → <strong>N × M integraciones</strong> y vendor lock-in.</p>
+      <div class="box lime">
+        <h4>ACP estandariza editor ⇄ agente</h4>
+        <p style="font-size:1rem"><strong>JSON-RPC sobre stdio</strong> (local) o HTTP/WebSocket (remoto). Reusa las representaciones JSON de <strong>MCP</strong>.</p>
+      </div>
+      <p>Un agente que "habla ACP" funciona en <strong>cualquier</strong> cliente ACP: Zed, y vía adaptadores VS Code, JetBrains, Neovim… <em>o tu propio agente.</em></p>
+    </div>
+    <div class="col" style="gap:1rem">
+      <h4 class="center-text">Cómo se conecta Claude Code</h4>
+      <div class="chain" style="flex-direction:column;gap:.4rem">
+        <div class="node lime">Cliente ACP<small>Zed · editores · tu app</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node dark">@agentclientprotocol/<br>claude-agent-acp<small>el adapter · JSON-RPC</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node">Claude Agent SDK<small>el arnés, programable</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node lime">Claude Code<small>el arnés trabajando</small></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 8 · ACP <span class="time-pill">0:19 – 0:24</span></h4>
+    <ul>
+      <li>Mensaje clave: ACP es a los agentes lo que USB-C a los cargadores. Un enchufe estándar.</li>
+      <li>La cadena de la derecha es el momento "todo encaja": el adapter <span class="inline-code">@zed-industries/claude-code-acp</span> envuelve el <strong>Agent SDK</strong> (slide anterior), que maneja <strong>Claude Code</strong> (el arnés). ACP + SDK + arnés son la misma historia vista en 3 capas.</li>
+      <li>Instalación real: <span class="inline-code">npx @agentclientprotocol/claude-agent-acp</span> (antes <span class="inline-code">@zed-industries/claude-code-acp</span>, ahora renombrado). Es lo que usa Zed por debajo.</li>
+      <li>OJO al nombre: "Agent <strong>Client</strong> Protocol" (Zed, editor⇄agente). No confundir con "Agent Communication Protocol" (agente⇄agente, otra cosa).</li>
+      <li><strong>Honestidad técnica:</strong> Claude Code NO es ACP nativo (no tiene `--acp`). Habla ACP solo vía el adapter — por eso el adapter está en la cadena. El cliente ACP canónico hoy es <strong>Zed</strong>.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 9: Las 3 vías ============ -->
+<section class="slide">
+  <span class="timechip">0:24 – 0:25 · 3 vías</span>
+  <p class="eyebrow">CÓMO UN AGENTE MANEJA EL ARNÉS <span class="dot">●</span></p>
+  <h2>3 formas <span class="muted">·</span> de menos a más <span class="marker">sofisticada</span></h2>
+  <div class="grid g3" style="flex:1;align-items:stretch;gap:1.2rem;margin-top:.3rem">
+    <div class="box shadowed center" style="gap:.4rem">
+      <div style="font-size:2.4rem">📦</div>
+      <h3>Print mode</h3>
+      <p class="center-text" style="font-size:.92rem"><span class="inline-code">claude -p --output-format json</span></p>
+      <p class="center-text" style="font-size:.9rem">Batch: manda → espera → recibe JSON. El resultado vuelve por stdout.</p>
+      <span class="tag" style="background:#0E8A16;color:white;font-size:.8em">lo robusto</span>
+    </div>
+    <div class="box shadowed center" style="gap:.4rem">
+      <div style="font-size:2.4rem">🖥️</div>
+      <h3>tmux</h3>
+      <p class="center-text" style="font-size:.9rem">teclea con <span class="inline-code">send-keys</span>, lee con <span class="inline-code">capture-pane</span></p>
+      <p class="center-text" style="font-size:.9rem">Interactivo, pero screen-scraping + <span class="inline-code">sleep</span> a ojo.</p>
+      <span class="tag orange" style="font-size:.8em">cinta adhesiva</span>
+    </div>
+    <div class="box lime shadowed center" style="gap:.4rem">
+      <div style="font-size:2.4rem">🔌</div>
+      <h3>ACP</h3>
+      <p class="center-text" style="font-size:.9rem">JSON-RPC · eventos estructurados · bidireccional</p>
+      <p class="center-text" style="font-size:.9rem">Interactivo y limpio. Vía adapter.</p>
+      <span class="tag" style="background:var(--ink);color:var(--lime);font-size:.8em">el estándar</span>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.2rem"><span class="callout" style="font-size:1.25rem">tmux = la versión con cinta adhesiva de lo que <strong>ACP estandariza</strong>.<br>Por eso existe ACP.</span></p>
+  <aside class="notes">
+    <h4>Slide 9 · Las 3 vías <span class="time-pill">0:24 – 0:25</span></h4>
+    <ul>
+      <li>Las 3 maneras en que un agente (Hermes, un editor, tu app) puede manejar el arnés Claude Code, de menos a más sofisticada.</li>
+      <li><strong>Print mode</strong>: lo que usa mi Hermes hoy (siguiente slide). Fiable, devuelve JSON por stdout. Para delegar ("ve, hazlo, repórtame").</li>
+      <li><strong>tmux</strong>: manejar la TUI interactiva como títere — teclas + foto de pantalla. Funciona pero es frágil (timing con sleeps, parsear ANSI).</li>
+      <li><strong>ACP</strong>: la versión limpia y estandarizada de eso mismo. El remate: tmux es el parche manual que ACP convierte en protocolo. Por eso ACP importa.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 10: Hermes ============ -->
+<section class="slide">
+  <span class="timechip">0:24 – 0:28 · Hermes</span>
+  <p class="eyebrow">MI AGENTE PERSONAL <span class="dot">●</span></p>
+  <h2><span class="marker">Hermes</span> · el orquestador de mi Mac Mini</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="box shadowed">
+      <h3 style="color:var(--lime-dark)">Qué es Hermes</h3>
+      <p>Un agente autónomo que corre <strong>24/7 en mi Mac Mini M4</strong>. Lo invoco por <strong>Discord</strong> (canal #hermes).</p>
+      <p style="margin-top:.4em;font-size:.95rem"><strong>Modelo:</strong> deepseek-v4-pro vía opencode-go · <strong>MCPs:</strong> GoHighLevel, Stripe, video.</p>
+      <p style="margin-top:.4em">Es mi <strong>router + memoria + monitoreo</strong>: ve el CRM, programa crons, vigila pipelines. Lo que NO hace bien: código grande y refactors.</p>
+    </div>
+    <div class="col">
+      <h3>Hermes delega en Claude Code</h3>
+      <p>Cuando una tarea es "código pesado", Hermes <strong>no la hace él</strong> — lanza Claude Code en <strong>print mode</strong> y le delega:</p>
+      <pre style="font-size:.8rem"><span class="cmt"># Hermes, internamente</span>
+terminal(
+  <span class="str">"claude -p 'añade dark mode'</span>
+  <span class="str"> --output-format json"</span>,
+  workdir=<span class="str">"~/.../nucleo"</span>
+)
+<span class="cmt"># → el arnés corre y devuelve JSON</span>
+<span class="cmt"># → Hermes parsea el resultado</span>
+<span class="cmt"># → me avisa por Discord ✓</span></pre>
+      <p class="callout" style="font-size:1.1rem">Hermes = el jefe que delega.<br>Claude Code = el especialista que ejecuta.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 10 · Hermes <span class="time-pill">0:24 – 0:28</span></h4>
+    <ul>
+      <li>Hermes es real y corre ahora mismo en la Mac Mini. Datos del informe técnico del 7-may: v0.12.0, deepseek-v4-pro, MCPs GHL+Stripe.</li>
+      <li>La división de trabajo es la lección: agente barato/rápido (Hermes) para routear y monitorear; arnés caro/potente (Claude Code) para construir. Cada uno donde es mejor.</li>
+      <li><strong>Honestidad técnica (lo descubrí montando esto):</strong> Claude Code no es ACP nativo, así que Hermes lo maneja por <strong>print mode</strong> (`claude -p --output-format json`), que es lo fiable hoy. ACP (slide anterior) es el estándar hacia donde va todo — Claude Code lo habla vía adapter, como Zed.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 10: DEMO 1 ============ -->
+<section class="slide">
+  <span class="timechip">0:28 – 0:33 · DEMO 1 (en vivo)</span>
+  <p class="eyebrow">🔴 DEMO EN VIVO · HERMES → ACP → CLAUDE CODE <span class="dot">●</span></p>
+  <h2>Le pido a Hermes que <span class="marker">trabaje en NÚCLEO</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <div class="box dark">
+        <h4>El mensaje que le mando (Discord · #hermes)</h4>
+        <pre style="font-size:.82rem;background:transparent;border:none;box-shadow:none;padding:.4em 0"><span class="br">@hermes</span> delega en Claude Code
+(print mode) en <span class="str">~/.../nucleo</span>:
+corre <span class="cmd">claude -p</span>, léete el BLUEPRINT
+y src/, y dime features, qué falta
+y el siguiente paso.</pre>
+      </div>
+      <p class="muted">NÚCLEO ya tiene Forge instalado (CLAUDE.md + .claude/). Claude Code arranca con todo ese contexto.</p>
+    </div>
+    <div class="col" style="gap:.6rem">
+      <h4>Qué observar en vivo</h4>
+      <ul class="checklist" style="font-size:1.05rem">
+        <li>Hermes <strong>no improvisa</strong>: lanza Claude Code (<span class="inline-code">claude -p</span>) y le delega</li>
+        <li>Claude Code corre <em>en la Mac Mini</em>, dentro del repo real</li>
+        <li>Lee <span class="inline-code">BLUEPRINT-nucleo.md</span> + el código</li>
+        <li>Devuelve <strong>JSON estructurado</strong> a Hermes</li>
+        <li>Hermes me lo entrega por Discord</li>
+      </ul>
+      <p class="callout" style="font-size:1.1rem">Un agente delega en otro,<br>cero copy-paste entre ellos.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 11 · DEMO 1 <span class="time-pill">0:28 – 0:33</span></h4>
+    <ul>
+      <li><strong>Antes de clase:</strong> verificar que NÚCLEO existe en la Mac Mini y que Hermes tiene acceso. Tener el runbook (RUNBOOK-demos.md) abierto.</li>
+      <li>Mandar el prompt EN VIVO por Discord (canal #hermes). Mientras Hermes trabaja, narro la cadena ACP de la slide 8.</li>
+      <li>Plan B si falla la red/Discord: corre tú mismo <span class="inline-code">claude -p '...' --output-format json</span> en la terminal de la Mac Mini (es lo mismo que hace Hermes), o salta a la Demo 2.</li>
+      <li>Lo importante no es el output — es que <strong>un agente (router) delegó en otro (el arnés)</strong>. ACP es el estándar que hará esto vendor-neutral; hoy print mode es lo fiable.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 11: Forge = arnés sobre el arnés ============ -->
+<section class="slide">
+  <span class="timechip">0:33 – 0:39 · Forge</span>
+  <p class="eyebrow">Y AQUÍ ENTRA LO MÍO <span class="dot">●</span></p>
+  <h2>Forge <span class="muted">=</span> un <span class="marker">arnés sobre el arnés</span></h2>
+  <div class="grid g2" style="flex:1;gap:1.5rem;align-items:stretch;margin-top:.2rem">
+    <div class="box shadowed">
+      <h3>Arnés genérico</h3>
+      <p class="muted">Claude Code "crudo"</p>
+      <ul class="checklist" style="font-size:.98rem">
+        <li>Flexibilidad total: Bash + filesystem</li>
+        <li>El modelo <strong>descubre</strong> cómo resolver</li>
+        <li>Cada proyecto empieza de cero</li>
+      </ul>
+      <p style="margin-top:.4em;font-size:.95rem">Genial, pero te pide ser muy bueno guiando herramientas de bajo nivel.</p>
+    </div>
+    <div class="box lime shadowed">
+      <h3>Forge · arnés con método</h3>
+      <p class="muted">La Forja sobre Claude Code</p>
+      <ul class="checklist" style="font-size:.98rem">
+        <li>Comandos de alto nivel: <span class="inline-code">/plan</span> <span class="inline-code">/build</span> <span class="inline-code">/crisol</span></li>
+        <li><strong>Guards en español</strong>: "Blueprint-First", "nunca uses any", "RLS siempre"</li>
+        <li>Skills + Golden Path + memoria git-versioned</li>
+        <li><strong>Auto-Blindaje</strong>: error → fix → documenta → nunca repite</li>
+        <li>Multiplataforma: Claude · Codex · OpenCode · Cursor · Gemini</li>
+      </ul>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1rem"><span class="callout" style="font-size:1.2rem">No reemplaza el arnés. Lo <strong>doma</strong>. Forge convierte el vibe coding en ingeniería repetible.</span></p>
+  <aside class="notes">
+    <h4>Slide 12 · Forge <span class="time-pill">0:33 – 0:39</span></h4>
+    <ul>
+      <li>Marco honesto: hay otros frameworks-sobre-arnés (Strands define tools con name/description/input_schema; Ralph descompone un PRD a JSON y lo itera feature por feature). Forge es mi opinión sobre cómo debe ser.</li>
+      <li>La idea de "guards en inglés/español" es literal: en vez de middleware complejo, le escribes al arnés reglas en lenguaje natural que respeta en runtime (ej. "no toques las reglas de eslint").</li>
+      <li>Aquí promociono Forge sin venderlo duro: muestro CLAUDE.md de NÚCLEO con los comandos y reglas. El producto se vende solo cuando ven el orden que impone.</li>
+      <li>lafragua.dev/imperio — mencionar al cierre, no aquí.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 13: Forja + Hermes ============ -->
+<section class="slide">
+  <span class="timechip">0:39 – 0:41 · Forja</span>
+  <p class="eyebrow">EL HERMANO ENTERPRISE <span class="dot">●</span></p>
+  <h2><span class="marker">Forja</span> · diseñado para orquestarse con Hermes</h2>
+  <div class="grid g2" style="flex:1;gap:1.5rem;align-items:stretch;margin-top:.2rem">
+    <div class="box shadowed">
+      <h3>Forge</h3>
+      <p class="muted">el framework que ya viste</p>
+      <ul class="checklist" style="font-size:.98rem">
+        <li>Arnés con método para <strong>1 agente</strong> (tú + Claude Code)</li>
+        <li>Multiplataforma: Claude · Codex · OpenCode · Cursor · Gemini</li>
+        <li>Paralelismo: <strong>solo Fork</strong> (worktrees)</li>
+        <li><strong>Tú</strong> lo manejas a mano</li>
+      </ul>
+    </div>
+    <div class="box lime shadowed">
+      <h3>Forja · Forge Enterprise</h3>
+      <p class="muted">getforja/forja</p>
+      <ul class="checklist" style="font-size:.98rem">
+        <li>Pensado para <strong>multi-agente</strong>: Coordinator + Fork + Swarm</li>
+        <li>Regla <em>orchestrator-stays-thin</em> → los sub-agentes invocan skills</li>
+        <li><strong>Puente Hermes</strong> (opcional): skill <span class="inline-code">el-supervisor</span> + <span class="inline-code">/hermes-bridge</span></li>
+        <li>Un supervisor externo (<strong>Hermes</strong>) despacha y vigila la fábrica</li>
+      </ul>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1rem"><span class="callout" style="font-size:1.18rem">Forge = <strong>tú</strong> manejas el arnés. Forja = un agente (<strong>Hermes</strong>) orquesta una fábrica de arneses.<br>Funciona 100% sin Hermes — pero está <strong>diseñado para enchufarse</strong> a él.</span></p>
+  <aside class="notes">
+    <h4>Slide 13 · Forja + Hermes <span class="time-pill">0:39 – 0:41</span></h4>
+    <ul>
+      <li>Aquí cierro el arco: Hermes (slide 10) era el orquestador; <strong>Forja es la fábrica diseñada para ser orquestada</strong> por un agente como Hermes.</li>
+      <li>Diferencia clave con Forge: Forge es single-agent (tú al volante); Forja añade multi-agente (Coordinator+Fork+Swarm) + un puente para que un supervisor externo despache trabajo.</li>
+      <li><strong>Honestidad:</strong> el puente Hermes (<span class="inline-code">el-supervisor</span> + <span class="inline-code">/hermes-bridge</span>) es la arquitectura decidida (ADR D8.4), integración OPCIONAL plug-and-play — Forja corre 100% sin Hermes. Preséntalo como la visión/diseño, no como "ya shippeado".</li>
+      <li>Gancho comercial suave: Forge es el que enseño y uso en clase; Forja es la versión enterprise para fábricas multi-agente.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 14: DEMO 2 ============ -->
+<section class="slide">
+  <span class="timechip">0:39 – 0:44 · DEMO 2 (en vivo)</span>
+  <p class="eyebrow">🔴 DEMO EN VIVO · WEB APP CON EL AGENT SDK <span class="dot">●</span></p>
+  <h2>Una <span class="marker">interfaz de chat</span> sobre mi código</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Una web app Next.js que usa el <strong>Agent SDK</strong> para chatear con un repo que ya tiene Forge (NÚCLEO).</p>
+      <div class="chain" style="flex-direction:column;gap:.35rem">
+        <div class="node lime">UI de chat<small>Next.js + React</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node">/api/chat<small>route handler · stream</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node dark">query() del Agent SDK<small>cwd → nucleo</small></div>
+        <div class="conn" style="justify-content:center;transform:rotate(90deg)">→</div>
+        <div class="node lime">Claude Code lee NÚCLEO<small>el arnés trabajando</small></div>
+      </div>
+    </div>
+    <div class="col" style="gap:.6rem">
+      <h4>En vivo</h4>
+      <ul class="checklist" style="font-size:1.05rem">
+        <li><span class="inline-code">npm run dev</span> → abro <span class="inline-code">localhost:3008</span></li>
+        <li>Pregunto: <em>"¿qué hace src/features y qué stack usa?"</em></li>
+        <li>Veo en vivo el arnés <strong>leyendo archivos</strong> (Read/Grep)</li>
+        <li>Respuesta citando el código real de NÚCLEO</li>
+      </ul>
+      <p class="callout" style="font-size:1.05rem">~120 líneas de código.<br>Tu propio "Claude Code web" en una tarde.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 14 · DEMO 2 <span class="time-pill">0:41 – 0:44</span></h4>
+    <ul>
+      <li><strong>Antes de clase:</strong> <span class="inline-code">cd ~/Developer/tools/vibe-coding/arnes/nucleo-agent-chat && npm run dev</span>. Ya probado y corriendo. Ver RUNBOOK-demos.md.</li>
+      <li>Recalcar: usa mi login de Claude Code (suscripción), sin API key pegada en el código.</li>
+      <li>Read-only (Read/Grep/Glob) para que sea segura sobre el repo real. Y como carga <span class="inline-code">settingSources: ['project']</span>, <strong>corren los comandos Forge</strong> en el chat: prueba <span class="inline-code">/avivar</span> y verás al arnés mapear el proyecto entero (probado, ~20 turnos).</li>
+      <li><strong>Bonus — modo real (<span class="inline-code">/real</span>):</strong> segunda página donde el arnés ESCRIBE de verdad en un sandbox (git worktree) y es multi-turno (resume). Muestra los dos extremos del SDK: read-only seguro vs agente que edita. Limpia con <span class="inline-code">npm run clean-sandboxes</span>.</li>
+      <li>Cierre del arco: web (SDK) + terminal (Claude Code) + delegación (Hermes) son el MISMO arnés visto desde 3 puertas.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 13: El mapa completo ============ -->
+<section class="slide">
+  <span class="timechip">0:44 – 0:46 · Recap</span>
+  <p class="eyebrow">EL MAPA COMPLETO <span class="dot">●</span></p>
+  <h2>Todo es el <span class="marker">mismo arnés</span>, 3 puertas</h2>
+  <div class="grid g3" style="flex:1;align-items:stretch;gap:1.2rem;margin-top:.4rem">
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">⌨️</div>
+      <h3>Terminal</h3>
+      <p class="center-text">Tú ⇄ <strong>Claude Code</strong>. El arnés directo.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">🔌</div>
+      <h3>ACP</h3>
+      <p class="center-text">Otro agente (Hermes) o editor ⇄ el arnés, vía protocolo estándar.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">🌐</div>
+      <h3>Agent SDK</h3>
+      <p class="center-text">Tu app ⇄ el arnés. Claude Code como librería.</p>
+    </div>
+  </div>
+  <div class="box dark" style="margin-top:1.5rem">
+    <p style="color:var(--paper);font-size:1.25rem;text-align:center">Y encima de todo eso → <strong style="color:var(--lime)">Forge</strong>: el método que convierte cualquiera de esas tres puertas en una <strong style="color:var(--lime)">fábrica de software con reglas</strong>.</p>
+  </div>
+  <aside class="notes">
+    <h4>Slide 15 · Recap <span class="time-pill">0:44 – 0:46</span></h4>
+    <ul>
+      <li>Recapitular el arco entero en 1 minuto: arnés → Claude Code → SDK → ACP → Hermes → Forge.</li>
+      <li>La gran idea: el modelo es intercambiable; el VALOR está en el arnés y en el método que le pones encima.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 14: Cierre ============ -->
+<section class="slide cover">
+  <div class="deco tl scribble">🧠</div>
+  <div class="deco br scribble">⚙️</div>
+  <p class="eyebrow">PARA LLEVAR</p>
+  <h1 style="margin-top:.2em">Dale <span class="marker">manos</span> al cerebro</h1>
+  <div class="grid g2" style="margin-top:1.5rem;gap:2rem;width:100%;max-width:1200px">
+    <div class="box shadowed">
+      <h3>Lo que aprendimos</h3>
+      <ul class="checklist" style="text-align:left">
+        <li>El <strong>arnés</strong> convierte un LLM en trabajador</li>
+        <li><strong>Claude Code</strong> es el arnés que ya usas</li>
+        <li><strong>Agent SDK</strong> lo hace programable</li>
+        <li><strong>ACP</strong> lo conecta a otros agentes y editores</li>
+        <li><strong>Hermes</strong> delega · <strong>Forge</strong> impone método</li>
+      </ul>
+    </div>
+    <div class="box lime">
+      <h3>Tu tarea de la semana</h3>
+      <ul class="checklist" style="text-align:left">
+        <li>Corre <span class="inline-code">claude</span> en un repo y nómbralo: "esto es un arnés"</li>
+        <li>Instala <span class="inline-code">@anthropic-ai/claude-agent-sdk</span> y haz un <span class="inline-code">query()</span></li>
+        <li>Prueba Forge en un proyecto nuevo</li>
+      </ul>
+      <p class="callout" style="font-size:1.15rem;margin-top:.4em">lafragua.dev/imperio</p>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem;font-family:'Caveat',cursive;font-size:1.6rem;color:var(--gray)">Carlos Domínguez · Imperio Agéntico · La Forja</p>
+  <aside class="notes">
+    <h4>Slide 16 · Cierre <span class="time-pill">0:44 – 0:46</span></h4>
+    <ul>
+      <li>Cierre potente: "La revolución no es que el modelo sea más listo. Es que por fin tiene manos. Eso es el arnés."</li>
+      <li>Promo suave de Forge: lafragua.dev/imperio, descuento Imperio si aplica. Forge es mi arnés con método — lo que uso en cada clase.</li>
+      <li>Q&A — dejar 3-4 min reales.</li>
+    </ul>
+  </aside>
+</section>
+
+</main>
+
+<div id="notes-panel">
+  <h4>Notas del presentador <small style="color:var(--gray)">(tecla N para cerrar)</small></h4>
+  <div id="notes-content"></div>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const notesPanel = document.getElementById('notes-panel');
+  const notesContent = document.getElementById('notes-content');
+  let i = 0;
+
+  function go(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    counter.textContent = (i+1) + ' / ' + total;
+    progress.style.width = ((i+1)/total*100) + '%';
+    const aside = slides[i].querySelector('aside.notes');
+    notesContent.innerHTML = aside ? aside.innerHTML : '<p>(sin notas)</p>';
+    location.hash = '#' + (i+1);
+  }
+
+  function next(){ go(i+1); }
+  function prev(){ go(i-1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key){
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home':
+        e.preventDefault(); go(0); break;
+      case 'End':
+        e.preventDefault(); go(total-1); break;
+      case 'n':
+      case 'N':
+        notesPanel.classList.toggle('visible');
+        document.body.classList.toggle('notes-open', notesPanel.classList.contains('visible'));
+        break;
+      case 'f':
+      case 'F':
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+        break;
+      case 'Escape':
+        notesPanel.classList.remove('visible');
+        document.body.classList.remove('notes-open');
+        break;
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('a, button, input, textarea, pre, code, #notes-panel')) return;
+    const x = e.clientX;
+    if (x < window.innerWidth * 0.35) prev();
+    else if (x > window.innerWidth * 0.65) next();
+  });
+
+  const hash = parseInt(location.hash.slice(1), 10);
+  if (!isNaN(hash) && hash >= 1 && hash <= total) go(hash - 1);
+  else go(0);
+})();
+</script>
+
+</body>
+</html>

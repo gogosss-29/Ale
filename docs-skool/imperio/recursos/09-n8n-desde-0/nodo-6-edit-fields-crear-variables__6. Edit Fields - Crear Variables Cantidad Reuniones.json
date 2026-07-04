@@ -1,0 +1,184 @@
+{
+  "name": "6. Edit Fields - Crear Variables Cantidad Reuniones",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "benja@imperiodigital.ai",
+          "mode": "list",
+          "cachedResultName": "benja@imperiodigital.ai"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        0
+      ],
+      "id": "7acbdbc5-3abb-4e20-9364-013c8729db4f",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "8YldojFWEl7f9Ifs",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=Benja, tienes {{ $json.numero_reuniones }} reunniones mañana",
+        "message": "=Tu agenda mañan es {{ $json.numero_reuniones }} reuniones: \n\n<br>\n<br>\n{{ $json.resumen_reuniones }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        0
+      ],
+      "id": "29360157-0707-4162-9f87-6f604578119e",
+      "name": "Send a message",
+      "webhookId": "b586d27b-69bf-4da5-adb9-b2bc00c51ff3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "summary"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "40d10674-8d58-4032-8c08-fc204239da72",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 20,
+              "triggerAtMinute": 15
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        0
+      ],
+      "id": "5add1622-1a81-47c5-af9c-dd388fe1d07a",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3ed80088-b0bb-4f3b-8ce7-bff0c24e4501",
+              "name": "numero_reuniones",
+              "value": "={{ $json.summary.length }}",
+              "type": "number"
+            },
+            {
+              "id": "ba74be57-ce1b-4596-a0b2-4956d5ef5bfd",
+              "name": "resumen_reuniones",
+              "value": "={{ $json.summary.join (' <br> ') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        656,
+        0
+      ],
+      "id": "9386eee3-98cd-4681-a9b8-b46435f65133",
+      "name": "Edit Fields2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ea6a6eaa-932b-42d1-bc7c-7e42e8a36597",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "fGRJLu87Z5HjX1hn",
+  "tags": []
+}

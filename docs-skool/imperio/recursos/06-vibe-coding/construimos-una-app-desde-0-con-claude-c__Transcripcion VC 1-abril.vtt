@@ -1,0 +1,3666 @@
+WEBVTT
+
+1
+00:03:04.540 --> 00:03:05.220
+Joaco Malig: Y para
+
+2
+00:05:49.270 --> 00:05:50.030
+Joaco Malig: Mhm.
+
+3
+00:06:17.570 --> 00:06:24.240
+Joaco Malig: ¿qué tal? ¿cómo están? Estamos por arrancar en breve la sesión de bitecoding
+
+4
+00:06:27.390 --> 00:06:31.629
+Joaco Malig: y estoy acá chequeando que todo esté en orden. Los quiero invitar a que
+
+5
+00:06:32.670 --> 00:06:40.100
+Joaco Malig: tiran ahí algunos emojis en las reacciones de la barra de zoom para ver si estamos ahí funcionando Con todo.
+
+6
+00:06:40.300 --> 00:06:47.380
+Joaco Malig: los invito a que tiren un poco de amor. Algunos corazoncitos, Heliodoro dice que sí, Perfecto.
+
+7
+00:06:47.520 --> 00:06:49.390
+Joaco Malig: Gracia. Excelente
+
+8
+00:06:50.410 --> 00:07:05.779
+Joaco Malig: arrancamos en segundos. Mientras tanto, los dejamos invitados a que los que quieran activar cámara como nuestro querido anfitrión. Carlos lo está haciendo. Lo invitamos a que active en pantalla. Entonces cámara vivo
+
+9
+00:07:09.880 --> 00:07:13.240
+Joaco Malig: y tenemos compañía a ver qué
+
+10
+00:07:13.480 --> 00:07:17.140
+Joaco Malig: quieres tenemos ahí aguante. Sofi Qué bien
+
+11
+00:07:18.790 --> 00:07:23.589
+Joaco Malig: arrancamos en breves segundos. Entonces, y como siempre saben.
+
+12
+00:07:23.940 --> 00:07:38.870
+Joaco Malig: van a poder interactuar con emojis ahí en pantalla a todo lo que vayamos aprendiendo, podemos ir reaccionando. Cierto, como decíamos, también podemos los que los que puedan hacerlo, activar cámaras.
+
+13
+00:07:40.670 --> 00:07:53.340
+Joaco Malig: mensajes en el chat. Muy bienvenidos, cualquier pregunta. Voy a estar ahí bien atentos a poder ver todo lo que puedan ir dejando en el chat, como, por ejemplo.
+
+14
+00:07:54.010 --> 00:08:12.200
+Joaco Malig: lo que Sophie nos plantea ahí de su mini imperial que ternura. Y bueno, además está decir que quienes no tengan actualizado el nombre de pronto se están conectando ahí con una con algún nombre incompleto, iphone, parecido pueden actualizar su nombre para que ya
+
+15
+00:08:12.320 --> 00:08:30.670
+Joaco Malig: arranquemos. La idea es que tengan el nombre actualizado el mismo nombre de la comunidad. De esa forma sabemos perfectamente ahí como con quién estamos conversando en esta charla que se viene muy interesante y era que no quiero invitar entonces a pasar adelante a nuestro querido.
+
+16
+00:08:31.110 --> 00:08:32.559
+Joaco Malig: Carlos.
+
+17
+00:08:33.520 --> 00:08:37.589
+Joaco Malig: Así que aquí, mientras hago aquí algunos ajustes.
+
+18
+00:08:38.950 --> 00:08:41.430
+Joaco Malig: cómo te encuentras. Carlos, ¿Cómo estamos para hoy día?
+
+19
+00:08:47.500 --> 00:08:49.990
+Joaco Malig: Me escuchas? Carlos, te tenemos.
+
+20
+00:08:49.990 --> 00:08:51.889
+Carlos Dominguez: Bueno, bueno, me escuchas. Buenos días.
+
+21
+00:08:51.890 --> 00:08:53.830
+Joaco Malig: Ahí sí escuchamos fuerte y claro.
+
+22
+00:08:53.830 --> 00:08:56.399
+Carlos Dominguez: No sé, solo soy yo. Dame un segundo.
+
+23
+00:08:56.400 --> 00:09:02.530
+Joaco Malig: Ohh: No sé, me confirmas. Sophi, ¿Me estás escuchando a mí. Cierto, Sí.
+
+24
+00:09:02.530 --> 00:09:03.100
+Carlos Dominguez: Soy yo.
+
+25
+00:09:03.100 --> 00:09:07.110
+Joaco Malig: A los nosotros sí te estamos escuchando. Carlos: Así que
+
+26
+00:09:08.610 --> 00:09:14.730
+Joaco Malig: cuéntanos, yo voy a dejarle la música de la previa y testeamos
+
+27
+00:09:16.050 --> 00:09:30.010
+Joaco Malig: hasta ahora, te estamos escuchando. Me parece que tú todavía no me escuchas, así que me toca rellenar usted. Sabes, magia de la televisión estamos en vivo y en directo. Mientras tenemos una mini imperial ahí a cómo se llama tu hija Sophie.
+
+28
+00:09:30.010 --> 00:09:31.279
+Carlos Dominguez: Voy y vuelvo.
+
+29
+00:09:31.280 --> 00:09:32.480
+Sofia González: Agustina.
+
+30
+00:09:32.860 --> 00:09:44.109
+Joaco Malig: Agustina que grande. ¿qué grande agustina? Aprovechamos de saludarte a ti también sophi a Heliodoro Ricardo. ¿cómo están muchachos bienvenidos a esta siguiente sesión de bytecodding
+
+31
+00:09:44.110 --> 00:09:54.889
+Joaco Malig: mientras se nos conecta. Carlos les contamos que estas sesiones de día miércoles tienen como propósito poder profundizar en lo que es esta nueva disciplina, el poder
+
+32
+00:09:54.890 --> 00:09:58.380
+Joaco Malig: codificar el poder, desarrollar no solo
+
+33
+00:09:58.650 --> 00:10:04.939
+Joaco Malig: flujos de automatizaciones, sino que realmente todo tipo de soluciones a través de
+
+34
+00:10:05.000 --> 00:10:25.259
+Joaco Malig: el chat del lenguaje natural con la I A. En nuestro caso, la I A de preferencia hoy por hoy, es cloud code. Por lo tanto, estas sesiones de los días miércoles se centra en el uso de esta herramienta de cloud code con este experto que nos tiene
+
+35
+00:10:25.260 --> 00:10:35.770
+Joaco Malig: nos trae mucho aprendizaje y, en particular Carlos, por lo que tenemos preparado para hoy, se viene el desarrollo de una de una herramienta desde 0.
+
+36
+00:10:35.870 --> 00:10:44.420
+Joaco Malig: Vamos a estar creando una herramienta llamada núcleo que tiene como propósito poder centralizar todo lo que es la
+
+37
+00:10:44.670 --> 00:11:04.559
+Joaco Malig: la información que usamos dentro de esta estructura de trabajo. Me refiero a los Skills. Me refiero a los documentos de Claude punto M. D. Me refiero a toda la documentación que utilizamos en antigravity o en B Scode, o directamente en la terminal con Cloud Code.
+
+38
+00:11:04.560 --> 00:11:13.419
+Joaco Malig: y a Carlos se le ocurrió esta idea. Ya la tenemos de vuelta. Parece Emmy, Ahí lo tenemos de vuelta. Carlos, este paso adelante.
+
+39
+00:11:13.500 --> 00:11:16.420
+Joaco Malig: Cuéntame. Te está. Me escuchas bien.
+
+40
+00:11:16.730 --> 00:11:18.500
+Carlos Dominguez: Escucho. Bien, ya sabes cómo es esto? La.
+
+41
+00:11:18.500 --> 00:11:19.490
+Joaco Malig: Perfect.
+
+42
+00:11:19.790 --> 00:11:22.189
+Joaco Malig: Así es así. Es Claude toma
+
+43
+00:11:22.540 --> 00:11:25.689
+Joaco Malig: por sus propias manos. A veces la cosa
+
+44
+00:11:25.840 --> 00:11:43.370
+Joaco Malig: bueno, buenísimo. Entonces estábamos haciendo el intro de lo que es núcleo. Carlos Démole. Si quieres con la explicación más a detalle de lo que vamos a estar haciendo en esta sesión, mientras saludamos a quienes se nos conectan. Tenemos también a ángel loría, bienvenido, amigo, bienvenido. Y bueno.
+
+45
+00:11:43.370 --> 00:11:50.670
+Joaco Malig: lo invitamos a todos los que quieran activar cámaras. Por supuesto que lo hagan. Tenemos a Daniel también en pantalla. Saludo para allá Daniel a Estados Unidos.
+
+46
+00:11:50.670 --> 00:11:59.690
+Joaco Malig: perfecto ¿De qué trata Carlos este prototipo? Si no me equivoco, vamos a arrancar con eso. El desarrollo de núcleo.
+
+47
+00:12:00.110 --> 00:12:08.310
+Carlos Dominguez: Vamos a arrancar desde 0. Vamos a inicializar un proyecto desde 0. Vamos arrancar con clausco desde 0. Vamos a desarrollar núcleo.
+
+48
+00:12:08.480 --> 00:12:15.149
+Carlos Dominguez: Evidentemente, como lo vimos con la sesión con Sophie, Contifty Boots en el take imperial, No es algo que vamos a hacer una sola sesión.
+
+49
+00:12:15.330 --> 00:12:18.860
+Carlos Dominguez: Estimo que nos llevará unas 3, 4 sesiones más o menos
+
+50
+00:12:19.000 --> 00:12:21.909
+Carlos Dominguez: que si nos ponemos a pensar, pues son 4 h.
+
+51
+00:12:23.330 --> 00:12:29.550
+Carlos Dominguez: 4 h para desarrollar una aplicación desde 0, porque yo no le voy a meter nada en otro tiempo que no sea en vivo.
+
+52
+00:12:30.030 --> 00:12:41.480
+Carlos Dominguez: Creo que está bastante bien. Vamos a iniciar con toda la fase de verificar que tengamos nuestro entorno listo. Si nos hace falta alguna dependencia, inicializar la postura de de Gitburg.
+
+53
+00:12:41.590 --> 00:12:47.960
+Carlos Dominguez: planear la aplicación que Cloud code nos ayude con la fase de planeación y
+
+54
+00:12:48.070 --> 00:12:59.570
+Carlos Dominguez: vamos a desarrollar pidiendo más o menos la arquitectura que hicimos con Difty Books, el P. D. R. Vamos a desarrollar el Blueprint. Vamos a desarrollar el las los user stories.
+
+55
+00:12:59.640 --> 00:13:08.649
+Carlos Dominguez: toda una planeación con la arquitectura bastante robusta. Así que si esperaban ver un poco de acción o del código, hoy no lo vamos a ver todavía.
+
+56
+00:13:08.750 --> 00:13:17.820
+Carlos Dominguez: Pero si nos vamos a enfocar en que este nuestro nuestro plan, nuestro Blueprint, bastante robusto para que calcode pueda ejecutarlo.
+
+57
+00:13:18.720 --> 00:13:38.059
+Joaco Malig: Vamos entonces Para quienes son nuevos honestos, los invitamos a revisar la documentación o las sesiones anteriores, que son más de introducción a la herramienta de Cloud code específicamente a través de la interfaz de antigravi que en este caso, creo que es lo que vamos a utilizar. Al menos Carlos es lo que más
+
+58
+00:13:38.060 --> 00:13:40.090
+Joaco Malig: le gusta en
+
+59
+00:13:40.290 --> 00:13:51.539
+Joaco Malig: y algo que ha sido una sensación compartida de varios miembros de la Comunidad. Y es que en esta idea de desarrollar soluciones a través de bytecodding
+
+60
+00:13:51.910 --> 00:14:09.210
+Joaco Malig: hay poca estructura. No hay poco. Hay poca planeación y resulta ser algo muy, muy importante. Lo decíamos en esa experiencia en la que estuvimos trabajando junto a Sophie, Carlos lo decía literalmente, 80 por 100 del tiempo, es a
+
+61
+00:14:09.210 --> 00:14:17.150
+Joaco Malig: a realizar una buena planeación con la I, A, cosa que este prototipo, el M. V, p. Como le llaman.
+
+62
+00:14:17.200 --> 00:14:29.190
+Joaco Malig: sea un desarrollo que permita posteriormente ser escalado, porque muchas veces en el desarrollo a a a a lo loco, podríamos decir de alguna solución.
+
+63
+00:14:29.290 --> 00:14:52.679
+Joaco Malig: La estructura no permite un escalamiento hacia un nivel ya de producción. Por lo tanto, es súper interesante ver cómo vamos trabajando en los cimientos de esta herramienta que ustedes obviamente la pueden implementar para cada 1 de sus propios proyectos. Así que vámonos. Carlos. Y ahí nos puedes compartir pantalla cuando
+
+64
+00:14:52.680 --> 00:14:54.250
+Joaco Malig: lo necesitas.
+
+65
+00:14:54.250 --> 00:15:02.060
+Carlos Dominguez: Vamos a darle y me confirmas en mi pantalla. Por favor.
+
+66
+00:15:02.060 --> 00:15:04.080
+Joaco Malig: Vamos. Ahí perfecto.
+
+67
+00:15:04.080 --> 00:15:06.460
+Carlos Dominguez: Estamos en Anti Gravity.
+
+68
+00:15:06.650 --> 00:15:26.029
+Carlos Dominguez: No he tocado nada todavía. Apenas vamos a iniciar. Entonces, como lo comentó Paco es mi I D de preferencia. Es lo que estoy utilizando ahorita. Así como cambian las cosas igual. En un mes, ya está haciendo algo diferente. Sale algo diferente, pero por ahora, y por los últimos meses, es cloud code dentro de anti gravity.
+
+69
+00:15:26.230 --> 00:15:34.420
+Carlos Dominguez: Entonces vamos a abrir un nuevo, una nueva carpeta. Es un poco mi estructura de las carpetas. Fuimos la vez pasada, Tenemos.
+
+70
+00:15:34.620 --> 00:15:39.519
+Joaco Malig: Mis Tours playground software dentro del software. Voy a crear una nueva carpeta.
+
+71
+00:15:39.520 --> 00:15:41.620
+Carlos Dominguez: Y le vamos a llamar núcleo.
+
+72
+00:15:43.470 --> 00:15:48.500
+Joaco Malig: Me parece que tenemos sólo acceso a la visualización de Anti gravity.
+
+73
+00:15:48.500 --> 00:15:49.010
+Carlos Dominguez: Dale, Dale.
+
+74
+00:15:51.860 --> 00:15:57.690
+Joaco Malig: Ahora, si ahora te vas a mantener ahí, creo que no hay problema, pero de lo contrario, tendrías que darle acceso a todo el monitor.
+
+75
+00:15:57.690 --> 00:15:59.140
+Carlos Dominguez: Ya ya he leído todos bonitos.
+
+76
+00:15:59.280 --> 00:16:00.229
+Joaco Malig: Ahí estamos. Bien. Gracias.
+
+77
+00:16:00.230 --> 00:16:02.469
+Carlos Dominguez: Se ve mi navegador, ¿verdad?
+
+78
+00:16:02.470 --> 00:16:03.320
+Joaco Malig: Phiser.
+
+79
+00:16:03.320 --> 00:16:10.110
+Carlos Dominguez: Perfecto, entonces tenemos la carpeta de Developer, donde tengo mis clientes, mi bol de obsidiance, que es un segundo cerebro.
+
+80
+00:16:10.400 --> 00:16:12.429
+Carlos Dominguez: Mis tours, mi peligro y mi software.
+
+81
+00:16:12.890 --> 00:16:23.740
+Joaco Malig: Perfecto sofie pregunta. Entonces, en base a esta estructura que la hemos recomendado en sesiones anteriores, que, de hecho, yo también estoy usando donde estaríamos creando núcleos dentro de developer o dentro del playground.
+
+82
+00:16:24.170 --> 00:16:36.619
+Carlos Dominguez: Dentro de Developer, que es como nuestra raíz, todo va allí dentro del nivel. Pero tengo mi carpeta de software donde tengo todo lo que desarrollado. Y aquí dentro es donde voy a crear la carpeta nueva que le voy a llamar núcleo.
+
+83
+00:16:36.860 --> 00:16:40.949
+Carlos Dominguez: Como pueden ver, esta carpeta va a quedar al mismo nivel de.
+
+84
+00:16:41.130 --> 00:16:42.240
+Joaco Malig: Todo.
+
+85
+00:16:42.240 --> 00:16:43.960
+Carlos Dominguez: Los softwares que ido desarrollando.
+
+86
+00:16:44.670 --> 00:16:57.089
+Joaco Malig: Perfecto paréntesis, amigos. ¿puedes subirte un poco el volumen de tu de tu micrófono. Me dicen aquí, sí, Métele un poco más de de wataje. Como decimos acá en Chile, disculpen lo técnico.
+
+87
+00:16:58.210 --> 00:16:59.460
+Joaco Malig: ríe.
+
+88
+00:17:00.900 --> 00:17:03.110
+Carlos Dominguez: Creo que ahí está al máximo. Se escucha mejor o.
+
+89
+00:17:03.660 --> 00:17:11.879
+Joaco Malig: Si leviamente mejor, y si no, yo le bajo al mío, y todos le suben al de ustedes, no sé Alejandro, qué prefieres tú.
+
+90
+00:17:13.079 --> 00:17:17.529
+Carlos Dominguez: Okay, según yo, ya está el el máximo que me permite.
+
+91
+00:17:17.920 --> 00:17:18.880
+Joaco Malig: Está ahí a tope.
+
+92
+00:17:19.250 --> 00:17:24.159
+Joaco Malig: Okay. Yo me voy a bajar un poco. Entonces ustedes me dicen, probando un 2, 3, un, 2, 3, probando.
+
+93
+00:17:24.839 --> 00:17:25.679
+Carlos Dominguez: Escucha mejor.
+
+94
+00:17:25.680 --> 00:17:31.909
+Joaco Malig: Ok, Ahí sí parece que estamos mejor Ya sigamos Entonces tenemos en la carpeta dentro de software.
+
+95
+00:17:31.910 --> 00:17:33.200
+Carlos Dominguez: Dentro del software.
+
+96
+00:17:33.800 --> 00:17:34.270
+Joaco Malig: Lo que.
+
+97
+00:17:34.270 --> 00:17:39.709
+Carlos Dominguez: Único tomar en cuenta a tomar en cuenta es que, como pueden ver, ninguna carpeta tiene espacios.
+
+98
+00:17:40.770 --> 00:17:58.589
+Carlos Dominguez: tiene iones medios. ¿por qué? Porque cuando vas a utilizar algún comando en la línea de comandos, no le gustan los espacios, se rompe, digamos, estar de hacer como un backsulash, y nos metemos en cosas un poco más complicadas. Entonces, recomendación, usen minúsculas y no usen espacios.
+
+99
+00:17:59.210 --> 00:18:02.499
+Joaco Malig: El tildes se permite o no se permite las tildes.
+
+100
+00:18:03.620 --> 00:18:13.510
+Carlos Dominguez: Te permite, pero te lo puede llegar a romper si te lo llevas a otro lado. Entonces, mientras más limpio lo puedas tener muchísimo mejor. Yo de por.
+
+101
+00:18:13.510 --> 00:18:14.380
+Joaco Malig: Evitar letras.
+
+102
+00:18:14.380 --> 00:18:16.949
+Carlos Dominguez: Es en mis carpetas, la verdad.
+
+103
+00:18:16.950 --> 00:18:21.349
+Joaco Malig: Y, por ejemplo, en letras ñ e tampoco. No.
+
+104
+00:18:21.350 --> 00:18:24.269
+Carlos Dominguez: Realmente mantenerlo bastante lo más neutro posible.
+
+105
+00:18:24.650 --> 00:18:39.900
+Joaco Malig: Perfecto. De hecho, ya ayer, desarrollando una cuestión, Vi que la Ia propuso como un archivo de años, pero a N. I, o que estoy, como dije, bueno, esto será para evitar ese problema que Carlos, anticipó buenísimo.
+
+106
+00:18:41.710 --> 00:18:48.460
+Carlos Dominguez: Y nos pregunta si queremos confiar en este autor o yo es mi carpeta, entonces voy a dar confiar
+
+107
+00:18:48.690 --> 00:19:01.799
+Carlos Dominguez: y no queremos que no esté preguntado. Cada vez aquí nos pide, como podemos darle check a esto. Todo lo que sea dentro de software, va a confiar automáticamente. Y esto es de anti gravity en específico. Vamos a darle que sí
+
+108
+00:19:02.050 --> 00:19:05.819
+Carlos Dominguez: y listo, tenemos ya nuestra carpeta.
+
+109
+00:19:05.940 --> 00:19:20.289
+Carlos Dominguez: como ya vimos el curso de anti gravity. No me voy a enfocar en esto como está montado antigravity Voy a cerrar Mis agentes son mis agentes de jemina. No los voy a utilizar aquí. De este lado tengo yo algunas extensiones que utilizo
+
+110
+00:19:20.680 --> 00:19:27.340
+Carlos Dominguez: aquí. Tengo containers de Docker. Tengo esto de Pixel Agends, que está muy bueno por si lo has visto.
+
+111
+00:19:27.600 --> 00:19:30.699
+Carlos Dominguez: yo le puedo dar aquí como un spawn a un Agent.
+
+112
+00:19:32.410 --> 00:19:34.280
+Carlos Dominguez: Y aquí está mi agente.
+
+113
+00:19:34.490 --> 00:19:42.520
+Carlos Dominguez: Yo le pido algo. Este se levanta y se pone a trabajar en su computadora. Es como el equivalente a los mily en controles de openclow.
+
+114
+00:19:42.520 --> 00:19:43.089
+Joaco Malig: Y que.
+
+115
+00:19:43.090 --> 00:19:44.200
+Carlos Dominguez: Pero estos directores.
+
+116
+00:19:44.200 --> 00:19:44.740
+Joaco Malig: En Müller.
+
+117
+00:19:44.740 --> 00:19:51.740
+Carlos Dominguez: Para esto. Y si tu agente llama a un sup agente, él se clona y ves a 2 personas trabajando. Y si abres un.
+
+118
+00:19:51.740 --> 00:19:52.210
+Joaco Malig: A para.
+
+119
+00:19:52.210 --> 00:19:58.349
+Carlos Dominguez: Nuevo agente para saber 2. O sea, ya cambia ya el muñequito. Digamos.
+
+120
+00:19:58.810 --> 00:20:17.869
+Joaco Malig: Ok, desde ya vamos a dejar esto anclado en la descripción de la grabación. Efectivamente, porque esto no es parte del tema, pero está buenísimo, y yo lo quiero. Así que lo vamos a dejar anclado en la en la grabación que vamos a subir en un par de horas. Me encantó, bueno, y entonces nos vamos a la extensión de Cloud Code.
+
+121
+00:20:17.870 --> 00:20:18.250
+Carlos Dominguez: Sí, claro.
+
+122
+00:20:18.250 --> 00:20:21.589
+Joaco Malig: Donde podamos, vamos a poder abrir una nueva sesión.
+
+123
+00:20:21.890 --> 00:20:27.939
+Carlos Dominguez: Nueva sesión y hoy está en 0 porque es un repositorio nuevo y listo, Ya estamos aquí.
+
+124
+00:20:27.940 --> 00:20:28.520
+Joaco Malig: Perfecto.
+
+125
+00:20:28.520 --> 00:20:29.420
+Carlos Dominguez: Chico.
+
+126
+00:20:29.610 --> 00:20:35.710
+Carlos Dominguez: Este es ya mi cloud Code. Aquí tengo mi carpeta núcleo. Como pueden ver, está vacía, no hay absolutamente nada.
+
+127
+00:20:36.030 --> 00:20:40.930
+Carlos Dominguez: Y antes de inicializar, vamos a ejecutar el comando
+
+128
+00:20:41.220 --> 00:20:59.960
+Carlos Dominguez: poderoso. Como pueden ver aquí, no hay nada. Esto que va a ejecutar. Es un comando que yo tengo configurado en mi computadora. Cada quien puede configurar estos comandos que corres en terminal con los Simlinks. Tampoco nos vamos a meter ahorita de esto, pero va a ser después un vídeo a detalle y va a ejecutar el comando de Forge
+
+129
+00:21:00.080 --> 00:21:15.939
+Carlos Dominguez: los que ya han estado en las sesiones y vienen los típicos. Básicamente es todo el framework, con toda la estructura que nos ayuda con la planeación y creación del software. Ese es un framew desarrollado por mí. Le doy a enter, como pueden ver, en cuestión de milésimas de segundos
+
+130
+00:21:16.050 --> 00:21:28.060
+Carlos Dominguez: nos generó todos estos archivos de configuración. Ya tengo mi Clout Md. Ya tengo mis ejemplos de Json. Ya tengo mi Package porque estoy utilizando. We. Bueno, vamos a utilizar Next Yes.
+
+131
+00:21:28.160 --> 00:21:44.269
+Carlos Dominguez: que es un poco lo que veíamos ahí en la sesión de comandantes, de definir lo que se llama como un Golden Path, pero que sin importar qué proyecto voy a usar mi core o mi núcleo llaman ahora sí principal de mi aplicaciones o de mis aplicaciones web
+
+132
+00:21:44.390 --> 00:21:45.680
+Carlos Dominguez: para hacer.
+
+133
+00:21:45.790 --> 00:22:03.290
+Carlos Dominguez: y yo lo yo lo defino. En este caso, mi Golden Path es su país para base de datos Storage Realtime Niges para el Framework de Frontend y utilizamos Tail wind para apoyarnos también en toda esta parte del Css y y visual más otras cosas que vamos a ir viendo a lo largo.
+
+134
+00:22:04.130 --> 00:22:12.260
+Joaco Malig: Como contexto. Desde una mirada más principiante como la mía. Lo que estamos viendo en este momento es en el fondo.
+
+135
+00:22:12.270 --> 00:22:25.299
+Joaco Malig: Cargar una plantilla es una plantilla de un stack de diferentes skills y de documentaciones que nos va a permitir desarrollar este proyecto de núcleo.
+
+136
+00:22:26.540 --> 00:22:28.040
+Carlos Dominguez: Estructura rectangu.
+
+137
+00:22:28.040 --> 00:22:28.409
+Joaco Malig: Se y.
+
+138
+00:22:28.410 --> 00:22:29.750
+Carlos Dominguez: En en el 8, en.
+
+139
+00:22:29.750 --> 00:22:30.190
+Joaco Malig: Con y.
+
+140
+00:22:30.190 --> 00:22:30.509
+Carlos Dominguez: Y el.
+
+141
+00:22:30.510 --> 00:22:45.509
+Joaco Malig: Exactamente exactamente. Pero lo que lo que vimos que hizo Carlos, cierto en este Comando Forge es algo que nosotros podemos hacer nosotros eventualmente, cuando estemos desarrollando algún proyecto y lleguemos a un resultado que nos parezca óptimo
+
+142
+00:22:45.510 --> 00:22:52.950
+Joaco Malig: y queramos tener esa suerte de proyecto convertida en una plantilla. ¿podemos pedir que entonces a Claude
+
+143
+00:22:52.950 --> 00:22:55.960
+Joaco Malig: genere cierto un comando.
+
+144
+00:22:55.960 --> 00:23:12.029
+Joaco Malig: Y ese comando nos va a permitir que a nivel global en el uso de cloud cude, podamos, cada vez que creamos una nueva sesión o una nueva carpeta, ¿cierto? Importar esta documentación para poder tener este conjunto de herramientas
+
+145
+00:23:12.070 --> 00:23:28.179
+Joaco Malig: para el desarrollo de lo que sea. En este caso. Obviamente, Carlos tiene este este esta plantilla. Forge, que lo ha estado desarrollando. Lo hemos comentado. De hecho, hace ya meses, harto trabajo, ha puesto y acá vemos como
+
+146
+00:23:28.310 --> 00:23:37.970
+Joaco Malig: centraliza, entonces la recomendación de diferentes herramientas a utilizar de diferentes Skills y nos puede mostrar rápidamente ahí la carpeta. Los Skills, que estamos que vamos a utilizar en breve.
+
+147
+00:23:37.970 --> 00:23:47.320
+Carlos Dominguez: Tenemos lo más importante. Nuestro punto clave, donde aquí tenemos los agentes que vamos a utilizar, llámese agentes, como vemos en relaciones de Barcody.
+
+148
+00:23:47.490 --> 00:23:58.979
+Carlos Dominguez: Son agentes de Cloud code que ya están configurados y tienen una especialización en diferentes áreas dentro de los agentes. Yo tengo ya en mi
+
+149
+00:23:58.980 --> 00:24:09.369
+Carlos Dominguez: templates, le podríamos decir así: ¿Son todos estos un agente especialista de back, entonces un agente especialista en análisis de código, un agente especialista en arquitectura base de datos. Y así tenemos varios
+
+150
+00:24:09.450 --> 00:24:22.540
+Carlos Dominguez: agentes dentro de aquí mismo también tenemos comandos que son todos estos tenemos hooks que lo vimos Un poquito en la sesión con Franco. Tenemos Skills, que son todos estos kills que yo tengo que
+
+151
+00:24:22.660 --> 00:24:41.139
+Carlos Dominguez: muy probablemente acabe utilizando todos en este proyecto. Por eso me los traigo son los Skills, que para desarrollo web. Normalmente uso y no quiere decir que son todos los Skills que yo tengo en mi computadora. Son los que probablemente use para este proyecto y no quiere decir que solo lo que está aquí, lo voy a poder usar.
+
+152
+00:24:41.160 --> 00:24:50.350
+Carlos Dominguez: También puedo usar Skills que no estén aquí nomás, que yo manualmente los voy a tener que ir invocar, porque este proyecto no tiene contexto esos tips. Esa es la gran diferencia.
+
+153
+00:24:51.220 --> 00:25:05.150
+Joaco Malig: Correcto. Ángel comenta o pregunta si es que hay algún vídeo donde explican este Framework. La verdad es que no lo estamos explicando ahora en mayor profundidad. Lo hicimos. Lo estuvimos probando en el proyecto con Sophie hace algunos algunas semanas atrás.
+
+154
+00:25:05.150 --> 00:25:19.940
+Joaco Malig: al menos fue una versión anterior, y esto es importante aclarar. Es un trabajo que Carlos ha desarrollado. Lo tiene de hecho, a disposición. Se llama la forja. Así que ahí getforja punto, com, lo pueden encontrar, Obviamente, por
+
+155
+00:25:19.940 --> 00:25:26.710
+Joaco Malig: acá hay un trabajo específico para el desarrollo de aplicaciones de parte de cardos. Pero, de nuevo.
+
+156
+00:25:26.790 --> 00:25:34.389
+Joaco Malig: todos tenemos la posibilidad de poder crear cierto nuestro comando, que de alguna manera nos permita
+
+157
+00:25:34.510 --> 00:25:43.410
+Joaco Malig: tener esta plantilla, cierto de diferentes agentes: Hooks, prompts, Skills, etcétera, etcétera. Este es
+
+158
+00:25:43.550 --> 00:26:01.599
+Joaco Malig: yo lo probé. También. Me parece espectacular, y lo vamos a mostrar ahora en vivo y en directo en el desarrollo de núcleo que es núcleo el la herramienta de la que vamos a crear. Esa va a quedar a disposición de todas este framework. Por ahora lo encuentran disponible en la página web de getforja com.
+
+159
+00:26:01.760 --> 00:26:09.860
+Joaco Malig: Vamos a tener un cupón especial, si es que los imperiales lo necesitan. Carlos, hay algo de para los hispanoaméricos, hispanoamericanos
+
+160
+00:26:10.040 --> 00:26:10.949
+Joaco Malig: o no tenemos.
+
+161
+00:26:10.950 --> 00:26:14.249
+Carlos Dominguez: 40 por 100 de descuento para para lata.
+
+162
+00:26:15.010 --> 00:26:20.840
+Joaco Malig: Perfecto, perfecto, Así que vayan a chequear eso. Pero mientras tanto, tenga claro de que lo que vamos a desarrollar
+
+163
+00:26:20.920 --> 00:26:40.630
+Joaco Malig: junto con Carlos. En este tremendo framework, va a quedar a disposición de todos los imperiales. Obviamente, esa es la idea. Sin embargo, si le quieren dar ahí la posibilidad para probar este sistema en el desarrollo de sus propias soluciones, Darle una mirada a lo que forja punto com ofrece muy, muy recomendado.
+
+164
+00:26:41.660 --> 00:26:49.740
+Carlos Dominguez: Listo. Gracias. Juanjo Entonces, antes de iniciar nada voy a abrir con el comando slash o diagonal
+
+165
+00:26:49.740 --> 00:27:02.130
+Carlos Dominguez: para que me abra todo. Y aquí nada más. Quiero que vean cómo lo tengo yo configurado y utilizo por default el opus 4, 6, con un 1 000 000 de contexto.
+
+166
+00:27:02.370 --> 00:27:19.090
+Carlos Dominguez: Y también tenemos aquí, como que tu Eford, que tanto quieres que se esfuerce, digamos, el modelo que tanto le va a meter. Lo tengo en este caso, en hi Lo puedes bajar a Low midium, type o máximo. Yo lo tengo en hi tengo el plan Max
+
+167
+00:27:19.240 --> 00:27:26.739
+Carlos Dominguez: y y me da bien. Pero yo he recomendado en varias sesiones que utilicen model espacio. Opus plan.
+
+168
+00:27:26.810 --> 00:27:42.459
+Carlos Dominguez: Y básicamente, lo que hacen es activan un modo que no está como que tú puedas seleccionar. Pero le estás diciendo a esta sesión: ojo a esta sesión. Nada más de Cloudcode que cuando utilice el modo planeación utilice Opus. Y cuando ejecute, utilice Sonet.
+
+169
+00:27:42.460 --> 00:27:47.599
+Carlos Dominguez: Y ya con eso te estás ahorrando una cantidad bastante importante de Token.
+
+170
+00:27:48.320 --> 00:27:49.280
+Joaco Malig: Ese es el socios.
+
+171
+00:27:49.280 --> 00:27:57.529
+Carlos Dominguez: Otra vez. Aquí voy a ver todos mis comandos que yo tengo que puedo ejecutar. Y estos comandos de dónde vienen
+
+172
+00:27:57.660 --> 00:28:08.159
+Carlos Dominguez: vienen de los lo que dice aquí Com Mans, que es lo que yo me traje cuando ejecuté Forsch y yo hubiera puesto esto en un repositorio o en una carpeta. Un directorio vacío
+
+173
+00:28:08.410 --> 00:28:20.600
+Carlos Dominguez: no tendría todos estos comandos porque no tienen el contexto de este de ese repositorio tendría comandos que yo tengo configurados a nivel usuario a nivel global, que también lo hemos visto en otras.
+
+174
+00:28:22.940 --> 00:28:38.150
+Joaco Malig: Pregunta. Carlos he visto en algunas recomendaciones. De hecho, en el vídeo que hizo Benja está este comando, que es propio de Cloud Code, el de Slash Init, de inicializar lo recomiendas en este caso o no. Es necesario.
+
+175
+00:28:38.750 --> 00:28:40.580
+Carlos Dominguez: Mira, vamos a darle Slash Finit.
+
+176
+00:28:41.020 --> 00:28:57.640
+Carlos Dominguez: Y se parece un poco como al Git Init, que cuando 1 tiene que ejecuta para inicializar un repositorio que hace lo que qué es lo que hace el Geet Init, básicamente lee todo tu repositorio para que tenga un poquito más de contexto de qué es lo que vas a hacer
+
+177
+00:28:58.030 --> 00:29:04.730
+Carlos Dominguez: y van a iniciar en 0 un git init no serviría mucho porque al estar vacío, pues no hay nada.
+
+178
+00:29:04.770 --> 00:29:14.860
+Carlos Dominguez: ¿no? En este caso el Git Init para el para el la forja, lo que yo desarrollé no nos sirve tanto porque yo ya tengo un símil
+
+179
+00:29:14.880 --> 00:29:32.749
+Carlos Dominguez: más o menos que lo vamos a ver. Ahorita en un en un segundo. Entonces ahorita Eso lo voy a cerrar porque no vamos a ocupar este modelo aquí. Me faltó algo que es un poquito más técnico, Pero si están interesados en en la forja, me pueden escribir, o en la página que mandó paco, están todas las instrucciones
+
+180
+00:29:32.790 --> 00:29:44.629
+Carlos Dominguez: y con lo que hago con el Npm Install. Voy a instalar todas las dependencias que necesito yo para este proyecto. Y Npm es completamente como un manejador de
+
+181
+00:29:44.790 --> 00:29:56.610
+Carlos Dominguez: de paquetes. Volvemos a lo que es muy técnicos, y ustedes van a hacer un proyecto de 0 y no van a usar forja. No ni nada de esto. Te ponen a a platicar con con Trault Code como lo vamos a hacer. Ahorita en un en un segundo
+
+182
+00:29:56.770 --> 00:29:58.809
+Carlos Dominguez: dadme. Voy a esperar a que termine.
+
+183
+00:29:58.980 --> 00:30:03.510
+Carlos Dominguez: Voy a abrir una nueva sesión y le voy a.
+
+184
+00:30:03.510 --> 00:30:04.150
+Joaco Malig: A la.
+
+185
+00:30:04.150 --> 00:30:04.839
+Carlos Dominguez: De de.
+
+186
+00:30:04.840 --> 00:30:15.140
+Joaco Malig: Mi visión como principiante en esto del bytecoding yo pensaría que en el fondo esto del Np en Pm es install es la instalación de
+
+187
+00:30:15.230 --> 00:30:28.999
+Joaco Malig: de las dependencias o las librerías. En palabras simples, podríamos pensar en en instalar los drivers de todas las herramientas que vamos a tener a disposición en este nuevo proyecto. Es algo así en palabras simples.
+
+188
+00:30:29.000 --> 00:30:34.240
+Carlos Dominguez: Y aterrizar un poco más a los contextos de la que manejamos en
+
+189
+00:30:35.040 --> 00:30:39.869
+Carlos Dominguez: en la comunidad. Es como si instalas o descargas un Json con un
+
+190
+00:30:40.480 --> 00:30:47.940
+Carlos Dominguez: un flujo y tienes nodos de la comunidad que tengas que instalar. Y si no están los nodos, pues no va a servir tu flujo más o.
+
+191
+00:30:47.940 --> 00:30:50.300
+Joaco Malig: No a correr perfecto. Perfecto.
+
+192
+00:30:50.860 --> 00:30:51.620
+Carlos Dominguez: Listo.
+
+193
+00:30:52.050 --> 00:31:04.550
+Carlos Dominguez: Entonces, Co: como ya corrí el L. P: M: Insta la verdad. ¿van a ver la diferencia simplemente el tamaño de esta barrita. Son todos los comandos que yo tengo disponibles para correr, que cada 1 hace lo mismo.
+
+194
+00:31:05.200 --> 00:31:17.610
+Carlos Dominguez: No me sé todo de memoria. Tengo yo como una tabla donde voy viendo más o menos. Pero los básicos. El el principal es que hacemos un ford check, que básicamente, lo que esto hace es que
+
+195
+00:31:18.230 --> 00:31:27.850
+Carlos Dominguez: ya está configurado aquí, que lo que va a hacer es que va a revisar todo nuestro proyecto y nos va a decir: ya estamos listos para arrancar.
+
+196
+00:31:28.050 --> 00:31:43.210
+Carlos Dominguez: Como pueden ver, ahorita. Yo lo yo lo puse así como tal cual abrí mi sesión que me está preguntando: ¿Quieres que haga esto? ¿quieres que haga esto? ¿quieres que haga esto? Entonces yo le puedo estar dando así, o simplemente me voy aquí. Y le pongo bypass permiso
+
+197
+00:31:43.490 --> 00:31:58.919
+Carlos Dominguez: que lo explicó Berja en el vídeo, que es como modo mismo Cloud le llama modo yolo como que tú dejas que Cloud tome control y no te va a preguntar absolutamente de nada. Ellos. Cloud Coud simplemente va a empezar a ejecutar todo
+
+198
+00:31:58.920 --> 00:32:05.939
+Carlos Dominguez: por ti, si lo quieren activar, no está por defecto. Así que si lo quieren activar, se tienen que ir a las configuraciones
+
+199
+00:32:06.110 --> 00:32:09.450
+Carlos Dominguez: de antigravity para activarlo.
+
+200
+00:32:09.640 --> 00:32:11.469
+Carlos Dominguez: Podemos irnos aquí.
+
+201
+00:32:11.820 --> 00:32:13.399
+Carlos Dominguez: Vas a buscar.
+
+202
+00:32:15.130 --> 00:32:19.530
+Carlos Dominguez: No, nosotros nos tenemos que ir a las configuraciones.
+
+203
+00:32:20.410 --> 00:32:32.440
+Joaco Malig: Pero tranquilo porque eso aparece mencionado en el video de la hija y lo vamos a mencionar. Lo vamos a mencionar también en los tutoriales que vienen los que vienen al grano. Así que, efectivamente, la
+
+204
+00:32:32.680 --> 00:32:49.159
+Joaco Malig: recomendación es trabajar con bypass permisos. Eso hace más eficiente el uso del tiempo. Podemos tener corriendo varias sesiones de Cloud Code con diferentes desarrollos y no no te tiene que esperar a que tú le ejecutes.
+
+205
+00:32:49.230 --> 00:33:01.569
+Joaco Malig: digamos la aprobación, así que ultra recomendado importante aclarar de que es seguro, en la medida que estamos trabajando en una carpeta conocida, le dimos el la confirmación del trast cierto al inicio.
+
+206
+00:33:01.570 --> 00:33:20.809
+Joaco Malig: Y en el caso de que Glowcode tome algo, necesite tomar alguna alguna ejecución o algún comando en la terminal en alguna carpeta lejos, quizás a nivel global, de cloudcode. En ese caso, yo he visto que si te pide la la aprobación a pesar de estar en bypass permisos, es así.
+
+207
+00:33:22.750 --> 00:33:38.720
+Carlos Dominguez: Correcto todo lo que tenga que ver con este proyecto y todo lo que vaya a los comandos que ejecute, tienes que con por comandos que también tú le estás dando acceso y permiso a que tú te comandos en tu terminal de esos comandos ya afectan fuera de
+
+208
+00:33:38.830 --> 00:33:47.689
+Carlos Dominguez: de nada más anti gravity, cloud code literal puede llegar a borrar carpetas de tu computadora. Por eso es le llama el modo yolo. Entonces
+
+209
+00:33:47.950 --> 00:33:51.919
+Carlos Dominguez: yo lo uso per porque entiendo un poco
+
+210
+00:33:52.040 --> 00:33:58.189
+Carlos Dominguez: qué es lo que puede llegar a ser y cuáles son los problemas. Ustedes están iniciando. Pueden usar este modo
+
+211
+00:33:58.190 --> 00:34:13.150
+Carlos Dominguez: que dice editar automático y va a poder e editar todo lo que está aquí, pero ya lo que son los comandos a ejecutar comandos base que se ejecutan en la consola y que pueden llegar a copiar, mover, eliminar directorios ya les va a preguntar si
+
+212
+00:34:13.170 --> 00:34:14.180
+Carlos Dominguez: quieren hacer o no.
+
+213
+00:34:15.580 --> 00:34:23.459
+Carlos Dominguez: Entonces, ya que hicimos esto nos hace como un pequeño review. Aquí está. Ni siquiera empezamos. Estamos preparando todo. El digamos, el terreno
+
+214
+00:34:23.580 --> 00:34:35.660
+Carlos Dominguez: nos dice que todos estos. Chek, tienes todo esto. Te hace falta. No has iniciado tu repostería de Gitzburg. Y ya me hizo que tu resultado 17 text 3
+
+215
+00:34:35.860 --> 00:34:54.140
+Carlos Dominguez: touches y 3 como que warning, de que podemos seguir, pero eventualmente lo vas a tener que hacer. Y me dice: estos son los feels necesarios. El mismo sistema me lo dice yo, pudiera agarrar esto y e ir a ejecutarlo en la terminal. Pero me di, me pide que si quiere que los arregle, entonces le voy a decir que sí
+
+216
+00:34:54.250 --> 00:35:07.979
+Carlos Dominguez: y solito. Claude va a arreglar lo que tenga que hacer. Y mira, pueden ver aquí, dice Cp example esto. Y lo que está haciendo es que lo está. Esto lo está ejecutando en la terminal. Por eso aquí dice Bash.
+
+217
+00:35:08.510 --> 00:35:13.829
+Carlos Dominguez: y ya entonces le voy a dar que sí, que ahorita. Me Me cambié
+
+218
+00:35:14.150 --> 00:35:29.029
+Carlos Dominguez: y va a empezar a ejecutar esos comandos, que es el mismo equivalente. Y si va a abrir aquí mi terminal aquí abajo, y yo los copiaré y pegar, o yo los escribiera para ejecutarlos manualmente. Simplemente le estoy dando permiso a cloud code para que lo lo pueda hacer.
+
+219
+00:35:34.670 --> 00:35:45.610
+Carlos Dominguez: Dice perfectos, 5 de 5 pisos aplicados. Estamos listos. Para empezar, queda pendiente configurar las credenciales en el Msp Jason
+
+220
+00:35:45.610 --> 00:35:55.840
+Carlos Dominguez: que lo vimos en el curso de anti gravity ahorita, No tenemos nada. Y obviamente, si quisiéramos usar su país, tendríamos que configurar las credenciales de su país.
+
+221
+00:35:55.920 --> 00:35:58.730
+Carlos Dominguez: ¿qué es lo que nos da el Msp Json
+
+222
+00:35:59.040 --> 00:36:07.750
+Carlos Dominguez: nos da como que toda la estructura de los posibles M. C, Ps, que podríamos llegar a utilizar en el en muchos proyectos
+
+223
+00:36:08.450 --> 00:36:15.180
+Carlos Dominguez: y ya nosotros, en el momento que lo queramos utilizar. El mismo Cloud puede decir, oye para esto tenemos disponible este Mcp.
+
+224
+00:36:15.220 --> 00:36:30.410
+Carlos Dominguez: pero no hace falta tu credencial. Ve a esta plataforma o ve a tu página. Ve a Gitt Ochon. Ve a su país, Dale Click aqui Y Dale siguiente te vas a settings, te va a guiar a para que te diga cómo sacar esas credenciales y configurar tus m C, Ps.
+
+225
+00:36:30.450 --> 00:36:40.970
+Carlos Dominguez: para que los podamos usar. Hay muchos contextos y muchas cosas que ahorita. Voy a dar por hecho. Y no me voy a enfocar, porque lo hemos estado viendo a lo largo de las sesiones como lo que es un Msp. Y y todo eso.
+
+226
+00:36:41.150 --> 00:36:52.299
+Carlos Dominguez: nada más. Voy a verificar si, Ok, como puedes ver, ya hizo el Git Init, que es el que ya inicializó el repositorio. Si yo ahorita fuera a mi repositorio de Gitbo.
+
+227
+00:36:52.430 --> 00:37:02.769
+Carlos Dominguez: A mi cuenta de gijón, Vería ya el núcleo como un repositorio, pues ya estamos listos para arrancar. Y el mismo sistema te dice: diagnóstico complementado, próximos pasos recomendados.
+
+228
+00:37:02.770 --> 00:37:14.319
+Carlos Dominguez: plan avivar o Bild. ¿cuál es la diferencia? Plan? Vamos a planear qué es lo que vamos a hacer, ahorita y avivar. Funciona. Si tú ya tuvieras un proyecto existente que quieres continuar o quieres robustecer
+
+229
+00:37:14.510 --> 00:37:16.540
+Carlos Dominguez: en este caso le voy a hacer un plan
+
+230
+00:37:16.920 --> 00:37:29.440
+Carlos Dominguez: y me va a empezar a hacer preguntas sobre qué es lo que queremos desarrollar, y eso es un poco. Voy a cambiarle a bypass de nuevo, y es un poco lo que hicimos con Sophie en el tanque imperial.
+
+231
+00:37:29.590 --> 00:37:34.029
+Carlos Dominguez: Entonces lo primero que nos va a preguntar es qué queremos desarrollar.
+
+232
+00:37:34.140 --> 00:37:39.219
+Carlos Dominguez: ¿va a ir? Va a haber un pequeño menú y le podemos decir qué es lo que queremos desarrollar tal cual.
+
+233
+00:37:39.910 --> 00:37:42.399
+Joaco Malig: Mientras se acercan estas preguntas de
+
+234
+00:37:42.890 --> 00:37:56.419
+Joaco Malig: del plan, comentarles que en el chat estoy bien atento a poder responder dudas, si es que algunos tienen conceptos básicos que que no manejan déjelo en el chat. Yo puedo ir también anclando ciertos vídeos tutoriales de lo mismo. De acuerdo.
+
+235
+00:37:57.060 --> 00:37:58.190
+Joaco Malig: seguimos.
+
+236
+00:37:58.590 --> 00:38:11.619
+Carlos Dominguez: Okay. Entonces, ¿qué queremos construir hoy? Son las 5 packs que tenemos predefinidos en la forja. Es un saaz completo, un M. V P. Para validar una herramienta interna, una Landing Page o un filter con ella.
+
+237
+00:38:12.440 --> 00:38:21.080
+Carlos Dominguez: ¿cuál es la diferencia? Básicamente que el Sas completo, pues es una aplicación completa que va a tener un modelo de negocio, vas a tener que analizar a tus rivales
+
+238
+00:38:21.350 --> 00:38:28.559
+Carlos Dominguez: al ser usadas, pues necesitas un módulo para pagar. Puede o no Puede ser un multitenante. Quiere decir que puedas tener varias tablas
+
+239
+00:38:28.720 --> 00:38:32.550
+Carlos Dominguez: de de de su país.
+
+240
+00:38:32.880 --> 00:38:49.860
+Carlos Dominguez: etcétera. Entonces, en ese este no es el caso, porque no es un, No es un proyecto que vamos a salir a revender. Es, como dice aquí, una herramienta interna. Entonces yo le puedo decir, sabes que es una herramienta interna, le puedo responder nada más con un 3. Y como pueden ver, la diferencia es el Pad, que tanto es lo que tenemos que que hacer.
+
+241
+00:38:50.070 --> 00:38:53.070
+Carlos Dominguez: La herramienta de Internet y el S A son muy parecidos.
+
+242
+00:38:53.190 --> 00:39:06.270
+Carlos Dominguez: La Básicamente, la diferencia es que, al ser una herramienta interna, no la vamos a vender. No vamos a lucrar con ella. Entonces no vamos a hacer un análisis de rivales, competencia, modelo de negocio para icing etcétera, porque nosotros mismos lo vamos a estar utilizando
+
+243
+00:39:06.470 --> 00:39:18.769
+Carlos Dominguez: Entonces, ya. Este es el el Pad Lo que nos dice. Estuvieron en el tanque imperial. Pueden ver que es prácticamente lo que hicimos con con Sophie. Primero vamos hacer un baya. Viohability Check, que básicamente te dice
+
+244
+00:39:18.880 --> 00:39:28.289
+Carlos Dominguez: hazlo o no, hazlo. Esto es al grano. Tú le explicas lo que quieres, dices que está muy complicado la tecnología o lo que quieres hacer. No existe la tecnología ahorita.
+
+245
+00:39:28.360 --> 00:39:46.519
+Carlos Dominguez: Hay muchísimo riesgo. Imagínate que hay que hacer un Scrapper para Facebook, y ya sabes que hay muchísimo riesgo. Facebook a cada rato, cambia los algoritmos. No te metas en esto. Entonces, antes de empezar ni siquiera a a planear el mismo sistema. Nos dice si vale la pena o no continuar con el proceso.
+
+246
+00:39:47.590 --> 00:39:54.899
+Carlos Dominguez: Después hacemos el P. D, R, que es el product definition report la vez pasada lo vimos como. P. R, D, que no es lo mismo.
+
+247
+00:39:55.010 --> 00:40:13.379
+Carlos Dominguez: Y básicamente, este es el documento que va a decir. Ok, empieza a hacer es esto. Y necesitas conseguir esto. Lo vas a hacer de esta manera. Es como poner un documento bonito tu plan de trabajo para que la I L a lo entienda mejor, o sea, nosotros lo vamos a discutir con nuestras palabras, nuestro lenguaje natural.
+
+248
+00:40:13.460 --> 00:40:30.440
+Carlos Dominguez: la I a lo va a poner un formato bonito para que la misma guía lo sepa leer e identificar de que es justamente lo que tenemos que que hacer, No, porque a lo mejor nosotros usamos algún concepto, no que queremos una tabla, pero la ya entiendo que se refiere a bases de datos y en las bases de datos, tienes diferentes tablets.
+
+249
+00:40:30.660 --> 00:40:33.350
+Carlos Dominguez: Entonces playa te lo va a ser un poquito bonito.
+
+250
+00:40:33.580 --> 00:40:38.540
+Carlos Dominguez: Y aquí nos dice, obviamente se omite el modelo de negocio externo, porque no hay.
+
+251
+00:40:38.750 --> 00:40:48.830
+Carlos Dominguez: Y nos dice que si queremos arrancar, le damos que sí. Y en ese punto nos vamos a empezar a hacer una entrevista. Les va a empezar a hacer varias preguntas de qué es lo que queremos construir.
+
+252
+00:40:48.990 --> 00:40:53.119
+Carlos Dominguez: Yo ya tengo más o menos un texto que
+
+253
+00:40:53.510 --> 00:40:59.630
+Carlos Dominguez: fui hablando con con Claude directamente para saber más o menos, qué es lo que queremos construir?
+
+254
+00:40:59.850 --> 00:41:02.890
+Carlos Dominguez: Y aquí nos dice que empecemos. ¿qué problema resuelve
+
+255
+00:41:03.490 --> 00:41:13.349
+Carlos Dominguez: quienes en tu equipo lo usarían, ¿Cómo lo resuelven hoy? Hay sistemas existentes, Tienes Deadline. Y es un proyecto personal para tu empresa o para un cliente.
+
+256
+00:41:13.650 --> 00:41:29.280
+Carlos Dominguez: tú le vas respondiendo todas estas preguntas. Mi sugerencia. Yo, como siempre, le respondo. Es como pongo, pongo 1 punto y le edicto o escribo. No hago shift Enter para no mandarlo y brincarme de línea 2 punto. Y le empiezo a responder. Y así le mando en el mismo formato que me hizo las preguntas.
+
+257
+00:41:29.840 --> 00:41:32.950
+Carlos Dominguez: yo le mando las
+
+258
+00:41:33.060 --> 00:41:46.839
+Carlos Dominguez: las respuestas, ¿no? Entonces, en este caso, ustedes pueden seguir como que esta estructura, o simplemente lo que yo voy a hacer es: voy a copiar de nuevo lo que ya tengo ya en mi conversación con Cloud, que no es como
+
+259
+00:41:47.160 --> 00:41:58.610
+Carlos Dominguez: lo que fui hablando. Simplemente es lo que yo le dije de inicio. Es como que tengo un problema. Me hizo desarrollar una aplicación que puede instalar en el celular estilo P. W. A. Solo vimos el curso anti gravity
+
+260
+00:41:59.010 --> 00:42:06.699
+Carlos Dominguez: para que pueda almacenar información en la memoria del celular, trabaje sin Internet y se sincronice con la nube, una base de datos. Cuando detecte conexión.
+
+261
+00:42:06.850 --> 00:42:11.829
+Carlos Dominguez: a su vez, tendrá la versión de escritorio y una extensión de Chrome. Esos son mis principales problemas.
+
+262
+00:42:12.020 --> 00:42:29.640
+Carlos Dominguez: Le digo, consumo mucho contenido y encuentro cosas útiles, pero no sé dónde guardarlas. No sé cómo categorizar, analizar y tener a la mano cuando necesite, por ejemplo, reposteros de Gitbook Post, hilos de Reddit, páginas web comandos de Cloudbourg, ideas en general, documentos o guías, Chroms.
+
+263
+00:42:29.760 --> 00:42:43.300
+Carlos Dominguez: etcétera. Le digo mi agente de openclow me hace análisis investigaciones. Me genero, archivos, Margan Replexit y me genera investigaciones también, Pero digo, no sé dónde guardar toda esta información para no tener que estar preguntando de nuevo.
+
+264
+00:42:43.430 --> 00:43:00.339
+Carlos Dominguez: Eso es lo que me encantaría que hiciera poder pegar un link, un repositorio, un post de etcétera, en cualquier lugar que la ya lo analice, genere un resumen categorice y sincronice la nube, pueda visualizar los documentos, copiar, pegar comandos y proms con un solo clic.
+
+265
+00:43:00.430 --> 00:43:14.770
+Carlos Dominguez: buscar por categoría, por palabras clave, etc. Dictar notas de voz cuando tengo una idea y que eso sea analizado por la I a visualizar los documentos subidos en diferentes formatos. Puedes subir algo desde el iphone, verlo y organizarlo en la Mac.
+
+266
+00:43:14.840 --> 00:43:20.529
+Carlos Dominguez: tener una extensión de Chrome para copiar y pegar comandos con un solo clic o agregar enlaces con un solo clic
+
+267
+00:43:20.730 --> 00:43:35.100
+Carlos Dominguez: interfaz muy intuitiva y minimalista, pero poderosa que cargue rápido y no refresque conexión a cada rato, ya que su mayoría lo usaré en el iphone, tener un chat donde yo pueda preguntarle a una gente sobre cualquier cosa en la base de datos, y me recuerde cosas. Me de enlaces, o me muestra los documentos
+
+268
+00:43:35.100 --> 00:43:41.019
+Carlos Dominguez: o solo respondo mis dudas sobre la documentación, investigación que tiene acceso, que no inventé nada ni que busque en Internet.
+
+269
+00:43:41.500 --> 00:43:42.540
+Carlos Dominguez: ¿qué se te ocurre
+
+270
+00:43:42.790 --> 00:43:50.689
+Carlos Dominguez: como mi mi lista de compras son cosas que me gustaría. Y yo dejo que la guía haga el.
+
+271
+00:43:51.580 --> 00:44:05.740
+Joaco Malig: Una pausa, querido amigo Sofy, pregunta si podemos dejar el pronto ahí en el chat también. Y invitamos si es que tienen algún otro future que les gustaría implementar el momento, no si.
+
+272
+00:44:05.740 --> 00:44:14.989
+Carlos Dominguez: Momento antes de que le denter es la ventaja hacerlo en vivo. Si a alguien se le ocurre yo. Yo También quiero que haga esto. Dígamelo de una vez para que lo metamos en la planeación
+
+273
+00:44:15.830 --> 00:44:16.630
+Carlos Dominguez: adiós David.
+
+274
+00:44:16.630 --> 00:44:17.200
+Joaco Malig: De y.
+
+275
+00:44:17.200 --> 00:44:17.790
+Carlos Dominguez: A la mierda.
+
+276
+00:44:17.790 --> 00:44:18.170
+Joaco Malig: De todo.
+
+277
+00:44:18.170 --> 00:44:20.260
+Carlos Dominguez: Moscándose la barbilla pensando que.
+
+278
+00:44:20.260 --> 00:44:21.390
+Joaco Malig: Sí.
+
+279
+00:44:21.620 --> 00:44:25.099
+Joaco Malig: Yo también estaba viendo lo mismo a Mauricio. También Ahí.
+
+280
+00:44:27.220 --> 00:44:29.460
+Joaco Malig: Obviamente. Bueno, yo.
+
+281
+00:44:29.460 --> 00:44:29.800
+Daniel Kalasic: Bocina.
+
+282
+00:44:29.800 --> 00:44:30.940
+Joaco Malig: Hemos puesto en el avión? Sí.
+
+283
+00:44:30.940 --> 00:44:31.520
+Daniel Kalasic: Voy a hacer un.
+
+284
+00:44:31.520 --> 00:44:32.490
+Joaco Malig: Iban a.
+
+285
+00:44:33.110 --> 00:44:37.169
+Daniel Kalasic: Ay ay ay, a mí me tienen que sacar del foro. Realmente
+
+286
+00:44:37.350 --> 00:44:40.420
+Daniel Kalasic: no me tienen bloqueeme. Por favor.
+
+287
+00:44:41.840 --> 00:44:44.459
+Joaco Malig: A ver, te escuchamos.
+
+288
+00:44:45.940 --> 00:44:50.599
+Daniel Kalasic: Me gusta mucho. ¿es eso. Es verdad que voy a ser bien bien realista.
+
+289
+00:44:51.900 --> 00:45:03.660
+Daniel Kalasic: Lo he hecho muchas veces de la manera que te dice A, B, C, D, E, F, G, H, I, J, K. Perfecto. Le tiro le a ella que me haga.
+
+290
+00:45:04.780 --> 00:45:08.579
+Daniel Kalasic: Y después, L A: me empieza a hacer una serie de cosas.
+
+291
+00:45:09.680 --> 00:45:17.370
+Daniel Kalasic: Y después yo me olvidé. Qué fue lo porque empiezo a ver el ah, Pero después me dio cuenta que también empiezo a ver. Hice algo del C. Hizo algo del tes
+
+292
+00:45:17.620 --> 00:45:23.369
+Daniel Kalasic: Entonces a la final. Estoy un poco confundido en que y donde quedé
+
+293
+00:45:24.460 --> 00:45:36.750
+Daniel Kalasic: me explico. Entonces, si les damos demasiados tareas, realmente siento que a veces pierdo el hilo personalmente ahora.
+
+294
+00:45:37.080 --> 00:45:40.179
+Daniel Kalasic: Por eso me gusta lo que él dice, como yo lo implementé
+
+295
+00:45:40.490 --> 00:45:52.510
+Daniel Kalasic: al final de mi pregunta, pregunta, una que él está haciendo. Yo le digo en Github porque uso mucho Github, créame un un isho
+
+296
+00:45:52.620 --> 00:45:55.420
+Daniel Kalasic: que venga un label que sea esto.
+
+297
+00:45:55.960 --> 00:46:12.439
+Daniel Kalasic: Segunda pregunta que yo hice. Digo, créeme otra pregunta y dame todo el contexto relacionado de esta pregunta y me la agregas un dicho entonces, al final del del todo el prompt que yo hice. Voy a sacar 10 preguntas. Diez ishoos
+
+298
+00:46:13.290 --> 00:46:22.029
+Daniel Kalasic: donde document puedo documentar para después yo volver y decir, Ok, esto es lo que iba a hacer el Tas. Uno
+
+299
+00:46:22.080 --> 00:46:41.080
+Daniel Kalasic: lo reviso, está completo, o sea, mientras él trabaja, me crea la primera creando los tickets me entiendes. Entonces, de esa manera. Es como que a veces perdí el hilo porque lo hacía de la misma manera este 1, 2, 3, 4, 5, y al final se el texto le hay. Es espectacular, No, No, no crean que digo que no, Pero a veces
+
+300
+00:46:41.240 --> 00:46:50.349
+Daniel Kalasic: pierdes si L A y se pierde el contexto. Te empieza a dar. Lo mismo pasa con nosotros. Nosotros somos peores. Los humanos somos peores que
+
+301
+00:46:51.200 --> 00:46:51.800
+Daniel Kalasic: por eso.
+
+302
+00:46:51.800 --> 00:46:57.430
+Joaco Malig: Entiendo el punto querido Dani Vamos a acotar, se entiende el punto y con todo el cariño, te digo.
+
+303
+00:46:57.430 --> 00:47:13.629
+Joaco Malig: esperemos a ver los resultados. Estamos probando esta nueva estructura y creo que algo interesante lo probé también por mi cuenta. Es precisamente lo profundo y estructurado, que es el proceso de planificación que nos va a permitir poder transformar este primer pront en diferentes subtareas
+
+304
+00:47:13.630 --> 00:47:19.599
+Joaco Malig: y que luego la gente va chequeando y revisando. También. Entonces recojo el punto.
+
+305
+00:47:19.600 --> 00:47:19.980
+Carlos Dominguez: No.
+
+306
+00:47:19.980 --> 00:47:21.349
+Joaco Malig: También la observación.
+
+307
+00:47:21.350 --> 00:47:27.579
+Carlos Dominguez: Es la es la clave, Obviamente aquí no se ve porque no lo hemos visto como tal. Pero ¿qué es lo que hace
+
+308
+00:47:27.720 --> 00:47:46.980
+Carlos Dominguez: genera dentro de todas las configuraciones aquí cargada, tiene que cada vez que se le haga una tarea, la va a guardar en un documento. Va a identificar todos los tubús que tenga que hacer, los va a marcar y conforme los vaya haciendo, va a regresar ese documento y visualmente, le va a poner un check o un ataque. Y cada vez que termine
+
+309
+00:47:47.210 --> 00:48:06.240
+Carlos Dominguez: esa instrucción ya antes de que le diga al usuario acabe, va a regresar y va a confirmar que, efectivamente no quedó nada sin marcar. Y si hay algo sin marcar, no le va a decir nada al usuario regresa y continúa. Y eso se hace con los hooks que ya están configurados, digamos que secuestra el mensaje y no deja que Cloudcout le diga al usuario termine
+
+310
+00:48:06.240 --> 00:48:08.810
+Carlos Dominguez: y en realidad no ha terminado todo lo que se cree
+
+311
+00:48:08.870 --> 00:48:10.250
+Carlos Dominguez: todo lo que se le pidió.
+
+312
+00:48:10.900 --> 00:48:11.550
+Joaco Malig: Carlos, tenemos.
+
+313
+00:48:11.550 --> 00:48:11.960
+Carlos Dominguez: En el.
+
+314
+00:48:11.960 --> 00:48:21.639
+Joaco Malig: Comentario. La Sofi está está interesante. Guardar también vídeos que nos gusten en Instagram, si es que se pudiera, cómo lo ves por.
+
+315
+00:48:22.280 --> 00:48:25.330
+Carlos Dominguez: Okay. Vamos a decirle igual.
+
+316
+00:48:27.710 --> 00:48:33.080
+Joaco Malig: Como decimos en Chile, no sé si en sus países también en preguntar, no hay engaño.
+
+317
+00:48:34.040 --> 00:48:34.540
+Daniel Kalasic: No.
+
+318
+00:48:34.540 --> 00:48:40.609
+Carlos Dominguez: También me gustaría poder guardar reels vídeos de Instagram.
+
+319
+00:48:40.920 --> 00:48:48.129
+Carlos Dominguez: Tiktok y cualquier otra red social que me haga un análisis que me saque los hooks, la transcripción
+
+320
+00:48:48.670 --> 00:48:50.719
+Carlos Dominguez: y lo guardo en la base de datos
+
+321
+00:48:51.070 --> 00:48:55.680
+Carlos Dominguez: a ella. Le metí un poquito de mi cosecha, algo más.
+
+322
+00:48:55.680 --> 00:48:56.340
+Joaco Malig: Para ello.
+
+323
+00:48:56.340 --> 00:48:56.990
+Carlos Dominguez: Respondemos.
+
+324
+00:48:57.490 --> 00:49:01.090
+Joaco Malig: Por ahora. Nada. Así que vámonos más. Avancemos porque tenemos.
+
+325
+00:49:01.090 --> 00:49:02.479
+Carlos Dominguez: Molde para que nos dé tiempo.
+
+326
+00:49:06.250 --> 00:49:09.260
+Joaco Malig: La sesión.
+
+327
+00:49:09.490 --> 00:49:13.420
+Joaco Malig: ¿cómo podemos estirar un poco la sesión? Sí.
+
+328
+00:49:13.420 --> 00:49:14.270
+Carlos Dominguez: Sí, Sí, Sí.
+
+329
+00:49:15.170 --> 00:49:16.700
+Joaco Malig: Que ya me vas a la primera.
+
+330
+00:49:16.700 --> 00:49:17.120
+Carlos Dominguez: Si no.
+
+331
+00:49:17.120 --> 00:49:18.620
+Joaco Malig: Prolongarnos un poco más.
+
+332
+00:49:18.620 --> 00:49:19.179
+Carlos Dominguez: Está grabación.
+
+333
+00:49:19.180 --> 00:49:28.229
+Joaco Malig: Que tienen que partir si no, claro, enganchan luego con la grabación. Así que vamos a tratar de ser muy ejecutivos. Pero vamos a extendernos un poquito más de lo habitual
+
+334
+00:49:28.500 --> 00:49:32.559
+Joaco Malig: para poder ver hasta qué fase llegamos en estos
+
+335
+00:49:32.880 --> 00:49:45.790
+Joaco Malig: 8 steps que estamos viendo algo que te quería preguntar: mientras tenemos a a Claude trabajando, esa ese esos minutos de proyección que hace
+
+336
+00:49:46.600 --> 00:49:47.810
+Joaco Malig: están
+
+337
+00:49:49.190 --> 00:49:56.930
+Joaco Malig: valorizado. ¿en qué? Porque en mi caso, alguno de los Steps que probé me fueron mucho más rápido que los los minutos que plantea.
+
+338
+00:49:58.450 --> 00:50:01.210
+Carlos Dominguez: Tu tu tu tu tu esto.
+
+339
+00:50:01.490 --> 00:50:02.760
+Joaco Malig: Sí, eso mismo.
+
+340
+00:50:03.270 --> 00:50:09.200
+Carlos Dominguez: Okay está valorizado en base a el tiempo que el usuario
+
+341
+00:50:09.360 --> 00:50:14.059
+Carlos Dominguez: se tardaría en leer la documentación y verificar si todo está bien.
+
+342
+00:50:14.430 --> 00:50:24.250
+Carlos Dominguez: Obviamente, si L si, como usuarios también entramos en modo, yo lo y le decimos, sí, dale dale dale y no leemos, pues, el este, este, todo este Pickland te lo puedes aventar a lo mejor en una hora.
+
+343
+00:50:24.600 --> 00:50:41.459
+Carlos Dominguez: Pero después llegan esas partes de que oye. Te pedí que hicieras esto, pero no me lo estás haciendo si te regresas a tu perro. Resulta que tú le habías pedido que hiciera, pero te puso, quisiera, B, y no lo como no lo leíste, no te diste cuenta, no lo corregiste y se quedó grabado en el plan y es lo que hizo.
+
+344
+00:50:41.650 --> 00:50:49.850
+Carlos Dominguez: Entonces. Eso está configurado más o menos considerando el tiempo que se tarda en generar los documentos y los saben revisarlo, darle feedback, corregirlo.
+
+345
+00:50:50.230 --> 00:51:01.660
+Carlos Dominguez: tunearlo y que esté como queremos y podamos continuar. Y no le decimos que sí a todo. Probablemente digo, no, tú. Todo esto lo podamos sacar en hacer en una hora hora y media.
+
+346
+00:51:02.700 --> 00:51:03.349
+Joaco Malig: De acuerdo.
+
+347
+00:51:03.760 --> 00:51:16.590
+Carlos Dominguez: Okay, entonces ya terminó. ¿qué es lo que nos dice? Dice? Perfectos, Siguiente inscripción: tienes un problema real, bien definido, Básicamente, según mi cerebro, ponía, deja analizó la viabilidad antes de escribir el veredicto formal. Mi lectura rápida.
+
+348
+00:51:16.830 --> 00:51:23.300
+Carlos Dominguez: tuya tiene mucho potencial, pero el Scope es ambicioso. Estamos hablando de W. E que es progresivo web App
+
+349
+00:51:23.430 --> 00:51:33.979
+Carlos Dominguez: Offline first con zinc, 1 de los problemas más difíciles en software, Chromex Extension, Codebay, separado Island de ella para análisis automático, transcripción de vídeos que son apis externas
+
+350
+00:51:34.030 --> 00:51:43.519
+Carlos Dominguez: racha sobre tu conocimiento boys to text y crose Devicing. Es esto. No es una sola App. Son fácilmente 4 o 5 productos y se construye todo a la vez.
+
+351
+00:51:43.780 --> 00:51:51.419
+Carlos Dominguez: Voy a generar el análisis de viabilidad completo con una recomendación de cómo hacer esto viable énfasis ya nos dice ok veredicto dice causing como que es
+
+352
+00:51:51.560 --> 00:52:08.769
+Carlos Dominguez: y sigue. Pero ten cuidado, Básicamente, lo que nos está diciendo, porque nos da un score sobre 5, 3, Seis: nos dice la idea sólida. El problema es real. El riesgo es el scope, la clave, no construir las 8 fritos a la vez. Propongo 3 fases. Fase 1, Llamémosle M V, p
+
+353
+00:52:09.410 --> 00:52:21.640
+Carlos Dominguez: el pido breve pegar El link. La ya no analiza resumen, categoriza búsqueda copy con un clic sin básico, que es lo que estaríamos Empezando para ver que esté funcionando después en una fase, 2
+
+354
+00:52:21.900 --> 00:52:35.580
+Carlos Dominguez: offline first reel que en realidad esté sincronizando y puedas usarlo cuando esté offline las notas de voz, el sistema de Rac y la extensión de chrome fase, 3 el video análisis de Reels Tiktok, la extensión de chrome
+
+355
+00:52:35.580 --> 00:52:45.349
+Carlos Dominguez: avanzada y una visualización avanzada después de haber validado la fase 1 y dice que, si estamos de acuerdo, podemos continuar con el Step, 1 que es el P. D. R.
+
+356
+00:52:46.950 --> 00:52:48.129
+Joaco Malig: Y cómo se está viendo.
+
+357
+00:52:48.130 --> 00:52:51.079
+Carlos Dominguez: Es el documento que nos generó. Es un margram.
+
+358
+00:52:51.340 --> 00:52:53.559
+Carlos Dominguez: Con todo, el análisis.
+
+359
+00:52:55.290 --> 00:52:56.920
+Joaco Malig: Perfecto. El primer.
+
+360
+00:52:57.130 --> 00:53:05.390
+Joaco Malig: el primero de los 8 Markdowns que van a conformar parte de este de esta planificación. Amigos de bien favor. ¿puedes hacerles zoom a
+
+361
+00:53:05.590 --> 00:53:11.010
+Joaco Malig: a Cloud, no para que no nos sepan coman más.
+
+362
+00:53:12.190 --> 00:53:16.690
+Carlos Dominguez: Gracias por estar buscando con gente así, o un poquito menos.
+
+363
+00:53:17.510 --> 00:53:19.070
+Joaco Malig: Un poco menos. Quizás está bien. Hay
+
+364
+00:53:19.200 --> 00:53:23.320
+Joaco Malig: cuál va a ser tu recomendación respecto de estas fases.
+
+365
+00:53:24.890 --> 00:53:26.160
+Carlos Dominguez: En cuanto a qué.
+
+366
+00:53:27.390 --> 00:53:31.600
+Joaco Malig: Será que podemos hacer 1 y 2 juntas, o es muy, es mucho.
+
+367
+00:53:37.850 --> 00:53:45.449
+Carlos Dominguez: Yo lo había chateado con la guía. Y aquí empezamos de 0, pero yo ya lo había chateado con Claudia en su momento. Cuando lo quería hacer después, dije mejor. Lo hago en vivo.
+
+368
+00:53:45.730 --> 00:53:47.340
+Carlos Dominguez: Ajá.
+
+369
+00:53:47.750 --> 00:53:53.230
+Carlos Dominguez: Siento que estos 2 se podrán ir sin problemas a fase 1. El Rac
+
+370
+00:53:53.680 --> 00:54:01.260
+Carlos Dominguez: está bien como fase 2, y con la extensión de Chrome, porque la extensión de Chrome no entraría dentro de este Golden Path
+
+371
+00:54:01.560 --> 00:54:04.389
+Carlos Dominguez: porque usaría un techtack diferente.
+
+372
+00:54:04.760 --> 00:54:05.140
+Joaco Malig: Claro.
+
+373
+00:54:05.140 --> 00:54:07.520
+Carlos Dominguez: Cambiando a la siguiente fase.
+
+374
+00:54:07.710 --> 00:54:24.939
+Carlos Dominguez: y el Rack de del Rack Chat va a necesitar sobre todo la parte de construir el Rack para estar un poco más de investigación tiempo. Por eso lo mete en una fase 2, porque esto, como está construido, hacen un M. V. P: N, cuanto antes para salir y hacer una validación de de usuarios.
+
+375
+00:54:24.980 --> 00:54:31.700
+Carlos Dominguez: Por eso siempre te va a definir. Ok, Empecemos con un M. P: Empecemos con M P. Que en el mundo real.
+
+376
+00:54:31.830 --> 00:54:46.679
+Carlos Dominguez: como los los desarrolladores o las empresas trabajan, siempre empiezan pequeño con M. V p. Validad, y después empiezan a meter más más. Twitters no se van a aventar un año desarrollando antes o ahorita semanas, desarrollando con algo que sigas ansiedad funcional.
+
+377
+00:54:47.670 --> 00:54:50.309
+Joaco Malig: Vale, entiendo. Vamos con la fase 1. Entonces.
+
+378
+00:54:51.720 --> 00:54:58.950
+Carlos Dominguez: Estamos entonces entrando en modo yolo porque no hemos leído este documento, vamos a darle nada más, una leída muy rápida
+
+379
+00:54:59.400 --> 00:55:07.320
+Carlos Dominguez: viabilidad técnica. Tres. D. C, Tres, 5. Y aquí nos dio 3, 6 de 5. Ahí vemos la primera inconsistencia.
+
+380
+00:55:07.900 --> 00:55:10.320
+Carlos Dominguez: el Golden Path fit.
+
+381
+00:55:10.620 --> 00:55:18.380
+Carlos Dominguez: El Core es una web App más upa beige más allá de caja perfecto. O blade firting bidireccional estira los límites para veis
+
+382
+00:55:18.480 --> 00:55:34.910
+Carlos Dominguez: no tiene online, ni siquiera nativos. En esta index dar veis más loging es injustom. La cron extensión es un convey separado y nada más. Lo que quiero mencionar ahorita es que esto que tenemos en la documentación es a nivel técnico, un poco más
+
+383
+00:55:35.150 --> 00:55:42.110
+Carlos Dominguez: alto, porque es lo que va a leer Cloud code como tal, lo que nos muestra el agente
+
+384
+00:55:43.130 --> 00:56:00.200
+Carlos Dominguez: para que desaparezca esto de aquí. Lo que nos muestra la gente en pantalla es en un lenguaje más humano para que nosotros lo entendamos. Y esto, como son los Smart, es lo que los el agente de Cloud va a estar leyendo o los agentes, porque puede disparar múltiples múltiples agentes en paralelo para para trabajar.
+
+385
+00:56:00.920 --> 00:56:06.450
+Joaco Malig: Carlos será que el Score fue un promedio de los 3 de las 3 dimensiones que te da en el Mcdown.
+
+386
+00:56:08.760 --> 00:56:13.209
+Carlos Dominguez: Tenemos 3 antes. Aquí hice 3 6. No sé por qué vi 3.
+
+387
+00:56:13.210 --> 00:56:20.180
+Joaco Malig: Ah, sí, está bien. Está ¿Correcto? Es que tienes 3 dimensiones, y eso el promedio, las 3. Y eso te da 3. Seis. Estamos bien.
+
+388
+00:56:20.400 --> 00:56:31.509
+Carlos Dominguez: No va a decir que sigamos, y ahora vamos a hacer El Pdr. Y como podemos ver aquí, nos va generando todos los documentos. Vamos a empezar a ver cómo se van generando todos los smarckdowns
+
+389
+00:56:33.020 --> 00:56:34.590
+Carlos Dominguez: cosas importantes.
+
+390
+00:56:35.000 --> 00:56:36.820
+Carlos Dominguez: Una vez que yo termine.
+
+391
+00:56:37.080 --> 00:56:49.969
+Carlos Dominguez: puedo decirle a Cloud coad que configure, porque como vamos a subir este repositorio para que todos lo puedan descargar, lo puedan usar. Y yo llego a subir tal cual como terminemos. Voy a tener aquí muchísimos documentos
+
+392
+00:56:50.300 --> 00:57:00.580
+Carlos Dominguez: que son de planeación, de estructura que en realidad no tendrían porque estar en un repuesto del que vamos a estar usando. Entonces tengo 2 opciones. Lo puedo mover a mi carpeta de puntocloud.
+
+393
+00:57:00.820 --> 00:57:03.310
+Carlos Dominguez: Esa carpeta no se sincroniza con Github.
+
+394
+00:57:03.340 --> 00:57:12.899
+Carlos Dominguez: Y eso es ya más como que The Git Cop parece, existen los Gitak Nor y aquí to Gitak North, tú le dices que no quieres que suba a Youtube. ¿qué no quieres que sincronice?
+
+395
+00:57:12.900 --> 00:57:27.589
+Carlos Dominguez: Y aquí tenemos configurado que el punto Cloud. No se suba ese punto. Cloud es el del usuario. Te queda en mi computadora, y yo no quisiera subirlos al punto Cloud, pero también no quisiera que se sincronicen. Le pudiera pedir a Cloud code que agregara todos estos documentos
+
+396
+00:57:27.630 --> 00:57:34.169
+Carlos Dominguez: en un gif ignor o dentro de la raíz del núcleo, creó una carpeta que se llame Docs
+
+397
+00:57:34.230 --> 00:57:41.979
+Carlos Dominguez: y le digo que agregue toda la carpeta Agity Nor y ya con eso no se subirían al repositorio de Gith top más para que lo tengan en cuenta.
+
+398
+00:57:42.130 --> 00:58:01.080
+Carlos Dominguez: por ejemplo, el punto M. S. P. Jason tampoco se sube cuando tengamos un un punto local donde tengamos nuestras credenciales. Tampoco se sube al Gitbook. Simplemente son buenas prácticas para que lo tengan en cuenta, que no es bueno que suban tal cual su repostorio íntegro al gitbook, habrá cosas que se tengan que quedar nada más.
+
+399
+00:58:01.900 --> 00:58:02.760
+Joaco Malig: Perfecto.
+
+400
+00:58:04.170 --> 00:58:10.030
+Carlos Dominguez: Okay nos dice que ya está listo, no el el como el el
+
+401
+00:58:10.490 --> 00:58:29.910
+Carlos Dominguez: plan del P. D. R. Eso es lo que va a hacer, pero antes de escribirlo, sé que tiene algunas dudas y nos hace el Happypath que lo hemos estado viendo, no. ¿cuál es tu camino perfecto para que suceda. Y esto es más como una experiencia mía como usuario. Yo soy que le estoy diciendo, quiero esto para mí, es cómo te imaginas el paso a paso, ¿Cómo te imaginabas que lo usarías.
+
+402
+00:58:29.950 --> 00:58:44.500
+Carlos Dominguez: porque, por ejemplo, abres la aplicación tu celular. Pegas un link de respuesta de Gitbo leía, lo procesa automáticamente o tú le das click en analizar, no para estar preguntando qué esperas ver como resultado resumen Tags, categoría Streetshot.
+
+403
+00:58:44.750 --> 00:58:57.909
+Carlos Dominguez: ¿dónde lo ves después? Es un feed cronológico por carpetas, por tacs etcétera, y se describe muy cómo será tu uso ideal en un día normal para que entienda tal y cual. Entonces, ¿qué es lo que tienes que meter como como planeación.
+
+404
+00:58:58.370 --> 00:59:03.909
+Carlos Dominguez: No sé si alguien quiera participar y que nos diga cómo se imaginan que lo usaría en el día a día.
+
+405
+00:59:13.090 --> 00:59:16.119
+Carlos Dominguez: pues tenemos algo en el chat o huaco a ti. Se te ocurre algo.
+
+406
+00:59:16.990 --> 00:59:23.890
+Joaco Malig: Estoy acá mirando el chat a ver tú tú tú
+
+407
+00:59:27.770 --> 00:59:31.839
+Joaco Malig: sí o sí, por categorías. Creo que importante.
+
+408
+00:59:31.840 --> 00:59:32.450
+Carlos Dominguez: Okay.
+
+409
+00:59:32.450 --> 00:59:42.980
+Joaco Malig: A mí algo que me ha costado. Yo también tengo un una especie de segundo cerebro, pero en Notion es la asignación automática de las de las de las categorías.
+
+410
+00:59:43.000 --> 00:59:54.099
+Joaco Malig: Creo que en eso no deberíamos perder tiempo porque representa una fricción importante para el uso continuo de esta herramienta. Así que
+
+411
+00:59:54.130 --> 01:00:03.240
+Joaco Malig: al analizar de todas maneras el resultado es un resumen: los T A, C S correspondientes, la
+
+412
+01:00:03.660 --> 01:00:07.080
+Joaco Malig: no sé qué habría de diferencia entre Tags y categoría.
+
+413
+01:00:07.650 --> 01:00:13.310
+Carlos Dominguez: Ejemplo categoría podría ser repostero, y Githbook y el Tag podría ser.
+
+414
+01:00:13.890 --> 01:00:14.450
+Joaco Malig: Temas.
+
+415
+01:00:14.450 --> 01:00:18.530
+Carlos Dominguez: O browser o openclow. Claro, sabes.
+
+416
+01:00:22.100 --> 01:00:25.690
+Joaco Malig: Quizás 1 podría predefinir las categorías
+
+417
+01:00:26.280 --> 01:00:37.770
+Joaco Malig: tipo. Tú que eres más más programador, obviamente vas a tener tu catego. Tu categoría de de Gith ub y de repositorios o de Reddit y de cosas dentro de Reddit. Y dentro de aquellas
+
+418
+01:00:37.820 --> 01:00:46.409
+Joaco Malig: diferentes Tacs que se puedan ir creando automáticamente y o asignando automáticamente. Pero creo que estaría interesante
+
+419
+01:00:46.410 --> 01:01:06.019
+Joaco Malig: una propuesta inicial de categorías, tipo, documentación a nivel personal documentación de mi trabajo y que yo pueda predefinir o que es mi trabajo pensando, por ejemplo, en flor que mueve diferentes cuentas a sus clientes y demás, puede tener una para cada una de sus clientes, y eso que lo pueda predefinir en
+
+420
+01:01:06.320 --> 01:01:08.959
+Joaco Malig: y que, dependiendo de cómo
+
+421
+01:01:09.240 --> 01:01:22.999
+Joaco Malig: se vaya integrando esta documentación que sea la I a que vaya asignando los Tags respectivos dentro de la categoría que flor o que sea el usuario haya seleccionado.
+
+422
+01:01:23.700 --> 01:01:26.220
+Carlos Dominguez: Okay Aquí Le voy a dar entonces una pequeña
+
+423
+01:01:26.420 --> 01:01:36.780
+Carlos Dominguez: vuelta de tuerca. Le voy a decir que correcto abro mi aplicación el celular. Estoy navegando. Veo algún repositorio de Github, algún post de X,
+
+424
+01:01:36.900 --> 01:01:38.190
+Carlos Dominguez: lo pego
+
+425
+01:01:38.450 --> 01:01:58.120
+Carlos Dominguez: antes de pegarlo. Me gustaría poder escoger un workspace por si quiero tener separado lo que es trabajo personal, clientes y dentro de cada workspace. Yo, una vez que elijo el workspace, puedo pegarlo. Tiene que ser una interfaz muy limpia, únicamente un más pegar y listo
+
+426
+01:01:58.200 --> 01:02:01.500
+Carlos Dominguez: después. De ahí, la I a automáticamente lo procesa.
+
+427
+01:02:01.610 --> 01:02:04.830
+Carlos Dominguez: lo analiza, me genera un resumen.
+
+428
+01:02:04.940 --> 01:02:17.350
+Carlos Dominguez: categoriza automáticamente, genera las Tags. Y me pone un screen shot o saca el uji social. Si está disponible, pero yo puedo editar esas categorías y esos Tags. Después
+
+429
+01:02:17.440 --> 01:02:28.349
+Carlos Dominguez: no me sirve un filtro analógico porque va a ser demasiado y se va a perder. Quiero poder verlo por workspace, por carpetas, por Tacs y también filtrar por categorías
+
+430
+01:02:31.460 --> 01:02:35.980
+Carlos Dominguez: más. Voy a ver si no hay ningún error gramatical.
+
+431
+01:02:36.550 --> 01:02:40.989
+Joaco Malig: Dani: Si puedes dejar por escrito el comentario que quieras hacer para así poder procesarlo más fácil.
+
+432
+01:02:40.990 --> 01:02:49.659
+Daniel Kalasic: Bien rapidito. Es decirle, lo voy a dejar en el comentario porque Github te da tas y te da proyectos bien interesante que lo puedes usar.
+
+433
+01:02:52.250 --> 01:02:53.139
+Joaco Malig: Bueno, buenísimo.
+
+434
+01:02:53.140 --> 01:02:55.279
+Carlos Dominguez: También vamos a mandarlo.
+
+435
+01:03:15.260 --> 01:03:24.730
+Carlos Dominguez: Dice perfecto, súper Claro, dice ahora los datos y formatos. Mencionaste varios tipos de contenido para el nvidia fase Uno: cuáles son los que usarías del día. Uno.
+
+436
+01:03:24.890 --> 01:03:41.910
+Carlos Dominguez: links, texto libre, notas rápidas, archivos, macgas, Comando prompt, stone entra en la fase 1 o hay alguno que puede esperar. Y una más. Cuando dices carpetas, te imaginas carpetas que tú creas manualmente tipo Cloudcode Tips, Rejac Patterson, etcétera, porque de ahí ya las sugiere automáticamente basada en el contenido.
+
+437
+01:03:42.650 --> 01:03:53.089
+Carlos Dominguez: Nada puede esperar todo el tipo de contenido en la fase 1 y para las carpetas, las 2, yo las puedo crear manualmente si no escojo la guía lo sugiere, pero yo lo puedo editar después.
+
+438
+01:04:00.280 --> 01:04:04.469
+Joaco Malig: Hay un mensaje muy interesante
+
+439
+01:04:04.690 --> 01:04:16.499
+Joaco Malig: de flor en el Chat. Nos cuenta de que estuvo desarrollando una herramienta con cloucode. Es un gestor de ideas y de tareas y de post, por lo que estoy viendo
+
+440
+01:04:16.800 --> 01:04:30.449
+Joaco Malig: está muy ansiosa de lo que de lo que se viene también con núcleo. Pero tenemos un pantallazo. Dice la primera tarea dentro de su herramienta. Es crear un clon de Carlos domínguez.
+
+441
+01:04:35.030 --> 01:04:37.059
+Joaco Malig: Bien, ¿cómo seguimos? Pregunta? Número 3.
+
+442
+01:04:37.060 --> 01:04:37.390
+Carlos Dominguez: De la.
+
+443
+01:04:37.390 --> 01:04:38.550
+Joaco Malig: De éxito.
+
+444
+01:04:39.010 --> 01:04:45.260
+Carlos Dominguez: Pero nada más como algo rápido que les puede servir muchísimo. No es patrocinado, pero yo utilizo esta I a que se llama Little Bird.
+
+445
+01:04:45.700 --> 01:04:56.050
+Carlos Dominguez: Hoy en día nos metemos ahí en temas de de las personas que no les gusta ser observadas, confidencialidad y todo, pero básicamente está ahí. A, analiza, ve, escucha.
+
+446
+01:04:56.230 --> 01:04:59.869
+Carlos Dominguez: Detecta todo lo que yo hago en el día a día. Entonces yo le puedo preguntar
+
+447
+01:05:00.210 --> 01:05:07.079
+Carlos Dominguez: oye hace rato? Hice esto con un cliente. No me acuerdo que pasó. Está en una llamada con algún cliente. ¿me recuerdas que mencionó sobre este tema
+
+448
+01:05:07.160 --> 01:05:26.590
+Carlos Dominguez: y Little Bird me puede decir exactamente cómo, qué fue lo que pasó o yo le puedo decir que me haga un resumen de mi día y más un resumen a las 10 de la mañana tuviste una junta a las 11, estuviste haciendo esto después. Hiciste esto. Hiciste este demo y me puedes ir básicamente todo lo que hice en el día. Y de esta forma me clono.
+
+449
+01:05:26.770 --> 01:05:38.079
+Carlos Dominguez: Yo documento todo lo que pasa, y puedo irlo preguntando cuando yo quiera, cuando necesita. Te las recomiendo bastante. Yo estoy usando. La estoy en basic, estoy en modo gratuito y
+
+450
+01:05:38.330 --> 01:05:41.299
+Carlos Dominguez: llevo un par de meses y me ha funcionado bastante bien.
+
+451
+01:05:42.610 --> 01:05:43.810
+Joaco Malig: Interesante.
+
+452
+01:05:44.250 --> 01:05:45.520
+Joaco Malig: Little Byrd.
+
+453
+01:05:45.880 --> 01:05:46.930
+Carlos Dominguez: Continuemos
+
+454
+01:05:48.710 --> 01:06:07.209
+Carlos Dominguez: Okay Cape y de éxito. Eso siempre te lo va a Pe, te lo va a pedir, cual es tu capi de éxito, y solo te va a decir 1 de qué resultado medible define que el núcleo fase 1 fue un éxito para ti, ejemplo, guardar 10 cosas al día sin flexión. Encontrar algo que guarde en menos de 10 s nunca más perder un link que vi en el celular.
+
+455
+01:06:07.440 --> 01:06:17.169
+Carlos Dominguez: Y me dice cuál es tu música número 1. Me pide que elija una porque eso va a ser como que la guía para asegurarse de que estemos cumpliendo con ese objetivo.
+
+456
+01:06:17.270 --> 01:06:34.020
+Carlos Dominguez: Creo que en este caso sería encontrar algo que guardé. No me sirve mucho si guardo 10 cosas y después no las puedo encontrar. Entonces, en mi caso en particular, sería poder encontrar algo que guardé de manera muy rápida y tener que estar buscando dentro de cientos de carpetas o cientos de tags.
+
+457
+01:06:34.720 --> 01:06:47.129
+Carlos Dominguez: Entonces mi métrica número 1 sería encontrar lo que guarde en menos de 5 s, diría yo. No quiero estar buscando en workspace carpetas, etiquetas filtrado que sea muy intuitivo y fácil de encontrar
+
+458
+01:06:50.630 --> 01:06:51.720
+Carlos Dominguez: muy bien
+
+459
+01:06:53.600 --> 01:07:01.229
+Carlos Dominguez: lo que hay fuera de alcance para que quede cristalino. El pillar confirmo esto quedará fuera de la fase. Uno nos está confirmando boys, note
+
+460
+01:07:01.860 --> 01:07:06.279
+Carlos Dominguez: Video: análisis, rachat Chromextention Offline first. ¿correcto?
+
+461
+01:07:06.500 --> 01:07:13.449
+Carlos Dominguez: Es correcto, entonces qué quiere decir que cuando terminemos estas sesiones y ya esté listo El
+
+462
+01:07:13.920 --> 01:07:18.700
+Carlos Dominguez: El repositorio para que ustedes lo puedan empezar a usar no va a estar disponible nada de esto.
+
+463
+01:07:18.790 --> 01:07:37.449
+Carlos Dominguez: pero ya después lo analizaremos si en vivo desarrollamos la parte, la fase 2 y la fase 3 o igual ahorita se me ocurre jugar con no sé cómo tú veas. Pongo lanzar un mini reto en la comunidad de a ver quién es el primero que desarrolla la fase 2, ya que van a tener toda la documentación y van a tener acceso al repositorio
+
+464
+01:07:37.450 --> 01:07:50.239
+Carlos Dominguez: y igual la podemos comparar las diferentes fases que cada 1 desarrolle y y hacemos un ul request que básicamente lo traemos al repostería original. Y lo hacemos parte del del repositorio que esté disponible para todos.
+
+465
+01:07:51.200 --> 01:07:54.019
+Joaco Malig: suena espectacular, Me encanta la idea.
+
+466
+01:07:54.140 --> 01:08:04.189
+Joaco Malig: ¿y qué tal si es que a esa persona ganadora y más algún algún sorteo que podamos hacer. En las próximas sesiones regalamos una.
+
+467
+01:08:04.450 --> 01:08:08.850
+Joaco Malig: un una credencial de Forsch.
+
+468
+01:08:09.440 --> 01:08:13.469
+Joaco Malig: ¿qué te parece? Podemos hacer ese esfuerzo? Carlos: te estoy poniendo en aprietos. Esto no te lo pregunta.
+
+469
+01:08:13.470 --> 01:08:16.490
+Carlos Dominguez: Vamos vamos a hacerlo. Vamos a hacer un top. Tres.
+
+470
+01:08:16.620 --> 01:08:19.960
+Carlos Dominguez: Ahí vemos que hacemos una serie Porsche.
+
+471
+01:08:20.200 --> 01:08:24.560
+Carlos Dominguez: El segundo sería, ya hablamos con los corderos, le sacamos otra tarjetas.
+
+472
+01:08:24.569 --> 01:08:25.409
+Joaco Malig: Otra.
+
+473
+01:08:25.410 --> 01:08:25.910
+Carlos Dominguez: Así como.
+
+474
+01:08:25.910 --> 01:08:26.410
+Joaco Malig: Pero bueno.
+
+475
+01:08:26.410 --> 01:08:27.990
+Carlos Dominguez: Rico y y.
+
+476
+01:08:27.990 --> 01:08:28.620
+Joaco Malig: Sí, Sí.
+
+477
+01:08:28.620 --> 01:08:30.649
+Carlos Dominguez: Top 3 que le metemos.
+
+478
+01:08:31.149 --> 01:08:32.770
+Joaco Malig: Perfecto, buenísimo.
+
+479
+01:08:33.740 --> 01:08:39.540
+Carlos Dominguez: Okay Dice perfecto, resumen de lo que entendí. Problema. Solución usuario, flujo n B, fase, 1
+
+480
+01:08:39.660 --> 01:08:49.170
+Carlos Dominguez: caps que identifiqué autenticación y cenizas login porque es multidivice. Evidentemente, email más possword simple, o prefieres un majin link simet. Apple
+
+481
+01:08:49.300 --> 01:08:58.320
+Carlos Dominguez: magic link básicamente es te envía un correo, un enlace a tu correo al cual tú le das clic. Y con esa iniciación, automáticamente no tienes que poner usuario contraseña
+
+482
+01:08:58.689 --> 01:09:05.050
+Carlos Dominguez: Apple porque identifica que yo le dije iphone. Pero porque yo tengo un iphone, pero el que tenga Android, pues Tenim With Google
+
+483
+01:09:05.200 --> 01:09:13.690
+Carlos Dominguez: o si es simplemente un email y password, entonces puedo yo responderle así, tal cual o poner Ok, para out
+
+484
+01:09:15.100 --> 01:09:21.830
+Carlos Dominguez: email más password no y así para búsqueda.
+
+485
+01:09:24.160 --> 01:09:26.540
+Carlos Dominguez: tú que apoyas en 4. 1 000. Cinco segundos. Eso implica Full
+
+486
+01:09:26.680 --> 01:09:32.760
+Carlos Dominguez: Texarch, potente no solo filtros, que es un searchback global que busca un título, resumen y Touch: Sí,
+
+487
+01:09:33.370 --> 01:09:39.129
+Carlos Dominguez: para carpetas planas una sola capa o anidadas.
+
+488
+01:09:39.939 --> 01:09:42.630
+Carlos Dominguez: Muy buena pregunta. Ustedes qué dicen.
+
+489
+01:09:42.810 --> 01:09:48.240
+Carlos Dominguez: no sé si anidadas está demasiado buscar dentro de una carpeta dentro de una carpeta dentro de una carpeta
+
+490
+01:09:49.020 --> 01:09:49.889
+Carlos Dominguez: tal cual será como.
+
+491
+01:09:49.890 --> 01:09:50.670
+Joaco Malig: Una comida.
+
+492
+01:09:50.670 --> 01:09:54.599
+Carlos Dominguez: Puedes tener carpetas dentro de carpetas. No estoy convencido.
+
+493
+01:09:55.700 --> 01:10:13.040
+Joaco Malig: No sé, no sé si complejiza mucho el M. V. P: pero pienso que tener una carpeta que adentro podamos tener subtemas. Estoy pensando, por ejemplo, en en en en poder documentar información de que se un cliente y ese cliente va a tener diferentes
+
+494
+01:10:13.280 --> 01:10:17.139
+Joaco Malig: temas con los que yo trabaje. Sería interesante poder
+
+495
+01:10:17.430 --> 01:10:23.870
+Joaco Malig: seleccionar. Pero, claro, les genera un poco de fricción al momento de guardar, tener que seleccionar efectivamente. ¿cuál es.
+
+496
+01:10:23.870 --> 01:10:24.250
+Carlos Dominguez: No se.
+
+497
+01:10:24.250 --> 01:10:24.619
+Joaco Malig: Si el.
+
+498
+01:10:24.620 --> 01:10:31.259
+Carlos Dominguez: Elegimos anidadas, pero no más de 3 niveles: Tu carpeta real.
+
+499
+01:10:31.260 --> 01:10:31.609
+Joaco Malig: En el.
+
+500
+01:10:31.860 --> 01:10:34.669
+Carlos Dominguez: Una super carpeta y una más. Ya 4 ya no.
+
+501
+01:10:34.670 --> 01:10:35.140
+Joaco Malig: Es que.
+
+502
+01:10:35.140 --> 01:10:35.959
+Carlos Dominguez: Porque si no te puedes.
+
+503
+01:10:35.960 --> 01:10:36.470
+Joaco Malig: Perfecto.
+
+504
+01:10:36.470 --> 01:10:37.639
+Carlos Dominguez: Ir y nunca terminar.
+
+505
+01:10:37.640 --> 01:10:39.070
+Joaco Malig: Sí, Sí, Exacto.
+
+506
+01:10:39.070 --> 01:10:40.170
+Carlos Dominguez: Después.
+
+507
+01:10:44.710 --> 01:10:53.729
+Carlos Dominguez: solo 2 personas más clientes o quieres poder crear ilimitados de inicio personal, trabajo
+
+508
+01:10:53.860 --> 01:10:58.939
+Carlos Dominguez: y la opción de poder crear más hasta un máximo de 5
+
+509
+01:11:02.840 --> 01:11:10.600
+Carlos Dominguez: que Bull Import: Eso es muy bueno. No lo habíamos pensado que si necesitamos importar Bookmarks existentes o si queremos empezar.
+
+510
+01:11:10.600 --> 01:11:12.360
+Joaco Malig: ¿Qué buena idea! Sí.
+
+511
+01:11:12.360 --> 01:11:14.470
+Carlos Dominguez: Decirle que sí
+
+512
+01:11:15.470 --> 01:11:27.079
+Carlos Dominguez: necesito la opción de poder importar Bookmarks. Pero no solo eso. Si yo ya tengo mi propio cerebro en algún otro lado. Esto puede generar una plantilla Csv donde yo llene los datos, y después la puedo importar.
+
+513
+01:11:29.680 --> 01:11:30.209
+Joaco Malig: En la.
+
+514
+01:11:30.210 --> 01:11:43.059
+Carlos Dominguez: Listo. Como ven, que no habíamos planeado y va a ir actualizando los documentos, los documentos conforme a eso dice, Ok, ese usuario me dijo que quiere esto, pero no está en el plano original. Déjame regresar, y lo actualizó para que no se me olvide en un futuro.
+
+515
+01:11:43.660 --> 01:11:56.880
+Joaco Malig: Una maravilla. Oye, me surge una pregunta. ¿tiene que ver con esto del magic link, ¿Por qué o en qué casos lo recomiendas. ¿qué contras tiene el poder diseñar una herramienta que la
+
+516
+01:11:57.060 --> 01:11:59.769
+Joaco Malig: la autentificación tenga que ver con ese sistema.
+
+517
+01:12:00.760 --> 01:12:07.519
+Carlos Dominguez: Mira honestamente, yo casi no he visto muchas aplicaciones o páginas que utilicen Magilink para para iniciar sesión.
+
+518
+01:12:08.090 --> 01:12:17.830
+Carlos Dominguez: Supongo que funciona más o donde yo lo he visto. Es plataformas que quieren reducir fricción para que el usuario inicie a usar la plataforma.
+
+519
+01:12:18.190 --> 01:12:21.549
+Carlos Dominguez: Por ejemplo, tú ves una plataforma, ves algo y
+
+520
+01:12:22.000 --> 01:12:26.059
+Carlos Dominguez: no quieres que el usuario pase por el proceso de crear una cuenta, verificar su email.
+
+521
+01:12:26.060 --> 01:12:26.680
+Joaco Malig: Claro.
+
+522
+01:12:26.680 --> 01:12:39.399
+Carlos Dominguez: O necesitas hacer un check out muy rápido que el usuario pueda comprar algo sin tener sin obligarlo a cargar una cuenta, entonces reduces esa fricción. Y ahí es donde metes el Magic Link para que pueda iniciar sesión de esa manera muy rápida, con solo poniendo su su email.
+
+523
+01:12:39.650 --> 01:12:45.919
+Carlos Dominguez: Es donde yo lo he visto. Para este caso en particular. No me hace mucho mucho sentido si va a ser para uso uso personal.
+
+524
+01:12:46.440 --> 01:12:55.009
+Carlos Dominguez: porque tuviéramos una versión premium que la gente pudiera utilizar y está disponible en la web para todos a lo mejor Ahí sí había sentido un magic link porque queremos que la gente
+
+525
+01:12:55.860 --> 01:13:05.399
+Carlos Dominguez: pueda empezar a usarla con la menor fricción posible y des no no hacerlos pasar por un lomboarding, creación de cuentas simplemente con un mailing que ya puedan empezar.
+
+526
+01:13:09.090 --> 01:13:20.789
+Carlos Dominguez: Ok. Cada vez que vean esto como en azulito. Si ven que paso en mi mouse explicable, que dice que ya terminó y que ya me generó el documento, entonces yo le doy clic. Ese documento ya es un poquito más grande.
+
+527
+01:13:20.920 --> 01:13:40.730
+Carlos Dominguez: ¿dónde tiene la fecha? La versión está en borrador y cuál es el modo, una herramienta interna de lo que estamos usando Es un uso personal, multivice. Y aquí viene el problema: el costo, la situación actual, la propuesta de valor, el flujo principal, que es el Happypath, flujos alternativos.
+
+528
+01:13:40.800 --> 01:13:52.459
+Carlos Dominguez: scaises usuario, objetivo tan estimado arquitectura de datos output entidades principales K. P y de éxito
+
+529
+01:13:52.550 --> 01:14:12.070
+Carlos Dominguez: modelo de negocio. En este caso es una herramienta personal. No hay monetización, es, no es la competencia. Son como que las cosas que ya existen, pero no tiene tal cual. Todo lo que necesitamos. Esto es muy potente cuando ya estén, ustedes quieren crear una salsa o quieren crear alguna app que vayan a vender, porque es importante que tengan o que conozcan la competencia, no
+
+530
+01:14:12.370 --> 01:14:16.769
+Carlos Dominguez: el alcance del M V P. Del fase. Uno pase 2
+
+531
+01:14:16.930 --> 01:14:34.319
+Carlos Dominguez: y explícitamente fuera del alcance. Lo que no vamos a hacer No Snotion, y es Google Docs sólo buscan tu propia base de conocimiento. No a buscar Internet. No tiene colaboraciones, es personal. No hay Share ni permisos multiusuario. No tiene notificaciones, no manda push ni emails School, No Push
+
+532
+01:14:34.390 --> 01:14:39.440
+Carlos Dominguez: y no hace scrap en automático el usuario pega el contenido manualmente. No creo lea antes
+
+533
+01:14:39.850 --> 01:14:47.609
+Carlos Dominguez: consideraciones especiales: restricciones, riesgos identificados, garfis, identificados y recomendaciones
+
+534
+01:14:48.070 --> 01:14:56.219
+Carlos Dominguez: próximos pasos. Que es lo que decíamos, Eso es como un cuadrito que va poniendo un check como para que no se olvide todo lo que tiene que ir.
+
+535
+01:14:56.620 --> 01:15:12.290
+Joaco Malig: Sí está hecho o no. Es impresionante el nivel del análisis que tiene el nivel de profundidad que tiene este documento. Estamos hablando de 1 de los 8 documentos que va generando. Este es el segundo. Si no me equivoco, muy potente.
+
+536
+01:15:13.200 --> 01:15:33.020
+Carlos Dominguez: Okay, entonces ya lo revisamos, nos dice, nos vamos a la siguiente fase, que es el textec. Ya nos metemos un poquito en la parte técnica que es definir el Golden Pack y qué es lo que vamos a utilizar o qué es lo que va a ser Cloud Code, porque no va a ser nada de esto. A lo mucho tendremos que ir a crear alguna credencial, conectar alguna cuenta, generar una Pick Token.
+
+537
+01:15:33.070 --> 01:15:41.810
+Carlos Dominguez: etcétera. No que inclusive ya hay maneras de que tú le puedes dar acceso a tu cloud Coud para que vaya a tu navegador, lo controle y haga todo lo que necesitas, pero
+
+538
+01:15:41.970 --> 01:15:47.880
+Carlos Dominguez: no lo vamos a ver. Ahorita: Eso ya es un tema más más este técnico, pero
+
+539
+01:15:48.000 --> 01:15:50.669
+Carlos Dominguez: que que sepan, no sé si lo lo han visto.
+
+540
+01:15:50.960 --> 01:16:04.749
+Carlos Dominguez: Cloudcout anunció hace 2 días 3 días Computer Us así como los hay, anunció Perplex de hace unos meses. Cloudko ya lo tiene. Tú le puedes dar permiso a claustro para que vaya a tu navegador, mueva, el mouse, le des clic.
+
+541
+01:16:04.910 --> 01:16:13.290
+Carlos Dominguez: descargue cosas, escribe información, ya puede controlar el navegador por ti, inclusive lo pones. ¿sabes qué ve tú a su país en el proyecto.
+
+542
+01:16:13.390 --> 01:16:17.620
+Carlos Dominguez: Genera las apis cópialas y configúralas directamente sin que yo tenga que hacer nada.
+
+543
+01:16:18.560 --> 01:16:22.760
+Carlos Dominguez: Vamos a decirle que el P D R es aprobado.
+
+544
+01:16:23.500 --> 01:16:33.310
+Carlos Dominguez: Continúa como ven, estos toda esta parte de planeación. A lo mejor no es tan
+
+545
+01:16:33.990 --> 01:16:43.949
+Carlos Dominguez: divertido. No estamos haciendo mucho, pero es muy importante definir bien y tener todos estos documentos y muy claro lo que queremos hacer
+
+546
+01:16:44.150 --> 01:16:50.659
+Carlos Dominguez: para tener un muy buen resultado. Y lo potente. Y la maravilla de esto es que te hace muchas veces
+
+547
+01:16:50.900 --> 01:17:03.150
+Carlos Dominguez: preguntas sobre temas que tú ni siquiera habías considerado, y ni siquiera tenías en cuenta. Por ejemplo, nos preguntó que si queríamos un bulking, por si en ningún momento lo mencionamos. Es algo que no se me había ocurrido y que probablemente.
+
+548
+01:17:04.820 --> 01:17:13.760
+Carlos Dominguez: por si ya tenemos en algún lado o en muchos lados revueltos, o a lo mejor muchos identifican, Así como yo me mandó Whatsapp a mí mismo y luego guardando cosas.
+
+549
+01:17:13.890 --> 01:17:17.980
+Carlos Dominguez: podernos traer todo eso que tenemos en varios lados a hacia el núcleo.
+
+550
+01:17:22.730 --> 01:17:30.040
+Carlos Dominguez: Ok. Y aquí ya nos da un poquito más de información. Ok, es análisis perfecto. Complejidad media.
+
+551
+01:17:30.190 --> 01:17:44.489
+Carlos Dominguez: 7 identidades, entidades, perdón e integrations food search w a el gol. El gol de empate encaja, Bien, pero hay decisiones no obvias que he visto debatir contigo. El Frontend. Vamos a utilizar Next Ye Yes.
+
+552
+01:17:44.490 --> 01:17:49.410
+Joaco Malig: Tenemos que conversar. Te dice, tenemos que conversar porque hay cosas que no están claras, Sí.
+
+553
+01:17:50.590 --> 01:17:58.100
+Carlos Dominguez: Y aquí nos está diciendo Frottend, Ok Backend. Vamos a hacer esto. Ella y vamos a usar Bersely, Aie. Así que más open, Router
+
+554
+01:17:58.130 --> 01:18:10.909
+Carlos Dominguez: Open Router. Ya lo hemos usado en el 8. N Es una plataforma que básicamente junta. Casi todos los Lms posibles. Tú creas tu credencial tu a p. I, haces una recarga. Y puedes con la misma plataforma mandar llamar a Cloud
+
+555
+01:18:10.910 --> 01:18:18.310
+Carlos Dominguez: a gemina a Grough, a Diepy, a Open a todos los diferentes modelos, y tienen que estar creando cuentas y apis
+
+556
+01:18:18.310 --> 01:18:26.589
+Carlos Dominguez: en cada 1 de esos, y eso está definido en el Golden Path, que nos recomienda utilizar open router para no tener que estar creando y conectando múltiples fuentes.
+
+557
+01:18:27.440 --> 01:18:38.489
+Joaco Malig: Carlos, una pregunta con respecto a Router: los valores de uso para los diferentes modelos es el mismo. Si contratáramos directo o hacen ahí economía a escala y un poco más barato.
+
+558
+01:18:39.160 --> 01:18:51.380
+Carlos Dominguez: Hasta donde sea. Hay un marco muy diminuto. Estamos hablando centavos por por por 1 000 000 de tokens de contexto, y es la forma en la que ellos ganan. Tiene un marco, pero muy diminuto
+
+559
+01:18:57.200 --> 01:19:14.849
+Carlos Dominguez: y dice: procesamiento, zinc o asinc. ¿qué quiere decir zinc? Pegas, el link esperas, Tres, 5 s, y ves el resultado completo, o pegas. El link se guarda inmediatamente con estado procesando la I analiza en el Background y el Kart se actualiza sólo cuando termina
+
+560
+01:19:15.580 --> 01:19:27.470
+Carlos Dominguez: y se recomiendo a Sync. La U I usak interface responde al instante se siente rápida, y el análisis aparece cuando esté listo, te estás pegando 5 links seguidos. No quieres esperar 5 por 3. s.
+
+561
+01:19:27.530 --> 01:19:39.470
+Carlos Dominguez: Tiene completamente sentido modelo para categorización. High, 4, 5, rápido y barato nonizas, opus para generar taxis resúmenes. Ojo. Esto siempre lo va a hacer como estamos utilizando Cloud Code
+
+562
+01:19:39.470 --> 01:19:53.980
+Carlos Dominguez: siempre nos va a recomendar sus propios modelos. No te va a decir, utiliza 4, 1, flash etcétera. Siempre te va a recomendar. Tú le puedes decir, sabes que no. Quiero. No pasa absolutamente nada, pero siempre te va a recomendar
+
+563
+01:19:54.310 --> 01:19:55.820
+Carlos Dominguez: los modelos tal cual de atrope.
+
+564
+01:19:55.820 --> 01:19:59.819
+Joaco Malig: Igual. Por ahora, nosotros también vamos a recomendar antropic.
+
+565
+01:20:00.530 --> 01:20:10.799
+Carlos Dominguez: Son más caros, eso sí, son mucho más eficientes. También. Servicios Superhis Storage para Topmails y Imach Boxer, privado comprimido máximo. 200.
+
+566
+01:20:11.050 --> 01:20:25.169
+Carlos Dominguez: ¿por qué me hice todo esto? Que no lo necesito porque se está definiendo el Golden Party. Yo hicieron saas completo y mi historia Strike para cobrar resent para mandar emails y
+
+567
+01:20:25.270 --> 01:20:28.190
+Carlos Dominguez: centry para poder evaluar errores
+
+568
+01:20:28.360 --> 01:20:41.470
+Carlos Dominguez: que yo pueda detectar errores redes Obstage para tener caché y realimiting para que no abusen de ciertos a P en Points o que la gente no abuse y me consuma. Todos mis tokens. En
+
+569
+01:20:41.580 --> 01:20:44.209
+Carlos Dominguez: estoy exponiendo alguna de mi a P. I
+
+570
+01:20:44.630 --> 01:20:48.209
+Carlos Dominguez: y deploy en Bersel. Eso también está definido en el Golden Path
+
+571
+01:20:48.390 --> 01:20:57.600
+Carlos Dominguez: En este caso, nosotros no vamos a hacer. En Bersel vamos a hacer un diploy, auto jose a nuestro propio v. P. S. Que lo
+
+572
+01:20:57.780 --> 01:21:10.400
+Carlos Dominguez: por ahí tengo un post en la comunidad que sube una guía paso a paso cómo poder hacer un diploy de una web App que utiliza Next Ye yes en un V. P. S. Entonces ahorita. Yo le voy a. Le voy a a corregir eso
+
+573
+01:21:10.650 --> 01:21:13.059
+Carlos Dominguez: y listo.
+
+574
+01:21:13.280 --> 01:21:20.520
+Carlos Dominguez: Entonces lo voy a responder. Lo primero que me pregunta es que si quiero 5, le voy a decir que asing, porque me hace mucho sentido.
+
+575
+01:21:20.640 --> 01:21:22.650
+Carlos Dominguez: Después le voy a decir deploy
+
+576
+01:21:25.580 --> 01:21:34.869
+Carlos Dominguez: el diploy. Esta vez no lo vamos a hacer en Bersell, lo vamos a hacer en nuestro propio V. P. S. Con un docker más adelante. Te voy a dar la documentación necesaria.
+
+577
+01:21:35.290 --> 01:21:40.919
+Carlos Dominguez: Yo ya tengo un Skill que lo compartí en la comunidad que es Co: para hacer deploys en V. P. S.
+
+578
+01:21:41.030 --> 01:21:46.170
+Carlos Dominguez: Todos los facos, Si me puedes ayudar con el enlace, estará genial, tenemos.
+
+579
+01:21:46.170 --> 01:21:50.580
+Joaco Malig: Dame. No recuerdo esa voz. Dame. Dame indicaciones.
+
+580
+01:21:50.580 --> 01:21:54.139
+Carlos Dominguez: Tú buscas Infloyd. Vps. Te va. Te Debes.
+
+581
+01:21:54.140 --> 01:21:54.740
+Joaco Malig: Hay que un.
+
+582
+01:21:54.740 --> 01:21:56.030
+Carlos Dominguez: Buscar más rápidamente.
+
+583
+01:21:56.280 --> 01:21:58.540
+Joaco Malig: No, no, no avanza, avanza. Tú, yo lo yo te lo busco.
+
+584
+01:21:58.860 --> 01:22:13.919
+Carlos Dominguez: Dale. Y es un skill que compartí que ustedes se la pasan a su gente le pide que la analice la instala y listo, les hace el diploy en el V. P: S. Les pregunta qué tienes? Tienes un un docker limpio? Utilizas Ese panel utilizas Schooly, utilizas algún otro
+
+585
+01:22:13.920 --> 01:22:20.799
+Carlos Dominguez: docploy, algún otro Docker container Este y te hace toda la configuración para poder hacer
+
+586
+01:22:20.950 --> 01:22:29.770
+Carlos Dominguez: el deploy porque tiene que hacer unos pequeños ajustes a lo mejor generarte tu docker con post, y algunas otras cosas. Para que esto pueda ser deploriable en un V. P, S.
+
+587
+01:22:30.340 --> 01:22:33.460
+Joaco Malig: Nuevo Skill Docker deploy hace 13 días.
+
+588
+01:22:33.900 --> 01:22:34.540
+Carlos Dominguez: Sí.
+
+589
+01:22:35.240 --> 01:22:40.520
+Joaco Malig: Okay. Lo dejaré en el chat.
+
+590
+01:22:41.270 --> 01:22:47.650
+Carlos Dominguez: Quieres que le haga automáticamente o que la guía haga todo.
+
+591
+01:22:48.300 --> 01:22:51.419
+Carlos Dominguez: Vamos a poner extracción.
+
+592
+01:22:53.370 --> 01:22:59.320
+Carlos Dominguez: Quiero que extraiga siempre y cuando esté disponible, si no está disponible, no lo va a dejar en blanco y la I a lo va a hacer.
+
+593
+01:23:00.380 --> 01:23:05.389
+Carlos Dominguez: ¿qué es esto que dice aquí. Esto es S. E. O metadata
+
+594
+01:23:05.460 --> 01:23:14.709
+Carlos Dominguez: tú cuando haces una página web, o cuando publicas algo, tú puedes poner esta metadata que yo recomiendo que lo hagan es que lo que usan para indexarlo
+
+595
+01:23:14.750 --> 01:23:24.510
+Carlos Dominguez: El son el título, la descripción y la imagen. No sé si han visto cuando comparto un enlace por Whatsapp o alguna plataforma, A veces sale una pequeña imagen y una descripción.
+
+596
+01:23:24.540 --> 01:23:38.260
+Carlos Dominguez: y no sale nada, es porque para ese enlace no está configurado esa metadata. Si Te sit sales porque el autor de ese post enlace de lo que sea página. Configuró la metadata. Y por eso a veces sale el título, la descripción y una pequeña imagen.
+
+597
+01:23:38.260 --> 01:23:45.429
+Carlos Dominguez: eso tú lo puedes configurar. Y si no lo están haciendo en sus webs o en sus proyectos, les recomiendo que lo que lo hagan.
+
+598
+01:23:46.150 --> 01:23:47.370
+Joaco Malig: Pues deberían.
+
+599
+01:23:48.380 --> 01:23:51.520
+Carlos Dominguez: Y también investiguen un poco sobre yeo. Se escribe así.
+
+600
+01:23:51.690 --> 01:24:04.239
+Carlos Dominguez: Jeo que es el equivalente del S E. O. Pero para el L Ms: Entonces es la forma en la que tus agentes. Tag, P. T. Cloud, pueden indexar tus páginas web y pueden
+
+601
+01:24:04.530 --> 01:24:10.589
+Carlos Dominguez: recomendarlas o mostrar esos enlaces o mencionar el usuario que existe. Si no tienes un llego configurado, no lo van a poder hacer.
+
+602
+01:24:11.490 --> 01:24:17.990
+Carlos Dominguez: Y Luego dice: recomiendo us un serverless function que hacer Fech Html Extrae Open graph
+
+603
+01:24:18.090 --> 01:24:23.339
+Carlos Dominguez: y le pasas. Esto no se coordina para irse profundo así, la illa no tiene que visitar el Linder.
+
+604
+01:24:23.610 --> 01:24:26.579
+Carlos Dominguez: Estoy de acuerdo con tu recomendación
+
+605
+01:24:27.580 --> 01:24:37.369
+Carlos Dominguez: y lo que no se incluye el Mvp y Stripe lo habíamos dicho al Golia Maily Search. Esto es para poder hacer
+
+606
+01:24:37.820 --> 01:24:50.300
+Carlos Dominguez: al gol. Ya es para poder hacer una búsqueda en tu base de datos de una manera muchísimo más eficiente y rápida. Y para eso ya es cuando tienes muchísimas registros que tienes que ir a buscar.
+
+607
+01:24:52.970 --> 01:24:54.900
+Carlos Dominguez: Así que vamos a darle enviar
+
+608
+01:25:02.720 --> 01:25:09.619
+Carlos Dominguez: Tú me dices paco. Si quieres que terminemos en 10 min para que una hora y media. Te quieres extender un poco más. Yo estoy bien
+
+609
+01:25:09.940 --> 01:25:17.940
+Carlos Dominguez: este para ver si dejamos a lo mejor unos minutitos. Nada más de preguntas al final. Antes de terminar, y hasta dónde hayamos llegado nada más que generemos el
+
+610
+01:25:18.410 --> 01:25:20.230
+Carlos Dominguez: este siguiente, el texpek.
+
+611
+01:25:20.950 --> 01:25:24.780
+Joaco Malig: Yo también estoy con disponibilidad de poder extenderme
+
+612
+01:25:25.130 --> 01:25:34.460
+Joaco Malig: Las preguntas, invitamos a los que están en vivo, a que las vayan dejando en el chat, yo no dejaría espacio al final. Entonces podríamos ponernos como meta
+
+613
+01:25:34.730 --> 01:25:36.820
+Joaco Malig: cerrar la documentación. Quizás.
+
+614
+01:25:37.620 --> 01:25:38.120
+Carlos Dominguez: Dale.
+
+615
+01:25:38.120 --> 01:25:39.719
+Joaco Malig: O es muy ambicioso.
+
+616
+01:25:40.820 --> 01:25:50.949
+Carlos Dominguez: Yo creo que va a ser muy ambicioso porque mientras más avanzamos, más se tarda, ¿por qué? Porque tengan en cuenta que casi generamos un documento cuando generamos el primer documento, que es el vallability Check.
+
+617
+01:25:51.450 --> 01:25:55.849
+Carlos Dominguez: parte de lo que nosotros dijimos cuando generamos el P. D. R. Va y revisa
+
+618
+01:25:55.970 --> 01:25:57.619
+Carlos Dominguez: el Valladolid de Check para hacerlo.
+
+619
+01:25:57.990 --> 01:26:03.100
+Carlos Dominguez: Cuando generamos el Texpect va y revisa el variability. El pdr va a nuestro input.
+
+620
+01:26:03.120 --> 01:26:18.170
+Carlos Dominguez: Conforme vamos avanzando, estamos agregando un documento más que tiene que revisar un documento más que tiene que revisar. Por eso van aumentando también el tiempo que se tarda en generar estos estos documentos, porque cada vez va revisando un documento más para tener todo este todo este contexto.
+
+621
+01:26:18.850 --> 01:26:24.630
+Joaco Malig: Claro se entiende, se entiende, parece provocar.
+
+622
+01:26:24.630 --> 01:26:25.210
+Carlos Dominguez: Que lo que.
+
+623
+01:26:25.210 --> 01:26:25.700
+Joaco Malig: En el.
+
+624
+01:26:25.700 --> 01:26:33.040
+Carlos Dominguez: Yo tendría sería mi me consumo, porque toda esta mañana estuve dando a cloud code y me queda.
+
+625
+01:26:34.270 --> 01:26:36.939
+Carlos Dominguez: Ohh: Me queda 30 por 100 de mi sesión.
+
+626
+01:26:40.470 --> 01:26:42.040
+Joaco Malig: Buenísimo, buenísimo.
+
+627
+01:26:46.310 --> 01:26:51.280
+Joaco Malig: Veamos cómo vamos, pero yo propondría por lo menos unos 20 a 30 min más si es posible.
+
+628
+01:26:51.600 --> 01:26:53.379
+Carlos Dominguez: Vale, ya estoy disponible.
+
+629
+01:26:55.190 --> 01:27:14.020
+Carlos Dominguez: entonces nos está generando el texto completo, ahorita que termine. Lo vamos a ver aquí. Nos va a decir si lo abrimos, lo abrimos y ustedes se van a dar dando cuenta como de los documentos, van creciendo un poco más van creciendo un poco más en cuanto a complejidad, ya que también en cuanto a lo largo de del documento por lo mismo, porque cada vez van considerando más cosas.
+
+630
+01:27:14.240 --> 01:27:17.460
+Carlos Dominguez: Y este de los tex Pets son de los documentos
+
+631
+01:27:17.790 --> 01:27:32.070
+Carlos Dominguez: más largos, porque pues son muchas cosas que tiene que configurar o tiene que tomar en cuenta, y nos da más o menos el layout o la estructura de cómo quedarían las tablas en la base de datos y cómo se relacionan
+
+632
+01:27:32.210 --> 01:27:35.539
+Carlos Dominguez: esos datos, con lo que el usuario tiene que hacer
+
+633
+01:27:47.220 --> 01:27:51.150
+Carlos Dominguez: en lo que se procesa esto. No sé si tengamos alguna duda o pregunta.
+
+634
+01:27:52.560 --> 01:27:55.500
+Joaco Malig: No, pero ahora no en
+
+635
+01:27:57.640 --> 01:28:04.270
+Joaco Malig: interesante, también mencionar de que estamos haciendo este desarrollo en una sesión de Cloud code.
+
+636
+01:28:04.450 --> 01:28:09.290
+Joaco Malig: Obviamente 1 podría tener en paralelo hasta
+
+637
+01:28:09.700 --> 01:28:16.970
+Joaco Malig: no sé las que tu cabeza permita seguir, digamos, y tu computador permita sostener, y el consumo de Tokens
+
+638
+01:28:17.120 --> 01:28:19.419
+Joaco Malig: de tu cuenta en nuestro Bitcoin
+
+639
+01:28:19.760 --> 01:28:26.120
+Joaco Malig: permita sostener también. Pero es bien interesante y te quería proponer algo amigo Carlos
+
+640
+01:28:26.690 --> 01:28:33.210
+Joaco Malig: porque esto se está convirtiendo en un en un en una experiencia de desarrollo en vivo.
+
+641
+01:28:33.500 --> 01:28:44.239
+Joaco Malig: Esto es esto más que bitecoding. Este es un life Coding, estamos estamos en vivo desarrollando una herramienta.
+
+642
+01:28:44.750 --> 01:28:51.730
+Joaco Malig: Está tremendo. Y esto justamente ayer, preparándome un poco para para para esto. Y me metí a Youtube
+
+643
+01:28:52.120 --> 01:29:05.160
+Joaco Malig: y aparece incipientemente el concepto de litecoding y cosas que estamos haciendo contigo Carlos en este en esta sesión. Entonces está interesante porque permite poder
+
+644
+01:29:05.400 --> 01:29:19.500
+Joaco Malig: mostrar cuáles son las interrogantes, las preguntas que toca ir resolviendo. Acá obviamente hay mucha estructura, pero vamos a ver que Eventualmente vamos a tener que ir a hacer algunos trabajos
+
+645
+01:29:19.520 --> 01:29:34.420
+Joaco Malig: por nuestra cuenta. Tener que abrir la el el, el, el digamos Chrome para buscar ciertas Apis Keys que podamos conectar en este repositorio de marzo cosas bien interesantes que a todos, espero, esperemos, les estén
+
+646
+01:29:34.450 --> 01:29:43.539
+Joaco Malig: esté sirviendo en su proceso de aprendizaje de bikecuding. Así que está tremendo esta sesión de lifecoding. Te parece que la dejemos así.
+
+647
+01:29:44.090 --> 01:29:46.859
+Carlos Dominguez: Disco de tendremos que cambiar nuestro.
+
+648
+01:29:48.560 --> 01:29:49.740
+Joaco Malig: No, no, porque es.
+
+649
+01:29:49.740 --> 01:29:50.710
+Carlos Dominguez: Tenemos ahí.
+
+650
+01:29:51.010 --> 01:29:58.710
+Joaco Malig: Es como una subcategoría. Estamos en la categoría de los bytecoding, pero esta sesión en particular es litecoding
+
+651
+01:29:59.320 --> 01:30:10.659
+Joaco Malig: hay otras que son más de pregunta y respuestas. Hay otras que es de profundizar. Quizás, bueno, en fin, vamos, te estoy haciendo perder tiempo, así que vámonos con esta respuesta que tenemos de parte de Claude.
+
+652
+01:30:10.830 --> 01:30:16.920
+Carlos Dominguez: Vale perfecto. Nos dice que para nuestra base de datos vamos a tener 6 tablas. Rl: S con todas
+
+653
+01:30:17.110 --> 01:30:25.729
+Carlos Dominguez: ítems, tienen 3 trigram indexes para ser rápido, función. Search items con Similarity Scoring. Nos metemos en un
+
+654
+01:30:25.920 --> 01:30:44.479
+Carlos Dominguez: cosas un poquito complejas, pero básicamente vamos a estar en superbase con 6 tablas y que van a tener 3 niveles de indexación para poder buscar muchísimo más rápido. Nuestro Ipiland va a ser nexe y extraer el el Aju G que es lo que veíamos de la metadata
+
+655
+01:30:44.530 --> 01:30:49.759
+Carlos Dominguez: Haiku vía Open Router lo analiza y actualiza la base de datos.
+
+656
+01:30:50.110 --> 01:30:54.340
+Carlos Dominguez: La arquitectura es Future First con 7 Filters.
+
+657
+01:30:54.470 --> 01:31:04.410
+Carlos Dominguez: Los youtubers es todo lo que queremos que haga en esta parte, el diploy, no los cambios ya no lo puse como verse. Ya lo puse como vodka multitage standard o notput
+
+658
+01:31:04.800 --> 01:31:13.799
+Carlos Dominguez: va para utilizar en Jigs y Cádiz Cádiz, lo que vamos a utilizar como Rivers Proxy para poder resolver y acceder. Esto lo hace automáticamente Brasil. Por nosotros.
+
+659
+01:31:13.940 --> 01:31:19.470
+Carlos Dominguez: Si nosotros lo hacemos en un Docker, tenemos que configurar el cadí, el Ngics, que básicamente es como
+
+660
+01:31:19.640 --> 01:31:21.979
+Carlos Dominguez: vamos a resolver, que la gente entre
+
+661
+01:31:22.280 --> 01:31:38.369
+Carlos Dominguez: el Skill, que generé, que subí en la comunidad, que es el que vamos a ver más adelante, ya tiene configurado todo eso para hacer, dependiendo donde lo quieran hacer el diployd para que haga toda esta configuración, inclusive nosotros vamos al diploy en
+
+662
+01:31:38.660 --> 01:31:40.070
+Carlos Dominguez: que
+
+663
+01:31:40.440 --> 01:31:59.920
+Carlos Dominguez: publify, que es un es tipo, un tipo Easy panel, pero mucho más potente. Y a mí, Cooly Fiy en particular, me gusta porque tiene? M. C, P: Así que yo le puedo pedir a mi agente que se conecte a Coolify que vaya, que me cree el Docker, que me cree el servicio que levante todo, que configure las variables de entorno. Y yo no lo tengo que hacer. Él se conecta y hace absolutamente todo.
+
+664
+01:32:00.560 --> 01:32:08.240
+Carlos Dominguez: Folders dijimos que el Const train es mayor igual a 2, solamente son 3 niveles
+
+665
+01:32:08.430 --> 01:32:13.959
+Carlos Dominguez: nivel técnico. Será root Tilty y Rungshilde Workspace máximo 5,
+
+666
+01:32:14.250 --> 01:32:23.419
+Carlos Dominguez: y el siguiente paso sería el hacer los user storix, los epics story invest con criterios de aceptación que básicamente es
+
+667
+01:32:23.770 --> 01:32:31.010
+Carlos Dominguez: todos, Story. Y es todo lo que va a hacer el usuario en cada 1 de los procesos que tengamos en nuestro M. V. P:
+
+668
+01:32:31.280 --> 01:32:38.180
+Carlos Dominguez: Voy a abrir el documento. Y como pueden ver, es un documento muchísimo más largo. Simplemente si ven aquí el tamaño del scroll
+
+669
+01:32:38.960 --> 01:32:39.850
+Carlos Dominguez: imagínate.
+
+670
+01:32:39.850 --> 01:32:40.459
+Joaco Malig: Que me encontré.
+
+671
+01:32:40.460 --> 01:32:50.950
+Carlos Dominguez: Quisiéramos hacer esto paso a paso o que no tuviéramos este documento. Es por eso que la gente se empieza a confundir, empieza a alucinar después de los 3 comandos, porque ya no sabe lo que tiene que hacer.
+
+672
+01:32:51.080 --> 01:33:07.200
+Carlos Dominguez: Al tener toda esta documentación que le estamos haciendo exactamente, qué tenemos que hacer pase por fase. ¿cómo va a estar construido todo las interfaces, el lápiz, las tablas, inclusive. Ya tenemos aquí. No sé cuál es que va a tener que hacer al momento de crear cada una de las tablas.
+
+673
+01:33:07.280 --> 01:33:21.240
+Carlos Dominguez: etcétera. Si ustedes tienen conectado su país I a Ms: P. O su país vía cli la gente va a poder hacer todo eso por ustedes y no simplemente copian. Se van a su país, Pegan Enter y se genera todo de manera automática.
+
+674
+01:33:21.600 --> 01:33:25.260
+Carlos Dominguez: y ese es el documento final del Texpec.
+
+675
+01:33:25.480 --> 01:33:30.210
+Carlos Dominguez: Con todo, eso es la arquitec es
+
+676
+01:33:31.660 --> 01:33:35.689
+Carlos Dominguez: diagrama de alto nivel, etcétera. Está bastante bastante completo.
+
+677
+01:33:36.360 --> 01:33:37.630
+Joaco Malig: Impresionantes.
+
+678
+01:33:38.090 --> 01:33:40.730
+Joaco Malig: No entiendo nada, pero bueno, se ve impresionante.
+
+679
+01:33:41.930 --> 01:33:47.019
+Carlos Dominguez: Es la ventaja. No tenemos que entenderlo con que lo entienda. Cloud code es más que suficiente.
+
+680
+01:33:47.060 --> 01:33:48.550
+Joaco Malig: A la.
+
+681
+01:33:50.270 --> 01:33:50.630
+Carlos Dominguez: Okay.
+
+682
+01:33:50.630 --> 01:33:51.839
+Joaco Malig: A propósito, no, no.
+
+683
+01:33:51.840 --> 01:33:52.510
+Carlos Dominguez: Vamos.
+
+684
+01:33:53.000 --> 01:33:53.700
+Carlos Dominguez: Dime, debe.
+
+685
+01:33:53.700 --> 01:33:55.639
+Joaco Malig: Sí. Ahora va a parry.
+
+686
+01:33:55.640 --> 01:33:56.060
+Carlos Dominguez: A la.
+
+687
+01:33:56.060 --> 01:34:07.329
+Joaco Malig: Por favor, los que quieran intervenir aquí, bienvenido, pero pensaba en esta estructura que obviamente tú has ido perfeccionando, 1 también podría buscar.
+
+688
+01:34:07.920 --> 01:34:10.040
+Joaco Malig: porque al al no saber
+
+689
+01:34:10.540 --> 01:34:17.969
+Joaco Malig: temas técnicos, no puedo decir si me parece bien o no me parece mal. Entonces estaba pensando qué qué opinas de por ejemp
+
+690
+01:34:18.980 --> 01:34:27.750
+Joaco Malig: estos documentos que que va generando poder buscar una A y
+
+691
+01:34:28.310 --> 01:34:39.839
+Joaco Malig: una opinión de otra I a de otro modelo, como, por ejemplo, el potente que trae opening hoy en día, que es el de Codex, 5, 4, Entonces, pasarle la documentación, quizás hacer un
+
+692
+01:34:39.950 --> 01:34:45.049
+Joaco Malig: un un respaldo en Github y decirle: bueno, dame
+
+693
+01:34:45.360 --> 01:34:48.949
+Joaco Malig: una opinión respecto de este documento y
+
+694
+01:34:49.070 --> 01:35:01.830
+Joaco Malig: hacer el testeo no de ver si están recomendando lo mismo. Si de pronto dice, se da cuenta de alguna observación, ¿Qué ¿Qué opinas de esa de esa opción para perfeccionar el la planificación.
+
+695
+01:35:02.930 --> 01:35:19.269
+Carlos Dominguez: Para la planificación. Yo lo tengo aquí contemplado, pero 100 por 100 se puede hacer y el que quiera revisarlo con algún otro sistema, inclusive estamos dentro de antigrávit, así que podríamos abrir los agentes de acá y pedirle a que también lo haga. No necesitamos pasarlo a ningún lado porque ya tiene acceso
+
+696
+01:35:19.480 --> 01:35:20.100
+Carlos Dominguez: y se.
+
+697
+01:35:20.100 --> 01:35:20.610
+Joaco Malig: Esto.
+
+698
+01:35:21.550 --> 01:35:24.359
+Carlos Dominguez: Spoiler Alerts. Eso está incluido en la forja.
+
+699
+01:35:24.740 --> 01:35:27.380
+Carlos Dominguez: Tenemos con mandos.
+
+700
+01:35:28.390 --> 01:35:31.780
+Carlos Dominguez: Bueno, no, L no lo tengo. Que se llama Review loop.
+
+701
+01:35:33.080 --> 01:35:40.860
+Carlos Dominguez: Lo hacen en en automático. Si yo le pido, y yo puedo invocar aquí a Podex dentro del mismo Cloud code
+
+702
+01:35:41.190 --> 01:35:45.860
+Carlos Dominguez: y nada más. Déjame ver si aquí está
+
+703
+01:35:48.700 --> 01:35:56.780
+Carlos Dominguez: College. Esto salió hace 2 días. Es un plugin en el marketplace oficial de Cloud Code que te permite
+
+704
+01:35:56.900 --> 01:36:13.079
+Carlos Dominguez: usar Codex dentro de Cloud Code. ¿qué es lo que hace Codex? Manda llamar a Cloud Code. Le dice hice esto, ¿Qué piensas, y entre los 2 se ponen a platicar y te dicen: ah okay, estoy de acuerdo contigo, haces estos cambios, y te pueden decir a ti como usuario, o tú le puedes decir que haga
+
+705
+01:36:13.080 --> 01:36:24.020
+Carlos Dominguez: aquí. Tiene diferentes rescues como cuando que flaco ya se trabó, ya te dio 10 veces el mismo error. No lo logra. Solucionar traes a Codex con modo res y es como feliz Codex. Por favor, sálvame.
+
+706
+01:36:24.020 --> 01:36:25.560
+Joaco Malig: Viene de amigos claro.
+
+707
+01:36:25.560 --> 01:36:32.279
+Carlos Dominguez: Yo no estoy yo. No entiendo nada. Y aquí entra esto, entonces ya existe este Plugin y podemos mandar a llamar o.
+
+708
+01:36:32.280 --> 01:36:33.120
+Joaco Malig: Tremendo de.
+
+709
+01:36:33.120 --> 01:36:37.910
+Carlos Dominguez: Lo tienen configurado tal cual. Aquí yo puedo irme a mis extensiones.
+
+710
+01:36:38.410 --> 01:36:39.260
+Joaco Malig: En kilo. No.
+
+711
+01:36:39.260 --> 01:36:47.349
+Carlos Dominguez: Puedo buscar. Codex, No, ya tengo. Bueno, puede ser en kilos, pero ya ya tengo yo una directa de
+
+712
+01:36:48.120 --> 01:36:49.570
+Carlos Dominguez: de codex aquí.
+
+713
+01:36:50.180 --> 01:36:50.860
+Joaco Malig: Eso para y.
+
+714
+01:36:50.860 --> 01:36:52.020
+Carlos Dominguez: Hay de códecs.
+
+715
+01:36:52.190 --> 01:36:52.610
+Joaco Malig: En los.
+
+716
+01:36:52.610 --> 01:36:53.110
+Carlos Dominguez: Ya.
+
+717
+01:36:54.220 --> 01:36:55.610
+Joaco Malig: No está autentificado.
+
+718
+01:36:56.140 --> 01:37:03.410
+Carlos Dominguez: Te digo, ya estoy en, estoy en todo aquí. Le decimos qué modelo, 5, 4. Y le puedo decir.
+
+719
+01:37:03.670 --> 01:37:09.130
+Carlos Dominguez: necesito que revises este documento. Y me digas qué piensas sobre el Golden Path
+
+720
+01:37:09.980 --> 01:37:19.290
+Carlos Dominguez: y simplemente uso arroba y con arroba. Puedo ir a buscar los archivos que tengo. Acá. Entonces voy a mi esto. Digo, arroba, y el documento se llama
+
+721
+01:37:19.400 --> 01:37:33.099
+Carlos Dominguez: Tex Peck, y le doy enter y dejo que codex revise y me de su opinión sobre el documento tal cual tú lo mencionaste. No tuve que salir a ningún lado o en Cloud Code, le puedo decir que manda llamar a Codex
+
+722
+01:37:34.440 --> 01:37:44.689
+Carlos Dominguez: College review. Y lo puedes decir, cómo analiza este documento y dame tu opinión sobre el Golden
+
+723
+01:37:46.090 --> 01:37:57.409
+Carlos Dominguez: Golden Path de crítico y encuentra las y el documento sería Texpet.
+
+724
+01:37:57.580 --> 01:37:59.869
+Carlos Dominguez: Se lo mande que también también trabaje
+
+725
+01:37:59.990 --> 01:38:05.609
+Carlos Dominguez: y puedo tener esta gente trabajando paralelo. Esta gente trabajando en paralelo. Y yo puedo continuar.
+
+726
+01:38:05.860 --> 01:38:06.570
+Carlos Dominguez: Hasta ahora.
+
+727
+01:38:07.320 --> 01:38:07.990
+Joaco Malig: Guau!
+
+728
+01:38:08.490 --> 01:38:09.290
+Joaco Malig: Guau!
+
+729
+01:38:09.450 --> 01:38:12.130
+Joaco Malig: Tremendo, tremendo.
+
+730
+01:38:12.730 --> 01:38:21.069
+Carlos Dominguez: Aquí. Bueno, vamos a ponerle ese Sí, quiero lanzar Códex, el Background para que pueda seguir utilizando. Le voy a dar que sí.
+
+731
+01:38:21.690 --> 01:38:27.859
+Carlos Dominguez: Y aquí me voy a cambiar a bypass para que no me esté molestando. Y yo continúe. Aquí me dice, mira por ejemplo.
+
+732
+01:38:28.310 --> 01:38:37.020
+Carlos Dominguez: alto. El documento no define el Golden Park de forma explícita o está implícito Hoy está implícito
+
+733
+01:38:37.310 --> 01:38:49.119
+Carlos Dominguez: entre el resumen, el flujo de captura y los tests es el producto. Yo ex implementación, Puedo interpretar el flujo principal de maneras distintas. Se siente claro técnicamente, pero no declarado como contrato el M V P. Y me dice las líneas
+
+734
+01:38:49.440 --> 01:39:04.849
+Carlos Dominguez: medio, Un flujo realmente especificado es el de pegar un arrow, pero la promesa del producto incluye Links, Texto Margon y Commanders, El Gol del Padd del M. V. P. Es guardar cualquier cosa rápido. El efecto todavía no lo aterriza que el Golden Path es Guardar Lynch, entonces conviene decirlo sin ambigüedad.
+
+735
+01:39:04.930 --> 01:39:12.890
+Carlos Dominguez: Medio El look central de valor no queda completamente cerrado en una sola narrativa, captura, etc. Entonces yo le voy a decir, ¿sabes qué
+
+736
+01:39:13.640 --> 01:39:21.399
+Carlos Dominguez: generarme un archivo que sea Texpec núcleo revisado, codex y hazme tus propuestas de mejora.
+
+737
+01:39:23.820 --> 01:39:24.700
+Carlos Dominguez: Mhm.
+
+738
+01:39:25.000 --> 01:39:37.420
+Carlos Dominguez: Y tengo que configurar esto para que expectación núcleo revisado.
+
+739
+01:39:39.600 --> 01:39:44.520
+Carlos Dominguez: ¿por qué y aquí me dice lo mismo en el peor Retexpress. Ese es el plan.
+
+740
+01:39:45.290 --> 01:39:48.480
+Carlos Dominguez: Y E. Este, como está utilizando.
+
+741
+01:39:49.650 --> 01:39:56.359
+Carlos Dominguez: Este sigue sigue trabajando y lo está haciendo de fondo, pero al final, lo que está haciendo. Estás mandando a llamar a codex
+
+742
+01:39:56.600 --> 01:40:08.510
+Carlos Dominguez: por mi mismo usuario. Antes de utilizarlo, tienes que correr como el usuario de Codexero. Te va a pedir que autentiques, inicies, sesión para que utilices tu plan de Codex para hacer esto.
+
+743
+01:40:09.260 --> 01:40:12.989
+Joaco Malig: ¡qué interesante. Y eso también está disponible con los modelos de G Mike.
+
+744
+01:40:14.820 --> 01:40:20.690
+Carlos Dominguez: Así de manera nativa dentro de Cloud Code. No lo he visto. Pero esto que está haciendo aquí, podríamos.
+
+745
+01:40:21.000 --> 01:40:23.730
+Joaco Malig: Claro por el agente propio.
+
+746
+01:40:23.730 --> 01:40:34.940
+Carlos Dominguez: Hecho, lo puedo abrir con mi otra pantalla, decirle a Gaming 3 1 que me haga exactamente lo mismo. Y Al final, si yo quiero tener un juez de Liga Groud, analízame lo que hizo Cloudcode
+
+747
+01:40:35.110 --> 01:40:38.770
+Carlos Dominguez: y Codex y Dame como la versión final.
+
+748
+01:40:39.660 --> 01:40:41.170
+Joaco Malig: Tremendo, tremendo.
+
+749
+01:40:42.760 --> 01:40:43.440
+Carlos Dominguez: Qué,
+
+750
+01:40:43.540 --> 01:41:02.930
+Carlos Dominguez: entonces, en este caso? Para los User Stories, solo hay un Power User que vamos a hacer nosotros mismos. No hay un administrador, no hay otro usuario, no hay nada. Entonces lo que detecta. Vamos a iniciar sesión, vamos a escoger Workspace. Vamos a capturar contenido. Vamos a visualizar lo que hicimos. Vamos a poder organizarlo. Vamos a poder buscar, vamos a hacer un bully import, y lo vamos a usar desde el 0.
+
+751
+01:41:03.560 --> 01:41:07.680
+Carlos Dominguez: Entonces me dice: ajustamos los géneros story o así generalo.
+
+752
+01:41:09.840 --> 01:41:21.930
+Carlos Dominguez: Y obviamente, esto es un proceso ahorita bastante lineal, porque estamos platicando. Lo estamos viendo. Pero ya en la práctica, pues yo mientras hago esto, hago otras 3 cosas. Voy regreso. Me avisa que ya terminó. Me pongo a hacer más cosas
+
+753
+01:41:22.080 --> 01:41:36.179
+Carlos Dominguez: y ahorita como estamos planeando, Y un documento depende del otro es bastante lineal. Pero ya que lleguemos a la fase de desarrollo que ya tenemos todo el plan bien establecido, podemos invocar 5 agentes y que los 5 trabajen en paralelo.
+
+754
+01:41:36.300 --> 01:41:45.099
+Carlos Dominguez: Cada quien se encargue de una futer, o inclusive eso está metido dentro de la forja que se llama el el modo modo forja como tal
+
+755
+01:41:45.210 --> 01:41:57.710
+Carlos Dominguez: que yo puedo hacer un Spot de N, agentes, es decir, el número que yo quiera, de agentes y que me desarrollen la aplicación completa, cada 1 de manera autónoma. Y al final, yo comparo qué es lo que hizo cada 1.
+
+756
+01:41:57.740 --> 01:42:14.680
+Carlos Dominguez: Y hago lo que en el mundo de progresión se llama Cherry Pig, que es decir, Okay, de mi agente, 1, voy a escoger el lo que utilizo con el frontend de mi agente, 2. Voy a tocar. Voy a quedarme con lo que hice con la base de datos del agente 3, me gustó como resolvió más
+
+757
+01:42:14.680 --> 01:42:24.200
+Carlos Dominguez: el tema del análisis de ella, pues yo puedo elegir que me quedo con cada 1. Y armo mi versión final con lo que hicieron 5 personas diferentes
+
+758
+01:42:24.450 --> 01:42:26.479
+Carlos Dominguez: o 5 agentes. Eso está brutal.
+
+759
+01:42:26.670 --> 01:42:28.289
+Joaco Malig: Tremendo tremendo.
+
+760
+01:42:28.640 --> 01:42:33.189
+Joaco Malig: Tenemos acá una preguntita de flor, dice.
+
+761
+01:42:34.140 --> 01:42:47.669
+Joaco Malig: Carlos empezó a prontear con ya varios archivos cargados, exacto que era lo que teníamos como Framework como estructura de lo que llamamos la forja
+
+762
+01:42:47.860 --> 01:42:56.170
+Joaco Malig: este Pe. Este sistema. Podríamos llamarle de desarrollo para Bitecoding.
+
+763
+01:42:56.670 --> 01:43:05.579
+Joaco Malig: Y la pregunta dice: ¿qué pasaría si yo arranco a pronunciar sin nada tardaría más o tendría más errores.
+
+764
+01:43:06.470 --> 01:43:13.320
+Carlos Dominguez: Yo creo que tardarías menos porque no generas todos tus documentos, no irías estos pasos.
+
+765
+01:43:13.700 --> 01:43:24.000
+Carlos Dominguez: pero probablemente el resultado obtenido sea muy distante de lo que vamos a obtener usando toda esta estructura.
+
+766
+01:43:24.480 --> 01:43:39.950
+Carlos Dominguez: Y en una Landing Page en alguna herramienta muy sencilla, no a lo mejor no notaríamos tanta diferencia. Pero conforme vayamos robusteciendo y queriéndola crecer o ya empezar a usar, es donde sí se nota la diferencia, porque
+
+767
+01:43:40.360 --> 01:43:41.909
+Carlos Dominguez: lo mismo, o sea.
+
+768
+01:43:42.720 --> 01:43:49.270
+Carlos Dominguez: no, no sabemos lo que no sabemos, entonces no sabemos que pedirle. No sabemos que tenemos que decir que se haga que no haga.
+
+769
+01:43:49.460 --> 01:44:04.520
+Carlos Dominguez: Entonces a nuestros ojos, a lo mejor está increíble, pero resulta que empezamos a usar y un botón no sirve. La usan 2 personas y ya se cayó y no funciona el sistema lo de guardar en ese que se guardó, pero en realidad voy. Y ni siquiera está conectada a la base de datos, No está guardando absolutamente nada. Entonces, eso es lo que suele pasar
+
+770
+01:44:04.520 --> 01:44:12.030
+Carlos Dominguez: cuando 1 desarrolla aplicaciones sin saber lo que está haciendo yo aquí. Hay muchas cosas que entiendo y hay muchas cosas técnicas.
+
+771
+01:44:12.240 --> 01:44:17.479
+Carlos Dominguez: Pero si aún así yo no conociera nada. Si me dice, te recomiendo hacer, te recomiendo hacer esto. Y si yo le digo que sí a todo.
+
+772
+01:44:17.790 --> 01:44:30.589
+Carlos Dominguez: Son cosas que ya están estructuradas. Y aunque yo le diga si a todo lo que me recomiendan, probablemente el resultado final igual será muy bueno y mucho mejor, y lo hubiera hecho desde 0. Sin este Framework, o sin todos estos documentos de de inicio.
+
+773
+01:44:33.070 --> 01:44:41.510
+Joaco Malig: Buenísima claro, al final responde a la experiencia que tú has tenido desarrollando diferentes aplicaciones y soluciones que incluyen I a
+
+774
+01:44:41.680 --> 01:44:45.569
+Joaco Malig: y y ha volcado esa experiencia en torno a esta
+
+775
+01:44:45.710 --> 01:44:48.500
+Joaco Malig: propuesta de de sistema de trabajo.
+
+776
+01:44:48.700 --> 01:44:50.269
+Joaco Malig: Sé que está interesante.
+
+777
+01:44:50.270 --> 01:44:55.209
+Carlos Dominguez: Todo esto de fondo. De esto. De momento hay muchísimas cosas para que esto para que esto funcione.
+
+778
+01:44:55.460 --> 01:44:59.450
+Carlos Dominguez: simplemente lo lo lo que son los P. R. Ps.
+
+779
+01:44:59.780 --> 01:45:15.620
+Carlos Dominguez: El Eskil. Todos estos Skills que tenemos el Skill de la forja, el Skil de la herrería. Y tenemos referencias. Y todo esto lo manda a llamar, y lo revisa cada vez que te va a hacer algo, entonces, obviamente es la potencia que hay detrás.
+
+780
+01:45:15.780 --> 01:45:21.570
+Carlos Dominguez: Y lo que te llega a mostrar. Y no sólo es la parte de planeación.
+
+781
+01:45:21.700 --> 01:45:24.200
+Carlos Dominguez: no solo es la parte de
+
+782
+01:45:25.410 --> 01:45:29.809
+Carlos Dominguez: construcción, sino también tiene algo que yo lo llamé el crisol.
+
+783
+01:45:30.070 --> 01:45:38.370
+Carlos Dominguez: Entonces le puedo decir, explícame un poco más qué es el crisol.
+
+784
+01:45:38.670 --> 01:45:41.239
+Carlos Dominguez: Básicamente, el crisol lo que hace es
+
+785
+01:45:42.670 --> 01:45:46.520
+Carlos Dominguez: Ya tienes todo tu planeación. Ya tienes todo todo tu desarrollo.
+
+786
+01:45:47.750 --> 01:45:49.940
+Carlos Dominguez: Antes de empezar a construir.
+
+787
+01:45:50.060 --> 01:45:58.650
+Carlos Dominguez: Vamos a hacer un análisis para ver si vale la pena a ella. Te pudo haber dicho que sí. Tú le pusiste haber dicho todo eso, pero en realidad vale la pena, entonces, que es lo que hace el crisol.
+
+788
+01:45:59.490 --> 01:46:03.559
+Carlos Dominguez: corre un comando que se llama brújula. Hace una visión y una estrategia del producto.
+
+789
+01:46:03.900 --> 01:46:10.579
+Carlos Dominguez: Correr un comando examen estrella que es un Nord Star Mtric, la métrica que importa, y la cual tú tienes que seguir Para que eso sea un éxito.
+
+790
+01:46:10.670 --> 01:46:25.190
+Carlos Dominguez: Te hace un análisis competitivo de tus rivales, te hace como unos Battle Cards. ¿qué quiere decir tú como núcleo, Te comparas con notion de esta forma. Aquí te ganan notion y aquí le ganas tú. Y así, con cada 1 de tus rivales que tú le digas, o que el Bayern que busque y que identifique.
+
+791
+01:46:25.340 --> 01:46:42.510
+Carlos Dominguez: te dice Okay en base a tus rivales y en base a lo que quieres hacer, te recomiendo esa estrategia de p, de pricing, y ese sistema de monetizar tu producto que vayas a desarrollar. Aparte. Te da tu roi, Esas son tus métricas. Y te digo, cuándo vas a recuperar tu inversión de acuerdo a tus costos fijos y tus costos variables.
+
+792
+01:46:42.780 --> 01:46:50.299
+Carlos Dominguez: Este más, el modelo de pricing. Por estar en este orden, después en base de todo y tus metas, te doy tus Okrs.
+
+793
+01:46:50.300 --> 01:47:05.020
+Carlos Dominguez: y tú hoy con roadmap, que es lo que tienes que hacer para llegar a esto. Y por último, te doy tu go to Market Stratty ejecuta el lanzamiento, y te digo, vas, a publicar en, ex vas a Dieta a este foro, vas a buscar a 3 personas de tu nicho. Entonces te va diciendo, paso a paso, qué hacer
+
+794
+01:47:05.040 --> 01:47:19.310
+Carlos Dominguez: para lanzar tu producto. Entonces no solo es muy robusto en el pre. Es es muy robusto en la construcción, pero sobre todo en todo esto que la mayoría de los desarrolladores no toman en cuenta que al final es muy importante porque tú puedes tener un producto buenísimo
+
+795
+01:47:19.470 --> 01:47:28.129
+Carlos Dominguez: a nivel técnico que funcione. Pero si no sabes cómo ofrecerlo, tienes tu competencia. No sabes cuál es tu rol, no sabes cuáles son tus bienes económicos básicos.
+
+796
+01:47:28.310 --> 01:47:43.359
+Carlos Dominguez: entonces probablemente nos lo lo terminas y dices ahora ¿qué hago ahora? ¿cómo lo vendo? ¿cómo lo ofrezco, ¿Cuánto vale, cómo lo cobro, etcétera. Y todo esto te lo te lo resuelven. Y aparte, No solo eso, te hace un Dashboard.
+
+797
+01:47:43.700 --> 01:47:49.580
+Carlos Dominguez: H. T. M: L. Donde tú vas a poder ver tal cual, todas las métricas gráficas, todo lo que tengas que hacer.
+
+798
+01:47:52.180 --> 01:47:55.750
+Joaco Malig: Qué brutal pensar que estamos pudiendo
+
+799
+01:47:57.690 --> 01:48:01.519
+Joaco Malig: desarrollar de esta manera me revienta la cabeza realmente.
+
+800
+01:48:01.700 --> 01:48:04.260
+Joaco Malig: Daniel.
+
+801
+01:48:04.260 --> 01:48:04.670
+Carlos Dominguez: Que no.
+
+802
+01:48:04.670 --> 01:48:05.109
+Joaco Malig: Lo el.
+
+803
+01:48:05.110 --> 01:48:05.709
+Carlos Dominguez: 31 es.
+
+804
+01:48:05.710 --> 01:48:07.380
+Joaco Malig: El
+
+805
+01:48:07.920 --> 01:48:17.249
+Joaco Malig: Sí, tenemos aquí la pregunta de Dani de si es que está el repo de Crisol. Bueno, forma parte, imagino yo, de la forja o the Fordge. Punto. Com.
+
+806
+01:48:18.020 --> 01:48:25.369
+Carlos Dominguez: Forma Pag forma parte de de todo todo. Lo tengo en un repositorio de Github que básicamente que lo que hago cuando ejecuto forge
+
+807
+01:48:25.690 --> 01:48:35.580
+Carlos Dominguez: todo esto se lo trae de una copia que tengo local de ese repositorio de Gitchcock. Y ahí está todo la parte de planeación, la parte de construcción, la parte del del del crisol.
+
+808
+01:48:38.200 --> 01:48:46.299
+Joaco Malig: Yo me credencial de la forja, me gustaría contar brevemente, y estoy muy impactado con
+
+809
+01:48:46.300 --> 01:49:02.879
+Joaco Malig: con los resultados. Es que hemos estado trabajando un buen rato en la planeación y todavía no tenemos a la vista resultados, pero es que yo estuve trabajando en una cuestión. Le metí una buena cantidad de horas, pero estoy impresionado. Carlos todavía no te no te he mostrado nada, ni siquiera a ti.
+
+810
+01:49:02.920 --> 01:49:14.609
+Joaco Malig: Pero, en resumen, ya voy a mostrar ahí en un post en la comunidad. Estoy ya con un sistema operativo donde ofrezco demos
+
+811
+01:49:15.040 --> 01:49:26.429
+Joaco Malig: de chats de atención para E Commerce específicamente. Entonces, lo que hace este sistema es que va escrapea la página del E Commerce
+
+812
+01:49:26.860 --> 01:49:44.779
+Joaco Malig: hace una, un no Ledge page una base de datos de toda la El catálogo de productos o de servicios, también del sistema de de de de de envío, digamos las preguntas frecuentes, etcétera, de la de la página. Y con eso
+
+813
+01:49:44.900 --> 01:49:51.309
+Joaco Malig: genera entonces un bots con ese conocimiento ajustado a la
+
+814
+01:49:51.430 --> 01:49:56.950
+Joaco Malig: personalidad, digamos a todo lo que se parezca a la, digamos, al estilo de la marca.
+
+815
+01:49:57.130 --> 01:49:59.830
+Joaco Malig: y genera entonces una
+
+816
+01:50:00.360 --> 01:50:11.599
+Joaco Malig: página web, que es una réplica de el E Commerce. No es que genere el e commerce, sino que es un pantallazo del E Commerce, pero tiene el Pop Up del Chat abajo
+
+817
+01:50:11.680 --> 01:50:20.920
+Joaco Malig: para que 1 pueda enviar el demo a esa persona a esa, a ese e commerce y que pueda probar de antemano. El chat
+
+818
+01:50:21.200 --> 01:50:25.770
+Joaco Malig: es una locura. Está funcionando muy bien y
+
+819
+01:50:26.200 --> 01:50:30.559
+Joaco Malig: y quizás podría mostrarlo mientras tenemos a a clode avanzando Acá.
+
+820
+01:50:31.280 --> 01:50:33.399
+Carlos Dominguez: Dale, te lo muestro. Tienes que compartir.
+
+821
+01:50:34.810 --> 01:50:42.880
+Joaco Malig: Ya, pero pero no no gastemos tiempo para que aprovechemos ahí a Claudio. Así que tú me avisas cuando esté listo y retornamos a tu a tu P, C. ¿te parece.
+
+822
+01:50:43.240 --> 01:50:43.960
+Carlos Dominguez: Vale.
+
+823
+01:50:44.850 --> 01:50:47.739
+Joaco Malig: O sea, a tu a tu mac perdón, a tu nuevo. Mac: amigo.
+
+824
+01:50:48.140 --> 01:50:52.000
+Joaco Malig: Bien, voy a compartirles. Entonces.
+
+825
+01:50:53.410 --> 01:51:01.290
+Carlos Dominguez: De hecho, probablemente juanjo no lo sepa, porque hay muchísimas herramientas y cosas que tiene que tiene la forja. Pero tengo un
+
+826
+01:51:01.970 --> 01:51:04.989
+Carlos Dominguez: cúmulo de skills configurados que sirve para clonar.
+
+827
+01:51:05.250 --> 01:51:13.389
+Carlos Dominguez: Landing Page a la perfección. Tú dices clona esta página y te clona pedazo por pedazo exactamente hasta se roba los vídeos que tienen la página y te los inserta.
+
+828
+01:51:14.070 --> 01:51:27.869
+Joaco Malig: Maravilloso saberlo. Bueno, esto se llama Antomatic, porque porque mi hermana se llama Antonia. Y ella me pidió esta solución. Entonces yo acá. Voy a entrar con el correo que tengo.
+
+829
+01:51:29.620 --> 01:51:37.419
+Joaco Malig: Y básicamente este dashboard me permite poder ver cuáles son los robots, los bots que he creado.
+
+830
+01:51:37.720 --> 01:51:48.340
+Joaco Malig: Entonces, por ejemplo, tengo una, un, Un mi cuñado tiene una, un e commerce de cafe de café acá en Chile se llama Cafeteros Chile. Entonces
+
+831
+01:51:48.710 --> 01:51:52.929
+Joaco Malig: lo que hice fue realizar un escrapeo.
+
+832
+01:51:53.560 --> 01:51:59.359
+Joaco Malig: Tengo acá. La Url, El Nolledge Beige, que está conectado con Xupa Beige
+
+833
+01:51:59.680 --> 01:52:03.169
+Joaco Malig: y la configuración propia de el el bot.
+
+834
+01:52:03.610 --> 01:52:12.950
+Joaco Malig: Con lo básico. Acabo de agregar una modalidad muy interesante que es modo avatar porque en este scrapeo que hace la
+
+835
+01:52:13.590 --> 01:52:24.649
+Joaco Malig: la I A, identifica cuáles son los posibles avatares o tipos de cliente de este E Commerce. Entonces la idea es que el chat bot
+
+836
+01:52:24.790 --> 01:52:26.300
+Joaco Malig: ahora se los voy a mostrar.
+
+837
+01:52:29.680 --> 01:52:35.390
+Joaco Malig: Ant: An Tomatic Berser. App. Demo cafeteros. Chile abre
+
+838
+01:52:36.080 --> 01:52:44.830
+Joaco Malig: va a demorar un poco en cargar, quizás, pero va a abrir un pantallazo de la de la tienda real ojo acá Voy a hacer clic. Les voy a mostrar la tienda real.
+
+839
+01:52:45.440 --> 01:52:47.390
+Joaco Malig: cafeteros. Chile: Cl.
+
+840
+01:52:48.030 --> 01:52:58.890
+Joaco Malig: Tenemos aquí la el Ecommerce. Esto es una tienda en Shopify que por ahora maneja un agente de Whatsap.
+
+841
+01:52:59.460 --> 01:53:04.129
+Joaco Malig: Ya usa una aplicación ahí de de terceros. Entonces, si yo me vuelvo al demo.
+
+842
+01:53:04.760 --> 01:53:11.170
+Joaco Malig: el demo es exactamente lo en la misma página. Obviamente, es una. Es un pantallazo, no está operativo. Pero si yo abro, acá,
+
+843
+01:53:11.410 --> 01:53:16.789
+Joaco Malig: tengo entonces cafetero cafetero, que es el nombre del bot.
+
+844
+01:53:17.140 --> 01:53:29.250
+Joaco Malig: y le puedo preguntar cuál es el producto más caro de la tienda y la gracia es que
+
+845
+01:53:29.720 --> 01:53:37.470
+Joaco Malig: la la base de datos. Ahora incluye esto. Fue un scrapeo. Yo no, Yo no hice nada, Eché a correr nada más. Cloud code.
+
+846
+01:53:37.710 --> 01:53:43.109
+Joaco Malig: Eso es interesante el Scrapé, o lo hice con un skill que desarrollé desde
+
+847
+01:53:43.230 --> 01:53:48.470
+Joaco Malig: Cloud Code. Entonces, de esa manera. Aprovecho mi suscripción de
+
+848
+01:53:48.740 --> 01:53:53.359
+Joaco Malig: de Andropic, ¿cierto? Y hago el scrabbeo de la página. Y como pueden.
+
+849
+01:53:53.360 --> 01:53:55.099
+Carlos Dominguez: 1 000 000 de 100 dólares, amigo.
+
+850
+01:53:55.790 --> 01:53:57.720
+Joaco Malig: Sí, Ya estoy en la desintegra
+
+851
+01:53:58.720 --> 01:54:07.840
+Joaco Malig: de todas maneras. Bueno, acá hay un error. Veo porque me me cargó el molinillo, pero me está tirando a la página web de no, no exactamente. Entonces
+
+852
+01:54:08.580 --> 01:54:13.360
+Joaco Malig: vamos de vuelta. Les quiero mostrar cómo es que yo puedo crear un nuevo.
+
+853
+01:54:13.720 --> 01:54:25.020
+Joaco Malig: un nuevo demo Todo esto pensando en ni siquiera tener el bot. Ya es simplemente como manera de Outbridge, no de poder ofrecer
+
+854
+01:54:25.210 --> 01:54:31.559
+Joaco Malig: alguna agendamiento de de de de alguna reunión y poder vender el sistema, entonces
+
+855
+01:54:31.740 --> 01:54:33.979
+Joaco Malig: yo puedo crear un nuevo demo
+
+856
+01:54:35.320 --> 01:54:44.800
+Joaco Malig: Agrego el nombre de la tienda tienda, Agrego la U. R. L, Y bueno.
+
+857
+01:54:45.180 --> 01:54:51.369
+Joaco Malig: se genera que no lo voy a hacer acá porque no sé qué tienda usar, pero a ver si lo hacemos de nuevo con cafeteros, Chile.
+
+858
+01:54:54.010 --> 01:55:03.220
+Joaco Malig: cafeteros, 2, crear demo Y tenemos vacío, el Dashport.
+
+859
+01:55:04.110 --> 01:55:11.199
+Joaco Malig: Yo lo que haría sería en Noragepace. Puedo scrapear la tienda. Esto activa a cloud code y va
+
+860
+01:55:11.440 --> 01:55:23.159
+Joaco Malig: cargar, digamos, a identificar a leer la página, hacer el scrapping, o puedo cargar la documentación en Mark Down directamente, si es que ya la tuviera. Esto es interesante para poder
+
+861
+01:55:23.250 --> 01:55:31.849
+Joaco Malig: profundizar en mayor detalle y en la configuración. Obviamente, puedo configurar a nivel general lo que sería el bot.
+
+862
+01:55:32.000 --> 01:55:33.049
+Joaco Malig: Tengo esta
+
+863
+01:55:33.480 --> 01:55:40.349
+Joaco Malig: estos dashboard de uso de conversación y de Tokens usados pensando en en ver el el uso de A, P. I,
+
+864
+01:55:40.500 --> 01:55:56.100
+Joaco Malig: Pero nada me tiene en la cabeza explotar. Realmente esto está muy, muy potente. Acá Hay otro ejemplo que hice hace poco rato con mi hermana en la en la mañana de una tienda de ella. Y entonces le vamos a ofrecer este servicio
+
+865
+01:55:56.420 --> 01:56:05.020
+Joaco Malig: y se fijan, acá. Está el demo La tienda real es esta que está acá también Shopify. Y
+
+866
+01:56:05.460 --> 01:56:08.350
+Joaco Malig: mientras carga. Les voy a mostrar aquí.
+
+867
+01:56:08.870 --> 01:56:13.370
+Joaco Malig: Acá le pusimos de nombre alto al al bot y
+
+868
+01:56:16.980 --> 01:56:22.790
+Joaco Malig: y este tiene activado el modo avatar. Entonces me pregunta ciertas cosas.
+
+869
+01:56:23.590 --> 01:56:33.420
+Joaco Malig: O sea, no solo me va a recomendar productos, sino que me ha intentar asociar algunos de los avatares que identificó en el scrapping. Entonces
+
+870
+01:56:38.090 --> 01:56:42.149
+Joaco Malig: me acuerdo que 1 de los avatares tenía que ir más con cosas de viaje. Entonces
+
+871
+01:56:42.350 --> 01:56:47.459
+Joaco Malig: me hace más preguntas todavía y me empieza a tirar opciones de producto, o
+
+872
+01:56:47.600 --> 01:56:57.750
+Joaco Malig: o Vandels. Entonces acá le voy a decir que algo más barato de viaje corto.
+
+873
+01:57:01.990 --> 01:57:08.380
+Joaco Malig: y me da esto debería funcionar. Veo que no agarro bien el Http: Bueno, si es que.
+
+874
+01:57:08.380 --> 01:57:14.640
+Carlos Dominguez: Y nótese también la velocidad de respuesta del bote. No es nada de que ahorita. Vengo de eso. Lo busco.
+
+875
+01:57:15.680 --> 01:57:18.130
+Joaco Malig: Sí tremendo, tremendo.
+
+876
+01:57:18.320 --> 01:57:26.730
+Joaco Malig: Y acá. Tenemos entonces la mochila que me recomienda esto. Lo desarrollé con la forja básicamente Anthomatic este.
+
+877
+01:57:27.070 --> 01:57:28.969
+Joaco Malig: Este es un deo. Es este. Él.
+
+878
+01:57:29.230 --> 01:57:31.799
+Joaco Malig: digamos, el dashboard de uso de
+
+879
+01:57:32.120 --> 01:57:36.929
+Joaco Malig: y está tremendo porque 1 puede empezar a automatizar la creación de demos y empezar a enviar.
+
+880
+01:57:37.910 --> 01:57:47.740
+Joaco Malig: Obviamente, no debemos de chats. Y es muy interesante. A mí me me llamó la atención porque todo esto surge porque a mi hermana le le le le ofrecieron lo mismo. Oye, Tenemos un bot para una de tus tiendas.
+
+881
+01:57:48.050 --> 01:57:49.520
+Joaco Malig: y
+
+882
+01:57:49.910 --> 01:58:06.709
+Joaco Malig: Y yo le dije, espérate. Esto se puede hacer mejor porque, obviamente, el sistema no está tan bonito ni parecido. Y lo que tenemos es bastante impactante, pero bueno. Cuando tenga ya la cuestión lista, voy a hacer un video, lo voy a colgar en la comunidad para poder mostrárselos. Me tiene.
+
+883
+01:58:06.710 --> 01:58:12.899
+Carlos Dominguez: Dime cuando termines, y lo pongo en mi página. De hecho con la forja, así como tú sabes.
+
+884
+01:58:13.380 --> 01:58:17.750
+Joaco Malig: Totalmente amigo, Totalmente. Así que cuenta con automatic. Así se llama.
+
+885
+01:58:18.150 --> 01:58:25.920
+Carlos Dominguez: Mi nombre está buenísimo, también amigo. Yo creo que aquí vamos a terminar y vamos para las 2 h. Tengo 5 min
+
+886
+01:58:26.070 --> 01:58:38.359
+Carlos Dominguez: ya se nos generó todo lo que es este esta última parte que estamos haciendo, los user stories. Y como comenté hasta aquí. Le voy a dejar. No voy a desarrollar nada por mi cuenta para que nos quedemos tal cual no nos quedamos
+
+887
+01:58:38.560 --> 01:58:44.140
+Carlos Dominguez: en las sesiones y en la siguiente sesión, la siguiente semana vamos a continuar con el yo ex design.
+
+888
+01:58:44.270 --> 01:58:45.990
+Carlos Dominguez: Es el user experience.
+
+889
+01:58:46.210 --> 01:58:52.669
+Carlos Dominguez: y de ahí en adelante ya para la ciencia sesión. Ya vamos a tener todo el planteamiento listo para empezar a desarrollar.
+
+890
+01:58:53.460 --> 01:58:57.710
+Joaco Malig: Perfecto amigo. Te pido, por favor, la url de la forja. La tienes a mano.
+
+891
+01:58:58.870 --> 01:59:04.030
+Carlos Dominguez: Sí está muy fácil. Get Forja, punto, com.
+
+892
+01:59:05.730 --> 01:59:07.750
+Joaco Malig: Cerremos con eso. Hagamos una
+
+893
+01:59:08.020 --> 01:59:13.769
+Joaco Malig: una mirada rápida en la web. Ahí la tienen. Para los que están viendo la grabación getforja com
+
+894
+01:59:13.890 --> 01:59:19.260
+Joaco Malig: y un tremendo sistema de desarrollo
+
+895
+01:59:19.420 --> 01:59:27.599
+Joaco Malig: de bytecoding que Carlos ha ido, ha ha tiene a disposición ahí en Getforja, punto com.
+
+896
+01:59:27.660 --> 01:59:46.010
+Joaco Malig: por lo demás, con un descuento para todos aquellos que se suman desde Latinoamérica o Hispanoamérica. Tenemos que agregar hispaña porque tenemos varios imperiales allá, amigo, te complico. Cuando cuando te veo ahí esa mirada.
+
+897
+01:59:46.520 --> 01:59:59.450
+Carlos Dominguez: Es fácil, nada más tranquilidad. Y ya está porque todo eso está configurado de manera automática. Porque si yo digo Okay, tengo el cupón, latam de descuento. Cualquiera va en Estados Unidos y lo aplica, ¿no?
+
+898
+01:59:59.550 --> 02:00:16.440
+Carlos Dominguez: En este caso, detecta que tú estés en ese país y te aplica el cupón automáticamente. Si no estás en ese país, no te va a dejar usar el cupón. Así que en este caso, Daniel, tú que estás en Estados Unidos, te interesa, me dices y te mando un cupón manual que puedas aplicar porque.
+
+899
+02:00:16.440 --> 02:00:20.049
+Joaco Malig: Hagamos un cupón para la comunidad. Po.
+
+900
+02:00:20.200 --> 02:00:35.360
+Joaco Malig: cuando puedas ahí, create un cupón de descuento equivalente al de la T a M para la Comunidad. Y así todos aquellos que están en Estados Unidos, como Daniel como Eduardo, en fin, todo aquello los que están en Europa, como el caso de flor, que creo que ya está de vuelta por esos lados. Cierto.
+
+901
+02:00:35.530 --> 02:00:37.580
+Joaco Malig: En fin.
+
+902
+02:00:39.660 --> 02:00:44.679
+Carlos Dominguez: Listo que se llame Imperio. ¿cómo Ves Imperio. Todo con mayúsculas.
+
+903
+02:00:45.270 --> 02:00:46.150
+Joaco Malig: Perfecto.
+
+904
+02:00:48.230 --> 02:00:52.770
+Carlos Dominguez: Bueno, me un mundo y
+
+905
+02:01:00.690 --> 02:01:06.269
+Carlos Dominguez: listo. Ya quedó la velocidad y acaba activado el cupón imperio con mayúsculas.
+
+906
+02:01:07.700 --> 02:01:13.350
+Joaco Malig: Se pueden editar Los Skills dice Daniel. Por supuesto, todos los Skills son editables por definición.
+
+907
+02:01:13.350 --> 02:01:19.090
+Carlos Dominguez: Ustedes lo descargan el suyo y hacen Lo Forean. Hacen lo que quieran, Lo ajustan a sus necesidades.
+
+908
+02:01:19.540 --> 02:01:19.960
+Daniel Kalasic: El Grupo.
+
+909
+02:01:19.960 --> 02:01:24.530
+Carlos Dominguez: El equipo. Así que es Open source. Pueden hacer lo que quieran. Tienen licencia de mait.
+
+910
+02:01:25.630 --> 02:01:26.300
+Daniel Kalasic: Okay.
+
+911
+02:01:27.630 --> 02:01:40.930
+Joaco Malig: Tremendo, cerramos entonces para no extender la grabación. Y les deseamos a todos una excelente tarde excelente jornada y nos vemos en una próxima sesión de by coding que estén muy bien. Muchas gracias. Carlos, como siempre.
+
+912
+02:01:40.930 --> 02:01:41.330
+Carlos Dominguez: A mí.
+
+913
+02:01:41.330 --> 02:01:41.750
+Joaco Malig: Momentos.
+
+914
+02:01:41.750 --> 02:01:42.730
+Carlos Dominguez: A todos.
+
+915
+02:01:43.330 --> 02:01:44.000
+Carlos Dominguez: Chao, chao.
+
+916
+02:01:44.000 --> 02:01:44.810
+Joaco Malig: Bye, Bye.
+

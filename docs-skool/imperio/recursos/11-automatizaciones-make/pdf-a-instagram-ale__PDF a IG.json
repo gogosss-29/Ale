@@ -1,0 +1,3273 @@
+{
+    "name": "Integration Google Drive, PDF.co, Perplexity AI, OpenAI (ChatGPT, Whisper, DALL-E)",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-drive:watchFilesInAFolder",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": 1723585,
+                "select": "create",
+                "destination": "drive",
+                "mimeType": "all",
+                "limit": 1,
+                "folderId": "/1K37VT5-ZSjycCFZCYVnKLvuYbgM3Dcv2/1TqZa_rkZhiBAInpDRHt3-aoW_sebAED5"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Google Restricted connection (educmarkdigital@gmail.com)",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google-restricted"
+                            }
+                        },
+                        "select": {
+                            "label": "By Created Time"
+                        },
+                        "destination": {
+                            "label": "My Drive"
+                        },
+                        "mimeType": {
+                            "label": "All"
+                        },
+                        "folderId": {
+                            "path": [
+                                "ASISTENTE EDUCMARK",
+                                "ANÁLISIS PDF"
+                            ]
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google-restricted",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "type": "hidden"
+                    },
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Watch Files",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "create",
+                                "modify"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "type": "select",
+                        "label": "Choose a Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "mimeType",
+                        "type": "select",
+                        "label": "File Types to Watch",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "all",
+                                "document",
+                                "spreadsheet",
+                                "slide",
+                                "drawing"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "folderId",
+                        "type": "folder",
+                        "label": "Select the Folder to be Watched",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "File ID"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "mimeType",
+                        "type": "text",
+                        "label": "Mime Type"
+                    },
+                    {
+                        "name": "kind",
+                        "type": "text",
+                        "label": "Kind"
+                    },
+                    {
+                        "name": "starred",
+                        "type": "boolean",
+                        "label": "Starred"
+                    },
+                    {
+                        "name": "trashed",
+                        "type": "boolean",
+                        "label": "Trashed"
+                    },
+                    {
+                        "name": "explicitlyTrashed",
+                        "type": "boolean",
+                        "label": "Explicitly Trashed"
+                    },
+                    {
+                        "name": "parents",
+                        "type": "array",
+                        "label": "Parents"
+                    },
+                    {
+                        "name": "spaces",
+                        "type": "array",
+                        "label": "Spaces"
+                    },
+                    {
+                        "name": "version",
+                        "type": "number",
+                        "label": "Version"
+                    },
+                    {
+                        "name": "webViewLink",
+                        "type": "url",
+                        "label": "Web View Link"
+                    },
+                    {
+                        "name": "iconLink",
+                        "type": "url",
+                        "label": "Icon Link"
+                    },
+                    {
+                        "name": "hasThumbnail",
+                        "type": "boolean",
+                        "label": "Thumbnail"
+                    },
+                    {
+                        "name": "thumbnailLink",
+                        "type": "url",
+                        "label": "Thumbnail Link"
+                    },
+                    {
+                        "name": "thumbnailVersion",
+                        "type": "number",
+                        "label": "Thumbnail Version"
+                    },
+                    {
+                        "name": "viewedByMe",
+                        "type": "boolean",
+                        "label": "Viewed By Me"
+                    },
+                    {
+                        "name": "viewedByMeTime",
+                        "type": "date",
+                        "label": "Viewed By Me Time"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "modifiedTime",
+                        "time": true,
+                        "type": "date",
+                        "label": "Modified Time"
+                    },
+                    {
+                        "name": "modifiedByMeTime",
+                        "time": true,
+                        "type": "date",
+                        "label": "Modified By Me Time"
+                    },
+                    {
+                        "name": "modifiedByMe",
+                        "type": "boolean",
+                        "label": "Modified By Me"
+                    },
+                    {
+                        "name": "owners",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "me",
+                                "type": "boolean",
+                                "label": "Me"
+                            },
+                            {
+                                "name": "permissionId",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Owners"
+                    },
+                    {
+                        "name": "lastModifyingUser",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "me",
+                                "type": "boolean",
+                                "label": "Me"
+                            },
+                            {
+                                "name": "permissionId",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modifying User"
+                    },
+                    {
+                        "name": "shared",
+                        "type": "boolean",
+                        "label": "Shared"
+                    },
+                    {
+                        "name": "ownedByMe",
+                        "type": "boolean",
+                        "label": "Owned By Me"
+                    },
+                    {
+                        "name": "capabilities",
+                        "spec": [
+                            {
+                                "name": "canAddChildren",
+                                "type": "boolean",
+                                "label": "Can Add Children"
+                            },
+                            {
+                                "name": "canAddMyDriveParent",
+                                "type": "boolean",
+                                "label": "Can Add My Drive Parent"
+                            },
+                            {
+                                "name": "canChangeCopyRequiresWriterPermission",
+                                "type": "boolean",
+                                "label": "Can Change Copy Requires Writer Permission"
+                            },
+                            {
+                                "name": "canChangeViewersCanCopyContent",
+                                "type": "boolean",
+                                "label": "Can Change Viewers Can Copy Content"
+                            },
+                            {
+                                "name": "canComment",
+                                "type": "boolean",
+                                "label": "Can Comment"
+                            },
+                            {
+                                "name": "canCopy",
+                                "type": "boolean",
+                                "label": "Can Copy"
+                            },
+                            {
+                                "name": "canDelete",
+                                "type": "boolean",
+                                "label": "Can Delete"
+                            },
+                            {
+                                "name": "canDeleteChildren",
+                                "type": "boolean",
+                                "label": "Can Delete Children"
+                            },
+                            {
+                                "name": "canDownload",
+                                "type": "boolean",
+                                "label": "Can Download"
+                            },
+                            {
+                                "name": "canEdit",
+                                "type": "boolean",
+                                "label": "Can Edit"
+                            },
+                            {
+                                "name": "canListChildren",
+                                "type": "boolean",
+                                "label": "Can List Children"
+                            },
+                            {
+                                "name": "canModifyContent",
+                                "type": "boolean",
+                                "label": "Can Modify Content"
+                            },
+                            {
+                                "name": "canMoveChildrenOutOfTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Out Of Team Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenOutOfDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Out Of Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenWithinTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Within Team Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenWithinDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Within Drive"
+                            },
+                            {
+                                "name": "canMoveTeamDriveItem",
+                                "type": "boolean",
+                                "label": "Can Move Team Drive Item"
+                            },
+                            {
+                                "name": "canMoveItemIntoTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Into Team Drive"
+                            },
+                            {
+                                "name": "canMoveItemOutOfDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Out Of Drive"
+                            },
+                            {
+                                "name": "canMoveItemWithinDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Within Drive"
+                            },
+                            {
+                                "name": "canReadRevisions",
+                                "type": "boolean",
+                                "label": "Can Read Revisions"
+                            },
+                            {
+                                "name": "canReadTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Read Team Drive"
+                            },
+                            {
+                                "name": "canReadDrive",
+                                "type": "boolean",
+                                "label": "Can Read Drive"
+                            },
+                            {
+                                "name": "canRemoveChildren",
+                                "type": "boolean",
+                                "label": "Can Remove Children"
+                            },
+                            {
+                                "name": "canRemoveMyDriveParent",
+                                "type": "boolean",
+                                "label": "Can Remove My Drive Parent"
+                            },
+                            {
+                                "name": "canRename",
+                                "type": "boolean",
+                                "label": "Can Rename"
+                            },
+                            {
+                                "name": "canShare",
+                                "type": "boolean",
+                                "label": "Can Share"
+                            },
+                            {
+                                "name": "canTrash",
+                                "type": "boolean",
+                                "label": "Can Trash"
+                            },
+                            {
+                                "name": "canTrashChildren",
+                                "type": "boolean",
+                                "label": "Can Trash Children"
+                            },
+                            {
+                                "name": "canUntrash",
+                                "type": "boolean",
+                                "label": "Can Untrash"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Capabilities"
+                    },
+                    {
+                        "name": "viewersCanCopyContent",
+                        "type": "boolean",
+                        "label": "Viewers Can Copy Content"
+                    },
+                    {
+                        "name": "copyRequiresWriterPermission",
+                        "type": "boolean",
+                        "label": "Copy Requires Writer Permission"
+                    },
+                    {
+                        "name": "writersCanShare",
+                        "type": "boolean",
+                        "label": "Writers Can Share"
+                    },
+                    {
+                        "name": "permissions",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "role",
+                                "type": "text",
+                                "label": "Role"
+                            },
+                            {
+                                "name": "allowFileDiscovery",
+                                "type": "boolean",
+                                "label": "Allow File Discovery"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "deleted",
+                                "type": "boolean",
+                                "label": "Deleted"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Permissions"
+                    },
+                    {
+                        "name": "permissionIds",
+                        "type": "array",
+                        "label": "Permission IDs"
+                    },
+                    {
+                        "name": "quotaBytesUsed",
+                        "type": "uinteger",
+                        "label": "Quota Bytes Used"
+                    },
+                    {
+                        "name": "isAppAuthorized",
+                        "type": "boolean",
+                        "label": "App Authorized"
+                    },
+                    {
+                        "name": "exportLinks",
+                        "spec": [
+                            {
+                                "name": "application/vnd.oasis.opendocument.text",
+                                "type": "url",
+                                "label": "application/vnd.oasis.opendocument.text"
+                            },
+                            {
+                                "name": "application/pdf",
+                                "type": "url",
+                                "label": "application/pdf"
+                            },
+                            {
+                                "name": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "type": "url",
+                                "label": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            },
+                            {
+                                "name": "text/plain",
+                                "type": "url",
+                                "label": "text/plain"
+                            },
+                            {
+                                "name": "application/rtf",
+                                "type": "url",
+                                "label": "application/rtf"
+                            },
+                            {
+                                "name": "text/html",
+                                "type": "url",
+                                "label": "text/html"
+                            },
+                            {
+                                "name": "application/epub+zip",
+                                "type": "url",
+                                "label": "application/epub+zip"
+                            },
+                            {
+                                "name": "application/zip",
+                                "type": "url",
+                                "label": "application/zip"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Export Links"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "google-drive:getAFile",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": 1723642
+            },
+            "mapper": {
+                "select": "map",
+                "formatDocuments": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                "formatDrawings": "image/jpeg",
+                "file": "{{1.id}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Google Restricted connection (educmarkdigital@gmail.com)",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google-restricted"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "select": {
+                            "label": "Enter manually"
+                        },
+                        "formatDocuments": {
+                            "label": "MS Word Document"
+                        },
+                        "formatSpreadsheets": {
+                            "label": "MS Excel"
+                        },
+                        "formatPresentations": {
+                            "label": "MS PowerPoint"
+                        },
+                        "formatDrawings": {
+                            "label": "JPEG"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google-restricted",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "type": "hidden"
+                    },
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Enter a File ID",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "map",
+                                "value"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDocuments",
+                        "type": "select",
+                        "label": "Convert Google Documents Files to Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatSpreadsheets",
+                        "type": "select",
+                        "label": "Convert Google Spreadsheets Files to Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatPresentations",
+                        "type": "select",
+                        "label": "Convert Google Slides Files to Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDrawings",
+                        "type": "select",
+                        "label": "Convert Google Drawings Files to Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "type": "text",
+                        "label": "File ID",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "File ID"
+                    },
+                    {
+                        "name": "name",
+                        "type": "filename",
+                        "label": "Name",
+                        "semantic": "file:name"
+                    },
+                    {
+                        "name": "data",
+                        "type": "buffer",
+                        "label": "Data",
+                        "semantic": "file:data"
+                    },
+                    {
+                        "name": "filesize",
+                        "type": "uinteger",
+                        "label": "File Size"
+                    },
+                    {
+                        "name": "mimeType",
+                        "type": "text",
+                        "label": "Mime Type"
+                    },
+                    {
+                        "name": "kind",
+                        "type": "text",
+                        "label": "Kind"
+                    },
+                    {
+                        "name": "starred",
+                        "type": "boolean",
+                        "label": "Starred"
+                    },
+                    {
+                        "name": "trashed",
+                        "type": "boolean",
+                        "label": "Trashed"
+                    },
+                    {
+                        "name": "explicitlyTrashed",
+                        "type": "boolean",
+                        "label": "Explicitly Trashed"
+                    },
+                    {
+                        "name": "parents",
+                        "type": "array",
+                        "label": "Parents"
+                    },
+                    {
+                        "name": "spaces",
+                        "type": "array",
+                        "label": "Spaces"
+                    },
+                    {
+                        "name": "version",
+                        "type": "number",
+                        "label": "Version"
+                    },
+                    {
+                        "name": "webContentLink",
+                        "type": "url",
+                        "label": "Web Content Link"
+                    },
+                    {
+                        "name": "webViewLink",
+                        "type": "url",
+                        "label": "Web View Link"
+                    },
+                    {
+                        "name": "iconLink",
+                        "type": "url",
+                        "label": "Icon Link"
+                    },
+                    {
+                        "name": "hasThumbnail",
+                        "type": "boolean",
+                        "label": "Thumbnail"
+                    },
+                    {
+                        "name": "thumbnailLink",
+                        "type": "url",
+                        "label": "Thumbnail Link"
+                    },
+                    {
+                        "name": "thumbnailVersion",
+                        "type": "number",
+                        "label": "Thumbnail Version"
+                    },
+                    {
+                        "name": "viewedByMe",
+                        "type": "boolean",
+                        "label": "Viewed By Me"
+                    },
+                    {
+                        "name": "viewedByMeTime",
+                        "type": "date",
+                        "label": "Viewed By Me Time"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "modifiedTime",
+                        "time": true,
+                        "type": "date",
+                        "label": "Modified Time"
+                    },
+                    {
+                        "name": "modifiedByMeTime",
+                        "time": true,
+                        "type": "date",
+                        "label": "Modified By Me Time"
+                    },
+                    {
+                        "name": "modifiedByMe",
+                        "type": "boolean",
+                        "label": "Modified By Me"
+                    },
+                    {
+                        "name": "teamDriveId",
+                        "type": "text",
+                        "label": "Team Drive ID"
+                    },
+                    {
+                        "name": "driveId",
+                        "type": "text",
+                        "label": "Drive ID"
+                    },
+                    {
+                        "name": "owners",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "me",
+                                "type": "boolean",
+                                "label": "Me"
+                            },
+                            {
+                                "name": "permissionId",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Owners"
+                    },
+                    {
+                        "name": "lastModifyingUser",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "me",
+                                "type": "boolean",
+                                "label": "Me"
+                            },
+                            {
+                                "name": "permissionId",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modifying User"
+                    },
+                    {
+                        "name": "shared",
+                        "type": "boolean",
+                        "label": "Shared"
+                    },
+                    {
+                        "name": "ownedByMe",
+                        "type": "boolean",
+                        "label": "Owned By Me"
+                    },
+                    {
+                        "name": "capabilities",
+                        "spec": [
+                            {
+                                "name": "canAddChildren",
+                                "type": "boolean",
+                                "label": "Can Add Children"
+                            },
+                            {
+                                "name": "canChangeCopyRequiresWriterPermission",
+                                "type": "boolean",
+                                "label": "Can Change Copy Requires Writer Permission"
+                            },
+                            {
+                                "name": "canChangeViewersCanCopyContent",
+                                "type": "boolean",
+                                "label": "Can Change Viewers Can Copy Content"
+                            },
+                            {
+                                "name": "canComment",
+                                "type": "boolean",
+                                "label": "Can Comment"
+                            },
+                            {
+                                "name": "canCopy",
+                                "type": "boolean",
+                                "label": "Can Copy"
+                            },
+                            {
+                                "name": "canDelete",
+                                "type": "boolean",
+                                "label": "Can Delete"
+                            },
+                            {
+                                "name": "canDownload",
+                                "type": "boolean",
+                                "label": "Can Download"
+                            },
+                            {
+                                "name": "canEdit",
+                                "type": "boolean",
+                                "label": "Can Edit"
+                            },
+                            {
+                                "name": "canListChildren",
+                                "type": "boolean",
+                                "label": "Can List Children"
+                            },
+                            {
+                                "name": "canModifyContent",
+                                "type": "boolean",
+                                "label": "Can Modify Content"
+                            },
+                            {
+                                "name": "canMoveChildrenOutOfTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Out Of Team Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenOutOfDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Out Of Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenWithinTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Within Team Drive"
+                            },
+                            {
+                                "name": "canMoveChildrenWithinDrive",
+                                "type": "boolean",
+                                "label": "Can Move Children Within Drive"
+                            },
+                            {
+                                "name": "canMoveItemIntoTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Into Team Drive"
+                            },
+                            {
+                                "name": "canMoveItemOutOfTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Out Of Team Drive"
+                            },
+                            {
+                                "name": "canMoveItemOutOfDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Out Of Drive"
+                            },
+                            {
+                                "name": "canMoveItemWithinTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Within Team Drive"
+                            },
+                            {
+                                "name": "canMoveItemWithinDrive",
+                                "type": "boolean",
+                                "label": "Can Move Item Within Drive"
+                            },
+                            {
+                                "name": "canMoveTeamDriveItem",
+                                "type": "boolean",
+                                "label": "Can Move Team Drive Item"
+                            },
+                            {
+                                "name": "canReadRevisions",
+                                "type": "boolean",
+                                "label": "Can Read Revisions"
+                            },
+                            {
+                                "name": "canReadTeamDrive",
+                                "type": "boolean",
+                                "label": "Can Read Team Drive"
+                            },
+                            {
+                                "name": "canReadDrive",
+                                "type": "boolean",
+                                "label": "Can Read Drive"
+                            },
+                            {
+                                "name": "canRemoveChildren",
+                                "type": "boolean",
+                                "label": "Can Remove Children"
+                            },
+                            {
+                                "name": "canRename",
+                                "type": "boolean",
+                                "label": "Can Rename"
+                            },
+                            {
+                                "name": "canShare",
+                                "type": "boolean",
+                                "label": "Can Share"
+                            },
+                            {
+                                "name": "canTrash",
+                                "type": "boolean",
+                                "label": "Can Trash"
+                            },
+                            {
+                                "name": "canTrashChildren",
+                                "type": "boolean",
+                                "label": "Can Trash Children"
+                            },
+                            {
+                                "name": "canUntrash",
+                                "type": "boolean",
+                                "label": "Can Untrash"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Capabilities"
+                    },
+                    {
+                        "name": "viewersCanCopyContent",
+                        "type": "boolean",
+                        "label": "Viewers Can Copy Content"
+                    },
+                    {
+                        "name": "copyRequiresWriterPermission",
+                        "type": "boolean",
+                        "label": "Copy Requires Writer Permission"
+                    },
+                    {
+                        "name": "writersCanShare",
+                        "type": "boolean",
+                        "label": "Writers Can Share"
+                    },
+                    {
+                        "name": "permissions",
+                        "spec": [
+                            {
+                                "name": "kind",
+                                "type": "text",
+                                "label": "Kind"
+                            },
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "Permission ID"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "role",
+                                "type": "text",
+                                "label": "Role"
+                            },
+                            {
+                                "name": "allowFileDiscovery",
+                                "type": "boolean",
+                                "label": "Allow File Discovery"
+                            },
+                            {
+                                "name": "emailAddress",
+                                "type": "email",
+                                "label": "Email Address"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "photoLink",
+                                "type": "url",
+                                "label": "Photo Link"
+                            },
+                            {
+                                "name": "deleted",
+                                "type": "boolean",
+                                "label": "Deleted"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Permissions"
+                    },
+                    {
+                        "name": "permissionIds",
+                        "type": "array",
+                        "label": "Permission IDs"
+                    },
+                    {
+                        "name": "hasAugmentedPermissions",
+                        "type": "boolean",
+                        "label": "Has Augmented Permissions"
+                    },
+                    {
+                        "name": "originalFilename",
+                        "type": "text",
+                        "label": "Original Filename"
+                    },
+                    {
+                        "name": "fullFileExtension",
+                        "type": "text",
+                        "label": "Full File Extension"
+                    },
+                    {
+                        "name": "fileExtension",
+                        "type": "text",
+                        "label": "File Extension"
+                    },
+                    {
+                        "name": "size",
+                        "type": "uinteger",
+                        "label": "Size"
+                    },
+                    {
+                        "name": "quotaBytesUsed",
+                        "type": "uinteger",
+                        "label": "Quota Bytes Used"
+                    },
+                    {
+                        "name": "headRevisionId",
+                        "type": "text",
+                        "label": "Head Revision ID"
+                    },
+                    {
+                        "name": "isAppAuthorized",
+                        "type": "boolean",
+                        "label": "App Authorized"
+                    },
+                    {
+                        "name": "exportLinks",
+                        "spec": [
+                            {
+                                "name": "application/vnd.oasis.opendocument.text",
+                                "type": "url",
+                                "label": "application/vnd.oasis.opendocument.text"
+                            },
+                            {
+                                "name": "application/pdf",
+                                "type": "url",
+                                "label": "application/pdf"
+                            },
+                            {
+                                "name": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "type": "url",
+                                "label": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            },
+                            {
+                                "name": "text/plain",
+                                "type": "url",
+                                "label": "text/plain"
+                            },
+                            {
+                                "name": "application/rtf",
+                                "type": "url",
+                                "label": "application/rtf"
+                            },
+                            {
+                                "name": "text/html",
+                                "type": "url",
+                                "label": "text/html"
+                            },
+                            {
+                                "name": "application/epub+zip",
+                                "type": "url",
+                                "label": "application/epub+zip"
+                            },
+                            {
+                                "name": "application/zip",
+                                "type": "url",
+                                "label": "application/zip"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Export Links"
+                    },
+                    {
+                        "name": "videoMediaMetadata",
+                        "spec": [
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "durationMillis",
+                                "type": "uinteger",
+                                "label": "Duration Millis"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Video Media Metadata"
+                    },
+                    {
+                        "name": "headRevisionId",
+                        "type": "text",
+                        "label": "Head Revision ID"
+                    },
+                    {
+                        "name": "size",
+                        "type": "uinteger",
+                        "label": "Size"
+                    },
+                    {
+                        "name": "fileExtension",
+                        "type": "text",
+                        "label": "File Extension"
+                    },
+                    {
+                        "name": "fullFileExtension",
+                        "type": "text",
+                        "label": "Full File Extension"
+                    },
+                    {
+                        "name": "originalFilename",
+                        "type": "text",
+                        "label": "Original Filename"
+                    },
+                    {
+                        "name": "imageMediaMetadata",
+                        "spec": [
+                            {
+                                "name": "width",
+                                "type": "number",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "number",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "rotation",
+                                "type": "number",
+                                "label": "Rotation"
+                            },
+                            {
+                                "name": "time",
+                                "type": "text",
+                                "label": "Time"
+                            },
+                            {
+                                "name": "colorSpace",
+                                "type": "text",
+                                "label": "Color Space"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Image Media Metadata"
+                    },
+                    {
+                        "name": "linkShareMetadata",
+                        "spec": [
+                            {
+                                "name": "securityUpdateEligible",
+                                "type": "boolean",
+                                "label": "Security Update Eligible"
+                            },
+                            {
+                                "name": "securityUpdateEnabled",
+                                "type": "boolean",
+                                "label": "Security Update Enabled"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Link Share Metadata"
+                    },
+                    {
+                        "name": "md5Checksum",
+                        "type": "text",
+                        "label": "MD5 Checksum"
+                    },
+                    {
+                        "name": "sha1Checksum",
+                        "type": "text",
+                        "label": "SHA1 Checksum"
+                    },
+                    {
+                        "name": "sha256Checksum",
+                        "type": "text",
+                        "label": "SHA256 Checksum"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "pdf-co:PDFToAnything",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1477042
+            },
+            "mapper": {
+                "import": {
+                    "importType": "upload",
+                    "data": "{{2.data}}",
+                    "name": "{{2.name}}"
+                },
+                "convert": {
+                    "convertType": "toTextSimple"
+                },
+                "inline": true,
+                "async": 15000,
+                "expiration": "60",
+                "export": {
+                    "exportType": "inline"
+                }
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My PDF.co connection",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "pdf-co"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "import": {
+                            "nested": {
+                                "importType": {
+                                    "label": "Upload a File"
+                                }
+                            }
+                        },
+                        "convert": {
+                            "nested": {
+                                "convertType": {
+                                    "label": "PDF to Text (simple, no layout, fast)"
+                                }
+                            }
+                        },
+                        "inline": {
+                            "mode": "chose"
+                        },
+                        "async": {
+                            "mode": "chose",
+                            "label": "Async"
+                        },
+                        "export": {
+                            "nested": {
+                                "exportType": {
+                                    "label": "JSON Output"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:pdf-co",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "import",
+                        "type": "collection",
+                        "label": "Import Options",
+                        "required": true,
+                        "spec": [
+                            {
+                                "name": "importType",
+                                "type": "select",
+                                "label": "Input File",
+                                "required": true,
+                                "validate": {
+                                    "enum": [
+                                        "upload",
+                                        "url"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "data",
+                                "type": "buffer",
+                                "label": "Data",
+                                "required": true
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Output File Name"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "convert",
+                        "type": "collection",
+                        "label": "Convert Options",
+                        "required": true,
+                        "spec": [
+                            {
+                                "name": "convertType",
+                                "type": "select",
+                                "label": "Convert Type",
+                                "required": true,
+                                "validate": {
+                                    "enum": [
+                                        "toTextSimple",
+                                        "toText",
+                                        "toCsv",
+                                        "toJson2",
+                                        "toJson",
+                                        "toXml",
+                                        "toHtml",
+                                        "toJpg",
+                                        "toPng",
+                                        "toTiff"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "pages",
+                        "type": "text",
+                        "label": "Pages"
+                    },
+                    {
+                        "name": "password",
+                        "type": "text",
+                        "label": "Password"
+                    },
+                    {
+                        "name": "inline",
+                        "type": "boolean",
+                        "label": "Inline"
+                    },
+                    {
+                        "name": "async",
+                        "type": "select",
+                        "label": "Execution Mode",
+                        "validate": {
+                            "enum": [
+                                false,
+                                15000,
+                                "asyncCheckLater"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "profiles",
+                        "type": "text",
+                        "label": "Profiles"
+                    },
+                    {
+                        "name": "expiration",
+                        "type": "number",
+                        "label": "Output Links Expiration"
+                    },
+                    {
+                        "name": "export",
+                        "type": "collection",
+                        "label": "Export Options",
+                        "required": true,
+                        "spec": [
+                            {
+                                "name": "exportType",
+                                "type": "select",
+                                "label": "Export Type",
+                                "required": true,
+                                "validate": {
+                                    "enum": [
+                                        "downloadFile",
+                                        "inline"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "body",
+                        "spec": [
+                            {
+                                "name": "document",
+                                "spec": [
+                                    {
+                                        "name": "page",
+                                        "spec": [
+                                            {
+                                                "name": "row",
+                                                "spec": [
+                                                    {
+                                                        "name": "column",
+                                                        "spec": [
+                                                            {
+                                                                "name": "text",
+                                                                "type": "collection",
+                                                                "label": "Text"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Column"
+                                                    }
+                                                ],
+                                                "type": "collection",
+                                                "label": "Row"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Page"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Document"
+                            },
+                            {
+                                "name": "objects_value",
+                                "spec": [],
+                                "type": "collection",
+                                "label": "Objects Value"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Body"
+                    },
+                    {
+                        "name": "url",
+                        "type": "text",
+                        "label": "Url"
+                    },
+                    {
+                        "name": "pageCount",
+                        "type": "integer",
+                        "label": "Page Count"
+                    },
+                    {
+                        "name": "error",
+                        "type": "boolean",
+                        "label": "Error"
+                    },
+                    {
+                        "name": "status",
+                        "type": "integer",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "remainingCredits",
+                        "type": "integer",
+                        "label": "Remaining Credits"
+                    },
+                    {
+                        "name": "jobId",
+                        "type": "text",
+                        "label": "Job Id"
+                    },
+                    {
+                        "name": "data",
+                        "type": "buffer",
+                        "label": "Data",
+                        "semantic": "file:data"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "File Name",
+                        "semantic": "file:name"
+                    },
+                    {
+                        "name": "urls",
+                        "type": "array",
+                        "label": "URLs"
+                    },
+                    {
+                        "name": "DataAsArray",
+                        "type": "array",
+                        "label": "Data as Array"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "perplexity-ai:createAChatCompletion",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1723496
+            },
+            "mapper": {
+                "model": "llama-3.1-sonar-large-128k-online",
+                "messages": [
+                    {
+                        "content": "Actua como un investigador de ebooks",
+                        "role": "system"
+                    },
+                    {
+                        "content": "Busca información sobre el siguiente pdf: {{3.body}}\nInsttrucciones:\n-Haz un resumen detallado del ebook\n--Buscar el máximo de información relacionada con este ebook y amplia la información de manera extendida (2000 palabras) a partir de diferentes fuentes reconocidas.",
+                        "role": "user"
+                    }
+                ],
+                "max_tokens": "3000",
+                "temperature": "0.7"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0,
+                    "name": "Resumen e investigación"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "EducMark",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "perplexity-ai"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "model": {
+                            "mode": "chose",
+                            "label": "llama-3.1-sonar-large-128k-online"
+                        },
+                        "messages": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "System"
+                                    }
+                                },
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "User"
+                                    }
+                                }
+                            ]
+                        },
+                        "search_domain_filter": {
+                            "mode": "chose"
+                        },
+                        "search_recency_filter": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "return_images": {
+                            "mode": "chose"
+                        },
+                        "return_related_questions": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:perplexity-ai",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true
+                    },
+                    {
+                        "name": "messages",
+                        "type": "array",
+                        "label": "Messages",
+                        "required": true,
+                        "spec": [
+                            {
+                                "name": "content",
+                                "type": "text",
+                                "label": "Content",
+                                "required": true
+                            },
+                            {
+                                "name": "role",
+                                "type": "select",
+                                "label": "Role",
+                                "options": [
+                                    {
+                                        "label": "User",
+                                        "value": "user"
+                                    },
+                                    {
+                                        "label": "Assistant",
+                                        "value": "assistant"
+                                    },
+                                    {
+                                        "label": "System",
+                                        "value": "system"
+                                    }
+                                ],
+                                "required": true
+                            }
+                        ]
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "number",
+                        "label": "Max Tokens"
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 1.999,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_k",
+                        "type": "number",
+                        "label": "Top K",
+                        "validate": {
+                            "max": 2048,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "presence_penalty",
+                        "type": "number",
+                        "label": "Presence Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "frequency_penalty",
+                        "type": "number",
+                        "label": "Frequency Penalty",
+                        "validate": {
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "search_domain_filter",
+                        "type": "array",
+                        "label": "Search Domain Filter",
+                        "spec": {
+                            "type": "text",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "search_recency_filter",
+                        "type": "select",
+                        "label": "Search Recency Filter",
+                        "validate": {
+                            "enum": [
+                                "month",
+                                "week",
+                                "day",
+                                "hour"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "return_images",
+                        "type": "boolean",
+                        "label": "Return Images"
+                    },
+                    {
+                        "name": "return_related_questions",
+                        "type": "boolean",
+                        "label": "Return Related Questions"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 13,
+            "module": "openai-gpt-3:messageAssistantAdvanced",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 748145
+            },
+            "mapper": {
+                "assistantId": "asst_Wg8Vva5VPoz4Se0twTTPokpq",
+                "role": "user",
+                "message": "Redacta a mi manera el siguiente texto: {{7.choices[].message.content}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0,
+                    "name": "Parafraseador"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Generador de Clases",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "assistantId": {
+                            "mode": "chose",
+                            "nested": [],
+                            "label": "Parafraseador EducMark (gpt-4o-mini)"
+                        },
+                        "role": {
+                            "label": "User"
+                        },
+                        "model": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "tools": {
+                            "mode": "chose"
+                        },
+                        "file_search_resources": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "code_interpreter_resources": {
+                            "mode": "chose"
+                        },
+                        "tool_choice": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "truncation_strategy": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "image_files": {
+                            "mode": "chose"
+                        },
+                        "image_urls": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "assistantId",
+                        "type": "select",
+                        "label": "Assistant",
+                        "required": true
+                    },
+                    {
+                        "name": "role",
+                        "type": "select",
+                        "label": "Role",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "user",
+                                "assistant"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "threadId",
+                        "type": "text",
+                        "label": "Thread ID"
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model"
+                    },
+                    {
+                        "name": "tools",
+                        "type": "select",
+                        "label": "Tools",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "file_search",
+                                "code_interpreter"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "file_search_resources",
+                        "type": "select",
+                        "label": "File Search Resources"
+                    },
+                    {
+                        "name": "code_interpreter_resources",
+                        "type": "select",
+                        "label": "Code Interpreter Resources",
+                        "validate": {
+                            "maxItems": 20
+                        },
+                        "multiple": true
+                    },
+                    {
+                        "name": "tool_choice",
+                        "type": "select",
+                        "label": "Tool Choice",
+                        "validate": {
+                            "enum": [
+                                "none",
+                                "auto",
+                                "required",
+                                "file_search",
+                                "code_interpreter",
+                                "function"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "instructions",
+                        "type": "text",
+                        "label": "Instructions"
+                    },
+                    {
+                        "name": "max_prompt_tokens",
+                        "type": "uinteger",
+                        "label": "Max Prompt Tokens"
+                    },
+                    {
+                        "name": "max_completion_tokens",
+                        "type": "uinteger",
+                        "label": "Max Completion Tokens"
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 2,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "auto",
+                                "json_object",
+                                "text"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "truncation_strategy",
+                        "type": "select",
+                        "label": "Truncation Strategy",
+                        "validate": {
+                            "enum": [
+                                "auto",
+                                "last_messages"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "type": "text",
+                        "label": "Message",
+                        "required": true
+                    },
+                    {
+                        "name": "image_files",
+                        "type": "select",
+                        "label": "Image Files",
+                        "multiple": true
+                    },
+                    {
+                        "name": "image_urls",
+                        "type": "array",
+                        "label": "Image URLs",
+                        "spec": {
+                            "type": "url",
+                            "label": "Image URL",
+                            "required": true,
+                            "name": "value"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "openai-gpt-3:CreateCompletion",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 748145
+            },
+            "mapper": {
+                "select": "chat",
+                "temperature": "1",
+                "top_p": "1",
+                "n_completions": "1",
+                "model": "gpt-4o-2024-05-13",
+                "max_tokens": "1200",
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "Actua como un experto creación de contenido para redes sociales"
+                    },
+                    {
+                        "role": "user",
+                        "content": "Crea un resumen basado en el siguiente blog. El resumen debe tener la siguiente estructura sin agregar títulos (solo texto):\n\n-Un título atractivo\n-Describe los tres aspectos más importantes del contenido (en forma de lista). No utilices asteriscos ni texto en negrita en los títulos y aspectos importantes. Usa sólo texto simple. Añade un emoji de número frente a cada aspecto (1️⃣, 2️⃣, 3️⃣).\n-Un llamado a la acción que anime a los lectores a interactuar con el post.\n-5 hashtags relevantes\n\nIMPORTANTE:\n-El texto debe contener emojis para hacerlo más atractivo.\n-No utilices texto en negrita ni asteriscos en ninguna parte del texto.\n\nEl post debe tener entre 1600 y 1800 caracteres.\n\nBlog: {{13.result}}",
+                        "imageDetail": "auto"
+                    }
+                ],
+                "response_format": "text"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1500,
+                    "y": 0,
+                    "name": "Publicación RRSS"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Generador de Clases",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "select": {
+                            "label": "Create a Chat Completion (GPT and o1 models)"
+                        },
+                        "logit_bias": {
+                            "mode": "chose"
+                        },
+                        "stop": {
+                            "mode": "chose"
+                        },
+                        "additionalParameters": {
+                            "mode": "chose"
+                        },
+                        "model": {
+                            "mode": "chose",
+                            "label": "gpt-4o-2024-05-13 (system)"
+                        },
+                        "messages": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "Developer / System"
+                                    }
+                                },
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "User"
+                                    },
+                                    "imageInputType": {
+                                        "mode": "chose",
+                                        "label": "Empty"
+                                    },
+                                    "imageDetail": {
+                                        "mode": "chose",
+                                        "label": "Auto"
+                                    }
+                                }
+                            ]
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "Text"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Select Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "chat",
+                                "prompt"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 2,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "n_completions",
+                        "type": "number",
+                        "label": "Number"
+                    },
+                    {
+                        "name": "frequency_penalty",
+                        "type": "number",
+                        "label": "Frequency Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "presence_penalty",
+                        "type": "number",
+                        "label": "Presence Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "logit_bias",
+                        "type": "array",
+                        "label": "Token Probability",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "token",
+                                    "type": "text",
+                                    "label": "Token ID",
+                                    "required": true
+                                },
+                                {
+                                    "name": "probability",
+                                    "type": "number",
+                                    "label": "Probability",
+                                    "required": true,
+                                    "validate": {
+                                        "max": 100,
+                                        "min": -100
+                                    }
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Token Probability",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "seed",
+                        "type": "integer",
+                        "label": "Seed"
+                    },
+                    {
+                        "name": "stop",
+                        "type": "array",
+                        "label": "Stop Sequences",
+                        "validate": {
+                            "maxItems": 4
+                        },
+                        "spec": {
+                            "type": "text",
+                            "label": "Stop Sequence",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "additionalParameters",
+                        "type": "array",
+                        "label": "Other Input Parameters",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "key",
+                                    "type": "text",
+                                    "label": "Parameter Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "type",
+                                    "type": "select",
+                                    "label": "Input Type",
+                                    "options": [
+                                        {
+                                            "label": "Text",
+                                            "value": "text",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ],
+                                            "default": true
+                                        },
+                                        {
+                                            "label": "Number",
+                                            "value": "number",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "number",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Boolean",
+                                            "value": "boolean",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "boolean",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Date",
+                                            "value": "date",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "date",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Any",
+                                            "value": "any",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "any",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Input Parameter",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "uinteger",
+                        "label": "Max Completion Tokens"
+                    },
+                    {
+                        "name": "messages",
+                        "type": "array",
+                        "label": "Messages",
+                        "required": true,
+                        "spec": {
+                            "label": "Message",
+                            "type": "collection",
+                            "spec": [
+                                {
+                                    "name": "role",
+                                    "type": "select",
+                                    "label": "Role",
+                                    "required": true,
+                                    "options": {
+                                        "store": [
+                                            {
+                                                "label": "User",
+                                                "value": "user",
+                                                "nested": [
+                                                    {
+                                                        "help": "Text content of the message on behalf of the selected __Role__.",
+                                                        "name": "content",
+                                                        "type": "text",
+                                                        "label": "Text Content"
+                                                    },
+                                                    {
+                                                        "name": "imageInputType",
+                                                        "type": "select",
+                                                        "label": "Image Input Type",
+                                                        "mappable": false,
+                                                        "options": [
+                                                            {
+                                                                "value": "url",
+                                                                "label": "URL",
+                                                                "nested": [
+                                                                    {
+                                                                        "name": "imageUrl",
+                                                                        "label": "Image URL",
+                                                                        "type": "url",
+                                                                        "help": "Make sure to use a publicly accessible URL.\nYou can test if your image is publicly accessible by opening the link in an incognito tab."
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "value": "file",
+                                                                "label": "Image File",
+                                                                "nested": [
+                                                                    {
+                                                                        "name": "imageFile",
+                                                                        "label": "Image",
+                                                                        "type": "collection",
+                                                                        "spec": [
+                                                                            {
+                                                                                "name": "imageFilename",
+                                                                                "type": "filename",
+                                                                                "label": "Image Filename",
+                                                                                "semantic": "file:name",
+                                                                                "extension": [
+                                                                                    "jpg",
+                                                                                    "jpeg",
+                                                                                    "png",
+                                                                                    "webp",
+                                                                                    "gif"
+                                                                                ],
+                                                                                "help": "Accepted extensions: `.jpg`, `.jpeg`, `.png`, `.webp` and `.gif`."
+                                                                            },
+                                                                            {
+                                                                                "name": "imageData",
+                                                                                "type": "buffer",
+                                                                                "label": "Image Data",
+                                                                                "semantic": "file:data"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "imageDetail",
+                                                        "type": "select",
+                                                        "label": "Image Detail",
+                                                        "advanced": true,
+                                                        "options": [
+                                                            {
+                                                                "value": "auto",
+                                                                "default": true,
+                                                                "label": "Auto"
+                                                            },
+                                                            {
+                                                                "value": "high",
+                                                                "label": "High"
+                                                            },
+                                                            {
+                                                                "value": "low",
+                                                                "label": "Low"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "label": "Assistant",
+                                                "value": "assistant",
+                                                "nested": [
+                                                    {
+                                                        "help": "Text content of the message on behalf of the selected __Role__.",
+                                                        "name": "content",
+                                                        "type": "text",
+                                                        "label": "Text Content"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "label": "Developer / System",
+                                                "value": "system",
+                                                "nested": [
+                                                    {
+                                                        "help": "Text content of the message on behalf of the selected __Role__.",
+                                                        "name": "content",
+                                                        "type": "text",
+                                                        "label": "Text Content"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "text",
+                                "json_object"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "prediction",
+                        "type": "text",
+                        "label": "Predicted Outputs"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "result",
+                        "type": "any",
+                        "label": "Result"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "object",
+                        "type": "text",
+                        "label": "Object"
+                    },
+                    {
+                        "name": "created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "model",
+                        "type": "text",
+                        "label": "Model"
+                    },
+                    {
+                        "name": "choices",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "text",
+                                    "type": "text",
+                                    "label": "Text"
+                                },
+                                {
+                                    "name": "index",
+                                    "type": "number",
+                                    "label": "Index"
+                                },
+                                {
+                                    "name": "logprobs",
+                                    "type": "text",
+                                    "label": "Log Probs"
+                                },
+                                {
+                                    "name": "finish_reason",
+                                    "type": "text",
+                                    "label": "Finish Reason"
+                                },
+                                {
+                                    "name": "message",
+                                    "spec": [
+                                        {
+                                            "name": "role",
+                                            "type": "text",
+                                            "label": "Role"
+                                        },
+                                        {
+                                            "name": "content",
+                                            "type": "text",
+                                            "label": "Content"
+                                        },
+                                        {
+                                            "name": "refusal",
+                                            "type": "text",
+                                            "label": "Refusal"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Message"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Choices"
+                    },
+                    {
+                        "name": "usage",
+                        "spec": [
+                            {
+                                "name": "prompt_tokens",
+                                "type": "number",
+                                "label": "Prompt Tokens"
+                            },
+                            {
+                                "name": "completion_tokens",
+                                "type": "text",
+                                "label": "Completion Tokens"
+                            },
+                            {
+                                "name": "total_tokens",
+                                "type": "number",
+                                "label": "Total Tokens"
+                            },
+                            {
+                                "name": "prompt_tokens_details",
+                                "spec": [
+                                    {
+                                        "name": "cached_tokens",
+                                        "type": "uinteger",
+                                        "label": "Cached Tokens"
+                                    },
+                                    {
+                                        "name": "text_tokens",
+                                        "type": "uinteger",
+                                        "label": "Text Tokens"
+                                    },
+                                    {
+                                        "name": "image_tokens",
+                                        "type": "uinteger",
+                                        "label": "Image Tokens"
+                                    },
+                                    {
+                                        "name": "audio_tokens",
+                                        "type": "uinteger",
+                                        "label": "Audio Tokens"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Prompt Tokens Details"
+                            },
+                            {
+                                "name": "completion_tokens_details",
+                                "spec": [
+                                    {
+                                        "name": "reasoning_tokens",
+                                        "type": "uinteger",
+                                        "label": "Reasoning Tokens"
+                                    },
+                                    {
+                                        "name": "text_tokens",
+                                        "type": "uinteger",
+                                        "label": "Text Tokens"
+                                    },
+                                    {
+                                        "name": "audio_tokens",
+                                        "type": "uinteger",
+                                        "label": "Audio Tokens"
+                                    },
+                                    {
+                                        "name": "accepted_prediction_tokens",
+                                        "type": "uinteger",
+                                        "label": "Accepted Prediction Tokens"
+                                    },
+                                    {
+                                        "name": "rejected_prediction_tokens",
+                                        "type": "uinteger",
+                                        "label": "Rejected Prediction Tokens"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Completion Tokens Details"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Usage"
+                    },
+                    {
+                        "name": "service_tier",
+                        "type": "text",
+                        "label": "Service Tier"
+                    },
+                    {
+                        "name": "system_fingerprint",
+                        "type": "text",
+                        "label": "System Fingerprint"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 12,
+            "module": "openai-gpt-3:messageAssistantAdvanced",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 748145
+            },
+            "mapper": {
+                "assistantId": "asst_HCzxAn21c49vPI056yt3jFNX",
+                "role": "user",
+                "message": "Crea el mejor prompt para generar una imagen con: {{9.result}}\n\nImportante:\n- Responde sólo con el prompt\n- Indica explícitamente que la imagen no debe tener textos, banderas, símbolos ni palabras"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1800,
+                    "y": 0,
+                    "name": "Prompt de la imagen"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Generador de Clases",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "assistantId": {
+                            "mode": "chose",
+                            "nested": [],
+                            "label": "Gen-Image (gpt-4o-mini)"
+                        },
+                        "role": {
+                            "label": "User"
+                        },
+                        "model": {
+                            "mode": "chose"
+                        },
+                        "tools": {
+                            "mode": "chose"
+                        },
+                        "file_search_resources": {
+                            "mode": "chose"
+                        },
+                        "code_interpreter_resources": {
+                            "mode": "chose"
+                        },
+                        "tool_choice": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "truncation_strategy": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "image_files": {
+                            "mode": "chose"
+                        },
+                        "image_urls": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "assistantId",
+                        "type": "select",
+                        "label": "Assistant",
+                        "required": true
+                    },
+                    {
+                        "name": "role",
+                        "type": "select",
+                        "label": "Role",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "user",
+                                "assistant"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "threadId",
+                        "type": "text",
+                        "label": "Thread ID"
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model"
+                    },
+                    {
+                        "name": "tools",
+                        "type": "select",
+                        "label": "Tools",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "file_search",
+                                "code_interpreter"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "file_search_resources",
+                        "type": "select",
+                        "label": "File Search Resources"
+                    },
+                    {
+                        "name": "code_interpreter_resources",
+                        "type": "select",
+                        "label": "Code Interpreter Resources",
+                        "validate": {
+                            "maxItems": 20
+                        },
+                        "multiple": true
+                    },
+                    {
+                        "name": "tool_choice",
+                        "type": "select",
+                        "label": "Tool Choice",
+                        "validate": {
+                            "enum": [
+                                "none",
+                                "auto",
+                                "required",
+                                "file_search",
+                                "code_interpreter",
+                                "function"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "instructions",
+                        "type": "text",
+                        "label": "Instructions"
+                    },
+                    {
+                        "name": "max_prompt_tokens",
+                        "type": "uinteger",
+                        "label": "Max Prompt Tokens"
+                    },
+                    {
+                        "name": "max_completion_tokens",
+                        "type": "uinteger",
+                        "label": "Max Completion Tokens"
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 2,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "auto",
+                                "json_object",
+                                "text"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "truncation_strategy",
+                        "type": "select",
+                        "label": "Truncation Strategy",
+                        "validate": {
+                            "enum": [
+                                "auto",
+                                "last_messages"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "type": "text",
+                        "label": "Message",
+                        "required": true
+                    },
+                    {
+                        "name": "image_files",
+                        "type": "select",
+                        "label": "Image Files",
+                        "multiple": true
+                    },
+                    {
+                        "name": "image_urls",
+                        "type": "array",
+                        "label": "Image URLs",
+                        "spec": {
+                            "type": "url",
+                            "label": "Image URL",
+                            "required": true,
+                            "name": "value"
+                        }
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 10,
+            "module": "openai-gpt-3:GenerateImage",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 748145
+            },
+            "mapper": {
+                "model": "dall-e-3",
+                "prompt": "Crea una imagen con un estilo hiperrealista para la siguiente publicación de redes sociales.\nImportant: No words, no text\n\nPublicación: {{12.result}}",
+                "size": "1024x1024",
+                "quality": "standard",
+                "style": "vivid",
+                "response_format": "url"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 2100,
+                    "y": 0,
+                    "name": "Imagen RRSS"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Generador de Clases",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "model": {
+                            "mode": "chose",
+                            "label": "Dall-E 3"
+                        },
+                        "size": {
+                            "mode": "chose",
+                            "label": "1024x1024"
+                        },
+                        "quality": {
+                            "mode": "chose",
+                            "label": "Standard"
+                        },
+                        "style": {
+                            "mode": "chose",
+                            "label": "Vivid"
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "URL"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "dall-e-3",
+                                "dall-e-2"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "prompt",
+                        "type": "text",
+                        "label": "Prompt",
+                        "validate": {
+                            "max": 4000,
+                            "min": 0
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "size",
+                        "type": "select",
+                        "label": "Size",
+                        "validate": {
+                            "enum": [
+                                "1024x1024",
+                                "1792x1024",
+                                "1024x1792"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "quality",
+                        "type": "select",
+                        "label": "Quality",
+                        "validate": {
+                            "enum": [
+                                "standard",
+                                "hd"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "style",
+                        "type": "select",
+                        "label": "Style",
+                        "validate": {
+                            "enum": [
+                                "vivid",
+                                "natural"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "url",
+                                "imageFile"
+                            ]
+                        }
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "data",
+                        "spec": [
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "revised_prompt",
+                                "type": "text",
+                                "label": "Revised Prompt"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Data"
+                    },
+                    {
+                        "name": "resImgName",
+                        "type": "text",
+                        "label": "Response Image Name",
+                        "semantic": "file:name"
+                    },
+                    {
+                        "name": "resImgData",
+                        "type": "buffer",
+                        "label": "Response Image Data",
+                        "semantic": "file:data"
+                    }
+                ],
+                "advanced": true
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": [
+                [
+                    {
+                        "id": 11,
+                        "module": "instagram-business:CreatePostPhoto",
+                        "version": 1,
+                        "parameters": {
+                            "__IMTCONN__": 99535
+                        },
+                        "mapper": {
+                            "accountId": "17841467059957587",
+                            "image_url": "{{10.data[].url}}",
+                            "caption": "{{9.result}}"
+                        },
+                        "metadata": {
+                            "designer": {
+                                "x": 2400,
+                                "y": 0,
+                                "messages": [
+                                    {
+                                        "category": "link",
+                                        "severity": "warning",
+                                        "message": "The module is not connected to the data flow."
+                                    },
+                                    {
+                                        "category": "reference",
+                                        "severity": "warning",
+                                        "message": "Referenced module 'OpenAI (ChatGPT, Whisper, DALL-E) - Create a Completion (Prompt) (GPT and o1, o3 Models)' [9] is not accessible."
+                                    },
+                                    {
+                                        "category": "reference",
+                                        "severity": "warning",
+                                        "message": "Referenced module 'OpenAI (ChatGPT, Whisper, DALL-E) - Generate an Image' [10] is not accessible."
+                                    }
+                                ]
+                            },
+                            "restore": {
+                                "parameters": {
+                                    "__IMTCONN__": {
+                                        "label": "My Facebook connection (Alejandro Álvarez Polanco)",
+                                        "data": {
+                                            "scoped": "true",
+                                            "connection": "facebook"
+                                        }
+                                    }
+                                },
+                                "expect": {
+                                    "accountId": {
+                                        "mode": "chose",
+                                        "label": "EducMark (@educmark)"
+                                    },
+                                    "user_tags": {
+                                        "mode": "chose"
+                                    }
+                                }
+                            },
+                            "parameters": [
+                                {
+                                    "name": "__IMTCONN__",
+                                    "type": "account:facebook",
+                                    "label": "Connection",
+                                    "required": true
+                                }
+                            ],
+                            "expect": [
+                                {
+                                    "name": "accountId",
+                                    "type": "select",
+                                    "label": "Page",
+                                    "required": true
+                                },
+                                {
+                                    "name": "image_url",
+                                    "type": "url",
+                                    "label": "Photo URL",
+                                    "required": true
+                                },
+                                {
+                                    "name": "caption",
+                                    "type": "text",
+                                    "label": "Caption"
+                                },
+                                {
+                                    "name": "user_tags",
+                                    "type": "array",
+                                    "label": "User Tags",
+                                    "spec": [
+                                        {
+                                            "name": "username",
+                                            "type": "text",
+                                            "label": "Username",
+                                            "required": true,
+                                            "validate": {
+                                                "pattern": "^(?!@)"
+                                            }
+                                        },
+                                        {
+                                            "name": "x",
+                                            "type": "number",
+                                            "label": "X position",
+                                            "required": true,
+                                            "validate": {
+                                                "max": 1,
+                                                "min": 0
+                                            }
+                                        },
+                                        {
+                                            "name": "y",
+                                            "type": "number",
+                                            "label": "Y position",
+                                            "required": true,
+                                            "validate": {
+                                                "max": 1,
+                                                "min": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "location_id",
+                                    "type": "text",
+                                    "label": "Location ID"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            ]
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}

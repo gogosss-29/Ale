@@ -1,0 +1,244 @@
+{
+  "name": "11. Loop Over Items - Correo Personalizado",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        704
+      ],
+      "id": "e4f99d4c-23ce-4aff-a869-5a7be53de0d5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1etWkmRsEFpuWaoZ5QgiSFtfoRQ2wG5soPCS0RZZRaGc",
+          "mode": "list",
+          "cachedResultName": "11. Lista Correos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etWkmRsEFpuWaoZ5QgiSFtfoRQ2wG5soPCS0RZZRaGc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etWkmRsEFpuWaoZ5QgiSFtfoRQ2wG5soPCS0RZZRaGc/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        176,
+        704
+      ],
+      "id": "95f8535c-056f-40e1-a103-a1fe49bcf359",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        384,
+        704
+      ],
+      "id": "f8b6fc91-0370-4ceb-b739-b32e8a85ffc7",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Loop Over Items1').item.json.Email }}",
+        "subject": "=Oportunidad de Trabajo",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        944
+      ],
+      "id": "7404e15a-94f1-4ac4-acda-e2e9072bc2c1",
+      "name": "Send a message2",
+      "webhookId": "0411f8a0-f877-47ab-af58-d5a06b3504d6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        800
+      ],
+      "id": "b14f1f4c-58f3-465d-afd2-d6af3c028938",
+      "name": "Wait1",
+      "webhookId": "98fbb81d-c85b-4229-ac5d-c71a3757fcba"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Redacta un mensaje personalizado tipo:\n\nVi que estas metido en..., queria saber si te interesaba tener una conversacion... etc... queremos que el output sea SOLO texto en el cuerpo, nada mas. \n\nCoptnexto de la persona,\n\n{{ $json['Nombre Completo']}}\n{{ $json.Puesto }}\n{{ $json.Departamento }}\n\n\n##Tu output DEBE ser en HTML simple, solo con <p> y <br>\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        800,
+        800
+      ],
+      "id": "4ccae738-34c4-4d44-8fb7-cab5030c335a",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        800,
+        976
+      ],
+      "id": "ed89d1fb-332d-45ac-ac75-05fb2f39850f",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        592,
+        608
+      ],
+      "id": "b47d1839-11f6-4ce4-aa18-128667c24eeb",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "008b128b-3c56-4e58-ba1a-2e23f2e214f0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "G9lsBdV1N2nNrXfw",
+  "tags": []
+}

@@ -1,0 +1,224 @@
+{
+    "name": "Integration Manychat, MailerLite",
+    "flow": [
+        {
+            "id": 1,
+            "module": "manychat:ManyChatWebhook",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 1813404
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "label": "Manychat Lead Magnet 3",
+                            "data": {
+                                "editable": "false"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:manychat",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "mailerlite2:CreateUpdateSubscriber",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 3545132
+            },
+            "mapper": {
+                "email": "{{1.subscriber.last_input_text}}",
+                "fields": {
+                    "name": "{{1.subscriber.name}}",
+                    "last_name": "{{1.subscriber.last_name}}"
+                },
+                "groups": [
+                    "127228497193076222"
+                ]
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Mailerlite Bencorde v2",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "mailerlite2"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "groups": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "value": {
+                                        "mode": "chose",
+                                        "label": "10 Principios #1 Contenido"
+                                    }
+                                }
+                            ]
+                        },
+                        "status": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:mailerlite2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "email",
+                        "type": "email",
+                        "label": "Email address",
+                        "required": true
+                    },
+                    {
+                        "name": "fields",
+                        "type": "collection",
+                        "label": "Fields",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Nombre"
+                            },
+                            {
+                                "name": "last_name",
+                                "type": "text",
+                                "label": "Apellido"
+                            },
+                            {
+                                "name": "company",
+                                "type": "text",
+                                "label": "Empresa"
+                            },
+                            {
+                                "name": "country",
+                                "type": "text",
+                                "label": "País"
+                            },
+                            {
+                                "name": "city",
+                                "type": "text",
+                                "label": "Ciudad"
+                            },
+                            {
+                                "name": "phone",
+                                "type": "text",
+                                "label": "Teléfono"
+                            },
+                            {
+                                "name": "state",
+                                "type": "text",
+                                "label": "Estado"
+                            },
+                            {
+                                "name": "z_i_p",
+                                "type": "text",
+                                "label": "Zip"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "groups",
+                        "type": "array",
+                        "label": "Group IDs",
+                        "spec": {
+                            "type": "select",
+                            "label": "Group ID",
+                            "options": [],
+                            "name": "value",
+                            "dynamic": true
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "type": "select",
+                        "label": "Status",
+                        "validate": {
+                            "enum": [
+                                "active",
+                                "unsubscribed",
+                                "unconfirmed",
+                                "bounced",
+                                "junk"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "subscribed_at",
+                        "type": "date",
+                        "label": "Subscribed On"
+                    },
+                    {
+                        "name": "unsubscribed_at",
+                        "type": "date",
+                        "label": "Unsubscribed On"
+                    },
+                    {
+                        "name": "opted_in_at",
+                        "type": "date",
+                        "label": "Opt-in date"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "text",
+                        "label": "Signup IP address"
+                    },
+                    {
+                        "name": "optin_ip",
+                        "type": "text",
+                        "label": "Opt-in IP address"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com"
+    }
+}

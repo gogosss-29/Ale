@@ -1,0 +1,328 @@
+{
+  "name": "14. AI Agent - Buscador de Pedidos",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -32,
+        560
+      ],
+      "id": "35b25c0a-81fe-45a8-86b9-fb9304769324",
+      "name": "When chat message received",
+      "webhookId": "db2167d6-68d7-487a-a3ef-1090535a2496"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres un asistente de soporte al cliente de Imperio Digital. Tu trabajo es responder dudas sobre el estado de los pedidos. Tienes acceso a una base de datos llamando a la tool de GOOGLE SHEETS. SIEMPRE busca la información antes de responder. Sé amable y breve"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c68f5e12-bf44-4228-ae66-1fd7968f97a4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        176
+      ],
+      "id": "0a505ffb-593c-4274-8d17-a29875902c2b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "iefrI8eoEQCOXLyH",
+          "name": "OpenAI becord00"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        480,
+        144
+      ],
+      "id": "4634e304-f406-44ad-a2fa-1c5170ac0a6c",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14. AI Agent Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        240
+      ],
+      "id": "f043244b-54e3-4307-aee2-b7325019f83e",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres un asistente imperial, tui trabajo es verificar y hacer llamado a la herrmienta de google sheets para verifciar el estado de los pedidos .Nada mas. La gente te pedira una orden en especifica y tu le devolveras el estado del envío.\n\nEjecuta la herrmienta \"sheets\" ante todo trigger de informacion de clientes\n\nEjecuta la herramienta \"calculator\" si te piden un calculo complejo."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        288,
+        560
+      ],
+      "id": "6588a866-9d16-4ce0-8ce2-37a3b81cb508",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        288,
+        752
+      ],
+      "id": "fc8dc6c9-c3a8-41a0-9881-baa535f7ee57",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14 & 15. Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        752
+      ],
+      "id": "51f62274-9794-45ba-a841-0a126779a434",
+      "name": "Get row(s) in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "Tu pedido fue enviado",
+        "message": "=Respuesta {{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        560
+      ],
+      "id": "cf1a22f8-9deb-45e5-9d77-d3567ab7e99f",
+      "name": "Send a message",
+      "webhookId": "2b62e4e5-e503-4753-a964-ec3491a15bd7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        608,
+        800
+      ],
+      "id": "a79cc496-6e0e-455e-9ecc-2a968d3fa96c",
+      "name": "Calculator1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        384,
+        864
+      ],
+      "id": "e5294fbc-7e47-4fab-bb38-c6bdf835c67b",
+      "name": "Simple Memory1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "130e085a-16ee-41bd-a970-ef1e47916ae0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "kRGD5tpfmfqBHhaT",
+  "tags": []
+}

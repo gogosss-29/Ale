@@ -1,0 +1,629 @@
+{
+    "name": "Integration Dropbox, OpenAI (ChatGPT, Whisper, DALL-E)",
+    "flow": [
+        {
+            "id": 10,
+            "module": "builtin:BasicRepeater",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "start": "1",
+                "repeats": "10",
+                "step": "1"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {},
+                "expect": [
+                    {
+                        "name": "start",
+                        "type": "number",
+                        "label": "Initial value",
+                        "required": true
+                    },
+                    {
+                        "name": "repeats",
+                        "type": "number",
+                        "label": "Repeats",
+                        "validate": {
+                            "min": 0,
+                            "max": 10000
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "step",
+                        "type": "number",
+                        "label": "Step",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 3,
+            "module": "dropbox:getFile",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 3366042
+            },
+            "mapper": {
+                "select": "file",
+                "path": "/Canva Automation/bulk extract/{{10.i}}.mp4"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Dropbox connection (becord00@gmail.com)",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "dropbox"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "select": {
+                            "label": "Select a file"
+                        },
+                        "path": {
+                            "mode": "edit"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:dropbox",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Way of selecting files",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "map",
+                                "file"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "path",
+                        "type": "file",
+                        "label": "File",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "openai-gpt-3:CreateCompletion",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 2507368
+            },
+            "mapper": {
+                "select": "chat",
+                "max_tokens": "100",
+                "temperature": "1",
+                "top_p": "1",
+                "n_completions": "1",
+                "response_format": "text",
+                "model": "gpt-3.5-turbo-16k-0613",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Crea un caption SUPER breve para un reel cuyo ovjetivo y audiencia es  motivación, disciplina, productividad. Que no sea más de 3 palabras, derrepente pon emojis, cada generación sorpréndeme con algo nuevo, pero muy corto. Siempre corto, porque lee stas creando un caption para un video que no sabes necesariamente de que se trata, asi que juegala seguro con los captions. NO uses comillas, ni negrita. solo mantente básico. No seas cliché. y dame solo 1 resultado.\n\n[EJEMPLO]\n\nNo. Te. Rindas"
+                    }
+                ]
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "Make API Key",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "select": {
+                            "label": "Create a Chat Completion (GPT Models)"
+                        },
+                        "logit_bias": {
+                            "mode": "chose"
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "Text"
+                        },
+                        "stop": {
+                            "mode": "chose"
+                        },
+                        "additionalParameters": {
+                            "mode": "chose"
+                        },
+                        "model": {
+                            "mode": "chose",
+                            "label": "gpt-3.5-turbo-16k-0613"
+                        },
+                        "messages": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "User"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Select Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "chat",
+                                "prompt"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "number",
+                        "label": "Max Tokens",
+                        "required": true
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 2,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "n_completions",
+                        "type": "number",
+                        "label": "Number"
+                    },
+                    {
+                        "name": "frequency_penalty",
+                        "type": "number",
+                        "label": "Frequency Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "presence_penalty",
+                        "type": "number",
+                        "label": "Presence Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "logit_bias",
+                        "type": "array",
+                        "label": "Token Probability",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "token",
+                                    "type": "text",
+                                    "label": "Token ID",
+                                    "required": true
+                                },
+                                {
+                                    "name": "probability",
+                                    "type": "number",
+                                    "label": "Probability",
+                                    "required": true,
+                                    "validate": {
+                                        "max": 100,
+                                        "min": -100
+                                    }
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Token Probability",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "text",
+                                "json_object"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "seed",
+                        "type": "integer",
+                        "label": "Seed"
+                    },
+                    {
+                        "name": "stop",
+                        "type": "array",
+                        "label": "Stop Sequences",
+                        "validate": {
+                            "maxItems": 4
+                        },
+                        "spec": {
+                            "type": "text",
+                            "label": "Stop Sequence",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "additionalParameters",
+                        "type": "array",
+                        "label": "Other Input Parameters",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "key",
+                                    "type": "text",
+                                    "label": "Parameter Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "type",
+                                    "type": "select",
+                                    "label": "Input Type",
+                                    "options": [
+                                        {
+                                            "label": "Text",
+                                            "value": "text",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ],
+                                            "default": true
+                                        },
+                                        {
+                                            "label": "Number",
+                                            "value": "number",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "number",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Boolean",
+                                            "value": "boolean",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "boolean",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Date",
+                                            "value": "date",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "date",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Any",
+                                            "value": "any",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "any",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Input Parameter",
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true
+                    },
+                    {
+                        "name": "messages",
+                        "type": "array",
+                        "label": "Messages",
+                        "required": true,
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "role",
+                                    "type": "select",
+                                    "label": "Role",
+                                    "options": [
+                                        {
+                                            "label": "System",
+                                            "value": "system"
+                                        },
+                                        {
+                                            "label": "User",
+                                            "value": "user"
+                                        },
+                                        {
+                                            "label": "Assistant",
+                                            "value": "assistant"
+                                        }
+                                    ],
+                                    "required": true
+                                },
+                                {
+                                    "name": "content",
+                                    "type": "text",
+                                    "label": "Message Content"
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Message",
+                            "name": "value"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 15,
+            "module": "youtube:uploadVideo",
+            "version": 4,
+            "parameters": {
+                "__IMTCONN__": 3366189
+            },
+            "mapper": {
+                "title": "{{5.result}}",
+                "fileName": "{{3.fileName}}",
+                "data": "{{3.data}}",
+                "categoryId": "27",
+                "privacyStatus": "private",
+                "selfDeclaredMadeForKids": false,
+                "publishAt": "{{addDays(now; 10.i * 2)}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My YouTube connection",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "youtube"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "categoryId": {
+                            "mode": "chose",
+                            "label": "Education"
+                        },
+                        "privacyStatus": {
+                            "mode": "chose",
+                            "label": "Private"
+                        },
+                        "selfDeclaredMadeForKids": {
+                            "mode": "chose"
+                        },
+                        "tags": {
+                            "mode": "chose"
+                        },
+                        "license": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "embeddable": {
+                            "mode": "chose"
+                        },
+                        "notifySubscribers": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:youtube",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "type": "hidden"
+                    },
+                    {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title",
+                        "validate": {
+                            "max": 100
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "fileName",
+                        "type": "filename",
+                        "label": "File Name",
+                        "required": true
+                    },
+                    {
+                        "name": "data",
+                        "type": "buffer",
+                        "label": "Data",
+                        "required": true
+                    },
+                    {
+                        "name": "categoryId",
+                        "type": "select",
+                        "label": "Video Category",
+                        "required": true
+                    },
+                    {
+                        "name": "privacyStatus",
+                        "type": "select",
+                        "label": "Privacy Status",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "private",
+                                "unlisted",
+                                "public"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "type": "text",
+                        "label": "Description",
+                        "validate": {
+                            "max": 5000
+                        }
+                    },
+                    {
+                        "name": "selfDeclaredMadeForKids",
+                        "type": "boolean",
+                        "label": "The video is made for kids",
+                        "required": true
+                    },
+                    {
+                        "name": "tags",
+                        "type": "array",
+                        "label": "Tags",
+                        "spec": {
+                            "type": "text",
+                            "label": "Tag",
+                            "required": true,
+                            "validate": {
+                                "max": 500
+                            },
+                            "name": "value"
+                        }
+                    },
+                    {
+                        "name": "recordingDate",
+                        "type": "date",
+                        "label": "Recording Date"
+                    },
+                    {
+                        "name": "license",
+                        "type": "select",
+                        "label": "License",
+                        "validate": {
+                            "enum": [
+                                "youtube",
+                                "creativeCommon"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "embeddable",
+                        "type": "boolean",
+                        "label": "Allow Embedding"
+                    },
+                    {
+                        "name": "notifySubscribers",
+                        "type": "boolean",
+                        "label": "Notify Subscribers"
+                    },
+                    {
+                        "name": "publishAt",
+                        "type": "date",
+                        "label": "Publish at"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com"
+    }
+}

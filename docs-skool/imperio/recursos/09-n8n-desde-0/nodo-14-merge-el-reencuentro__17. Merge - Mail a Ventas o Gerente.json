@@ -1,0 +1,358 @@
+{
+  "name": "17. Merge - Mail a Ventas o Gerente",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14 & 15. Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        32,
+        448
+      ],
+      "id": "7da7ae8c-5eec-4cc1-bafb-21d72bcb3822",
+      "name": "Google Sheets Trigger1",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "sRc9RsArLNIUjFEw",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json[\"Monto Total\"];\n\nconst clean = raw\n  .toString()\n  .replace(/\\./g, \"\")\n  .replace(\",\", \".\");\n\nreturn {\n  monto: Number(clean)\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        448
+      ],
+      "id": "375c2324-7345-43f7-b0c2-b09d13de9060",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "8183410d-22f2-4005-b2b5-bcbe72b35380",
+              "leftValue": "={{ $json.monto }}",
+              "rightValue": 1000000,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        448
+      ],
+      "id": "9e0c0bed-c76e-4ba4-a244-68a141b75235",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "Señor gerente, hubo tremenda venta!",
+        "emailType": "text",
+        "message": "Nos vamos a Jamaica compadre",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        656,
+        352
+      ],
+      "id": "40a44c73-5855-448c-80ae-13e35593bb79",
+      "name": "Send a message2",
+      "webhookId": "40e09630-d85a-48da-88ba-e844ccd240a7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "Ventas, hubo venta",
+        "message": "Pero fue menos de 1.000.000, así que a seguir comiendo Jurel",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        656,
+        544
+      ],
+      "id": "ebe7be48-a596-4fa4-93aa-39f00acacd13",
+      "name": "Send a message3",
+      "webhookId": "9ad76460-f1f0-49bc-8461-2824ab58f104",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        864,
+        448
+      ],
+      "id": "7e5932d9-8764-4379-a0cb-6d211a5f9ad5",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI",
+          "mode": "list",
+          "cachedResultName": "14 & 15. Ordenes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LCCMtZh55R3-pvAwKfEFIMu_R8Z2lEyduYFeUeY3eDI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Pedido #": "={{ $('Google Sheets Trigger1').item.json['Pedido #'] }}",
+            "Seguimiento Disponible": "NOTIFICADO"
+          },
+          "matchingColumns": [
+            "Pedido #"
+          ],
+          "schema": [
+            {
+              "id": "Cliente",
+              "displayName": "Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pedido #",
+              "displayName": "Pedido #",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha de Pedido",
+              "displayName": "Fecha de Pedido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Monto Total",
+              "displayName": "Monto Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Método de Pago",
+              "displayName": "Método de Pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Seguimiento Disponible",
+              "displayName": "Seguimiento Disponible",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CORREO",
+              "displayName": "CORREO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1072,
+        448
+      ],
+      "id": "617afadb-dcaf-4d84-a04b-316e0df17a5b",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2cf5f884-c94b-4b3f-b3c9-b84a791be4c4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "ZBcgfQoa1bK4A6Ko",
+  "tags": []
+}

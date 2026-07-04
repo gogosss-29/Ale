@@ -1,0 +1,152 @@
+{
+    "name": "4. A) Correr FB Ads Library",
+    "flow": [
+        {
+            "id": 1,
+            "module": "apify:runActorNew",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 3525154
+            },
+            "mapper": {
+                "actorId": "XtaWFhbtfxyzqrFmd",
+                "runSync": false,
+                "actor_search_type": "user",
+                "inputBodyXtaWFhbtfxyzqrFmd": "{\r\n    \"count\": 20,\r\n    \"limitPerSource\": 10,\r\n    \"scrapeAdDetails\": false,\r\n    \"scrapePageAds.activeStatus\": \"all\",\r\n    \"scrapePageAds.countryCode\": \"ALL\",\r\n    \"urls\": [\r\n        {\r\n            \"url\": \"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=CL&is_targeted_country=false&media_type=all&search_type=page&view_all_page_id=139241989279352\",\r\n            \"method\": \"GET\"\r\n        },\r\n        {\r\n            \"url\": \"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=CL&is_targeted_country=false&media_type=all&search_type=page&view_all_page_id=15087023444\",\r\n            \"method\": \"GET\"\r\n        }\r\n    ]\r\n}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0,
+                    "name": "Correr Actor"
+                },
+                "restore": {
+                    "expect": {
+                        "memory": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "actorId": {
+                            "mode": "chose",
+                            "label": "Facebook Ad Library Scraper (curious_coder/facebook-ads-library-scraper)"
+                        },
+                        "runSync": {
+                            "mode": "chose"
+                        },
+                        "actor_search_type": {
+                            "label": "Recently used Actors"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "apify"
+                            },
+                            "label": "My Apify connection"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:apify2,apify",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "actor_search_type",
+                        "type": "select",
+                        "label": "Search Actors from",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "user",
+                                "store"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "runSync",
+                        "type": "boolean",
+                        "label": "Run synchronously",
+                        "required": true
+                    },
+                    {
+                        "name": "build",
+                        "type": "text",
+                        "label": "Build"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout"
+                    },
+                    {
+                        "name": "memory",
+                        "type": "select",
+                        "label": "Memory",
+                        "validate": {
+                            "enum": [
+                                128,
+                                256,
+                                512,
+                                1024,
+                                2048,
+                                4096,
+                                8192,
+                                16384,
+                                32768
+                            ]
+                        }
+                    },
+                    {
+                        "name": "actorId",
+                        "type": "select",
+                        "label": "Actor",
+                        "required": true
+                    },
+                    {
+                        "name": "inputBodyXtaWFhbtfxyzqrFmd",
+                        "type": "text",
+                        "label": "Input JSON",
+                        "required": true
+                    },
+                    {
+                        "name": "maxTotalChargeUsd",
+                        "type": "hidden",
+                        "label": "Maximum cost per run"
+                    },
+                    {
+                        "name": "maxItems",
+                        "type": "number",
+                        "label": "Maximum charged results"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com",
+        "notes": []
+    }
+}
