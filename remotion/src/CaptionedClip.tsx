@@ -8,11 +8,23 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {z} from 'zod';
+import {loadFont} from '@remotion/fonts';
 import {FONT_MARCA, PALETA} from './marca';
 
 // ─── Fase 2 · Captions del avatar ────────────────────────────────────────────
-// Quema subtítulos animados palabra-por-palabra (estilo marca) sobre un clip.
-// Props: el video (en public/) + las páginas de caption generadas por whisper.
+// Quema subtítulos animados sobre un clip. Dos presets:
+//  - "marca":       páginas de ~3 palabras, MAYÚSCULAS, Archivo 900 con contorno
+//                   tinta, palabra activa en rojo, abajo. (estilo Cerebro)
+//  - "minimal-top": UNA palabra por vez, minúsculas, tipografía redondeada blanca
+//                   con sombra suave, arriba del encuadre. (estilo creator clean)
+loadFont({
+  family: 'Nunito',
+  url: staticFile('fonts/Nunito-Variable.ttf'),
+  weight: '200 1000',
+}).catch(() => undefined);
+
+const FONT_REDONDEADA = "'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif";
+
 const tokenSchema = z.object({
   text: z.string(),
   fromMs: z.number(),
@@ -21,6 +33,7 @@ const tokenSchema = z.object({
 export const captionedClipSchema = z.object({
   videoSrc: z.string(),
   durationMs: z.number(),
+  preset: z.enum(['marca', 'minimal-top']).default('marca'),
   pages: z.array(
     z.object({
       startMs: z.number(),
@@ -34,6 +47,7 @@ export type CaptionedClipProps = z.infer<typeof captionedClipSchema>;
 export const captionedClipDefaults: CaptionedClipProps = {
   videoSrc: 'clips/piloto.mp4',
   durationMs: 6550,
+  preset: 'marca',
   pages: [],
 };
 
@@ -41,7 +55,7 @@ const INK = PALETA.ink;
 const RED = PALETA.rojo;
 const WHITE = PALETA.blanco;
 
-export const CaptionedClip: React.FC<CaptionedClipProps> = ({videoSrc, pages}) => {
+export const CaptionedClip: React.FC<CaptionedClipProps> = ({videoSrc, pages, preset}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const tMs = (frame / fps) * 1000;
@@ -49,15 +63,61 @@ export const CaptionedClip: React.FC<CaptionedClipProps> = ({videoSrc, pages}) =
   const page = pages.find((p) => tMs >= p.startMs && tMs < p.endMs + 120);
 
   return (
-    <AbsoluteFill style={{backgroundColor: '#000', fontFamily: FONT_MARCA}}>
+    <AbsoluteFill style={{backgroundColor: '#000'}}>
       <OffthreadVideo src={staticFile(videoSrc)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
-
-      {page ? <CaptionPage key={page.startMs} page={page} tMs={tMs} frame={frame} fps={fps} /> : null}
+      {page ? (
+        preset === 'minimal-top' ? (
+          <MinimalTopPage key={page.startMs} page={page} frame={frame} fps={fps} />
+        ) : (
+          <MarcaPage key={page.startMs} page={page} tMs={tMs} frame={frame} fps={fps} />
+        )
+      ) : null}
     </AbsoluteFill>
   );
 };
 
-const CaptionPage: React.FC<{
+// ─── Preset "minimal-top": una palabra, minúscula, redondeada, arriba ───────
+const MinimalTopPage: React.FC<{
+  page: CaptionedClipProps['pages'][number];
+  frame: number;
+  fps: number;
+}> = ({page, frame, fps}) => {
+  const pageStartFrame = Math.round((page.startMs / 1000) * fps);
+  const pop = spring({frame: frame - pageStartFrame, fps, config: {damping: 13, stiffness: 320}});
+  const word = page.tokens.map((t) => t.text).join(' ').toLowerCase();
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 210,
+        display: 'flex',
+        justifyContent: 'center',
+        transform: `scale(${0.88 + pop * 0.12})`,
+        opacity: Math.min(1, pop * 1.8),
+      }}
+    >
+      <span
+        style={{
+          fontFamily: FONT_REDONDEADA,
+          fontWeight: 1000 as never,
+          fontSize: 88,
+          color: WHITE,
+          letterSpacing: 0.5,
+          textShadow: '0 6px 22px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.45)',
+          whiteSpace: 'pre',
+        }}
+      >
+        {word}
+      </span>
+    </div>
+  );
+};
+
+// ─── Preset "marca": páginas con palabra activa resaltada ───────────────────
+const MarcaPage: React.FC<{
   page: CaptionedClipProps['pages'][number];
   tMs: number;
   frame: number;
@@ -79,6 +139,7 @@ const CaptionPage: React.FC<{
         alignItems: 'center',
         columnGap: 38,
         rowGap: 8,
+        fontFamily: FONT_MARCA,
         transform: `scale(${0.9 + inSpring * 0.1}) translateY(${(1 - inSpring) * 22}px)`,
         opacity: Math.min(1, inSpring * 1.6),
       }}
