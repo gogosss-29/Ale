@@ -1,68 +1,92 @@
 # Prompt maestro para retomar (pegar en un chat nuevo)
 
 > Copia TODO el bloque de abajo y pégalo en el chat nuevo.
+> _Última actualización: refleja el sistema de edición Remotion ya construido._
 
 ---
 
-Hola, retomamos un proyecto en curso. Lee este contexto entero antes de actuar y, si estás
-en el repo `gogosss-29/Ale` (rama `claude/upbeat-lamport-ec6bjh`), abre también `CLAUDE.md`,
-`cerebro/` y `docs/` para el detalle completo. Respóndeme en español.
+Hola, retomamos un proyecto en curso. Lee este contexto entero antes de actuar. Estás en el
+repo `gogosss-29/Ale`; **la rama con lo más reciente es `claude/funny-shannon-u9f2u9`**
+(ver "Ramas" abajo). Abrí también `CLAUDE.md`, `cerebro/` (sobre todo `PENDIENTES.md`) y
+`remotion/scripts/README-sistema.md`. Respondeme en español (rioplatense).
 
 ## Qué es el proyecto
-Crear y operar el **avatar digital ("clon IA") de Alexander**: una identidad reutilizable
-entrenada en Higgsfield (cara + voz) para generar imágenes fotorrealistas y vídeos hablados
-con sincronización labial. Es un proyecto **independiente** de mi otro proyecto "Cerebro ·
-Consultora IA" (no mezclar).
+Crear y operar el contenido de la marca **Cerebro** (avatar digital de Alexander): un sistema
+que **escribe guiones, genera y EDITA reels** con su identidad (cara + voz). Dos capacidades:
+1. **Identidad** entrenada en Higgsfield (Soul + voz clonada) → imágenes y video hablado.
+2. **Máquina de contenido**: guiones en su voz → producción por 3 rutas → edición automatizada.
 
 ## Dónde está todo (fuente de verdad = el repo)
-- Repo `gogosss-29/Ale`, rama `claude/upbeat-lamport-ec6bjh`. `CLAUDE.md` se autocarga.
-- `cerebro/` — el brain: `00-vision`, `01-el-curso` (apunta al curso real), `02-playbook`
-  (cómo técnico), `03-activos` (IDs), `04-estado`, y `PARA-NOTION.md` (doc operativo
-  consolidado, listo para pegar en Notion).
-- `docs/` — **EL CURSO REAL extraído** (AvatarHype): `SISTEMA-AVATARHYPE.md` (maestro),
-  `transcripciones/`, `recursos-prompts/` (los prompts reales), `notas-lecciones/`.
-- `avatarhype/` — pipeline en Python (esqueleto) para automatizar el sistema.
-- Notion: proyecto "Sistema Avatar IA" (espejo, con título a corregir: emoji duplicado y
-  página "El Curso" a actualizar con el contenido de `cerebro/PARA-NOTION.md`).
+- `cerebro/` — el brain: `00-vision`, `02-playbook`, `03-activos` (IDs), `04-estado`,
+  **`PENDIENTES.md` (backlog vivo, EMPEZÁ POR ACÁ)**, `maquina-contenido/` (guiones/ejemplos/escenarios).
+- `.claude/skills/` — capacidades operativas:
+  - `cerebro-guiones` — escribir guiones + prompts de avatar/b-rolls (+ `references/motor-produccion.md` = el router de herramientas).
+  - `crear-estilo-broll` — estilos nuevos de b-roll desde una referencia.
+  - `omni-reels` — editar con Omni (motion graphics sobre footage real) + `scripts/reel_cutter.py`.
+  - `avatarhype` — metodología del curso (ruta APImart/Veo).
+- `remotion/` — **el sistema de edición de video (lo más valioso, ver abajo)**.
+- `docs/` (curso AvatarHype, vía Whop) y `docs-skool/` (curso Imperio, vía Skool) — archivo de
+  estudio; NO es el core del avatar.
+
+## ⚙️ Sistema de edición Remotion (CONSTRUIDO — "la máquina entrega .mp4, no prompts")
+Motor genérico data-driven: `video crudo + receta.json → video editado .mp4`.
+- `remotion/src/EditedVideo.tsx` — composición genérica (lee un `EditMap`).
+- `remotion/src/overlays.tsx` — biblioteca de overlays (numberCallout, chip, topLabel, barsLabel,
+  arrowChips, bigBadge, risingLine).
+- `remotion/scripts/editar.mjs` — CLI end-to-end: transcribe → captions → **resuelve los efectos
+  por la FRASE que se dice** → segmenta ventanas "detrás" (recorte de persona) → render.
+- `remotion/scripts/py/{transcribe,segment}.py`, `remotion/recetas/crudos.json`, `README-sistema.md`.
+- Uso: `cd remotion && node scripts/editar.mjs <video.mp4> <receta.json>`.
+- Efecto "detrás de la persona" = segmentación con rembg (`u2net_human_seg`) por ventana.
+- Además hay composiciones de reels del avatar: `ReelAssembly` (reel completo), estilos de b-roll
+  #11/#12/#13/#99, `CaptionedClip` (captions).
 
 ## Activos vivos en Higgsfield (cuenta de Alexander, válidos entre sesiones)
 - Soul "Alexander v2" (USAR): `9ffc9c16-eeb2-465d-b2b5-03a7b14a227d`
 - Retrato base v2: `43c9b6e8-e08c-47af-b8b7-94b61bae1b2e`
-- Voz clip 12 s: `41bd653e-a16f-4089-baea-60cbcfba1d18`
-- Voz completa 3:27: `efc51158-010b-4a2f-ae28-a9b1d4026f90`
-- Generar imagen: `generate_image` model `soul_2` + `soul_id`. Vídeo: `generate_video`
-  model `seedance_2_0`, start_image=retrato, audio=clip 12 s, 9:16, 12 s, 720p.
+- Voz clip 12 s: `41bd653e-a16f-4089-baea-60cbcfba1d18` · Voz completa 3:27: `efc51158-010b-4a2f-ae28-a9b1d4026f90`
+- Imagen: `generate_image` model `soul_2` + `soul_id`. Video: `generate_video` seedance_2_0.
 
-## El curso (AvatarHype) en una línea
-Enseña a producir anuncios de e-commerce con avatares IA hiperrealistas (UGC, podcast, voz
-en off, dualcast, image-ads) por la ruta barata: revender modelos vía **Kie.ai / APImart**
-(Veo 3.1, **Omni Flash**, GPT Image 2) + ElevenLabs + CapCut. Clave: ángulo + guion, no la
-herramienta. Detalle completo en `docs/SISTEMA-AVATARHYPE.md`.
+## ⚠️ Setup del entorno (NO persiste — reinstalar en cada sesión nueva)
+El código está en git, pero las dependencias del sistema y los pesados NO. Para correr el sistema
+de edición:
+1. `apt-get update && apt-get install -y --no-install-recommends ffmpeg`
+2. `pip install faster-whisper` (transcripción) y, si hay efectos "detrás", `pip install "rembg[cpu]"`.
+3. Modelo de segmentación: **GitHub está bloqueado por el proxy (403)**; bajar de Hugging Face:
+   `curl -L https://huggingface.co/tomjackson2023/rembg/resolve/main/u2net_human_seg.onnx -o ~/.u2net/u2net_human_seg.onnx`
+4. `cd remotion && npm install`. Render usa el Chromium del contenedor:
+   `--browser-executable=/opt/pw-browsers/chromium --chrome-mode=chrome-for-testing`.
+5. **Fix de fuentes:** las fuentes se cargan con `injectFont` (no `loadFont`) porque `loadFont`
+   colgaba el render en este Chromium — no revertir.
 
-## Estado
-- HECHO: Soul v2 entrenado, voz subida, retratos generados (buen parecido), curso
-  documentado en `docs/`, cerebro en el repo.
-- PENDIENTE: generar el vídeo hablado; volcar `cerebro/PARA-NOTION.md` a Notion; decidir
-  ruta de producción; automatizar el pipeline.
+## ⚠️ Material pesado que NO está en git (pedírselo a Alexander)
+Los `.mp4` (clips del avatar, videos crudos), los renders y los recortes de segmentación están
+en `.gitignore`. Si hay que re-editar, pedirle a Alexander que **suba de nuevo el/los videos**
+(arrastrándolos al chat: aterrizan en `/root/.claude/uploads/...`; para >100 MB, link de Drive y
+bajar con `curl`).
 
-## Bloqueos y lecciones clave (MUY importante)
-1. **Las operaciones MCP de escritura se bloquean en sesiones automáticas/remotas** con
-   `MCP tool call requires approval`: esto afecta a `generate_video` (Higgsfield) y a crear/
-   editar páginas en Notion. Las de lectura y `generate_image` SÍ funcionan. ⇒ El vídeo y la
-   escritura en Notion hay que hacerlos en una **sesión interactiva** (app/escritorio/web),
-   donde el diálogo de aprobación se puede aceptar. No es el archivo de permisos de Claude.
-2. **El avatar (Higgsfield) se hizo con criterio propio, NO con el curso.** El curso usa otra
-   ruta (APImart/Veo/Omni Flash), no Higgsfield. Son dos métodos paralelos para el mismo fin;
-   falta decidir cuál estandarizar o si combinarlos (Higgsfield para identidad + curso para volumen).
-3. **Seguridad:** en la sesión anterior se pegó una cookie de Whop con tokens vivos. Alexander
-   debe cerrar sesión en Whop y reentrar para invalidarla. No volver a pegar credenciales en chat.
+## Ramas (IMPORTANTE)
+- **`claude/funny-shannon-u9f2u9`** = lo más nuevo (sistema de edición Remotion, skill omni-reels,
+  CrudosEnhanced, este análisis). **Trabajar acá.**
+- `claude/funny-shannon-2c94fg` = tiene el archivo de cursos (docs-skool) + Remotion viejo; su PR #1
+  (`→ upbeat-lamport-ec6bjh`) sigue **sin mergear**. Pendiente: **consolidar** ambas ramas.
 
-## Decisiones ya tomadas por Alexander
-- El "clon IA" es un proyecto aparte de "Cerebro · Consultora IA".
-- NO quiere validar el curso generando imágenes UGC de prueba con Higgsfield (lo descartó).
+## Estado (resumen — detalle en cerebro/PENDIENTES.md)
+- ✅ Identidad (Soul v2 + voz), guiones, sistema de edición Remotion, skill omni-reels.
+- 🟡 Pendiente de veredicto de Alexander: elegir versión del reel-003 (v1/v2) + música; generar
+  C3–C7 de Omni; ok del crudo editado.
+- 🟠 Cuello de botella real: **mucho construido, nada publicado.** Falta CERRAR y subir un reel.
+
+## Bloqueos y lecciones clave
+1. **Dos metodologías sin reconciliar:** ruta Cerebro (Higgsfield + Remotion) vs ruta del curso
+   (APImart/Veo/Omni Flash). Falta decidir el estándar.
+2. **Omni al editar:** puede regenerar voz/personaje si el prompt no es benigno + por tiempo
+   (ver skill `omni-reels`). Nunca "when I say", nunca hex en el prompt.
+3. **Seguridad:** en sesiones previas se pegaron cookies con tokens vivos (Whop/Skool). No volver
+   a pegar credenciales en chat; invalidar sesiones tras usarlas.
 
 ## Cómo continuar
-Pregúntame por dónde quiero seguir. Las opciones abiertas son: (a) generar el vídeo hablado
-(en sesión interactiva), (b) volcar el cerebro a Notion, (c) decidir la ruta de producción y
-empezar a **automatizar el pipeline** (n8n + APIs del curso + Higgsfield). No asumas; confirmá
-conmigo el rumbo antes de ejecutar acciones que consuman créditos o escriban en sitios externos.
+Preguntame el rumbo; no asumas. Opciones abiertas: (a) **cerrar y publicar un reel** end-to-end
+(lo más importante), (b) consolidar las ramas, (c) integrar el CLI `editar.mjs` a la skill de
+guiones, (d) sumar música/overlays al sistema. Confirmá antes de acciones que consuman créditos
+o escriban en sitios externos.
