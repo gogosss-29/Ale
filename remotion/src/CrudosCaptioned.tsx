@@ -21,7 +21,7 @@ export const crudosSchema = captionedClipSchema; // mismas props que CaptionedCl
 export const crudosDefaults = {...captionedClipDefaults, videoSrc: 'clips/crudos.mp4'};
 
 // Bug de marca: wordmark de texto, arriba-izquierda, persistente.
-const BrandBug: React.FC = () => (
+export const BrandBug: React.FC = () => (
   <div
     style={{
       position: 'absolute',
@@ -40,7 +40,7 @@ const BrandBug: React.FC = () => (
 );
 
 // Label de tema (pill arriba-centro).
-const TopLabel: React.FC<{text: string}> = ({text}) => {
+export const TopLabel: React.FC<{text: string}> = ({text}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = spring({frame, fps, config: {damping: 16, stiffness: 180}, durationInFrames: 14});
@@ -71,7 +71,7 @@ const TopLabel: React.FC<{text: string}> = ({text}) => {
 };
 
 // Callout del dato con count-up: "US$ 45 MILLONES".
-const NumberCallout: React.FC = () => {
+export const NumberCallout: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = spring({frame, fps, config: {damping: 13, stiffness: 200}, durationInFrames: 16});
@@ -106,7 +106,7 @@ const NumberCallout: React.FC = () => {
 };
 
 // Chip arriba-derecha (dato secundario).
-const Chip: React.FC<{text: string; sub: string}> = ({text, sub}) => {
+export const Chip: React.FC<{text: string; sub: string}> = ({text, sub}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const enter = spring({frame, fps, config: {damping: 14, stiffness: 200}, durationInFrames: 14});

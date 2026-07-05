@@ -52,23 +52,29 @@ const INK = PALETA.ink;
 const RED = PALETA.rojo;
 const WHITE = PALETA.blanco;
 
-export const CaptionedClip: React.FC<CaptionedClipProps> = ({videoSrc, pages, preset}) => {
+// Capa de SOLO captions (sin video/fondo) — para componer encima de otras capas
+// (p. ej. sobre el recorte de persona en CrudosEnhanced).
+export const CaptionsLayer: React.FC<{
+  pages: CaptionedClipProps['pages'];
+  preset: CaptionedClipProps['preset'];
+}> = ({pages, preset}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const tMs = (frame / fps) * 1000;
-
   const page = pages.find((p) => tMs >= p.startMs && tMs < p.endMs + 120);
+  if (!page) return null;
+  return preset === 'minimal-top' ? (
+    <MinimalTopPage key={page.startMs} page={page} frame={frame} fps={fps} />
+  ) : (
+    <MarcaPage key={page.startMs} page={page} tMs={tMs} frame={frame} fps={fps} />
+  );
+};
 
+export const CaptionedClip: React.FC<CaptionedClipProps> = ({videoSrc, pages, preset}) => {
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
       <OffthreadVideo src={staticFile(videoSrc)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
-      {page ? (
-        preset === 'minimal-top' ? (
-          <MinimalTopPage key={page.startMs} page={page} frame={frame} fps={fps} />
-        ) : (
-          <MarcaPage key={page.startMs} page={page} tMs={tMs} frame={frame} fps={fps} />
-        )
-      ) : null}
+      <CaptionsLayer pages={pages} preset={preset} />
     </AbsoluteFill>
   );
 };

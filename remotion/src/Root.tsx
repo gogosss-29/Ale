@@ -10,6 +10,7 @@ import {Estilo11Red, estilo11RedSchema, estilo11RedDefaults} from './Estilo11Red
 import {Estilo11Deriva, estilo11DerivaSchema, estilo11DerivaDefaults} from './Estilo11Deriva';
 import {ReelAssembly, reelAssemblySchema, reelAssemblyDefaults, calcReelMetadata} from './ReelAssembly';
 import {CrudosCaptioned, crudosSchema, crudosDefaults} from './CrudosCaptioned';
+import {CrudosEnhanced, crudosEnhancedSchema, crudosEnhancedDefaults} from './CrudosEnhanced';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -149,6 +150,20 @@ export const Root: React.FC = () => {
         component={CrudosCaptioned}
         schema={crudosSchema}
         defaultProps={crudosDefaults}
+        durationInFrames={1912}
+        fps={30}
+        width={1080}
+        height={1920}
+        calculateMetadata={({props}) => ({
+          durationInFrames: Math.ceil((props.durationMs / 1000) * 30),
+        })}
+      />
+      {/* Crudo real + animaciones contextuales (línea verde detrás vía segmentación) */}
+      <Composition
+        id="CrudosEnhanced"
+        component={CrudosEnhanced}
+        schema={crudosEnhancedSchema}
+        defaultProps={crudosEnhancedDefaults}
         durationInFrames={1912}
         fps={30}
         width={1080}
