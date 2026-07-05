@@ -23,6 +23,17 @@ bloqueante en `marca.ts` (afecta a todas las compos).
 
 ---
 
+## ✅ Sistema de edición Remotion — CONSTRUIDO (la máquina entrega .mp4)
+**Estado:** hecho. Motor genérico data-driven en `remotion/`:
+`src/overlays.tsx` (biblioteca de overlays), `src/EditedVideo.tsx` (lee un EditMap),
+`scripts/editar.mjs` (CLI end-to-end: transcribe → captions → resuelve beats por
+frase → segmenta ventanas "detrás" → render). Doc: `scripts/README-sistema.md`.
+Uso: `node scripts/editar.mjs <video.mp4> <receta.json>`. Validado reproduciendo la
+edición del crudo (`recetas/crudos.json`) 100% por receta.
+**Siguientes:** integrar el CLI como paso de la skill de guiones (cuando la pieza
+es Remotion, la máquina emite el .mp4); más overlays/curvas; presets de receta por
+formato; opcional música con ducking en el EditMap.
+
 ## ⚙️ Remotion — MEJORAR SU USO (piloto hecho, en pausa)
 **Estado:** piloto COMPLETADO ✅ — proyecto en `remotion/`, renderiza en este
 entorno (chromium del contenedor + `--chrome-mode=chrome-for-testing`). Los 4
