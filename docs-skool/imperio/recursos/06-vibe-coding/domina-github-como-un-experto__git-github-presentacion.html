@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Git &amp; GitHub desde cero — Carlos Domínguez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#BFFF00;
+  --lime-dark:#9CCC0A;
+  --lime-soft:#E5FFAB;
+  --ink:#1A1A1A;
+  --paper:#FAFAF7;
+  --gray:#6B7280;
+  --gray-light:#D1D5DB;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  font-family:'Patrick Hand',cursive;
+  font-size:clamp(14px,1.35vw,22px);
+}
+body{
+  background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,0.04) 1px,transparent 0);
+  background-size:22px 22px;
+}
+#deck{width:100vw;height:100vh;position:relative}
+.slide{
+  position:absolute;inset:0;
+  padding:4rem 6vw 4.5rem;
+  display:none;flex-direction:column;
+  animation:fadeIn .35s ease both;
+  overflow:hidden;
+}
+.slide.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+h1,h2,h3,h4{font-family:'Caveat',cursive;font-weight:700;line-height:1.05}
+h1{font-size:clamp(3rem,7vw,6rem)}
+h2{font-size:clamp(2.2rem,4.8vw,4rem);margin-bottom:.6em}
+h3{font-size:clamp(1.6rem,3vw,2.6rem);margin-bottom:.4em}
+h4{font-size:clamp(1.3rem,2.2vw,2rem)}
+p,li{font-size:clamp(1rem,1.4vw,1.6rem);line-height:1.45}
+ul,ol{padding-left:1.5em}
+li{margin:.3em 0}
+small{font-size:.85em;color:var(--gray)}
+
+.marker{
+  background:linear-gradient(180deg,transparent 55%,var(--lime) 55%);
+  padding:0 .15em;
+}
+.tag{
+  display:inline-block;
+  background:var(--lime);color:var(--ink);
+  padding:.05em .6em;border-radius:6px;
+  font-family:'Caveat',cursive;font-weight:700;
+  transform:rotate(-1.5deg);
+}
+.kbd{
+  display:inline-block;
+  background:white;border:2px solid var(--ink);
+  padding:.05em .5em;border-radius:6px;
+  font-family:'JetBrains Mono',monospace;font-size:.85em;
+  box-shadow:2px 2px 0 var(--ink);
+}
+code,pre{font-family:'JetBrains Mono',monospace}
+.inline-code{
+  background:var(--lime-soft);
+  padding:.1em .35em;border-radius:4px;
+  font-size:.9em;border:1px dashed var(--ink);
+}
+pre{
+  background:#0F0F0F;color:#E5FFAB;
+  padding:.8em 1.2em;border-radius:10px;
+  font-size:clamp(.72rem,.92vw,1.05rem);
+  line-height:1.4;
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--lime);
+  overflow:auto;
+  position:relative;
+}
+pre .cmt{color:#7CB342}
+pre .cmd{color:var(--lime)}
+pre .str{color:#FFD75F}
+pre .key{color:#FF7AA2}
+pre .br{color:#9FE9FF}
+
+.box{
+  border:3px solid var(--ink);
+  border-radius:14px;
+  padding:1.1em 1.4em;
+  background:white;
+  filter:url(#wobble);
+  position:relative;
+}
+.box.lime{background:var(--lime);}
+.box.soft{background:var(--lime-soft);}
+.box.dark{background:var(--ink);color:var(--paper);}
+.box.dark h3,.box.dark h4{color:var(--lime)}
+.shadowed{box-shadow:8px 8px 0 var(--ink)}
+.shadowed-lime{box-shadow:8px 8px 0 var(--lime)}
+
+.grid{display:grid;gap:1.5rem}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g4{grid-template-columns:repeat(4,1fr)}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1}
+.row{display:flex;align-items:center;gap:1.2rem}
+.row.center-row{justify-content:center}
+.col{display:flex;flex-direction:column;gap:.8rem}
+.fill{flex:1}
+.stretch{flex:1;display:flex;flex-direction:column;justify-content:center}
+.pad{padding:.5em 1em}
+
+.eyebrow{
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.1rem,1.6vw,1.7rem);
+  color:var(--gray);
+  letter-spacing:.05em;
+  margin-bottom:.2em;
+}
+.eyebrow .dot{color:var(--lime-dark)}
+
+.timechip{
+  position:absolute;top:1.5rem;left:6vw;
+  font-family:'Caveat',cursive;
+  background:var(--ink);color:var(--lime);
+  padding:.15em .7em;border-radius:6px;
+  font-size:clamp(.9rem,1.2vw,1.2rem);
+  transform:rotate(-2deg);
+  z-index:5;
+}
+
+.scribble{
+  font-family:'Caveat',cursive;
+  color:var(--ink);
+  position:absolute;
+  font-size:1.4rem;
+}
+.scribble.note{color:var(--lime-dark)}
+
+.arrow{
+  font-family:'Caveat',cursive;font-size:2.5rem;color:var(--ink);
+  display:inline-block;
+}
+.arrow-lime{color:var(--lime-dark)}
+
+.stat{
+  font-family:'Caveat',cursive;
+  font-size:clamp(2rem,3.5vw,3.2rem);
+  color:var(--lime-dark);
+  line-height:1;
+}
+
+.checklist{list-style:none;padding-left:0}
+.checklist li{position:relative;padding-left:1.8em;margin:.5em 0}
+.checklist li::before{
+  content:"✓";
+  position:absolute;left:0;top:-.1em;
+  color:var(--lime-dark);font-size:1.3em;font-weight:700;
+}
+.crosslist{list-style:none;padding-left:0}
+.crosslist li{position:relative;padding-left:1.8em;margin:.5em 0}
+.crosslist li::before{
+  content:"✗";
+  position:absolute;left:0;top:-.1em;
+  color:#E53935;font-size:1.3em;font-weight:700;
+}
+
+.steps{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.step{
+  flex:1 1 0;min-width:160px;
+  background:white;border:3px solid var(--ink);border-radius:12px;
+  padding:.8em 1em;
+  position:relative;
+  filter:url(#wobble);
+}
+.step .n{
+  position:absolute;top:-18px;left:-18px;
+  background:var(--lime);border:3px solid var(--ink);
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Caveat',cursive;font-weight:700;font-size:1.4rem;
+}
+.step h4{font-size:1.3rem;margin-bottom:.2em}
+.step p{font-size:.95rem;color:var(--ink)}
+
+#counter{
+  position:fixed;top:1rem;right:1.5rem;
+  font-family:'Caveat',cursive;font-size:1.3rem;
+  color:var(--gray);z-index:100;
+  background:rgba(250,250,247,.7);padding:.1em .6em;border-radius:6px;
+}
+#hint{
+  position:fixed;bottom:.6rem;left:1.5rem;
+  font-family:'Patrick Hand',cursive;font-size:.85rem;
+  color:var(--gray);opacity:.6;z-index:100;
+}
+#progress{
+  position:fixed;bottom:0;left:0;
+  height:6px;background:var(--lime);
+  width:0;transition:width .3s ease;z-index:100;
+  box-shadow:0 -1px 0 var(--ink);
+}
+
+aside.notes{display:none}
+
+#notes-panel{
+  position:fixed;left:0;right:0;bottom:0;
+  background:rgba(15,15,15,.96);color:var(--paper);
+  padding:1.2rem 2rem 1.6rem;
+  font-family:'Patrick Hand',cursive;font-size:1.05rem;
+  line-height:1.5;
+  transform:translateY(100%);transition:transform .3s ease;
+  z-index:300;max-height:45vh;overflow-y:auto;
+  border-top:4px solid var(--lime);
+}
+#notes-panel.visible{transform:translateY(0)}
+body.notes-open #hint{visibility:hidden}
+body.notes-open #deck{height:55vh;transition:height .3s ease}
+#deck{transition:height .3s ease}
+#notes-panel h4{
+  font-family:'Caveat',cursive;color:var(--lime);
+  font-size:1.4rem;margin-bottom:.4em;
+  display:flex;justify-content:space-between;align-items:center;
+}
+#notes-panel ul{padding-left:1.4em;margin-top:.4em}
+#notes-panel li{margin:.25em 0;font-size:1.05rem}
+#notes-panel .time-pill{
+  background:var(--lime);color:var(--ink);
+  padding:.05em .5em;border-radius:6px;font-size:1rem;
+}
+
+.svg-stage{position:relative}
+
+/* slide-specific */
+.cover{align-items:center;justify-content:center;text-align:center;position:relative}
+.cover h1{font-size:clamp(4rem,9vw,8rem);line-height:.95}
+.cover .by{font-family:'Caveat',cursive;font-size:clamp(1.4rem,2.5vw,2.4rem);color:var(--gray);margin-top:1rem}
+.cover .deco{position:absolute}
+.cover .deco.tl{top:8%;left:8%;transform:rotate(-12deg)}
+.cover .deco.tr{top:10%;right:6%;transform:rotate(8deg)}
+.cover .deco.bl{bottom:14%;left:9%;transform:rotate(-6deg)}
+.cover .deco.br{bottom:10%;right:8%;transform:rotate(14deg)}
+
+.flow3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.8rem;align-items:center}
+.flow3 .arrow{font-size:3rem;text-align:center}
+
+.flow-team{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;align-items:stretch}
+.flow-team .step{flex:0 0 calc(25% - .8rem)}
+
+.diff-grid{display:grid;grid-template-columns:1fr;gap:.6rem}
+.diff-line{
+  font-family:'JetBrains Mono',monospace;font-size:1rem;
+  padding:.3em .6em;border-radius:4px;
+}
+.diff-line.add{background:#1B3A1B;color:#A7F0A7}
+.diff-line.rem{background:#3A1B1B;color:#F0A7A7}
+.diff-line.mark{background:#444;color:#FFD75F;font-weight:700}
+
+.muted{color:var(--gray)}
+.center-text{text-align:center}
+
+.callout{
+  background:var(--lime);
+  border:3px solid var(--ink);
+  border-radius:12px;
+  padding:.6em 1em;
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.2rem,1.9vw,1.8rem);
+  transform:rotate(-1deg);
+  display:inline-block;
+  box-shadow:5px 5px 0 var(--ink);
+  max-width:92%;
+  word-wrap:break-word;
+}
+
+.scenarios{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.scenario{
+  background:white;border:3px solid var(--ink);border-radius:12px;
+  padding:1em 1.2em;filter:url(#wobble);
+}
+.scenario h4{color:var(--lime-dark);margin-bottom:.3em}
+
+/* Specific icons */
+.icon{display:inline-block;vertical-align:middle}
+
+/* Branches diagram */
+.branch-diagram{
+  display:flex;flex-direction:column;gap:.6rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.95rem,1.3vw,1.3rem);
+}
+.branch-diagram .lane{display:flex;align-items:center;gap:.6rem}
+.branch-diagram .commit{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--ink);
+  flex-shrink:0;
+}
+.branch-diagram .commit.lime{background:var(--lime)}
+.branch-diagram .label{color:var(--ink)}
+
+/* Footer attribution corner mark */
+.corner-mark{
+  position:absolute;bottom:1.5rem;right:6vw;
+  font-family:'Caveat',cursive;color:var(--gray);
+  font-size:1rem;opacity:.6;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hand-drawn wobble filter for boxes -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3" />
+      <feDisplacementMap in="SourceGraphic" scale="3" />
+    </filter>
+  </defs>
+</svg>
+
+<div id="counter">1 / 28</div>
+<div id="hint"><span class="kbd">←</span> <span class="kbd">→</span> navegar · <span class="kbd">N</span> notas · <span class="kbd">F</span> fullscreen</div>
+<div id="progress"></div>
+
+<main id="deck">
+
+<!-- ============ SLIDE 1: Portada ============ -->
+<section class="slide cover">
+  <div class="deco tl scribble">★</div>
+  <div class="deco tr scribble">⚡</div>
+  <div class="deco bl scribble">↻</div>
+  <div class="deco br scribble">✦</div>
+  <p class="eyebrow">Una sesión de 60 minutos · desde cero</p>
+  <h1>Git &amp; <span class="marker">GitHub</span></h1>
+  <h2 style="margin-top:.4em;color:var(--gray)">Tu máquina del tiempo para código</h2>
+  <p class="by">Carlos Domínguez · Imperio Agéntico</p>
+  <div style="margin-top:2rem">
+    <span class="callout">empieza aquí →</span>
+  </div>
+  <aside class="notes">
+    <h4>Slide 1 · Portada <span class="time-pill">0:00 – 0:01</span></h4>
+    <ul>
+      <li>Bienvenida + presentación personal (30 seg).</li>
+      <li>Pregunta abierta a la audiencia: "¿Quién ya ha usado Git alguna vez?" (mano arriba) — para calibrar el nivel.</li>
+      <li>Cierra con la promesa: "En 60 min vas a saber crear un repo, hacer commits, abrir un PR y colaborar en equipo."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 2: ¿Qué es Git? ============ -->
+<section class="slide">
+  <span class="timechip">0:00 – 0:05 · Intro</span>
+  <p class="eyebrow">CONCEPTO 1 <span class="dot">●</span></p>
+  <h2>¿Qué es <span class="marker">Git</span>?</h2>
+  <div class="grid g2" style="gap:2rem;align-items:center;flex:1">
+    <div class="col">
+      <h3>Un <span class="marker">sistema de control de versiones</span>.</h3>
+      <p>Una herramienta que instalas en tu computadora y que <strong>rastrea cada cambio</strong> que haces en tus archivos.</p>
+      <p>Es <strong>local</strong>, funciona <strong>offline</strong>, y crea una <strong>línea de tiempo</strong> de tu proyecto que puedes recorrer hacia atrás.</p>
+      <p class="muted"><em>Lo creó Linus Torvalds en 2005, el mismo de Linux.</em></p>
+    </div>
+    <div class="box shadowed-lime center" style="gap:1rem">
+      <div style="font-size:4rem">💾</div>
+      <h3 style="text-align:center">El motor que vive en tu laptop</h3>
+      <p class="center-text muted">Sin internet. Sin cuenta. Sin nube.<br>Solo tú y tus archivos.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 2 · ¿Qué es Git? <span class="time-pill">0:01 – 0:02</span></h4>
+    <ul>
+      <li>Analogía: Git es como Ctrl+Z infinito, pero para todo tu proyecto y con etiquetas.</li>
+      <li>Insistir: Git <strong>no necesita internet</strong>. Es 100% local. Mucha gente confunde esto.</li>
+      <li>Anécdota: cuántas veces has perdido código por no tener versiones — esto lo resuelve.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 3: ¿Qué es GitHub? ============ -->
+<section class="slide">
+  <span class="timechip">0:00 – 0:05 · Intro</span>
+  <p class="eyebrow">CONCEPTO 2 <span class="dot">●</span></p>
+  <h2>¿Qué es <span class="marker">GitHub</span>?</h2>
+  <div class="grid g2" style="gap:2rem;align-items:center;flex:1">
+    <div class="col">
+      <h3>Una <span class="marker">plataforma online</span> para hospedar repos.</h3>
+      <p>Es donde subes tus proyectos de Git para tenerlos <strong>respaldados</strong> y <strong>colaborar con otros</strong>.</p>
+      <p>Además trae herramientas sociales y de equipo: <em>Pull Requests, Issues, Actions, revisiones de código, releases...</em></p>
+      <p class="muted"><em>Empresa de Microsoft desde 2018. ~100M de desarrolladores.</em></p>
+    </div>
+    <div class="box shadowed-lime center" style="gap:1rem">
+      <div style="font-size:4rem">☁️</div>
+      <h3 style="text-align:center">El nodo en la nube</h3>
+      <p class="center-text muted">Donde el equipo se encuentra.<br>Donde vive la versión "oficial".</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 3 · ¿Qué es GitHub? <span class="time-pill">0:02 – 0:03</span></h4>
+    <ul>
+      <li>Mencionar competidores: GitLab, Bitbucket, Codeberg — pero el estándar de la industria es GitHub.</li>
+      <li>"Es como Instagram, pero de código": perfil público, seguidores, contribuciones visibles.</li>
+      <li>Aclarar: GitHub <strong>no es</strong> Git. Puedes usar Git sin GitHub. Pero GitHub sin Git no existe.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 4: Git vs GitHub ============ -->
+<section class="slide">
+  <span class="timechip">0:00 – 0:05 · Intro</span>
+  <p class="eyebrow">LA GRAN DIFERENCIA <span class="dot">●</span></p>
+  <h2 style="text-align:center">Git <span style="color:var(--gray)">vs.</span> <span class="marker">GitHub</span></h2>
+  <div class="flow3" style="flex:1;align-items:stretch">
+    <div class="box shadowed center" style="gap:.6rem">
+      <div style="font-size:3.5rem">💻</div>
+      <h3>Git</h3>
+      <p class="center-text"><strong>El motor local.</strong><br>Vive en tu computadora.<br>Rastrea cambios offline.</p>
+      <span class="tag">herramienta</span>
+    </div>
+    <div class="arrow arrow-lime" style="text-align:center">↔︎</div>
+    <div class="center" style="gap:.4rem">
+      <div class="callout" style="font-size:1.6rem">sincronización</div>
+      <p class="muted">push / pull</p>
+    </div>
+    <div class="arrow arrow-lime" style="text-align:center">↔︎</div>
+    <div class="box shadowed center" style="gap:.6rem">
+      <div style="font-size:3.5rem">☁️</div>
+      <h3>GitHub</h3>
+      <p class="center-text"><strong>El nodo en la nube.</strong><br>Hospeda tus repos.<br>Conecta al equipo.</p>
+      <span class="tag">servicio</span>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.5rem"><span class="callout" style="font-size:1.5rem;transform:rotate(1deg)">Uno es la app · El otro es la red social</span></p>
+  <aside class="notes">
+    <h4>Slide 4 · Git vs GitHub <span class="time-pill">0:03 – 0:05</span></h4>
+    <ul>
+      <li>Esta slide es <strong>la más importante</strong> del bloque intro. No avanzar hasta que quede claro.</li>
+      <li>Pregunta a la audiencia: "Si trabajo solo en mi laptop sin internet, ¿necesito GitHub?" → No.</li>
+      <li>"¿Necesito Git si solo voy a usar GitHub?" → Sí, siempre.</li>
+      <li>Transición: "Ya que sabemos qué son, vamos a instalarlo."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 5: Instalar Git ============ -->
+<section class="slide">
+  <span class="timechip">0:05 – 0:15 · Setup</span>
+  <p class="eyebrow">PASO 1 <span class="dot">●</span></p>
+  <h2>Instalar <span class="marker">Git</span></h2>
+  <div class="grid g3" style="flex:1;align-items:stretch">
+    <div class="box shadowed center" style="gap:.6rem">
+      <div style="font-size:2.8rem">🪟</div>
+      <h3>Windows</h3>
+      <p class="center-text">Descarga el instalador de <span class="inline-code">git-scm.com</span></p>
+      <p class="muted center-text">Acepta todo por defecto.<br>Incluye <strong>Git Bash</strong> = terminal estilo Linux.</p>
+    </div>
+    <div class="box shadowed center" style="gap:.6rem">
+      <div style="font-size:2.8rem">🍎</div>
+      <h3>macOS</h3>
+      <pre style="text-align:left;font-size:.95rem;width:100%"><span class="cmd">$</span> brew install git
+<span class="cmt"># o si no tienes brew:</span>
+<span class="cmd">$</span> xcode-select --install</pre>
+    </div>
+    <div class="box shadowed center" style="gap:.6rem">
+      <div style="font-size:2.8rem">🐧</div>
+      <h3>Linux</h3>
+      <pre style="text-align:left;font-size:.95rem;width:100%"><span class="cmt"># Debian/Ubuntu</span>
+<span class="cmd">$</span> sudo apt install git
+
+<span class="cmt"># Fedora</span>
+<span class="cmd">$</span> sudo dnf install git</pre>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.2rem"><span class="callout">Verifica: <span class="inline-code" style="background:white">git --version</span></span></p>
+  <aside class="notes">
+    <h4>Slide 5 · Instalación <span class="time-pill">0:05 – 0:08</span></h4>
+    <ul>
+      <li>Pregunta: "¿Quién está en Mac / Windows / Linux?" para saber a quién enfocarse.</li>
+      <li>En Windows recomendar siempre <strong>Git Bash</strong> sobre CMD/PowerShell — los comandos son iguales en Mac/Linux/Bash.</li>
+      <li>Si alguien no tiene tiempo de instalar: <strong>github.dev</strong> (apretar punto en cualquier repo) abre VSCode en el navegador.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 6: Configuración inicial ============ -->
+<section class="slide">
+  <span class="timechip">0:05 – 0:15 · Setup</span>
+  <p class="eyebrow">PASO 2 <span class="dot">●</span></p>
+  <h2>Configuración <span class="marker">inicial</span></h2>
+  <p>Solo se hace <strong>una vez por máquina</strong>. Esto firma tus commits con tu nombre y correo.</p>
+  <pre style="margin-top:1rem"><span class="cmt"># Tu identidad — usa el mismo email que en GitHub</span>
+<span class="cmd">$</span> git config --global user.name <span class="str">"Carlos Domínguez"</span>
+<span class="cmd">$</span> git config --global user.email <span class="str">"carlos@ejemplo.com"</span>
+
+<span class="cmt"># Rama por defecto al crear repos nuevos</span>
+<span class="cmd">$</span> git config --global init.defaultBranch main
+
+<span class="cmt"># Tu editor preferido para los mensajes largos</span>
+<span class="cmd">$</span> git config --global core.editor <span class="str">"code --wait"</span>
+
+<span class="cmt"># Ver toda la config actual</span>
+<span class="cmd">$</span> git config --list</pre>
+  <p style="margin-top:1rem;text-align:center"><span class="scribble note">↑ el flag <span class="inline-code">--global</span> = aplica a todos tus repos en esta máquina</span></p>
+  <aside class="notes">
+    <h4>Slide 6 · Config inicial <span class="time-pill">0:08 – 0:11</span></h4>
+    <ul>
+      <li>Insistir en usar <strong>el mismo email que en GitHub</strong>, si no los commits no se atribuyen a tu perfil.</li>
+      <li>Razón de <strong>main</strong> en vez de <strong>master</strong>: nueva convención de GitHub desde 2020 (más inclusiva).</li>
+      <li>Si alguien no usa VSCode: <span class="inline-code">nano</span>, <span class="inline-code">vim</span>, <span class="inline-code">subl --wait</span>... — cualquier editor sirve.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 7: Verificar instalación ============ -->
+<section class="slide">
+  <span class="timechip">0:05 – 0:15 · Setup</span>
+  <p class="eyebrow">CHECK <span class="dot">●</span></p>
+  <h2>¿Todo en su <span class="marker">sitio</span>?</h2>
+  <div class="grid g2" style="flex:1;align-items:center;gap:2rem">
+    <div class="col">
+      <pre><span class="cmt"># 1. ¿Está instalado?</span>
+<span class="cmd">$</span> git --version
+<span class="br">git version 2.45.1</span>
+
+<span class="cmt"># 2. ¿Soy yo?</span>
+<span class="cmd">$</span> git config user.name
+<span class="br">Carlos Domínguez</span>
+
+<span class="cmt"># 3. ¿Mi email coincide con GitHub?</span>
+<span class="cmd">$</span> git config user.email</pre>
+    </div>
+    <div class="col" style="gap:1rem">
+      <div class="box soft">
+        <h3>Recomendados</h3>
+        <ul class="checklist">
+          <li><strong>VSCode</strong> + extensión <em>GitLens</em></li>
+          <li><strong>GitHub Desktop</strong> (UI gráfica, opcional)</li>
+          <li><strong>iTerm2</strong> (Mac) / <strong>Windows Terminal</strong></li>
+        </ul>
+      </div>
+      <div class="box lime">
+        <p style="font-family:'Caveat',cursive;font-size:1.6rem;text-align:center">Si los 3 comandos responden → 🎉 listo</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 7 · Verificar <span class="time-pill">0:11 – 0:15</span></h4>
+    <ul>
+      <li><strong>Demo en vivo</strong>: abrir terminal y correr los 3 comandos.</li>
+      <li>Si alguien tiene problemas: revisar PATH en Windows, o reinstalar con installer.</li>
+      <li>Transición: "Ya tenemos las herramientas. Ahora vamos a crear nuestro primer repo."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 8: Las 3 áreas de Git ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:25 · Local</span>
+  <p class="eyebrow">EL VIAJE DEL ARCHIVO <span class="dot">●</span></p>
+  <h2>Las <span class="marker">3 áreas</span> de Git</h2>
+  <div class="flow3" style="flex:1;align-items:stretch;gap:.6rem;margin-top:1rem">
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:3rem">📁</div>
+      <h3>1. Working Dir</h3>
+      <p class="center-text">Tu carpeta normal.<br>Aquí editas archivos.</p>
+      <span class="tag">Modified</span>
+    </div>
+    <div class="center" style="gap:.4rem">
+      <span class="inline-code" style="font-size:1.2rem;background:var(--lime)">git add</span>
+      <div class="arrow arrow-lime">→</div>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:3rem">📋</div>
+      <h3>2. Staging</h3>
+      <p class="center-text">Sala de espera.<br>Lo que vas a guardar.</p>
+      <span class="tag">Staged</span>
+    </div>
+    <div class="center" style="gap:.4rem">
+      <span class="inline-code" style="font-size:1.2rem;background:var(--lime)">git commit</span>
+      <div class="arrow arrow-lime">→</div>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:3rem">📸</div>
+      <h3>3. Repo Local</h3>
+      <p class="center-text">La foto guardada.<br>Inmutable, con fecha.</p>
+      <span class="tag">Committed</span>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.5rem"><span class="callout" style="font-size:1.4rem">Cada commit es una foto del estado completo del proyecto en ese instante</span></p>
+  <aside class="notes">
+    <h4>Slide 8 · Las 3 áreas <span class="time-pill">0:15 – 0:17</span></h4>
+    <ul>
+      <li><strong>Es la slide más importante del bloque local.</strong> Si la audiencia entiende esto, todo lo demás encaja.</li>
+      <li>Analogía: "Modified = borrador en mi escritorio. Staged = doy mi visto bueno al editor. Committed = se imprime y archiva."</li>
+      <li>Mucha gente confunde <span class="inline-code">add</span> con "subir". <strong>No sube nada.</strong> Solo prepara para commit.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 9: Primer repo ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:25 · Local</span>
+  <p class="eyebrow">EN VIVO <span class="dot">●</span></p>
+  <h2>Tu <span class="marker">primer repo</span> en 30 segundos</h2>
+  <pre style="margin-top:.5rem"><span class="cmt"># 1. Entra a una carpeta cualquiera</span>
+<span class="cmd">$</span> cd mi-proyecto
+
+<span class="cmt"># 2. Inicializa Git ahí (crea una carpeta oculta .git)</span>
+<span class="cmd">$</span> git init
+<span class="br">Initialized empty Git repository in /Users/carlos/mi-proyecto/.git/</span>
+
+<span class="cmt"># 3. ¿Qué tengo? Te muestra el estado actual</span>
+<span class="cmd">$</span> git status
+
+<span class="cmt"># 4. Pongo archivos en staging (el "." = todos)</span>
+<span class="cmd">$</span> git add .
+
+<span class="cmt"># 5. Hago la foto con un mensaje descriptivo</span>
+<span class="cmd">$</span> git commit -m <span class="str">"chore: initial commit"</span>
+<span class="br">[main (root-commit) a1b2c3d] chore: initial commit
+ 3 files changed, 42 insertions(+)</span></pre>
+  <p class="center-text" style="margin-top:1rem"><span class="scribble note">↑ ¡felicidades! ya tienes un repo con historia ↑</span></p>
+  <aside class="notes">
+    <h4>Slide 9 · Primer repo <span class="time-pill">0:17 – 0:20</span></h4>
+    <ul>
+      <li><strong>Demo en vivo:</strong> abre terminal, crea carpeta, corre los 5 comandos. La audiencia ve aparecer el repo.</li>
+      <li>Truco: <span class="inline-code">git add .</span> agrega todo. Pero también puedes hacer <span class="inline-code">git add archivo.txt</span> para uno solo.</li>
+      <li>Truco 2: <span class="inline-code">git commit -am "msg"</span> hace add+commit en uno (solo de archivos ya rastreados).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 10: Ver historia ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:25 · Local</span>
+  <p class="eyebrow">RECORRE EL TIEMPO <span class="dot">●</span></p>
+  <h2>Ver tu <span class="marker">historia</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <pre><span class="cmt"># Toda la historia con detalle</span>
+<span class="cmd">$</span> git log
+
+<span class="cmt"># Versión compacta (una línea por commit)</span>
+<span class="cmd">$</span> git log --oneline
+<span class="br">a1b2c3d feat: add login form
+9f4e2d1 fix: validate email
+3c8a1b9 chore: initial commit</span>
+
+<span class="cmt"># Ver qué cambió en un archivo</span>
+<span class="cmd">$</span> git diff archivo.txt
+
+<span class="cmt"># Ver el último commit completo</span>
+<span class="cmd">$</span> git show</pre>
+    <div class="col" style="gap:1rem">
+      <div class="box soft">
+        <h3>Comandos clave del día</h3>
+        <ul class="checklist">
+          <li><span class="inline-code">git status</span> → ¿qué cambió?</li>
+          <li><span class="inline-code">git log</span> → ¿qué hice antes?</li>
+          <li><span class="inline-code">git diff</span> → ¿cuáles son los cambios exactos?</li>
+        </ul>
+      </div>
+      <p class="callout" style="font-size:1.3rem">Si no sabes en qué estado estás → <span class="inline-code" style="background:white">git status</span></p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 10 · Ver historia <span class="time-pill">0:20 – 0:22</span></h4>
+    <ul>
+      <li><span class="inline-code">git log --oneline --graph --all</span> es el "mapa visual" del repo entero — mostrar al final del bloque.</li>
+      <li>Cada commit tiene un <strong>hash</strong> (los 7 chars hex) — es su DNI único, irrepetible y permanente.</li>
+      <li>Si la audiencia pregunta cómo "deshacer": <span class="inline-code">git restore</span>, <span class="inline-code">git revert</span> — pero NO entrar en eso hoy, da para otra clase.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 11: Presento el proyecto ATS ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:25 · Local</span>
+  <p class="eyebrow">PAUSA · TE PRESENTO EL PROYECTO <span class="dot">●</span></p>
+  <h2>Los ejemplos que vienen son de un <span class="marker">repo real</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center;margin-top:.4rem">
+    <div class="box shadowed-lime">
+      <h3 style="color:var(--lime-dark)">ATS · Hirezia</h3>
+      <p>Un <strong>Applicant Tracking System</strong> que estoy construyendo para BPOs de alto volumen en LATAM.</p>
+      <p style="margin-top:.4em">Pipeline automático de candidatos · scoring con IA · integración WhatsApp · portales para clientes.</p>
+      <p style="margin-top:.7em" class="muted"><strong>Stack:</strong> Next.js · React · TypeScript · Supabase · WhatsApp Business API · Playwright</p>
+      <p style="margin-top:.7em;font-family:'JetBrains Mono',monospace;font-size:.95rem">github.com/Carlos-Dominguez-faber/<strong>ATS</strong></p>
+    </div>
+    <div class="box soft">
+      <h3>El equipo · 5 personas · 156 commits</h3>
+      <ul class="checklist" style="margin-top:.4em">
+        <li><strong>Carlos</strong> (yo) — todo-terreno + reviews <small>· 126</small></li>
+        <li><strong>Brais</strong> — performance + bundle size <small>· 19</small></li>
+        <li><strong>Rafa</strong> — research + user testing <small>· 6</small></li>
+        <li><strong>Diony</strong> — UX flujo WhatsApp <small>· 3</small></li>
+        <li><strong>Federico</strong> — dashboard + CSV export <small>· 2</small></li>
+      </ul>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1rem"><span class="callout" style="font-size:1.2rem">Branches · commits · PRs · CI<br>todo lo que viene es <strong>verdadero</strong>, no de juguete</span></p>
+  <aside class="notes">
+    <h4>Slide 11 · Te presento el proyecto <span class="time-pill">0:22 – 0:23</span></h4>
+    <ul>
+      <li>Slide de transición de ~30-45 seg. Da contexto para los 5 ejemplos del repo ATS que vienen (slides 12, 17, 20, 21, 26).</li>
+      <li>Hirezia es una <strong>startup en construcción</strong>, no producto lanzado. Lo importante no es el producto, es el proceso de cómo se construye con un equipo distribuido.</li>
+      <li>Si alguien quiere ver más → abrir el repo en vivo después de la clase.</li>
+      <li>Transición a slide 12: "Y vamos a empezar viendo cómo gestionamos lo que NO subimos al repo."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 13: .gitignore (ejemplo ATS) ============ -->
+<section class="slide">
+  <span class="timechip">0:15 – 0:25 · Local</span>
+  <p class="eyebrow">EJEMPLO REAL · ATS (Hirezia) <span class="dot">●</span></p>
+  <h2>El archivo <span class="marker">.gitignore</span></h2>
+  <p>Lista de patrones que Git debe <strong>ignorar siempre</strong>. Va en la raíz del repo. Se sube con los demás archivos.</p>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center;margin-top:.6rem">
+    <pre><span class="cmt"># Extracto del .gitignore real del repo ATS</span>
+<span class="cmt"># dependencies</span>
+node_modules/
+/.pnp
+
+<span class="cmt"># next.js builds</span>
+/.next/
+/out/
+/build
+
+<span class="cmt"># secretos — NUNCA subir</span>
+.env*.local
+.env
+
+<span class="cmt"># sistema operativo + debug</span>
+.DS_Store
+*.log</pre>
+    <div class="col" style="gap:1rem">
+      <div class="box lime">
+        <h3>¿Qué se ignora?</h3>
+        <ul class="checklist" style="margin-top:.4em">
+          <li>Carpetas de dependencias (<span class="inline-code">node_modules</span>)</li>
+          <li>Builds (<span class="inline-code">dist/</span>, <span class="inline-code">.next/</span>)</li>
+          <li><strong>Secretos</strong> (<span class="inline-code">.env</span>, keys)</li>
+          <li>Archivos del sistema (<span class="inline-code">.DS_Store</span>, <span class="inline-code">Thumbs.db</span>)</li>
+        </ul>
+      </div>
+      <p class="callout" style="font-size:1.3rem;background:#FFE082">Regla de oro:<br>nunca subas <span class="inline-code" style="background:white">.env</span> al repo</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 13 · .gitignore <span class="time-pill">0:22 – 0:25</span></h4>
+    <ul>
+      <li>El .gitignore se crea <strong>antes</strong> del primer commit. Si subes un secreto por error, ¡borrarlo del repo no basta! queda en la historia.</li>
+      <li><strong>gitignore.io</strong> genera plantillas según tu stack: Node, Python, macOS, VSCode...</li>
+      <li>El ejemplo es real del repo ATS (Hirezia) donde colaboré con el equipo — lo vamos a usar más adelante en la sección de equipo.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 13: Concepto de ramas ============ -->
+<section class="slide">
+  <span class="timechip">0:25 – 0:35 · Ramas + GitHub</span>
+  <p class="eyebrow">UNIVERSOS PARALELOS <span class="dot">●</span></p>
+  <h2>¿Qué es una <span class="marker">rama</span>?</h2>
+  <div class="grid g2" style="flex:1;align-items:center;gap:2rem">
+    <div class="col">
+      <p>Una <strong>línea paralela</strong> de desarrollo. Te separas de <span class="inline-code">main</span>, experimentas sin miedo, y cuando funciona lo <strong>traes de vuelta</strong>.</p>
+      <p>Sirve para:</p>
+      <ul class="checklist">
+        <li>Probar una idea sin romper lo que funciona</li>
+        <li>Trabajar en una feature mientras otro arregla un bug</li>
+        <li>Hacer code reviews antes de mezclar</li>
+      </ul>
+      <p class="callout" style="font-size:1.3rem;transform:rotate(1deg)">Regla: jamás programes directo en <span class="inline-code" style="background:white">main</span></p>
+    </div>
+    <div class="branch-diagram box" style="background:#0F0F0F;color:var(--lime);border-color:var(--ink);padding:1.5em">
+      <div class="lane" style="color:var(--lime)">
+        <span class="commit lime"></span><span class="commit lime"></span><span class="commit lime"></span>
+        <span class="commit lime"></span><span class="commit lime"></span>
+        <span class="label" style="color:white">  main</span>
+      </div>
+      <div style="margin-left:50px;color:#FF7AA2">
+        <div class="lane">
+          <span class="commit" style="background:#FF7AA2;border-color:#FF7AA2"></span>
+          <span class="commit" style="background:#FF7AA2;border-color:#FF7AA2"></span>
+          <span class="commit" style="background:#FF7AA2;border-color:#FF7AA2"></span>
+          <span class="label" style="color:#FF7AA2">  feat/login</span>
+        </div>
+      </div>
+      <div style="margin-left:120px;color:#9FE9FF">
+        <div class="lane">
+          <span class="commit" style="background:#9FE9FF;border-color:#9FE9FF"></span>
+          <span class="commit" style="background:#9FE9FF;border-color:#9FE9FF"></span>
+          <span class="label" style="color:#9FE9FF">  fix/header</span>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--gray);font-family:'Caveat',cursive;font-size:1.4rem;margin-top:1rem">↑ tres líneas de tiempo, mismo proyecto</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 13 · Concepto de rama <span class="time-pill">0:25 – 0:27</span></h4>
+    <ul>
+      <li>Analogía: como un "Guarda partida" de videojuego antes del jefe final. Si mueres, vuelves al save.</li>
+      <li>Insistir: <strong>las ramas son baratas</strong> en Git. No son carpetas duplicadas — son punteros. Crear una toma 0 ms.</li>
+      <li>Trivia: en GitHub la rama default ahora es <strong>main</strong>, antes era <strong>master</strong>. Cambio histórico de 2020.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 14: Trabajar con ramas ============ -->
+<section class="slide">
+  <span class="timechip">0:25 – 0:35 · Ramas + GitHub</span>
+  <p class="eyebrow">COMANDOS <span class="dot">●</span></p>
+  <h2>Trabajar con <span class="marker">ramas</span></h2>
+  <pre><span class="cmt"># Ver todas las ramas (la actual marcada con *)</span>
+<span class="cmd">$</span> git branch
+<span class="br">* main
+  feat/login</span>
+
+<span class="cmt"># Crear una rama nueva Y cambiarte a ella</span>
+<span class="cmd">$</span> git switch -c feat/dashboard
+<span class="cmt"># equivalente legacy: git checkout -b feat/dashboard</span>
+
+<span class="cmt"># Cambiarte a una rama existente</span>
+<span class="cmd">$</span> git switch main
+
+<span class="cmt"># Mezclar feat/dashboard EN main</span>
+<span class="cmd">$</span> git switch main
+<span class="cmd">$</span> git merge feat/dashboard
+
+<span class="cmt"># Borrar una rama cuando ya no la necesitas</span>
+<span class="cmd">$</span> git branch -d feat/dashboard</pre>
+  <p class="center-text" style="margin-top:1rem"><span class="callout" style="font-size:1.3rem">Workflow típico: <span class="inline-code" style="background:white">switch</span> → editar → <span class="inline-code" style="background:white">add</span> → <span class="inline-code" style="background:white">commit</span> → <span class="inline-code" style="background:white">switch main</span> → <span class="inline-code" style="background:white">merge</span></span></p>
+  <aside class="notes">
+    <h4>Slide 14 · Comandos de ramas <span class="time-pill">0:27 – 0:29</span></h4>
+    <ul>
+      <li><span class="inline-code">git switch</span> es nuevo (Git 2.23+). <span class="inline-code">git checkout</span> sigue funcionando, lo verán en tutoriales viejos.</li>
+      <li>Diferencia: <span class="inline-code">checkout</span> hace muchas cosas (ramas, archivos, commits). <span class="inline-code">switch</span> es solo para ramas → más seguro.</li>
+      <li>Demo: crear rama, hacer un cambio, mergear de vuelta a main. Que la audiencia vea el flujo.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 15: Conectar con GitHub ============ -->
+<section class="slide">
+  <span class="timechip">0:25 – 0:35 · Ramas + GitHub</span>
+  <p class="eyebrow">DE LOCAL A LA NUBE <span class="dot">●</span></p>
+  <h2>Conectar con <span class="marker">GitHub</span></h2>
+  <div class="grid g2" style="flex:1;align-items:center;gap:2rem">
+    <div class="col">
+      <h3>3 pasos para subir tu repo</h3>
+      <ol style="padding-left:1.4em">
+        <li><strong>Crea el repo en GitHub:</strong> botón <span class="inline-code">New repository</span> → nombre → <em>sin</em> README (lo tienes ya local).</li>
+        <li><strong>Copia la URL</strong> que te muestra (HTTPS o SSH).</li>
+        <li><strong>Apunta tu repo local</strong> a esa URL y empuja.</li>
+      </ol>
+      <p style="margin-top:.6rem"><span class="scribble note">↓ los comandos exactos</span></p>
+    </div>
+    <pre><span class="cmt"># Apunta tu repo local al remoto</span>
+<span class="cmd">$</span> git remote add origin \
+    https://github.com/tu-user/mi-repo.git
+
+<span class="cmt"># Verifica</span>
+<span class="cmd">$</span> git remote -v
+<span class="br">origin  https://github.com/.../mi-repo.git (fetch)
+origin  https://github.com/.../mi-repo.git (push)</span>
+
+<span class="cmt"># Sube y crea la rama main en remoto</span>
+<span class="cmd">$</span> git push -u origin main
+<span class="br">Branch 'main' set up to track 'origin/main'.</span></pre>
+  </div>
+  <p class="center-text" style="margin-top:1rem"><span class="callout" style="font-size:1.3rem">El <span class="inline-code" style="background:white">-u</span> = solo la primera vez. Después basta <span class="inline-code" style="background:white">git push</span></span></p>
+  <aside class="notes">
+    <h4>Slide 15 · Conectar con GitHub <span class="time-pill">0:29 – 0:31</span></h4>
+    <ul>
+      <li><strong>origin</strong> es solo el nombre por convención del remoto principal. Podrías llamarle <span class="inline-code">upstream</span>, <span class="inline-code">github</span>... pero el mundo usa <strong>origin</strong>.</li>
+      <li>Recomendar HTTPS al principio (más fácil), SSH cuando ya tengan llaves configuradas. Token de acceso personal (PAT) reemplaza la contraseña.</li>
+      <li>Demo en GitHub: enseñar el botón "New repository" y la página de instrucciones que aparece.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 16: Sincronizar ============ -->
+<section class="slide">
+  <span class="timechip">0:25 – 0:35 · Ramas + GitHub</span>
+  <p class="eyebrow">4 VERBOS QUE TIENES QUE DOMINAR <span class="dot">●</span></p>
+  <h2>Sincronizar con el <span class="marker">remoto</span></h2>
+  <div class="grid g4" style="flex:1;align-items:stretch;gap:1rem">
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">⬆️</div>
+      <h3>push</h3>
+      <p class="center-text muted">Sube tus commits al remoto.</p>
+      <pre style="font-size:.85rem;background:#0F0F0F"><span class="cmd">$</span> git push</pre>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">⬇️</div>
+      <h3>pull</h3>
+      <p class="center-text muted">Baja y mezcla cambios.</p>
+      <pre style="font-size:.85rem;background:#0F0F0F"><span class="cmd">$</span> git pull</pre>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">📥</div>
+      <h3>clone</h3>
+      <p class="center-text muted">Copia un repo a tu máquina.</p>
+      <pre style="font-size:.85rem;background:#0F0F0F"><span class="cmd">$</span> git clone URL</pre>
+    </div>
+    <div class="box shadowed center" style="gap:.5rem">
+      <div style="font-size:2.6rem">👀</div>
+      <h3>fetch</h3>
+      <p class="center-text muted">Mira sin mezclar.</p>
+      <pre style="font-size:.85rem;background:#0F0F0F"><span class="cmd">$</span> git fetch</pre>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1.2rem"><span class="callout" style="font-size:1.3rem;transform:rotate(-1deg)">Antes de empezar a trabajar cada día → <span class="inline-code" style="background:white">git pull</span></span></p>
+  <aside class="notes">
+    <h4>Slide 16 · Verbos remotos <span class="time-pill">0:31 – 0:33</span></h4>
+    <ul>
+      <li><strong>pull = fetch + merge.</strong> Si quieres ver primero qué hay sin mezclar, usa fetch.</li>
+      <li>Si pull falla por conflictos → ver la slide de conflictos más adelante.</li>
+      <li><strong>clone</strong> es lo que harán los compañeros cuando se unan al proyecto — descarga repo entero + remote ya configurado.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 17: Ejemplo real ATS · branches ============ -->
+<section class="slide">
+  <span class="timechip">0:25 – 0:35 · Ramas + GitHub</span>
+  <p class="eyebrow">EJEMPLO REAL · ATS (Hirezia) <span class="dot">●</span></p>
+  <h2>Convención de <span class="marker">branches</span> en un proyecto real</h2>
+  <p>Así nombramos las ramas en el repo donde trabajé con un equipo de 5 desarrolladores:</p>
+  <div class="grid g2" style="flex:1;gap:1.5rem;align-items:center;margin-top:.6rem">
+    <pre style="font-size:1rem"><span class="cmt"># git branch -a (extracto real)</span>
+<span class="key">feat/</span><span class="br">dashboard-filters</span>
+<span class="key">feat/</span><span class="br">email-templates</span>
+<span class="key">feat/</span><span class="br">realtime-pipeline</span>
+<span class="key">feat/</span><span class="br">scoring-improvements</span>
+<span class="key">feat/</span><span class="br">whatsapp-embedded-signup</span>
+<span class="key">fix/</span><span class="br">whatsapp-auth-guard</span>
+<span class="key">docs/</span><span class="br">whatsapp-business-rafa</span>
+<span class="key">docs/</span><span class="br">user-testing-findings</span>
+<span class="key">spike/</span><span class="br">whatsapp-research</span>
+<span class="key">test/</span><span class="br">velocidad-pipeline</span></pre>
+    <div class="col" style="gap:1rem">
+      <div class="box lime">
+        <h3>El patrón</h3>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;margin:.4em 0">&lt;tipo&gt;/&lt;descripcion-kebab&gt;</p>
+        <ul class="checklist" style="margin-top:.4em">
+          <li><span class="inline-code">feat/</span> nueva funcionalidad</li>
+          <li><span class="inline-code">fix/</span> bug fix</li>
+          <li><span class="inline-code">docs/</span> documentación</li>
+          <li><span class="inline-code">spike/</span> investigación / POC</li>
+          <li><span class="inline-code">test/</span> pruebas / benchmarks</li>
+        </ul>
+      </div>
+      <p class="callout" style="font-size:1.2rem">Si la rama se llama bien → en 1 vistazo sabes qué hay dentro</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 17 · Convención branches ATS <span class="time-pill">0:33 – 0:35</span></h4>
+    <ul>
+      <li>Este es mi repo real: <strong>github.com/Carlos-Dominguez-faber/ATS</strong> — un ATS (Applicant Tracking System) para BPOs.</li>
+      <li>El patrón viene de <strong>Conventional Commits</strong>. No es estándar de Git — es un acuerdo de equipo.</li>
+      <li>Pregunta a la audiencia: "¿Qué creen que está pasando en <span class="inline-code">spike/whatsapp-research</span>?" → un experimento para integrar WhatsApp.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 18: El flujo profesional (8 pasos) ============ -->
+<section class="slide">
+  <span class="timechip">0:35 – 0:45 · En equipo</span>
+  <p class="eyebrow">EL FLUJO SOCIAL <span class="dot">●</span></p>
+  <h2>Trabajo en equipo en <span class="marker">8 pasos</span></h2>
+  <div class="flow-team" style="flex:1;align-items:stretch;margin-top:1rem">
+    <div class="step"><div class="n">1</div><h4>Clone</h4><p>Bajas el repo del equipo</p></div>
+    <div class="step"><div class="n">2</div><h4>Branch</h4><p>Te creas una rama propia</p></div>
+    <div class="step"><div class="n">3</div><h4>Cambios</h4><p>Editas archivos</p></div>
+    <div class="step"><div class="n">4</div><h4>Commit</h4><p>Guardas hitos pequeños</p></div>
+    <div class="step"><div class="n">5</div><h4>Push</h4><p>Subes tu rama a GitHub</p></div>
+    <div class="step"><div class="n">6</div><h4>PR</h4><p>Abres un Pull Request</p></div>
+    <div class="step"><div class="n">7</div><h4>Review</h4><p>Tus compas opinan</p></div>
+    <div class="step"><div class="n">8</div><h4>Merge</h4><p>Va a main → producción</p></div>
+  </div>
+  <p class="center-text" style="margin-top:1.5rem"><span class="callout" style="font-size:1.4rem;transform:rotate(1deg)">Esto es lo único que tienes que memorizar hoy</span></p>
+  <aside class="notes">
+    <h4>Slide 18 · Los 8 pasos <span class="time-pill">0:35 – 0:38</span></h4>
+    <ul>
+      <li><strong>Esta es la slide más importante del bloque equipo.</strong> Repite la secuencia en voz alta 2-3 veces.</li>
+      <li>Algunos equipos hacen variaciones: <em>GitHub Flow</em> (este, simple) vs <em>Git Flow</em> (más complejo, con develop/release/hotfix). Para empezar, usen este.</li>
+      <li>Recordar al final de la clase: vamos a repetir esta secuencia en la slide 27.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 19: Pull Requests ============ -->
+<section class="slide">
+  <span class="timechip">0:35 – 0:45 · En equipo</span>
+  <p class="eyebrow">EL CORAZÓN DE LA COLABORACIÓN <span class="dot">●</span></p>
+  <h2>¿Qué es un <span class="marker">Pull Request</span>?</h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Una <strong>solicitud formal</strong> para que tus cambios en una rama se mezclen a <span class="inline-code">main</span> (u otra rama base).</p>
+      <p>Es donde el equipo:</p>
+      <ul class="checklist">
+        <li>Revisa tu código antes de mergear</li>
+        <li>Comenta sugerencias línea por línea</li>
+        <li>Aprueba o pide cambios</li>
+        <li>Discute decisiones técnicas con contexto</li>
+      </ul>
+      <p class="callout" style="font-size:1.3rem">PR = el momento social de Git</p>
+    </div>
+    <div class="box shadowed">
+      <h3 style="color:var(--lime-dark)">Anatomía de un PR</h3>
+      <ul style="list-style:none;padding-left:0">
+        <li><strong>Título:</strong> <span class="inline-code">feat(auth): add Google OAuth</span></li>
+        <li><strong>Descripción:</strong> qué, por qué, cómo probarlo</li>
+        <li><strong>Base ← Compare:</strong> <span class="inline-code">main ← feat/oauth</span></li>
+        <li><strong>Reviewers:</strong> 1-2 personas del equipo</li>
+        <li><strong>Labels:</strong> <span class="tag">bug</span> <span class="tag">enhancement</span></li>
+        <li><strong>Checks:</strong> ✓ CI passing</li>
+        <li><strong>Conversation:</strong> hilo de revisión</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 19 · Anatomía PR <span class="time-pill">0:38 – 0:40</span></h4>
+    <ul>
+      <li><strong>Demo en vivo:</strong> abrir un PR cualquiera en GitHub (incluso un PR público famoso, p.ej. en facebook/react) y recorrer las pestañas: Conversation, Commits, Checks, Files changed.</li>
+      <li>Insistir: una buena descripción de PR ahorra horas. Plantilla: <em>¿qué hace? · ¿por qué? · ¿cómo se prueba?</em></li>
+      <li>Pregunta: "¿Cuántos commits debería tener un PR?" → idealmente 1-5. Si tiene 30, probablemente debería ser varios PRs.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 20: Ejemplo real ATS · commit message ============ -->
+<section class="slide">
+  <span class="timechip">0:35 – 0:45 · En equipo</span>
+  <p class="eyebrow">EJEMPLO REAL · commit 655c727 en ATS <span class="dot">●</span></p>
+  <h2>Un commit <span class="marker">bien escrito</span></h2>
+  <div class="grid" style="grid-template-columns:1.4fr 1fr;flex:1;gap:1.5rem;align-items:center">
+    <pre style="font-size:.95rem"><span class="key">fix</span>(<span class="br">whatsapp/embedded-signup</span>): auth guard + env var name
+
+- Add auth check at top of POST handler before any
+  Meta API calls. Without this, an unauthenticated
+  request could trigger subscribeApp and registerPhone
+  (irreversible Meta operations) with a stolen code.
+
+- Fix env var:
+    META_GRAPH_API_VERSION
+  → NEXT_PUBLIC_META_GRAPH_API_VERSION
+  to match what is actually set in env files.
+
+<span class="cmt">Co-Authored-By: Claude Sonnet 4.6 &lt;noreply@anthropic.com&gt;</span></pre>
+    <div class="col" style="gap:.8rem">
+      <div class="box soft">
+        <h4 style="color:var(--lime-dark)">Anatomía del mensaje</h4>
+        <ul style="font-size:.95rem">
+          <li><strong>tipo</strong>: <span class="inline-code">fix</span></li>
+          <li><strong>scope</strong>: <span class="inline-code">whatsapp/embedded-signup</span></li>
+          <li><strong>asunto</strong>: qué hace en 1 línea</li>
+          <li><strong>cuerpo</strong>: explica el <em>porqué</em>, no el qué</li>
+          <li><strong>footer</strong>: co-autoría, refs a issues</li>
+        </ul>
+      </div>
+      <p class="callout" style="font-size:1.15rem">Tu yo de dentro de 6 meses te lo va a agradecer</p>
+    </div>
+  </div>
+  <p class="center-text" style="margin-top:1rem"><span class="scribble note">↑ Convención: <strong>Conventional Commits</strong> · conventionalcommits.org</span></p>
+  <aside class="notes">
+    <h4>Slide 20 · Commit ATS <span class="time-pill">0:40 – 0:42</span></h4>
+    <ul>
+      <li>Este es un commit <strong>de verdad</strong> del repo ATS. Lo busca con: <span class="inline-code">git show 655c727</span>.</li>
+      <li>Comparar con un commit malo: <span class="inline-code">"fix"</span>, <span class="inline-code">"wip"</span>, <span class="inline-code">"updates"</span> — inútiles a los 3 días.</li>
+      <li>Tip: el asunto debe completar la frase "Si aplico este commit, va a ___". → "fix auth guard..." ✓</li>
+      <li>Co-author = patrón estándar de GitHub para acreditar a otro humano (o IA) que ayudó.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 21: Ejemplo real ATS · PR #30 ============ -->
+<section class="slide">
+  <span class="timechip">0:35 – 0:45 · En equipo</span>
+  <p class="eyebrow">EJEMPLO REAL · PR #30 en ATS <span class="dot">●</span></p>
+  <h2>Un <span class="marker">PR colaborativo</span> real</h2>
+  <div class="grid" style="grid-template-columns:1fr 1fr;flex:1;gap:1.5rem;align-items:center">
+    <div class="box shadowed">
+      <p class="muted" style="font-size:.95rem">github.com/Carlos-Dominguez-faber/ATS#30</p>
+      <h3 style="color:var(--lime-dark);margin:.2em 0">feat(dashboard): add filters, funnel chart, and csv export</h3>
+      <p><strong>Autor:</strong> Federico (esmigol25)</p>
+      <p><strong>Estado:</strong> <span class="tag" style="background:#8B5CF6;color:white">MERGED</span></p>
+      <p style="margin-top:.6em"><strong>2 commits · 2 autores · 12 archivos</strong></p>
+      <pre style="font-size:.85rem;margin-top:.6em">8ec902d <span class="key">feat</span>(dashboard): add filters,
+        funnel chart, csv export
+        <span class="br">— Federico</span>
+
+73d1822 <span class="key">fix</span>(dashboard): add
+        FunnelErrorBoundary to
+        PipelineFunnelChart
+        <span class="br">— Carlos</span></pre>
+    </div>
+    <div class="col" style="gap:.8rem">
+      <h3>¿Qué pasó aquí?</h3>
+      <ol style="padding-left:1.4em">
+        <li>Federico abrió un PR con la <strong>feature nueva</strong> del dashboard.</li>
+        <li>Lo revisé y detecté que la nueva gráfica de embudo podía romper la página si los datos venían mal.</li>
+        <li>Hice <strong>follow-up commit</strong> en su misma rama: un <em>Error Boundary</em> para aislar el fallo.</li>
+        <li>El PR se mergeó con <strong>2 autores</strong> trabajando juntos.</li>
+      </ol>
+      <p class="callout" style="font-size:1.2rem">Un PR no es propiedad de una sola persona</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 21 · PR #30 colaborativo <span class="time-pill">0:42 – 0:44</span></h4>
+    <ul>
+      <li>El caso ilustra <strong>colaboración real</strong>: el reviewer no solo comenta, a veces aporta código directo si tiene permisos en la rama.</li>
+      <li>Si no tienes permisos en la rama del compa → comentas <em>"haría X aquí"</em> y le pides que lo aplique.</li>
+      <li>GitHub también permite <em>"Suggest changes"</em>: el reviewer escribe el código exacto, el autor lo aplica con un click.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 22: Code review ============ -->
+<section class="slide">
+  <span class="timechip">0:35 – 0:45 · En equipo</span>
+  <p class="eyebrow">EL ARTE DE REVISAR <span class="dot">●</span></p>
+  <h2>Code <span class="marker">Review</span></h2>
+  <div class="grid g3" style="flex:1;align-items:stretch;gap:1.2rem">
+    <div class="scenario">
+      <h4>💬 Comment</h4>
+      <p>Solo opinión, no bloquea. <em>"¿Has pensado en X?"</em></p>
+    </div>
+    <div class="scenario">
+      <h4>✅ Approve</h4>
+      <p>Te gusta como está. Listo para mergear (si CI verde).</p>
+    </div>
+    <div class="scenario">
+      <h4>🚫 Request changes</h4>
+      <p>Bloquea el merge hasta que cambien algo. Úsalo con cuidado.</p>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:1.5rem;gap:1.5rem">
+    <div class="box soft">
+      <h3>Reviewer = empatía + criterio</h3>
+      <ul class="checklist">
+        <li>Critica el código, no a la persona</li>
+        <li>Pregunta antes de afirmar</li>
+        <li>Sugiere alternativas concretas</li>
+        <li>Aprueba si está "bien", no si está "perfecto"</li>
+      </ul>
+    </div>
+    <div class="box soft">
+      <h3>Autor del PR = humildad + claridad</h3>
+      <ul class="checklist">
+        <li>Responde cada comentario</li>
+        <li>Si no aplicas un cambio, di por qué</li>
+        <li>Re-pide review tras cambios grandes</li>
+        <li>Agradece (no es opcional)</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 22 · Code review <span class="time-pill">0:44 – 0:45</span></h4>
+    <ul>
+      <li>"Request changes" se reserva para problemas reales: bug, seguridad, romper convención. NO para "yo lo escribiría diferente".</li>
+      <li>Regla práctica: si el PR lleva &gt;48h sin review, el autor puede dar un toque en Slack/chat — no es ser pesado, es destrabar.</li>
+      <li>Si eres reviewer y no sabes algo, di "no lo sé, ¿podrías explicarme?" — es mejor que aprobar a ciegas.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 23: Conflictos de merge ============ -->
+<section class="slide">
+  <span class="timechip">0:45 – 0:55 · Conflictos + Buenas prácticas</span>
+  <p class="eyebrow">CUANDO GIT NO PUEDE DECIDIR <span class="dot">●</span></p>
+  <h2>Conflictos de <span class="marker">merge</span></h2>
+  <div class="grid g2" style="flex:1;gap:2rem;align-items:center">
+    <div class="col">
+      <p>Ocurren cuando <strong>dos personas modifican la misma línea</strong> del mismo archivo en ramas distintas.</p>
+      <p>Git no se atreve a elegir por ti. Marca el archivo, lo deja en un estado "conflict" y te pide ayuda.</p>
+      <p class="callout" style="font-size:1.3rem">No es un error.<br>Es una pregunta.</p>
+    </div>
+    <div class="box dark" style="padding:1.2em">
+      <h4 style="color:var(--lime)">Así se ve en el archivo:</h4>
+      <div class="diff-grid" style="margin-top:.5em">
+        <div class="diff-line">function saludar() {</div>
+        <div class="diff-line mark">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
+        <div class="diff-line add">  return "Hola mundo";</div>
+        <div class="diff-line mark">=======</div>
+        <div class="diff-line rem">  return "Hello world";</div>
+        <div class="diff-line mark">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feat/i18n</div>
+        <div class="diff-line">}</div>
+      </div>
+      <p class="muted" style="margin-top:.6em;color:var(--lime-soft)">↑ HEAD = tu versión actual<br>↓ feat/i18n = la que vienes a mezclar</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 23 · Conflictos qué son <span class="time-pill">0:45 – 0:48</span></h4>
+    <ul>
+      <li>Despresurizar: a TODOS les pasa. No es "haberlo hecho mal".</li>
+      <li>Ocurren más cuando alguien hace cambios masivos sin actualizar su rama → moraleja: <span class="inline-code">git pull origin main</span> diario en tu rama feature.</li>
+      <li>Si la audiencia ya tuvo uno: pedirles que cuenten cómo lo resolvieron.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 24: Resolver conflictos ============ -->
+<section class="slide">
+  <span class="timechip">0:45 – 0:55 · Conflictos + Buenas prácticas</span>
+  <p class="eyebrow">PASO A PASO <span class="dot">●</span></p>
+  <h2>Resolver un <span class="marker">conflicto</span></h2>
+  <div class="grid" style="grid-template-columns:1.2fr 1fr;flex:1;gap:1.5rem;align-items:center">
+    <div class="col" style="gap:.7rem">
+      <div class="step" style="filter:none"><div class="n">1</div><h4>Abrir el archivo en conflicto</h4><p>VSCode lo destaca con colores y botones "Accept Current / Incoming / Both".</p></div>
+      <div class="step" style="filter:none"><div class="n">2</div><h4>Decidir qué versión queda</h4><p>O combinar ambas. <strong>Borra los marcadores</strong> <span class="inline-code">&lt;&lt;&lt; === &gt;&gt;&gt;</span>.</p></div>
+      <div class="step" style="filter:none"><div class="n">3</div><h4>Guardar y marcar como resuelto</h4><p><span class="inline-code">git add archivo.js</span></p></div>
+      <div class="step" style="filter:none"><div class="n">4</div><h4>Cerrar el merge</h4><p><span class="inline-code">git commit</span> (Git ya tiene un mensaje preparado)</p></div>
+    </div>
+    <div class="col" style="gap:1rem">
+      <div class="box lime">
+        <h3>Comandos útiles</h3>
+        <pre style="font-size:.85rem;background:#0F0F0F;color:var(--lime)"><span class="cmt"># ¿qué archivos están en conflicto?</span>
+<span class="cmd">$</span> git status
+
+<span class="cmt"># si te arrepientes, abortas todo</span>
+<span class="cmd">$</span> git merge --abort</pre>
+      </div>
+      <p class="callout" style="font-size:1.2rem">VSCode + GitLens<br>= conflictos sin sufrir</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 24 · Resolver conflicto <span class="time-pill">0:48 – 0:50</span></h4>
+    <ul>
+      <li>VSCode tiene UI brutal para conflictos: "Accept Current", "Accept Incoming", "Accept Both", "Compare". Recomendar abrir un archivo conflict y mostrar.</li>
+      <li>Si pierdes el norte: <span class="inline-code">git merge --abort</span> deshace TODO y vuelves al estado antes del merge.</li>
+      <li>Demo opcional si hay tiempo: provocar un conflicto en un repo de prueba en vivo.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 25: Buenas prácticas (5 reglas) ============ -->
+<section class="slide">
+  <span class="timechip">0:45 – 0:55 · Conflictos + Buenas prácticas</span>
+  <p class="eyebrow">LAS 5 REGLAS QUE TE SALVAN <span class="dot">●</span></p>
+  <h2>Buenas <span class="marker">prácticas</span></h2>
+  <div class="grid g2" style="flex:1;gap:1.2rem;align-items:stretch;margin-top:.6rem">
+    <div class="step" style="filter:none"><div class="n">1</div><h4>Commits pequeños y frecuentes</h4><p>Mejor 10 commits enfocados que 1 commit gigante. Cada commit = una idea.</p></div>
+    <div class="step" style="filter:none"><div class="n">2</div><h4>Mensajes claros con convención</h4><p>Sigue <em>Conventional Commits</em>: <span class="inline-code">feat:</span>, <span class="inline-code">fix:</span>, <span class="inline-code">chore:</span>, <span class="inline-code">docs:</span>.</p></div>
+    <div class="step" style="filter:none"><div class="n">3</div><h4>No trabajes en <span class="inline-code">main</span></h4><p>Siempre una rama por tarea. <span class="inline-code">main</span> debería estar siempre desplegable.</p></div>
+    <div class="step" style="filter:none"><div class="n">4</div><h4><span class="inline-code">.gitignore</span> desde el día 1</h4><p>Antes del primer commit. Especialmente <span class="inline-code">.env</span> y secretos.</p></div>
+    <div class="step" style="filter:none"><div class="n">5</div><h4><span class="inline-code">git pull</span> antes de empezar</h4><p>Trae lo último cada mañana. Evita conflictos absurdos.</p></div>
+    <div class="box lime center" style="gap:.4rem;padding:1.5em">
+      <p style="font-family:'Caveat',cursive;font-size:clamp(1.6rem,2.4vw,2.2rem);text-align:center;line-height:1.2">"Mejor muchas fotos claras<br>que un solo cambio gigante<br>imposible de entender."</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 25 · Buenas prácticas <span class="time-pill">0:50 – 0:53</span></h4>
+    <ul>
+      <li>Si tuvieran que recordar UNA: la #1 (commits pequeños y frecuentes). Todo lo demás se construye sobre eso.</li>
+      <li>Cita de la regla #3: incluso solo en tu proyecto personal — te enseña la mentalidad correcta para cuando llegues a un equipo.</li>
+      <li>Anécdota personal: una vez subiste un .env por accidente y tuviste que rotar todas las API keys → es un dolor real, no teórico.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 26: GitHub Actions (ejemplo ATS) ============ -->
+<section class="slide">
+  <span class="timechip">0:45 – 0:55 · Conflictos + Buenas prácticas</span>
+  <p class="eyebrow">EJEMPLO REAL · ATS · .github/workflows/ci.yml <span class="dot">●</span></p>
+  <h2>Bonus: <span class="marker">GitHub Actions</span></h2>
+  <p>GitHub puede correr <strong>tareas automáticas</strong> en cada push o PR: lint, tests, deploy... Se configura con un archivo YAML.</p>
+  <div class="grid" style="grid-template-columns:1.2fr 1fr;flex:1;gap:1.5rem;align-items:center;margin-top:.4rem">
+    <pre style="font-size:.9rem"><span class="key">name</span>: CI
+
+<span class="key">on</span>:
+  <span class="key">push</span>:
+    <span class="key">branches</span>: [<span class="str">main</span>]
+  <span class="key">pull_request</span>:
+    <span class="key">branches</span>: [<span class="str">main</span>]
+
+<span class="key">jobs</span>:
+  <span class="key">quality</span>:
+    <span class="key">runs-on</span>: ubuntu-latest
+    <span class="key">steps</span>:
+      - <span class="key">uses</span>: actions/checkout@v4
+      - <span class="key">uses</span>: actions/setup-node@v4
+        <span class="key">with</span>: {<span class="key">node-version</span>: <span class="str">20</span>}
+      - <span class="key">run</span>: npm ci
+      - <span class="key">run</span>: npm run lint
+      - <span class="key">run</span>: npm run typecheck
+      - <span class="key">run</span>: npm run build</pre>
+    <div class="col" style="gap:1rem">
+      <div class="box soft">
+        <h3>¿Qué hace este workflow?</h3>
+        <ul class="checklist">
+          <li>Se dispara en <strong>cada push a main</strong> y en <strong>cada PR</strong></li>
+          <li>Corre en una VM de Ubuntu</li>
+          <li>Instala deps, hace <strong>lint + typecheck + build</strong></li>
+          <li>Si algo falla → <strong>bloquea el merge</strong> del PR</li>
+        </ul>
+      </div>
+      <p class="callout" style="font-size:1.15rem">Tu PR no se mergea hasta que el robot diga ✓</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 26 · GitHub Actions <span class="time-pill">0:53 – 0:55</span></h4>
+    <ul>
+      <li>Mencionar: el repo ATS tiene también un workflow de Playwright E2E que se activa con label <span class="inline-code">run-e2e</span> — opt-in para no gastar minutos de CI en cada PR.</li>
+      <li>Actions son gratis hasta cierto límite para repos públicos. En privados también hay free tier generoso.</li>
+      <li>Hay miles de actions hechas: <strong>marketplace.github.com/actions</strong>. No reinventes la rueda.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 27: Recapitulación ============ -->
+<section class="slide">
+  <span class="timechip">0:55 – 1:00 · Cierre</span>
+  <p class="eyebrow">SI TE LLEVAS UNA COSA <span class="dot">●</span></p>
+  <h2>El flujo en <span class="marker">8 pasos</span> (otra vez)</h2>
+  <div class="flow-team" style="flex:1;align-items:stretch;margin-top:1rem">
+    <div class="step"><div class="n">1</div><h4>Clone</h4><p><span class="inline-code">git clone URL</span></p></div>
+    <div class="step"><div class="n">2</div><h4>Branch</h4><p><span class="inline-code">git switch -c feat/x</span></p></div>
+    <div class="step"><div class="n">3</div><h4>Cambios</h4><p>edita archivos</p></div>
+    <div class="step"><div class="n">4</div><h4>Commit</h4><p><span class="inline-code">git commit -m "..."</span></p></div>
+    <div class="step"><div class="n">5</div><h4>Push</h4><p><span class="inline-code">git push</span></p></div>
+    <div class="step"><div class="n">6</div><h4>PR</h4><p>GitHub UI</p></div>
+    <div class="step"><div class="n">7</div><h4>Review</h4><p>equipo revisa</p></div>
+    <div class="step"><div class="n">8</div><h4>Merge</h4><p>botón verde</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:1.5rem;gap:1.2rem">
+    <div class="box soft center"><h3>Local</h3><p><span class="inline-code">init · add · commit</span></p></div>
+    <div class="box soft center"><h3>Ramas</h3><p><span class="inline-code">branch · switch · merge</span></p></div>
+    <div class="box soft center"><h3>Remoto</h3><p><span class="inline-code">clone · push · pull</span></p></div>
+  </div>
+  <aside class="notes">
+    <h4>Slide 27 · Recapitulación <span class="time-pill">0:55 – 0:58</span></h4>
+    <ul>
+      <li>Pide a la audiencia que repita el flujo en voz alta contigo.</li>
+      <li>Si quieren llevarse algo a la práctica esta semana: <strong>abrir su primer PR</strong> en un repo propio.</li>
+      <li>Transición a Q&amp;A: "¿Qué pregunta no he respondido todavía?"</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ SLIDE 28: Preguntas + Recursos ============ -->
+<section class="slide cover">
+  <p class="eyebrow">RECURSOS Y PRÓXIMO PASO</p>
+  <h1 style="margin-top:.2em"><span class="marker">¿Preguntas?</span></h1>
+  <div class="grid g2" style="margin-top:2rem;gap:2rem;width:100%;max-width:1100px">
+    <div class="box shadowed">
+      <h3>Para seguir aprendiendo</h3>
+      <ul class="checklist" style="text-align:left">
+        <li><strong>Pro Git book</strong> · git-scm.com/book (gratis)</li>
+        <li><strong>GitHub Skills</strong> · skills.github.com (interactivo)</li>
+        <li><strong>docs.github.com</strong> · referencia oficial</li>
+        <li><strong>YouTube:</strong> MoureDev, midudev (canales en español)</li>
+        <li><strong>Visualizador:</strong> learngitbranching.js.org</li>
+      </ul>
+    </div>
+    <div class="box lime">
+      <h3>Tu tarea para esta semana</h3>
+      <p style="font-family:'Caveat',cursive;font-size:clamp(1.6rem,2.4vw,2.4rem);text-align:center;margin:.8em 0;line-height:1.1">Abre tu<br>primer PR.</p>
+      <p class="muted center-text">En tu propio repo. Crea una rama, haz un cambio, abre el PR contra <span class="inline-code">main</span>, mergéalo tú mismo.</p>
+    </div>
+  </div>
+  <p style="margin-top:2rem;font-family:'Caveat',cursive;font-size:1.6rem;color:var(--gray)">Carlos Domínguez · Imperio Agéntico</p>
+  <aside class="notes">
+    <h4>Slide 28 · Cierre <span class="time-pill">0:58 – 1:00</span></h4>
+    <ul>
+      <li>Dejar 2-3 min para Q&amp;A en serio.</li>
+      <li>Si alguien quiere más: ofrecer una segunda sesión sobre <em>rebase, cherry-pick, stash, hooks, releases</em>.</li>
+      <li>Cerrar con la frase: "Git al principio asusta. A los 2 meses no podrás vivir sin él."</li>
+    </ul>
+  </aside>
+</section>
+
+</main>
+
+<!-- Notes panel overlay -->
+<div id="notes-panel">
+  <h4>Notas del presentador <small style="color:var(--gray)">(tecla N para cerrar)</small></h4>
+  <div id="notes-content"></div>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const notesPanel = document.getElementById('notes-panel');
+  const notesContent = document.getElementById('notes-content');
+  let i = 0;
+
+  function go(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    counter.textContent = (i+1) + ' / ' + total;
+    progress.style.width = ((i+1)/total*100) + '%';
+    // sync notes
+    const aside = slides[i].querySelector('aside.notes');
+    notesContent.innerHTML = aside ? aside.innerHTML : '<p>(sin notas)</p>';
+    // hash routing
+    location.hash = '#' + (i+1);
+  }
+
+  function next(){ go(i+1); }
+  function prev(){ go(i-1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key){
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home':
+        e.preventDefault(); go(0); break;
+      case 'End':
+        e.preventDefault(); go(total-1); break;
+      case 'n':
+      case 'N':
+        notesPanel.classList.toggle('visible');
+        document.body.classList.toggle('notes-open', notesPanel.classList.contains('visible'));
+        break;
+      case 'f':
+      case 'F':
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+        break;
+      case 'Escape':
+        notesPanel.classList.remove('visible');
+        document.body.classList.remove('notes-open');
+        break;
+    }
+  });
+
+  // click navigation: left half = prev, right half = next
+  document.addEventListener('click', e => {
+    if (e.target.closest('a, button, input, textarea, pre, code, #notes-panel')) return;
+    const x = e.clientX;
+    if (x < window.innerWidth * 0.35) prev();
+    else if (x > window.innerWidth * 0.65) next();
+  });
+
+  // start from hash if present (e.g. #5)
+  const hash = parseInt(location.hash.slice(1), 10);
+  if (!isNaN(hash) && hash >= 1 && hash <= total) go(hash - 1);
+  else go(0);
+})();
+</script>
+
+</body>
+</html>

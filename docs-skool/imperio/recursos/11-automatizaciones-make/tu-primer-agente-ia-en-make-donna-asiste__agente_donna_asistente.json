@@ -1,0 +1,601 @@
+{
+    "name": "agente_donna_asistente",
+    "flow": [
+        {
+            "id": 2,
+            "module": "telegram:WatchUpdates",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 2196771
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 300,
+                    "name": "Recibir Mensajes Telegram"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "data": {
+                                "editable": "false"
+                            },
+                            "label": "Telegram Asistente Benja Bot"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:telegramapi",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 300
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 6,
+                            "module": "telegram:DownloadFile",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 4140416
+                            },
+                            "filter": {
+                                "name": "si es audio",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{2.message.voice.file_id}}",
+                                            "o": "exist"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "fileId": "{{2.message.attachment.file_id}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 0
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "telegram"
+                                            },
+                                            "label": "Telegram Benja Bot"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:telegram",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "fileId",
+                                        "type": "text",
+                                        "label": "File ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "openai-gpt-3:CreateTranscription",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 3882197
+                            },
+                            "mapper": {
+                                "model": "whisper-1",
+                                "prompt": "Please transcribe this message",
+                                "fileData": "{{6.fileOutput}}",
+                                "fileName": "{{6.fileName}}",
+                                "temperature": "1",
+                                "response_format": "json"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": 0,
+                                    "name": "Transcribir Audio"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "model": {
+                                            "mode": "chose",
+                                            "label": "Whisper-1"
+                                        },
+                                        "response_format": {
+                                            "mode": "chose",
+                                            "label": "JSON"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "openai-gpt-3"
+                                            },
+                                            "label": "Imperio_Digital_Connection"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:openai-gpt-3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "fileName",
+                                        "type": "filename",
+                                        "label": "File Name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "fileData",
+                                        "type": "buffer",
+                                        "label": "File Data",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "model",
+                                        "type": "select",
+                                        "label": "Model",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "prompt",
+                                        "type": "text",
+                                        "label": "Prompt"
+                                    },
+                                    {
+                                        "name": "response_format",
+                                        "type": "select",
+                                        "label": "Response Format",
+                                        "validate": {
+                                            "enum": [
+                                                "json",
+                                                "text",
+                                                "srt",
+                                                "verbose_json",
+                                                "vtt"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "temperature",
+                                        "type": "number",
+                                        "label": "Temperature",
+                                        "validate": {
+                                            "max": 1,
+                                            "min": 0
+                                        }
+                                    },
+                                    {
+                                        "name": "language",
+                                        "type": "text",
+                                        "label": "Language"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 8,
+                            "module": "util:SetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "text",
+                                "scope": "roundtrip",
+                                "value": "{{7.text}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 0,
+                                    "name": "Registrar Texto"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "scope": {
+                                            "label": "One cycle"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "text",
+                                        "type": "any",
+                                        "label": "text"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 10,
+                            "module": "util:SetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "filter": {
+                                "name": "si es texto",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{2.message.voice.file_id}}",
+                                            "o": "notexist"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "name": "text",
+                                "scope": "roundtrip",
+                                "value": "{{2.message.text}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 300,
+                                    "name": "Registrar Texto"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "scope": {
+                                            "label": "One cycle"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "text",
+                                        "type": "any",
+                                        "label": "text"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 9,
+                            "module": "util:GetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "text"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 600,
+                                    "name": "Recuperar Texto"
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "text",
+                                        "type": "any",
+                                        "label": "text"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "module": "ai-agent:RunAnAIAgent",
+                            "version": 0,
+                            "parameters": {},
+                            "mapper": {
+                                "agent": "d711faee-902b-4ab4-98cb-b12f424d8045",
+                                "scenarios": [],
+                                "threadID": "{{2.message.from.id}}",
+                                "additionalSystemPrompt": "Eres Donna, la asistente personal de Benjamín Cordero (Bencorde).\nTu trabajo es ayudarle a gestionar su día a día con eficiencia y criterio.\nNo solo asistes, también organizas, agendas y automatizas.\n\n##Herramientas disponibles:\n\n# donna_enviar_correo: Llamas esta herramienta para enviar un correo. (aqui necesitas el correo, el cuerpo y el asunto) y la usaras para enviar un correo electronico.\n\n# donna_revisar_disponibilidad: este escenario se llama para revisar la disponibilidad de Benja. \n\n# donna_crear_evento: Usa esta herramienta o escenario para crear nuevos eventos (necesitaras crear un nombre de evento, fecha de inicio y duracion o fecha de termino)\n\n# donna_publicar_contenido\n→ Usa esta herramienta o escenario para crear y publicar contenido en Instagram, Linkedin O Facebook, una de las 3. necesitas la red social y el URL o contenido sobre lo que se quiere generar.\n\nReglas:\nSiempre termina los correos con esta firma (con salto de línea):\n“Un abrazo,\nBenja”\n\nSiempre trata a los clientes por su nombre de pila.\n\nLa fecha actual es \" {{formatDate(now; \"DD.MM.YYYY HH:mm\")}} \" el huso horario es Chile (GMT-4). No conviertas desde otro horario. Cualquier hora ingresada por el usuario también está en GMT-4. SIEMPRE trabajaremos en DD.MM.YYYY HH:mm\n\nAntes de crear cualquier evento, usa la herramienta de “donna_revisar_disponibilidad” para ver si hay conflictos.\n\n→ Si hay conflictos, avisa a Benja y pide otro horario.\n→ Si no hay conflictos, crea el evento.\n\nSi no se especifica una duración o una hora final para registrar un evento, usa una duración por defecto de 1 hora desde la hora de inicio.\n\nLos cuerpos de correo deben ir en formato HTML, usando saltos de línea. NO uses el símbolo ´ nunca (´)\n\nEstilo:\nComunica como si le hablaras a Benja por WhatsApp: directo, simple, nada de lenguaje robótico ni explicaciones innecesarias. No escribas en argentino, usa los verbos en español (chile)\n\nSi algo no está claro, pregunta.",
+                                "messages": [
+                                    "Este es el mensaje del usuario: {{9.text}}"
+                                ],
+                                "isAsync": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": 600,
+                                    "name": "Make AI Agents (Donna)"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "agent": {
+                                            "nested": [],
+                                            "label": "Donna_Asistente_Benja"
+                                        },
+                                        "messages": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "agent",
+                                        "type": "aiagent",
+                                        "label": "Agent",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scenarios",
+                                        "type": "scenariolist",
+                                        "label": "Additional tools"
+                                    },
+                                    {
+                                        "name": "threadID",
+                                        "type": "text",
+                                        "label": "Thread ID"
+                                    },
+                                    {
+                                        "name": "additionalSystemPrompt",
+                                        "type": "text",
+                                        "label": "Additional system instructions"
+                                    },
+                                    {
+                                        "name": "messages",
+                                        "type": "array",
+                                        "label": "Messages",
+                                        "spec": {
+                                            "label": "Message",
+                                            "type": "text",
+                                            "name": "value"
+                                        }
+                                    },
+                                    {
+                                        "name": "isAsync",
+                                        "type": "boolean",
+                                        "label": "Continue scenario run while agent is working",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "module": "telegram:SendReplyMessage",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 4140416
+                            },
+                            "mapper": {
+                                "text": "{{1.response}}",
+                                "chatId": "{{2.message.chat.id}}",
+                                "parseMode": "",
+                                "replyMarkup": "",
+                                "messageThreadId": "",
+                                "replyToMessageId": "",
+                                "replyMarkupAssembleType": "reply_markup_enter"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 600,
+                                    "name": "Devolver Mensaje Telegram"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parseMode": {
+                                            "label": "Empty"
+                                        },
+                                        "disableNotification": {
+                                            "mode": "chose"
+                                        },
+                                        "replyMarkupAssembleType": {
+                                            "label": "Enter the Reply Markup"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "telegram"
+                                            },
+                                            "label": "Telegram Benja Bot"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:telegram",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "chatId",
+                                        "type": "text",
+                                        "label": "Chat ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "messageThreadId",
+                                        "type": "number",
+                                        "label": "Message Thread ID"
+                                    },
+                                    {
+                                        "name": "parseMode",
+                                        "type": "select",
+                                        "label": "Parse Mode",
+                                        "validate": {
+                                            "enum": [
+                                                "Markdown",
+                                                "HTML"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "disableNotification",
+                                        "type": "boolean",
+                                        "label": "Disable Notifications"
+                                    },
+                                    {
+                                        "name": "disableWebPagePreview",
+                                        "type": "boolean",
+                                        "label": "Disable Link Previews"
+                                    },
+                                    {
+                                        "name": "replyToMessageId",
+                                        "type": "number",
+                                        "label": "Original Message ID"
+                                    },
+                                    {
+                                        "name": "replyMarkupAssembleType",
+                                        "type": "select",
+                                        "label": "Enter/Assemble the Reply Markup Field",
+                                        "validate": {
+                                            "enum": [
+                                                "reply_markup_enter",
+                                                "reply_markup_assemble"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "replyMarkup",
+                                        "type": "text",
+                                        "label": "Reply Markup"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com",
+        "notes": []
+    }
+}

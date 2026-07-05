@@ -1,0 +1,68 @@
+{
+  "name": "12. Webhook - El Timbre",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "3c69935b-753d-4eb3-a5cc-91cf94013097",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1dbd03b7-ea31-422d-84e7-109bdacd5e8e",
+      "name": "Webhook",
+      "webhookId": "3c69935b-753d-4eb3-a5cc-91cf94013097"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "={{ $json.query.asunto }}",
+        "message": "={{ $json.query.cuerpo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1628667c-a081-48ae-b618-89623c4c3ac0",
+      "name": "Send a message",
+      "webhookId": "7be1e26b-831d-4696-8caa-b9b9b6501c74",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4d13a12b-2a4c-4d53-9b8d-cebca7569372",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "7hKdOMXEU9eTtFBk",
+  "tags": []
+}

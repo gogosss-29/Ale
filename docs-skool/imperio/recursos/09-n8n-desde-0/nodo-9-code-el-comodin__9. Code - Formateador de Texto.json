@@ -1,0 +1,153 @@
+{
+  "name": "9. Code - Formateador de Texto",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        224
+      ],
+      "id": "fd05a68b-632c-45a6-862a-52fe97164b33",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  { json: { nombre: \"NOMBRE Uno\" } },\n  { json: { nombre: \"Nombre DOS\" } },\n  { json: { nombre: \"Nombre Tres\" } }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        192,
+        224
+      ],
+      "id": "b4cc936c-00b1-46b1-9f23-e590dfaa4cf2",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  if (item.json.nombre && typeof item.json.nombre === 'string') {\n    item.json.nombre = item.json.nombre\n      .trim()                 // quita espacios al inicio y al final\n      .replace(/\\s+/g, ' ')   // colapsa múltiples espacios internos\n      .toLowerCase()          // todo a minúscula\n      .replace(/\\b\\w/g, c => c.toUpperCase()); // primera letra de cada palabra en mayúscula\n  }\n\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        224
+      ],
+      "id": "c7502e10-8da6-469b-bd50-bc47ee733802",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WrE2gCJeQESUy1XHIZYZcMCL7um2Y7lN_D4KO21oEVc",
+          "mode": "list",
+          "cachedResultName": "Code 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WrE2gCJeQESUy1XHIZYZcMCL7um2Y7lN_D4KO21oEVc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WrE2gCJeQESUy1XHIZYZcMCL7um2Y7lN_D4KO21oEVc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre Antiguo": "={{ $('Code in JavaScript2').item.json.nombre }}",
+            "Nombre Nuevo": "={{ $json.nombre }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre Antiguo",
+              "displayName": "Nombre Antiguo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nombre Nuevo",
+              "displayName": "Nombre Nuevo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        608,
+        224
+      ],
+      "id": "00a72025-c4d7-46a5-b3dc-858bd3ffccd2",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d33fb6fe-0a97-4de9-a73f-f9c5abdbfb4b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "0iIO8e9SjN9mzzv3",
+  "tags": []
+}

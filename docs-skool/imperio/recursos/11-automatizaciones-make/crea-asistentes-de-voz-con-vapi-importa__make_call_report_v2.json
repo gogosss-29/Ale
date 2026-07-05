@@ -1,0 +1,1061 @@
+{
+    "name": "call-report-v2",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1905313,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "webhook-end-call-report-V2"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 3536499
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "select",
+                "values": {
+                    "0": "{{1.message.analysis.structuredData.nombre_cliente}}",
+                    "1": "{{1.message.analysis.structuredData.apellido_cliente}}",
+                    "2": "{{1.message.analysis.structuredData.email_cliente}}",
+                    "3": "{{1.message.analysis.structuredData.telefono_cliente}}",
+                    "4": "{{1.message.analysis.structuredData.fecha_hora}}",
+                    "5": "{{1.message.analysis.structuredData.razon_de_la_llamada}}",
+                    "6": "{{1.message.summary}}",
+                    "7": "{{1.message.transcript}}",
+                    "8": "{{1.message.recordingUrl}}"
+                },
+                "sheetId": "Hoja 1",
+                "spreadsheetId": "/1rbK7JAIj9lcmh0ZCQ-F39C3svubcI3-j4ZN_FU_VROo",
+                "includesHeaders": true,
+                "insertDataOption": "INSERT_ROWS",
+                "valueInputOption": "USER_ENTERED",
+                "insertUnformatted": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "mode": {
+                            "label": "Search by path"
+                        },
+                        "sheetId": {
+                            "label": "Hoja 1"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Llamadas Clinica Dental"
+                            ]
+                        },
+                        "includesHeaders": {
+                            "label": "Yes",
+                            "nested": [
+                                {
+                                    "name": "values",
+                                    "spec": [
+                                        {
+                                            "name": "0",
+                                            "type": "text",
+                                            "label": "Nombre (A)"
+                                        },
+                                        {
+                                            "name": "1",
+                                            "type": "text",
+                                            "label": "Apellido (B)"
+                                        },
+                                        {
+                                            "name": "2",
+                                            "type": "text",
+                                            "label": "Mail (C)"
+                                        },
+                                        {
+                                            "name": "3",
+                                            "type": "text",
+                                            "label": "Telefono (D)"
+                                        },
+                                        {
+                                            "name": "4",
+                                            "type": "text",
+                                            "label": "Hora de llamada (E)"
+                                        },
+                                        {
+                                            "name": "5",
+                                            "type": "text",
+                                            "label": "Razon de llamada (F)"
+                                        },
+                                        {
+                                            "name": "6",
+                                            "type": "text",
+                                            "label": "(G)"
+                                        },
+                                        {
+                                            "name": "7",
+                                            "type": "text",
+                                            "label": "(H)"
+                                        },
+                                        {
+                                            "name": "8",
+                                            "type": "text",
+                                            "label": "(I)"
+                                        },
+                                        {
+                                            "name": "9",
+                                            "type": "text",
+                                            "label": "(J)"
+                                        },
+                                        {
+                                            "name": "10",
+                                            "type": "text",
+                                            "label": "(K)"
+                                        },
+                                        {
+                                            "name": "11",
+                                            "type": "text",
+                                            "label": "(L)"
+                                        },
+                                        {
+                                            "name": "12",
+                                            "type": "text",
+                                            "label": "(M)"
+                                        },
+                                        {
+                                            "name": "13",
+                                            "type": "text",
+                                            "label": "(N)"
+                                        },
+                                        {
+                                            "name": "14",
+                                            "type": "text",
+                                            "label": "(O)"
+                                        },
+                                        {
+                                            "name": "15",
+                                            "type": "text",
+                                            "label": "(P)"
+                                        },
+                                        {
+                                            "name": "16",
+                                            "type": "text",
+                                            "label": "(Q)"
+                                        },
+                                        {
+                                            "name": "17",
+                                            "type": "text",
+                                            "label": "(R)"
+                                        },
+                                        {
+                                            "name": "18",
+                                            "type": "text",
+                                            "label": "(S)"
+                                        },
+                                        {
+                                            "name": "19",
+                                            "type": "text",
+                                            "label": "(T)"
+                                        },
+                                        {
+                                            "name": "20",
+                                            "type": "text",
+                                            "label": "(U)"
+                                        },
+                                        {
+                                            "name": "21",
+                                            "type": "text",
+                                            "label": "(V)"
+                                        },
+                                        {
+                                            "name": "22",
+                                            "type": "text",
+                                            "label": "(W)"
+                                        },
+                                        {
+                                            "name": "23",
+                                            "type": "text",
+                                            "label": "(X)"
+                                        },
+                                        {
+                                            "name": "24",
+                                            "type": "text",
+                                            "label": "(Y)"
+                                        },
+                                        {
+                                            "name": "25",
+                                            "type": "text",
+                                            "label": "(Z)"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Values"
+                                }
+                            ]
+                        },
+                        "insertDataOption": {
+                            "mode": "chose",
+                            "label": "Insert rows"
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "User entered"
+                        },
+                        "insertUnformatted": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (becord00@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertUnformatted",
+                        "type": "boolean",
+                        "label": "Unformatted",
+                        "required": true
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertDataOption",
+                        "type": "select",
+                        "label": "Insert data option",
+                        "validate": {
+                            "enum": [
+                                "INSERT_ROWS",
+                                "OVERWRITE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet ID",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "spec": [
+                            {
+                                "name": "0",
+                                "type": "text",
+                                "label": "Nombre (A)"
+                            },
+                            {
+                                "name": "1",
+                                "type": "text",
+                                "label": "Apellido (B)"
+                            },
+                            {
+                                "name": "2",
+                                "type": "text",
+                                "label": "Mail (C)"
+                            },
+                            {
+                                "name": "3",
+                                "type": "text",
+                                "label": "Telefono (D)"
+                            },
+                            {
+                                "name": "4",
+                                "type": "text",
+                                "label": "Hora de llamada (E)"
+                            },
+                            {
+                                "name": "5",
+                                "type": "text",
+                                "label": "Razon de llamada (F)"
+                            },
+                            {
+                                "name": "6",
+                                "type": "text",
+                                "label": "(G)"
+                            },
+                            {
+                                "name": "7",
+                                "type": "text",
+                                "label": "(H)"
+                            },
+                            {
+                                "name": "8",
+                                "type": "text",
+                                "label": "(I)"
+                            },
+                            {
+                                "name": "9",
+                                "type": "text",
+                                "label": "(J)"
+                            },
+                            {
+                                "name": "10",
+                                "type": "text",
+                                "label": "(K)"
+                            },
+                            {
+                                "name": "11",
+                                "type": "text",
+                                "label": "(L)"
+                            },
+                            {
+                                "name": "12",
+                                "type": "text",
+                                "label": "(M)"
+                            },
+                            {
+                                "name": "13",
+                                "type": "text",
+                                "label": "(N)"
+                            },
+                            {
+                                "name": "14",
+                                "type": "text",
+                                "label": "(O)"
+                            },
+                            {
+                                "name": "15",
+                                "type": "text",
+                                "label": "(P)"
+                            },
+                            {
+                                "name": "16",
+                                "type": "text",
+                                "label": "(Q)"
+                            },
+                            {
+                                "name": "17",
+                                "type": "text",
+                                "label": "(R)"
+                            },
+                            {
+                                "name": "18",
+                                "type": "text",
+                                "label": "(S)"
+                            },
+                            {
+                                "name": "19",
+                                "type": "text",
+                                "label": "(T)"
+                            },
+                            {
+                                "name": "20",
+                                "type": "text",
+                                "label": "(U)"
+                            },
+                            {
+                                "name": "21",
+                                "type": "text",
+                                "label": "(V)"
+                            },
+                            {
+                                "name": "22",
+                                "type": "text",
+                                "label": "(W)"
+                            },
+                            {
+                                "name": "23",
+                                "type": "text",
+                                "label": "(X)"
+                            },
+                            {
+                                "name": "24",
+                                "type": "text",
+                                "label": "(Y)"
+                            },
+                            {
+                                "name": "25",
+                                "type": "text",
+                                "label": "(Z)"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "filter": {
+                "name": "si quiere agendar",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{1.message.analysis.successEvaluation}}",
+                            "o": "text:equal",
+                            "b": "true"
+                        }
+                    ]
+                ]
+            },
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 643,
+                    "y": 1
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 5,
+                            "module": "microsoft-email:createAndSendAMessage",
+                            "version": 2,
+                            "parameters": {
+                                "__IMTCONN__": 3622227
+                            },
+                            "mapper": {
+                                "subject": "Nueva cita para {{1.message.analysis.structuredData.fecha_hora}}",
+                                "contentType": "html",
+                                "content": "Se ha agendado uan cita para {{1.message.analysis.structuredData.nombre_cliente}}{{1.message.analysis.structuredData.apellido_cliente}}el día {{1.message.analysis.structuredData.fecha_hora}} su contacto es {{1.message.analysis.structuredData.telefono_cliente}} y su razon de llamada es {{1.message.analysis.structuredData.razon_de_la_llamada}}. El resumen de la llamada fue {{1.message.analysis.summary}}",
+                                "toRecipients": [
+                                    {
+                                        "address": "benjacordero00@gmail.com"
+                                    }
+                                ]
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": 150,
+                                    "name": "Mail para Cliente"
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "label": "Outlook benjacordero00 connection (Benjamin Cordero)",
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "azure"
+                                            }
+                                        }
+                                    },
+                                    "expect": {
+                                        "contentType": {
+                                            "mode": "chose",
+                                            "label": "HTML"
+                                        },
+                                        "importance": {
+                                            "mode": "chose",
+                                            "label": "Empty"
+                                        },
+                                        "toRecipients": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "from": {
+                                            "mode": "chose"
+                                        },
+                                        "ccRecipients": {
+                                            "mode": "chose"
+                                        },
+                                        "bccRecipients": {
+                                            "mode": "chose"
+                                        },
+                                        "replyTo": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "internetMessageHeaders": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:azure",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Body Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "content",
+                                        "type": "text",
+                                        "label": "Body Content",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "importance",
+                                        "type": "select",
+                                        "label": "Importance",
+                                        "validate": {
+                                            "enum": [
+                                                "Low",
+                                                "Normal",
+                                                "High"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "toRecipients",
+                                        "type": "array",
+                                        "label": "To Recipients",
+                                        "required": true,
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "array",
+                                        "label": "From",
+                                        "validate": {
+                                            "maxItems": 1
+                                        },
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ccRecipients",
+                                        "type": "array",
+                                        "label": "CC Recipients",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "bccRecipients",
+                                        "type": "array",
+                                        "label": "Bcc Recipients",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "array",
+                                        "label": "Reply To",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "type": "array",
+                                        "label": "Attachments",
+                                        "spec": [
+                                            {
+                                                "name": "filename",
+                                                "type": "filename",
+                                                "label": "File Name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "internetMessageHeaders",
+                                        "type": "array",
+                                        "label": "Internet Message Headers",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "vonage:SendSMS",
+                            "version": 1,
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 150,
+                                    "messages": [
+                                        {
+                                            "category": "setup",
+                                            "severity": "error",
+                                            "message": "Value must not be empty."
+                                        },
+                                        {
+                                            "category": "setup",
+                                            "severity": "error",
+                                            "message": "Value must not be empty."
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 6,
+                            "module": "microsoft-email:createAndSendAMessage",
+                            "version": 2,
+                            "parameters": {
+                                "__IMTCONN__": 3622227
+                            },
+                            "mapper": {
+                                "subject": "Cita Confirmada para {{1.message.analysis.structuredData.fecha_hora}}",
+                                "contentType": "html",
+                                "content": "Se ha agendado una nueva cita para {{1.message.analysis.structuredData.nombre_cliente}}{{1.message.analysis.structuredData.apellido_cliente}} para el {{1.message.analysis.structuredData.fecha_hora}}. La razon de la llamada fue {{1.message.analysis.structuredData.razon_de_la_llamada}}",
+                                "toRecipients": [
+                                    {
+                                        "address": "benjacordero00@gmail.com"
+                                    }
+                                ]
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 906,
+                                    "y": -108,
+                                    "name": "Mail para Clinica"
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "label": "Outlook benjacordero00 connection (Benjamin Cordero)",
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "azure"
+                                            }
+                                        }
+                                    },
+                                    "expect": {
+                                        "contentType": {
+                                            "mode": "chose",
+                                            "label": "HTML"
+                                        },
+                                        "importance": {
+                                            "mode": "chose",
+                                            "label": "Empty"
+                                        },
+                                        "toRecipients": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "from": {
+                                            "mode": "chose"
+                                        },
+                                        "ccRecipients": {
+                                            "mode": "chose"
+                                        },
+                                        "bccRecipients": {
+                                            "mode": "chose"
+                                        },
+                                        "replyTo": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "internetMessageHeaders": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:azure",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Body Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "content",
+                                        "type": "text",
+                                        "label": "Body Content",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "importance",
+                                        "type": "select",
+                                        "label": "Importance",
+                                        "validate": {
+                                            "enum": [
+                                                "Low",
+                                                "Normal",
+                                                "High"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "toRecipients",
+                                        "type": "array",
+                                        "label": "To Recipients",
+                                        "required": true,
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "array",
+                                        "label": "From",
+                                        "validate": {
+                                            "maxItems": 1
+                                        },
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "ccRecipients",
+                                        "type": "array",
+                                        "label": "CC Recipients",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "bccRecipients",
+                                        "type": "array",
+                                        "label": "Bcc Recipients",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "array",
+                                        "label": "Reply To",
+                                        "spec": [
+                                            {
+                                                "name": "address",
+                                                "type": "email",
+                                                "label": "Email Address",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "type": "array",
+                                        "label": "Attachments",
+                                        "spec": [
+                                            {
+                                                "name": "filename",
+                                                "type": "filename",
+                                                "label": "File Name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "internetMessageHeaders",
+                                        "type": "array",
+                                        "label": "Internet Message Headers",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com"
+    }
+}

@@ -16,6 +16,32 @@
 > Empezar leyendo `cerebro/00`, `docs/SISTEMA-AVATARHYPE.md`, `cerebro/03` y `cerebro/04`.
 > ⚠️ El curso ya está extraído en `docs/`: no reescribirlo ni ignorarlo.
 
+## 🏛️ CURSO "IMPERIO AGÉNTICO" (rama `claude/agentic-systems-course-4kh9sr`)
+
+**Objetivo de esta línea de trabajo:** aprender el curso *Imperio Digital* (Skool,
+de Benja y Max) y construir con Alexander **sistemas agénticos autónomos**
+(agentes 24/7, multi-agente, automatizaciones). Es un objetivo paralelo al del
+avatar; conviven en el mismo repo.
+
+**El curso completo está archivado en [`docs-skool/imperio/`](docs-skool/imperio/):**
+30 cursos, 826 lecciones (~245 h), notas + transcripciones + recursos ejecutables.
+
+⚠️ **Protocolo obligatorio para cualquier IA:** leer PRIMERO
+[`docs-skool/imperio/AGENTS.md`](docs-skool/imperio/AGENTS.md) — define las 3 capas
+(curada → referencia → ejecutable), el protocolo de fidelidad (no inventar pasos que
+no estén en el archivo) y la estrategia de contexto (el corpus son ~3,9M tokens:
+NO cargarlo entero; capa curada primero, lecciones bajo demanda).
+
+Orden de lectura de la capa curada (con eso "se aprende" el curso):
+1. `docs-skool/imperio/RESUMEN-MAESTRO.md` — el curso destilado.
+2. `docs-skool/imperio/INDICE-POR-CATEGORIA.md` — 10 categorías → resultado.
+3. `docs-skool/imperio/categorias/sistemas-agenticos.md` — la ficha clave para
+   el objetivo de Alexander (OpenClaw, Hermes, SOUL, Gran Consejo multi-agente).
+
+Estado y plan de ejecución: ver [`cerebro-agentico/`](cerebro-agentico/) (estado
+vivo, ruta elegida, decisiones). Extracción/re-extracción del curso: `skool/` +
+`docs-skool/METODO-ACCESO-SKOOL.md`.
+
 ## Objetivo actual
 Generar un **vídeo hablado** (avatar de Alexander moviendo los labios sincronizado
 con su propia voz). Las imágenes ya funcionan; el vídeo quedó pendiente por un

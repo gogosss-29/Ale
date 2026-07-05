@@ -1,0 +1,763 @@
+{
+  "name": "Agente Edicion Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        112
+      ],
+      "id": "0ff58356-f99e-4a98-838e-da18c9735e1e",
+      "name": "Telegram Trigger",
+      "webhookId": "32739d61-e71f-460a-9b15-665062f7c3cc",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "9453a797-ea0d-40cc-a972-3343884ee308",
+                    "leftValue": "={{ $json.message.voice }}",
+                    "rightValue": "Voz",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Voz"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "Texto",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "bfa7d276-a1ac-445a-9de3-c99695c0c484"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "37382fcf-2cd3-4c52-a53e-19b3dd420ef1",
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": "Imagen",
+                    "operator": {
+                      "type": "array",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagen"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        96
+      ],
+      "id": "4aecd2bb-61f7-4283-8c8b-be65b0422d04",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a4ea69bf-463a-4c40-9e0a-5486d4a98667",
+              "name": "filed_id",
+              "value": "={{ $json.message.photo.last().file_id }}",
+              "type": "string"
+            },
+            {
+              "id": "79ff53b1-dfc6-456f-b95b-32579c72635c",
+              "name": "chat_id",
+              "value": "={{ $json.message.chat.id }}",
+              "type": "number"
+            },
+            {
+              "id": "379f97de-ce6c-4bc0-b441-25ec5f3b9a28",
+              "name": "text",
+              "value": "={{ $json.message.caption }} **Desde una imagen**",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        304
+      ],
+      "id": "cbc4754c-323e-44fd-b886-1575d2688022",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Instruccion:  {{ $json.text }}\nID de imagen: {{ $json.filed_id || \"No hay imagen adjunta\"}}",
+        "options": {
+          "systemMessage": "=## ROL\n\nEres el Agente Editor. Vas a recibir una instrucción del usuario, así como imágenes que deberás editar.\n\nInteractúas por medio de Telegram, y cada imagen la recibes como un ID de imagen.\n\n## HERRAMIENTAS\n\nDispones de 3 herramientas para cumplir tus labores de edición:\n\n- 'generarImagen': Usa esta herramienta únicamente cuando debas generar imágenes nuevas a partir de un prompt. No la uses para editar imágenes proporcionadas por el usuario.\n- 'editarImagenes': Usa esta herramienta cuando necesites editar o combinar imágenes existentes. Puede aceptar hasta 8 IDs de imágenes separados por coma.\n- 'mejoradorPrompts': Usa esta herramienta SIEMPRE como PASO INTERMEDIO. Nunca es una acción final. Su output jamás debe devolverse directamente al usuario.\n\n## DEFINICIÓN DE LA HERRAMIENTA `mejoradorPrompts`\n\nCuando utilices la herramienta DEBES aplicar las siguientes reglas sin excepción:\n\n### Responsabilidad Principal \nTransformar una idea básica del usuario en un prompt completamente refinado, listo para producción y seguro para enviarse directamente en un HTTP POST. \n\n### Regla Absoluta de Preservación de Identidad \nSi el usuario proporciona una imagen de referencia, debes preservar al sujeto original EXACTAMENTE como aparece. Esto incluye, sin excepción: \n- Estructura y proporciones faciales \n- Ojos, nariz, boca y mandíbula \n- Tono y textura de piel \n- Tipo de cuerpo y postura \n- Apariencia de edad \n- Línea del cabello, peinado y color \n- Rasgos físicos distintivos\n\nEstá estrictamente prohibido modificar, embellecer, estilizar, exagerar, rejuvenecer, envejecer o alterar el rostro o características físicas del sujeto, a menos que el usuario lo autorice explícitamente. \n\nSi no existe autorización explícita, asume siempre: “Mantener al sujeto original exactamente tal como es”. \n\n### Restricciones Creativas \n- No introduzcas conceptos, elementos, personajes u objetos que no estén implícitos en la instrucción del usuario. \n- No reinterpretes ni reimagines al sujeto. \n- No cambies género, etnia, expresión facial ni identidad física. \n- No apliques estilos artísticos que distorsionen el realismo, salvo que el usuario lo solicite explícitamente. \n\n### Construcción del Prompt Refinado El prompt refinado debe: \n- Estar escrito en inglés profesional, claro y natural. \n- Usar oraciones completas, no listas de keywords. \n- Definir claramente: \n- Sujeto \n- Entorno \n- Composición y encuadre \n- Perspectiva de cámara \n- Iluminación \n- Estado de ánimo y atmósfera \n- Materiales y texturas \n- Estilo visual \n- Uso previsto (editorial, publicidad, social, UI, etc.) \n\nSi hay texto visible en la imagen, inclúyelo exactamente como debe aparecer, entre parentesis, nunca uses comillas. \n\nSi la estructura, simetría o layout es relevante, descríbelo con precisión. \n\n### Reglas de Output del Mejorador \n- No incluyas explicaciones, markdown ni comentarios. \n- No uses emojis. \n- No uses prompts tipo lista o etiquetas. \n- No menciones reglas internas ni políticas. \n- Actúa como Director Creativo, no como redactor técnico. \n- Escapa correctamente las comillas. - Nunca rompas el JSON.\n\n### Formato Estricto de Salida del Mejorador\nLa herramienta `mejoradorPrompts` debe devolver ÚNICAMENTE:\n\n{\n  \"refined_prompt\": \"...\"\n}\n\n\n## FUNCIÓN GENERAL DEL AGENTE\n\nTu función es interpretar la intención del usuario respecto a generación o edición de imágenes usando el modelo Nano Banana 2 y ejecutar las herramientas necesarias hasta completar la acción solicitada.\n\n## REGLAS OPERATIVAS (HARD RULES)\n\n1. `mejoradorPrompts` NUNCA es una acción final.\n   - Siempre debe ser seguido por `generarImagen` o `editarImagenes` cuando existan los datos mínimos.\n\n2. Si el usuario quiere generar una imagen:\n   - Llama a `mejoradorPrompts`.\n   - INMEDIATAMENTE después llama a `generarImagen`.\n   - Nunca respondas al usuario con texto.\n\n3. Si el usuario quiere editar una o varias imágenes:\n   - Solicita las imágenes una por una. \n   - Guarda los IDs de imagen. \n   - Una vez tengas todos los IDs: \n   - Pasa el prompt por mejoradorPrompts. \n   - Envía a editarImagenes: \n   - El prompt refinado. \n   - Los IDs de imagen separados por coma. \n   - El aspect ratio correcto (1:1, 16:9, 9:16). Si no es obvio, infiérelo o pregunta.\n\n4. Si el usuario quiere editar una imagen generada previamente: \n   - Usa el último file ID generado. No se lo pidas al usuario, usa tu memoria para consultarlo. \n   - Pasa el nuevo prompt por mejoradorPrompts. \n   - Vuelve a llamar a editarImagenes.\n\n4. Está estrictamente prohibido devolver al usuario:\n   - El prompt refinado\n   - El JSON de `mejoradorPrompts`\n   - Cualquier texto descriptivo del proceso\n\n5. La única salida válida del agente, cuando la intención es clara, es una llamada a herramienta.\n\n6. Solo puedes responder con texto si:\n   - Faltan IDs de imagen\n   - Falta el prompt\n   - La intención no es clara\n\n7. Si respondes con texto, debe ser breve y SOLO para solicitar la información faltante.\n\n8. Guarda siempre el ID de la última imagen editada o generada para futuras ediciones.",
+          "passthroughBinaryImages": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1184,
+        112
+      ],
+      "id": "4c24dcbe-41fc-4453-9e65-9037443139e5",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+        "contextWindowLength": 15
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1248,
+        336
+      ],
+      "id": "f55740c4-940b-4462-b709-ef1df16624d9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output.removeMarkdown() }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1584,
+        112
+      ],
+      "id": "ab4dd498-a630-4fdf-a692-2b6b3d4d7e32",
+      "name": "Send a text message",
+      "webhookId": "da2ee25f-4140-402c-8529-9116f8185749",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc9fcccd-7fda-48e1-b98a-382a55c31d4c",
+              "name": "text",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        112
+      ],
+      "id": "b5353bf8-7f02-42b3-a455-4a3ce60939f2",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.voice.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        -80
+      ],
+      "id": "12649965-810e-4f40-8444-1b5b99cd7bd5",
+      "name": "Get a file",
+      "webhookId": "d577ae00-24b9-4a14-8dd0-60d443a38317",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "978272fc-28d2-4abf-b99e-0c32dcde3f3f",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        -80
+      ],
+      "id": "6e9db1d2-894a-4587-8d5f-e1bd5c443590",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "description": "Llama a esta herramienta para generar una imagen solicitada por el usuario a partir de texto",
+        "workflowId": {
+          "__rl": true,
+          "value": "G1E5f4VmozntoNz5",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/G1E5f4VmozntoNz5",
+          "cachedResultName": "generarImagen"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('prompt', `Prompt generado por el agente`, 'string') }}",
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+            "caption": "={{ $json.text }}",
+            "aspect_ratio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('aspect_ratio', `relacion de aspecto de la imagen solicitada por el usuario. Tus opciones son 1:1, 16:9 y 9:16. Si el usuario no lo menciona, intuyelo, por ejemplo, para un thumbnail de Youtube es 16:9, una imagen de perfil es 1:1 y un reel de instagram o post en FB es 9:16`, 'string') }}"
+          },
+          "matchingColumns": [
+            "prompt"
+          ],
+          "schema": [
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "caption",
+              "displayName": "caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "aspect_ratio",
+              "displayName": "aspect_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1376,
+        336
+      ],
+      "id": "83aa8b38-0df7-494a-9898-41cee1f5264f",
+      "name": "generarImagen"
+    },
+    {
+      "parameters": {
+        "description": "Llama a esta herramienta para editar o combinar imagenes a peticion del usuario",
+        "workflowId": {
+          "__rl": true,
+          "value": "1wS1Htz1v25h8RLd",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/1wS1Htz1v25h8RLd",
+          "cachedResultName": "editarImagenes"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('prompt', `Prompt generado por el agente`, 'string') }}",
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+            "aspect_ratio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('aspect_ratio', `relacion de aspecto de la imagen solicitada por el usuario. Tus opciones son 1:1, 16:9 y 9:16. Si el usuario no lo menciona, intuyelo, por ejemplo, para un thumbnail de Youtube es 16:9, una imagen de perfil es 1:1 y un reel de instagram o post en FB es 9:16`, 'string') }}",
+            "imagenes_Id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('imagenes_Id', `Ids de las imagenes separados por \",\" (coma).\nEjemplo: \"AgACAgEAAxkDAAMpaUnImtSn5WunvwjmC_bp8W5mkKcAApoLaxs-LVFG2xwOJtqfvb4BAAMCAAN3AAM2BA, AgACAgEAAxkDAAMpaUnImtSn5WunvwjmC_bp8W5mkKcAApoLaxs-LVFG2xwOJtqfvb4BAAMCAAN3AAM2BB\"`, 'string') }}"
+          },
+          "matchingColumns": [
+            "prompt"
+          ],
+          "schema": [
+            {
+              "id": "imagenes_Id",
+              "displayName": "imagenes_Id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "aspect_ratio",
+              "displayName": "aspect_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        336
+      ],
+      "id": "b0406ffd-f656-4d0b-b005-fcc83311d807",
+      "name": "editarImagenes"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        -80
+      ],
+      "id": "fa9d3c91-b4e5-4e21-870b-a762cb4ccbc3",
+      "name": "Transcribe a recording1",
+      "credentials": {
+        "openAiApi": {
+          "id": "EozI8SUkpnBNhO1r",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o4-mini",
+          "mode": "list",
+          "cachedResultName": "o4-mini"
+        },
+        "builtInTools": {},
+        "options": {
+          "reasoningEffort": "high"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1104,
+        336
+      ],
+      "id": "f25ebbfc-a936-4e98-91a8-cfddef87e09b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "EozI8SUkpnBNhO1r",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.1",
+          "mode": "list",
+          "cachedResultName": "gpt-5.1"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1488,
+        736
+      ],
+      "id": "9517029d-055b-47d7-873d-02f762e86bf1",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "EozI8SUkpnBNhO1r",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Tu unico trabajo es mejorar el prompt del usuario",
+        "text": "=prompt del usuario:  {{ $json.text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "## Rol\nEres un **Agente Refinador de Prompts** especializado exclusivamente en **generación de imágenes con Nano Banana Pro (Google)**.\n\n## Responsabilidad Principal\nTu única responsabilidad es transformar una **idea básica y corta de imagen proporcionada por el usuario** en un **prompt completamente refinado y listo para producción**, siguiendo estrictamente las mejores prácticas de Google Nano Banana Pro y siendo seguro para inyectarse directamente en un HTTP POST.\n\n## Regla Absoluta de Preservación de Identidad\nSi el usuario proporciona una imagen de referencia, DEBES preservar al sujeto original exactamente como aparece.\n\nEsto incluye, entre otros:\n- Estructura facial\n- Proporciones del rostro\n- Ojos, nariz, boca y mandíbula\n- Tono y textura de piel\n- Tipo de cuerpo y postura\n- Apariencia de edad\n- Línea del cabello, peinado y color\n- Cualquier rasgo físico distintivo\n\nEstá estrictamente prohibido modificar, embellecer, rejuvenecer, envejecer, estilizar, exagerar o alterar el rostro o los rasgos físicos del sujeto de cualquier forma, a menos que el usuario lo autorice explícitamente en su input.\n\nSi no existe una autorización explícita, asume siempre la instrucción:\nMantener al sujeto original exactamente tal como es.\n\n## Restricciones Creativas\n- NO introduzcas conceptos, elementos, personajes u objetos que no estén implícitos en el input del usuario.\n- NO reinterpretes ni reimagines al sujeto.\n- NO cambies género, etnia, expresión facial ni identidad física.\n- NO apliques estilos artísticos que distorsionen el realismo, a menos que el usuario lo solicite explícitamente.\n\n## Lineamientos para Construir el Prompt\nEscribe el prompt refinado en **inglés profesional, claro y natural**, usando oraciones completas.\n\nDefine de forma clara y natural:\n- El sujeto\n- El entorno\n- La composición y el encuadre\n- La perspectiva de cámara\n- Las condiciones de iluminación\n- El estado de ánimo y la atmósfera\n- Materiales y texturas\n- El estilo visual\n- El uso previsto (editorial, publicidad, redes sociales, UI, etc.)\n\nSi hay texto visible en la imagen:\n- Describe el texto de forma literal usando lenguaje natural.\n- NO uses comillas dobles bajo ninguna circunstancia.\n- Si es necesario indicar contenido textual, hazlo sin comillas o usando comillas simples solo como referencia semántica, nunca como caracteres reales.\n\nSi la disposición, simetría o estructura espacial es importante, descríbela de forma precisa y sin ambigüedades.\n\n## Reglas Críticas de Output (OBLIGATORIAS)\n- NO incluyas explicaciones, markdown, comentarios ni notas.\n- NO uses emojis.\n- NO uses listas de keywords ni prompts tipo etiquetas.\n- NO hagas referencia a políticas ni reglas internas en el output.\n- Actúa como un **Director Creativo**, no como un redactor técnico.\n- **NUNCA uses comillas dobles `\"` dentro del valor de `refined_prompt`.**\n- El prompt final debe ser completamente seguro para JSON sin necesidad de escape.\n- NUNCA rompas el JSON.\n\n## Input\nRecibirás una idea de imagen corta y simple del usuario.\n\n## Formato de Salida (ESTRICTO)\nDevuelve ÚNICAMENTE el siguiente objeto JSON y nada más:\n\n{\n  \"refined_prompt\": \"...\"\n}\n\nEl valor de `refined_prompt` debe ser una sola cadena optimizada para generación de imágenes con Nano Banana Pro y NO debe contener comillas dobles bajo ninguna circunstancia."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        1664,
+        544
+      ],
+      "id": "97af5f20-99a7-4001-8fa2-b574ca0ee392",
+      "name": "mejoradorPrompts"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "contextWindowLength": 15
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1664,
+        736
+      ],
+      "id": "8f0c4583-1537-4231-9bc9-d9572e225d30",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"refined_prompt\": \"...\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1856,
+        736
+      ],
+      "id": "23aaad37-262e-483b-b774-51111c7bc157",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Get a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generarImagen": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    },
+    "editarImagenes": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "mejoradorPrompts",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mejoradorPrompts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "mejoradorPrompts",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "mejoradorPrompts",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "de4ca3a8-8415-478b-b247-3ebb37b80022",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "59b64d42ce348b9038d915a2b4f798c075af07fa43401ea092e466d11f315d92"
+  },
+  "id": "5vUiowJg4eq6Tisx",
+  "tags": []
+}

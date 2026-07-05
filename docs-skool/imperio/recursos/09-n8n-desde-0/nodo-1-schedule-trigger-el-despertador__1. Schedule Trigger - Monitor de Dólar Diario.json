@@ -1,0 +1,105 @@
+{
+  "name": "1. Schedule Trigger - Monitor de Dólar Diario",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "triggerAtHour": 5
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        240
+      ],
+      "id": "8aaae1c0-9cdf-428c-ab4e-3439c61b8238",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "url": "https://mindicador.cl/api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        240
+      ],
+      "id": "bb986ac7-8449-47f7-913e-ba4193a708b2",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "sendTo": "becord00@gmail.com",
+        "subject": "=El Dólar está a {{ $json.dolar.valor }} pesos chilenos",
+        "message": ".",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        240
+      ],
+      "id": "2996a470-9aab-46fc-9240-ee5d4b3ef9cf",
+      "name": "Send a message1",
+      "webhookId": "46fe10f4-0813-4454-89f7-a0153e6587d9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Eda1PwuFdFk0Q7Gk",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ea21bfe6-554b-47ca-afad-28c1bc263cbd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "s86jXdNtO59wnMJq",
+  "tags": []
+}

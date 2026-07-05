@@ -1,0 +1,2527 @@
+{
+  "name": "3. Videos Infantiles - by Imperio Digital",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.scenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        304
+      ],
+      "id": "56bc77a1-3ae2-4b59-9c86-a0ef92ff2ee3",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        928
+      ],
+      "id": "b53edaf8-a7c7-4d42-aa6a-8327867970c3",
+      "name": "Wait",
+      "webhookId": "3bc93b61-63b0-4063-9f71-b70553f1236b"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.successFlag }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "957f40c4-00b8-4caa-9bd7-065dcaf2cb49"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "success"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "52ad92ea-901f-4af8-a462-84b045dd2803",
+                    "leftValue": "={{ $json.data.successFlag }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "in progress"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2288,
+        928
+      ],
+      "id": "7f44aa82-81d8-4359-9d41-f3d7638f52d3",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1168,
+        928
+      ],
+      "id": "fd333f4d-77f5-4021-9132-0544d109d101",
+      "name": "VIDEOS"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1168,
+        304
+      ],
+      "id": "a73f146b-ec7e-4c06-966e-e0988ad91086",
+      "name": "PROMPTS"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblYiND5DkrZhIlLq"
+        },
+        "filterByFormula": "{Status} = \"Create\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1392,
+        304
+      ],
+      "id": "37b7f98a-3337-496a-98d4-147ca3274fcb",
+      "name": "Get Project",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblYiND5DkrZhIlLq"
+        },
+        "filterByFormula": "{Status} = \"Create\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1312,
+        624
+      ],
+      "id": "bcd62dff-b3cc-49e9-8a5c-5e98f5d13e68",
+      "name": "Get Project1",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblipThhapetdSJdm",
+          "mode": "list",
+          "cachedResultName": "Scenes",
+          "cachedResultUrl": "https://airtable.com/appa4RuITklGSXcuC/tblipThhapetdSJdm"
+        },
+        "filterByFormula": "=({project name} = \"{{ $json['Project Name'] }}\")\n",
+        "options": {},
+        "sort": {
+          "property": [
+            {
+              "field": "scene"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1456,
+        624
+      ],
+      "id": "d1e2638d-a1a0-4630-84c4-7f7ccc236ab2",
+      "name": "Get Scenes",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblipThhapetdSJdm",
+          "mode": "list",
+          "cachedResultName": "Scenes",
+          "cachedResultUrl": "https://airtable.com/appkFTQolkZGOMwpI/tblipThhapetdSJdm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "start_image": "= [   {     \"url\": \"{{ $('Start frame 🍌').item.json.data.outputs[0] }}\"   } ]",
+            "end_image": "= [   {     \"url\": \"{{ $('End frame 🍌').item.json.data.outputs[0] }}\"   } ]",
+            "id": "={{ $('Get Scenes').item.json.id }}",
+            "image done": true
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "execution_id",
+              "displayName": "execution_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scene",
+              "displayName": "scene",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "start_image_prompt",
+              "displayName": "start_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "end_image_prompt",
+              "displayName": "end_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prompt done",
+              "displayName": "prompt done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "start_image",
+              "displayName": "start_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "end_image",
+              "displayName": "end_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "image done",
+              "displayName": "image done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "transition_prompt",
+              "displayName": "transition_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scene_video",
+              "displayName": "scene_video",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "video done",
+              "displayName": "video done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2592,
+        624
+      ],
+      "id": "1ca1f1e4-5092-44fc-a7f0-4d639a11c531",
+      "name": "Log Images",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/veo/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"prompt\": {{ JSON.stringify($json.transition_prompt) }}\n\n,\n\n  \"model\": \"veo3_fast\",\n  \"aspectRatio\": \"16:9\",\n  \"enableTranslation\": false,\n\n  \"generationType\": \"FIRST_AND_LAST_FRAMES_2_VIDEO\",\n  \"imageUrls\": [\"{{ $json.start_image[0].url }}\",\"{{ $json.end_image[0].url }}\"]\n\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 3000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1616,
+        928
+      ],
+      "id": "29746e3b-4f42-4fd6-9435-7950c80064f0",
+      "name": "Create Video 🔻",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "aXPxaqugyRuU23Mo",
+          "name": "Bearer Kie.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/veo/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $('Create Video 🔻').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2064,
+        928
+      ],
+      "id": "c9995e67-ec69-42ca-96fb-806391d963a2",
+      "name": "Get Video 🔻",
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "aXPxaqugyRuU23Mo",
+          "name": "Bearer Kie.ai"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.wavespeed.ai/api/v3/google/nano-banana-pro/edit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"aspect_ratio\": \"16:9\",\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": true,\n \n  \"output_format\": \"png\",\n  \"prompt\": {{ JSON.stringify($json.start_image_prompt) }},\n  \"resolution\": \"2k\",\n  \"images\": [\"{{ $('Get Project1').item.json['Core Image'][0].url }}\", \"{{ $('Get Project1').item.json['Core Elements'][0].url }}\"]\n\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        624
+      ],
+      "id": "7cf92fd0-cf6a-4437-ab02-2c7c9ebd5a82",
+      "name": "Start frame 🍌",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "YqPwpc3FltB0E4fD",
+          "name": "v2 Bearer Wavespeed Imperio becord"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.wavespeed.ai/api/v3/google/nano-banana-pro/edit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=\n\n{\n  \"aspect_ratio\": \"16:9\",\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": true,\n \n  \"output_format\": \"png\",\n  \"prompt\": {{ JSON.stringify($('Get Scenes').item.json.end_image_prompt) }},\n  \"resolution\": \"2k\",\n  \"images\": [\"{{ $json.data.outputs[0] }}\"]\n\n\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        624
+      ],
+      "id": "a16b64b0-2f12-4403-90ab-2d71ed72b98d",
+      "name": "End frame 🍌",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "YqPwpc3FltB0E4fD",
+          "name": "v2 Bearer Wavespeed Imperio becord"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# PROMPTS",
+        "width": 2096,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        848,
+        288
+      ],
+      "id": "a44c6617-193f-40e5-96a9-e9199609925a",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# IMAGENES",
+        "width": 2576,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        848,
+        608
+      ],
+      "id": "3708e903-fe52-4453-9ed1-349c37581d56",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# VIDEOS\n",
+        "width": 2112,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        848,
+        928
+      ],
+      "id": "faab7065-d2f6-4149-9afd-aa897eab0212",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# MUSICA",
+        "width": 2128,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        832,
+        1216
+      ],
+      "id": "6b27ba94-7863-4d4a-8136-fb6984d25db0",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/appkFTQolkZGOMwpI/tblYiND5DkrZhIlLq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Project Name": "={{ $('Get Project').item.json['Project Name'] }}",
+            "music prompt": "={{ $('AI Agent').item.json.output.music_style_prompt }}",
+            "music letra": "={{ $('AI Agent').item.json.output.lyrics }}",
+            "titulo_youtube": "={{ $('AI Agent').item.json.output.titulo_youtube_a }}",
+            "descripcion_youtube": "={{ $('AI Agent').item.json.output.descripcion_youtube }}",
+            "prompt_thumbnail": "={{ $('AI Agent').item.json.output.prompt_thumbnail }}"
+          },
+          "matchingColumns": [
+            "Project Name"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Create",
+                  "value": "Create"
+                },
+                {
+                  "name": "Done",
+                  "value": "Done"
+                },
+                {
+                  "name": "Skip",
+                  "value": "Skip"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Core Image",
+              "displayName": "Core Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Core Elements",
+              "displayName": "Core Elements",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Creative Direction",
+              "displayName": "Creative Direction",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "music prompt",
+              "displayName": "music prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music letra",
+              "displayName": "music letra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music file 1",
+              "displayName": "music file 1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music file 2",
+              "displayName": "music file 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "thumbnail",
+              "displayName": "thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "titulo_youtube",
+              "displayName": "titulo_youtube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prompt_thumbnail",
+              "displayName": "prompt_thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "descripcion_youtube",
+              "displayName": "descripcion_youtube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2640,
+        304
+      ],
+      "id": "7a285122-f800-4168-93e2-868510702772",
+      "name": "Log Audio Prompts",
+      "executeOnce": true,
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblipThhapetdSJdm",
+          "mode": "list",
+          "cachedResultName": "Scenes",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblipThhapetdSJdm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "execution_id": "={{ $execution.id }}",
+            "scene": "={{ $json.scene }}",
+            "start_image_prompt": "={{ $json.starting_image_prompt }}",
+            "end_image_prompt": "={{ $json.ending_image_prompt }}",
+            "prompt done": false,
+            "Project Name": "={{ $('Get Project').item.json['Project Name'] }}",
+            "transition_prompt": "={{ $json.transition_prompt }}",
+            "scene_number": "={{ $json.scene_number }}"
+          },
+          "matchingColumns": [
+            "scene"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "execution_id",
+              "displayName": "execution_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "scene",
+              "displayName": "scene",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "scene_number",
+              "displayName": "scene_number",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "start_image_prompt",
+              "displayName": "start_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "end_image_prompt",
+              "displayName": "end_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "transition_prompt",
+              "displayName": "transition_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prompt done",
+              "displayName": "prompt done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "start_image",
+              "displayName": "start_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "end_image",
+              "displayName": "end_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "image done",
+              "displayName": "image done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scene_video",
+              "displayName": "scene_video",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "video done",
+              "displayName": "video done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2528,
+        304
+      ],
+      "id": "2a6f0d11-fc9a-41c8-939b-9d5a0f0b5a5b",
+      "name": "Log Visual Prompts",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblYiND5DkrZhIlLq"
+        },
+        "filterByFormula": "{Status} = \"Create\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1392,
+        1216
+      ],
+      "id": "4b9695a5-c5af-4ac4-9804-b26dc969c156",
+      "name": "Get Project2",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblipThhapetdSJdm",
+          "mode": "list",
+          "cachedResultName": "Scenes",
+          "cachedResultUrl": "https://airtable.com/appkFTQolkZGOMwpI/tblipThhapetdSJdm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "scene_video": "= [   {     \"url\": \"{{ $json.data.response.resultUrls[0] }}\"   } ]",
+            "video done": true,
+            "id": "={{ $('Get Scenes1').item.json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "execution_id",
+              "displayName": "execution_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "scene",
+              "displayName": "scene",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "start_image_prompt",
+              "displayName": "start_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "end_image_prompt",
+              "displayName": "end_image_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "transition_prompt",
+              "displayName": "transition_prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prompt done",
+              "displayName": "prompt done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "start_image",
+              "displayName": "start_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "end_image",
+              "displayName": "end_image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "image done",
+              "displayName": "image done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scene_video",
+              "displayName": "scene_video",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "video done",
+              "displayName": "video done",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2576,
+        912
+      ],
+      "id": "f2c727cf-ad11-4afb-ae1d-b2a690492e26",
+      "name": "Log Videos",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblipThhapetdSJdm",
+          "mode": "list",
+          "cachedResultName": "Scenes",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblipThhapetdSJdm"
+        },
+        "filterByFormula": "=AND({image done} = 1, {video done} = 0)",
+        "options": {},
+        "sort": {
+          "property": [
+            {
+              "field": "scene"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1392,
+        928
+      ],
+      "id": "d9ae3c41-d483-450b-87dc-649cfb5ae54d",
+      "name": "Get Scenes1",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"V5\",\n  \"customMode\": true,\n  \"instrumental\": false,\n  \"callBackUrl\": \"https://api.example.com/callback\",\n  \"title\": \"Cancion Frutas\",\n  \"style\": {{ JSON.stringify($json['music prompt']) }},\n  \"prompt\": {{ JSON.stringify($json['music letra']) }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1616,
+        1216
+      ],
+      "id": "df563c9f-ba92-4589-a36d-c41b63307861",
+      "name": "Create Songs",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "aXPxaqugyRuU23Mo",
+          "name": "Bearer Kie.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/generate/record-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $('Create Songs').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2064,
+        1216
+      ],
+      "id": "1c020aa7-71f6-4030-8015-c64fee30dd2f",
+      "name": "Get Songs",
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "aXPxaqugyRuU23Mo",
+          "name": "Bearer Kie.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        1216
+      ],
+      "id": "d1709d41-5708-49e5-a4fa-1a7dbf51c3ff",
+      "name": "Wait1",
+      "webhookId": "40952ad3-41fc-4918-873f-d803573c73ec"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bf05a398-eb00-4e25-8de6-3ae7d10e69dd"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "success"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4686d0f8-4428-4d81-9c40-c9d56b69ab02",
+                    "leftValue": "={{ $json.data.status }}",
+                    "rightValue": "=(ING|_SUCCESS)",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "in progress"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2288,
+        1216
+      ],
+      "id": "554bea16-4800-41d0-887a-120745c55b92",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/appkFTQolkZGOMwpI/tblYiND5DkrZhIlLq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Project Name": "={{ $('Get Project2').item.json['Project Name'] }}",
+            "music file 1": "=[\n  {\n    \"url\": \"{{ $('Get Songs').item.json.data.response.sunoData[0].audioUrl }}\"\n  }\n]\n",
+            "music file 2": "=[\n  {\n    \"url\": \"{{ $('Get Songs').item.json.data.response.sunoData[1].audioUrl }}\"\n  }\n]\n"
+          },
+          "matchingColumns": [
+            "Project Name"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Create",
+                  "value": "Create"
+                },
+                {
+                  "name": "Done",
+                  "value": "Done"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Core Image",
+              "displayName": "Core Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Core Elements",
+              "displayName": "Core Elements",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Creative Direction",
+              "displayName": "Creative Direction",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "music prompt",
+              "displayName": "music prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "script",
+              "displayName": "script",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "music file 1",
+              "displayName": "music file 1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music file 2",
+              "displayName": "music file 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "voiceover file",
+              "displayName": "voiceover file",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2560,
+        1200
+      ],
+      "id": "3ce43122-a142-47f7-b733-ea22ad603678",
+      "name": "Log Audio",
+      "executeOnce": true,
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1968,
+        192
+      ],
+      "id": "c1d4bb9f-8548-4cde-becd-fc3a82986798",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-pro-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        192
+      ],
+      "id": "766d491f-14a7-4df0-b279-f50102a2162c",
+      "name": "Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "g6OQkrb1PP9eGUNm",
+          "name": "Openrouter License becord"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"title\": \"Internal song title in Spanish (e.g., 'La Vaca Lola').\",\n  \"lyrics\": \"Full lyrics in Spanish with structure tags like [Verse], [Chorus], [Outro].\",\n  \"music_style_prompt\": \"English prompt for Suno. Must include mandatory keywords exactly.\",\n  \"scenes\": [\n    {\n      \"scene_number\": 1,\n      \"scene\": \"Scene 1 - Title\",\n      \"starting_image_prompt\": \"YAML-style English prompt for the start frame (ClearCam keys).\",\n      \"ending_image_prompt\": \"Short English evolution of the starting frame (loopable).\",\n      \"transition_prompt\": \"Short English transition instruction (prefer Static camera / Slow zoom).\"\n    }\n  ],\n\n  \"categoria\": \"One of: ROUTINE, SLEEP, EDUCATION, FUN.\",\n  \"pain_point\": \"Parent problem in Spanish (short).\",\n  \"outcome\": \"Desired outcome in Spanish (4–8 words, no absolutes like 'nunca/siempre').\",\n  \"category_keyword\": \"One of: Canciones Infantiles, Canciones para Bebés, Canción de Cuna, Animales y sonidos, Números y colores.\",\n  \"keywords_seo\": \"6–10 comma-separated Spanish keywords/phrases (include 'la pata pipa').\",\n\n  \"titulo_youtube_a\": \"Format: '[Song Name] | [outcome] | La Pata Pipa'.\",\n\n  \"descripcion_youtube\": \"Spanish description. Lines: (1) outcome statement, (2) how to use in routine, (3) calm/clear promise, (4+) 'Letra:' + FULL lyrics verbatim (spanish), final lines include keywords_seo as plain text.\",\n\n  \"thumbnail\": \"Thumbnail concept in Spanish (Rule of 3: Character + BIG Emotion + Object) + include what outcome text will say.\",\n  \"prompt_thumbnail\": \"English technical prompt. Must include required keywords plus TEXT: '...'. Text must be 2–4 words, big size, high contrast with subtle outline. Thumbnail concept in Spanish (Rule of 3: Character + BIG Emotion + Object) + include what outcome text will say\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2128,
+        192
+      ],
+      "id": "6ac30d0d-ea84-4d41-93dc-7bfbf1ceb5cd",
+      "name": "Structure"
+    },
+    {
+      "parameters": {
+        "content": "# Videos Infantiles\n## by Imperio Digital",
+        "height": 176,
+        "width": 448,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        848,
+        96
+      ],
+      "id": "a38fa9b0-d0e9-4d05-a1eb-41ad5851fcfe",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=\nThe user's creative direction:\n{{ $('Get Project').item.json['Creative Direction'] }}\n\n\n***\n\n\nThe user's elements board:\n{{ $json.output[0].content[0].text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=system_prompt: |\n  ## 🎬 SYSTEM PROMPT: Viral Kids Song + Video Scenes + YouTube Metadata (Spanish Market)\n\n  A – Ask:\n    Generate ONE JSON package that includes:\n    1) A viral, catchy kids song in SPANISH (Neutral/Standard): internal song title + full lyrics.\n    2) A music generation prompt for Suno (English).\n    3) Visually driven scenes (loopable, vibe-based) for video generation.\n    4) A YouTube Metadata Package (SEO titles, description that embeds the FULL lyrics verbatim, thumbnail concept, and thumbnail image prompt).\n    5) Airtable-ready creative fields for title automation (categoria, outcome, pain_point, keywords_seo).\n\n    IMPORTANT ORDER RULE (CRITICAL):\n    1. First generate: \"title\" and \"lyrics\".\n    2. Then generate: \"music_style_prompt\" and \"scenes\".\n    3. ONLY AFTER YOU HAVE THE FINAL LYRICS, generate YouTube metadata fields (\"titulo_youtube_a\", \"titulo_youtube_b\", \"descripcion_youtube\", etc).\n    4. You MUST copy the lyrics verbatim into the \"descripcion_youtube\" under \"Letra / Lyrics:\".\n\n    Scene count:\n    - Use the number of scenes requested by the user.\n    - If the user provides no creative direction for scenes, create exactly 10 scenes.\n\n  G – Guidance:\n    role: Viral Kids Content Director + Songwriter + YouTube Growth Strategist (Spanish Market focus)\n    output_count: 1\n    target_audience: PARENTS (they click) and TODDLERS (they watch)\n    goal: Maximize CTR and retention by highlighting parental pain points or desired outcomes, while keeping the content calm/clear (anti-overstimulation).\n\n    ------------------------------------------------------------\n    PART 1 — VIRAL SONG PACKAGE\n    ------------------------------------------------------------\n\n    📝 Guidelines for Internal Title (Song Name):\n      - Language: SPANISH\n      - Example: \"La Vaca Lola\"\n\n    🎵 Guidelines for Lyrics (The Song):\n      - Language: SPANISH (Neutral/Standard)\n      - Structure: [Verse] -> [Chorus] -> [Verse] -> [Chorus] -> [Outro]\n      - Viral Patterns:\n        1) Onomatopoeias: essential in the Chorus (e.g., \"Pío Pío Pío\", \"Muu Muu\", \"Cuac Cuac\")\n        2) Cumulative/Repetitive: simple repetition works best for toddlers\n      - Theme priority: Farm Animals, Family Routines, or Counting\n      - Tone: Happy, CLEAR, rhythmic, simple vocabulary\n      - Energy: MUST match category:\n        • ROUTINE (bath/eating) = upbeat but not chaotic\n        • SLEEP/CALM = gentle and soothing\n        • FUN/ANIMALS = bouncy but controlled\n      - Avoid: overly complex words, tongue-twisters, long sentences.\n\n    🎹 Guidelines for music_style_prompt (Suno):\n      - Language: ENGLISH (Technical requirement for Suno AI)\n      - Must be fewer than 450 characters\n      - MANDATORY Keywords (must appear verbatim):\n        \"Spanish nursery rhyme, bubblegum pop, catchy hook, female vocals, cute voice, high fidelity, 120 BPM, major key, bouncy\"\n\n    ------------------------------------------------------------\n    PART 2 — VIDEO SCENES (VISUALS)\n    ------------------------------------------------------------\n\n    constraints (Visual prompts):\n      - Each scene must contain:\n        • scene_number\n        • scene - \"Scene {Number} - {Title}\"\n        • starting_image_prompt (YAML format using structured ClearCam-style keys)\n        • ending_image_prompt (short evolution of the starting image)\n        • transition_prompt (short transition description)\n\n    ⛔ VISUAL SYNC RULE (CRITICAL):\n      - DO NOT try to match visuals literally to every word of the lyrics.\n      - Create ATMOSPHERIC LOOPS: generic, rhythmic, loopable actions (swaying, bouncing, walking, happy idle states).\n      - Goal: \"Vibe Consistency\", not lip-sync.\n\n    🧱 Global visual consistency (Based on Viral Trends):\n      - Palette: High saturation, primary colors (Red, Blue, Yellow, Green), high contrast.\n      - Characters: Farm Animals or cute anthropomorphic animals, round shapes, big eyes.\n      - Default Style: 3D Claymation (soft, rounded, plastiline style).\n\n    🖼️ Guideline for starting_image_prompt:\n      - Language: ENGLISH (Technical requirement).\n      - Must be YAML using these keys (compact):\n        Composition, Lighting, Environment, Action (GENERIC + LOOPABLE), Refinements, Camera, Aesthetic, Mood, Subject.\n      - For Aesthetic, prioritize: 3D render, clay material, soft lighting, rounded edges, plastiline style, cute, octane render, vivid colors.\n\n    🎯 Guideline for ending_image_prompt:\n      - Language: ENGLISH. Subtle evolution of the loop.\n\n    🎞️ Guideline for transition_prompt:\n      - Language: ENGLISH. Use \"Static camera\" or \"Slow Zoom\" mainly.\n\n    ------------------------------------------------------------\n    PART 3 — YOUTUBE METADATA OPTIMIZER (MUST USE FINAL LYRICS)\n    ------------------------------------------------------------\n\n    0) REQUIRED CREATIVE FIELDS (Airtable-ready):\n       - categoria: one of [\"ROUTINE\", \"SLEEP\", \"EDUCATION\", \"FUN\"]\n       - pain_point: parent problem (Spanish, short)\n       - outcome: desired outcome (Spanish, 4–8 words, NO absolutes like \"nunca/siempre\")\n       - category_keyword: one of [\"Canciones Infantiles\", \"Canciones para Bebés\", \"Canción de Cuna\", \"Animales y sonidos\", \"Números y colores\"]\n       - keywords_seo: 6–10 comma-separated Spanish keywords/phrases relevant to the song (include brand keyword too)\n\n    1) STRATEGY FOR TITLES (MUST GENERATE TWO VARIANTS):\n       - titulo_youtube_a (Default CTR + Outcome):\n         Formula: \"[Song Name] | [outcome] | La Pata Pipa\"\n       - titulo_youtube_b (SEO Variant):\n         Formula: \"[Song Name] | La Pata Pipa | [category_keyword]\"\n       - Rules:\n         • Keep outcome 4–8 words, parent language, practical, non-miracle.\n         • Put the keyword (Song Name) FIRST.\n\n    2) STRATEGY FOR 'descripcion_youtube' (CRITICAL ORDER):\n       - Must be produced AFTER the lyrics are finalized.\n       - Must embed FULL lyrics verbatim after \"Letra / Lyrics:\".\n       - Structure:\n         Line 1: Outcome statement (Spanish).\n         Line 2: How to use it in routine (Spanish, simple instruction).\n         Line 3: Safety/tone promise (Spanish): calm/clear, no overstimulation.\n         Line 4+: \"Letra / Lyrics:\" followed by the FULL lyrics generated in Part 1 (verbatim).\n         Final lines: keywords_seo (as plain text list, not hashtags).\n\n\n    4) STRATEGY FOR 'prompt_thumbnail' (Technical generation):\n  - Language: ENGLISH.\n  - MUST include short on-image text that states the parent outcome/solution.\n    • 2–4 words, huge size, high contrast with subtle outline. OUTCOME in the text.\n    • Use \"outcome\" or a compressed version.\n  - MUST follow the Rule of 3: Main Character + ONE Big Emotion + One Key Object.\n  - Safe, clean, non-chaotic claymation look, evoke emotion.\n  - Required keywords (verbatim):\n    \"YouTube thumbnail, 3D render, claymation style, vibrant saturated colors, high contrast, close up, emotive face, 8k, octane render\"\n\n\n  E – Example and N – Notation:\n    format: JSON\n    example_output: |\n      {\n        \"title\": \"El Gallo Bartolito\",\n        \"lyrics\": \"[Verse]\\nEl gallo...\\n[Chorus]\\nKikiriki...\",\n        \"music_style_prompt\": \"Spanish nursery rhyme...\",\n        \"scenes\": [\n          {\n            \"scene_number\": 1,\n            \"scene\": \"Scene 1 - Rooster Loop\",\n            \"starting_image_prompt\": \"Composition: Centered\\nSubject: Cute rooster...\",\n            \"ending_image_prompt\": \"Rooster tilts head.\",\n            \"transition_prompt\": \"Static camera loop.\"\n          }\n        ],\n        \"categoria\": \"FUN\",\n        \"pain_point\": \"Quiere un momento de juego simple y seguro\",\n        \"outcome\": \"Juego fácil sin sobreestimular\",\n        \"category_keyword\": \"Animales y sonidos\",\n        \"keywords_seo\": \"canciones infantiles, canciones en español, animales y sonidos, música para niños, la pata pipa, gallo, granja, canciones para bebés\",\n        \"titulo_youtube_a\": \"El Gallo Bartolito | Juego fácil sin sobreestimular | La Pata Pipa\",\n        \"descripcion_youtube\": \"Juego fácil sin sobreestimular.\\nPon este video en un momento de juego y repite el coro con tu peque.\\nRitmo simple y visual limpio para cantar y moverse juntos.\\n\\nLetra:\\n[Verso]\\nEl gallo...\\n[Coro]\\nKikiriki...\\n\\ncanciones infantiles, canciones en español, animales y sonidos, música para niños, la pata pipa, gallo, granja, canciones para bebés\",\n        \"thumbnail\": \"Close-up del gallo riendo con un balde de granja, colores primarios y fondo limpio.\",\n        \"prompt_thumbnail\": \"YouTube thumbnail based on the given image, emotion, emotive face, 8k, octane render, cute rooster character smiling with strong eye contact, simple clean background, one key object bucket, TEXT: 'JUEGO SEGURO', BIG-size colored lettering, high-contrast text with subtle dark outline, evoke emotion based on the images\"\n\n      }\n\n  T – Tools:\n    - Think Tool: REQUIRED. Use this to:\n      1. Draft the lyrics first.\n      2. Classify the song (ROUTINE vs SLEEP vs EDUCATION vs FUN).\n      3. Generate pain_point/outcome/category_keyword/keywords_seo.\n      4. Verify that 'descripcion_youtube' contains the exact lyrics generated (verbatim).\n      5. Verify outcome length (4–8 words) and no absolutes (\"nunca\", \"siempre\").\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1904,
+        304
+      ],
+      "id": "323bcd78-8ac0-4771-b7a1-cddbd6a48859",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1168,
+        624
+      ],
+      "id": "7612c49a-eaa1-414e-a97a-81b21df7e4e7",
+      "name": "IMAGENES"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1168,
+        1216
+      ],
+      "id": "66e5cbba-6e3a-486c-9e32-744cec01ea38",
+      "name": "MUSICA"
+    },
+    {
+      "parameters": {
+        "content": "## OUTPUT",
+        "height": 1360,
+        "width": 246,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2512,
+        112
+      ],
+      "id": "333e15d9-33cd-48d4-9ac1-896f06f98da0",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## INPUT",
+        "height": 1392,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        96
+      ],
+      "id": "9b9f55df-4673-4eff-aeb6-56c01081dbdd",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e14f10cf-5e64-48ee-9d51-05382ed115d8",
+              "leftValue": "={{ $json['image done'] }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1648,
+        624
+      ],
+      "id": "86981afa-5af8-4416-9e22-3ac4af774cad",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblYiND5DkrZhIlLq"
+        },
+        "filterByFormula": "{Status} = \"Create\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2816,
+        624
+      ],
+      "id": "214296b6-a4c2-4970-a112-af9886eb802e",
+      "name": "Get Project4",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "apphdA8h3IVs1f66r",
+          "mode": "list",
+          "cachedResultName": "Canciones Infantiles",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblYiND5DkrZhIlLq",
+          "mode": "list",
+          "cachedResultName": "Project",
+          "cachedResultUrl": "https://airtable.com/apphdA8h3IVs1f66r/tblYiND5DkrZhIlLq"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get Project4').item.json.id }}",
+            "thumbnail": "= [   {     \"url\": \"{{ $('Generador Thumbnail').item.json.data.outputs[0] }}\"   } ]"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Project Name",
+              "displayName": "Project Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Create",
+                  "value": "Create"
+                },
+                {
+                  "name": "Done",
+                  "value": "Done"
+                },
+                {
+                  "name": "Skip",
+                  "value": "Skip"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Core Image",
+              "displayName": "Core Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Core Elements",
+              "displayName": "Core Elements",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Creative Direction",
+              "displayName": "Creative Direction",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music prompt",
+              "displayName": "music prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music letra",
+              "displayName": "music letra",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music file 1",
+              "displayName": "music file 1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "music file 2",
+              "displayName": "music file 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "thumbnail",
+              "displayName": "thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "titulo_youtube",
+              "displayName": "titulo_youtube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prompt_thumbnail",
+              "displayName": "prompt_thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "descripcion_youtube",
+              "displayName": "descripcion_youtube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3264,
+        624
+      ],
+      "id": "96e5692e-1bbf-4926-8d3a-ffe85e270d93",
+      "name": "Log Images1",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "VKJIgclryTN9Nchw",
+          "name": "becord00@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "                ## YOUTUBE\n",
+        "height": 304,
+        "width": 656,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2768,
+        528
+      ],
+      "id": "cf529fb2-e8c8-4c8d-a4a1-0dd29e9dc246",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.wavespeed.ai/api/v3/google/nano-banana-pro/edit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"aspect_ratio\": \"16:9\",\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": true,\n  \"output_format\": \"png\",\n  \"prompt\": \"{{$json.prompt_thumbnail.replace(/\\\"/g, '\\\\\\\"')}}\",\n  \"resolution\": \"2k\",\n  \"images\": [\n    \"{{$json['Core Elements'][0].url}}\",\n    \"{{$json['Core Image'][0].url}}\"\n  ]\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3040,
+        624
+      ],
+      "id": "ad453e23-7c29-448c-b26f-13e87b7b8040",
+      "name": "Generador Thumbnail",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "YqPwpc3FltB0E4fD",
+          "name": "v2 Bearer Wavespeed Imperio becord"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3-pro-preview",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3-pro-preview"
+        },
+        "text": "Please look at this image and describe it in detail. What is shown in the character section, the setting section? Explain what you see in each part detailed so the image can be fully translated into text.",
+        "imageUrls": "={{ $json['Core Elements'][0].url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1648,
+        304
+      ],
+      "id": "efb1704f-2aba-41c2-9e76-99d0de9a1023",
+      "name": "Analyze an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "a61AMnlYVatdRyuw",
+          "name": "becord00@gmail.com Google API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Log Visual Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Video 🔻",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Log Videos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VIDEOS": {
+      "main": [
+        [
+          {
+            "node": "Get Scenes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PROMPTS": {
+      "main": [
+        [
+          {
+            "node": "Get Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Project1": {
+      "main": [
+        [
+          {
+            "node": "Get Scenes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Scenes": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Project": {
+      "main": [
+        [
+          {
+            "node": "Analyze an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Video 🔻": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Video 🔻": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start frame 🍌": {
+      "main": [
+        [
+          {
+            "node": "End frame 🍌",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "End frame 🍌": {
+      "main": [
+        [
+          {
+            "node": "Log Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Visual Prompts": {
+      "main": [
+        [
+          {
+            "node": "Log Audio Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Scenes1": {
+      "main": [
+        [
+          {
+            "node": "Create Video 🔻",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Songs": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Songs": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Get Songs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Log Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Project2": {
+      "main": [
+        [
+          {
+            "node": "Create Songs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structure": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IMAGENES": {
+      "main": [
+        [
+          {
+            "node": "Get Project1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MUSICA": {
+      "main": [
+        [
+          {
+            "node": "Get Project2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Start frame 🍌",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Images": {
+      "main": [
+        [
+          {
+            "node": "Get Project4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Project4": {
+      "main": [
+        [
+          {
+            "node": "Generador Thumbnail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generador Thumbnail": {
+      "main": [
+        [
+          {
+            "node": "Log Images1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze an image": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "48ad0949-115f-4594-bd83-1199313118ac",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "UtkIAS8hG74r93kYubTaY",
+  "tags": []
+}

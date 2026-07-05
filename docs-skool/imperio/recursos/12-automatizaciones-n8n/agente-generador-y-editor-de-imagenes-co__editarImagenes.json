@@ -1,0 +1,326 @@
+{
+  "name": "editarImagenes",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "imagenes_Id"
+            },
+            {
+              "name": "prompt"
+            },
+            {
+              "name": "chat_id"
+            },
+            {
+              "name": "aspect_ratio"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "direct_url"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        352
+      ],
+      "id": "6c15b7c4-0df8-4b1c-8331-67117fc2cb55",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $('When Executed by Another Workflow').item.json.chat_id }}",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1936,
+        352
+      ],
+      "id": "e5d5b3c5-7d33-4f2d-9f0f-15d34c6c44ca",
+      "name": "Send a photo message",
+      "webhookId": "6717de01-4e03-424f-82ee-0ee4d0dc4327",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"nano-banana-pro\",\n  \"callBackUrl\": \"{{$execution.resumeUrl}}\",\n  \"input\": {\n    \"prompt\": \"{{ $('When Executed by Another Workflow').item.json.prompt }}\",\n    \"aspect_ratio\": \"{{ $('When Executed by Another Workflow').item.json.aspect_ratio }}\",\n    \"resolution\": \"1K\",\n    \"output_format\": \"png\",\n    \"image_input\":{{ JSON.stringify($json.direct_url) }}\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1312,
+        352
+      ],
+      "id": "2bd3e78a-d529-48c4-b8a0-5dd4f1de9b58",
+      "name": "POST Editar Imagen Nano Banana Pro",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jBa24cbL0Dk86aQl",
+          "name": "Header Auth Kie AI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const stringDeImagenes = $input.first().json.imagenes_Id || \"\";\n\nconst stringIds = stringDeImagenes.split(\",\").map(id => id.trim());\n\nreturn stringIds.map(id => ({\n  json: {\n    file_id: id\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        352
+      ],
+      "id": "d0aaf9e7-8c96-42b7-a2a8-f649225c3a31",
+      "name": "Obtener IDs"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.file_id }}",
+        "download": false
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        688,
+        352
+      ],
+      "id": "1e9dc5a8-0fbd-4422-a320-5e851126f9bb",
+      "name": "Descargar Imagen",
+      "webhookId": "ad464c45-eac2-4ae5-a3ca-3781d8556fa1",
+      "credentials": {
+        "telegramApi": {
+          "id": "x2CljsI26C8Ca5RH",
+          "name": "Bot de Prueba"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd97f1f6-2e96-4fd5-85f4-de777e7b96ba",
+              "name": "direct_url",
+              "value": "=https://api.telegram.org/file/bot8584007567:AAEZGUd7hTEUXCLdrnL7RzTLhLesp_83knM/{{ $json.result.file_path }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        352
+      ],
+      "id": "b3489c84-2a7e-4581-83aa-6d9786e82d38",
+      "name": "URL Descarga"
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        352
+      ],
+      "id": "8dc7ae94-862e-4725-9d6f-59a3d428ec3d",
+      "name": "Wait callBackUrl",
+      "webhookId": "6983444f-86ea-4ab6-be9d-9e5b253e53c1"
+    },
+    {
+      "parameters": {
+        "url": "={{ JSON.parse($json.body.data.resultJson).resultUrls[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1728,
+        352
+      ],
+      "id": "09b002cb-f98a-465e-8b0f-ccbd920cb4a6",
+      "name": "GET a File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f43eae5a-3266-42f0-8bb3-8db0207a9488",
+              "name": "Id de la imagen resultante:",
+              "value": "={{$json.result.photo.last().file_id}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2128,
+        352
+      ],
+      "id": "3bf1dce5-853a-411f-be49-e721a68f6e34",
+      "name": "Response File ID"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Obtener IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "POST Editar Imagen Nano Banana Pro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a photo message": {
+      "main": [
+        [
+          {
+            "node": "Response File ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST Editar Imagen Nano Banana Pro": {
+      "main": [
+        [
+          {
+            "node": "Wait callBackUrl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener IDs": {
+      "main": [
+        [
+          {
+            "node": "Descargar Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar Imagen": {
+      "main": [
+        [
+          {
+            "node": "URL Descarga",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL Descarga": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait callBackUrl": {
+      "main": [
+        [
+          {
+            "node": "GET a File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET a File": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9ea0201e-aec0-451e-8d28-12de310996f2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "59b64d42ce348b9038d915a2b4f798c075af07fa43401ea092e466d11f315d92"
+  },
+  "id": "1wS1Htz1v25h8RLd",
+  "tags": []
+}

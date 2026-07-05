@@ -1,0 +1,1671 @@
+{
+  "name": "Facturación Automática",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -32,
+        16
+      ],
+      "id": "0044b4f1-a430-49c5-9ce4-c42a18fc548a",
+      "name": "Telegram Trigger",
+      "webhookId": "2af4b52a-fe94-4d9c-bbfc-6614a41ee729",
+      "credentials": {
+        "telegramApi": {
+          "id": "oO6MRrwMqePRC4JU",
+          "name": "Facturacion Automática"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.voice }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "c7dea16c-c466-435e-aa98-31981af0c0e5"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fae2e573-91a5-4d67-a32f-b568cd12e14d",
+                    "leftValue": "={{ $json.message.voice }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "voice"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        16
+      ],
+      "id": "a318a6fc-754c-4803-8150-695351cc1358",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c37fe593-f34e-4198-b5cd-38b42e94d8e3",
+              "name": "text",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        640,
+        -80
+      ],
+      "id": "25352c1e-acbd-45aa-b6b8-372f47a4866e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.voice.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        112
+      ],
+      "id": "62a0472f-77a2-4ff6-8382-e87da52d4b4e",
+      "name": "Get a file",
+      "webhookId": "b602eec7-5362-4499-a43b-9c0790478e54",
+      "credentials": {
+        "telegramApi": {
+          "id": "oO6MRrwMqePRC4JU",
+          "name": "Facturacion Automática"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        112
+      ],
+      "id": "ec3c8ae2-8d02-4a1b-821a-5743d7865560",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "iefrI8eoEQCOXLyH",
+          "name": "OpenAI becord00"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        864,
+        16
+      ],
+      "id": "4d381aec-9966-4abc-8850-4251f3688616",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "intencion_usuario",
+              "description": "Analiza qué quiere hacer el usuario. Debe ser EXACTAMENTE uno de estos valores: 'crear_cliente', 'crear_producto', 'generar_factura'."
+            },
+            {
+              "name": "nuevo_producto_nombre",
+              "description": "Si la intención es crear_producto: El nombre del producto."
+            },
+            {
+              "name": "nuevo_producto_descripcion",
+              "description": "Si la intención es crear_producto: La descripción corta."
+            },
+            {
+              "name": "nuevo_producto_precio",
+              "description": "Si la intención es crear_producto: El precio (solo números)."
+            },
+            {
+              "name": "nuevo_cliente_nombre",
+              "description": "Si la intención es crear_cliente: Nombre completo."
+            },
+            {
+              "name": "nuevo_cliente_email",
+              "description": "Si la intención es crear_cliente: Correo electrónico."
+            },
+            {
+              "name": "nuevo_cliente_empresa",
+              "description": "Si la intención es crear_cliente: Nombre de la empresa."
+            },
+            {
+              "name": "factura_numero",
+              "description": "Si es factura: El número de folio si se menciona."
+            },
+            {
+              "name": "factura_fecha_venc",
+              "description": "Si es factura: Fecha de vencimiento, siempre 7 días más de la fecha de creación"
+            },
+            {
+              "name": "factura_destinatario_nombre",
+              "description": "Si es factura: Nombre del cliente o empresa receptora ({{nombre}})."
+            },
+            {
+              "name": "factura_destinatario_mail",
+              "description": "Si es factura: Correo del receptor ({{mail}})."
+            },
+            {
+              "name": "factura_destinatario_calle",
+              "description": "Si es factura: Dirección/Calle ({{calle}})."
+            },
+            {
+              "name": "factura_destinatario_ciudad",
+              "description": "Si es factura: Ciudad ({{ciudad}})."
+            },
+            {
+              "name": "factura_destinatario_pais",
+              "description": "Si es factura: País ({{pais}})."
+            },
+            {
+              "name": "factura_items_json",
+              "description": "Si es factura: Extrae TODOS los ítems comprados en formato Array JSON. Ejemplo: [{'nombre': 'x', 'descripcion': 'x', 'cantidad': 1, 'precio': 100}]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        1088,
+        16
+      ],
+      "id": "5c60a45f-753e-4aa7-b181-e8f0c3dd55eb",
+      "name": "Information Extractor1"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        240
+      ],
+      "id": "38187361-b652-4ef4-9a51-e5ba4a9499bc",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE",
+          "mode": "list",
+          "cachedResultName": "Base Datos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1916882078,
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit#gid=1916882078"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $('Information Extractor1').item.json.output.nuevo_cliente_nombre }}",
+            "Calle": "={{ $('Information Extractor1').item.json.output.factura_destinatario_calle }}",
+            "Ciudad": "={{ $('Information Extractor1').item.json.output.factura_destinatario_ciudad }}",
+            "Pais": "={{ $('Information Extractor1').item.json.output.factura_destinatario_pais }}",
+            "Mail": "={{ $('Information Extractor1').item.json.output.factura_destinatario_mail }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Calle",
+              "displayName": "Calle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ciudad",
+              "displayName": "Ciudad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pais",
+              "displayName": "Pais",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mail",
+              "displayName": "Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1912,
+        -176
+      ],
+      "id": "5194716c-872c-4985-afe2-61854232a9f8",
+      "name": "Crear Cliente",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE",
+          "mode": "list",
+          "cachedResultName": "Base Datos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2048657703,
+          "mode": "list",
+          "cachedResultName": "Items",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit#gid=2048657703"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Precio": "={{ $('Information Extractor1').item.json.output.nuevo_producto_precio }}",
+            "Descripcion": "={{ $('Information Extractor1').item.json.output.nuevo_producto_descripcion }}",
+            "Item": "={{ $('Information Extractor1').item.json.output.nuevo_producto_nombre }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Item",
+              "displayName": "Item",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Descripcion",
+              "displayName": "Descripcion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Precio",
+              "displayName": "Precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1912,
+        16
+      ],
+      "id": "57b274b0-6e18-431b-b756-faaad8015266",
+      "name": "Crear Producto",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Aqui tienes el contenido\n\n{{ $json.output.intencion_usuario }}\n\n{{ $json.output.factura_destinatario_nombre }}\n\n{{ $json.output.factura_items_json }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Eres un Asistente de Facturación riguroso. Tu trabajo es orquestar herramientas para generar datos de facturación 100% exactos y archivos nombrados correctamente.\n\n### DATOS DE CONTEXTO (Inyectados por n8n):\n- **Timestamp Actual:** {{ $now.format('X') }}\n- **Fecha Actual:** {{ $now.format('ddMMyyyy') }}\n\n### TUS HERRAMIENTAS Y REGLAS:\n1.  **CLIENTES:** Usa `get_rows_sheets_clientes`. Busca por nombre. Si no existe, detente.\n2.  **PRODUCTOS:** Usa `get_rows_sheets_productos`. Busca por nombre para el PRECIO REAL.\n3.  **CÁLCULOS:** PROHIBIDO CALCULAR MENTALMENTE. Usa `calculator` para multiplicar y sumar.\n\n### LÓGICA DE NOMBRE DE ARCHIVO:\nPara el campo `nombre_archivo`, debes construir un string siguiendo ESTRICTAMENTE este formato:\n`[INICIALES]_[FECHA]_[TIMESTAMP]`\n- **INICIALES:** Primera letra del Nombre + Primera letra del Apellido (o segunda palabra del nombre de empresa). Todo en Mayúsculas.\n- **FECHA:** Usa la Fecha Actual provista arriba (DDMMYYYY).\n- **TIMESTAMP:** Usa el Timestamp Actual provisto arriba.\n- *Ejemplo:* Si el cliente es \"Benjamin Cordero\", fecha \"23122025\" y timestamp \"1735083664\" -> `BC_23122025_1735083664`\n\n### FORMATO DE SALIDA (JSON PLANO):\nResponde ÚNICAMENTE con este objeto JSON:\n\n{\n  \"factura_numero\": \"FAC-{{$now.format('MMDD')}}-AUTO\",\n  \"fecha_hoy\": \"DD/MM/YYYY\",\n  \"fecha_venc\": \"DD/MM/YYYY\",\n  \"nombre_archivo\": \"\", \n  \n  \"nombre\": \"\",\n  \"calle\": \"\",\n  \"ciudad\": \"\",\n  \"pais\": \"\",\n  \"mail\": \"\",\n  \n  \"item_1_nombre\": \"\",\n  \"item_1_descripcion\": \"\",\n  \"item_1_cantidad\": 0,\n  \"item_1_precio\": 0,\n  \"item_1_total\": 0,\n\n  \"item_2_nombre\": \"\",\n  \"item_2_descripcion\": \"\",\n  \"item_2_cantidad\": \"\",\n  \"item_2_precio\": \"\",\n  \"item_2_total\": \"\",\n  \n  \"item_3_nombre\": \"\",\n  \"item_3_descripcion\": \"\",\n  \"item_3_cantidad\": \"\",\n  \"item_3_precio\": \"\",\n  \"item_3_total\": \"\",\n\n  \"item_4_nombre\": \"\",\n  \"item_4_descripcion\": \"\",\n  \"item_4_cantidad\": \"\",\n  \"item_4_precio\": \"\",\n  \"item_4_total\": \"\",\n\n  \"item_5_nombre\": \"\",\n  \"item_5_descripcion\": \"\",\n  \"item_5_cantidad\": \"\",\n  \"item_5_precio\": \"\",\n  \"item_5_total\": \"\",\n\n  \"item_6_nombre\": \"\",\n  \"item_6_descripcion\": \"\",\n  \"item_6_cantidad\": \"\",\n  \"item_6_precio\": \"\",\n  \"item_6_total\": \"\",\n\n  \"factura_total\": 0\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1848,
+        312
+      ],
+      "id": "c32f9f08-cbe6-4dea-8447-84694f438c16",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1664,
+        536
+      ],
+      "id": "f63adc97-f92d-4bf5-8ebc-256f5600d004",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "At1fghrYNIttU2GS",
+          "name": "OpenRouter OF"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        536
+      ],
+      "id": "4b75ec6d-3021-4379-87f6-e5f60d9a12c3",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1jYEDuRVnVrxKA9RpcttgM49pn-s7h88TPL8nyJW5jD0",
+          "mode": "list",
+          "cachedResultName": "Factura_Plantilla.docx",
+          "cachedResultUrl": "https://docs.google.com/document/d/1jYEDuRVnVrxKA9RpcttgM49pn-s7h88TPL8nyJW5jD0/edit?usp=drivesdk"
+        },
+        "name": "={{ $json.output.nombre_archivo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2384,
+        312
+      ],
+      "id": "fc38b0e9-6db8-48f3-9325-e240ad3e0402",
+      "name": "Copy file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZibHKENlobaYR7XN",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE",
+          "mode": "list",
+          "cachedResultName": "Base Datos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2048657703,
+          "mode": "list",
+          "cachedResultName": "Items",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit#gid=2048657703"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1920,
+        536
+      ],
+      "id": "11422254-2380-47ae-94c4-adeeaf6925b3",
+      "name": "Get Rows Clientes",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE",
+          "mode": "list",
+          "cachedResultName": "Base Datos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1916882078,
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit#gid=1916882078"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        2048,
+        536
+      ],
+      "id": "bcf36d9b-d31e-4b78-845c-dea044d0e42f",
+      "name": "Get Rows Productos",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"factura_numero\": \"FAC-1234\",\n  \"fecha_hoy\": \"23/12/2025\",\n  \"fecha_venc\": \"23/01/2026\",\n  \"nombre_archivo\": \"BC_23122025_123456\",\n  \"nombre\": \"Benjamin Cordero\",\n  \"calle\": \"Calle Falsa 123\",\n  \"ciudad\": \"Santiago\",\n  \"pais\": \"Chile\",\n  \"mail\": \"correo@ejemplo.com\",\n  \"item_1_nombre\": \"Producto A\",\n  \"item_1_descripcion\": \"Descripcion A\",\n  \"item_1_cantidad\": 1,\n  \"item_1_precio\": 1000,\n  \"item_1_total\": 1000,\n  \"item_2_nombre\": \"\",\n  \"item_2_descripcion\": \"\",\n  \"item_2_cantidad\": 0,\n  \"item_2_precio\": 0,\n  \"item_2_total\": 0,\n  \"item_3_nombre\": \"\",\n  \"item_3_descripcion\": \"\",\n  \"item_3_cantidad\": 0,\n  \"item_3_precio\": 0,\n  \"item_3_total\": 0,\n  \"item_4_nombre\": \"\",\n  \"item_4_descripcion\": \"\",\n  \"item_4_cantidad\": 0,\n  \"item_4_precio\": 0,\n  \"item_4_total\": 0,\n  \"item_5_nombre\": \"\",\n  \"item_5_descripcion\": \"\",\n  \"item_5_cantidad\": 0,\n  \"item_5_precio\": 0,\n  \"item_5_total\": 0,\n  \"item_6_nombre\": \"\",\n  \"item_6_descripcion\": \"\",\n  \"item_6_cantidad\": 0,\n  \"item_6_precio\": 0,\n  \"item_6_total\": 0,\n  \"factura_total\": 1000\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2176,
+        536
+      ],
+      "id": "e83565c7-d19f-4433-b098-cb3346f0a4b1",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $('Copy file').item.json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "{{factura_numero}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.factura_numero.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{fecha_hoy}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.fecha_hoy.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{fecha_venc}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.fecha_venc.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{calle}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.calle.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{ciudad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.ciudad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{pais}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.pais.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{mail}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.mail.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{factura_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.factura_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_1_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_1_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_1_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_1_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_1_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_1_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_1_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_1_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_1_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_1_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_2_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_2_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_2_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_2_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_2_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_2_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_2_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_2_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_2_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_2_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_3_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_3_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_3_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_3_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_3_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_3_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_3_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_3_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_3_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_3_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_4_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_4_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_4_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_4_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_4_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_4_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_4_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_4_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_4_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_4_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_5_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_5_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_5_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_5_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_5_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_5_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_5_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_5_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_5_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_5_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_6_nombre}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_6_nombre.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_6_descripcion}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_6_descripcion.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_6_cantidad}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_6_cantidad.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_6_precio}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_6_precio.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "{{item_6_total}}",
+              "replaceText": "={{ $('AI Agent').item.json.output.item_6_total.toString() }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        2608,
+        312
+      ],
+      "id": "0c6d0678-e1d0-493d-808f-e48f0f68e083",
+      "name": "Actualizar Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "N6n5OjwlVjLlrBNl",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://docs.google.com/document/d/{{ $('Copy file').item.json.id }}/export?format=pdf",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2832,
+        312
+      ],
+      "id": "be1d66c4-562b-4f41-8d43-41afa529d5f9",
+      "name": "HTTP Request",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "Y6tsKamcXZClxwZi",
+          "name": "v2 benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('AI Agent').item.json.output.mail }}",
+        "subject": "=Factura  {{ $('AI Agent').item.json.output.nombre_archivo }}",
+        "message": "=Te adjunto la factura por  {{ $('AI Agent').item.json.output.factura_total }}",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        3056,
+        312
+      ],
+      "id": "7f3b6403-c5b0-444b-a13a-6354b5ba5bc9",
+      "name": "Send a message",
+      "webhookId": "028d686b-2d24-47af-af9f-5fdb4efa8308",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "exaOTDzk57p5w6sW",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE",
+          "mode": "list",
+          "cachedResultName": "Base Datos Clientes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 841241142,
+          "mode": "list",
+          "cachedResultName": "Facturas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oblK8r_MUF3GKpFibFIcB4uAa_vwiReNVb8fIF5OymE/edit#gid=841241142"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Factura": "={{ $('AI Agent').item.json.output.nombre_archivo }}",
+            "Fecha Emision": "={{ $('AI Agent').item.json.output.fecha_hoy }}",
+            "Cliente": "={{ $('AI Agent').item.json.output.nombre }}",
+            "Fecha Vencimiento": "={{ $('AI Agent').item.json.output.fecha_venc }}",
+            "Descripción": "={{ $('AI Agent').item.json.output.item_1_descripcion }}",
+            "Cantidad 1": "={{ $('AI Agent').item.json.output.item_1_cantidad }}",
+            "Item 1": "={{ $('AI Agent').item.json.output.item_1_nombre }}",
+            "Precio 1": "={{ $('AI Agent').item.json.output.item_1_precio }}",
+            "Cantidad 2": "={{ $('AI Agent').item.json.output.item_2_cantidad }}",
+            "Item 2": "={{ $('AI Agent').item.json.output.item_2_nombre }}",
+            "Precio 2": "={{ $('AI Agent').item.json.output.item_2_precio }}",
+            "Cantidad 3": "={{ $('AI Agent').item.json.output.item_3_cantidad }}",
+            "Item 3": "={{ $('AI Agent').item.json.output.item_3_nombre }}",
+            "Precio 3": "={{ $('AI Agent').item.json.output.item_3_precio }}",
+            "Cantidad 4": "={{ $('AI Agent').item.json.output.item_4_cantidad }}",
+            "Item 4": "={{ $('AI Agent').item.json.output.item_4_nombre }}",
+            "Precio 4": "={{ $('AI Agent').item.json.output.item_4_precio }}",
+            "Cantidad 5": "={{ $('AI Agent').item.json.output.item_5_cantidad }}",
+            "Item 5": "={{ $('AI Agent').item.json.output.item_5_nombre }}",
+            "Precio 5": "={{ $('AI Agent').item.json.output.item_5_precio }}",
+            "Cantidad 6": "={{ $('AI Agent').item.json.output.item_6_cantidad }}",
+            "Item 6": "={{ $('AI Agent').item.json.output.item_6_nombre }}",
+            "Precio 6": "={{ $('AI Agent').item.json.output.item_6_precio }}",
+            "Total": "={{ $('AI Agent').item.json.output.factura_total }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Factura",
+              "displayName": "Factura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha Emision",
+              "displayName": "Fecha Emision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cliente",
+              "displayName": "Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha Vencimiento",
+              "displayName": "Fecha Vencimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Descripción",
+              "displayName": "Descripción",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 1",
+              "displayName": "Cantidad 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 1",
+              "displayName": "Item 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 1",
+              "displayName": "Precio 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 2",
+              "displayName": "Cantidad 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 2",
+              "displayName": "Item 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 2",
+              "displayName": "Precio 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 3",
+              "displayName": "Cantidad 3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 3",
+              "displayName": "Item 3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 3",
+              "displayName": "Precio 3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 4",
+              "displayName": "Cantidad 4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 4",
+              "displayName": "Item 4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 4",
+              "displayName": "Precio 4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 5",
+              "displayName": "Cantidad 5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 5",
+              "displayName": "Item 5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 5",
+              "displayName": "Precio 5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cantidad 6",
+              "displayName": "Cantidad 6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Item 6",
+              "displayName": "Item 6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Precio 6",
+              "displayName": "Precio 6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Total",
+              "displayName": "Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3280,
+        312
+      ],
+      "id": "40cde6db-b726-47b4-a885-6db469a1f787",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UCIe4f5uw4JnNchy",
+          "name": "benja@imperiodigital.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=Cliente creado.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2384,
+        -176
+      ],
+      "id": "a08b4e12-f7c2-418f-a69c-dc87e47cdde6",
+      "name": "Send a text message",
+      "webhookId": "3dbbff25-823c-4f09-a064-3516236bae57",
+      "credentials": {
+        "telegramApi": {
+          "id": "oO6MRrwMqePRC4JU",
+          "name": "Facturacion Automática"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=Producto creado.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2384,
+        16
+      ],
+      "id": "1a8ac04a-664d-4af1-bd57-cda80c5c98b7",
+      "name": "Send a text message1",
+      "webhookId": "3dbbff25-823c-4f09-a064-3516236bae57",
+      "credentials": {
+        "telegramApi": {
+          "id": "oO6MRrwMqePRC4JU",
+          "name": "Facturacion Automática"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Transcribir Audio\n",
+        "height": 480,
+        "width": 1088
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        -96
+      ],
+      "id": "2b9c46ba-7a7a-4fdc-81ca-4402a2d215d0",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Clasificar Intención\n### (Crear Cliente o Crear Producto o Crear Factura)\n\n",
+        "height": 480,
+        "width": 560,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        -96
+      ],
+      "id": "323d82b5-c9c7-4d91-b9da-4ecef0e75758",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.intencion_usuario }}",
+                    "rightValue": "crear_cliente",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3f88eed5-0a2d-4033-8553-c674a3fcc4e2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "crear_cliente"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bb45814b-5dcc-4548-81fc-a17a7e609a55",
+                    "leftValue": "={{ $json.output.intencion_usuario }}",
+                    "rightValue": "crear_producto",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "crear_producto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3a513e50-adf4-4007-9ba7-cd3ae3253549",
+                    "leftValue": "={{ $json.output.intencion_usuario }}",
+                    "rightValue": "generar_factura",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "crear_factura"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        0
+      ],
+      "id": "e167dee2-e4d5-4d67-b229-0f7378ab8d55",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "content": "## Crear Factura\n",
+        "height": 432,
+        "width": 2016,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        256
+      ],
+      "id": "5e32718f-30ee-4f56-8026-b351321ff414",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Crea Producto\n",
+        "height": 240,
+        "width": 896,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        0
+      ],
+      "id": "fe9266ff-1135-4ca9-98ba-d179b01ea0d1",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Crea Cliente\n",
+        "height": 192,
+        "width": 896,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        -224
+      ],
+      "id": "194c3699-1ba5-4e5e-9890-4da91379b6a2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.update_id }}",
+        "text": "=Factura Enviada.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3504,
+        312
+      ],
+      "id": "5d6e95b7-0beb-4628-8cee-6c0440bb9d6c",
+      "name": "Send a text message2",
+      "webhookId": "3dbbff25-823c-4f09-a064-3516236bae57",
+      "credentials": {
+        "telegramApi": {
+          "id": "oO6MRrwMqePRC4JU",
+          "name": "Facturacion Automática"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Cliente": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Copy file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rows Clientes": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rows Productos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy file": {
+      "main": [
+        [
+          {
+            "node": "Actualizar Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar Docs": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Producto": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Crear Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Crear Producto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d246345e-a282-4498-9e7e-dcb125a06924",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc9a6fd325c73232bec03f9474dd5c414fe89ec9bc62b1bb715ed6933af8cc3d"
+  },
+  "id": "rhbYSLfOChwekVWf",
+  "tags": []
+}

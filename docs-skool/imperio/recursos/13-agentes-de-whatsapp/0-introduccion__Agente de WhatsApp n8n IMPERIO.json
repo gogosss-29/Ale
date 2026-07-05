@@ -1,0 +1,2477 @@
+{
+  "name": "Agente de WhatsApp [IMPERIO DIGITAL]",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').item.json.body.server_url }}/chat/getBase64FromMediaMessage/{{ $('Webhook').item.json.body.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=[TU_API_KEY_AQUI]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $('Webhook').first().json.body.data.key.id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1072,
+        1136
+      ],
+      "id": "08d1d142-71a5-47ee-bc8d-8b04b0fb8255",
+      "name": "Descargar imagen"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        1136
+      ],
+      "id": "425392fa-cead-4ec0-bd25-9cd48cf330aa",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "base64",
+        "options": {
+          "mimeType": "={{ $json.mimetype }}"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        944
+      ],
+      "id": "c958af5d-e27d-4bc5-b0ad-d4ae3cb6cc3f",
+      "name": "Convert to File1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "conversation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "fbd6f170-6ab9-48a3-90c0-8f8caa484037"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "47cf8b09-5f6f-4052-a442-bf83d9528d98",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "audioMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fc069cef-5452-4ca1-b3d5-b02fcabeb630",
+                    "leftValue": "={{ $('Webhook').item.json.body.data.messageType }}",
+                    "rightValue": "imageMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagen"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        848,
+        768
+      ],
+      "id": "d2d40a6a-7635-4713-85ad-5b9127683b53",
+      "name": "Tipo de input"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').item.json.body.server_url }}/chat/getBase64FromMediaMessage/{{ $('Webhook').item.json.body.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=[TU_API_KEY_AQUI]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $('Webhook').first().json.body.data.key.id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1072,
+        944
+      ],
+      "id": "130012fd-e184-49cb-b732-c2382ba7beba",
+      "name": "Descargar audio"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1520,
+        944
+      ],
+      "id": "4f11d5b8-00fb-4c20-bf09-33a454ed2736",
+      "name": "Transcribir audio",
+      "credentials": {
+        "openAiApi": {
+          "id": "K4Fs1BU0oRiLBiej",
+          "name": "Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Tarea: leer un comprobante (factura/ticket/recibo) y extraer campos.\nSalida: SOLO JSON válido.\n\n{\n  \"should_trigger\": boolean,                // ¿Es un comprobante?\n  \"monto\": number|null,                     // total a pagar/cobrado (coma o punto)\n  \"moneda\": \"ARS\"|\"USD\"|null,\n  \"fecha\": \"YYYY-MM-DD\"|null,\n  \"proveedor\": string|null,\n  \"tipo_sugerido\": \"Ingreso\"|\"Gasto de negocio\"|\"Gasto personal\"|null,\n  \"categoria_sugerida\": string|null,\n  \"comentario_sugerido\": string|null,\n}\n\nReglas:\n- Si hay varios importes, priorizar “TOTAL”, “TOTAL A PAGAR”, “IMPORTE TOTAL”.\n- Aceptar $/AR$ y separadores de miles.\n- Detectar fecha dd/mm/yyyy o yyyy-mm-dd y normalizar a YYYY-MM-DD.\n- Si no está, poner null. Nada de texto fuera del JSON.\n",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1520,
+        1136
+      ],
+      "id": "dbdecf59-e891-4417-8ae9-4cb1493470de",
+      "name": "Analizar imagen",
+      "credentials": {
+        "openAiApi": {
+          "id": "K4Fs1BU0oRiLBiej",
+          "name": "Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "156a2b5e-2c9a-415b-93c8-3adf6404188f",
+              "name": "input",
+              "value": "={{ $('Webhook').item.json.body.data.message.conversation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        752
+      ],
+      "id": "8117b238-1088-422c-adf5-2df0c1bb2ad9",
+      "name": "Input texto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "156a2b5e-2c9a-415b-93c8-3adf6404188f",
+              "name": "input",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        944
+      ],
+      "id": "3e696d7b-fd5c-4b2a-80d7-c74d625a4f66",
+      "name": "Input audio"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "156a2b5e-2c9a-415b-93c8-3adf6404188f",
+              "name": "input",
+              "value": "=(El usuario adjuntó una imagen: {{ $json.content }})\n\n{{ $('Webhook').first().json.body.data.message.imageMessage.caption ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        1136
+      ],
+      "id": "c196b501-3726-4fe8-86a3-f8d743f88f5e",
+      "name": "Input imagen"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "137c4cbc-6448-4c23-a22e-dadc5eec5813",
+              "name": "inputLimpio",
+              "value": "={{ $json.input }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1968,
+        944
+      ],
+      "id": "aa580123-5bd8-4155-bd9f-2db994b6a5a1",
+      "name": "Input en limpio"
+    },
+    {
+      "parameters": {
+        "content": "## Recepción WhatsApp + Establecer executionId + From Me boolean",
+        "height": 324,
+        "width": 1424,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        688
+      ],
+      "id": "4555e52c-0529-405d-a791-3496e2e7b0c3",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Input > Texto",
+        "height": 656,
+        "width": 1260,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        816,
+        688
+      ],
+      "id": "05caee5c-36ce-4f99-bc0d-eabefb9fefe7",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Recolección de mensajes fragmentados",
+        "height": 656,
+        "width": 2242
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2096,
+        688
+      ],
+      "id": "82874fab-de69-498b-ba5b-c414d54905de",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3fe72b0b-4404-41d8-b199-93c021cb5cbb",
+              "name": "phone",
+              "value": "={{ $json.phoneNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "0d6d2bee-89a3-4482-900b-d462b1ad6124",
+              "name": "remoteJid",
+              "value": "={{ $json.primaryJid }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        784
+      ],
+      "id": "059b0f8f-c480-4619-be74-7ec75f466d4f",
+      "name": "Set remoteJid"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "remoteJid",
+              "value": "={{ $json.body.data.key.remoteJid }}"
+            },
+            {
+              "key": "instance",
+              "value": "={{ $json.body.instance }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -304,
+        432
+      ],
+      "id": "61a4588d-3585-4933-ade3-31be4c7258f7",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4u5PbXIhY3vtHL",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX/tbl4u5PbXIhY3vtHL"
+        },
+        "filterByFormula": "={phone}=\"{{ $json.phone }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        384,
+        784
+      ],
+      "id": "5a8ca4f0-d87a-4ff2-b3e1-b6fa575d4720",
+      "name": "Search in client table",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4528,
+        1056
+      ],
+      "id": "734771c8-db58-451c-a391-edd1611cd07b",
+      "name": "GPT-4.1",
+      "credentials": {
+        "openAiApi": {
+          "id": "r3C0KcelguqKRB6y",
+          "name": "Cuentas Claras"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "08237492-5c71-45d4-ba2c-e9680c8cde2d",
+              "name": "chat_input",
+              "value": "={{ $('De-Duplicate').item.json.message }}",
+              "type": "string"
+            },
+            {
+              "id": "2ace1025-f136-46ac-be1c-a9e52dea1f23",
+              "name": "is_first_message",
+              "value": "={{ $json.first_message }}",
+              "type": "boolean"
+            },
+            {
+              "id": "ff7ab089-459a-4208-aef9-7dd6f493356a",
+              "name": "business_info",
+              "value": "={{ $('Search in client table').first().json.business_description }}",
+              "type": "string"
+            },
+            {
+              "id": "fd901ed6-f89d-4516-bf45-cd7a43f43396",
+              "name": "base_conversation",
+              "value": "={{ $json.fields?.conversation || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4176,
+        848
+      ],
+      "id": "c90f1130-dbec-4577-87da-5a743ae6e392",
+      "name": "set session data"
+    },
+    {
+      "parameters": {
+        "content": "## Agent",
+        "height": 1088,
+        "width": 992,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4352,
+        464
+      ],
+      "typeVersion": 1,
+      "id": "29342d56-93cf-4c39-8e89-dd85e6929d30",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "58598fe6-dcfd-4257-b269-a5934f3b9738",
+              "name": "outputLimpio",
+              "value": "={{ String($json.output).replace(/[¿¡]/g,'').replace(/\"/g,'\\\\\"') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5408,
+        832
+      ],
+      "id": "0dfdbcd3-d5d1-46e1-a97e-fd0643228e74",
+      "name": "Borrar \"¡\" y \"¿\""
+    },
+    {
+      "parameters": {
+        "content": "## Envío de mensaje",
+        "height": 656,
+        "width": 944,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5360,
+        688
+      ],
+      "id": "16f57a3e-729a-42d7-9f42-8cfc52959561",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').item.json.body.server_url }}/message/sendText/{{ $('Webhook').first().json.body.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "apikey",
+              "value": "[TU_API_KEY_AQUI]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Search in client table').first().json.phone }}@s.whatsapp.net"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Borrar \"¡\" y \"¿\"').first().json.outputLimpio }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6080,
+        832
+      ],
+      "id": "650a10ed-8d4d-4fd3-b7fb-34e609983303",
+      "name": "Enviar respuesta al usuario"
+    },
+    {
+      "parameters": {
+        "amount": "={{Math.floor(Math.random()*4)+3}}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5856,
+        832
+      ],
+      "id": "9e3add83-4367-4117-9251-60c865345e90",
+      "name": "Espera",
+      "webhookId": "909cdb36-ce5c-45c7-a18a-406052983582"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c24dbd8e-1981-46b1-8114-ba23776e9760",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -560,
+        784
+      ],
+      "id": "2b977d3f-795a-4405-8d6e-c05789e8eaed",
+      "name": "Webhook",
+      "webhookId": "c24dbd8e-1981-46b1-8114-ba23776e9760"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cdbd2948-dd45-45e4-b28b-7d72b70f2e1b",
+              "leftValue": "={{ $('Webhook').item.json.body.data.message.conversation }}",
+              "rightValue": "/reset",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        128,
+        784
+      ],
+      "id": "ca013763-fac2-46fb-9bb0-dad011cea00d",
+      "name": "/reset"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3264,
+        1088
+      ],
+      "id": "0a5d18dd-23d5-450d-aa36-2e3d05bdb2b0",
+      "name": "Nada"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2416,
+        944
+      ],
+      "id": "076026f0-40e4-4942-8551-a5a3dc26c56c",
+      "name": "5seg",
+      "webhookId": "bbe7d67d-7dd7-47a7-9a00-eeebb11ee26f"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbltrdR5Z2Id4fWfr",
+          "mode": "list",
+          "cachedResultName": "Message Buffer",
+          "cachedResultUrl": "https://airtable.com/appPzXptrRQ1RXzWA/tbltrdR5Z2Id4fWfr"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "user_id": "={{ [$('Search in client table').first().json.user_id] }}",
+            "mensaje": "={{ $json.inputLimpio }}",
+            "status": "Recibido"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "mensaje",
+              "displayName": "mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_time",
+              "displayName": "created_time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "record_id",
+              "displayName": "record_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Recibido",
+                  "value": "Recibido"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "user_id (from user_id)",
+              "displayName": "user_id (from user_id)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2192,
+        944
+      ],
+      "id": "ed68a1ad-41ba-4585-91bf-1efeef6a8e4f",
+      "name": "Upload Message",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbltrdR5Z2Id4fWfr",
+          "mode": "list",
+          "cachedResultName": "Message Buffer",
+          "cachedResultUrl": "https://airtable.com/appPzXptrRQ1RXzWA/tbltrdR5Z2Id4fWfr"
+        },
+        "filterByFormula": "=AND({user_id}=\"{{ $('Search in client table').first().json.user_id }}\", {status}=\"Recibido\")",
+        "returnAll": false,
+        "limit": 1,
+        "options": {},
+        "sort": {
+          "property": [
+            {
+              "field": "created_time"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2640,
+        944
+      ],
+      "id": "2f5ad3ae-bebc-450f-b93f-0bc6d02a5d3b",
+      "name": "Get First Message",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3fd4c34c-1d23-41e1-b1f3-931e9ff82302",
+              "leftValue": "={{ $json.createdTime }}",
+              "rightValue": "={{ $('Upload Message').item.json.fields.created_time }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2864,
+        944
+      ],
+      "id": "3eee9750-42d0-44f8-887f-654cdc2384d5",
+      "name": "¿First of list?"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbltrdR5Z2Id4fWfr",
+          "mode": "list",
+          "cachedResultName": "Message Buffer",
+          "cachedResultUrl": "https://airtable.com/appPzXptrRQ1RXzWA/tbltrdR5Z2Id4fWfr"
+        },
+        "filterByFormula": "=AND({user_id}=\"{{ $('Search in client table').first().json.user_id }}\", {status}=\"Recibido\")",
+        "options": {},
+        "sort": {
+          "property": [
+            {
+              "field": "created_time"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3504,
+        848
+      ],
+      "id": "19f2485f-ad1c-4cc9-b03d-8a3c55505a27",
+      "name": "Get Messages",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": "mensaje",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3728,
+        752
+      ],
+      "id": "f089e43b-4428-40be-96fc-b467533443f4",
+      "name": "Merge Messages"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbltrdR5Z2Id4fWfr",
+          "mode": "list",
+          "cachedResultName": "Message Buffer",
+          "cachedResultUrl": "https://airtable.com/appPzXptrRQ1RXzWA/tbltrdR5Z2Id4fWfr"
+        },
+        "id": "={{ $json.record_id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3952,
+        1040
+      ],
+      "id": "c63363b1-796a-4c74-a7b2-354bdcfc6de0",
+      "name": "Delete Messages",
+      "retryOnFail": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18d228fe-3709-495e-93c9-ca4cee793d3e",
+              "name": "message",
+              "value": "={{(() => {\n  const data = $input.first().json.data;\n  const mensaje = data.map(item => item.mensaje);\n  const unique = [...new Set(mensaje)];\n  return unique.join(' ');\n})()}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3952,
+        848
+      ],
+      "id": "5f9bbe71-5642-4926-9896-36bb2350e17c",
+      "name": "De-Duplicate"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body;\nconst data = body.data;\nconst key = data.key;\n\n// Extraer TODOS los identificadores disponibles\nconst allJids = {\n  whatsapp: null,\n  lid: null\n};\n\n// Revisar remoteJid\nif (key.remoteJid) {\n  if (key.remoteJid.includes('@s.whatsapp.net')) {\n    allJids.whatsapp = key.remoteJid;\n  } else if (key.remoteJid.includes('@lid')) {\n    allJids.lid = key.remoteJid;\n  }\n}\n\n// Revisar remoteJidAlt\nif (key.remoteJidAlt) {\n  if (key.remoteJidAlt.includes('@s.whatsapp.net')) {\n    allJids.whatsapp = key.remoteJidAlt;\n  } else if (key.remoteJidAlt.includes('@lid')) {\n    allJids.lid = key.remoteJidAlt;\n  }\n}\n\n// Determinar si debe procesarse o saltearse\nconst skip = !allJids.whatsapp && !allJids.lid;\n\n// Identificador principal (priorizar @s.whatsapp.net)\nconst primaryJid = allJids.whatsapp || allJids.lid;\nconst primaryIdentifier = primaryJid ? primaryJid.split('@')[0] : null;\n\n// Identificadores para búsqueda\nconst phoneNumber = allJids.whatsapp ? allJids.whatsapp.split('@')[0] : null;\nconst lidNumber = allJids.lid ? allJids.lid.split('@')[0] : null;\n\nreturn {\n  // Control de flujo\n  skip: skip,\n  \n  // Principal (para responder)\n  primaryJid: primaryJid,\n  primaryIdentifier: primaryIdentifier,\n  \n  // Separados por tipo (para guardar/buscar en BD)\n  phoneNumber: phoneNumber,\n  phoneJid: allJids.whatsapp,\n  \n  lidNumber: lidNumber,\n  lidJid: allJids.lid,\n  \n  // Tipo del principal\n  primaryType: allJids.whatsapp ? '@s.whatsapp.net' : '@lid',\n  \n  // Info adicional\n  pushName: data.pushName || null,\n  fromMe: data.key.fromMe,\n  hasWhatsApp: allJids.whatsapp !== null,\n  hasLid: allJids.lid !== null,\n  hasBoth: allJids.whatsapp !== null && allJids.lid !== null\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        784
+      ],
+      "id": "92464fd8-3dd0-4a94-83f7-a7b5a19fe539",
+      "name": "Obtener RemoteJid"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chat_input }}",
+        "options": {
+          "systemMessage": "=# SYSTEM PROMPT — Consultor de Automatizaciones con IA\n\n## Rol\nSos un **consultor en automatizaciones con IA**, especializado en mejorar procesos, reducir trabajo manual y potenciar resultados dentro de negocios y proyectos individuales. Tu enfoque es **estratégico, práctico y orientado a la acción**, ayudando a identificar oportunidades donde la IA, el no-code y el low-code puedan generar impacto real.\n\n---\n\n## Contexto general\n- Trabajás con profesionales, dueños de PyMEs y emprendedores de distintos rubros.  \n- Tu prioridad es **entender primero**, proponer después.  \n- Siempre partís del **estado actual del negocio**, de los recursos disponibles y de los objetivos del usuario.  \n- Moneda por defecto: ARS. Si mencionás USD, aclararlo.  \n- **Fecha y hora actual (referencia para tus respuestas)**:  \n  _Asumí siempre la fecha y hora locales de Argentina, usando tono situacional cuando sea útil_  \n  (por ejemplo: “si lo necesitás hoy”, “esta semana”, “más adelante”, etc.).\n\n---\n\n## Saludo inicial\nSi el mensaje del usuario es el primero de la sesión:\n- Si no hace una consulta clara → **“Hola, ¿cómo estás? ¿En qué te puedo ayudar?”**  \n- Si ya incluye una consulta → **“Hola, ¿cómo estás?”** y respondé normalmente.\n\n---\n\n## Objetivo del agente\n1. **Comprender el contexto y las necesidades actuales** del usuario.  \n2. **Identificar tareas repetitivas, cuellos de botella y procesos manuales** donde la IA pueda ayudar.  \n3. **Detectar oportunidades de automatización** en áreas como ventas, soporte, operaciones, análisis de datos, administración, marketing, etc.  \n4. **Proponer un plan de acción liviano:** pasos simples, ordenados y aplicables.  \n5. **Guiar con claridad**, generando entendimiento y facilitando decisiones.  \n6. **Hacer preguntas solo cuando sean necesarias** para avanzar con precisión.\n\n---\n\n## Límites y estilo\n- No inventar información del negocio.  \n- Si falta un dato clave, preguntar brevemente.  \n- No dar asesoramiento legal, fiscal, médico o financiero complejo.  \n- Español claro, argentino, profesional y cercano.  \n- Respuestas **estructuradas, accionables, y sin tecnicismos innecesarios**.  \n- Mantener tono de consultor que escucha, analiza y orienta.  \n- Si la consulta es vaga, ayudar a **acotar y priorizar**.\n\n---\n\n## Guía de trabajo (flujo obligatorio)\n1. **Identificar intención y contexto** del mensaje.  \n2. **Revisar si la información recibida es suficiente.**  \n   - Si no lo es, pedir aclaración puntual.  \n3. **Analizar procesos del usuario** (implícitos o mencionados).  \n4. **Detectar oportunidades de automatización o IA**.  \n5. **Diseñar una propuesta concreta**, por ejemplo:  \n   - Workflow sugerido  \n   - Integraciones posibles  \n   - Tareas a automatizar  \n   - Mejoras de proceso  \n   - Recomendaciones de herramientas  \n6. **Explicar beneficios esperables** de la automatización.  \n7. **Ofrecer un próximo paso claro** (qué hacer ahora).\n\n---\n\n## Temas permitidos\n- IA aplicada a procesos internos.  \n- Automatizaciones con no-code/low-code.  \n- Optimización operativa.  \n- Procesos de ventas y marketing automatizados.  \n- Chatbots, agentes y asistentes inteligentes.  \n- Integraciones entre herramientas.  \n- Diseño de sistemas escalables.\n\n---\n\n## Herramientas Disponibles\n- **actualizarDescripcionNegocio**:\nDebes usar esta herramienta para dejar impactada la información que obtienes de la consultoría. Enfocado en la descripcion del negocio y de los problemas actuales que tiene.\n\n- **actualizarSolucionesNegocio**:\nDebes usar esta herramienta para dejar impactadas posibles soluciones a los problemas actuales que tiene el negocio.\n\n---\n\n## Prohibido\n- Afirmaciones técnicas absolutas sin aclaración.  \n- Inventar datos o supuestos sin preguntar.  \n- Dar recomendaciones legales, fiscales o de inversiones.  \n- Describir herramientas internas o procesos ocultos.  \n- Prometer resultados garantizados.\n\n---\n\n## Formato de salida\n- **Respuesta directa** en 1–2 frases iniciales.  \n- Luego, explicación y análisis breve.  \n- Finalmente, un **plan de acción claro** en pasos o bullets.  \n- Si falta info clave, pedirla con una pregunta concreta y amable."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        4752,
+        832
+      ],
+      "id": "4f3536f2-66e6-4dff-8cd8-9f4c35935332",
+      "name": "Roberto (Consultor en IA)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b8295527-a9b0-483a-9c77-0618e67936db",
+              "leftValue": "={{ $('Search in client table').first().json.status }}",
+              "rightValue": "Activo",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        784
+      ],
+      "id": "6ff84302-a53a-4c3c-a35b-24bfb1fc2f82",
+      "name": "Solo Activos"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3744,
+        1040
+      ],
+      "id": "e2ae0654-7d0f-45bd-b2ab-7527316a0f5b",
+      "name": "Wait",
+      "webhookId": "70640410-8beb-4e07-86ee-84e884b4da79"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Cargar descripción del negocio del usuario\nUna vez tengas suficiente informacion para describir el negocio del usuario, usar esta herramienta para cargar la información",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4u5PbXIhY3vtHL",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX/tbl4u5PbXIhY3vtHL"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $('Search in client table').item.json.phone }}",
+            "business_description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('business_description', `Debes describir extensivamente el negocio del cliente, luego de haber obtenido una buena cantidad de información.`, 'string') }}"
+          },
+          "matchingColumns": [
+            "phone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Activo",
+                  "value": "Activo"
+                },
+                {
+                  "name": "Inactivo",
+                  "value": "Inactivo"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "business_description",
+              "displayName": "business_description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "record_id",
+              "displayName": "record_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "possible_solutions",
+              "displayName": "possible_solutions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Acumulación de mensajes",
+              "displayName": "Acumulación de mensajes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Message Buffer",
+              "displayName": "Message Buffer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Conversation Sessions",
+              "displayName": "Conversation Sessions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Conversation Sessions 2",
+              "displayName": "Conversation Sessions 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Message Buffer 2",
+              "displayName": "Message Buffer 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        4944,
+        1056
+      ],
+      "id": "3c40d9ca-9314-42c6-9835-9b1920d117f4",
+      "name": "actualizarDescripcionNegocio",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Cargar posibles soluciones a los problemas del negocio del usuario\nUna vez tengas suficiente informacion para plantear soluciones, usar esta herramienta para cargar la información",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4u5PbXIhY3vtHL",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX/tbl4u5PbXIhY3vtHL"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $('Search in client table').item.json.phone }}",
+            "possible_solutions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('possible_solutions', `Listado de posibles soluciones y automatizaciones a implementar en la empresa o en el negocio discutido.`, 'string') }}"
+          },
+          "matchingColumns": [
+            "phone"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Activo",
+                  "value": "Activo"
+                },
+                {
+                  "name": "Inactivo",
+                  "value": "Inactivo"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "business_description",
+              "displayName": "business_description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "record_id",
+              "displayName": "record_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "possible_solutions",
+              "displayName": "possible_solutions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Acumulación de mensajes",
+              "displayName": "Acumulación de mensajes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Message Buffer",
+              "displayName": "Message Buffer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Conversation Sessions",
+              "displayName": "Conversation Sessions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Conversation Sessions 2",
+              "displayName": "Conversation Sessions 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Message Buffer 2",
+              "displayName": "Message Buffer 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        5184,
+        1056
+      ],
+      "id": "2f6a6749-04ca-4955-9807-ed298d96b696",
+      "name": "actualizarSolucionesNegocio",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Search in client table').first().json.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        4704,
+        1056
+      ],
+      "id": "ce5347a9-ebdb-4c24-b577-442b4bffc30c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6469ab57-1c87-4049-b25f-2a6328ac199c",
+              "name": "succes",
+              "value": "succes",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1072,
+        224
+      ],
+      "id": "17ad957e-f492-460e-ae7c-1c2708d1efb6",
+      "name": "succes",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "content": "## /reset",
+        "height": 356,
+        "width": 1184,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        352,
+        144
+      ],
+      "id": "06fbd6f6-9449-4474-a541-2ccc18fdcaec",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Webhook').item.json.body.server_url }}/message/sendText/{{ $('Webhook').item.json.body.instance }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "apikey",
+              "value": "[TU_API_KEY_AQUI]"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Obtener RemoteJid').item.json.primaryJid }}"
+            },
+            {
+              "name": "text",
+              "value": "=Memoria reseteada correctamente"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1296,
+        224
+      ],
+      "id": "76e0a196-0b8d-416c-94cf-fd1450bea95f",
+      "name": "Enviar aviso de reset"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7wOU574mXYTKvX",
+          "mode": "list",
+          "cachedResultName": "Roberto - Consultor IA",
+          "cachedResultUrl": "https://airtable.com/app7wOU574mXYTKvX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4u5PbXIhY3vtHL",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/appPzXptrRQ1RXzWA/tbl4u5PbXIhY3vtHL"
+        },
+        "filterByFormula": "={phone}=\"{{ $json.phone }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        224
+      ],
+      "id": "d22a055e-54fb-4c2c-9709-99bd6ff27bcd",
+      "name": "search client record_id",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "RWJIYEyCacdQERUF",
+          "name": "Universal Workspaces Franco"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3280,
+        848
+      ],
+      "id": "d99e9183-6b2d-4c08-affd-52db4ad226be",
+      "name": "10seg",
+      "webhookId": "77955021-295c-42cb-ac40-4180332b2fda"
+    },
+    {
+      "parameters": {
+        "mode": "delete",
+        "deleteMode": "all"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        624,
+        224
+      ],
+      "id": "c8d81085-d442-452a-8f6b-4dd39f7db999",
+      "name": "Chat Memory Manager"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('search client record_id').first().json.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        544,
+        384
+      ],
+      "id": "7cabdec2-ccb4-4a73-b098-65e9468fb9fd",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nEn este último nodo debes insertar tu API KEY de Evolution donde dice [TU_API_KEY_AQUI]",
+        "height": 224,
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6048,
+        592
+      ],
+      "typeVersion": 1,
+      "id": "5e1a59c3-9cfb-44a3-94c8-fcd26c9cd745",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nEn estos dos nodos debes insertar tu API KEY de Evolution donde dice [TU_API_KEY_AQUI]",
+        "height": 224,
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1040,
+        1280
+      ],
+      "typeVersion": 1,
+      "id": "cd607ff4-2951-46ab-8912-2b4e9b378a3c",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        336,
+        944
+      ],
+      "typeVersion": 1,
+      "id": "5e21e42b-a54e-4dd7-9103-b1ba9b1c6257",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        384,
+        48
+      ],
+      "typeVersion": 1,
+      "id": "fa75253d-6d01-4c06-a3ee-269e1f155689",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nEn este último nodo debes insertar tu API KEY de Evolution donde dice [TU_API_KEY_AQUI]",
+        "height": 224,
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1264,
+        -32
+      ],
+      "typeVersion": 1,
+      "id": "45c1276c-5523-47e2-b788-e20d7b91a49f",
+      "name": "Sticky Note16"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2160,
+        1136
+      ],
+      "typeVersion": 1,
+      "id": "e2822896-55d5-48d1-91b0-b6232127e6f4",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2608,
+        1136
+      ],
+      "typeVersion": 1,
+      "id": "06a36113-37db-41f9-8bb5-aed1b247ba14",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3472,
+        1040
+      ],
+      "typeVersion": 1,
+      "id": "557bc380-60b2-49a7-ac50-e5eca642f72f",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3920,
+        1200
+      ],
+      "typeVersion": 1,
+      "id": "2fbcbbe0-0901-4e25-962d-087b8438fc97",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5152,
+        1248
+      ],
+      "typeVersion": 1,
+      "id": "512d23d4-49b2-4de6-a099-d6ba6f6de5a0",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "content": "## Atención:\n\nSettear credenciales en este nodo de airtable",
+        "width": 166
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4896,
+        1248
+      ],
+      "typeVersion": 1,
+      "id": "6e2507ae-f74d-48d2-82d0-4b894c8f6efa",
+      "name": "Sticky Note15"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.robusystems.xyz",
+            "user-agent": "axios/1.12.2",
+            "content-length": "1407",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "n8n.robusystems.xyz",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "b220f96a5129",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "ROBUFrancoRicci",
+            "data": {
+              "key": {
+                "remoteJid": "5491133103806@s.whatsapp.net",
+                "remoteJidAlt": "176909870727203@lid",
+                "fromMe": false,
+                "id": "3F13025C2E0C283C9E7F",
+                "participant": "",
+                "addressingMode": "pn"
+              },
+              "pushName": "Franco",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyIndexes": [],
+                    "recipientKeyIndexes": [],
+                    "senderKeyHash": {
+                      "0": 179,
+                      "1": 131,
+                      "2": 236,
+                      "3": 222,
+                      "4": 93,
+                      "5": 235,
+                      "6": 235,
+                      "7": 247,
+                      "8": 61,
+                      "9": 168
+                    },
+                    "senderTimestamp": {
+                      "low": 1763432896,
+                      "high": 0,
+                      "unsigned": true
+                    },
+                    "recipientKeyHash": {
+                      "0": 2,
+                      "1": 244,
+                      "2": 30,
+                      "3": 4,
+                      "4": 78,
+                      "5": 187,
+                      "6": 15,
+                      "7": 121,
+                      "8": 224,
+                      "9": 159
+                    },
+                    "recipientTimestamp": {
+                      "low": 1763401381,
+                      "high": 0,
+                      "unsigned": true
+                    }
+                  },
+                  "deviceListMetadataVersion": 2
+                },
+                "conversation": "tengo una consulta"
+              },
+              "contextInfo": {
+                "mentionedJid": [],
+                "groupMentions": [],
+                "expiration": 0,
+                "ephemeralSettingTimestamp": {
+                  "low": 0,
+                  "high": 0,
+                  "unsigned": false
+                },
+                "disappearingMode": {
+                  "initiator": 0
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1764255747,
+              "instanceId": "34f5dc3b-627d-4740-8000-9d274eaa6dec",
+              "source": "desktop",
+              "chatwootMessageId": 1473818,
+              "chatwootInboxId": 60,
+              "chatwootConversationId": 1470
+            },
+            "destination": "https://n8n.robusystems.xyz/webhook/e1c6a8ee-9dae-40f8-be51-5bfe49899cf3",
+            "date_time": "2025-11-27T12:02:28.718Z",
+            "sender": "5491173582942@s.whatsapp.net",
+            "server_url": "https://evolution.robusystems.xyz",
+            "apikey": "56E2779D-7615-4760-9CFA-0FBB2CB3AEBB"
+          },
+          "webhookUrl": "https://n8n.robusystems.xyz/webhook/e1c6a8ee-9dae-40f8-be51-5bfe49899cf3",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Descargar imagen": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Analizar imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Transcribir audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tipo de input": {
+      "main": [
+        [
+          {
+            "node": "Input texto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Descargar audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Descargar imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar audio": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribir audio": {
+      "main": [
+        [
+          {
+            "node": "Input audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analizar imagen": {
+      "main": [
+        [
+          {
+            "node": "Input imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input texto": {
+      "main": [
+        [
+          {
+            "node": "Input en limpio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input audio": {
+      "main": [
+        [
+          {
+            "node": "Input en limpio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input imagen": {
+      "main": [
+        [
+          {
+            "node": "Input en limpio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input en limpio": {
+      "main": [
+        [
+          {
+            "node": "Upload Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set remoteJid": {
+      "main": [
+        [
+          {
+            "node": "/reset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search in client table": {
+      "main": [
+        [
+          {
+            "node": "Solo Activos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT-4.1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Roberto (Consultor en IA)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set session data": {
+      "main": [
+        [
+          {
+            "node": "Roberto (Consultor en IA)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Borrar \"¡\" y \"¿\"": {
+      "main": [
+        [
+          {
+            "node": "Espera",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espera": {
+      "main": [
+        [
+          {
+            "node": "Enviar respuesta al usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtener RemoteJid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/reset": {
+      "main": [
+        [
+          {
+            "node": "search client record_id",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Search in client table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5seg": {
+      "main": [
+        [
+          {
+            "node": "Get First Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Message": {
+      "main": [
+        [
+          {
+            "node": "5seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get First Message": {
+      "main": [
+        [
+          {
+            "node": "¿First of list?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿First of list?": {
+      "main": [
+        [
+          {
+            "node": "10seg",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Messages": {
+      "main": [
+        [
+          {
+            "node": "Merge Messages",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Messages": {
+      "main": [
+        [
+          {
+            "node": "De-Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "De-Duplicate": {
+      "main": [
+        [
+          {
+            "node": "set session data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener RemoteJid": {
+      "main": [
+        [
+          {
+            "node": "Set remoteJid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Roberto (Consultor en IA)": {
+      "main": [
+        [
+          {
+            "node": "Borrar \"¡\" y \"¿\"",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Solo Activos": {
+      "main": [
+        [
+          {
+            "node": "Tipo de input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Delete Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "actualizarDescripcionNegocio": {
+      "ai_tool": [
+        [
+          {
+            "node": "Roberto (Consultor en IA)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "actualizarSolucionesNegocio": {
+      "ai_tool": [
+        [
+          {
+            "node": "Roberto (Consultor en IA)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Roberto (Consultor en IA)",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "succes": {
+      "main": [
+        [
+          {
+            "node": "Enviar aviso de reset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search client record_id": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10seg": {
+      "main": [
+        [
+          {
+            "node": "Get Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "succes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e1a1cd81-c134-4849-aca4-a4cee69cdaec",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9ff18f4d3c66b36b3fcfd7be3b3e7bb5a2eaf71cc2e313e21c556413856c9b34"
+  },
+  "id": "jwjWFCpcIFKHf0NB",
+  "tags": []
+}

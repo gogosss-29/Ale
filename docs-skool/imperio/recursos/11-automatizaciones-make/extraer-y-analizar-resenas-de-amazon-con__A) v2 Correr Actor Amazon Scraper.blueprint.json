@@ -1,0 +1,152 @@
+{
+    "name": "A) v2 Correr Actor Amazon Scraper",
+    "flow": [
+        {
+            "id": 1,
+            "module": "apify:runActorNew",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 3525154
+            },
+            "mapper": {
+                "actor_search_type": "user",
+                "runSync": false,
+                "actorId": "R8WeJwLuzLZ6g4Bkk",
+                "inputBodyR8WeJwLuzLZ6g4Bkk": "{\r\n    \"deduplicateRedirectedAsins\": true,\r\n    \"filterByRatings\": [\r\n        \"twoStar\"\r\n    ],\r\n    \"includeGdprSensitive\": false,\r\n    \"maxReviews\": 20,\r\n    \"productUrls\": [\r\n        {\r\n            \"url\": \"https://www.amazon.com/Atomic-Habits-James-Clear-audiobook/dp/B07RFSSYBH/ref=sr_1_1?crid=7D8ZHBO146MD&dib=eyJ2IjoiMSJ9.f40BjO3UpSUHUPMm8WsQZBu9cDFBpVvAiyuKUbODRL3GxLzh9hLVYyQlHAjPj4gF8UTrpYManajRRpKsxFytlAaurM701-zQXKOr3MO_WujVXWuleUpiiOCYdpCs2C7v2XBQ3wDZ-HafQf3RLUAQTZZUZdKY-XJKaKzAj0B5dmRtcZ_udMGZxuZp8Qy6s8jeSC0tyQxzAiOyOXfT1OKYuEBiiZeN6GNA-UPFvodpWzo.pWOHGzZjXsbZFL_Jm_74tEATIpBKLqiNOq5HboOvEz4&dib_tag=se&keywords=atomic+habits&qid=1755036495&sprefix=atomic+habi%2Caps%2C248&sr=8-1#averageCustomerReviewsAnchor\",\r\n            \"method\": \"GET\"\r\n        }\r\n    ],\r\n    \"reviewsAlwaysSaveCategoryData\": false,\r\n    \"reviewsUseProductVariantFilter\": false,\r\n    \"scrapeProductDetails\": false\r\n}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0,
+                    "name": "Correr el Actor"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "My Apify connection",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "apify"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "actor_search_type": {
+                            "label": "Recently used Actors"
+                        },
+                        "runSync": {
+                            "mode": "chose"
+                        },
+                        "memory": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "actorId": {
+                            "mode": "chose",
+                            "label": "Amazon Reviews Scraper (junglee/amazon-reviews-scraper)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:apify2,apify",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "actor_search_type",
+                        "type": "select",
+                        "label": "Search Actors from",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "user",
+                                "store"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "runSync",
+                        "type": "boolean",
+                        "label": "Run synchronously",
+                        "required": true
+                    },
+                    {
+                        "name": "build",
+                        "type": "text",
+                        "label": "Build"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout"
+                    },
+                    {
+                        "name": "memory",
+                        "type": "select",
+                        "label": "Memory",
+                        "validate": {
+                            "enum": [
+                                128,
+                                256,
+                                512,
+                                1024,
+                                2048,
+                                4096,
+                                8192,
+                                16384,
+                                32768
+                            ]
+                        }
+                    },
+                    {
+                        "name": "actorId",
+                        "type": "select",
+                        "label": "Actor",
+                        "required": true
+                    },
+                    {
+                        "name": "inputBodyR8WeJwLuzLZ6g4Bkk",
+                        "type": "text",
+                        "label": "Input JSON",
+                        "required": true
+                    },
+                    {
+                        "name": "maxTotalChargeUsd",
+                        "type": "number",
+                        "label": "Maximum cost per run"
+                    },
+                    {
+                        "name": "maxItems",
+                        "type": "hidden",
+                        "label": "Maximum charged results"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com",
+        "notes": []
+    }
+}

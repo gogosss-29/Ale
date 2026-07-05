@@ -1,0 +1,807 @@
+{
+    "name": "donna_revisar_disponibilidad",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-calendar:searchEvents",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 3536499
+            },
+            "mapper": {
+                "limit": "10",
+                "timeMax": "{{var.input.fecha_termino}}",
+                "timeMin": "{{var.input.fecha_inicio}}",
+                "calendar": "becord00@gmail.com",
+                "singleEvents": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0,
+                    "name": "Buscar Eventos"
+                },
+                "restore": {
+                    "expect": {
+                        "orderBy": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "calendar": {
+                            "mode": "chose",
+                            "label": "becord00@gmail.com (Primary Calendar)"
+                        },
+                        "eventTypes": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (becord00@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "calendar",
+                        "type": "select",
+                        "label": "Calendar ID",
+                        "required": true
+                    },
+                    {
+                        "name": "timeMin",
+                        "time": true,
+                        "type": "date",
+                        "label": "Start Date"
+                    },
+                    {
+                        "name": "timeMax",
+                        "time": true,
+                        "type": "date",
+                        "label": "End Date"
+                    },
+                    {
+                        "name": "updatedMin",
+                        "time": true,
+                        "type": "date",
+                        "label": "Updated from"
+                    },
+                    {
+                        "name": "singleEvents",
+                        "type": "boolean",
+                        "label": "Single Events",
+                        "required": true
+                    },
+                    {
+                        "name": "q",
+                        "type": "text",
+                        "label": "Query"
+                    },
+                    {
+                        "name": "eventTypes",
+                        "type": "select",
+                        "label": "Event Types",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "default",
+                                "fromGmail",
+                                "focusTime",
+                                "outOfOffice",
+                                "workingLocation"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "type": "select",
+                        "label": "Order By",
+                        "validate": {
+                            "enum": [
+                                "startTime",
+                                "updated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "kind",
+                        "type": "text",
+                        "label": "Kind"
+                    },
+                    {
+                        "name": "etag",
+                        "type": "text",
+                        "label": "Etag"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Event ID"
+                    },
+                    {
+                        "name": "status",
+                        "type": "text",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "htmlLink",
+                        "type": "text",
+                        "label": "Html Link"
+                    },
+                    {
+                        "name": "description",
+                        "type": "text",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "location",
+                        "type": "text",
+                        "label": "Location"
+                    },
+                    {
+                        "name": "created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "updated",
+                        "type": "date",
+                        "label": "Updated"
+                    },
+                    {
+                        "name": "summary",
+                        "type": "text",
+                        "label": "Summary"
+                    },
+                    {
+                        "name": "creator",
+                        "spec": [
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "self",
+                                "type": "boolean",
+                                "label": "Self"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Creator"
+                    },
+                    {
+                        "name": "organizer",
+                        "spec": [
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "self",
+                                "type": "boolean",
+                                "label": "Self"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Organizer"
+                    },
+                    {
+                        "name": "start",
+                        "type": "date",
+                        "label": "Start"
+                    },
+                    {
+                        "name": "end",
+                        "type": "date",
+                        "label": "End"
+                    },
+                    {
+                        "name": "recurrence",
+                        "type": "array",
+                        "label": "Recurrence"
+                    },
+                    {
+                        "name": "recurringEventId",
+                        "type": "text",
+                        "label": "Recurring Event ID"
+                    },
+                    {
+                        "name": "originalStartTime",
+                        "spec": [
+                            {
+                                "name": "dateTime",
+                                "time": true,
+                                "type": "date",
+                                "label": "Date Time"
+                            },
+                            {
+                                "name": "timeZone",
+                                "type": "text",
+                                "label": "Time Zone"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Original Start Time"
+                    },
+                    {
+                        "name": "transparency",
+                        "type": "text",
+                        "label": "Transparency"
+                    },
+                    {
+                        "name": "iCalUID",
+                        "type": "text",
+                        "label": "I Cal UID"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "number",
+                        "label": "Sequence"
+                    },
+                    {
+                        "name": "attendees",
+                        "spec": [
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "self",
+                                "type": "boolean",
+                                "label": "Self"
+                            },
+                            {
+                                "name": "organizer",
+                                "type": "boolean",
+                                "label": "Organizer"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Display Name"
+                            },
+                            {
+                                "name": "responseStatus",
+                                "type": "text",
+                                "label": "Response Status"
+                            },
+                            {
+                                "name": "optional",
+                                "type": "boolean",
+                                "label": "Optional"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attendees"
+                    },
+                    {
+                        "name": "guestsCanInviteOthers",
+                        "type": "boolean",
+                        "label": "Guests Can Invite Others"
+                    },
+                    {
+                        "name": "hangoutLink",
+                        "type": "url",
+                        "label": "Hangout Link"
+                    },
+                    {
+                        "name": "conferenceData",
+                        "spec": [
+                            {
+                                "name": "createRequest",
+                                "spec": [
+                                    {
+                                        "name": "requestId",
+                                        "type": "text",
+                                        "label": "Request ID"
+                                    },
+                                    {
+                                        "name": "conferenceSolutionKey",
+                                        "spec": [
+                                            {
+                                                "name": "type",
+                                                "type": "text",
+                                                "label": "Type"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Conference Solution Key"
+                                    },
+                                    {
+                                        "name": "status",
+                                        "spec": [
+                                            {
+                                                "name": "statusCode",
+                                                "type": "text",
+                                                "label": "Status Code"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Status"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Create Request"
+                            },
+                            {
+                                "name": "entryPoints",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "entryPointType",
+                                            "type": "text",
+                                            "label": "Entry Point Type"
+                                        },
+                                        {
+                                            "name": "uri",
+                                            "type": "text",
+                                            "label": "Uri"
+                                        },
+                                        {
+                                            "name": "label",
+                                            "type": "text",
+                                            "label": "Label"
+                                        }
+                                    ],
+                                    "type": "collection"
+                                },
+                                "type": "array",
+                                "label": "Entry Points"
+                            },
+                            {
+                                "name": "conferenceSolution",
+                                "spec": [
+                                    {
+                                        "name": "key",
+                                        "spec": [
+                                            {
+                                                "name": "type",
+                                                "type": "text",
+                                                "label": "Type"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Key"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "iconUri",
+                                        "type": "text",
+                                        "label": "Icon Uri"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Conference Solution"
+                            },
+                            {
+                                "name": "conferenceId",
+                                "type": "text",
+                                "label": "Conference ID"
+                            },
+                            {
+                                "name": "signature",
+                                "type": "text",
+                                "label": "Signature"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Conference Data"
+                    },
+                    {
+                        "name": "reminders",
+                        "spec": [
+                            {
+                                "name": "useDefault",
+                                "type": "boolean",
+                                "label": "Use Default"
+                            },
+                            {
+                                "name": "overrides",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "method",
+                                            "type": "text",
+                                            "label": "Method"
+                                        },
+                                        {
+                                            "name": "minutes",
+                                            "type": "number",
+                                            "label": "Minutes"
+                                        }
+                                    ],
+                                    "type": "collection"
+                                },
+                                "type": "array",
+                                "label": "Overrides"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Reminders"
+                    },
+                    {
+                        "name": "eventType",
+                        "type": "text",
+                        "label": "Event Type"
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "text",
+                        "label": "Visibility"
+                    },
+                    {
+                        "name": "outOfOfficeProperties",
+                        "spec": [
+                            {
+                                "name": "autoDeclineMode",
+                                "type": "text",
+                                "label": "Auto Decline Mode"
+                            },
+                            {
+                                "name": "declineMessage",
+                                "type": "text",
+                                "label": "Decline Message"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Out of Office Properties"
+                    },
+                    {
+                        "name": "guestsCanSeeOtherGuests",
+                        "type": "boolean",
+                        "label": "Guests Can See Other Guests"
+                    },
+                    {
+                        "name": "attachments",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "fileUrl",
+                                    "type": "url",
+                                    "label": "File URL"
+                                },
+                                {
+                                    "name": "title",
+                                    "type": "text",
+                                    "label": "Title"
+                                },
+                                {
+                                    "name": "mimeType",
+                                    "type": "text",
+                                    "label": "Mime Type"
+                                },
+                                {
+                                    "name": "iconLink",
+                                    "type": "url",
+                                    "label": "Icon Link"
+                                },
+                                {
+                                    "name": "fileId",
+                                    "type": "text",
+                                    "label": "File ID"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Attachments"
+                    },
+                    {
+                        "name": "workingLocationProperties",
+                        "spec": [
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "officeLocation",
+                                "type": "collection",
+                                "label": "Office Location"
+                            },
+                            {
+                                "name": "homeOffice",
+                                "type": "collection",
+                                "label": "Home Office"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Working Location Properties"
+                    },
+                    {
+                        "name": "colorId",
+                        "type": "text",
+                        "label": "Color ID"
+                    },
+                    {
+                        "name": "guestsCanModify",
+                        "type": "boolean",
+                        "label": "Guests Can Modify"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "util:GetVariable2",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "name": "eventos"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0,
+                    "name": "Recuperando Variable"
+                },
+                "restore": {},
+                "expect": [
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Variable name",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "eventos",
+                        "type": "any",
+                        "label": "eventos"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "util:SetVariable2",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "name": "evento",
+                "scope": "roundtrip",
+                "value": "{{1.summary}} el {{1.start}} a {{1.end}} . (Recuerda que debes modificar este tiempo a 6 horas menos, porque esta no es la hora en Chile. A la hora, restale 6 horas.)"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0,
+                    "name": "Evento unico"
+                },
+                "restore": {
+                    "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Variable name",
+                        "required": true
+                    },
+                    {
+                        "name": "scope",
+                        "type": "select",
+                        "label": "Variable lifetime",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "roundtrip",
+                                "execution"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "label": "Variable value"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "evento",
+                        "type": "any",
+                        "label": "evento"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "util:SetVariable2",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "name": "eventos",
+                "scope": "roundtrip",
+                "value": "{{7.evento}}\n{{5.eventos}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0,
+                    "name": "Combinacion eventos"
+                },
+                "restore": {
+                    "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Variable name",
+                        "required": true
+                    },
+                    {
+                        "name": "scope",
+                        "type": "select",
+                        "label": "Variable lifetime",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "roundtrip",
+                                "execution"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "label": "Variable value"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "eventos",
+                        "type": "any",
+                        "label": "eventos"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 8,
+            "module": "scenario-service:ReturnData",
+            "version": 2,
+            "parameters": {},
+            "filter": {
+                "name": "si estan todos",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{1.`__IMTINDEX__`}}",
+                            "b": "{{1.`__IMTLENGTH__`}}",
+                            "o": "text:equal"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "respuesta_disponibilidad": "{{9.eventos}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0,
+                    "name": "Devolver Info"
+                },
+                "restore": {},
+                "expect": [
+                    {
+                        "name": "respuesta_disponibilidad",
+                        "type": "text",
+                        "label": ""
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com",
+        "notes": []
+    },
+    "io": {
+        "input_spec": [
+            {
+                "help": "inicio de la fecha del periodo en formato DD.MM.YYYY HH:mm",
+                "name": "fecha_inicio",
+                "type": "text",
+                "label": "",
+                "default": "00:00",
+                "required": true,
+                "multiline": false
+            },
+            {
+                "help": "termino de la fecha del periodo en formato DD.MM.YYYY HH:mm (si no la tenemos pero tenemos la duracion, podemos hacer fecha_inicio + duracion)",
+                "name": "fecha_termino",
+                "type": "text",
+                "label": "",
+                "default": "23:59",
+                "required": false,
+                "multiline": false
+            }
+        ],
+        "output_spec": [
+            {
+                "help": "respuesta a dispnibilidad de calendario",
+                "name": "respuesta_disponibilidad",
+                "type": "text",
+                "label": "",
+                "default": "",
+                "required": false,
+                "multiline": false
+            }
+        ]
+    }
+}
