@@ -11,6 +11,7 @@ import {Estilo11Deriva, estilo11DerivaSchema, estilo11DerivaDefaults} from './Es
 import {ReelAssembly, reelAssemblySchema, reelAssemblyDefaults, calcReelMetadata} from './ReelAssembly';
 import {CrudosCaptioned, crudosSchema, crudosDefaults} from './CrudosCaptioned';
 import {CrudosEnhanced, crudosEnhancedSchema, crudosEnhancedDefaults} from './CrudosEnhanced';
+import {EditedVideo, editedVideoSchema, editedVideoDefaults} from './EditedVideo';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -170,6 +171,21 @@ export const Root: React.FC = () => {
         height={1920}
         calculateMetadata={({props}) => ({
           durationInFrames: Math.ceil((props.durationMs / 1000) * 30),
+        })}
+      />
+      {/* ⚙️ SISTEMA · motor de edición genérico data-driven (recibe un EditMap) */}
+      <Composition
+        id="EditedVideo"
+        component={EditedVideo}
+        schema={editedVideoSchema}
+        defaultProps={editedVideoDefaults}
+        durationInFrames={1912}
+        fps={30}
+        width={1080}
+        height={1920}
+        calculateMetadata={({props}) => ({
+          durationInFrames: Math.ceil((props.durationMs / 1000) * props.fps),
+          fps: props.fps,
         })}
       />
     </>

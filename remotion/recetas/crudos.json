@@ -1,0 +1,16 @@
+{
+  "brand": "CEREBRO",
+  "captionPreset": "marca",
+  "lang": "es",
+  "model": "medium",
+  "beats": [
+    {"kind": "overlay", "type": "topLabel", "atSec": 0, "dur": 4.5, "props": {"text": "Fondo Beltrán Briones"}},
+    {"kind": "overlay", "type": "numberCallout", "at": "45 millones", "dur": 3.4, "props": {"prefix": "US$", "value": 45, "suffix": "MILLONES"}},
+    {"kind": "overlay", "type": "barsLabel", "at": "invertir en propiedades", "dur": 3.3, "props": {"label": "Propiedades · Buenos Aires"}},
+    {"kind": "overlay", "type": "chip", "at": "cada tres meses", "lead": 0.4, "dur": 3.2, "props": {"text": "CADA 3 MESES", "sub": "Alquileres"}},
+    {"kind": "overlay", "type": "arrowChips", "at": "tiene liquidez", "dur": 4.0, "props": {"items": [{"label": "ENTRAR", "dir": "in"}, {"label": "SALIR", "dir": "out"}]}},
+    {"kind": "overlay", "type": "bigBadge", "at": "dólar se va a escapar", "dur": 2.2, "props": {"text": "US$ ↑"}},
+    {"kind": "behind", "graphic": "risingLine", "at": "propiedades suban de valor", "dur": 3.7, "props": {"curva": "ancha"}},
+    {"kind": "behind", "graphic": "risingLine", "at": "subieron un montón", "dur": 4.2, "props": {"curva": "empinada"}}
+  ]
+}
