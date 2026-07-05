@@ -25,20 +25,22 @@ const s = (seg: number) => Math.round(seg * FPS);
 export const crudosEnhancedSchema = crudosSchema;
 export const crudosEnhancedDefaults = {...captionedClipDefaults, videoSrc: 'clips/crudos.mp4'};
 
-// Ventana "detrás": línea verde creciente cuando dice "las propiedades suban de valor".
-// Recortes segmentados en public/crudos-person/f-0519..0629.png (30fps).
-const W1_START_ABS = 519;   // 17.3s
-const W1_COUNT = 111;       // ~3.7s
+// Ventanas "detrás" (línea verde creciente). Recortes segmentados en
+// public/crudos-person/f-<abs>.png (30fps).
+const W1_START_ABS = 519, W1_COUNT = 111;   // 17.3s · "las propiedades suban de valor"
+const W2_START_ABS = 1587, W2_COUNT = 126;  // 52.9s · "van a subir / subieron un montón"
 
-// ─── Línea verde creciente (va DETRÁS de la persona) ─────────────────────────
-const RisingLineBehind: React.FC = () => {
+type Curve = {p0: {x: number; y: number}; p1: {x: number; y: number}; p2: {x: number; y: number}; p3: {x: number; y: number}};
+const CURVE_1: Curve = {p0: {x: 90, y: 1300}, p1: {x: 520, y: 1180}, p2: {x: 720, y: 760}, p3: {x: 1000, y: 540}};
+const CURVE_2: Curve = {p0: {x: 110, y: 1360}, p1: {x: 440, y: 1300}, p2: {x: 780, y: 900}, p3: {x: 1000, y: 500}};
+
+// ─── Línea verde creciente con aura de glow (va DETRÁS de la persona) ─────────
+const RisingLineBehind: React.FC<{count: number; curve: Curve; id: string}> = ({count, curve, id}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const draw = spring({frame, fps, config: {damping: 200}, durationInFrames: 70});
-  const op = interpolate(frame, [0, 8, W1_COUNT - 12, W1_COUNT], [0, 1, 1, 0], {extrapolateRight: 'clamp'});
-  const tipT = draw;
-  // curva ascendente aprox (bezier) evaluada para el punto de la punta
-  const p0 = {x: 90, y: 1300}, p1 = {x: 520, y: 1180}, p2 = {x: 720, y: 760}, p3 = {x: 1000, y: 560};
+  const draw = spring({frame, fps, config: {damping: 200}, durationInFrames: Math.round(count * 0.62)});
+  const op = interpolate(frame, [0, 8, count - 12, count], [0, 1, 1, 0], {extrapolateRight: 'clamp'});
+  const {p0, p1, p2, p3} = curve;
   const bez = (t: number) => {
     const u = 1 - t;
     return {
@@ -46,47 +48,34 @@ const RisingLineBehind: React.FC = () => {
       y: u * u * u * p0.y + 3 * u * u * t * p1.y + 3 * u * t * t * p2.y + t * t * t * p3.y,
     };
   };
-  const tip = bez(tipT);
+  const tip = bez(draw);
+  const d = `M${p0.x} ${p0.y} C${p1.x} ${p1.y} ${p2.x} ${p2.y} ${p3.x} ${p3.y}`;
   return (
     <AbsoluteFill style={{opacity: op}}>
       <svg width="1080" height="1920" viewBox="0 0 1080 1920" style={{position: 'absolute', inset: 0}}>
         <defs>
-          <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={PALETA.verde} stopOpacity="0.42" />
-            <stop offset="100%" stopColor={PALETA.verde} stopOpacity="0" />
-          </linearGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="7" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+          <filter id={`glow-${id}`} x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="9" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
-        {/* área bajo la curva (se revela con la línea) */}
-        <path
-          d={`M${p0.x} ${p0.y} C${p1.x} ${p1.y} ${p2.x} ${p2.y} ${p3.x} ${p3.y} L${tip.x} 1920 L${p0.x} 1920 Z`}
-          fill="url(#area)"
-          opacity={draw}
-        />
-        {/* línea creciente */}
-        <path
-          d={`M${p0.x} ${p0.y} C${p1.x} ${p1.y} ${p2.x} ${p2.y} ${p3.x} ${p3.y}`}
-          fill="none"
-          stroke={PALETA.verde}
-          strokeWidth={14}
-          strokeLinecap="round"
-          pathLength={1}
-          strokeDasharray={1}
-          strokeDashoffset={1 - draw}
-          filter="url(#glow)"
-        />
+        {/* aura ancha, muy transparente */}
+        <path d={d} fill="none" stroke={PALETA.verde} strokeWidth={44} strokeLinecap="round" opacity={0.16}
+          pathLength={1} strokeDasharray={1} strokeDashoffset={1 - draw} style={{filter: `blur(6px)`}} />
+        {/* línea principal */}
+        <path d={d} fill="none" stroke={PALETA.verde} strokeWidth={13} strokeLinecap="round"
+          pathLength={1} strokeDasharray={1} strokeDashoffset={1 - draw} filter={`url(#glow-${id})`} />
         {/* punta */}
-        <circle cx={tip.x} cy={tip.y} r={16} fill={PALETA.verde} filter="url(#glow)" />
+        <circle cx={tip.x} cy={tip.y} r={15} fill="#EAFFF2" stroke={PALETA.verde} strokeWidth={6} filter={`url(#glow-${id})`} />
       </svg>
     </AbsoluteFill>
   );
 };
 
-// ─── Recorte de persona (para ese tramo) ─────────────────────────────────────
-const PersonCutout: React.FC = () => {
+// ─── Recorte de persona (para un tramo) ──────────────────────────────────────
+const PersonCutout: React.FC<{startAbs: number; count: number}> = ({startAbs, count}) => {
   const frame = useCurrentFrame();
-  const idx = Math.min(W1_COUNT - 1, Math.max(0, frame));
-  const name = `crudos-person/f-${String(W1_START_ABS + idx).padStart(4, '0')}.png`;
+  const idx = Math.min(count - 1, Math.max(0, frame));
+  const name = `crudos-person/f-${String(startAbs + idx).padStart(4, '0')}.png`;
   return <Img src={staticFile(name)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}} />;
 };
 
@@ -152,10 +141,15 @@ export const CrudosEnhanced: React.FC<import('zod').infer<typeof crudosEnhancedS
       {/* 1 · video de base */}
       <OffthreadVideo src={staticFile(videoSrc)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
 
-      {/* 2+3 · gráfico DETRÁS + recorte de persona encima (ventana "suban de valor") */}
-      <Sequence from={W1_START_ABS} durationInFrames={W1_COUNT} name="detras:linea-verde">
-        <RisingLineBehind />
-        <PersonCutout />
+      {/* 2+3 · gráfico DETRÁS + recorte de persona encima · ventana 1 "suban de valor" */}
+      <Sequence from={W1_START_ABS} durationInFrames={W1_COUNT} name="detras:suban-de-valor">
+        <RisingLineBehind count={W1_COUNT} curve={CURVE_1} id="w1" />
+        <PersonCutout startAbs={W1_START_ABS} count={W1_COUNT} />
+      </Sequence>
+      {/* ventana 2 "van a subir / subieron un montón" */}
+      <Sequence from={W2_START_ABS} durationInFrames={W2_COUNT} name="detras:van-a-subir">
+        <RisingLineBehind count={W2_COUNT} curve={CURVE_2} id="w2" />
+        <PersonCutout startAbs={W2_START_ABS} count={W2_COUNT} />
       </Sequence>
 
       {/* 4 · apoyos al frente */}
