@@ -42,6 +42,16 @@ Estado y plan de ejecución: ver [`cerebro-agentico/`](cerebro-agentico/) (estad
 vivo, ruta elegida, decisiones). Extracción/re-extracción del curso: `skool/` +
 `docs-skool/METODO-ACCESO-SKOOL.md`.
 
+### ▶️ CÓMO SE ACTIVA EL EQUIPO DE MARKETING (piloto en producción)
+Alexander activa el sistema **abriendo una sesión de Claude Code en este repo
+(esta rama)** y pidiendo en lenguaje natural: *"guion para Invertí sin
+vueltas sobre X"*, *"calendario del mes de [cliente]"*, *"dame de alta el
+cliente Y"*. Eso dispara la skill **`equipo-marketing`** (el Coordinador), que
+carga el expediente del cliente desde `equipo-marketing/clientes/<cliente>/`
+y ejecuta con las reglas guardadas. El paso a paso completo del sistema:
+[`cerebro-agentico/02-SISTEMA-CONTENIDO-MARKETING.md`](cerebro-agentico/02-SISTEMA-CONTENIDO-MARKETING.md).
+Cliente activo: **invertir-sin-vueltas** (guion 001 aprobado 2026-07-06).
+
 ## Objetivo actual
 Generar un **vídeo hablado** (avatar de Alexander moviendo los labios sincronizado
 con su propia voz). Las imágenes ya funcionan; el vídeo quedó pendiente por un
