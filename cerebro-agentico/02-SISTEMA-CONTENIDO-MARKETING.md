@@ -95,9 +95,26 @@ reporta y ajusta → los aprobados realimentan el few-shot del cliente.
   secuencia de 5 correos) del cliente 1. ⚠️ Requiere crear cuentas (gratis hasta
   1000). Los 5 emails se redactan con la estructura del curso (§1.3).
 - **Fase D — Autonomía 24/7:** Media Buyer "Matías" (API Meta) + migrar el
-  equipo al Gran Consejo real (OpenClaw en VPS ~$5/mes + Tailscale, Supabase,
+  equipo al Gran Consejo real (arnés 24/7 en VPS ~$5/mes + Tailscale, Supabase,
   Discord, heartbeats). Empezar con 2 agentes (Coordinador + Guionista) como
   manda la lección 019, no 5 de golpe.
+  - **Elección de arnés (evaluar al llegar acá):** el curso enseñó el Gran
+    Consejo sobre OpenClaw, pero las sesiones más recientes (vibe-coding 005,
+    grabaciones 006) muestran **Hermes** como su evolución: memoria persistente
+    nativa (SQLite de fábrica), pide autorización por Discord antes de ejecutar,
+    dashboard propio, y puede **llamar a Claude Code** (protocolo ACP) para
+    resolver tareas. Síntesis del curso: *"Claude Code es el arnés para
+    desarrollar con vos presente; Hermes y OpenClaw son para correr 24/7 cuando
+    no estás."* La arquitectura del Gran Consejo es la misma con cualquiera
+    (no casarse con la herramienta).
+
+**Nota sobre Obsidian (lección 02/005):** no es una herramienta necesaria — es
+el patrón "LLM Wiki" de Karpathy (markdown interconectado + índice + log, sin
+RAG), y **este repo ya funciona así** (expedientes, cerebro-agentico, índices).
+Obsidian la app es solo un visor opcional del grafo. Sí adoptamos su disciplina
+en los expedientes: índice como entrada, log de cambios, y "lint" periódico
+(conectar archivos huérfanos). Cuando el conocimiento por cliente crezca
+(propuestas, llamadas, resultados), el expediente ES esa wiki.
 
 **Criterio para avanzar de fase:** la anterior funcionó con un cliente real de
 punta a punta. No construir infraestructura antes de necesitarla.
