@@ -23,8 +23,8 @@
 ## Calendario del mes (propuesta del Estratega — gate de Ale)
 | Fecha | Tipo | Pilar | Ángulo/tema | CTA | Estado |
 |---|---|---|---|---|---|
-| ⚠️ | conversión | 3 | Video aguinaldo (pendiente en Notion) | comenta CARTERA | idea |
 | ⚠️ | conversión | 3 | Video personas indemnizadas (pendiente en Notion) | comenta CARTERA | idea |
+| — | ~~conversión~~ | ~~3~~ | ~~Video aguinaldo~~ — **descartado por Ale 2026-07-06** | — | descartado |
 | ⚠️ | autoridad | 1 | Calculadora: $10M → $14,6M (cartera moderada, datos reales) | guardá este video | idea |
 | ⚠️ | autoridad | 2 | ¿Por qué con vos y no con otro? (serie Fase 2) | seguime | idea |
 
