@@ -24,17 +24,26 @@
   asesoramiento (embudo TOFU/MOFU/BOFU ya diseñado; campañas Meta de testeo
   PENDIENTES de lanzar)
 
-## Buyer persona (v1 — inferido del contenido planificado; ⚠️ validar con Ale/Mati)
-- **Quién compra:** argentinos con ahorros ociosos o ingresos extraordinarios
-  que no saben cómo invertir — el contenido apunta explícitamente a: personas
-  que cobran **aguinaldo**, personas **indemnizadas**, ahorristas con ~$10M ARS
-- **Dolores:** la plata pierde contra la inflación; miedo a invertir mal;
-  desconfianza en asesores ("¿por qué con vos y no con otro?" es la Fase 2
-  entera de contenido)
+## Buyer persona (✅ validado por Ale, 2026-07-06)
+Tres segmentos:
+1. **El que sabe pero no hace:** argentinos +30 que conocen sobre inversiones
+   vagamente pero **no invierten**, o invierten pero **sin darle atención**.
+2. **El ahorrista de sueldo:** argentinos con ahorros producto de su sueldo
+   (incluye momentos de plata: aguinaldo, indemnización, bonos).
+3. **El dueño de pyme:** dueños de pymes argentinas que quieren mejorar las
+   finanzas del negocio **invirtiendo el capital de la empresa** (capital
+   ocioso en la cuenta de la pyme).
+
+- **Dolores:** la plata (personal o de la empresa) pierde contra la inflación;
+  invertir "algún día"; miedo a invertir mal; desconfianza en asesores
+  ("¿por qué con vos y no con otro?" es la Fase 2 entera de contenido).
 - **Deseos (punto B):** rendimiento real sin volverse expertos ni seguir el
-  mercado todos los días — "invertir sin vueltas"
+  mercado todos los días — "invertir sin vueltas".
 - **Objeciones:** confianza (¿quién sos?), seguridad del capital, "¿esto es
-  para mí o para ricos?"
+  para mí o para ricos?", y en pymes: liquidez ("¿y si necesito la plata?").
+- **Implicancia de contenido:** el segmento 3 (pymes) abre una línea temática
+  propia — hoy casi no hay contenido para pymes en el calendario. Además
+  conecta directo con la red de Cerebro (clientes pyme de Ale).
 
 ## Estrategia de marca YA definida por la consultora (etapa 1 completa en Notion)
 - Enfoque de marca: **cercana, profesional, premium**
