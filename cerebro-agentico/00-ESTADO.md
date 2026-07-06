@@ -28,9 +28,13 @@ sus clientes.** Diseño completo: [`02-SISTEMA-CONTENIDO-MARKETING.md`](02-SISTE
   de 5 archivos: perfil, voz, pilares+calendario, activos, bitácora).
 
 ## Siguiente paso
-- ⏭️ **Fase A, onboarding del cliente 1:** Alexander elige el cliente →
-  correr el onboarding (§3 del diseño) → parametrizar `cerebro-guiones` para
-  leer expedientes de `equipo-marketing/clientes/`.
+- ✅ Cliente 1 elegido: **Invertí sin vueltas** (Mati, asesor financiero AR).
+  Expediente v1 en `equipo-marketing/clientes/invertir-sin-vueltas/` (fuente:
+  Notion del proyecto). Huecos ⚠️: voz de marca real (transcribir reels),
+  buyer persona validado, lead magnet + palabra clave definitivos.
+- ⏭️ Validar expediente con Ale → parametrizar `cerebro-guiones` para leer
+  expedientes → producir el primer lote (video aguinaldo + indemnizados como
+  reels de conversión CCC).
 
 ## Decisiones tomadas
 - El conocimiento permanente vive en git (este repo), no en la memoria de sesión:
