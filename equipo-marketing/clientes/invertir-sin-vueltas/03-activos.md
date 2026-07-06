@@ -32,8 +32,9 @@
 | 2026-07-06 | **BR3 imagen (nano_banana) — $200M / 4 bonos** | `970a9188-21d7-4320-bfd0-8730b6b16668` | ✅ texto perfecto (años 2027/28/30/31 = ilustrativos, ⚠️ validar con Mati) |
 | 2026-07-06 | **BR4 imagen (nano_banana) — $100M FCI → retiro** | `cecf4359-e25f-497d-8e85-d1a5f17ae607` | ✅ texto perfecto — ⚠️ chips estilo "ficha de casino": regenerar chips como pastillas |
 
-**Lección de producción (2026-07-06):** confirma el router del motor: video
-generativo deforma texto/números exactos → **cards con dato = imagen
-(nano_banana) animada en edición**; video generativo solo para metáforas con
-texto mínimo (tanque ✅). Costo de toda la ronda de descubrimiento: **77,5
-créditos ≈ USD 3**.
+**Lección de producción (2026-07-06):** **Veo por API deforma texto/números
+exactos** → por esa vía, cards con dato = imagen (nano_banana) animada en
+edición. **PERO (dato de Ale): en OMNI el texto en pantalla SÍ sale bien** →
+la ruta validada para b-rolls con texto es **Omni/Flow manual** (runbook
+reel-002), que es la mejor manera de crear b-rolls que hay hasta el momento.
+Costo de la ronda de descubrimiento: 77,5 créditos ≈ USD 3.

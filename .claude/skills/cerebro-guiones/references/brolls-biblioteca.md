@@ -80,6 +80,10 @@ Cuando un concepto del guion aparezca, buscar primero acá una dirección probad
 2. **Sin texto en pantalla** cuando se puede evitar (se agrega en edición: control
    tipográfico, sin deformar tildes, sin locución no deseada). Excepción: #08 o si
    el usuario lo pide.
+   **⭐ Actualización (Ale, 2026-07-06): en OMNI el texto en pantalla SÍ sale
+   bien** — si el b-roll se genera en Omni, el texto puede ir en el render.
+   La regla "sin texto" aplica a Veo por API (comprobado: lo deforma) y a
+   Flow/Veo cuando no se usa Omni.
 3. **Duración 6s** por defecto (4s inserts rápidos; 8s solo si la idea respira).
 4. **Vertical 9:16, 24fps** siempre.
 5. **1.800-3.000 caracteres** por prompt.

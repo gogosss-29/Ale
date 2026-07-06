@@ -9,7 +9,7 @@
 
 | Herramienta | Qué es | Su fuerte | Su debilidad |
 |---|---|---|---|
-| **Omni / Flow (Veo)** | IA generativa de video | Personas hablando, fotorrealismo, escenas orgánicas, metáforas con materia (escultura, tinta, oro), explorar looks rápido | Deforma texto, números inexactos, timing impreciso, cada intento sale distinto y cuesta créditos |
+| **Omni / Flow (Veo)** | IA generativa de video | Personas hablando, fotorrealismo, escenas orgánicas, metáforas con materia (escultura, tinta, oro), explorar looks rápido. **Omni además renderiza TEXTO en pantalla correctamente (Ale, 2026-07-06)** | **Veo/Flow y Veo por API deforman texto** y números (comprobado 2026-07-06); timing impreciso, cada intento sale distinto y cuesta créditos |
 | **Remotion** | Video programado (React), lo renderiza Claude y entrega .mp4 | Texto/tipografía perfectos, datos y números reales, timing al frame (sync con locución), marca idéntica en cada reel, gratis, parametrizable | No genera personas ni fotorrealismo; texturas orgánicas complejas cuestan mucho código |
 | **CapCut** | Edición humana | Montaje final, ritmo fino, capa de realismo, música/ducking | Manual |
 | *(futuro)* APIs Kie/APImart | Generativa por API (curso AvatarHype) | Volumen barato de UGC ads | Por integrar |
