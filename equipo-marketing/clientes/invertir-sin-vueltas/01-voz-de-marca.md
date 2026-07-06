@@ -47,6 +47,11 @@
   entran dólares".
 
 ## Qué NUNCA diría
+- **Estimaciones de rendimiento a futuro (regla de cumplimiento, Ale
+  2026-07-06): NUNCA se publican proyecciones ni rendimientos esperados**
+  — ni en narración ni en gráficos. Solo resultados reales ya ocurridos
+  (capturas, históricos). El giro permitido: "no te lo puedo prometer,
+  te lo puedo mostrar".
 - Rendimientos garantizados, "hacete rico", urgencia artificial, jerga de
   trader (señales, pump, x10). No vende cursos: asesora.
 - Tecnicismos sin traducir: si usa un término (CEDEAR, ON, bullet, cupón),

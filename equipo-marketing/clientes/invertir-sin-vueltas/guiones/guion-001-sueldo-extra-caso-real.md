@@ -41,9 +41,9 @@ diaria. De acá sale el sueldo todos los meses sin tocar los bonos."
 "Pensalo como un tanque de agua: el tanque principal son los bonos, que
 crece con el tiempo. Y un tanque de uso diario de donde salen los gastos."
 
-**[1:04–1:13] EL PUNCH + PRUEBA (27 palabras ≈ 9,6s)**
-"La estimación: entre 6,7 y 7,3 millones de pesos por mes. Empezamos en
-abril de 2025, ya pasó más de un año, y estos fueron los resultados."
+**[1:04–1:13] EL PUNCH + PRUEBA (25 palabras ≈ 8,9s)**
+"¿Cuánto genera? No te lo puedo prometer de antemano. Lo que sí te puedo
+mostrar: empezamos en abril de 2025 y estos fueron los resultados."
 *(→ acá entra la CAPTURA REAL de resultados en pantalla)*
 
 **[1:13–1:22] CIERRE — opción A, la del borrador de Ale (25 palabras ≈ 8,9s)**
@@ -72,8 +72,9 @@ Textos en pantalla: 0:05 "$300.000.000" · 0:30 "$200M bonos" · 0:47 "$100M FCI
 - Mati graba a cámara (registro de su video de las 3 carteras: didáctico,
   numerado, calmo). Gráficos: cards estilo Premium Data Motion, paleta
   financiera (verde/rojo) coherente con su feed.
-- Cumplimiento: mantener el disclaimer suave de la propuesta real ("es una
-  estimación, los rendimientos pueden variar") — puede ir como texto chico
-  en pantalla en el bloque del punch.
+- **Cumplimiento (regla de Ale 2026-07-06): NO se dan estimaciones de
+  rendimiento** — ni en narración ni en gráficos. La única evidencia
+  permitida son los **resultados reales ya ocurridos** (la captura). El
+  punch se apoya en eso: "no te lo puedo prometer / te lo puedo mostrar".
 - Nombres técnicos de los bonos (TXMJ0, TXMJ8, TMF27, T31Y7): NO se dicen
   en la narración (muy nicho); pueden ir en el gráfico BR3 como detalle.
