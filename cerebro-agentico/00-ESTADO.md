@@ -38,9 +38,14 @@ sus clientes.** Diseño completo: [`02-SISTEMA-CONTENIDO-MARKETING.md`](02-SISTE
   renderiza texto (dato de Ale); ruta validada = Omni/Flow manual.
 - ⏳ **Del lado de Ale/Mati:** grabar la narración, pegar los 5 prompts en
   Omni, aportar la captura real de resultados, confirmar vencimientos de bonos.
-- ⏭️ Siguiente del sistema (a decidir con Ale): ciclo mensual completo
-  (calendario del Estratega → lote de guiones) · embudo CCC "comentá CARTERA"
-  (ManyChat+MailerLite) · guion 002 · cliente 2.
+- ✅ Calendario mensual v1 propuesto (Ale indicó que el contenido ya existe).
+- ✅ Embudo CCC redactado completo (5 emails + spec ManyChat/MailerLite).
+- ✅ **FASE D INICIADA:** runbook completo en `03-RUNBOOK-FASE-D.md`
+  (decisión: Hermes en VPS Hostinger vía Docker; OpenClaw plan B). Extraído
+  de las lecciones reales (instalación, Tailscale, SOUL, backups, crons).
+- ⏭️ **Ale ejecuta la lista de compras del runbook** (VPS, API key, bot
+  Telegram, Tailscale, repo backup) → despliegue guiado → onboarding del
+  Coordinador → 3 crons iniciales (briefing, tendencias, backup).
 
 ## Decisiones tomadas
 - El conocimiento permanente vive en git (este repo), no en la memoria de sesión:
