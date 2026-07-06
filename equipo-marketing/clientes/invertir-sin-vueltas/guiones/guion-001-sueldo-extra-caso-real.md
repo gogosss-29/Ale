@@ -2,11 +2,12 @@
 
 Objetivo: **Conversión (CCC)** · Duración: ~85s · Formato: 9:16
 Base: borrador de Ale (2026-07-06) + datos reales de Notion "cartera 300 millones"
-Estado: **borrador para aprobación de Ale/Mati**
+Estado: **✅ APROBADO por Ale (2026-07-06)** — monto real $300M, cierre
+opción A (directo). La opción B queda como alternativa si luego montan el
+embudo de palabra clave.
 
-> ⚠️ Decisiones abiertas: (a) publicar el monto real $300M o redondear;
-> (b) cierre directo de Mati vs. variante con palabra clave (ambos abajo).
-> ⚠️ El bloque 8 necesita la **captura real de resultados** (la tienen ellos).
+> ⚠️ Único pendiente de producción: la **captura real de resultados**
+> (la aportan Ale/Mati) para el bloque de 1:04.
 
 ## 1 · GUIÓN COMPLETO (Mati a cámara) — bloques de 10s
 
