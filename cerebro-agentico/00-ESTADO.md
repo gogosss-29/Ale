@@ -28,13 +28,19 @@ sus clientes.** Diseño completo: [`02-SISTEMA-CONTENIDO-MARKETING.md`](02-SISTE
   de 5 archivos: perfil, voz, pilares+calendario, activos, bitácora).
 
 ## Siguiente paso
-- ✅ Cliente 1 elegido: **Invertí sin vueltas** (Mati, asesor financiero AR).
-  Expediente v1 en `equipo-marketing/clientes/invertir-sin-vueltas/` (fuente:
-  Notion del proyecto). Huecos ⚠️: voz de marca real (transcribir reels),
-  buyer persona validado, lead magnet + palabra clave definitivos.
-- ⏭️ Validar expediente con Ale → parametrizar `cerebro-guiones` para leer
-  expedientes → producir el primer lote (video aguinaldo + indemnizados como
-  reels de conversión CCC).
+- ✅ Cliente 1 operativo: **Invertí sin vueltas**. Expediente completo (buyer
+  persona validado, voz real de Mati desde 4 reels transcritos, regla de
+  cumplimiento "sin estimaciones").
+- ✅ **Guion 001 aprobado y con paquete de producción completo**: narración en
+  bloques de 10s + 5 prompts de B-rolls para Omni (con texto ✅, plantilla 8
+  bloques) + 3 imágenes nano_banana de respaldo en Higgsfield.
+- ✅ Lecciones de producción registradas: Veo por API deforma texto; Omni SÍ
+  renderiza texto (dato de Ale); ruta validada = Omni/Flow manual.
+- ⏳ **Del lado de Ale/Mati:** grabar la narración, pegar los 5 prompts en
+  Omni, aportar la captura real de resultados, confirmar vencimientos de bonos.
+- ⏭️ Siguiente del sistema (a decidir con Ale): ciclo mensual completo
+  (calendario del Estratega → lote de guiones) · embudo CCC "comentá CARTERA"
+  (ManyChat+MailerLite) · guion 002 · cliente 2.
 
 ## Decisiones tomadas
 - El conocimiento permanente vive en git (este repo), no en la memoria de sesión:
