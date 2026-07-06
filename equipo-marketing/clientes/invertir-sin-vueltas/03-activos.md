@@ -23,8 +23,17 @@
 ## Generados y aprobados (con ID y fecha)
 | Fecha | Tipo | ID / URL | Estado |
 |---|---|---|---|
-| 2026-07-06 | BR1 guion001 — card $300M (4s, veo3_1 fast/basic) | `2a9288d8-e588-4fcc-b9bf-b7fff2729659` | ronda LOW, a revisión |
-| 2026-07-06 | BR2 guion001 — tipografía depto+indemnización (4s) | `979f976a-7b75-405c-aaac-4db361f0e453` | ronda LOW, a revisión |
-| 2026-07-06 | BR3 guion001 — split $200M/4 bonos (6s) | `d2d09cf5-233f-47fd-86d4-2b2f1157c291` | ronda LOW, a revisión |
-| 2026-07-06 | BR4 guion001 — FCI $100M→retiro mensual (6s) | `8a95076b-ab20-424e-8b81-edcbeef6ef10` | ronda LOW, a revisión |
-| 2026-07-06 | BR5 guion001 — metáfora tanque de agua (6s) | `3132d116-95d9-424e-afcd-0c4b496b0d03` | ronda LOW, a revisión |
+| 2026-07-06 | BR1 video (veo3_1) — card $300M | `2a9288d8-e588-4fcc-b9bf-b7fff2729659` | ❌ texto deformado ("$300,0,0,000") — descartado |
+| 2026-07-06 | BR2 video (veo3_1) — tipografía depto+indemnización | `979f976a-7b75-405c-aaac-4db361f0e453` | ⚠️ casi ("VENTA UN DEPARTAMENTO", falta DE) — regenerar o versión imagen |
+| 2026-07-06 | BR3 video (veo3_1) — split bonos | `d2d09cf5-233f-47fd-86d4-2b2f1157c291` | ❌ texto ilegible — descartado |
+| 2026-07-06 | BR4 video (veo3_1) — FCI flujo | `8a95076b-ab20-424e-8b81-edcbeef6ef10` | ❌ texto deformado — descartado |
+| 2026-07-06 | **BR5 video (veo3_1) — metáfora tanque de agua** | `3132d116-95d9-424e-afcd-0c4b496b0d03` | ✅ **GANADOR** — labels legibles, metáfora premium |
+| 2026-07-06 | **BR1 imagen (nano_banana) — card $300M** | `eb342e7a-f0fd-409d-af9e-a5155d844500` | ✅ texto perfecto — animar en edición (zoom/pan) |
+| 2026-07-06 | **BR3 imagen (nano_banana) — $200M / 4 bonos** | `970a9188-21d7-4320-bfd0-8730b6b16668` | ✅ texto perfecto (años 2027/28/30/31 = ilustrativos, ⚠️ validar con Mati) |
+| 2026-07-06 | **BR4 imagen (nano_banana) — $100M FCI → retiro** | `cecf4359-e25f-497d-8e85-d1a5f17ae607` | ✅ texto perfecto — ⚠️ chips estilo "ficha de casino": regenerar chips como pastillas |
+
+**Lección de producción (2026-07-06):** confirma el router del motor: video
+generativo deforma texto/números exactos → **cards con dato = imagen
+(nano_banana) animada en edición**; video generativo solo para metáforas con
+texto mínimo (tanque ✅). Costo de toda la ronda de descubrimiento: **77,5
+créditos ≈ USD 3**.
