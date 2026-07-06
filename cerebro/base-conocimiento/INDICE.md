@@ -1,0 +1,71 @@
+# Índice — Base de conocimiento (videos)
+
+67 videos completados.
+
+1. [The Wild Project #261 ft José Elías (Billonario a los 45 años) | Cómo vive un ri](https://www.youtube.com/watch?v=AVQ8G9jfy4s) · Cómo vive un rico de verdad
+2. [Visito Una Empresa de Iluminación LED de Un Seguidor](https://www.youtube.com/watch?v=nNpk54pj4a0) · —
+3. [Visito Una Granja de Pollos que Factura 2.000.000€](https://www.youtube.com/watch?v=1BJrNhO3UQw) · —
+4. [¿Es Rentable un Negocio de Hot Dogs? (Visita por Un Día) | Desafío PYME con Info](https://www.youtube.com/watch?v=H-WH5WhtVFA) · Desafío PYME con InfoJobs
+5. [Así Es Mi Nueva Granja de Fresas Premium (1000kg/semana)](https://www.youtube.com/watch?v=TZ-qKqxYyl8) · —
+6. [Viajamos a Paris Para Buscar Inversores Internacionales con Ezentis](https://www.youtube.com/watch?v=5hQkN8MqAUc) · —
+7. [Así se Preparan los Mejillones que Vendo en La Sirena (Proceso Completo)](https://www.youtube.com/watch?v=MF0t0rKDiL4) · —
+8. [Así Es El Proceso de Preparación de Merluzas en Una Empresa de +400.000.000€](https://www.youtube.com/watch?v=GTOoyPWxf9I) · —
+9. [Cómo Funciona Una Ampliación de Capital con Derechos (Ezentis)](https://www.youtube.com/watch?v=R7I2ZJRUpkU) · —
+10. [Este Es Mi Asistente IA Que Trabaja 24/7 (Soy 10 Veces Más Eficaz)](https://www.youtube.com/watch?v=rJoiVYjTF8Q) · —
+11. [Por Qué Estoy Invirtiendo en el Negocio del Pollo (Así Funciona)](https://www.youtube.com/watch?v=QpTEdGBQLjY) · —
+12. [Así Es Una Fábrica de Canelones de +10.000.000€ (Visita por Un Día)](https://www.youtube.com/watch?v=jTz2dle5ZME) · —
+13. [Me Compré Mi Primer Yate de Lujo](https://www.youtube.com/watch?v=aFhpxNq6xBM) · —
+14. [Así Es Un Restaurante de 3 Estrellas Michelin Desde Dentro](https://www.youtube.com/watch?v=fx8AOMuBJKU) · —
+15. [Visito El Bar Donde Empezaron Los Hermanos Roca](https://www.youtube.com/watch?v=10JeSxLz3Xw) · —
+16. [Me Proponen Un Proyecto Millonario En Plena Comida](https://www.youtube.com/watch?v=Hr4OxfJ7lOE) · —
+17. [Así Se Construye La Nueva Nave de Mi Empresa de Congelados](https://www.youtube.com/watch?v=709iEe6Egfs) · —
+18. [Me Compré Mi Primera Granja de Gallinas Ponedoras](https://www.youtube.com/watch?v=aIejnXVLvoY) · —
+19. [Un Día Visitando Pisos con PropHero (Inversiones Inmobiliarias)](https://www.youtube.com/watch?v=dEzr8eLYkEo) · —
+20. [Llevaré Esta Empresa de Pizzas Al Siguiente Nivel | Desafío PYME con InfoJobs](https://www.youtube.com/watch?v=zXbCc_UMLQk) · Desafío PYME con InfoJobs
+21. [Visito Una Feria de Gallinas y Pollos Exóticos (Expo de Aves)](https://www.youtube.com/watch?v=6GSjayoA2f4) · —
+22. [Así Es Vivir El Rally Dakar en El Desierto | Ep 3](https://www.youtube.com/watch?v=kB1FK_4XEOA) · Ep 3
+23. [Así Funcionan los Coches y Motos del Rally Dakar | Ep 2](https://www.youtube.com/watch?v=O6Q6DNgZoTY) · Ep 2
+24. [Viajé a Arabia Saudí para Vivir el Rally Dakar | Ep 1](https://www.youtube.com/watch?v=VfIxZG0TDbw) · Ep 1
+25. [AsÍ Es El Congelador Gigante de Mi Empresa Desde Dentro](https://www.youtube.com/watch?v=RkL6wITfJ6M) · —
+26. [Este Es Mi Nuevo Traje a Medida](https://www.youtube.com/watch?v=-7VzgBsP3w4) · —
+27. [Así Es La Presentación de Un Coche del Rally Dakar (Ebro x Audax)](https://www.youtube.com/watch?v=lz0cjYU94bc) · —
+28. [Traigo a Emprendedores para Elegir el Mejor Invento | Laboratorio de Jose (Final](https://www.youtube.com/watch?v=1unNFzLu01w) · Laboratorio de Jose (Final)
+29. [Cómo Se Construye Un Centro Logístico para Una Empresa de +100.000.000€](https://www.youtube.com/watch?v=0gfm_o_upLg) · —
+30. [Pescando Dorada y Lubina para Mi Empresa de Congelados (24 horas) | KebabTrip #2](https://www.youtube.com/watch?v=aJX0E6bIZss) · KebabTrip
+31. [Viajo a Turquía para Buscar El Mejor Pescado Que Vendo en La Sirena | KebabTrip ](https://www.youtube.com/watch?v=yWi4snxlJ5k) · KebabTrip
+32. [Así Es Una Incubadora de Pollos Desde Dentro](https://www.youtube.com/watch?v=OkXg4H9mfh8) · —
+33. [Así Avanzan Las Obras del Centro Logístico de Mi Empresa de +100.000.000€](https://www.youtube.com/watch?v=GTK7HkHllcQ) · —
+34. [Así Es El Invento Que Está Salvando Miles de Vidas | Laboratorio de Jose](https://www.youtube.com/watch?v=Zftkv0aUKXU) · Laboratorio de Jose
+35. [Hago Mentoría a Esta Empresa Para Ayudarla a Crecer | Desafío PYME con InfoJobs](https://www.youtube.com/watch?v=0Fnfm73KQgU) · Desafío PYME con InfoJobs
+36. [Así Se Construye el Centro Logístico De Mi Empresa de Congelados](https://www.youtube.com/watch?v=soIuSFastYs) · —
+37. [Voy Al Mercado de Productos Copia en China](https://www.youtube.com/watch?v=45cg5-3iLRY) · —
+38. [Visito Las Tiendas Más Impresionantes de China](https://www.youtube.com/watch?v=IsUY0Nn0FHo) · —
+39. [Así Voy a Restaurar Mi Granja de Pollos](https://www.youtube.com/watch?v=z7RR30xZYFc) · —
+40. [Nunca Es Tarde Para Tomar Decisiones: Emprendedor | Un Café Incapto con Jose (Te](https://www.youtube.com/watch?v=Tv3HH_IpQjk) · Un Café Incapto con Jose (Tenerife)
+41. [Así Son Los Coches Futuristas de China (Huawei)](https://www.youtube.com/watch?v=LH2KKqt9qDU) · —
+42. [¿El Éxito Empresarial es Suerte o Trabajo? | Un Café Incapto con Jose (Tenerife)](https://www.youtube.com/watch?v=oNkY1oEN2AA) · Un Café Incapto con Jose (Tenerife)
+43. [Un Día Probando Yates en Barcelona (Salón Náutico)](https://www.youtube.com/watch?v=gOfds_7UN0g) · —
+44. [Traigo a 5 Emprendedores Para Valorar Sus Inventos | Laboratorio de Jose 5.0](https://www.youtube.com/watch?v=wGXvcVhwzYA) · Laboratorio de Jose 5.0
+45. [Probando Comida Callejera en China por Primera Vez](https://www.youtube.com/watch?v=L_pgYMsM3ZE) · —
+46. [Así Se Fabrican Los Yates De Lujo desde Cero](https://www.youtube.com/watch?v=5c6Z_1bchb8) · —
+47. [Fable 5.0 + Ultracode = Ventaja Injusta](https://www.youtube.com/watch?v=_qChQbfBJmo) · —
+48. [Anthropic lanza Claude Fable 5: el modelo más potente que puedes usar](https://www.youtube.com/watch?v=EW38h93vO2g) · —
+49. [Así Automatizaría Cualquier Negocio en 2026 (Desde Cero)](https://www.youtube.com/watch?v=D-gcNGdHYz0) · —
+50. [Qué es el Vibe Marketing y por qué lo cambia TODO (2026)](https://www.youtube.com/watch?v=U5XdnPy42uE) · —
+51. [Claude Opus 4.8: lo probé y esto es lo que necesitas saber](https://www.youtube.com/watch?v=8HwaET0jxzE) · —
+52. [Como Funciona un Arnes de Agentes IA (Harness Engineering Explicado)](https://www.youtube.com/watch?v=z3KF8OaLCG4) · —
+53. [Higgsfield Convirtió a Claude en Una Agencia de Publicidad](https://www.youtube.com/watch?v=Q0ITE2jdl1M) · —
+54. [NO vendas servicios de IA (haz ESTO en su lugar)](https://www.youtube.com/watch?v=m4wI2-miLYI) · —
+55. [POR FIN arreglaron el peor problema de Claude Code](https://www.youtube.com/watch?v=qab9pKpPvio) · —
+56. [Playwright: Ahora sí podemos automatizar TODO](https://www.youtube.com/watch?v=dghyElh4EFw) · —
+57. [Claude Code + Go High Level = Funnels de $10.000](https://www.youtube.com/watch?v=8hqFUQNFPew) · —
+58. [😮 NUEVAS CAMPAÑAS en Meta Ads: Reconocimiento + Ventas](https://www.youtube.com/watch?v=tNgsvuL1iw8) · —
+59. [Todo lo que Necesitas Saber sobre Economía e Inversiones en 30 Minutos (Mastercl](https://www.youtube.com/watch?v=vPjkm9tz-hU) · —
+60. [🔥 Claude se conecta OFICIALMENTE con Meta Ads ► TODO lo que necesitas saber](https://www.youtube.com/watch?v=qgrf5xMXwEg) · —
+61. [💰 Analicé +12,000 anuncios en Meta ► Estos 7 ganchos EXPLOTARÁN tus ventas.💰](https://www.youtube.com/watch?v=PdhxPPjV0mk) · —
+62. [🤩 Nueva métrica para AUMENTAR SEGUIDORES en Instagram con Meta Ads](https://www.youtube.com/watch?v=Kqa3S_wD6NM) · —
+63. [🔥🤖 Claude CODE en Meta Ads ► Método SEGURO para ANALIZAR tus campañas y VENDER m](https://www.youtube.com/watch?v=368JQmfakVg) · —
+64. [NUEVO 🔥 Anuncios DENTRO de WhatsApp ► Todo lo que necesitas saber](https://www.youtube.com/watch?v=Cy040x18u3o) · —
+65. [La nueva forma de crear anuncios (que no apestan) con IA](https://www.youtube.com/watch?v=dk8olroocJI) · —
+66. [🚨 Meta compró NUEVA IA por $2,000M USD (Manus) ► ¿El fin de las agencias?](https://www.youtube.com/watch?v=DsJ4kw2s_Lk) · —
+67. [😱 Así cambiará Meta Ads en 2026 ► 5 TENDENCIAS que debes conocer](https://www.youtube.com/watch?v=xeNsNUS8d6Q) · —
