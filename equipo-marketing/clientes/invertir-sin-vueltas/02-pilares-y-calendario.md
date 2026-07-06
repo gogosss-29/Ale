@@ -20,14 +20,48 @@
 4. **Respondiendo comentarios** (categoría ya existente en sus bases):
    objeciones reales → contenido — INTERACCIÓN.
 
-## Calendario del mes (propuesta del Estratega — gate de Ale)
-| Fecha | Tipo | Pilar | Ángulo/tema | CTA | Estado |
-|---|---|---|---|---|---|
-| ⚠️ | conversión | 1+2 | **Sueldo extra invirtiendo — caso real $170M** ("te cuento cómo armamos la cartera de este cliente") — ángulo de Ale 2026-07-06, reemplaza al de indemnizados (muy nicho) | comenta CARTERA | en guion |
-| — | ~~conversión~~ | ~~3~~ | ~~Video aguinaldo~~ / ~~Video indemnizados~~ — **descartados por Ale 2026-07-06** (demasiado nicho) | — | descartado |
-| ⚠️ | autoridad | 1 | Calculadora: $10M → $14,6M (cartera moderada, datos reales) | guardá este video | idea |
-| ⚠️ | autoridad | 2 | ¿Por qué con vos y no con otro? (serie Fase 2) | seguime | idea |
+## Calendario mensual (propuesta del Estratega v1 — gate de Ale, 2026-07-06)
 
-> Regla CCC aplicada: aguinaldo/indemnización son los reels de **conversión**
-> naturales (audiencia caliente con plata en la mano) → palabra clave → lead
-> magnet → secuencia de emails → llamada con Mati.
+**Cadencia:** 3 reels/semana (12 piezas) + historias/carruseles siguen en el
+calendario de Notion. **Series repetibles** (método del curso, prompt 058):
+
+- **Serie CASOS REALES** (conversión — la ancla del mes)
+- **Serie EDUCACIÓN SIN VUELTAS** (autoridad, pilar 1)
+- **Serie PYMES** (pilar nuevo — segmento 3 del buyer persona, sin competencia)
+- **Serie ¿POR QUÉ CON VOS?** (confianza, Fase 2 — hay crudos ya grabados)
+
+| # | Sem | Tipo CCC | Serie | Ángulo/tema | CTA | KPI | Estado |
+|---|---|---|---|---|---|---|---|
+| 1 | 1 | conversión | Casos | **Guion 001: caso real $300M** (ANCLA del mes) | cierre directo | comentarios + DMs | ✅ guion listo |
+| 2 | 1 | autoridad | Educación | **"3 carteras — parte 2"** (¡prometida en su propio reel de las 3 carteras!) | seguime | saves | idea |
+| 3 | 1 | viralidad | Momentos | Tema del mercado de la semana (dólar/tasas — se define esa semana con prompt 143) | compartí | alcance no-seguidores | idea |
+| 4 | 2 | conversión | Pymes | **"¿Tu empresa tiene plata parada en la cuenta?"** | comenta CARTERA | comentarios palabra clave | idea |
+| 5 | 2 | autoridad | Educación | "¿Plazo fijo o bono? La cuenta que nadie te hace" ⚠️ datos reales de Mati | guardá | saves | idea |
+| 6 | 2 | confianza | ¿Por qué? | "Cómo es trabajar conmigo: qué pasa en la primera llamada" | escribime | DMs | idea |
+| 7 | 3 | conversión | Casos | Caso real cartera USD 220.000 ⚠️ datos de Mati | comenta CARTERA | comentarios | idea |
+| 8 | 3 | autoridad | Educación | "Qué es un FCI, explicado con un tanque de agua" (reusa la metáfora del 001) | seguime | saves | idea |
+| 9 | 3 | interacción | Comentarios | Respondiendo comentarios: la pregunta más repetida del mes | comentá tu caso | comentarios | idea |
+| 10 | 4 | autoridad | Pymes | "El costo invisible de la caja ociosa en una pyme" (ejemplo ilustrativo, sin estimaciones) | guardá | saves | idea |
+| 11 | 4 | confianza | ¿Por qué? | Testimonio real ⚠️ pendiente en Notion de Mati | escribime | DMs | idea |
+| 12 | 4 | viralidad | Momentos | "Invertir afuera desde Argentina" v2 (formato validado del reel EWZ) | compartí | alcance | idea |
+
+**Mezcla CCC del mes:** 3 conversión · 5 autoridad · 2 viralidad · 2 confianza/interacción.
+
+**Reglas operativas (del curso):**
+1. **Grabación por lotes:** 2 sesiones en el mes (Mati graba ~6 guiones por
+   sesión). Nunca grabar y publicar el mismo día; trabajar 2 semanas adelantado.
+2. **KPI por pieza** (no "engagement" genérico): conversión = comentarios con
+   palabra clave y DMs · autoridad = saves · viralidad = alcance no-seguidores.
+3. **Cumplimiento:** sin estimaciones de rendimiento en NINGUNA pieza. Casos
+   reales solo con datos reales aportados por Mati.
+4. ⚠️ El embudo del CTA "CARTERA" (ManyChat + emails) aún no está montado —
+   hasta que exista, los DM los responde Mati a mano (como ya hace).
+
+> Regla CCC: los reels de **conversión** llevan CTA de palabra clave → lead
+> magnet. Los demás llevan CTA de interacción (seguir/guardar/compartir).
+
+### Historial de decisiones
+- 2026-07-06: descartados video aguinaldo y video indemnizados (muy nicho);
+  reemplazados por el caso real $300M con ángulo amplio "sueldo extra".
+- 2026-07-06: eliminada la pieza "Calculadora $10M → $14,6M" de la propuesta
+  anterior — violaba la regla de cumplimiento (sin estimaciones).
