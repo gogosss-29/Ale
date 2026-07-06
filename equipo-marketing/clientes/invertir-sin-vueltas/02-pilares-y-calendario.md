@@ -23,8 +23,8 @@
 ## Calendario del mes (propuesta del Estratega — gate de Ale)
 | Fecha | Tipo | Pilar | Ángulo/tema | CTA | Estado |
 |---|---|---|---|---|---|
-| ⚠️ | conversión | 3 | Video personas indemnizadas (pendiente en Notion) | comenta CARTERA | idea |
-| — | ~~conversión~~ | ~~3~~ | ~~Video aguinaldo~~ — **descartado por Ale 2026-07-06** | — | descartado |
+| ⚠️ | conversión | 1+2 | **Sueldo extra invirtiendo — caso real $170M** ("te cuento cómo armamos la cartera de este cliente") — ángulo de Ale 2026-07-06, reemplaza al de indemnizados (muy nicho) | comenta CARTERA | en guion |
+| — | ~~conversión~~ | ~~3~~ | ~~Video aguinaldo~~ / ~~Video indemnizados~~ — **descartados por Ale 2026-07-06** (demasiado nicho) | — | descartado |
 | ⚠️ | autoridad | 1 | Calculadora: $10M → $14,6M (cartera moderada, datos reales) | guardá este video | idea |
 | ⚠️ | autoridad | 2 | ¿Por qué con vos y no con otro? (serie Fase 2) | seguime | idea |
 
