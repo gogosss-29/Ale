@@ -22,28 +22,25 @@
     .menu-sec .menu-head{max-width:880px;margin:0 auto 56px;text-align:center}
     .menu-sec .menu-head .kicker{display:inline-block;margin-bottom:20px}
     .menu-intro{max-width:600px;margin:24px auto 0;font-size:1.05rem;line-height:1.65;color:#41504f}
-    .menu-card{max-width:880px;margin:0 auto;background:#fffdf7;border:1px solid rgba(0,112,120,.22);border-top:3px solid #c9a55e;border-radius:6px;padding:56px clamp(24px,6vw,72px);box-shadow:0 24px 60px rgba(0,73,79,.08)}
-    .menu-day{padding:40px 0;border-bottom:1px solid rgba(0,112,120,.16)}
-    .menu-day:first-child{padding-top:0}
-    .menu-day:last-child{border-bottom:0;padding-bottom:0}
-    .menu-day-head{display:flex;align-items:baseline;gap:20px;margin-bottom:10px}
-    .menu-day-num{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:400;color:rgba(0,112,120,.32);line-height:1}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;max-width:1180px;margin:0 auto;align-items:stretch}
+    .menu-col{background:#fffdf7;border:1px solid rgba(0,112,120,.22);border-top:3px solid #c9a55e;border-radius:6px;padding:36px 30px 40px;box-shadow:0 24px 60px rgba(0,73,79,.08)}
+    .menu-day-head{margin-bottom:6px}
+    .menu-day-num{display:block;font-family:"Fraunces",serif;font-size:2.2rem;font-weight:400;color:rgba(0,112,120,.32);line-height:1;margin-bottom:14px}
     .menu-day-tag{display:block;font-family:"Montserrat",sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#007078;margin-bottom:6px}
-    .menu-day-head h3{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.4rem,3vw,1.8rem);color:#0d2b2c;margin:0}
-    .menu-meal summary{display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;padding:16px 0;font-family:"Montserrat",sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#00494f;border-top:1px solid rgba(0,73,79,.1)}
-    .menu-meal summary::-webkit-details-marker{display:none}
-    .menu-meal .plus{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:400;color:#c9a55e;transition:transform .25s ease}
-    .menu-meal[open] .plus{transform:rotate(45deg)}
-    .menu-list{list-style:none;margin:0;padding:2px 0 24px}
-    .menu-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:10px 0}
+    .menu-day-head h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.45rem;line-height:1.15;color:#0d2b2c;margin:0}
+    .menu-meal-title{font-family:"Montserrat",sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#00494f;margin:28px 0 2px;padding-top:16px;border-top:1px solid rgba(0,73,79,.12)}
+    .menu-list{list-style:none;margin:0;padding:0}
+    .menu-list li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
     .menu-list li + li{border-top:1px dashed rgba(0,73,79,.14)}
-    .menu-list .dish{font-family:"Fraunces",serif;font-size:1.08rem;color:#12292a}
-    .menu-list .opts{font-family:"Montserrat",sans-serif;font-size:.85rem;color:#5a6a68}
-    .menu-note{max-width:880px;margin:28px auto 0;text-align:center;font-size:.82rem;letter-spacing:.02em;color:#6b7a78}
+    .menu-list .dish{font-family:"Fraunces",serif;font-size:1.05rem;color:#12292a}
+    .menu-list .opts{font-family:"Montserrat",sans-serif;font-size:.82rem;line-height:1.45;color:#5a6a68}
+    .menu-note{max-width:880px;margin:32px auto 0;text-align:center;font-size:.82rem;letter-spacing:.02em;color:#6b7a78}
+    @media (max-width:960px){
+      .menu-grid{grid-template-columns:1fr;max-width:560px}
+    }
     @media (max-width:640px){
       .menu-sec{padding:80px 18px}
-      .menu-card{padding:36px 22px}
-      .menu-day-head{gap:14px}
+      .menu-col{padding:30px 22px 34px}
     }
   </style>
 
@@ -202,81 +199,65 @@
       <p class="menu-intro reveal reveal-delay-2">Tres jornadas de opciones, pensadas para elegir sin apuro. La tercera es para quienes deciden quedarse un día más.</p>
     </div>
 
-    <div class="menu-card reveal reveal-delay-2">
+    <div class="menu-grid">
 
-      <div class="menu-day">
+      <div class="menu-col reveal">
         <div class="menu-day-head">
           <span class="menu-day-num">01</span>
-          <div>
-            <span class="menu-day-tag">Viernes · Noche 1</span>
-            <h3>Cena de bienvenida</h3>
-          </div>
+          <span class="menu-day-tag">Viernes · Noche 1</span>
+          <h3>Cena de bienvenida</h3>
         </div>
-        <details class="menu-meal" open>
-          <summary>Cena <span class="plus" aria-hidden="true">+</span></summary>
-          <ul class="menu-list">
-            <li><span class="dish">Empanadas</span><span class="opts">carne · pollo · jamón y queso · verdura</span></li>
-            <li><span class="dish">Pizza individual</span><span class="opts">muzzarella · napolitana · fugazzeta</span></li>
-            <li><span class="dish">Sándwich de pollo</span></li>
-            <li><span class="dish">Picada n°1</span><span class="opts">+ 4 empanadas a elección</span></li>
-          </ul>
-        </details>
+        <p class="menu-meal-title">Cena</p>
+        <ul class="menu-list">
+          <li><span class="dish">Empanadas</span><span class="opts">carne · pollo · jamón y queso · verdura</span></li>
+          <li><span class="dish">Pizza individual</span><span class="opts">muzzarella · napolitana · fugazzeta</span></li>
+          <li><span class="dish">Sándwich de pollo</span></li>
+          <li><span class="dish">Picada n°1</span><span class="opts">+ 4 empanadas a elección</span></li>
+        </ul>
       </div>
 
-      <div class="menu-day">
+      <div class="menu-col reveal reveal-delay-1">
         <div class="menu-day-head">
           <span class="menu-day-num">02</span>
-          <div>
-            <span class="menu-day-tag">Sábado · Día 2</span>
-            <h3>Almuerzo y cena show</h3>
-          </div>
+          <span class="menu-day-tag">Sábado · Día 2</span>
+          <h3>Almuerzo y cena show</h3>
         </div>
-        <details class="menu-meal">
-          <summary>Almuerzo <span class="plus" aria-hidden="true">+</span></summary>
-          <ul class="menu-list">
-            <li><span class="dish">Tartas</span><span class="opts">pollo al verdeo · calabaza y queso · jamón y queso</span></li>
-            <li><span class="dish">Ensaladas</span><span class="opts">caesar · de la huerta</span></li>
-            <li><span class="dish">Empanadas</span><span class="opts">pollo · carne · verdura · jamón y queso</span></li>
-            <li><span class="dish">Tostón de campo n°2</span></li>
-          </ul>
-        </details>
-        <details class="menu-meal">
-          <summary>Cena <span class="plus" aria-hidden="true">+</span></summary>
-          <ul class="menu-list">
-            <li><span class="dish">Bife de chorizo</span><span class="opts">con ensalada o fritas</span></li>
-            <li><span class="dish">Costilla de cerdo</span><span class="opts">con ensalada o fritas</span></li>
-            <li><span class="dish">Pizza al molde</span><span class="opts">muzzarella · napolitana · fugazzeta · rúcula y crudo</span></li>
-            <li><span class="dish">Focaccia / trenza de salvado</span></li>
-          </ul>
-        </details>
+        <p class="menu-meal-title">Almuerzo</p>
+        <ul class="menu-list">
+          <li><span class="dish">Tartas</span><span class="opts">pollo al verdeo · calabaza y queso · jamón y queso</span></li>
+          <li><span class="dish">Ensaladas</span><span class="opts">caesar · de la huerta</span></li>
+          <li><span class="dish">Empanadas</span><span class="opts">pollo · carne · verdura · jamón y queso</span></li>
+          <li><span class="dish">Tostón de campo n°2</span></li>
+        </ul>
+        <p class="menu-meal-title">Cena</p>
+        <ul class="menu-list">
+          <li><span class="dish">Bife de chorizo</span><span class="opts">con ensalada o fritas</span></li>
+          <li><span class="dish">Costilla de cerdo</span><span class="opts">con ensalada o fritas</span></li>
+          <li><span class="dish">Pizza al molde</span><span class="opts">muzzarella · napolitana · fugazzeta · rúcula y crudo</span></li>
+          <li><span class="dish">Focaccia / trenza de salvado</span></li>
+        </ul>
       </div>
 
-      <div class="menu-day">
+      <div class="menu-col reveal reveal-delay-2">
         <div class="menu-day-head">
           <span class="menu-day-num">03</span>
-          <div>
-            <span class="menu-day-tag">Día adicional</span>
-            <h3>Para quienes se quedan</h3>
-          </div>
+          <span class="menu-day-tag">Día adicional</span>
+          <h3>Para quienes se quedan</h3>
         </div>
-        <details class="menu-meal">
-          <summary>Opción almuerzo <span class="plus" aria-hidden="true">+</span></summary>
-          <ul class="menu-list">
-            <li><span class="dish">Pollo grillé</span><span class="opts">con ensalada</span></li>
-            <li><span class="dish">Focaccia / trenza de salvado</span></li>
-            <li><span class="dish">Ensaladas</span><span class="opts">caesar · de la huerta</span></li>
-            <li><span class="dish">Tostón de campo n°2</span></li>
-          </ul>
-        </details>
-        <details class="menu-meal">
-          <summary>Opción cena <span class="plus" aria-hidden="true">+</span></summary>
-          <ul class="menu-list">
-            <li><span class="dish">Sándwich de pollo</span></li>
-            <li><span class="dish">Picada n°1</span><span class="opts">+ pizzeta muzzarella o napolitana</span></li>
-            <li><span class="dish">Empanadas</span><span class="opts">pollo · carne · jamón y queso · verdura</span></li>
-            <li><span class="dish">Tartas</span><span class="opts">pollo al verdeo · calabaza y queso · jamón y queso</span></li>
-          </ul>
-        </details>
+        <p class="menu-meal-title">Opción almuerzo</p>
+        <ul class="menu-list">
+          <li><span class="dish">Pollo grillé</span><span class="opts">con ensalada</span></li>
+          <li><span class="dish">Focaccia / trenza de salvado</span></li>
+          <li><span class="dish">Ensaladas</span><span class="opts">caesar · de la huerta</span></li>
+          <li><span class="dish">Tostón de campo n°2</span></li>
+        </ul>
+        <p class="menu-meal-title">Opción cena</p>
+        <ul class="menu-list">
+          <li><span class="dish">Sándwich de pollo</span></li>
+          <li><span class="dish">Picada n°1</span><span class="opts">+ pizzeta muzzarella o napolitana</span></li>
+          <li><span class="dish">Empanadas</span><span class="opts">pollo · carne · jamón y queso · verdura</span></li>
+          <li><span class="dish">Tartas</span><span class="opts">pollo al verdeo · calabaza y queso · jamón y queso</span></li>
+        </ul>
       </div>
 
     </div>
