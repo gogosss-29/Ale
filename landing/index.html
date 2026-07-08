@@ -16,31 +16,61 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Montserrat:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="assets/garden-weekend.css" />
 
-  <!-- Estilos sección Menú -->
+  <!-- Estilos sección Menú (usa los tokens de garden-weekend.css) -->
   <style>
-    .menu-sec{background:#f6f1e7;padding:110px 24px}
-    .menu-sec .menu-head{max-width:880px;margin:0 auto 56px;text-align:center}
-    .menu-sec .menu-head .kicker{display:inline-block;margin-bottom:20px}
-    .menu-intro{max-width:600px;margin:24px auto 0;font-size:1.05rem;line-height:1.65;color:#41504f}
-    .menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;max-width:1180px;margin:0 auto;align-items:stretch}
-    .menu-col{background:#fffdf7;border:1px solid rgba(0,112,120,.22);border-top:3px solid #c9a55e;border-radius:6px;padding:36px 30px 40px;box-shadow:0 24px 60px rgba(0,73,79,.08)}
-    .menu-day-head{margin-bottom:6px}
-    .menu-day-num{display:block;font-family:"Fraunces",serif;font-size:2.2rem;font-weight:400;color:rgba(0,112,120,.32);line-height:1;margin-bottom:14px}
-    .menu-day-tag{display:block;font-family:"Montserrat",sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#007078;margin-bottom:6px}
-    .menu-day-head h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.45rem;line-height:1.15;color:#0d2b2c;margin:0}
-    .menu-meal-title{font-family:"Montserrat",sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#00494f;margin:28px 0 2px;padding-top:16px;border-top:1px solid rgba(0,73,79,.12)}
-    .menu-list{list-style:none;margin:0;padding:0}
-    .menu-list li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
-    .menu-list li + li{border-top:1px dashed rgba(0,73,79,.14)}
-    .menu-list .dish{font-family:"Fraunces",serif;font-size:1.05rem;color:#12292a}
-    .menu-list .opts{font-family:"Montserrat",sans-serif;font-size:.82rem;line-height:1.45;color:#5a6a68}
-    .menu-note{max-width:880px;margin:32px auto 0;text-align:center;font-size:.82rem;letter-spacing:.02em;color:#6b7a78}
-    @media (max-width:960px){
-      .menu-grid{grid-template-columns:1fr;max-width:560px}
+    .menu-sec .head{
+      max-width:var(--container); margin:0 auto 72px; padding:0 var(--gutter);
+      display:grid; grid-template-columns:1fr; gap:32px; align-items:end;
     }
-    @media (max-width:640px){
-      .menu-sec{padding:80px 18px}
-      .menu-col{padding:30px 22px 34px}
+    .menu-sec .head h2{ margin:0; max-width:14ch }
+    .menu-sec .head .intro{ font-size:clamp(16px, 1.3vw, 18px); color:var(--ink-soft); margin:0; max-width:42ch }
+    .menu-cols{
+      max-width:var(--container); margin:0 auto;
+      padding:0 var(--gutter);
+      display:grid; grid-template-columns:1fr; gap:56px;
+      border-top:1px solid rgba(178,167,126,.5);
+      padding-top:64px;
+    }
+    .menu-col .big{
+      font-family:"Fraunces", serif;
+      font-style:italic; font-weight:400;
+      font-variation-settings:"opsz" 144, "SOFT" 100;
+      font-size:clamp(56px, 6vw, 84px);
+      line-height:.9;
+      color:var(--gold);
+      letter-spacing:-.02em;
+    }
+    .menu-col .tag{
+      display:block;
+      font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+      font-weight:500; color:var(--ink-soft);
+      margin:18px 0 10px;
+    }
+    .menu-col h3{
+      margin:0;
+      font-family:"Fraunces", serif;
+      font-style:italic; font-weight:400;
+      font-size:clamp(24px, 2.2vw, 30px);
+      line-height:1.2;
+      color:var(--petrol-deep);
+    }
+    .menu-meal-title{
+      font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+      color:var(--gold); font-weight:500;
+      margin:36px 0 4px;
+    }
+    .menu-list{ list-style:none; margin:0; padding:0 }
+    .menu-list li{ padding:14px 0; border-bottom:1px solid rgba(0,82,87,.15) }
+    .menu-list .dish{ display:block; font-size:15px; font-weight:500; color:var(--petrol-deep); letter-spacing:.01em }
+    .menu-list .opts{ display:block; font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin-top:2px }
+    .menu-note{
+      max-width:var(--container); margin:56px auto 0; padding:0 var(--gutter);
+      font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--gold); font-weight:500;
+    }
+    @media(min-width:720px){
+      .menu-sec .head{ grid-template-columns:7fr 5fr; gap:64px }
+      .menu-cols{ grid-template-columns:repeat(3,1fr); gap:56px }
     }
   </style>
 
@@ -193,20 +223,20 @@
 
   <!-- MENÚ -->
   <section class="sec--cream menu-sec" id="menu" aria-labelledby="menuTitle">
-    <div class="menu-head">
-      <span class="kicker reveal">04 · El menú</span>
-      <h2 id="menuTitle" class="display h2 reveal reveal-delay-1">Lo que se come,<br/><em>plato por plato.</em></h2>
-      <p class="menu-intro reveal reveal-delay-2">Tres jornadas de opciones, pensadas para elegir sin apuro. La tercera es para quienes deciden quedarse un día más.</p>
+    <div class="head">
+      <div>
+        <span class="kicker reveal">04 · El menú</span>
+        <h2 id="menuTitle" class="display h2 reveal reveal-delay-1" style="margin-top:24px">Lo que se come,<br/><em>plato por plato.</em></h2>
+      </div>
+      <p class="intro reveal reveal-delay-2">Tres jornadas de opciones, pensadas para elegir sin apuro. La tercera es para quienes deciden quedarse un día más.</p>
     </div>
 
-    <div class="menu-grid">
+    <div class="menu-cols">
 
       <div class="menu-col reveal">
-        <div class="menu-day-head">
-          <span class="menu-day-num">01</span>
-          <span class="menu-day-tag">Viernes · Noche 1</span>
-          <h3>Cena de bienvenida</h3>
-        </div>
+        <span class="big">01</span>
+        <span class="tag">Viernes · Noche 1</span>
+        <h3>Cena de bienvenida</h3>
         <p class="menu-meal-title">Cena</p>
         <ul class="menu-list">
           <li><span class="dish">Empanadas</span><span class="opts">carne · pollo · jamón y queso · verdura</span></li>
@@ -217,11 +247,9 @@
       </div>
 
       <div class="menu-col reveal reveal-delay-1">
-        <div class="menu-day-head">
-          <span class="menu-day-num">02</span>
-          <span class="menu-day-tag">Sábado · Día 2</span>
-          <h3>Almuerzo y cena show</h3>
-        </div>
+        <span class="big">02</span>
+        <span class="tag">Sábado · Día 2</span>
+        <h3>Almuerzo y cena show</h3>
         <p class="menu-meal-title">Almuerzo</p>
         <ul class="menu-list">
           <li><span class="dish">Tartas</span><span class="opts">pollo al verdeo · calabaza y queso · jamón y queso</span></li>
@@ -239,11 +267,9 @@
       </div>
 
       <div class="menu-col reveal reveal-delay-2">
-        <div class="menu-day-head">
-          <span class="menu-day-num">03</span>
-          <span class="menu-day-tag">Día adicional</span>
-          <h3>Para quienes se quedan</h3>
-        </div>
+        <span class="big">03</span>
+        <span class="tag">Día adicional</span>
+        <h3>Para quienes se quedan</h3>
         <p class="menu-meal-title">Opción almuerzo</p>
         <ul class="menu-list">
           <li><span class="dish">Pollo grillé</span><span class="opts">con ensalada</span></li>
@@ -262,7 +288,7 @@
 
     </div>
 
-    <p class="menu-note reveal">Vino de la casa incluido en almuerzo y cena. Menú de opciones: puede variar según estación y disponibilidad.</p>
+    <p class="menu-note reveal">Vino de la casa incluido en almuerzo y cena · menú sujeto a estación y disponibilidad</p>
   </section>
 
   <!-- SPA + GALERÍA -->
