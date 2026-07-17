@@ -954,7 +954,7 @@
   },
   {
    "startMs": 34540,
-   "endMs": 35180,
+   "endMs": 34860,
    "tokens": [
     {
      "text": "y",
@@ -965,21 +965,16 @@
      "text": "muy",
      "fromMs": 34640,
      "toMs": 34860
-    },
-    {
-     "text": "po",
-     "fromMs": 34860,
-     "toMs": 35180
     }
    ]
   },
   {
-   "startMs": 35180,
+   "startMs": 34860,
    "endMs": 36120,
    "tokens": [
     {
      "text": "poca",
-     "fromMs": 35180,
+     "fromMs": 34860,
      "toMs": 35240
     },
     {
