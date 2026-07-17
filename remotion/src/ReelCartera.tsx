@@ -55,6 +55,11 @@ export const reelCarteraSchema = z.object({
   hideComprasMs: z.number(),
   outro: z.object({linea: z.string(), cta: z.string(), cta2: z.string()}),
   musicSrc: z.string().nullable(),
+  // Clip de cierre (CTA real grabado): se encadena tras el clip principal,
+  // con sus propios captions (tiempos relativos al inicio del cierre).
+  cierre: z
+    .object({videoSrc: z.string(), durationMs: z.number(), pages: z.array(pageSchema)})
+    .nullable(),
 });
 export type ReelCarteraProps = z.infer<typeof reelCarteraSchema>;
 
@@ -80,6 +85,7 @@ export const reelCarteraDefaults: ReelCarteraProps = {
   hideComprasMs: 50200,
   outro: {linea: 'SEGUIMIENTO · 6 MESES', cta: '¿VOS QUÉ LE SUMARÍAS?', cta2: 'COMENTÁ 👇'},
   musicSrc: null,
+  cierre: null,
 };
 
 const VIDEO_TOP = 180;
@@ -90,20 +96,45 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
   const {fps} = useVideoConfig();
   const tMs = (frame / fps) * 1000;
   const videoFrames = Math.round((props.videoDurationMs / 1000) * fps);
+  const cierreFrames = props.cierre ? Math.round((props.cierre.durationMs / 1000) * fps) : 0;
+  const hablaMs = props.videoDurationMs + (props.cierre?.durationMs ?? 0);
+
+  // Captions del cierre desplazados a tiempo absoluto del reel
+  const allPages = props.cierre
+    ? [
+        ...props.pages,
+        ...props.cierre.pages.map((p) => ({
+          startMs: p.startMs + props.videoDurationMs,
+          endMs: p.endMs + props.videoDurationMs,
+          tokens: p.tokens.map((t) => ({
+            ...t,
+            fromMs: t.fromMs + props.videoDurationMs,
+            toMs: t.toMs + props.videoDurationMs,
+          })),
+        })),
+      ]
+    : props.pages;
 
   return (
     <AbsoluteFill style={{backgroundColor: GRAPHITE, fontFamily: FONT_MARCA, overflow: 'hidden'}}>
       {/* Clip del avatar (con su audio) */}
       <Sequence from={0} durationInFrames={videoFrames}>
-        <VideoLayer src={props.videoSrc} videoFrames={videoFrames} />
+        <VideoLayer src={props.videoSrc} videoFrames={videoFrames} fadeAtEnd={!props.cierre} />
       </Sequence>
+
+      {/* Clip de cierre (CTA) */}
+      {props.cierre ? (
+        <Sequence from={videoFrames} durationInFrames={cierreFrames}>
+          <VideoLayer src={props.cierre.videoSrc} videoFrames={cierreFrames} fadeAtEnd />
+        </Sequence>
+      ) : null}
 
       {/* Música de fondo con ducking: baja bajo la voz, sube en el outro */}
       {props.musicSrc ? (
         <MusicBed src={props.musicSrc} videoFrames={videoFrames} hasOutro={props.outroMs > 0} />
       ) : null}
 
-      {tMs < props.videoDurationMs ? (
+      {tMs < hablaMs ? (
         <>
           <Header header={props.header} frame={frame} fps={fps} />
           <OnCard card={props.onCard} tMs={tMs} frame={frame} fps={fps} />
@@ -117,7 +148,7 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
             frame={frame}
             fps={fps}
           />
-          <Captions pages={props.pages} tMs={tMs} frame={frame} fps={fps} />
+          <Captions pages={allPages} tMs={tMs} frame={frame} fps={fps} />
         </>
       ) : null}
 
@@ -168,12 +199,18 @@ const MusicBed: React.FC<{src: string; videoFrames: number; hasOutro: boolean}> 
   );
 };
 
-const VideoLayer: React.FC<{src: string; videoFrames: number}> = ({src, videoFrames}) => {
+const VideoLayer: React.FC<{src: string; videoFrames: number; fadeAtEnd?: boolean}> = ({
+  src,
+  videoFrames,
+  fadeAtEnd = true,
+}) => {
   const frame = useCurrentFrame();
-  const fadeOut = interpolate(frame, [videoFrames - 8, videoFrames - 1], [1, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  const fadeOut = fadeAtEnd
+    ? interpolate(frame, [videoFrames - 8, videoFrames - 1], [1, 0], {
+        extrapolateLeft: 'clamp',
+        extrapolateRight: 'clamp',
+      })
+    : 1;
   return (
     <div
       style={{

@@ -1483,5 +1483,143 @@
   "cta": "¿VOS QUÉ LE SUMARÍAS?",
   "cta2": "COMENTÁ 👇"
  },
- "musicSrc": "clips/musica-fondo.m4a"
+ "musicSrc": "clips/musica-fondo.m4a",
+ "cierre": {
+  "videoSrc": "clips/cierre-llamada.mp4",
+  "durationMs": 5900,
+  "pages": [
+   {
+    "startMs": 80,
+    "endMs": 1260,
+    "tokens": [
+     {
+      "text": "Reservá",
+      "fromMs": 80,
+      "toMs": 820
+     },
+     {
+      "text": "tu",
+      "fromMs": 820,
+      "toMs": 900
+     },
+     {
+      "text": "llamada",
+      "fromMs": 900,
+      "toMs": 1260
+     }
+    ]
+   },
+   {
+    "startMs": 1280,
+    "endMs": 1940,
+    "tokens": [
+     {
+      "text": "es",
+      "fromMs": 1280,
+      "toMs": 1400
+     },
+     {
+      "text": "gratuita",
+      "fromMs": 1400,
+      "toMs": 1940
+     }
+    ]
+   },
+   {
+    "startMs": 2000,
+    "endMs": 2780,
+    "tokens": [
+     {
+      "text": "en",
+      "fromMs": 2000,
+      "toMs": 2080
+     },
+     {
+      "text": "30",
+      "fromMs": 2080,
+      "toMs": 2360
+     },
+     {
+      "text": "minutos",
+      "fromMs": 2360,
+      "toMs": 2780
+     }
+    ]
+   },
+   {
+    "startMs": 2780,
+    "endMs": 3500,
+    "tokens": [
+     {
+      "text": "te",
+      "fromMs": 2780,
+      "toMs": 3060
+     },
+     {
+      "text": "explico",
+      "fromMs": 3060,
+      "toMs": 3320
+     },
+     {
+      "text": "todo",
+      "fromMs": 3320,
+      "toMs": 3500
+     }
+    ]
+   },
+   {
+    "startMs": 3500,
+    "endMs": 4059,
+    "tokens": [
+     {
+      "text": "lo",
+      "fromMs": 3500,
+      "toMs": 3620
+     },
+     {
+      "text": "que",
+      "fromMs": 3620,
+      "toMs": 3720
+     },
+     {
+      "text": "necesitás",
+      "fromMs": 3720,
+      "toMs": 4059
+     }
+    ]
+   },
+   {
+    "startMs": 4059,
+    "endMs": 4700,
+    "tokens": [
+     {
+      "text": "para",
+      "fromMs": 4059,
+      "toMs": 4360
+     },
+     {
+      "text": "arrancar",
+      "fromMs": 4360,
+      "toMs": 4620
+     },
+     {
+      "text": "e",
+      "fromMs": 4620,
+      "toMs": 4700
+     }
+    ]
+   },
+   {
+    "startMs": 4700,
+    "endMs": 4980,
+    "tokens": [
+     {
+      "text": "invertir",
+      "fromMs": 4700,
+      "toMs": 4980
+     }
+    ]
+   }
+  ]
+ }
 }

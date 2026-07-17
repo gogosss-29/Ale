@@ -116,7 +116,9 @@ export const Root: React.FC = () => {
         width={1080}
         height={1920}
         calculateMetadata={({props}) => ({
-          durationInFrames: Math.ceil(((props.videoDurationMs + props.outroMs) / 1000) * 30),
+          durationInFrames: Math.ceil(
+            ((props.videoDurationMs + props.outroMs + (props.cierre?.durationMs ?? 0)) / 1000) * 30,
+          ),
         })}
       />
       {/* Captions EDITORIALES (frases compuestas + texto detrás de la persona) */}
