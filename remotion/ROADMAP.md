@@ -1,5 +1,12 @@
 # 🗺️ Roadmap Remotion — decisiones tras la investigación (2026-06)
 
+## ⚙️ Receta de render en el entorno remoto (2026-07, aprendida a los golpes)
+- Flags: `--browser-executable=/opt/pw-browsers/chromium --chrome-mode=chrome-for-testing --timeout=300000 --concurrency=2`.
+- `OffthreadVideo` es OBLIGATORIO para clips (el chromium headless no trae H.264; `<Video>` da `DEMUXER_ERROR_NO_SUPPORTED_STREAMS`).
+- Fuentes: embebidas en el bundle como data-URI (`remotion.config.ts` con `asset/inline` + `loadFont({format: 'truetype'})`) — por red se colgaban (`delayRender timeout`).
+- **Renders largos (>~800 frames) son flaky**: cortar en chunks de ~400 frames con `--frames=A-B` (reintentar el chunk si falla) y concatenar con ffmpeg (`concat -c copy` para video). ⚠️ El audio AAC de cada chunk trae ~46ms de padding: reconstruir la pista con `atrim` a la duración exacta de frames de cada chunk, concat de audio, y remux — si no, se desincronizan los labios (~0.2s al final).
+- Ejemplo completo funcionando: sesión del reel `reels/reel-5milusd.json` (composición `ReelCartera`).
+
 > Veredicto de la investigación de Ale sobre el ecosistema Remotion, cruzada con
 > nuestro sistema (proyecto `remotion/` ya renderizando en el entorno remoto,
 > estilos #11/#12/#13/#99 portados). Regla: adoptar lo que sirve al pipeline
