@@ -2,8 +2,8 @@ import React from 'react';
 import {
   AbsoluteFill,
   Audio,
+  OffthreadVideo,
   Sequence,
-  Video,
   interpolate,
   spring,
   staticFile,
@@ -225,9 +225,9 @@ const VideoLayer: React.FC<{src: string; videoFrames: number; fadeAtEnd?: boolea
         opacity: fadeOut,
       }}
     >
-      {/* <Video> (no OffthreadVideo): clips cortos decodificados en el navegador,
-          evita la contención del server que colgaba la carga de fuentes */}
-      <Video src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+      {/* OffthreadVideo obligatorio: el chromium headless del entorno no trae
+          códecs H.264, así que <Video> no puede reproducir los clips */}
+      <OffthreadVideo src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import {
 import {z} from 'zod';
 import {loadFont} from '@remotion/fonts';
 import {FONT_MARCA} from './marca';
+import playfairTtf from '../public/fonts/PlayfairDisplay-Italic.ttf';
 
 // ─── Captions EDITORIALES (estilo agencia) ───────────────────────────────────
 // Frases compuestas tipográficamente (sans limpia + serif itálica gigante),
@@ -19,7 +20,8 @@ import {FONT_MARCA} from './marca';
 // secuencia de recortes generada por segmentación IA).
 loadFont({
   family: 'PlayfairIt',
-  url: staticFile('fonts/PlayfairDisplay-Italic.ttf'),
+  url: playfairTtf,
+  format: 'truetype',
   weight: '400 900',
   style: 'italic',
 }).catch(() => undefined);

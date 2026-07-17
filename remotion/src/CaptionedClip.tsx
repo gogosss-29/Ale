@@ -10,6 +10,8 @@ import {
 import {z} from 'zod';
 import {loadFont} from '@remotion/fonts';
 import {FONT_MARCA, PALETA} from './marca';
+import nunitoTtf from '../public/fonts/Nunito-Variable.ttf';
+import frauncesTtf from '../public/fonts/Fraunces-Variable.ttf';
 
 // ─── Fase 2 · Captions del avatar ────────────────────────────────────────────
 // Quema subtítulos animados sobre un clip. Dos presets:
@@ -19,12 +21,14 @@ import {FONT_MARCA, PALETA} from './marca';
 //                   con sombra suave, arriba del encuadre. (estilo creator clean)
 loadFont({
   family: 'Nunito',
-  url: staticFile('fonts/Nunito-Variable.ttf'),
+  url: nunitoTtf,
+  format: 'truetype',
   weight: '200 1000',
 }).catch(() => undefined);
 loadFont({
   family: 'Fraunces',
-  url: staticFile('fonts/Fraunces-Variable.ttf'),
+  url: frauncesTtf,
+  format: 'truetype',
   weight: '100 900',
 }).catch(() => undefined);
 

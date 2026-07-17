@@ -1,12 +1,14 @@
 // ─── Marca Cerebro: tipografía y tokens compartidos ─────────────────────────
 import {loadFont} from '@remotion/fonts';
-import {staticFile} from 'remotion';
+import archivoTtf from '../public/fonts/Archivo-Variable.ttf';
 
-// Archivo (variable, OFL) self-hosteada en public/fonts — grotesca moderna con
-// pesos fuertes, la voz tipográfica de los b-rolls. Sin dependencia de red.
+// Archivo (variable, OFL) embebida en el bundle como data-URI (ver
+// remotion.config.ts) — grotesca moderna con pesos fuertes, la voz
+// tipográfica de los b-rolls. Sin dependencia de red ni del dev-server.
 loadFont({
   family: 'Archivo',
-  url: staticFile('fonts/Archivo-Variable.ttf'),
+  url: archivoTtf,
+  format: 'truetype',
   weight: '100 900',
 }).catch(() => undefined); // si falla, cae al stack del sistema
 
