@@ -1,0 +1,41 @@
+# ───────── Invertí Sin Vueltas — Apache config ─────────
+
+# Forzar HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Normalizar a sin-www (invertisinvueltas.com.ar)
+  RewriteCond %{HTTP_HOST} ^www\.invertisinvueltas\.com\.ar$ [NC]
+  RewriteRule ^(.*)$ https://invertisinvueltas.com.ar/$1 [R=301,L]
+</IfModule>
+
+# Compresión GZIP
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache headers
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html              "access plus 0 seconds"
+  ExpiresByType text/css               "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml          "access plus 30 days"
+  ExpiresByType image/jpeg             "access plus 30 days"
+  ExpiresByType image/png              "access plus 30 days"
+  ExpiresByType image/webp             "access plus 30 days"
+  ExpiresByType font/woff2             "access plus 1 year"
+</IfModule>
+
+# Seguridad: ocultar archivos sensibles
+<FilesMatch "^\.(htaccess|htpasswd|env|git)">
+  Require all denied
+</FilesMatch>
+
+# Charset
+AddDefaultCharset UTF-8
+
+# Páginas personalizadas de error (opcional — si sumás 404.html)
+# ErrorDocument 404 /404.html
