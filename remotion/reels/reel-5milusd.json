@@ -1,0 +1,1486 @@
+{
+ "videoSrc": "clips/5mil-usd.mp4",
+ "videoDurationMs": 53340,
+ "outroMs": 2800,
+ "header": [
+  "CARTERA REAL",
+  "USD 5.000",
+  "PERFIL MODERADO"
+ ],
+ "pages": [
+  {
+   "startMs": 0,
+   "endMs": 760,
+   "tokens": [
+    {
+     "text": "5.000",
+     "fromMs": 0,
+     "toMs": 360
+    },
+    {
+     "text": "dólares",
+     "fromMs": 360,
+     "toMs": 540
+    },
+    {
+     "text": "en",
+     "fromMs": 540,
+     "toMs": 760
+    }
+   ]
+  },
+  {
+   "startMs": 760,
+   "endMs": 1360,
+   "tokens": [
+    {
+     "text": "acciones",
+     "fromMs": 760,
+     "toMs": 1120
+    },
+    {
+     "text": "y",
+     "fromMs": 1120,
+     "toMs": 1240
+    },
+    {
+     "text": "eso",
+     "fromMs": 1240,
+     "toMs": 1360
+    }
+   ]
+  },
+  {
+   "startMs": 1360,
+   "endMs": 1740,
+   "tokens": [
+    {
+     "text": "es",
+     "fromMs": 1360,
+     "toMs": 1400
+    },
+    {
+     "text": "una",
+     "fromMs": 1400,
+     "toMs": 1500
+    },
+    {
+     "text": "cartera",
+     "fromMs": 1500,
+     "toMs": 1740
+    }
+   ]
+  },
+  {
+   "startMs": 1740,
+   "endMs": 2180,
+   "tokens": [
+    {
+     "text": "moderada",
+     "fromMs": 1740,
+     "toMs": 2180
+    }
+   ]
+  },
+  {
+   "startMs": 2320,
+   "endMs": 2520,
+   "tokens": [
+    {
+     "text": "voy",
+     "fromMs": 2320,
+     "toMs": 2340
+    },
+    {
+     "text": "a",
+     "fromMs": 2340,
+     "toMs": 2360
+    },
+    {
+     "text": "explicar",
+     "fromMs": 2360,
+     "toMs": 2520
+    }
+   ]
+  },
+  {
+   "startMs": 2520,
+   "endMs": 3320,
+   "tokens": [
+    {
+     "text": "cómo",
+     "fromMs": 2520,
+     "toMs": 2920
+    },
+    {
+     "text": "elegí",
+     "fromMs": 2920,
+     "toMs": 3180
+    },
+    {
+     "text": "cada",
+     "fromMs": 3180,
+     "toMs": 3320
+    }
+   ]
+  },
+  {
+   "startMs": 3320,
+   "endMs": 4100,
+   "tokens": [
+    {
+     "text": "una",
+     "fromMs": 3320,
+     "toMs": 3560
+    },
+    {
+     "text": "Es",
+     "fromMs": 3560,
+     "toMs": 3940
+    },
+    {
+     "text": "una",
+     "fromMs": 3940,
+     "toMs": 4100
+    }
+   ]
+  },
+  {
+   "startMs": 4100,
+   "endMs": 4560,
+   "tokens": [
+    {
+     "text": "cartera",
+     "fromMs": 4100,
+     "toMs": 4360
+    },
+    {
+     "text": "que",
+     "fromMs": 4360,
+     "toMs": 4460
+    },
+    {
+     "text": "ya",
+     "fromMs": 4460,
+     "toMs": 4560
+    }
+   ]
+  },
+  {
+   "startMs": 4560,
+   "endMs": 5220,
+   "tokens": [
+    {
+     "text": "estaba",
+     "fromMs": 4560,
+     "toMs": 4740
+    },
+    {
+     "text": "activa",
+     "fromMs": 4740,
+     "toMs": 5060
+    },
+    {
+     "text": "con",
+     "fromMs": 5060,
+     "toMs": 5220
+    }
+   ]
+  },
+  {
+   "startMs": 5220,
+   "endMs": 5820,
+   "tokens": [
+    {
+     "text": "10",
+     "fromMs": 5220,
+     "toMs": 5380
+    },
+    {
+     "text": "millones",
+     "fromMs": 5380,
+     "toMs": 5640
+    },
+    {
+     "text": "de",
+     "fromMs": 5640,
+     "toMs": 5820
+    }
+   ]
+  },
+  {
+   "startMs": 5820,
+   "endMs": 6360,
+   "tokens": [
+    {
+     "text": "pesos",
+     "fromMs": 5820,
+     "toMs": 6040
+    },
+    {
+     "text": "en",
+     "fromMs": 6040,
+     "toMs": 6220
+    },
+    {
+     "text": "una",
+     "fromMs": 6220,
+     "toMs": 6360
+    }
+   ]
+  },
+  {
+   "startMs": 6360,
+   "endMs": 7560,
+   "tokens": [
+    {
+     "text": "obligación",
+     "fromMs": 6360,
+     "toMs": 6720
+    },
+    {
+     "text": "negociable",
+     "fromMs": 6720,
+     "toMs": 7320
+    },
+    {
+     "text": "de",
+     "fromMs": 7320,
+     "toMs": 7560
+    }
+   ]
+  },
+  {
+   "startMs": 7560,
+   "endMs": 8020,
+   "tokens": [
+    {
+     "text": "telecom",
+     "fromMs": 7560,
+     "toMs": 8020
+    }
+   ]
+  },
+  {
+   "startMs": 8960,
+   "endMs": 9940,
+   "tokens": [
+    {
+     "text": "TLCMO",
+     "fromMs": 8960,
+     "toMs": 9360
+    },
+    {
+     "text": "es",
+     "fromMs": 9360,
+     "toMs": 9760
+    },
+    {
+     "text": "el",
+     "fromMs": 9760,
+     "toMs": 9940
+    }
+   ]
+  },
+  {
+   "startMs": 9940,
+   "endMs": 10260,
+   "tokens": [
+    {
+     "text": "ticker",
+     "fromMs": 9940,
+     "toMs": 10260
+    }
+   ]
+  },
+  {
+   "startMs": 10300,
+   "endMs": 10920,
+   "tokens": [
+    {
+     "text": "tiene",
+     "fromMs": 10300,
+     "toMs": 10440
+    },
+    {
+     "text": "una",
+     "fromMs": 10440,
+     "toMs": 10600
+    },
+    {
+     "text": "renta",
+     "fromMs": 10600,
+     "toMs": 10920
+    }
+   ]
+  },
+  {
+   "startMs": 10920,
+   "endMs": 11760,
+   "tokens": [
+    {
+     "text": "anual",
+     "fromMs": 10920,
+     "toMs": 11100
+    },
+    {
+     "text": "del",
+     "fromMs": 11100,
+     "toMs": 11300
+    },
+    {
+     "text": "9%",
+     "fromMs": 11300,
+     "toMs": 11760
+    }
+   ]
+  },
+  {
+   "startMs": 11760,
+   "endMs": 12340,
+   "tokens": [
+    {
+     "text": "en",
+     "fromMs": 11760,
+     "toMs": 11960
+    },
+    {
+     "text": "dólares",
+     "fromMs": 11960,
+     "toMs": 12200
+    },
+    {
+     "text": "Es",
+     "fromMs": 12200,
+     "toMs": 12340
+    }
+   ]
+  },
+  {
+   "startMs": 12340,
+   "endMs": 12880,
+   "tokens": [
+    {
+     "text": "una",
+     "fromMs": 12340,
+     "toMs": 12460
+    },
+    {
+     "text": "cartera",
+     "fromMs": 12460,
+     "toMs": 12720
+    },
+    {
+     "text": "que",
+     "fromMs": 12720,
+     "toMs": 12880
+    }
+   ]
+  },
+  {
+   "startMs": 12880,
+   "endMs": 13420,
+   "tokens": [
+    {
+     "text": "puede",
+     "fromMs": 12880,
+     "toMs": 13100
+    },
+    {
+     "text": "llegar",
+     "fromMs": 13100,
+     "toMs": 13320
+    },
+    {
+     "text": "a",
+     "fromMs": 13320,
+     "toMs": 13420
+    }
+   ]
+  },
+  {
+   "startMs": 13420,
+   "endMs": 14240,
+   "tokens": [
+    {
+     "text": "tener",
+     "fromMs": 13420,
+     "toMs": 13560
+    },
+    {
+     "text": "extracciones",
+     "fromMs": 13560,
+     "toMs": 14080
+    },
+    {
+     "text": "de",
+     "fromMs": 14080,
+     "toMs": 14240
+    }
+   ]
+  },
+  {
+   "startMs": 14240,
+   "endMs": 14800,
+   "tokens": [
+    {
+     "text": "dinero",
+     "fromMs": 14240,
+     "toMs": 14540
+    },
+    {
+     "text": "en",
+     "fromMs": 14540,
+     "toMs": 14720
+    },
+    {
+     "text": "el",
+     "fromMs": 14720,
+     "toMs": 14800
+    }
+   ]
+  },
+  {
+   "startMs": 14800,
+   "endMs": 15420,
+   "tokens": [
+    {
+     "text": "mediano",
+     "fromMs": 14800,
+     "toMs": 15060
+    },
+    {
+     "text": "plazo",
+     "fromMs": 15060,
+     "toMs": 15420
+    }
+   ]
+  },
+  {
+   "startMs": 15460,
+   "endMs": 16020,
+   "tokens": [
+    {
+     "text": "pero",
+     "fromMs": 15460,
+     "toMs": 15600
+    },
+    {
+     "text": "el",
+     "fromMs": 15600,
+     "toMs": 15700
+    },
+    {
+     "text": "cliente",
+     "fromMs": 15700,
+     "toMs": 16020
+    }
+   ]
+  },
+  {
+   "startMs": 16020,
+   "endMs": 16580,
+   "tokens": [
+    {
+     "text": "le",
+     "fromMs": 16020,
+     "toMs": 16120
+    },
+    {
+     "text": "quería",
+     "fromMs": 16120,
+     "toMs": 16320
+    },
+    {
+     "text": "sumar",
+     "fromMs": 16320,
+     "toMs": 16580
+    }
+   ]
+  },
+  {
+   "startMs": 16580,
+   "endMs": 17000,
+   "tokens": [
+    {
+     "text": "un",
+     "fromMs": 16580,
+     "toMs": 16700
+    },
+    {
+     "text": "poco",
+     "fromMs": 16700,
+     "toMs": 16860
+    },
+    {
+     "text": "de",
+     "fromMs": 16980,
+     "toMs": 17000
+    }
+   ]
+  },
+  {
+   "startMs": 17000,
+   "endMs": 17500,
+   "tokens": [
+    {
+     "text": "volatilidad",
+     "fromMs": 17000,
+     "toMs": 17500
+    }
+   ]
+  },
+  {
+   "startMs": 17580,
+   "endMs": 18640,
+   "tokens": [
+    {
+     "text": "pero",
+     "fromMs": 17580,
+     "toMs": 18080
+    },
+    {
+     "text": "siempre",
+     "fromMs": 18080,
+     "toMs": 18300
+    },
+    {
+     "text": "estando",
+     "fromMs": 18300,
+     "toMs": 18640
+    }
+   ]
+  },
+  {
+   "startMs": 18640,
+   "endMs": 19220,
+   "tokens": [
+    {
+     "text": "dolarizados",
+     "fromMs": 18640,
+     "toMs": 19220
+    }
+   ]
+  },
+  {
+   "startMs": 19220,
+   "endMs": 19640,
+   "tokens": [
+    {
+     "text": "Entonces",
+     "fromMs": 19220,
+     "toMs": 19640
+    }
+   ]
+  },
+  {
+   "startMs": 19720,
+   "endMs": 20480,
+   "tokens": [
+    {
+     "text": "sumamos",
+     "fromMs": 19720,
+     "toMs": 19960
+    },
+    {
+     "text": "estos",
+     "fromMs": 19960,
+     "toMs": 20200
+    },
+    {
+     "text": "3",
+     "fromMs": 20200,
+     "toMs": 20480
+    }
+   ]
+  },
+  {
+   "startMs": 20480,
+   "endMs": 20920,
+   "tokens": [
+    {
+     "text": "CEDEARs",
+     "fromMs": 20480,
+     "toMs": 20920
+    }
+   ]
+  },
+  {
+   "startMs": 20980,
+   "endMs": 21600,
+   "tokens": [
+    {
+     "text": "el",
+     "fromMs": 20980,
+     "toMs": 21100
+    },
+    {
+     "text": "primero",
+     "fromMs": 21100,
+     "toMs": 21340
+    },
+    {
+     "text": "son",
+     "fromMs": 21340,
+     "toMs": 21600
+    }
+   ]
+  },
+  {
+   "startMs": 21600,
+   "endMs": 22420,
+   "tokens": [
+    {
+     "text": "2.000",
+     "fromMs": 21600,
+     "toMs": 21940
+    },
+    {
+     "text": "dólares",
+     "fromMs": 21940,
+     "toMs": 22180
+    },
+    {
+     "text": "en",
+     "fromMs": 22180,
+     "toMs": 22420
+    }
+   ]
+  },
+  {
+   "startMs": 22420,
+   "endMs": 24020,
+   "tokens": [
+    {
+     "text": "el",
+     "fromMs": 22420,
+     "toMs": 22520
+    },
+    {
+     "text": "ETF",
+     "fromMs": 22520,
+     "toMs": 22840
+    },
+    {
+     "text": "EWZ",
+     "fromMs": 22840,
+     "toMs": 24020
+    }
+   ]
+  },
+  {
+   "startMs": 24140,
+   "endMs": 24780,
+   "tokens": [
+    {
+     "text": "que",
+     "fromMs": 24140,
+     "toMs": 24280
+    },
+    {
+     "text": "engloba",
+     "fromMs": 24280,
+     "toMs": 24580
+    },
+    {
+     "text": "las",
+     "fromMs": 24580,
+     "toMs": 24780
+    }
+   ]
+  },
+  {
+   "startMs": 24780,
+   "endMs": 25900,
+   "tokens": [
+    {
+     "text": "mayores",
+     "fromMs": 24780,
+     "toMs": 25300
+    },
+    {
+     "text": "empresas",
+     "fromMs": 25300,
+     "toMs": 25680
+    },
+    {
+     "text": "de",
+     "fromMs": 25680,
+     "toMs": 25900
+    }
+   ]
+  },
+  {
+   "startMs": 25900,
+   "endMs": 27100,
+   "tokens": [
+    {
+     "text": "Brasil",
+     "fromMs": 25900,
+     "toMs": 26120
+    },
+    {
+     "text": "2.000",
+     "fromMs": 26120,
+     "toMs": 26880
+    },
+    {
+     "text": "dólares",
+     "fromMs": 26880,
+     "toMs": 27100
+    }
+   ]
+  },
+  {
+   "startMs": 27100,
+   "endMs": 27720,
+   "tokens": [
+    {
+     "text": "en",
+     "fromMs": 27100,
+     "toMs": 27460
+    },
+    {
+     "text": "Visa",
+     "fromMs": 27460,
+     "toMs": 27720
+    }
+   ]
+  },
+  {
+   "startMs": 27860,
+   "endMs": 28220,
+   "tokens": [
+    {
+     "text": "es",
+     "fromMs": 27860,
+     "toMs": 27920
+    },
+    {
+     "text": "una",
+     "fromMs": 27920,
+     "toMs": 28040
+    },
+    {
+     "text": "empresa",
+     "fromMs": 28040,
+     "toMs": 28220
+    }
+   ]
+  },
+  {
+   "startMs": 28220,
+   "endMs": 28960,
+   "tokens": [
+    {
+     "text": "que",
+     "fromMs": 28220,
+     "toMs": 28420
+    },
+    {
+     "text": "tiene",
+     "fromMs": 28420,
+     "toMs": 28560
+    },
+    {
+     "text": "atrapado",
+     "fromMs": 28560,
+     "toMs": 28960
+    }
+   ]
+  },
+  {
+   "startMs": 28960,
+   "endMs": 29380,
+   "tokens": [
+    {
+     "text": "a",
+     "fromMs": 28960,
+     "toMs": 29060
+    },
+    {
+     "text": "casi",
+     "fromMs": 29060,
+     "toMs": 29160
+    },
+    {
+     "text": "todas",
+     "fromMs": 29160,
+     "toMs": 29380
+    }
+   ]
+  },
+  {
+   "startMs": 29380,
+   "endMs": 30000,
+   "tokens": [
+    {
+     "text": "las",
+     "fromMs": 29380,
+     "toMs": 29520
+    },
+    {
+     "text": "personas",
+     "fromMs": 29520,
+     "toMs": 29820
+    },
+    {
+     "text": "del",
+     "fromMs": 29820,
+     "toMs": 30000
+    }
+   ]
+  },
+  {
+   "startMs": 30000,
+   "endMs": 30520,
+   "tokens": [
+    {
+     "text": "mundo",
+     "fromMs": 30000,
+     "toMs": 30260
+    },
+    {
+     "text": "que",
+     "fromMs": 30260,
+     "toMs": 30420
+    },
+    {
+     "text": "las",
+     "fromMs": 30420,
+     "toMs": 30520
+    }
+   ]
+  },
+  {
+   "startMs": 30520,
+   "endMs": 31020,
+   "tokens": [
+    {
+     "text": "personas",
+     "fromMs": 30520,
+     "toMs": 30800
+    },
+    {
+     "text": "que",
+     "fromMs": 30800,
+     "toMs": 31020
+    },
+    {
+     "text": "a",
+     "fromMs": 31020,
+     "toMs": 31020
+    }
+   ]
+  },
+  {
+   "startMs": 31020,
+   "endMs": 31620,
+   "tokens": [
+    {
+     "text": "veces",
+     "fromMs": 31020,
+     "toMs": 31140
+    },
+    {
+     "text": "usan",
+     "fromMs": 31140,
+     "toMs": 31380
+    },
+    {
+     "text": "más",
+     "fromMs": 31380,
+     "toMs": 31620
+    }
+   ]
+  },
+  {
+   "startMs": 31620,
+   "endMs": 32240,
+   "tokens": [
+    {
+     "text": "sus",
+     "fromMs": 31620,
+     "toMs": 31780
+    },
+    {
+     "text": "productos",
+     "fromMs": 31780,
+     "toMs": 32240
+    }
+   ]
+  },
+  {
+   "startMs": 32460,
+   "endMs": 33620,
+   "tokens": [
+    {
+     "text": "tienen",
+     "fromMs": 32460,
+     "toMs": 33100
+    },
+    {
+     "text": "un",
+     "fromMs": 33100,
+     "toMs": 33220
+    },
+    {
+     "text": "margen",
+     "fromMs": 33220,
+     "toMs": 33620
+    }
+   ]
+  },
+  {
+   "startMs": 33620,
+   "endMs": 34540,
+   "tokens": [
+    {
+     "text": "de",
+     "fromMs": 33620,
+     "toMs": 33760
+    },
+    {
+     "text": "ganancia",
+     "fromMs": 33760,
+     "toMs": 34080
+    },
+    {
+     "text": "tremendo",
+     "fromMs": 34080,
+     "toMs": 34540
+    }
+   ]
+  },
+  {
+   "startMs": 34540,
+   "endMs": 35180,
+   "tokens": [
+    {
+     "text": "y",
+     "fromMs": 34540,
+     "toMs": 34640
+    },
+    {
+     "text": "muy",
+     "fromMs": 34640,
+     "toMs": 34860
+    },
+    {
+     "text": "po",
+     "fromMs": 34860,
+     "toMs": 35180
+    }
+   ]
+  },
+  {
+   "startMs": 35180,
+   "endMs": 36120,
+   "tokens": [
+    {
+     "text": "poca",
+     "fromMs": 35180,
+     "toMs": 35240
+    },
+    {
+     "text": "deuda",
+     "fromMs": 35240,
+     "toMs": 35620
+    },
+    {
+     "text": "Los",
+     "fromMs": 35620,
+     "toMs": 36120
+    }
+   ]
+  },
+  {
+   "startMs": 36120,
+   "endMs": 36860,
+   "tokens": [
+    {
+     "text": "últimos",
+     "fromMs": 36120,
+     "toMs": 36320
+    },
+    {
+     "text": "1.000",
+     "fromMs": 36320,
+     "toMs": 36580
+    },
+    {
+     "text": "dólares",
+     "fromMs": 36580,
+     "toMs": 36860
+    }
+   ]
+  },
+  {
+   "startMs": 36860,
+   "endMs": 37700,
+   "tokens": [
+    {
+     "text": "al",
+     "fromMs": 36860,
+     "toMs": 37140
+    },
+    {
+     "text": "CEDEAR",
+     "fromMs": 37140,
+     "toMs": 37580
+    },
+    {
+     "text": "de",
+     "fromMs": 37580,
+     "toMs": 37700
+    }
+   ]
+  },
+  {
+   "startMs": 37700,
+   "endMs": 37960,
+   "tokens": [
+    {
+     "text": "vista",
+     "fromMs": 37700,
+     "toMs": 37960
+    }
+   ]
+  },
+  {
+   "startMs": 38100,
+   "endMs": 38940,
+   "tokens": [
+    {
+     "text": "aprovechando",
+     "fromMs": 38100,
+     "toMs": 38500
+    },
+    {
+     "text": "la",
+     "fromMs": 38500,
+     "toMs": 38640
+    },
+    {
+     "text": "fuerte",
+     "fromMs": 38640,
+     "toMs": 38940
+    }
+   ]
+  },
+  {
+   "startMs": 38940,
+   "endMs": 39640,
+   "tokens": [
+    {
+     "text": "caída",
+     "fromMs": 38940,
+     "toMs": 39320
+    },
+    {
+     "text": "que",
+     "fromMs": 39320,
+     "toMs": 39480
+    },
+    {
+     "text": "tuvo",
+     "fromMs": 39480,
+     "toMs": 39640
+    }
+   ]
+  },
+  {
+   "startMs": 39640,
+   "endMs": 40140,
+   "tokens": [
+    {
+     "text": "el",
+     "fromMs": 39640,
+     "toMs": 39740
+    },
+    {
+     "text": "petróleo",
+     "fromMs": 39740,
+     "toMs": 40020
+    },
+    {
+     "text": "de",
+     "fromMs": 40020,
+     "toMs": 40140
+    }
+   ]
+  },
+  {
+   "startMs": 40140,
+   "endMs": 41120,
+   "tokens": [
+    {
+     "text": "estos",
+     "fromMs": 40140,
+     "toMs": 40300
+    },
+    {
+     "text": "días",
+     "fromMs": 40300,
+     "toMs": 40580
+    },
+    {
+     "text": "nos",
+     "fromMs": 40580,
+     "toMs": 41120
+    }
+   ]
+  },
+  {
+   "startMs": 41120,
+   "endMs": 41580,
+   "tokens": [
+    {
+     "text": "pareció",
+     "fromMs": 41120,
+     "toMs": 41400
+    },
+    {
+     "text": "un",
+     "fromMs": 41400,
+     "toMs": 41520
+    },
+    {
+     "text": "buen",
+     "fromMs": 41520,
+     "toMs": 41580
+    }
+   ]
+  },
+  {
+   "startMs": 41580,
+   "endMs": 42420,
+   "tokens": [
+    {
+     "text": "momento",
+     "fromMs": 41580,
+     "toMs": 41900
+    },
+    {
+     "text": "para",
+     "fromMs": 41900,
+     "toMs": 42160
+    },
+    {
+     "text": "sumar",
+     "fromMs": 42160,
+     "toMs": 42420
+    }
+   ]
+  },
+  {
+   "startMs": 42420,
+   "endMs": 43000,
+   "tokens": [
+    {
+     "text": "esta",
+     "fromMs": 42420,
+     "toMs": 42580
+    },
+    {
+     "text": "empresa",
+     "fromMs": 42580,
+     "toMs": 42800
+    },
+    {
+     "text": "ya",
+     "fromMs": 42800,
+     "toMs": 43000
+    }
+   ]
+  },
+  {
+   "startMs": 43000,
+   "endMs": 43820,
+   "tokens": [
+    {
+     "text": "que",
+     "fromMs": 43000,
+     "toMs": 43140
+    },
+    {
+     "text": "corrigió",
+     "fromMs": 43140,
+     "toMs": 43560
+    },
+    {
+     "text": "bastante",
+     "fromMs": 43560,
+     "toMs": 43820
+    }
+   ]
+  },
+  {
+   "startMs": 43820,
+   "endMs": 44860,
+   "tokens": [
+    {
+     "text": "el",
+     "fromMs": 43820,
+     "toMs": 44140
+    },
+    {
+     "text": "precio",
+     "fromMs": 44140,
+     "toMs": 44380
+    },
+    {
+     "text": "Con",
+     "fromMs": 44380,
+     "toMs": 44860
+    }
+   ]
+  },
+  {
+   "startMs": 44860,
+   "endMs": 45580,
+   "tokens": [
+    {
+     "text": "mi",
+     "fromMs": 44860,
+     "toMs": 44980
+    },
+    {
+     "text": "cliente",
+     "fromMs": 44980,
+     "toMs": 45380
+    },
+    {
+     "text": "ya",
+     "fromMs": 45380,
+     "toMs": 45580
+    }
+   ]
+  },
+  {
+   "startMs": 45580,
+   "endMs": 46720,
+   "tokens": [
+    {
+     "text": "compramos",
+     "fromMs": 45580,
+     "toMs": 46160
+    },
+    {
+     "text": "y",
+     "fromMs": 46160,
+     "toMs": 46340
+    },
+    {
+     "text": "decidimos",
+     "fromMs": 46340,
+     "toMs": 46720
+    }
+   ]
+  },
+  {
+   "startMs": 46720,
+   "endMs": 47260,
+   "tokens": [
+    {
+     "text": "ir",
+     "fromMs": 46720,
+     "toMs": 46940
+    },
+    {
+     "text": "por",
+     "fromMs": 46940,
+     "toMs": 47100
+    },
+    {
+     "text": "este",
+     "fromMs": 47100,
+     "toMs": 47260
+    }
+   ]
+  },
+  {
+   "startMs": 47260,
+   "endMs": 47640,
+   "tokens": [
+    {
+     "text": "camino",
+     "fromMs": 47260,
+     "toMs": 47640
+    }
+   ]
+  },
+  {
+   "startMs": 47740,
+   "endMs": 48000,
+   "tokens": [
+    {
+     "text": "le",
+     "fromMs": 47740,
+     "toMs": 47800
+    },
+    {
+     "text": "vamos",
+     "fromMs": 47800,
+     "toMs": 47920
+    },
+    {
+     "text": "a",
+     "fromMs": 47920,
+     "toMs": 48000
+    }
+   ]
+  },
+  {
+   "startMs": 48000,
+   "endMs": 48720,
+   "tokens": [
+    {
+     "text": "hacer",
+     "fromMs": 48000,
+     "toMs": 48160
+    },
+    {
+     "text": "un",
+     "fromMs": 48160,
+     "toMs": 48260
+    },
+    {
+     "text": "seguimiento",
+     "fromMs": 48260,
+     "toMs": 48720
+    }
+   ]
+  },
+  {
+   "startMs": 48720,
+   "endMs": 49600,
+   "tokens": [
+    {
+     "text": "de",
+     "fromMs": 48720,
+     "toMs": 48900
+    },
+    {
+     "text": "6",
+     "fromMs": 48900,
+     "toMs": 49140
+    },
+    {
+     "text": "meses",
+     "fromMs": 49140,
+     "toMs": 49600
+    }
+   ]
+  },
+  {
+   "startMs": 50400,
+   "endMs": 51280,
+   "tokens": [
+    {
+     "text": "Vos",
+     "fromMs": 50400,
+     "toMs": 50840
+    },
+    {
+     "text": "comentame",
+     "fromMs": 50840,
+     "toMs": 51280
+    }
+   ]
+  },
+  {
+   "startMs": 51400,
+   "endMs": 51620,
+   "tokens": [
+    {
+     "text": "¿en",
+     "fromMs": 51400,
+     "toMs": 51440
+    },
+    {
+     "text": "qué",
+     "fromMs": 51440,
+     "toMs": 51520
+    },
+    {
+     "text": "le",
+     "fromMs": 51520,
+     "toMs": 51620
+    }
+   ]
+  },
+  {
+   "startMs": 51620,
+   "endMs": 52780,
+   "tokens": [
+    {
+     "text": "sumarías",
+     "fromMs": 51620,
+     "toMs": 51980
+    },
+    {
+     "text": "o",
+     "fromMs": 51980,
+     "toMs": 52200
+    },
+    {
+     "text": "carterearías",
+     "fromMs": 52200,
+     "toMs": 52780
+    }
+   ]
+  },
+  {
+   "startMs": 52780,
+   "endMs": 53120,
+   "tokens": [
+    {
+     "text": "lo",
+     "fromMs": 52780,
+     "toMs": 52920
+    },
+    {
+     "text": "mismo?",
+     "fromMs": 52920,
+     "toMs": 53120
+    }
+   ]
+  }
+ ],
+ "onCard": {
+  "showMs": 4300,
+  "hideMs": 13800,
+  "chip": "YA EN CARTERA",
+  "titulo": "ON TELECOM · TLCMO",
+  "monto": "AR$ 10.000.000",
+  "rentaMs": 10300,
+  "renta": "RENTA 9% ANUAL EN USD"
+ },
+ "compras": [
+  {
+   "showMs": 21000,
+   "label": "ETF EWZ",
+   "monto": "USD 2.000"
+  },
+  {
+   "showMs": 26600,
+   "label": "VISA",
+   "monto": "USD 2.000"
+  },
+  {
+   "showMs": 35900,
+   "label": "CEDEAR VISTA",
+   "monto": "USD 1.000"
+  }
+ ],
+ "totalMs": 44900,
+ "totalLabel": "TOTAL",
+ "totalMonto": "USD 5.000",
+ "hideComprasMs": 50200,
+ "outro": {
+  "linea": "SEGUIMIENTO · 6 MESES",
+  "cta": "¿VOS QUÉ LE SUMARÍAS?",
+  "cta2": "COMENTÁ 👇"
+ }
+}

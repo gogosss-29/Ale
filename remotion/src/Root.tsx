@@ -8,6 +8,7 @@ import {CaptionedClip, captionedClipSchema, captionedClipDefaults} from './Capti
 import {EditorialCaptions, editorialSchema, editorialDefaults} from './EditorialCaptions';
 import {Estilo11Red, estilo11RedSchema, estilo11RedDefaults} from './Estilo11Red';
 import {Estilo11Deriva, estilo11DerivaSchema, estilo11DerivaDefaults} from './Estilo11Deriva';
+import {ReelCartera, reelCarteraSchema, reelCarteraDefaults} from './ReelCartera';
 
 // Todos 9:16 · 24fps (firma de los estilos). Props parametrizables por reel.
 export const Root: React.FC = () => {
@@ -102,6 +103,20 @@ export const Root: React.FC = () => {
         height={1920}
         calculateMetadata={({props}) => ({
           durationInFrames: Math.ceil((props.durationMs / 1000) * 30),
+        })}
+      />
+      {/* Fase 3 · Reel Cartera: clip financiero + datos + captions + outro */}
+      <Composition
+        id="ReelCartera"
+        component={ReelCartera}
+        schema={reelCarteraSchema}
+        defaultProps={reelCarteraDefaults}
+        durationInFrames={1685}
+        fps={30}
+        width={1080}
+        height={1920}
+        calculateMetadata={({props}) => ({
+          durationInFrames: Math.ceil(((props.videoDurationMs + props.outroMs) / 1000) * 30),
         })}
       />
       {/* Captions EDITORIALES (frases compuestas + texto detrás de la persona) */}
