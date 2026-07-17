@@ -100,7 +100,7 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
 
       {/* Música de fondo con ducking: baja bajo la voz, sube en el outro */}
       {props.musicSrc ? (
-        <MusicBed src={props.musicSrc} videoFrames={videoFrames} />
+        <MusicBed src={props.musicSrc} videoFrames={videoFrames} hasOutro={props.outroMs > 0} />
       ) : null}
 
       {tMs < props.videoDurationMs ? (
@@ -121,10 +121,12 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
         </>
       ) : null}
 
-      {/* Outro de marca */}
-      <Sequence from={videoFrames - 6}>
-        <Outro outro={props.outro} fps={fps} />
-      </Sequence>
+      {/* Outro de marca (opcional: outroMs = 0 lo desactiva) */}
+      {props.outroMs > 0 ? (
+        <Sequence from={videoFrames - 6}>
+          <Outro outro={props.outro} fps={fps} />
+        </Sequence>
+      ) : null}
 
       {/* Viñeta global sutil */}
       <AbsoluteFill
@@ -138,18 +140,29 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
   );
 };
 
-const MusicBed: React.FC<{src: string; videoFrames: number}> = ({src, videoFrames}) => {
+const DUCK = 0.22; // nivel bajo la voz
+const ALTO = 0.5; // nivel en el outro
+
+const MusicBed: React.FC<{src: string; videoFrames: number; hasOutro: boolean}> = ({
+  src,
+  videoFrames,
+  hasOutro,
+}) => {
   const {durationInFrames} = useVideoConfig();
+  const curva: [number[], number[]] = hasOutro
+    ? [
+        [0, 18, videoFrames - 6, videoFrames + 16, durationInFrames - 14, durationInFrames - 1],
+        [0, DUCK, DUCK, ALTO, ALTO, 0],
+      ]
+    : [
+        [0, 18, durationInFrames - 20, durationInFrames - 1],
+        [0, DUCK, DUCK, 0],
+      ];
   return (
     <Audio
       src={staticFile(src)}
       volume={(f) =>
-        interpolate(
-          f,
-          [0, 18, videoFrames - 6, videoFrames + 16, durationInFrames - 14, durationInFrames - 1],
-          [0, 0.11, 0.11, 0.4, 0.4, 0],
-          {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
-        )
+        interpolate(f, curva[0], curva[1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})
       }
     />
   );

@@ -1,7 +1,7 @@
 {
  "videoSrc": "clips/5mil-usd.mp4",
  "videoDurationMs": 53340,
- "outroMs": 2800,
+ "outroMs": 0,
  "header": [
   "CARTERA REAL",
   "USD 5.000",
