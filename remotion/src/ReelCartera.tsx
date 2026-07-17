@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   AbsoluteFill,
+  Audio,
   OffthreadVideo,
   Sequence,
   interpolate,
@@ -53,6 +54,7 @@ export const reelCarteraSchema = z.object({
   totalMonto: z.string(),
   hideComprasMs: z.number(),
   outro: z.object({linea: z.string(), cta: z.string(), cta2: z.string()}),
+  musicSrc: z.string().nullable(),
 });
 export type ReelCarteraProps = z.infer<typeof reelCarteraSchema>;
 
@@ -77,6 +79,7 @@ export const reelCarteraDefaults: ReelCarteraProps = {
   totalMonto: 'USD 5.000',
   hideComprasMs: 50200,
   outro: {linea: 'SEGUIMIENTO · 6 MESES', cta: '¿VOS QUÉ LE SUMARÍAS?', cta2: 'COMENTÁ 👇'},
+  musicSrc: null,
 };
 
 const VIDEO_TOP = 180;
@@ -94,6 +97,11 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
       <Sequence from={0} durationInFrames={videoFrames}>
         <VideoLayer src={props.videoSrc} videoFrames={videoFrames} />
       </Sequence>
+
+      {/* Música de fondo con ducking: baja bajo la voz, sube en el outro */}
+      {props.musicSrc ? (
+        <MusicBed src={props.musicSrc} videoFrames={videoFrames} />
+      ) : null}
 
       {tMs < props.videoDurationMs ? (
         <>
@@ -127,6 +135,23 @@ export const ReelCartera: React.FC<ReelCarteraProps> = (props) => {
         }}
       />
     </AbsoluteFill>
+  );
+};
+
+const MusicBed: React.FC<{src: string; videoFrames: number}> = ({src, videoFrames}) => {
+  const {durationInFrames} = useVideoConfig();
+  return (
+    <Audio
+      src={staticFile(src)}
+      volume={(f) =>
+        interpolate(
+          f,
+          [0, 18, videoFrames - 6, videoFrames + 16, durationInFrames - 14, durationInFrames - 1],
+          [0, 0.11, 0.11, 0.4, 0.4, 0],
+          {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
+        )
+      }
+    />
   );
 };
 
