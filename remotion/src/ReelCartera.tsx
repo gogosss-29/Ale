@@ -194,6 +194,8 @@ const VideoLayer: React.FC<{src: string; videoFrames: number}> = ({src, videoFra
 };
 
 // ─── Header persistente (franja superior) ───────────────────────────────────
+// Zona segura IG: los íconos superiores viven en los ~130px de arriba; el
+// header se apoya contra el borde del video, despejado de las esquinas.
 const Header: React.FC<{header: string[]; frame: number; fps: number}> = ({header, frame, fps}) => {
   const inS = spring({frame: frame - 8, fps, config: {damping: 14, stiffness: 120}});
   return (
@@ -202,8 +204,8 @@ const Header: React.FC<{header: string[]; frame: number; fps: number}> = ({heade
         position: 'absolute',
         left: 0,
         right: 0,
-        top: 0,
-        height: VIDEO_TOP,
+        top: 92,
+        height: VIDEO_TOP - 92,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -417,16 +419,18 @@ const Captions: React.FC<{
   const pageStartFrame = Math.round((page.startMs / 1000) * fps);
   const inS = spring({frame: frame - pageStartFrame, fps, config: {damping: 12, stiffness: 240}});
   const chars = page.tokens.map((t) => t.text).join(' ').length;
-  const fontSize = Math.min(58, Math.floor(1560 / Math.max(14, chars)));
+  const fontSize = Math.min(54, Math.floor(1360 / Math.max(14, chars)));
 
+  // Zona segura IG: por encima de los ~420px inferiores (usuario/caption/audio)
+  // y con margen derecho para el carril de botones.
   return (
     <div
       style={{
         position: 'absolute',
-        left: 40,
-        right: 40,
-        top: VIDEO_TOP + VIDEO_H,
-        height: 1920 - VIDEO_TOP - VIDEO_H,
+        left: 110,
+        right: 110,
+        top: 1320,
+        height: 175,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -447,7 +451,9 @@ const Captions: React.FC<{
               letterSpacing: 1.5,
               color: active ? GOLD : BONE,
               transform: active ? 'scale(1.07)' : 'scale(1)',
-              textShadow: active ? '0 0 30px rgba(232,176,75,0.45)' : 'none',
+              textShadow: active
+                ? '0 0 30px rgba(232,176,75,0.45), 0 3px 14px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.8)'
+                : '0 3px 14px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.8)',
               whiteSpace: 'pre',
             }}
           >
