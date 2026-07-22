@@ -22,6 +22,16 @@ src="https://www.facebook.com/tr?id=1452374586665261&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C6KD6GN61M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C6KD6GN61M');
+</script>
+
 <title>Invertí Sin Vueltas — Asesoría financiera personal · Matías Sánchez (CNV 1580)</title>
 <meta name="description" content="Asesoría financiera personalizada con Matías Sánchez (matriculado CNV 1580). Te armo una cartera a medida, yo opero, vos seguís con tu vida. Primera videollamada sin cargo."/>
 <meta name="robots" content="index, follow"/>
@@ -1453,6 +1463,9 @@ window.addEventListener('scroll', () => {
           content_type: 'video'
         });
       }
+      if (typeof gtag === 'function') {
+        gtag('event', 'video_play', { video_title: facade.dataset.ytName || 'Video' });
+      }
       const iframe = document.createElement('iframe');
       iframe.src = 'https://www.youtube.com/embed/' + ytId +
         '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
@@ -1496,6 +1509,9 @@ window.addEventListener('scroll', () => {
   function fireCustom(event, params) {
     if (typeof fbq === 'function') fbq('trackCustom', event, params);
   }
+  function ga(event, params) {
+    if (typeof gtag === 'function') gtag('event', event, params || {});
+  }
 
   // Click en CTA hacia Calendly → Lead + abrir Calendly en popup
   // (el popup queda embebido en esta página, así el pixel puede medir
@@ -1504,6 +1520,7 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       fire('Lead', { content_name: 'Agendar llamada' });
+      ga('generate_lead', { event_label: 'Agendar llamada' });
       if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
         e.preventDefault();
         Calendly.initPopupWidget({ url: link.href });
@@ -1518,9 +1535,11 @@ window.addEventListener('scroll', () => {
     switch (e.data.event) {
       case 'calendly.date_and_time_selected':
         fireCustom('CalendlySeleccionarDia', { content_name: 'Calendly - Seleccionar día' });
+        ga('calendly_seleccionar_dia');
         break;
       case 'calendly.event_scheduled':
         fire('Schedule', { content_name: 'Calendly - Llamada agendada' });
+        ga('calendly_llamada_agendada');
         break;
     }
   });
@@ -1529,6 +1548,7 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
     link.addEventListener('click', function () {
       fire('Contact', { content_name: 'WhatsApp' });
+      ga('whatsapp_click');
     });
   });
 })();

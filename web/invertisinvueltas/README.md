@@ -15,14 +15,23 @@ Ahora Calendly se abre como **popup embebido en la misma página** (widget
 oficial de Calendly) y la web escucha los eventos `postMessage` del iframe para
 disparar el pixel propio:
 
-| Paso | Evento que dispara el pixel |
-|---|---|
-| Cargar la página | `PageView` (estándar) |
-| Click en cualquier botón "Agendar" | `Lead` (estándar) |
-| Calendly: elegir día y horario | `CalendlySeleccionarDia` (personalizado) |
-| Calendly: llamada confirmada | `Schedule` (estándar) |
-| Click en WhatsApp | `Contact` (estándar) |
-| Play en videos | `ViewContent` (estándar) |
+También está instalado **Google Analytics 4** (`G-C6KD6GN61M`) con los mismos
+pasos del funnel:
+
+| Paso | Meta Pixel | GA4 |
+|---|---|---|
+| Cargar la página | `PageView` | `page_view` (automático) |
+| Click en cualquier botón "Agendar" | `Lead` | `generate_lead` |
+| Calendly: elegir día y horario | `CalendlySeleccionarDia` (personalizado) | `calendly_seleccionar_dia` |
+| Calendly: llamada confirmada | `Schedule` | `calendly_llamada_agendada` |
+| Click en WhatsApp | `Contact` | `whatsapp_click` |
+| Play en videos | `ViewContent` | `video_play` |
+
+En GA4, marcar `calendly_llamada_agendada` (y opcionalmente `generate_lead`)
+como **evento clave**: Administrar → Eventos → esperar a que aparezca el evento
+→ activar "Marcar como evento clave". Los eventos personalizados aparecen en
+los informes hasta 24 h después del primer disparo; en tiempo real se ven al
+instante (Informes → Tiempo real).
 
 Si el widget de Calendly no llega a cargar, el link hace fallback al
 comportamiento anterior (nueva pestaña).
