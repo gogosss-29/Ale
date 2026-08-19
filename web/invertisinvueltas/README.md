@@ -1,7 +1,7 @@
 # Invertí Sin Vueltas — sitio web (invertisinvueltas.com.ar)
 
-Landing estática + `.htaccess` de Apache. Pixel de Meta: `1452374586665261`
-(dataset "Invertí sin vueltas", ID 1665959001369348).
+Landing estática + `.htaccess` de Apache. Pixel de Meta / dataset "Invertí sin
+vueltas": `1665959001369348`. Google Analytics 4: `G-C6KD6GN61M`.
 
 ## Qué cambió (jul 2026) — tracking Meta Pixel + Calendly
 
